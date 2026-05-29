@@ -12,14 +12,33 @@ from typing import Mapping, Optional, Sequence
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from zenkb.cognee_runtime.client import CogneeClient  # noqa: E402
+from zenkb.cognee_runtime.client import CogneeApiError, CogneeClient  # noqa: E402
 
 
 DEFAULT_BASE_URL = "http://localhost:8000"
 DEFAULT_DATASET = "zenstatement_canonical"
 DEFAULT_TIMEOUT_SECONDS = 300.0
 SQL_CONTEXT_PROMPT_PATH = Path(__file__).with_name("sql_query_resolution_prompt.md")
-SEARCH_TYPES = ("RAG_COMPLETION", "GRAPH_COMPLETION","GRAPH_COMPLETION_COT", "GRAPH_COMPLETION_CONTEXT_EXTENSION", "GRAPH_SUMMARY_COMPLETION")
+SEARCH_TYPES = (
+    "SUMMARIES",
+    "CHUNKS",
+    "RAG_COMPLETION",
+    "TRIPLET_COMPLETION",
+    "GRAPH_COMPLETION",
+    "GRAPH_COMPLETION_DECOMPOSITION",
+    "GRAPH_SUMMARY_COMPLETION",
+    "CYPHER",
+    "NATURAL_LANGUAGE",
+    "GRAPH_COMPLETION_COT",
+    "GRAPH_COMPLETION_CONTEXT_EXTENSION",
+    "FEELING_LUCKY",
+    "TEMPORAL",
+    "CODING_RULES",
+    "CHUNKS_LEXICAL",
+    "AGENTIC_COMPLETION",
+)
+COMPARISON_SEARCH_TYPES = ("RAG_COMPLETION", "GRAPH_COMPLETION")
+
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Query Cognee with optional business scope context.")
@@ -29,7 +48,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--dataset", action="append", help="Dataset name. Repeat for multiple datasets.")
     parser.add_argument("--search-type", choices=SEARCH_TYPES, default="RAG_COMPLETION")
     parser.add_argument("--both", action="store_true", help="Run both RAG_COMPLETION and GRAPH_COMPLETION.")
+    parser.add_argument("--top-k", type=int, help="Maximum number of Cognee results/context items to request.")
+    parser.add_argument(
+        "--only-context",
+        action="store_true",
+        help="Ask Cognee to return retrieved context instead of calling the LLM for completion searches.",
+    )
+    parser.add_argument("--verbose", action="store_true", help="Ask Cognee for verbose search output.")
+    parser.add_argument("--system-prompt", help="Optional Cognee system prompt for completion searches.")
+    parser.add_argument("--node-name", action="append", help="Restrict search to a Cognee node set. Repeat for many.")
     parser.add_argument("--timeout", type=float, default=DEFAULT_TIMEOUT_SECONDS)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Optional path to write a JSON result record. Relative paths are resolved from the repo root.",
+    )
     parser.add_argument("--tenant")
     parser.add_argument("--group")
     parser.add_argument("--platform")
@@ -51,31 +84,53 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         parser.error("provide a query as positional text or --query")
 
     datasets = args.dataset or [DEFAULT_DATASET]
+    scope = {
+        "tenant": args.tenant,
+        "group": args.group,
+        "platform": args.platform,
+        "account": args.account,
+        "business_domain": args.business_domain,
+        "workflow": args.workflow,
+        "table": args.table,
+        "metric": args.metric,
+    }
     scoped_query = build_scoped_query(
         query,
-        {
-            "tenant": args.tenant,
-            "group": args.group,
-            "platform": args.platform,
-            "account": args.account,
-            "business_domain": args.business_domain,
-            "workflow": args.workflow,
-            "table": args.table,
-            "metric": args.metric,
-        },
+        scope,
         include_sql_context=not args.no_sql_context,
     )
 
     client = CogneeClient(args.base_url)
-    search_types = list(SEARCH_TYPES) if args.both else [args.search_type]
+    search_types = selected_search_types(args.search_type, include_both=args.both)
+    search_options = {
+        "top_k": args.top_k,
+        "only_context": args.only_context,
+        "verbose": args.verbose,
+        "system_prompt": args.system_prompt,
+        "node_names": args.node_name or [],
+        "include_sql_context": not args.no_sql_context,
+    }
+    results: dict[str, object] = {}
+    parsed_results: dict[str, list[object]] = {}
     for index, search_type in enumerate(search_types):
-        response = search_cognee(
-            client,
-            query=scoped_query,
-            datasets=datasets,
-            search_type=search_type,
-            timeout=args.timeout,
-        )
+        try:
+            response = search_cognee(
+                client,
+                query=scoped_query,
+                datasets=datasets,
+                search_type=search_type,
+                timeout=args.timeout,
+                top_k=args.top_k,
+                only_context=args.only_context,
+                verbose=args.verbose,
+                system_prompt=args.system_prompt,
+                node_names=args.node_name,
+            )
+        except CogneeApiError as exc:
+            print(format_search_error(exc, client=client, timeout=args.timeout), file=sys.stderr)
+            return 1
+        results[search_type] = response
+        parsed_results[search_type] = parse_response_items(response)
         if args.json:
             print(json.dumps(response, indent=2, ensure_ascii=False, sort_keys=True))
             continue
@@ -84,6 +139,20 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 print()
             print(f"=== {search_type} ===")
         print(format_response(response))
+    if args.output:
+        write_json(
+            build_result_record(
+                query=query,
+                scoped_query=scoped_query,
+                scope=scope,
+                datasets=datasets,
+                search_types=search_types,
+                search_options=search_options,
+                results=results,
+                parsed_results=parsed_results,
+            ),
+            resolve_output_path(args.output),
+        )
     return 0
 
 
@@ -116,8 +185,53 @@ def build_scoped_query(
     return "\n\n".join(sections)
 
 
+def build_result_record(
+    *,
+    query: str,
+    scoped_query: str,
+    scope: Mapping[str, Optional[str]],
+    datasets: Sequence[str],
+    search_types: Sequence[str],
+    search_options: Mapping[str, object],
+    results: Mapping[str, object],
+    parsed_results: Mapping[str, Sequence[object]],
+) -> dict[str, object]:
+    return {
+        "query": query,
+        "scoped_query": scoped_query,
+        "scope": {key: value for key, value in scope.items() if value},
+        "datasets": list(datasets),
+        "search_types": list(search_types),
+        "search_options": dict(search_options),
+        "results": dict(results),
+        "parsed_results": {key: list(value) for key, value in parsed_results.items()},
+    }
+
+
+def write_json(value: object, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def resolve_output_path(path: Path) -> Path:
+    path = path.expanduser()
+    if path.is_absolute():
+        return path
+    return REPO_ROOT / path
+
+
 def sql_context_instruction() -> str:
     return SQL_CONTEXT_PROMPT_PATH.read_text(encoding="utf-8").strip()
+
+
+def selected_search_types(primary: str, *, include_both: bool) -> list[str]:
+    if not include_both:
+        return [primary]
+    ordered = [primary]
+    for search_type in COMPARISON_SEARCH_TYPES:
+        if search_type not in ordered:
+            ordered.append(search_type)
+    return ordered
 
 
 def search_cognee(
@@ -127,16 +241,86 @@ def search_cognee(
     datasets: Sequence[str],
     search_type: str,
     timeout: float,
+    top_k: Optional[int] = None,
+    only_context: bool = False,
+    verbose: bool = False,
+    system_prompt: Optional[str] = None,
+    node_names: Optional[Sequence[str]] = None,
 ) -> object:
     return client.post_json(
         "/api/v1/search",
-        {
-            "query": query,
-            "search_type": search_type,
-            "datasets": list(datasets),
-        },
+        build_search_payload(
+            query=query,
+            datasets=datasets,
+            search_type=search_type,
+            top_k=top_k,
+            only_context=only_context,
+            verbose=verbose,
+            system_prompt=system_prompt,
+            node_names=node_names,
+        ),
         timeout=timeout,
     )
+
+
+def format_search_error(exc: CogneeApiError, *, client: CogneeClient, timeout: float) -> str:
+    lines = [f"cognee search failed: {exc}"]
+    if "DatasetNotFoundError" in str(exc) or "No datasets found" in str(exc):
+        datasets = available_dataset_names(client, timeout=min(timeout, 10.0))
+        if datasets:
+            lines.append("Available datasets:")
+            lines.extend(f"- {name}" for name in datasets)
+        else:
+            lines.append("No datasets were returned by /api/v1/datasets.")
+    return "\n".join(lines)
+
+
+def available_dataset_names(client: CogneeClient, *, timeout: float) -> list[str]:
+    try:
+        response = client.datasets(timeout=timeout)
+    except CogneeApiError:
+        return []
+    if not isinstance(response, list):
+        return []
+    names = []
+    for dataset in response:
+        if not isinstance(dataset, Mapping):
+            continue
+        name = dataset.get("name")
+        if name:
+            names.append(str(name))
+    return sorted(names)
+
+
+def build_search_payload(
+    *,
+    query: str,
+    datasets: Sequence[str],
+    search_type: str,
+    top_k: Optional[int] = None,
+    only_context: bool = False,
+    verbose: bool = False,
+    system_prompt: Optional[str] = None,
+    node_names: Optional[Sequence[str]] = None,
+) -> dict[str, object]:
+    if top_k is not None and top_k < 1:
+        raise ValueError("top_k must be >= 1")
+    payload: dict[str, object] = {
+        "query": query,
+        "search_type": search_type,
+        "datasets": list(datasets),
+    }
+    if top_k is not None:
+        payload["top_k"] = top_k
+    if only_context:
+        payload["only_context"] = True
+    if verbose:
+        payload["verbose"] = True
+    if system_prompt:
+        payload["system_prompt"] = system_prompt
+    if node_names:
+        payload["node_name"] = list(node_names)
+    return payload
 
 
 def parse_response_items(response: object) -> list[object]:

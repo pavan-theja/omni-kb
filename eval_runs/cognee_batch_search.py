@@ -59,6 +59,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--dataset", action="append", help="Dataset name. Repeat for multiple datasets.")
     parser.add_argument("--search-type", choices=search.SEARCH_TYPES, default="RAG_COMPLETION")
     parser.add_argument("--both", action="store_true", help="Run both RAG_COMPLETION and GRAPH_COMPLETION.")
+    parser.add_argument("--top-k", type=int, help="Maximum number of Cognee results/context items to request.")
+    parser.add_argument(
+        "--only-context",
+        action="store_true",
+        help="Ask Cognee to return retrieved context instead of calling the LLM for completion searches.",
+    )
+    parser.add_argument("--verbose", action="store_true", help="Ask Cognee for verbose search output.")
+    parser.add_argument("--system-prompt", help="Optional Cognee system prompt for completion searches.")
+    parser.add_argument("--node-name", action="append", help="Restrict search to a Cognee node set. Repeat for many.")
     parser.add_argument("--timeout", type=float, default=search.DEFAULT_TIMEOUT_SECONDS)
     parser.add_argument("--tenant")
     parser.add_argument("--group")
@@ -78,7 +87,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     datasets = args.dataset or [search.DEFAULT_DATASET]
-    search_types = list(search.SEARCH_TYPES) if args.both else [args.search_type]
+    search_types = search.selected_search_types(args.search_type, include_both=args.both)
+    search_options = {
+        "top_k": args.top_k,
+        "only_context": args.only_context,
+        "verbose": args.verbose,
+        "system_prompt": args.system_prompt,
+        "node_names": args.node_name or [],
+    }
     scope = {
         "tenant": args.tenant,
         "group": args.group,
@@ -122,6 +138,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "scoped_query": scoped_query,
             "datasets": datasets,
             "search_types": search_types,
+            "search_options": search_options,
             "results": {},
             "parsed_results": {},
             "errors": {},
@@ -140,6 +157,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     datasets=datasets,
                     search_type=search_type,
                     timeout=args.timeout,
+                    top_k=args.top_k,
+                    only_context=args.only_context,
+                    verbose=args.verbose,
+                    system_prompt=args.system_prompt,
+                    node_names=args.node_name,
                 )
                 result_record["results"][search_type] = response
                 result_record["parsed_results"][search_type] = search.parse_response_items(response)
