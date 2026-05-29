@@ -1,0 +1,42 @@
+{
+  "candidate_notes": "Converted from the previous revenue-vs-cashflow execution constraint because this is a reporting-scope rule, not a standalone execution constraint.",
+  "canonical_id": "rule.amazon.settlement_reporting_type_scope",
+  "card_type": "rule",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_settlement.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7994
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Settlement reporting type scope: revenue versus cash flow",
+  "related_canonical_id": "column.zs_observe.amazon_settlement.type",
+  "review_status": "accepted",
+  "rule_text": "For settlement revenue reporting, restrict to type IN ('Order','Refund'); for settlement cash-flow/payout reporting, include all settlement type values because Service Fee, FBA Inventory Fee, Adjustment, SAFE-T, Reimbursements, Clawbacks, Others, and NULL rows affect payout.",
+  "rule_type": "business_semantic_rule",
+  "source_card_id": "rule.amazon.settlement_reporting_type_scope",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7994,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

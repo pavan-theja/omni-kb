@@ -1,0 +1,49 @@
+{
+  "canonical_id": "value_profile.jiomart.oms.fulfilment_channel",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.jiomart_oms.fulfilment_channel",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "OMS fulfilment channel profile",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.2_2_fulfilment_models",
+    "ev.jiomart.oms.3_6_status_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.2_2_fulfilment_models",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10222
+    },
+    {
+      "evidence_id": "ev.jiomart.oms.3_6_status_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10222
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "OMS fulfilment channel profile",
+  "normalization_rule": "Preserve source spelling/case and code values; normalize only downstream where explicitly configured.",
+  "observed_values": [
+    "Third Party Platform Shipment"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.jiomart.oms.fulfilment_channel",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10222,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

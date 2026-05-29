@@ -1,0 +1,45 @@
+{
+  "canonical_id": "value_profile.target_plus.settlement.transaction_breakdown",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.target_settlement.transaction_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Settlement transaction/internal type breakdown profile",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.settlement.transaction_type_internal_txn_type_full_breakdown_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.settlement.transaction_type_internal_txn_type_full_breakdown_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8886
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Settlement transaction/internal type breakdown profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "forward/sales: 5,659 rows; charged 132,081; commission 21,069; settled 121,342; 15%",
+    "reverse/refunds: 450 rows; charged 10,937; commission -1,613; settled -9,185; 15% reversed",
+    "reverse charge/others: 408 rows; charged 9,981; commission 0; settled -1,721; 0%"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.settlement.transaction_breakdown",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8886,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

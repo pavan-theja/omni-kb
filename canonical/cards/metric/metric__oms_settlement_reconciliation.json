@@ -1,0 +1,62 @@
+{
+  "business_definition": "Forward OMS rows joined to settlement forward lines by invoice_number with settlement fee fields available for status/variance review.",
+  "canonical_id": "metric.oms_settlement_reconciliation",
+  "card_type": "metric",
+  "colloquial_names": [
+    "OMS ↔ Settlement Reconciliation"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "Forward OMS rows joined to settlement forward lines by invoice_number with settlement fee fields available for status/variance review.",
+  "display_name": "OMS settlement reconciliation status",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.snapdeal.orders",
+  "evidence_ids": [
+    "evidence.snapdeal.8_4_oms_settlement_reconciliation",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.8_4_oms_settlement_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12576
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12576
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12576
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.snapdeal.oms_settlement_reconciliation"
+  ],
+  "metric_family": "marketplace_metric",
+  "metric_pattern": "oms_invoice_join_to_forward_settlement",
+  "name": "OMS settlement reconciliation status",
+  "review_status": "ready",
+  "source_card_id": "metric.oms_settlement_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12576,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

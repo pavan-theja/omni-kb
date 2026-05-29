@@ -1,0 +1,57 @@
+{
+  "aggregation_order": "Pre-aggregate multi-row settlement/return tables by order_id or source SQL grain before joining.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.jiomart.shipment_status_summary",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart implementation — Shipment Status Summary",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.shipment.7_1_shipment_status_summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.shipment.7_1_shipment_status_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10916
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use filters exactly as shown in source SQL and mandatory filter rules.",
+  "formula_sql": "SELECT order_status,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS gmv,\n  SUM(mrp) AS total_mrp,\n  SUM(item_promo_discount) AS total_discount,\n  AVG(charged_amount) AS avg_selling_price,\n  ROUND(100.0 * AVG(item_promo_discount) / NULLIF(AVG(mrp), 0), 2) AS avg_discount_pct\nFROM zs_observe.jiomart_shipment\nWHERE is_active = true\nGROUP BY order_status;",
+  "formula_sql_ref": "sql.jiomart.shipment.7_1_shipment_status_summary",
+  "formula_text": "Executable source SQL pattern retained verbatim.",
+  "implementation_scope": "jiomart",
+  "metric_id": "metric.jiomart.shipment_status_gmv",
+  "name": "JioMart implementation — Shipment Status Summary",
+  "platform_code": "jiomart",
+  "platform_context_id": "platform_context.jiomart.in",
+  "review_status": "ready",
+  "sign_semantics": "Respect source transaction_type/accountable_type sign semantics before summing amounts.",
+  "source_card_id": "metric_impl.jiomart.shipment_status_summary",
+  "source_columns": [
+    "order_status",
+    "charged_amount",
+    "mrp",
+    "item_promo_discount"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10916,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_shipment"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

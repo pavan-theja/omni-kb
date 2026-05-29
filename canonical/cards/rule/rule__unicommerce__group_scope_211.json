@@ -1,0 +1,47 @@
+{
+  "canonical_id": "rule.unicommerce.group_scope_211",
+  "card_type": "rule",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/oms/unicommerce_d2c_oms.md.",
+  "display_name": "group_scope_211",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.filters.001",
+    "ev.unicommerce.data_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.filters.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 3515
+    },
+    {
+      "evidence_id": "ev.unicommerce.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 3515
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "group_scope_211",
+  "review_status": "accepted",
+  "rule_scope": "unicommerce_d2c_oms_execution_and_semantics",
+  "rule_text": "Astrotalk production analysis uses group_level_id = 211; group_level_id=22 is documented minor caveat only.",
+  "source_card_id": "rule.unicommerce.group_scope_211",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3515,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

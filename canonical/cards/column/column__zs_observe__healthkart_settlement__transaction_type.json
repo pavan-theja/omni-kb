@@ -1,0 +1,49 @@
+{
+  "business_meaning": "`forward` (85.3%) for delivered orders, `reverse` (14.7%) for returns/RTO",
+  "canonical_id": "column.zs_observe.healthkart_settlement.transaction_type",
+  "card_type": "column",
+  "column_group": "Order Status & Transaction Type",
+  "column_name": "transaction_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "`forward` (85.3%) for delivered orders, `reverse` (14.7%) for returns/RTO",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 1021
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "healthkart_settlement.transaction_type",
+  "review_status": "ready",
+  "schema_name": "zs_observe",
+  "scope_boundary_note": null,
+  "semantic_role": "classification_status_or_type",
+  "source_card_id": "column.zs_observe.healthkart_settlement.transaction_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1021,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.healthkart_settlement",
+  "table_name": "healthkart_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

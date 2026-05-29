@@ -1,0 +1,228 @@
+{
+  "amount_columns": [
+    "gross",
+    "fee",
+    "net",
+    "balance",
+    "discount",
+    "sales_tax",
+    "shipping_and_handling_amount",
+    "vat",
+    "balance_impact"
+  ],
+  "avoid_columns": [
+    "vat",
+    "balance_impact"
+  ],
+  "business_purpose": "PayPal Express Checkout settlement data. This is the transaction-level settlement file from PayPal for merchants using Express Checkout integration. Very wide table (112 columns) capturing all PayPal transaction metadata.",
+  "canonical_id": "table.zs_observe.paypal_express_checkout_settlements",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.paypal_express_checkout_settlements.address_line_1",
+    "column.zs_observe.paypal_express_checkout_settlements.authorization_review_status",
+    "column.zs_observe.paypal_express_checkout_settlements.balance",
+    "column.zs_observe.paypal_express_checkout_settlements.balance_impact",
+    "column.zs_observe.paypal_express_checkout_settlements.bank_reference_id",
+    "column.zs_observe.paypal_express_checkout_settlements.buyer_id",
+    "column.zs_observe.paypal_express_checkout_settlements.buyer_wallet",
+    "column.zs_observe.paypal_express_checkout_settlements.card_type",
+    "column.zs_observe.paypal_express_checkout_settlements.country",
+    "column.zs_observe.paypal_express_checkout_settlements.country_code",
+    "column.zs_observe.paypal_express_checkout_settlements.created_date",
+    "column.zs_observe.paypal_express_checkout_settlements.currency",
+    "column.zs_observe.paypal_express_checkout_settlements.custom_number",
+    "column.zs_observe.paypal_express_checkout_settlements.date",
+    "column.zs_observe.paypal_express_checkout_settlements.decline_code",
+    "column.zs_observe.paypal_express_checkout_settlements.discount",
+    "column.zs_observe.paypal_express_checkout_settlements.fastlane_checkout_transaction",
+    "column.zs_observe.paypal_express_checkout_settlements.fee",
+    "column.zs_observe.paypal_express_checkout_settlements.from_email_address",
+    "column.zs_observe.paypal_express_checkout_settlements.funding_source",
+    "column.zs_observe.paypal_express_checkout_settlements.gross",
+    "column.zs_observe.paypal_express_checkout_settlements.invoice_number",
+    "column.zs_observe.paypal_express_checkout_settlements.invoice_number_1",
+    "column.zs_observe.paypal_express_checkout_settlements.item_id",
+    "column.zs_observe.paypal_express_checkout_settlements.item_title",
+    "column.zs_observe.paypal_express_checkout_settlements.name",
+    "column.zs_observe.paypal_express_checkout_settlements.net",
+    "column.zs_observe.paypal_express_checkout_settlements.note",
+    "column.zs_observe.paypal_express_checkout_settlements.payment_source",
+    "column.zs_observe.paypal_express_checkout_settlements.payment_source_subtype",
+    "column.zs_observe.paypal_express_checkout_settlements.payment_tracking_id",
+    "column.zs_observe.paypal_express_checkout_settlements.po_number",
+    "column.zs_observe.paypal_express_checkout_settlements.protection_eligibility",
+    "column.zs_observe.paypal_express_checkout_settlements.quantity",
+    "column.zs_observe.paypal_express_checkout_settlements.receipt_id",
+    "column.zs_observe.paypal_express_checkout_settlements.reference_txn_id",
+    "column.zs_observe.paypal_express_checkout_settlements.risk_filter",
+    "column.zs_observe.paypal_express_checkout_settlements.sales_tax",
+    "column.zs_observe.paypal_express_checkout_settlements.seller_id",
+    "column.zs_observe.paypal_express_checkout_settlements.shipping_and_handling_amount",
+    "column.zs_observe.paypal_express_checkout_settlements.status",
+    "column.zs_observe.paypal_express_checkout_settlements.time",
+    "column.zs_observe.paypal_express_checkout_settlements.time_zone",
+    "column.zs_observe.paypal_express_checkout_settlements.tip",
+    "column.zs_observe.paypal_express_checkout_settlements.to_email_address",
+    "column.zs_observe.paypal_express_checkout_settlements.transaction_event_code",
+    "column.zs_observe.paypal_express_checkout_settlements.transaction_id",
+    "column.zs_observe.paypal_express_checkout_settlements.type",
+    "column.zs_observe.paypal_express_checkout_settlements.vat"
+  ],
+  "columns": [
+    "column.zs_observe.paypal_express_checkout_settlements.transaction_id",
+    "column.zs_observe.paypal_express_checkout_settlements.invoice_number",
+    "column.zs_observe.paypal_express_checkout_settlements.invoice_number_1",
+    "column.zs_observe.paypal_express_checkout_settlements.reference_txn_id",
+    "column.zs_observe.paypal_express_checkout_settlements.created_date",
+    "column.zs_observe.paypal_express_checkout_settlements.date",
+    "column.zs_observe.paypal_express_checkout_settlements.time",
+    "column.zs_observe.paypal_express_checkout_settlements.time_zone",
+    "column.zs_observe.paypal_express_checkout_settlements.type",
+    "column.zs_observe.paypal_express_checkout_settlements.transaction_event_code",
+    "column.zs_observe.paypal_express_checkout_settlements.status",
+    "column.zs_observe.paypal_express_checkout_settlements.currency",
+    "column.zs_observe.paypal_express_checkout_settlements.gross",
+    "column.zs_observe.paypal_express_checkout_settlements.fee",
+    "column.zs_observe.paypal_express_checkout_settlements.net",
+    "column.zs_observe.paypal_express_checkout_settlements.balance",
+    "column.zs_observe.paypal_express_checkout_settlements.discount",
+    "column.zs_observe.paypal_express_checkout_settlements.sales_tax",
+    "column.zs_observe.paypal_express_checkout_settlements.shipping_and_handling_amount",
+    "column.zs_observe.paypal_express_checkout_settlements.vat",
+    "column.zs_observe.paypal_express_checkout_settlements.name",
+    "column.zs_observe.paypal_express_checkout_settlements.from_email_address",
+    "column.zs_observe.paypal_express_checkout_settlements.to_email_address",
+    "column.zs_observe.paypal_express_checkout_settlements.buyer_id",
+    "column.zs_observe.paypal_express_checkout_settlements.seller_id",
+    "column.zs_observe.paypal_express_checkout_settlements.item_title",
+    "column.zs_observe.paypal_express_checkout_settlements.item_id",
+    "column.zs_observe.paypal_express_checkout_settlements.payment_source",
+    "column.zs_observe.paypal_express_checkout_settlements.payment_source_subtype",
+    "column.zs_observe.paypal_express_checkout_settlements.funding_source",
+    "column.zs_observe.paypal_express_checkout_settlements.card_type",
+    "column.zs_observe.paypal_express_checkout_settlements.receipt_id",
+    "column.zs_observe.paypal_express_checkout_settlements.bank_reference_id",
+    "column.zs_observe.paypal_express_checkout_settlements.payment_tracking_id",
+    "column.zs_observe.paypal_express_checkout_settlements.balance_impact",
+    "column.zs_observe.paypal_express_checkout_settlements.country",
+    "column.zs_observe.paypal_express_checkout_settlements.country_code",
+    "column.zs_observe.paypal_express_checkout_settlements.address_line_1",
+    "column.zs_observe.paypal_express_checkout_settlements.custom_number",
+    "column.zs_observe.paypal_express_checkout_settlements.tip",
+    "column.zs_observe.paypal_express_checkout_settlements.note",
+    "column.zs_observe.paypal_express_checkout_settlements.po_number",
+    "column.zs_observe.paypal_express_checkout_settlements.quantity",
+    "column.zs_observe.paypal_express_checkout_settlements.protection_eligibility",
+    "column.zs_observe.paypal_express_checkout_settlements.authorization_review_status",
+    "column.zs_observe.paypal_express_checkout_settlements.risk_filter",
+    "column.zs_observe.paypal_express_checkout_settlements.decline_code",
+    "column.zs_observe.paypal_express_checkout_settlements.buyer_wallet",
+    "column.zs_observe.paypal_express_checkout_settlements.fastlane_checkout_transaction"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date",
+    "date",
+    "time",
+    "time_zone"
+  ],
+  "description": "PayPal Express Checkout settlement data. This is the transaction-level settlement file from PayPal for merchants using Express Checkout integration. Very wide table (112 columns) capturing all PayPal transaction metadata.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.paypal"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.paypal",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 4311
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.paypal_express_checkout_settlements",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "transaction_id",
+    "invoice_number",
+    "invoice_number_1",
+    "reference_txn_id",
+    "buyer_id",
+    "seller_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.paypal_express_checkout_settlements",
+  "recommended_date_columns": [
+    "created_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "reference_txn_id",
+    "bank_reference_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.paypal_express_checkout_settlements",
+  "source_caveats": [
+    "`transaction_event_code` is PayPal's event classification — e.g., T0006 = Express Checkout, T1107 = Payment refund.",
+    "`reference_txn_id` links refunds/chargebacks back to the original transaction.",
+    "`balance_impact` = CREDIT for sales, DEBIT for fees/refunds.",
+    "`is_bank_recon_required` flags whether bank reconciliation is needed.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4311,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.paypal"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "type",
+    "status",
+    "currency",
+    "payment_source_subtype",
+    "card_type",
+    "balance_impact",
+    "authorization_review_status"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.paypal.global"
+    ],
+    "platform_ids": [
+      "platform.paypal"
+    ]
+  },
+  "table_name": "paypal_express_checkout_settlements",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

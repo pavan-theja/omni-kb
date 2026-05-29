@@ -1,0 +1,73 @@
+{
+  "benchmarks": {
+    "seller_realization_observed": "~65 percent settled_amount / charged_amount for delivered orders",
+    "source": "docx sections 4 and 10",
+    "typical_forward_order_example": "~70.5 percent realization on ₹500 charged_amount after 5% commission, ₹99 mp_fees, and GST on charges"
+  },
+  "business_definition": "Net amount settled to seller after HealthKart commission, marketplace/logistics fees, and tax on charges.",
+  "canonical_formula_pattern": "See vendor-specific metric_implementation and formula_template cards; this business metric uses colloquial aliases for user query matching.",
+  "canonical_id": "metric.net_revenue_seller_payout",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Net Revenue (Seller Payout)",
+    "net revenue seller payout",
+    "net settlement",
+    "seller payout",
+    "net revenue",
+    "payout",
+    "realized revenue"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "settlement_period",
+  "description": "Net amount settled to seller after HealthKart commission, marketplace/logistics fees, and tax on charges.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.healthkart.net_revenue_seller_payout.01",
+    "metric_implementation.healthkart.net_settlement_with_fee_breakdown.14"
+  ],
+  "metric_family": "settlement",
+  "metric_key": "net_revenue_seller_payout",
+  "metric_pattern": "sum_settled_amount",
+  "name": "Net Revenue (Seller Payout)",
+  "review_status": "accepted",
+  "source_card_id": "metric.net_revenue_seller_payout",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5428,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "HealthKart",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "benchmark_policy": "guidance_only_not_hard_validation",
+  "business_definition": "Marketplace-side TCS semantic noted in source but not visible in OMS or settlement columns.",
+  "canonical_id": "metric.tatacliq.tcs_collected",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "source_query_defined_grain",
+  "default_unit": "INR",
+  "description": "Marketplace-side TCS semantic noted in source but not visible in OMS or settlement columns.",
+  "display_name": "TCS Collected",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.tatacliq.tax",
+  "evidence_ids": [
+    "ev.tatacliq.tax.tcs_absent"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.tax.tcs_absent",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6345
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_status": "unavailable_in_source_tables; preserve as caveat/review, not executable implementation",
+  "metric_family": "tax",
+  "name": "TCS Collected",
+  "review_status": "ready_with_source_gap",
+  "source_card_id": "metric.tatacliq.tcs_collected",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6345,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready_with_source_gap",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

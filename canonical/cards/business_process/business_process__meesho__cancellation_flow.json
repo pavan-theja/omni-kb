@@ -1,0 +1,51 @@
+{
+  "canonical_id": "business_process.meesho.cancellation_flow",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "DOCX-backed cancellation flow: cancellation appears in meesho_sales with order_status = 'Cancelled' and may appear in meesho_reverse with transaction_type = 'cancelled'; no shipping fee is charged and any settlement row is order_status = 'Cancelled' with zero or small settled amount.",
+  "display_name": "Meesho cancellation flow",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "entry_condition": "Seller or buyer cancels the order before fulfilment/settlement.",
+  "evidence_ids": [
+    "evidence.meesho.009.2_3_cancellation_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.009.2_3_cancellation_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13919
+    }
+  ],
+  "exit_condition": "No shipping fee is charged; settlement row may exist as Cancelled with settled_amount = 0 or small value.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Meesho cancellation flow",
+  "process_family": "marketplace_transaction_lifecycle",
+  "review_status": "accepted",
+  "source_card_id": "business_process.meesho.cancellation_flow",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13919,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "zs_observe.meesho_sales",
+    "zs_observe.meesho_reverse",
+    "zs_observe.meesho_settlement"
+  ],
+  "state_fields": [
+    "meesho_sales.order_status",
+    "meesho_reverse.transaction_type",
+    "meesho_settlement.order_status",
+    "meesho_settlement.settled_amount"
+  ],
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,72 @@
+{
+  "actual_side": "ajio_settlement records",
+  "canonical_id": "reconciliation_profile.ajio.oms_settlement_matching_unsettled_orders",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Compare delivered OMS forward orders to settlement records; missing settlement rows represent unsettled or delayed settlement candidates.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules",
+    "evidence.ajio.042_12_data_quality_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.036_10_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5740
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5740
+    },
+    {
+      "evidence_id": "evidence.ajio.042_12_data_quality_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5740
+    }
+  ],
+  "expected_side": "ajio_oms delivered forward orders",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "OMS → Settlement Matching (Unsettled Orders)",
+  "participating_tables": [
+    "ajio_oms",
+    "ajio_settlement",
+    "ajio_reverse"
+  ],
+  "primary_join_key": "purchase_po_no",
+  "profile_family": "marketplace_internal_reconciliation",
+  "required_filters": [
+    "o.is_active = true",
+    "o.order_status = Delivered",
+    "s.is_active = true"
+  ],
+  "review_status": "ready",
+  "scope_boundary": "Do not convert into bank/logistics/payment/ERP reconciliation.",
+  "secondary_join_key": "order_id",
+  "source_card_id": "reconciliation_profile.ajio.oms_settlement_matching_unsettled_orders",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules",
+    "evidence.ajio.042_12_data_quality_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5740,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "tolerance_policy": "Only explicit source tolerance; otherwise review required.",
+  "unit_grain": "order/invoice/item/PO grain as documented in matching logic",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

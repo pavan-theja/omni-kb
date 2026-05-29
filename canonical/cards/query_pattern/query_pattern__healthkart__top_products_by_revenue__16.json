@@ -1,0 +1,61 @@
+{
+  "canonical_id": "query_pattern.healthkart.top_products_by_revenue.16",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7073
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "Top Products by Revenue",
+  "name": "Top Products by Revenue",
+  "natural_language_patterns": [
+    "Top Products by Revenue",
+    "top products by revenue"
+  ],
+  "parser_note": "Preserve SQL exactly; parser may normalize schema aliases separately.",
+  "required_columns": [
+    "healthkart_settlement",
+    "sku_id",
+    "orders",
+    "charged_amount",
+    "zs_observe",
+    "is_active",
+    "order_status"
+  ],
+  "required_tables": [
+    "zs_observe.healthkart_settlement"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.healthkart.top_products_by_revenue.16",
+  "source_confidence": "high",
+  "source_context": "RTO Rate by Month",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7073,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "sql_pattern": "SELECT sku_id, description,\n  COUNT(*) AS orders, SUM(charged_amount) AS revenue\nFROM zs_observe.healthkart_settlement\nWHERE is_active = true AND order_status = 'Delivered'\nGROUP BY sku_id, description\nORDER BY revenue DESC\nLIMIT 10",
+  "sql_ref": "sql.healthkart.top_products_by_revenue.16",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

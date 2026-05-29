@@ -1,0 +1,46 @@
+{
+  "business_definition": "Total refunded amount using preferred refunded_amount field.",
+  "canonical_id": "metric.shopify.refunded_value",
+  "card_type": "metric",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order",
+  "description": "Total refunded amount using preferred refunded_amount field.",
+  "display_name": "Refunded Value",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.returns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.returns.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2313
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.shopify.refunded_value"
+  ],
+  "metric_key": "refunded_value",
+  "name": "Refunded Value",
+  "review_status": "accepted",
+  "source_card_id": "metric.shopify.refunded_value",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2313,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

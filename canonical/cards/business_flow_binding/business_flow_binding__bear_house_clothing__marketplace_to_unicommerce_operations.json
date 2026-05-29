@@ -1,0 +1,128 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.bear_house_clothing.amazon_in.primary.amazon_oms",
+    "account_data_binding.bear_house_clothing.amazon_in.primary.amazon_settlement",
+    "account_data_binding.bear_house_clothing.amazon_in.primary.amazon_disbursment",
+    "account_data_binding.bear_house_clothing.flipkart_in.primary.oms",
+    "account_data_binding.bear_house_clothing.flipkart_in.primary.cashback",
+    "account_data_binding.bear_house_clothing.flipkart_in.primary.settlement",
+    "account_data_binding.bear_house_clothing.flipkart_in.primary.commission",
+    "account_data_binding.bear_house_clothing.myntra_in.primary.myntra_oms",
+    "account_data_binding.bear_house_clothing.myntra_in.primary.myntra_settlement",
+    "account_data_binding.bear_house_clothing.myntra_in.primary.myntra_reverse",
+    "account_data_binding.bear_house_clothing.myntra_in.primary.myntra_non_order_settlement",
+    "account_data_binding.bear_house_clothing.myntra_in.primary.myntra_oms_settlement",
+    "account_data_binding.bear_house_clothing.ajio_in.primary.ajio_oms",
+    "account_data_binding.bear_house_clothing.ajio_in.primary.ajio_settlement",
+    "account_data_binding.bear_house_clothing.ajio_in.primary.ajio_credit_note",
+    "account_data_binding.bear_house_clothing.ajio_in.primary.ajio_reverse",
+    "account_data_binding.bear_house_clothing.nykaa_in.primary.nykaa_oms",
+    "account_data_binding.bear_house_clothing.nykaa_in.primary.nykaa_settlement",
+    "account_data_binding.bear_house_clothing.nykaa_in.primary.nykaa_addition_charge",
+    "account_data_binding.bear_house_clothing.nykaa_in.primary.nykaa_mapper_gst",
+    "account_data_binding.bear_house_clothing.nykaa_in.primary.nykaa_mapping",
+    "account_data_binding.bear_house_clothing.tatacliq_in.primary.tatacliq_oms",
+    "account_data_binding.bear_house_clothing.tatacliq_in.primary.tatacliq_settlement",
+    "account_data_binding.bear_house_clothing.unicommerce_oms.primary.unicommerce",
+    "account_data_binding.bear_house_clothing.unicommerce_oms.primary.unicommerce_order_sales_report"
+  ],
+  "active": true,
+  "binding_name": "Bear House Marketplace to Unicommerce Operations",
+  "binding_type": "operational_flow",
+  "business_process_ids": [
+    "business_process.order_to_shipment_flow"
+  ],
+  "business_scope_set_id": "business_scope_set.bear_house_clothing.unicommerce_oms",
+  "canonical_id": "business_flow_binding.bear_house_clothing.marketplace_to_unicommerce_operations",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/bear_house_clothing.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bear_house_clothing.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.unicommerce",
+    "table.zs_observe.unicommerce_order_sales_report"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.bear_house_clothing.bear_house",
+  "money_flow_paths": [
+    "marketplace_to_oms_operations",
+    "order_to_shipment"
+  ],
+  "name": "Marketplace To Unicommerce Operations",
+  "notes": [
+    "Client-specific flow binding. Account and table filters are resolved through Account Data Binding."
+  ],
+  "package_id": "bear_house_clothing_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.amazon_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.flipkart_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.myntra_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.ajio_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.nykaa_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.tatacliq_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.unicommerce_oms.primary",
+      "required": true,
+      "role": "oms_operations_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.order_to_shipment"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Bear House Clothing Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "ajio_marketplace.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bear_house_clothing.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.bear_house_clothing",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

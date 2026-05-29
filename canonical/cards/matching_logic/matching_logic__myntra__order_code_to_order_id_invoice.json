@@ -1,0 +1,58 @@
+{
+  "canonical_id": "matching_logic.myntra.order_code_to_order_id_invoice",
+  "canonical_name": "order_code_to_order_id_invoice",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.relationships",
+    "evidence.myntra.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11158
+    },
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11158
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_safety": "pre-aggregate settlement by order_id/invoice_number before amount comparison when using raw tables",
+  "logic_type": "marketplace_internal_join",
+  "marketplace_only": true,
+  "name": "order_code_to_order_id_invoice",
+  "review_status": "unreviewed",
+  "source_card_id": "matching_logic.myntra.order_code_to_order_id_invoice",
+  "source_columns": [
+    "order_code",
+    "invoice_number"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11158,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table": "table.zs_observe.myntra_oms",
+  "status": "draft",
+  "summary": "OMS raw order_code joins settlement order_id, with invoice_number as secondary key; do not use this as the primary Level 1 result-table check.",
+  "target_columns": [
+    "order_id",
+    "invoice_number"
+  ],
+  "target_table": "table.zs_observe.myntra_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

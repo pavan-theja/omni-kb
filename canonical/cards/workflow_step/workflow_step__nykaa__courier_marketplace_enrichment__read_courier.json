@@ -1,0 +1,50 @@
+{
+  "canonical_id": "workflow_step.nykaa.courier_marketplace_enrichment.read_courier",
+  "canonical_name": "Read Courier",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.lifecycle",
+    "evidence.nykaa.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15913
+    },
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15913
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Read Courier",
+  "process_id": "business_process.nykaa.courier_marketplace_enrichment",
+  "review_status": "unreviewed",
+  "sequence": 3,
+  "source_card_id": "workflow_step.nykaa.courier_marketplace_enrichment.read_courier",
+  "source_column": "transname",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15913,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.nykaa_mapper_gst",
+  "status": "draft",
+  "summary": "Read marketplace-side courier/transname.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

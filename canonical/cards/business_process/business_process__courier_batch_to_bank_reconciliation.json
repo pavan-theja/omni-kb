@@ -1,0 +1,121 @@
+{
+  "applicability_scope": {
+    "notes": [
+      "Tenant/group-specific account participation is resolved through Business Flow Binding."
+    ],
+    "platform_types": [
+      "logistics",
+      "courier",
+      "banking"
+    ],
+    "scope_level": "platform_type"
+  },
+  "business_objects": [
+    "settlement_batch",
+    "utr",
+    "bank_reference",
+    "bank_credit",
+    "variance"
+  ],
+  "canonical_id": "business_process.courier_batch_to_bank_reconciliation",
+  "card_type": "business_process",
+  "common_failure_modes": [
+    "courier_settlement_batch_has_no_bank_credit",
+    "bank_credit_has_no_courier_detail",
+    "batch_amount_differs_from_awb_sum",
+    "missing_or_malformed_utr"
+  ],
+  "common_metrics": [
+    "metric.batch_settlement_amount",
+    "metric.bank_credit_matched_amount",
+    "metric.unmatched_bank_credit_amount",
+    "metric.reconciliation_gap_amount"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Reusable lifecycle for aggregating AWB-level remittance into settlement batches or UTRs and matching them to bank credits.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "domain_id": "domain.logistics_reconciliation",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3468
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3468
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3468
+    }
+  ],
+  "expected_end_state": "bank_credit_matched_or_exceptioned",
+  "expected_start_state": "courier_remittance_batch_created",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Courier Batch to Bank Reconciliation",
+  "operational_test": "A downstream system should be able to decide whether an object moved from courier_remittance_batch_created to bank_credit_matched_or_exceptioned using evidence cards and relationships, not prose alone.",
+  "participating_platform_types": [
+    "logistics",
+    "courier",
+    "banking"
+  ],
+  "process_name": "Courier Batch to Bank Reconciliation",
+  "process_type": "cross_domain_reconciliation",
+  "process_variants": [
+    "process_variant.logistics_to_bank_with_utr",
+    "process_variant.batch_without_utr_review_required"
+  ],
+  "reconciliation_profiles": [
+    "reconciliation_profile.courier_batch_to_bank_credit"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "business_process.courier_batch_to_bank_reconciliation",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3468,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "state_transitions": [
+    "state_transition.courier_remittance_batch_created_to_utr_reference_available",
+    "state_transition.utr_reference_available_to_awb_amounts_aggregated_to_batch",
+    "state_transition.awb_amounts_aggregated_to_batch_to_bank_credit_expected",
+    "state_transition.bank_credit_expected_to_bank_credit_matched_or_exceptioned"
+  ],
+  "status": "active",
+  "typical_platform_roles": [
+    "order_source",
+    "operational_evidence",
+    "logistics_source",
+    "settlement_source",
+    "bank_destination_when_cross_domain"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges",
+  "workflow_steps": [
+    "workflow_step.remittance_batch_created",
+    "workflow_step.utr_or_reference_assigned",
+    "workflow_step.awb_amounts_aggregated",
+    "workflow_step.bank_credit_expected",
+    "workflow_step.bank_credit_matched"
+  ]
+}

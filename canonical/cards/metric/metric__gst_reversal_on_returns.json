@@ -1,0 +1,49 @@
+{
+  "business_definition": "5.4 GST Reversal on Returns",
+  "canonical_id": "metric.gst_reversal_on_returns",
+  "card_type": "metric",
+  "colloquial_names": [
+    "GST Reversal on Returns"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "5.4 GST Reversal on Returns",
+  "display_name": "GST Reversal on Returns",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.snapdeal.orders",
+  "evidence_ids": [
+    "evidence.snapdeal.5_4_gst_reversal_on_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.5_4_gst_reversal_on_returns",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12470
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.snapdeal.gst_reversal_on_returns"
+  ],
+  "metric_family": "marketplace_metric",
+  "name": "GST Reversal on Returns",
+  "review_status": "ready",
+  "source_card_id": "metric.gst_reversal_on_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12470,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

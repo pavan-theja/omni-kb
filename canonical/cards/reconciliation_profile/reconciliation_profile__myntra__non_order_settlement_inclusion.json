@@ -1,0 +1,54 @@
+{
+  "canonical_id": "reconciliation_profile.myntra.non_order_settlement_inclusion",
+  "canonical_name": "non_order_settlement_inclusion",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.relationships",
+    "evidence.myntra.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10743
+    },
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10743
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "matching_logic_id": "matching_logic.myntra.non_order_no_oms_join",
+  "mismatch_category_ids": [],
+  "name": "non_order_settlement_inclusion",
+  "primary_unit_id": "reconciliation_unit.myntra.non_order_entry",
+  "process_id": "business_process.myntra.non_order_settlement_lifecycle",
+  "profile_caveat": "This is cash-flow inclusion / no-forced-join behavior, not a two-sided amount reconciliation.",
+  "review_status": "unreviewed",
+  "side_ids": [
+    "reconciliation_side.myntra.non_order_settlement_adjustment"
+  ],
+  "source_card_id": "reconciliation_profile.myntra.non_order_settlement_inclusion",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10743,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Non-order settlement inclusion profile: non-order amounts must be included in total money-flow analysis but must not be forced into OMS/reverse order-level joins.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

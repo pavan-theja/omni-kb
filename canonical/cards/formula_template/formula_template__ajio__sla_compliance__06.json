@@ -1,0 +1,51 @@
+{
+  "aggregation_order": "Follow SQL pattern and pre-aggregation rules in source.",
+  "canonical_id": "formula_template.ajio.sla_compliance.06",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5181
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "SELECT sla_status, COUNT(*) AS cnt,\n  ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER(), 1) AS pct\nFROM zs_observe.ajio_oms WHERE is_active = true\nGROUP BY sla_status",
+  "input_variables": [
+    "ajio_oms",
+    "sla_status",
+    "cnt",
+    "zs_observe",
+    "is_active"
+  ],
+  "name": "AJIO SLA Compliance formula",
+  "null_handling": "Not specified unless stated in SQL/source; review if material.",
+  "review_status": "ready",
+  "sign_rules": "Use source sign semantics; negative rows generally represent reversals/deductions when documented.",
+  "source_card_id": "formula_template.ajio.sla_compliance.06",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5181,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

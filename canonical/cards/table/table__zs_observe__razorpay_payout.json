@@ -1,0 +1,174 @@
+{
+  "amount_columns": [
+    "amount",
+    "fees",
+    "tax",
+    "settled_amount"
+  ],
+  "avoid_columns": [],
+  "business_purpose": "Outbound payout tracking via Razorpay X — covers vendor payments, refunds, and fund transfers.",
+  "canonical_id": "table.zs_observe.razorpay_payout",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.razorpay_payout.amount",
+    "column.zs_observe.razorpay_payout.batch_id",
+    "column.zs_observe.razorpay_payout.contact_id",
+    "column.zs_observe.razorpay_payout.contact_name",
+    "column.zs_observe.razorpay_payout.currency",
+    "column.zs_observe.razorpay_payout.failure_reason",
+    "column.zs_observe.razorpay_payout.fees",
+    "column.zs_observe.razorpay_payout.fund_account_id",
+    "column.zs_observe.razorpay_payout.merchant_id",
+    "column.zs_observe.razorpay_payout.mode",
+    "column.zs_observe.razorpay_payout.narration",
+    "column.zs_observe.razorpay_payout.order_id",
+    "column.zs_observe.razorpay_payout.payment_id",
+    "column.zs_observe.razorpay_payout.payout_id",
+    "column.zs_observe.razorpay_payout.processed_at",
+    "column.zs_observe.razorpay_payout.purpose",
+    "column.zs_observe.razorpay_payout.reference_id",
+    "column.zs_observe.razorpay_payout.reversed_at",
+    "column.zs_observe.razorpay_payout.settled_amount",
+    "column.zs_observe.razorpay_payout.settlement_date",
+    "column.zs_observe.razorpay_payout.status",
+    "column.zs_observe.razorpay_payout.tax",
+    "column.zs_observe.razorpay_payout.transaction_id",
+    "column.zs_observe.razorpay_payout.transaction_type",
+    "column.zs_observe.razorpay_payout.txn_date",
+    "column.zs_observe.razorpay_payout.txn_type",
+    "column.zs_observe.razorpay_payout.utr"
+  ],
+  "columns": [
+    "column.zs_observe.razorpay_payout.transaction_id",
+    "column.zs_observe.razorpay_payout.payout_id",
+    "column.zs_observe.razorpay_payout.order_id",
+    "column.zs_observe.razorpay_payout.txn_type",
+    "column.zs_observe.razorpay_payout.txn_date",
+    "column.zs_observe.razorpay_payout.settlement_date",
+    "column.zs_observe.razorpay_payout.amount",
+    "column.zs_observe.razorpay_payout.fees",
+    "column.zs_observe.razorpay_payout.tax",
+    "column.zs_observe.razorpay_payout.settled_amount",
+    "column.zs_observe.razorpay_payout.status",
+    "column.zs_observe.razorpay_payout.mode",
+    "column.zs_observe.razorpay_payout.currency",
+    "column.zs_observe.razorpay_payout.contact_id",
+    "column.zs_observe.razorpay_payout.contact_name",
+    "column.zs_observe.razorpay_payout.fund_account_id",
+    "column.zs_observe.razorpay_payout.purpose",
+    "column.zs_observe.razorpay_payout.utr",
+    "column.zs_observe.razorpay_payout.processed_at",
+    "column.zs_observe.razorpay_payout.reversed_at",
+    "column.zs_observe.razorpay_payout.failure_reason",
+    "column.zs_observe.razorpay_payout.reference_id",
+    "column.zs_observe.razorpay_payout.narration",
+    "column.zs_observe.razorpay_payout.batch_id",
+    "column.zs_observe.razorpay_payout.merchant_id",
+    "column.zs_observe.razorpay_payout.payment_id",
+    "column.zs_observe.razorpay_payout.transaction_type"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "txn_date",
+    "settlement_date",
+    "processed_at"
+  ],
+  "description": "Outbound payout tracking via Razorpay X — covers vendor payments, refunds, and fund transfers.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 3661
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.razorpay_payout",
+  "grain": "one row per payout/transfer event",
+  "grain_keys": [
+    "transaction_id",
+    "payout_id",
+    "order_id",
+    "contact_id",
+    "fund_account_id",
+    "utr"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.razorpay_payout",
+  "recommended_date_columns": [
+    "txn_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "payout_id",
+    "utr",
+    "reference_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.razorpay_payout",
+  "source_caveats": [
+    "`account_number` is stored as Decimal — handle carefully when casting to text.",
+    "`utr` is stored as Decimal in this table — cast to BIGINT or TEXT for matching.",
+    "Reversal detection: check `reversed_at IS NOT NULL` or `status = 'reversed'`."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3661,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.razorpay"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "txn_type",
+    "status",
+    "mode",
+    "currency",
+    "failure_reason",
+    "transaction_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.razorpay.in"
+    ],
+    "platform_ids": [
+      "platform.razorpay"
+    ]
+  },
+  "table_name": "razorpay_payout",
+  "table_type": "payout_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

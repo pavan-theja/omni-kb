@@ -1,0 +1,65 @@
+{
+  "canonical_id": "column.zs_observe.unicommerce_order_sales_report.logistics_length",
+  "card_type": "column",
+  "column_name": "logistics_length",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "Length.",
+  "display_name": "logistics_length",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.osr.schema.001",
+    "ev.unicommerce.data_quality.001",
+    "ev.unicommerce.section.037.3_4_logistics_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.osr.schema.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 2242
+    },
+    {
+      "evidence_id": "ev.unicommerce.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 2242
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "logistics_length",
+  "optional_fields": [
+    "nullable",
+    "value_examples",
+    "data_type_cast_required",
+    "mandatory_filter_role",
+    "join_key_role",
+    "source_lineage",
+    "quality_notes"
+  ],
+  "review_status": "accepted",
+  "semantic_role": "dimension",
+  "source_card_id": "column.zs_observe.unicommerce_order_sales_report.logistics_length",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx",
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2242,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_paths": [
+    "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+    "raw/cleaned_v2/wms/unicommerce_operations.md"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.unicommerce_order_sales_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

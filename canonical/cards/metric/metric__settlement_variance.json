@@ -1,0 +1,70 @@
+{
+  "aliases": [
+    "settlement diff",
+    "payout variance"
+  ],
+  "business_definition": "metric card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "canonical_id": "metric.settlement_variance",
+  "canonical_name": "Settlement Variance",
+  "card_type": "metric",
+  "colloquial_names": [
+    "settlement difference",
+    "settlement mismatch"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees",
+    "evidence.nykaa.metrics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 8419
+    },
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 8419
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.nykaa_settlement.settlement_variance",
+    "metric_implementation.myntra_settlement.settlement_variance"
+  ],
+  "marketplace_only": true,
+  "metric_family": "marketplace_finance",
+  "name": "Settlement Variance",
+  "platform_agnostic": true,
+  "platform_agnostic_name": "Settlement Variance",
+  "review_status": "unreviewed",
+  "source_card_id": "metric.settlement_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx",
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8419,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+    "raw/cleaned_v2/marketplace/nykaa_marketplace.md"
+  ],
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Generic marketplace metric for settlement variance. Use colloquial aliases for user query matching and platform-specific implementation cards for Myntra SQL semantics.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

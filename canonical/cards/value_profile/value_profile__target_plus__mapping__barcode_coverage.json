@@ -1,0 +1,46 @@
+{
+  "canonical_id": "value_profile.target_plus.mapping.barcode_coverage",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.target_tcin_mapping.barcode",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target TCIN mapping barcode coverage profile",
+  "distribution_summary": "Multiple SKU variants can share the same UPC/EAN barcode; cast/reformat before product matching.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.mapping.barcode_coverage"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.mapping.barcode_coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8988
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target TCIN mapping barcode coverage profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "331 SKUs",
+    "69 distinct barcodes",
+    "scientific notation examples such as 8.90441E+12"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.mapping.barcode_coverage",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8988,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

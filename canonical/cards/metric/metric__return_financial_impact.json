@@ -1,0 +1,49 @@
+{
+  "business_definition": "8.5 Return Financial Impact Tab 7",
+  "canonical_id": "metric.return_financial_impact",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Return Financial Impact"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "8.5 Return Financial Impact Tab 7",
+  "display_name": "Return Financial Impact",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.meesho.8_5_return_financial_impact"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_5_return_financial_impact",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11505
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.meesho.return_financial_impact"
+  ],
+  "metric_family": "marketplace_metric",
+  "name": "Return Financial Impact",
+  "review_status": "ready",
+  "source_card_id": "metric.return_financial_impact",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11505,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

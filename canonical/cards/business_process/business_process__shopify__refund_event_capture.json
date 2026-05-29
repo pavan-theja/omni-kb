@@ -1,0 +1,59 @@
+{
+  "canonical_id": "business_process.shopify.refund_event_capture",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "shopify_returns records refund transaction_id, payment_gateway, transaction_status, refunded_payments and original order_name.",
+  "display_name": "Shopify refund event capture",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "domain_id": "domain.shopify.refunds_returns",
+  "evidence_ids": [
+    "ev.shopify.order_grain.001",
+    "ev.shopify.lifecycle.001",
+    "ev.shopify.returns.001",
+    "ev.shopify.shiprocket_join.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.order_grain.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2884
+    },
+    {
+      "evidence_id": "ev.shopify.lifecycle.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2884
+    },
+    {
+      "evidence_id": "ev.shopify.returns.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2884
+    },
+    {
+      "evidence_id": "ev.shopify.shiprocket_join.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2884
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Shopify refund event capture",
+  "process_summary": "shopify_returns records refund transaction_id, payment_gateway, transaction_status, refunded_payments and original order_name.",
+  "review_status": "accepted",
+  "source_card_id": "business_process.shopify.refund_event_capture",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2884,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

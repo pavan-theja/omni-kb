@@ -1,0 +1,56 @@
+{
+  "benchmarks": {
+    "average_loss_per_return": "₹194",
+    "batch_return_loss": "₹55,984",
+    "return_orders": "288",
+    "source": "DOCX section 4.4"
+  },
+  "business_definition": "Financial impact of returns/RTO on settlement, including reversed sale value, seller-borne return logistics, return logistics GST, and negative settlement amount.",
+  "canonical_id": "metric.return_order_net_impact",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Return Order Net Impact"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "return order, settlement period, or return status",
+  "default_unit": "INR",
+  "description": "Financial impact of returns/RTO on settlement, including reversed sale value, seller-borne return logistics, return logistics GST, and negative settlement amount.",
+  "display_name": "Return order net impact",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.meesho.4_4_return_order_net_impact"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.4_4_return_order_net_impact",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11523
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": false,
+  "implementation_ids": [
+    "metric_impl.meesho.return_order_net_impact"
+  ],
+  "metric_family": "returns",
+  "name": "Return order net impact",
+  "review_status": "accepted",
+  "source_card_id": "metric.return_order_net_impact",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11523,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

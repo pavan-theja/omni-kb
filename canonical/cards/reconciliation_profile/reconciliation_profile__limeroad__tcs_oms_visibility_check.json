@@ -1,0 +1,53 @@
+{
+  "canonical_id": "reconciliation_profile.limeroad.tcs_oms_visibility_check",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.recon.sql.001",
+    "ev.limeroad.tax.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.recon.sql.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5845
+    },
+    {
+      "evidence_id": "ev.limeroad.tax.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5845
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "matching_or_validation_logic": "TCS is visible in OMS only; do not force a settlement-side TCS reconciliation because the source says no TCS field exists in settlement.",
+  "name": "LimeRoad OMS-only TCS visibility check",
+  "participating_tables": [
+    "table.zs_observe.limeroad_oms"
+  ],
+  "profile_family": "marketplace_internal_reconciliation",
+  "review_status": "accepted",
+  "scope_boundary": "Marketplace tables only; no bank/logistics/ERP/statutory reconciliation.",
+  "source_card_id": "reconciliation_profile.limeroad.tcs_oms_visibility_check",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5845,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "sql_ref": "sql.limeroad.oms.tcs_visibility",
+  "status": "active",
+  "unit_grain": "month/source",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

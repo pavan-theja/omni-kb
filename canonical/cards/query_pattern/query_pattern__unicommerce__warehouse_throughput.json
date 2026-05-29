@@ -1,0 +1,65 @@
+{
+  "canonical_id": "query_pattern.unicommerce.warehouse_throughput",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/wms/unicommerce_operations.md.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.072.7_6_warehouse_throughput"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.072.7_6_warehouse_throughput",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13029
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Warehouse Throughput",
+  "natural_language_patterns": [
+    "warehouse volume",
+    "warehouse sales returns cancels"
+  ],
+  "optional_fields": [
+    "natural_language_patterns",
+    "source_tables",
+    "required_rules",
+    "metrics",
+    "reconciliation_profiles",
+    "output_contract",
+    "sql_refs",
+    "safe_filters"
+  ],
+  "primary_metrics": [
+    "metric.unicommerce.warehouse_throughput"
+  ],
+  "query_name": "Warehouse throughput by source GSTIN/name",
+  "reconciliation_profiles": [
+    "reconciliation_profile.unicommerce.warehouse_throughput_alignment"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.unicommerce.warehouse_throughput",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13029,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "table.zs_observe.unicommerce"
+  ],
+  "sql_refs": [
+    "sql.unicommerce.v10.source_query_18.7_6_warehouse_throughput"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

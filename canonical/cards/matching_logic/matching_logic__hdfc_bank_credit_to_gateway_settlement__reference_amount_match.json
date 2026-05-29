@@ -1,0 +1,62 @@
+{
+  "aggregation_rule": "aggregate both sides by reference/date/currency before amount comparison",
+  "banking_only": true,
+  "canonical_id": "matching_logic.hdfc_bank_credit_to_gateway_settlement.reference_amount_match",
+  "card_type": "matching_logic",
+  "comparison_formula": "bank_amount - external_amount",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window": "same settlement date or source-specific posting/date window",
+  "description": "matching_logic card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001",
+    "ev.bank_statement.analysis_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 13362
+    },
+    {
+      "evidence_id": "ev.bank_statement.analysis_patterns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 13362
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "missing_reference",
+    "reference_not_found",
+    "amount_mismatch",
+    "duplicate_reference",
+    "date_window_mismatch",
+    "currency_mismatch"
+  ],
+  "join_keys": [
+    "source-specific bank reference to external reference"
+  ],
+  "logic_name": "reference_amount_match",
+  "matching_rule": "chq__ref_no_ to gateway settlement_utr plus settled_amount comparison",
+  "name": "HDFC bank settlement credit to gateway settlement reference amount match",
+  "profile": "reconciliation_profile.hdfc_bank_credit_to_gateway_settlement",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.hdfc_bank_credit_to_gateway_settlement.reference_amount_match",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13362,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "tolerance": "zero unless configured otherwise at runtime or via reconciliation_variant",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

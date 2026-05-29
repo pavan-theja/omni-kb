@@ -1,0 +1,84 @@
+{
+  "aggregation_risk": "Pre-aggregate settlement/bank evidence by reconciliation unit before comparing amounts.",
+  "business_use": "BNPL settlement tables use provider-specific bank reconciliation keys.",
+  "canonical_id": "relationship.bnpl.bank_recon_keys",
+  "card_type": "relationship",
+  "cardinality": "many_to_many_review",
+  "caveats": [
+    "Tenant/group applicability belongs to Business Flow Binding, not Relationship cards."
+  ],
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "BNPL settlement tables use provider-specific bank reconciliation keys.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay",
+    "evidence.pg.paytm",
+    "evidence.pg.phonepe",
+    "evidence.pg.stripe",
+    "evidence.pg.rbl_bank"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48526
+    },
+    {
+      "evidence_id": "evidence.pg.paytm",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48526
+    },
+    {
+      "evidence_id": "evidence.pg.phonepe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48526
+    },
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48526
+    },
+    {
+      "evidence_id": "evidence.pg.rbl_bank",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48526
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_keys": [
+    {
+      "source_column": "deposit_id / rrn / payment_reference / payout_id",
+      "target_column": "transaction_details extracted reference"
+    }
+  ],
+  "join_type_recommendation": "left_join_or_full_outer_for_reconciliation",
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "bnpl bank_recon_keys",
+  "relationship_type": "reconciliation_relation",
+  "review_status": "accepted",
+  "safe_for_metrics": false,
+  "safe_for_reconciliation": true,
+  "source_card_id": "relationship.bnpl.bank_recon_keys",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 48526,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "source_table": "multiple_bnpl_tables",
+  "status": "active",
+  "target_table": "table.zs_observe.rbl_oms_payin",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

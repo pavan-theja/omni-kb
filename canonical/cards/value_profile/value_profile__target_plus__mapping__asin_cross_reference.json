@@ -1,0 +1,45 @@
+{
+  "canonical_id": "value_profile.target_plus.mapping.asin_cross_reference",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.target_tcin_mapping.asin",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target TCIN mapping ASIN cross-reference profile",
+  "distribution_summary": "All mapped Target products have Amazon ASINs for catalogue cross-reference.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.mapping.asin_cross_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.mapping.asin_cross_reference",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9006
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target TCIN mapping ASIN cross-reference profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "331 TCINs with ASIN = 100% coverage",
+    "ASIN B07... / B08... examples from brand profile"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.mapping.asin_cross_reference",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9006,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,50 @@
+{
+  "canonical_id": "query_pattern.increff.7_6_courier_partner_distribution_normalized",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "7.6 Courier Partner Distribution (Normalized)",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.089.7_6_courier_partner_distribution_normalized"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.089.7_6_courier_partner_distribution_normalized",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 9710
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "7.6 Courier Partner Distribution (Normalized)",
+  "natural_language_patterns": [
+    "7.6 Courier Partner Distribution (Normalized)"
+  ],
+  "output_contract_id": "output_contract.increff.operations_metric_summary",
+  "primary_metrics": [],
+  "required_rules": [
+    "rule.increff.active_filter",
+    "rule.increff.courier_normalization"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.increff.7_6_courier_partner_distribution_normalized",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9710,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.increff_sales"
+  ],
+  "sql_ref": "sql_pattern.increff.7_6_courier_partner_distribution_normalized",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

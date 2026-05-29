@@ -1,0 +1,48 @@
+{
+  "canonical_id": "business_process.unicommerce.customer_return_to_warehouse_lifecycle",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Buyer-initiated return creates reverse/Customer Return and item returns to warehouse.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.015.9_3_customer_return"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.015.9_3_customer_return",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 11434
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Customer Return To Warehouse Lifecycle",
+  "optional_fields": [
+    "process_goal",
+    "entry_events",
+    "exit_events",
+    "primary_tables",
+    "status_columns",
+    "state_machine",
+    "handoff_domains"
+  ],
+  "process_name": "Customer return-to-warehouse lifecycle",
+  "review_status": "ready",
+  "source_card_id": "business_process.unicommerce.customer_return_to_warehouse_lifecycle",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11434,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

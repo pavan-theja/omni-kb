@@ -1,0 +1,58 @@
+{
+  "canonical_id": "matching_logic.flipkart.settlement_commission_od_normalized",
+  "card_type": "matching_logic",
+  "comparison_formula": "compare ABS/SUM commission fees to settlement mp_fee after sign review",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window": "review required",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.relationships",
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5925
+    },
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5925
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "missing key",
+    "duplicate many-side rows",
+    "sign mismatch",
+    "OD normalization failure"
+  ],
+  "join_keys": [
+    "commission.order_id = REPLACE(settlement.order_id, OD, empty)",
+    "item_id"
+  ],
+  "name": "Flipkart settlement_commission_od_normalized",
+  "normalization": "OD prefix removal",
+  "pre_aggregation": "aggregate commission/cashback details before joining",
+  "profile_id": "reconciliation_profile.flipkart.settlement_commission",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.flipkart.settlement_commission_od_normalized",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5925,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "tolerance": 0.01,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

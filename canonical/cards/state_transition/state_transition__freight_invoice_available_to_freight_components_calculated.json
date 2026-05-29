@@ -1,0 +1,66 @@
+{
+  "business_object": "freight_component",
+  "business_process_id": "business_process.shipment_to_freight_invoice",
+  "canonical_id": "state_transition.freight_invoice_available_to_freight_components_calculated",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "confirmation_evidence": [
+    "charge_dl, charge_rto, charge_cod, charge_fsc fields"
+  ],
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Expected state movement in Shipment to Freight Invoice: freight_invoice_available → freight_components_calculated.",
+  "deterministic_rule": "If evidence for freight_invoice_available exists but confirmation evidence for freight_components_calculated is missing after the applicable lag window, classify as component_missing.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5561
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5561
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5561
+    }
+  ],
+  "expected_lag": "source_specific_or_bfb_override",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_if_missing": "component_missing",
+  "from_state": "freight_invoice_available",
+  "lag_type": "configurable",
+  "name": "freight_invoice_available to freight_components_calculated",
+  "review_status": "unreviewed",
+  "severity_if_breached": "high",
+  "source_card_id": "state_transition.freight_invoice_available_to_freight_components_calculated",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5561,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "to_state": "freight_components_calculated",
+  "triggering_step_id": "workflow_step.freight_components_calculated",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

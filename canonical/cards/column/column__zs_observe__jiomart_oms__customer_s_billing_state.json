@@ -1,0 +1,46 @@
+{
+  "business_meaning": "Customer billing state",
+  "canonical_id": "column.zs_observe.jiomart_oms.customer_s_billing_state",
+  "card_type": "column",
+  "column_group": "3.7 Geographic Columns",
+  "column_name": "customer_s_billing_state",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Customer billing state",
+  "display_name": "jiomart_oms.customer_s_billing_state",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.oms.3_schema_details_115_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.oms.3_schema_details_115_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 9411
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "jiomart_oms.customer_s_billing_state",
+  "review_status": "ready",
+  "schema": "zs_observe",
+  "semantic_role": "general_marketplace_attribute",
+  "source_card_id": "column.zs_observe.jiomart_oms.customer_s_billing_state",
+  "source_confidence": "high",
+  "source_declared_type": "varchar",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9411,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.jiomart_oms",
+  "table_name": "jiomart_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

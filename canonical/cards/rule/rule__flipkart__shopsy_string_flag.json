@@ -1,0 +1,53 @@
+{
+  "applies_to": [
+    "Flipkart marketplace clean markdown and downstream parser"
+  ],
+  "canonical_id": "rule.flipkart.shopsy_string_flag",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "is_shopsy_order_ should be treated as source string values true/false unless warehouse metadata proves boolean.",
+  "deterministic_action": "enforce or emit review item",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns",
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7097
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7097
+    }
+  ],
+  "exceptions": [
+    "only if source DOCX explicitly overrides with stronger evidence"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Flipkart shopsy_string_flag",
+  "review_status": "accepted",
+  "rule_name": "shopsy_string_flag",
+  "rule_statement": "is_shopsy_order_ should be treated as source string values true/false unless warehouse metadata proves boolean.",
+  "rule_type": "value_semantics",
+  "severity": "medium",
+  "source_card_id": "rule.flipkart.shopsy_string_flag",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7097,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

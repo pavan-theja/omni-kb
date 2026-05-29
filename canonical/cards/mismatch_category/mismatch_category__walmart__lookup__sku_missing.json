@@ -1,0 +1,39 @@
+{
+  "canonical_id": "mismatch_category.walmart.lookup.sku_missing",
+  "card_type": "mismatch_category",
+  "category_key": "sku_missing",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "OMS/settlement SKU has no sku-populated lookup row; one SKU gap is documented and should be monitored.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_lookup.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5109
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Lookup SKU missing",
+  "notes": "Lookup SKU missing",
+  "profile": "reconciliation_profile.walmart.lookup_coverage",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.walmart.lookup.sku_missing",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5109,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

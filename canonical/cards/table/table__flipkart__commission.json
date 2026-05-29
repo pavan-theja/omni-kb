@@ -1,0 +1,116 @@
+{
+  "amount_columns": [
+    "charged_amount",
+    "total_tax",
+    "fee_amount",
+    "fee_waiver_amount",
+    "total_fee_amount",
+    "total_tax_amount"
+  ],
+  "business_keys": [
+    "order_id",
+    "item_id",
+    "invoice_number"
+  ],
+  "canonical_id": "table.flipkart.commission",
+  "card_type": "table",
+  "column_ids": [
+    "column.commission.charged_amount",
+    "column.commission.created_date",
+    "column.commission.description",
+    "column.commission.fee_amount",
+    "column.commission.fee_name",
+    "column.commission.fee_waiver_amount",
+    "column.commission.group_id",
+    "column.commission.group_level_id",
+    "column.commission.invoice_number",
+    "column.commission.is_active",
+    "column.commission.item_id",
+    "column.commission.metadata",
+    "column.commission.order_id",
+    "column.commission.total_tax",
+    "column.commission.transaction_type"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_columns": [
+    "created_date",
+    "date"
+  ],
+  "description": "table card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": [
+      22
+    ]
+  },
+  "evidence_ids": [
+    "evidence.flipkart.commission",
+    "evidence.flipkart.commission_schema",
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.commission",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 714
+    },
+    {
+      "evidence_id": "evidence.flipkart.commission_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 714
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 714
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "fee invoice line; many rows per order item",
+  "known_filters": [
+    "is_active = true",
+    "documented scope value: group_level_id = 22"
+  ],
+  "marketplace_module": "fees",
+  "name": "zs_observe.flipkart_commission",
+  "primary_keys": [
+    "id / source row identifier if present"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_observe",
+  "scope_columns_as_columns_only": [
+    "group_level_id",
+    "group_id"
+  ],
+  "source_card_id": "table.flipkart.commission",
+  "source_caveats": [
+    "order_id is stored without OD prefix; normalize when joining to settlement/OMS/cashback.",
+    "Pre-aggregate by order_id,item_id before joining to settlement or OMS.",
+    "Use charged_amount and total_tax as authoritative decimal fields; secondary fee amount columns are string legacy fields and must be cast.",
+    "Active rows are documented as transaction_type = 'Order Item' and metadata = 'commission invoice'."
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 714,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "status_columns": [
+    "metadata",
+    "transaction_type",
+    "service_type",
+    "description",
+    "fee_name",
+    "is_active"
+  ],
+  "table_name": "flipkart_commission",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

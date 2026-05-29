@@ -1,0 +1,50 @@
+{
+  "canonical_id": "query_pattern.meesho.034.7_3_mrp_vs_charged_amount_discount_analysis",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — 7.3 MRP vs Charged Amount Discount Analysis",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_3_mrp_vs_charged_amount_discount_analysis"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_3_mrp_vs_charged_amount_discount_analysis",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 16801
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Meesho query pattern — 7.3 MRP vs Charged Amount Discount Analysis",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.034.7_3_mrp_vs_charged_amount_discount_analysis",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16801,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_brand_mapping",
+    "zs_observe.meesho_sales"
+  ],
+  "sql_template": "SELECT\n  b.brand,\n  AVG(b.mrp) AS avg_mrp,\n  AVG(s.charged_amount) AS avg_charged,\n  ROUND(100.0 * (AVG(b.mrp) - AVG(s.charged_amount)) / NULLIF(AVG(b.mrp), 0), 2) AS avg_discount_pct\nFROM zs_observe.meesho_brand_mapping b\nJOIN zs_observe.meesho_sales s ON b.order_id = s.order_id AND s.is_active = true\nWHERE b.is_active = true AND b.mrp IS NOT NULL\nGROUP BY b.brand;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

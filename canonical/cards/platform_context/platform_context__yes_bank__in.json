@@ -1,0 +1,54 @@
+{
+  "account_scope_guardrail": "Account identifiers are table columns only in this generic KB; do not emit platform_account or account_data_binding cards.",
+  "banking_only": true,
+  "canonical_id": "platform_context.yes_bank.in",
+  "card_type": "platform_context",
+  "confidence": "curated",
+  "context_name": "Yes Bank India banking context",
+  "context_type": "banking_country_or_region",
+  "country_or_region": "India",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "INR",
+  "description": "platform_context card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.table_index.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.table_index.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 1862
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Yes Bank India banking context",
+  "platform_id": "platform.yes_bank",
+  "review_status": "accepted",
+  "scope_filter_columns": [
+    "account_no",
+    "account_number",
+    "bank_account",
+    "merchant_id where present as source column only"
+  ],
+  "source_card_id": "platform_context.yes_bank.in",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1862,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "table.zs_ingest.yesbank_oms_payout"
+  ],
+  "status": "active",
+  "timezone": "Asia/Kolkata",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

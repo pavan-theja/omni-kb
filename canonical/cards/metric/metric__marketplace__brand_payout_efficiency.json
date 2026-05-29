@@ -1,0 +1,54 @@
+{
+  "business_definition": "Brand-level comparison of average MRP, charged amount, NSP, payout, and payout percentage.",
+  "candidate_notes": "Brand-level comparison of average MRP, charged amount, NSP, payout, and payout percentage.",
+  "canonical_id": "metric.marketplace.brand_payout_efficiency",
+  "card_type": "metric",
+  "colloquial_names": [
+    "brand efficiency",
+    "brand payout percentage"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "brand",
+  "description": "Brand-level comparison of average MRP, charged amount, NSP, payout, and payout percentage.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "domain": "domain.marketplace.limeroad.product; domain.marketplace.limeroad.settlement",
+  "evidence_ids": [
+    "ev.limeroad.metrics.sql.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.metrics.sql.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4597
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.limeroad.brand_payout_efficiency"
+  ],
+  "marketplace_only": true,
+  "metric_key": "brand_payout_efficiency",
+  "metric_pattern": "avg_settled_over_avg_charged_by_brand",
+  "name": "Brand payout efficiency",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by LimeRoad-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.brand_payout_efficiency",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4597,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

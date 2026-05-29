@@ -1,0 +1,399 @@
+2026-05-25 02:41:33,749 INFO starting cleaned_v2 ingestion source_dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/raw/Source/cleaned output_dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned
+2026-05-25 02:41:33,749 INFO progress_backend=fallback/no-progress
+2026-05-25 02:41:33,751 INFO discovered 75 filesystem paths under source dir
+2026-05-25 02:41:33,751 INFO queue markdown source path=raw/Source/cleaned/bank/bank_statement.md
+2026-05-25 02:41:33,752 INFO queue json source path=raw/Source/cleaned/clients/ardeur_fashion_client.json
+2026-05-25 02:41:33,752 INFO queue json source path=raw/Source/cleaned/clients/astrotalk_client.json
+2026-05-25 02:41:33,752 INFO queue json source path=raw/Source/cleaned/clients/aza_fashions_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/bear_house_clothing_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/bracheium_brand_technologies_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/caelum_arpit_brand_technologies_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/folkhomes_global_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/fraternitas_ventures_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/mensa_business_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/mpl_india_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/mpl_usa_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/pine_labs_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/prita_designs_private_limited_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/rosenza_international_trading_llc_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/tanvi_fitness_private_limited_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/teaxpress_private_limited_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/volans_epic_llc_client.json
+2026-05-25 02:41:33,753 INFO queue json source path=raw/Source/cleaned/clients/volans_uptown_llc_client.json
+2026-05-25 02:41:33,753 INFO queue markdown source path=raw/Source/cleaned/logistics/delhivery_logistics.md
+2026-05-25 02:41:33,754 INFO queue markdown source path=raw/Source/cleaned/logistics/dtdc_logistics.md
+2026-05-25 02:41:33,754 INFO queue markdown source path=raw/Source/cleaned/logistics/ecom_express.md
+2026-05-25 02:41:33,754 INFO queue markdown source path=raw/Source/cleaned/logistics/ekart_logistics.md
+2026-05-25 02:41:33,755 INFO queue markdown source path=raw/Source/cleaned/logistics/logistics_domain.md
+2026-05-25 02:41:33,756 INFO queue markdown source path=raw/Source/cleaned/logistics/logistics_reconciliation_patterns.md
+2026-05-25 02:41:33,756 INFO queue markdown source path=raw/Source/cleaned/logistics/shadowfax_logistics.md
+2026-05-25 02:41:33,757 INFO queue markdown source path=raw/Source/cleaned/logistics/shiprocket_logistics.md
+2026-05-25 02:41:33,758 INFO queue markdown source path=raw/Source/cleaned/logistics/shiprocket_logistics_aggregator.md
+2026-05-25 02:41:33,759 INFO queue markdown source path=raw/Source/cleaned/logistics/xpressbees_logistics.md
+2026-05-25 02:41:33,759 INFO queue markdown source path=raw/Source/cleaned/marketplace/ajio_marketplace.md
+2026-05-25 02:41:33,761 INFO queue markdown source path=raw/Source/cleaned/marketplace/amazon_marketplace.md
+2026-05-25 02:41:33,762 INFO queue markdown source path=raw/Source/cleaned/marketplace/flipkart_marketplace.md
+2026-05-25 02:41:33,763 INFO queue markdown source path=raw/Source/cleaned/marketplace/healthkart_marketplace.md
+2026-05-25 02:41:33,765 INFO queue markdown source path=raw/Source/cleaned/marketplace/jiomart_marketplace.md
+2026-05-25 02:41:33,766 INFO queue markdown source path=raw/Source/cleaned/marketplace/limeroad_marketplace.md
+2026-05-25 02:41:33,767 INFO queue markdown source path=raw/Source/cleaned/marketplace/meesho_marketplace.md
+2026-05-25 02:41:33,769 INFO queue markdown source path=raw/Source/cleaned/marketplace/myntra_marketplace.md
+2026-05-25 02:41:33,771 INFO queue markdown source path=raw/Source/cleaned/marketplace/nykaa_marketplace.md
+2026-05-25 02:41:33,772 INFO queue markdown source path=raw/Source/cleaned/marketplace/snapdeal_marketplace.md
+2026-05-25 02:41:33,775 INFO queue markdown source path=raw/Source/cleaned/marketplace/target_plus.md
+2026-05-25 02:41:33,777 INFO queue markdown source path=raw/Source/cleaned/marketplace/tatacliq_marketplace.md
+2026-05-25 02:41:33,778 INFO queue markdown source path=raw/Source/cleaned/marketplace/walmart_marketplace.md
+2026-05-25 02:41:33,780 INFO queue markdown source path=raw/Source/cleaned/oms/shopify_d2c_oms.md
+2026-05-25 02:41:33,780 INFO queue markdown source path=raw/Source/cleaned/oms/unicommerce_d2c_oms.md
+2026-05-25 02:41:33,780 INFO queue markdown source path=raw/Source/cleaned/payments/payment_gateway.md
+2026-05-25 02:41:33,784 INFO queue markdown source path=raw/Source/cleaned/wms/increff_operations.md
+2026-05-25 02:41:33,785 INFO queue markdown source path=raw/Source/cleaned/wms/unicommerce_operations.md
+2026-05-25 02:41:33,787 INFO source queue ready markdown=29 json=18 skipped=18
+2026-05-25 02:41:33,788 INFO parse markdown start path=raw/Source/cleaned/bank/bank_statement.md bytes=1263928
+2026-05-25 02:41:34,183 INFO yaml block scan path=raw/Source/cleaned/bank/bank_statement.md raw_blocks=1396
+2026-05-25 02:41:34,431 INFO parse markdown done path=raw/Source/cleaned/bank/bank_statement.md blocks=1396 errors=0
+2026-05-25 02:41:34,438 INFO normalize markdown done path=raw/Source/cleaned/bank/bank_statement.md
+2026-05-25 02:41:34,438 INFO parse markdown start path=raw/Source/cleaned/logistics/delhivery_logistics.md bytes=403582
+2026-05-25 02:41:34,487 INFO yaml block scan path=raw/Source/cleaned/logistics/delhivery_logistics.md raw_blocks=435
+2026-05-25 02:41:34,585 INFO parse markdown done path=raw/Source/cleaned/logistics/delhivery_logistics.md blocks=435 errors=0
+2026-05-25 02:41:34,587 INFO normalize markdown done path=raw/Source/cleaned/logistics/delhivery_logistics.md
+2026-05-25 02:41:34,587 INFO parse markdown start path=raw/Source/cleaned/logistics/dtdc_logistics.md bytes=204664
+2026-05-25 02:41:34,602 INFO yaml block scan path=raw/Source/cleaned/logistics/dtdc_logistics.md raw_blocks=210
+2026-05-25 02:41:34,672 INFO parse markdown done path=raw/Source/cleaned/logistics/dtdc_logistics.md blocks=210 errors=0
+2026-05-25 02:41:34,673 INFO normalize markdown done path=raw/Source/cleaned/logistics/dtdc_logistics.md
+2026-05-25 02:41:34,673 INFO parse markdown start path=raw/Source/cleaned/logistics/ecom_express.md bytes=65988
+2026-05-25 02:41:34,675 INFO yaml block scan path=raw/Source/cleaned/logistics/ecom_express.md raw_blocks=49
+2026-05-25 02:41:34,730 INFO parse markdown done path=raw/Source/cleaned/logistics/ecom_express.md blocks=49 errors=0
+2026-05-25 02:41:34,730 INFO normalize markdown done path=raw/Source/cleaned/logistics/ecom_express.md
+2026-05-25 02:41:34,730 INFO parse markdown start path=raw/Source/cleaned/logistics/ekart_logistics.md bytes=209865
+2026-05-25 02:41:34,746 INFO yaml block scan path=raw/Source/cleaned/logistics/ekart_logistics.md raw_blocks=213
+2026-05-25 02:41:34,816 INFO parse markdown done path=raw/Source/cleaned/logistics/ekart_logistics.md blocks=213 errors=0
+2026-05-25 02:41:34,817 INFO normalize markdown done path=raw/Source/cleaned/logistics/ekart_logistics.md
+2026-05-25 02:41:34,818 INFO parse markdown start path=raw/Source/cleaned/logistics/logistics_domain.md bytes=507203
+2026-05-25 02:41:34,890 INFO yaml block scan path=raw/Source/cleaned/logistics/logistics_domain.md raw_blocks=534
+2026-05-25 02:41:34,990 INFO parse markdown done path=raw/Source/cleaned/logistics/logistics_domain.md blocks=534 errors=0
+2026-05-25 02:41:34,993 INFO normalize markdown done path=raw/Source/cleaned/logistics/logistics_domain.md
+2026-05-25 02:41:34,993 INFO parse markdown start path=raw/Source/cleaned/logistics/logistics_reconciliation_patterns.md bytes=951593
+2026-05-25 02:41:35,218 INFO yaml block scan path=raw/Source/cleaned/logistics/logistics_reconciliation_patterns.md raw_blocks=957
+2026-05-25 02:41:35,360 INFO parse markdown done path=raw/Source/cleaned/logistics/logistics_reconciliation_patterns.md blocks=957 errors=0
+2026-05-25 02:41:35,365 INFO normalize markdown done path=raw/Source/cleaned/logistics/logistics_reconciliation_patterns.md
+2026-05-25 02:41:35,365 INFO parse markdown start path=raw/Source/cleaned/logistics/shadowfax_logistics.md bytes=68710
+2026-05-25 02:41:35,367 INFO yaml block scan path=raw/Source/cleaned/logistics/shadowfax_logistics.md raw_blocks=52
+2026-05-25 02:41:35,445 INFO parse markdown done path=raw/Source/cleaned/logistics/shadowfax_logistics.md blocks=52 errors=0
+2026-05-25 02:41:35,446 INFO normalize markdown done path=raw/Source/cleaned/logistics/shadowfax_logistics.md
+2026-05-25 02:41:35,446 INFO parse markdown start path=raw/Source/cleaned/logistics/shiprocket_logistics.md bytes=344174
+2026-05-25 02:41:35,484 INFO yaml block scan path=raw/Source/cleaned/logistics/shiprocket_logistics.md raw_blocks=381
+2026-05-25 02:41:35,573 INFO parse markdown done path=raw/Source/cleaned/logistics/shiprocket_logistics.md blocks=381 errors=0
+2026-05-25 02:41:35,575 INFO normalize markdown done path=raw/Source/cleaned/logistics/shiprocket_logistics.md
+2026-05-25 02:41:35,575 INFO parse markdown start path=raw/Source/cleaned/logistics/shiprocket_logistics_aggregator.md bytes=325654
+2026-05-25 02:41:35,608 INFO yaml block scan path=raw/Source/cleaned/logistics/shiprocket_logistics_aggregator.md raw_blocks=353
+2026-05-25 02:41:35,693 INFO parse markdown done path=raw/Source/cleaned/logistics/shiprocket_logistics_aggregator.md blocks=353 errors=0
+2026-05-25 02:41:35,695 INFO normalize markdown done path=raw/Source/cleaned/logistics/shiprocket_logistics_aggregator.md
+2026-05-25 02:41:35,695 INFO parse markdown start path=raw/Source/cleaned/logistics/xpressbees_logistics.md bytes=148539
+2026-05-25 02:41:35,703 INFO yaml block scan path=raw/Source/cleaned/logistics/xpressbees_logistics.md raw_blocks=141
+2026-05-25 02:41:35,778 INFO parse markdown done path=raw/Source/cleaned/logistics/xpressbees_logistics.md blocks=141 errors=0
+2026-05-25 02:41:35,779 INFO normalize markdown done path=raw/Source/cleaned/logistics/xpressbees_logistics.md
+2026-05-25 02:41:35,780 INFO parse markdown start path=raw/Source/cleaned/marketplace/ajio_marketplace.md bytes=1086476
+2026-05-25 02:41:35,789 INFO yaml block scan path=raw/Source/cleaned/marketplace/ajio_marketplace.md raw_blocks=31
+2026-05-25 02:41:35,922 INFO parse markdown done path=raw/Source/cleaned/marketplace/ajio_marketplace.md blocks=31 errors=0
+2026-05-25 02:41:35,930 INFO normalize markdown done path=raw/Source/cleaned/marketplace/ajio_marketplace.md
+2026-05-25 02:41:35,930 INFO parse markdown start path=raw/Source/cleaned/marketplace/amazon_marketplace.md bytes=995569
+2026-05-25 02:41:36,249 INFO yaml block scan path=raw/Source/cleaned/marketplace/amazon_marketplace.md raw_blocks=1383
+2026-05-25 02:41:36,417 INFO parse markdown done path=raw/Source/cleaned/marketplace/amazon_marketplace.md blocks=1383 errors=0
+2026-05-25 02:41:36,424 INFO normalize markdown done path=raw/Source/cleaned/marketplace/amazon_marketplace.md
+2026-05-25 02:41:36,424 INFO parse markdown start path=raw/Source/cleaned/marketplace/flipkart_marketplace.md bytes=896822
+2026-05-25 02:41:36,679 INFO yaml block scan path=raw/Source/cleaned/marketplace/flipkart_marketplace.md raw_blocks=1220
+2026-05-25 02:41:36,831 INFO parse markdown done path=raw/Source/cleaned/marketplace/flipkart_marketplace.md blocks=1220 errors=0
+2026-05-25 02:41:36,837 INFO normalize markdown done path=raw/Source/cleaned/marketplace/flipkart_marketplace.md
+2026-05-25 02:41:36,838 INFO parse markdown start path=raw/Source/cleaned/marketplace/healthkart_marketplace.md bytes=1121330
+2026-05-25 02:41:36,847 INFO yaml block scan path=raw/Source/cleaned/marketplace/healthkart_marketplace.md raw_blocks=29
+2026-05-25 02:41:36,980 INFO parse markdown done path=raw/Source/cleaned/marketplace/healthkart_marketplace.md blocks=29 errors=0
+2026-05-25 02:41:36,989 INFO normalize markdown done path=raw/Source/cleaned/marketplace/healthkart_marketplace.md
+2026-05-25 02:41:36,989 INFO parse markdown start path=raw/Source/cleaned/marketplace/jiomart_marketplace.md bytes=824632
+2026-05-25 02:41:37,310 INFO yaml block scan path=raw/Source/cleaned/marketplace/jiomart_marketplace.md raw_blocks=1565
+2026-05-25 02:41:37,455 INFO parse markdown done path=raw/Source/cleaned/marketplace/jiomart_marketplace.md blocks=1565 errors=0
+2026-05-25 02:41:37,462 INFO normalize markdown done path=raw/Source/cleaned/marketplace/jiomart_marketplace.md
+2026-05-25 02:41:37,462 INFO parse markdown start path=raw/Source/cleaned/marketplace/limeroad_marketplace.md bytes=470155
+2026-05-25 02:41:37,548 INFO yaml block scan path=raw/Source/cleaned/marketplace/limeroad_marketplace.md raw_blocks=730
+2026-05-25 02:41:37,653 INFO parse markdown done path=raw/Source/cleaned/marketplace/limeroad_marketplace.md blocks=730 errors=0
+2026-05-25 02:41:37,657 INFO normalize markdown done path=raw/Source/cleaned/marketplace/limeroad_marketplace.md
+2026-05-25 02:41:37,658 INFO parse markdown start path=raw/Source/cleaned/marketplace/meesho_marketplace.md bytes=2371684
+2026-05-25 02:41:39,931 INFO yaml block scan path=raw/Source/cleaned/marketplace/meesho_marketplace.md raw_blocks=4487
+2026-05-25 02:41:40,264 INFO parse markdown done path=raw/Source/cleaned/marketplace/meesho_marketplace.md blocks=4487 errors=0
+2026-05-25 02:41:40,284 INFO normalize markdown done path=raw/Source/cleaned/marketplace/meesho_marketplace.md
+2026-05-25 02:41:40,285 INFO parse markdown start path=raw/Source/cleaned/marketplace/myntra_marketplace.md bytes=1255166
+2026-05-25 02:41:40,892 INFO yaml block scan path=raw/Source/cleaned/marketplace/myntra_marketplace.md raw_blocks=2102
+2026-05-25 02:41:41,104 INFO parse markdown done path=raw/Source/cleaned/marketplace/myntra_marketplace.md blocks=2102 errors=0
+2026-05-25 02:41:41,130 INFO normalize markdown done path=raw/Source/cleaned/marketplace/myntra_marketplace.md
+2026-05-25 02:41:41,131 INFO parse markdown start path=raw/Source/cleaned/marketplace/nykaa_marketplace.md bytes=1879250
+2026-05-25 02:41:42,388 INFO yaml block scan path=raw/Source/cleaned/marketplace/nykaa_marketplace.md raw_blocks=2917
+2026-05-25 02:41:42,662 INFO parse markdown done path=raw/Source/cleaned/marketplace/nykaa_marketplace.md blocks=2917 errors=0
+2026-05-25 02:41:42,677 INFO normalize markdown done path=raw/Source/cleaned/marketplace/nykaa_marketplace.md
+2026-05-25 02:41:42,679 INFO parse markdown start path=raw/Source/cleaned/marketplace/snapdeal_marketplace.md bytes=2944403
+2026-05-25 02:41:46,182 INFO yaml block scan path=raw/Source/cleaned/marketplace/snapdeal_marketplace.md raw_blocks=5442
+2026-05-25 02:41:46,609 INFO parse markdown done path=raw/Source/cleaned/marketplace/snapdeal_marketplace.md blocks=5442 errors=0
+2026-05-25 02:41:46,635 INFO normalize markdown done path=raw/Source/cleaned/marketplace/snapdeal_marketplace.md
+2026-05-25 02:41:46,636 INFO parse markdown start path=raw/Source/cleaned/marketplace/target_plus.md bytes=811193
+2026-05-25 02:41:46,889 INFO yaml block scan path=raw/Source/cleaned/marketplace/target_plus.md raw_blocks=1267
+2026-05-25 02:41:47,035 INFO parse markdown done path=raw/Source/cleaned/marketplace/target_plus.md blocks=1267 errors=0
+2026-05-25 02:41:47,040 INFO normalize markdown done path=raw/Source/cleaned/marketplace/target_plus.md
+2026-05-25 02:41:47,041 INFO parse markdown start path=raw/Source/cleaned/marketplace/tatacliq_marketplace.md bytes=496727
+2026-05-25 02:41:47,163 INFO yaml block scan path=raw/Source/cleaned/marketplace/tatacliq_marketplace.md raw_blocks=964
+2026-05-25 02:41:47,274 INFO parse markdown done path=raw/Source/cleaned/marketplace/tatacliq_marketplace.md blocks=964 errors=0
+2026-05-25 02:41:47,279 INFO normalize markdown done path=raw/Source/cleaned/marketplace/tatacliq_marketplace.md
+2026-05-25 02:41:47,279 INFO parse markdown start path=raw/Source/cleaned/marketplace/walmart_marketplace.md bytes=868889
+2026-05-25 02:41:47,533 INFO yaml block scan path=raw/Source/cleaned/marketplace/walmart_marketplace.md raw_blocks=1260
+2026-05-25 02:41:47,686 INFO parse markdown done path=raw/Source/cleaned/marketplace/walmart_marketplace.md blocks=1260 errors=0
+2026-05-25 02:41:47,693 INFO normalize markdown done path=raw/Source/cleaned/marketplace/walmart_marketplace.md
+2026-05-25 02:41:47,693 INFO parse markdown start path=raw/Source/cleaned/oms/shopify_d2c_oms.md bytes=136686
+2026-05-25 02:41:47,710 INFO yaml block scan path=raw/Source/cleaned/oms/shopify_d2c_oms.md raw_blocks=312
+2026-05-25 02:41:47,781 INFO parse markdown done path=raw/Source/cleaned/oms/shopify_d2c_oms.md blocks=312 errors=0
+2026-05-25 02:41:47,783 INFO normalize markdown done path=raw/Source/cleaned/oms/shopify_d2c_oms.md
+2026-05-25 02:41:47,783 INFO parse markdown start path=raw/Source/cleaned/oms/unicommerce_d2c_oms.md bytes=198330
+2026-05-25 02:41:47,811 INFO yaml block scan path=raw/Source/cleaned/oms/unicommerce_d2c_oms.md raw_blocks=433
+2026-05-25 02:41:47,916 INFO parse markdown done path=raw/Source/cleaned/oms/unicommerce_d2c_oms.md blocks=433 errors=0
+2026-05-25 02:41:47,919 INFO normalize markdown done path=raw/Source/cleaned/oms/unicommerce_d2c_oms.md
+2026-05-25 02:41:47,920 INFO parse markdown start path=raw/Source/cleaned/payments/payment_gateway.md bytes=3698824
+2026-05-25 02:41:51,275 INFO yaml block scan path=raw/Source/cleaned/payments/payment_gateway.md raw_blocks=3702
+2026-05-25 02:41:51,718 INFO parse markdown done path=raw/Source/cleaned/payments/payment_gateway.md blocks=3702 errors=0
+2026-05-25 02:41:51,738 INFO normalize markdown done path=raw/Source/cleaned/payments/payment_gateway.md
+2026-05-25 02:41:51,739 INFO parse markdown start path=raw/Source/cleaned/wms/increff_operations.md bytes=1238288
+2026-05-25 02:41:52,260 INFO yaml block scan path=raw/Source/cleaned/wms/increff_operations.md raw_blocks=1963
+2026-05-25 02:41:52,449 INFO parse markdown done path=raw/Source/cleaned/wms/increff_operations.md blocks=1963 errors=0
+2026-05-25 02:41:52,494 INFO normalize markdown done path=raw/Source/cleaned/wms/increff_operations.md
+2026-05-25 02:41:52,495 INFO parse markdown start path=raw/Source/cleaned/wms/unicommerce_operations.md bytes=1069646
+2026-05-25 02:41:52,547 INFO yaml block scan path=raw/Source/cleaned/wms/unicommerce_operations.md raw_blocks=280
+2026-05-25 02:41:52,672 INFO parse markdown done path=raw/Source/cleaned/wms/unicommerce_operations.md blocks=280 errors=0
+2026-05-25 02:41:52,679 INFO normalize markdown done path=raw/Source/cleaned/wms/unicommerce_operations.md
+2026-05-25 02:41:52,679 INFO parse json start path=raw/Source/cleaned/clients/ardeur_fashion_client.json
+2026-05-25 02:41:52,682 INFO parse json done path=raw/Source/cleaned/clients/ardeur_fashion_client.json cards=54 edges=179
+2026-05-25 02:41:52,682 INFO parse json start path=raw/Source/cleaned/clients/astrotalk_client.json
+2026-05-25 02:41:52,685 INFO parse json done path=raw/Source/cleaned/clients/astrotalk_client.json cards=50 edges=153
+2026-05-25 02:41:52,685 INFO parse json start path=raw/Source/cleaned/clients/aza_fashions_client.json
+2026-05-25 02:41:52,687 INFO parse json done path=raw/Source/cleaned/clients/aza_fashions_client.json cards=34 edges=130
+2026-05-25 02:41:52,687 INFO parse json start path=raw/Source/cleaned/clients/bear_house_clothing_client.json
+2026-05-25 02:41:52,689 INFO parse json done path=raw/Source/cleaned/clients/bear_house_clothing_client.json cards=42 edges=134
+2026-05-25 02:41:52,689 INFO parse json start path=raw/Source/cleaned/clients/bracheium_brand_technologies_client.json
+2026-05-25 02:41:52,692 INFO parse json done path=raw/Source/cleaned/clients/bracheium_brand_technologies_client.json cards=79 edges=261
+2026-05-25 02:41:52,692 INFO parse json start path=raw/Source/cleaned/clients/caelum_arpit_brand_technologies_client.json
+2026-05-25 02:41:52,693 INFO parse json done path=raw/Source/cleaned/clients/caelum_arpit_brand_technologies_client.json cards=0 edges=0
+2026-05-25 02:41:52,693 INFO parse json start path=raw/Source/cleaned/clients/folkhomes_global_client.json
+2026-05-25 02:41:52,694 INFO parse json done path=raw/Source/cleaned/clients/folkhomes_global_client.json cards=0 edges=0
+2026-05-25 02:41:52,694 INFO parse json start path=raw/Source/cleaned/clients/fraternitas_ventures_client.json
+2026-05-25 02:41:52,695 INFO parse json done path=raw/Source/cleaned/clients/fraternitas_ventures_client.json cards=0 edges=0
+2026-05-25 02:41:52,695 INFO parse json start path=raw/Source/cleaned/clients/mensa_business_client.json
+2026-05-25 02:41:52,697 INFO parse json done path=raw/Source/cleaned/clients/mensa_business_client.json cards=0 edges=0
+2026-05-25 02:41:52,697 INFO parse json start path=raw/Source/cleaned/clients/mpl_india_client.json
+2026-05-25 02:41:52,698 INFO parse json done path=raw/Source/cleaned/clients/mpl_india_client.json cards=0 edges=0
+2026-05-25 02:41:52,699 INFO parse json start path=raw/Source/cleaned/clients/mpl_usa_client.json
+2026-05-25 02:41:52,700 INFO parse json done path=raw/Source/cleaned/clients/mpl_usa_client.json cards=0 edges=0
+2026-05-25 02:41:52,700 INFO parse json start path=raw/Source/cleaned/clients/pine_labs_client.json
+2026-05-25 02:41:52,702 INFO parse json done path=raw/Source/cleaned/clients/pine_labs_client.json cards=0 edges=0
+2026-05-25 02:41:52,702 INFO parse json start path=raw/Source/cleaned/clients/prita_designs_private_limited_client.json
+2026-05-25 02:41:52,704 INFO parse json done path=raw/Source/cleaned/clients/prita_designs_private_limited_client.json cards=0 edges=0
+2026-05-25 02:41:52,704 INFO parse json start path=raw/Source/cleaned/clients/rosenza_international_trading_llc_client.json
+2026-05-25 02:41:52,705 INFO parse json done path=raw/Source/cleaned/clients/rosenza_international_trading_llc_client.json cards=0 edges=0
+2026-05-25 02:41:52,705 INFO parse json start path=raw/Source/cleaned/clients/tanvi_fitness_private_limited_client.json
+2026-05-25 02:41:52,707 INFO parse json done path=raw/Source/cleaned/clients/tanvi_fitness_private_limited_client.json cards=0 edges=0
+2026-05-25 02:41:52,707 INFO parse json start path=raw/Source/cleaned/clients/teaxpress_private_limited_client.json
+2026-05-25 02:41:52,708 INFO parse json done path=raw/Source/cleaned/clients/teaxpress_private_limited_client.json cards=0 edges=0
+2026-05-25 02:41:52,708 INFO parse json start path=raw/Source/cleaned/clients/volans_epic_llc_client.json
+2026-05-25 02:41:52,709 INFO parse json done path=raw/Source/cleaned/clients/volans_epic_llc_client.json cards=0 edges=0
+2026-05-25 02:41:52,709 INFO parse json start path=raw/Source/cleaned/clients/volans_uptown_llc_client.json
+2026-05-25 02:41:52,710 INFO parse json done path=raw/Source/cleaned/clients/volans_uptown_llc_client.json cards=0 edges=0
+2026-05-25 02:41:52,710 INFO dedupe start
+2026-05-25 02:41:52,772 INFO dedupe done cards=9421 edges=28288 evidence=951 sql_patterns=354 review_items=201 documents=29
+2026-05-25 02:42:22,209 INFO write output start name=cards path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/cards.jsonl records=9421
+2026-05-25 02:42:22,305 INFO write output done name=cards path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/cards.jsonl
+2026-05-25 02:42:22,305 INFO write output start name=edges path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/edges.jsonl records=28288
+2026-05-25 02:42:22,479 INFO write output done name=edges path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/edges.jsonl
+2026-05-25 02:42:22,479 INFO write output start name=evidence path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/evidence.jsonl records=951
+2026-05-25 02:42:22,484 INFO write output done name=evidence path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/evidence.jsonl
+2026-05-25 02:42:22,484 INFO write output start name=sql_patterns path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/sql_patterns.jsonl records=354
+2026-05-25 02:42:22,486 INFO write output done name=sql_patterns path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/sql_patterns.jsonl
+2026-05-25 02:42:22,486 INFO write output start name=review_items path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/review_items.jsonl records=201
+2026-05-25 02:42:22,487 INFO write output done name=review_items path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/review_items.jsonl
+2026-05-25 02:42:22,487 INFO write output start name=documents path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/documents.jsonl records=29
+2026-05-25 02:42:22,488 INFO write output done name=documents path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/documents.jsonl
+2026-05-25 02:42:22,488 INFO write output start name=semantic_mappings path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/semantic_mappings.jsonl records=236
+2026-05-25 02:42:22,489 INFO write output done name=semantic_mappings path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/semantic_mappings.jsonl
+2026-05-25 02:42:22,489 INFO write output start name=future_context_gaps path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/future_context_gaps.jsonl records=240
+2026-05-25 02:42:22,490 INFO write output done name=future_context_gaps path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/future_context_gaps.jsonl
+2026-05-25 02:42:22,490 INFO remove existing scoped output dir path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped
+2026-05-25 02:42:23,221 INFO write scoped view start view=source_type scopes=47 records=40105
+2026-05-25 02:42:23,237 INFO write scoped scope=bank/bank_statement dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/bank/bank_statement counts={'cards': 421, 'documents': 1, 'edges': 919, 'evidence': 50, 'review_items': 5}
+2026-05-25 02:42:23,241 INFO write scoped scope=clients/ardeur_fashion_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/ardeur_fashion_client counts={'cards': 54, 'edges': 179, 'future_context_gaps': 5, 'review_items': 1, 'semantic_mappings': 11}
+2026-05-25 02:42:23,244 INFO write scoped scope=clients/astrotalk_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/astrotalk_client counts={'cards': 50, 'edges': 153, 'future_context_gaps': 11, 'review_items': 1, 'semantic_mappings': 16}
+2026-05-25 02:42:23,246 INFO write scoped scope=clients/aza_fashions_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/aza_fashions_client counts={'cards': 34, 'edges': 130, 'future_context_gaps': 5, 'review_items': 1, 'semantic_mappings': 12}
+2026-05-25 02:42:23,249 INFO write scoped scope=clients/bear_house_clothing_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/bear_house_clothing_client counts={'cards': 42, 'edges': 134, 'future_context_gaps': 5, 'review_items': 1, 'semantic_mappings': 9}
+2026-05-25 02:42:23,254 INFO write scoped scope=clients/bracheium_brand_technologies_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/bracheium_brand_technologies_client counts={'cards': 79, 'edges': 261, 'future_context_gaps': 15, 'review_items': 1, 'semantic_mappings': 21}
+2026-05-25 02:42:23,254 INFO write scoped scope=clients/caelum_arpit_brand_technologies_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/caelum_arpit_brand_technologies_client counts={'semantic_mappings': 3}
+2026-05-25 02:42:23,254 INFO write scoped scope=clients/folkhomes_global_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/folkhomes_global_client counts={'future_context_gaps': 1, 'semantic_mappings': 7}
+2026-05-25 02:42:23,255 INFO write scoped scope=clients/fraternitas_ventures_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/fraternitas_ventures_client counts={'future_context_gaps': 5, 'semantic_mappings': 3}
+2026-05-25 02:42:23,255 INFO write scoped scope=clients/mensa_business_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/mensa_business_client counts={'future_context_gaps': 18, 'semantic_mappings': 1}
+2026-05-25 02:42:23,256 INFO write scoped scope=clients/mpl_india_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/mpl_india_client counts={'future_context_gaps': 17, 'semantic_mappings': 4}
+2026-05-25 02:42:23,256 INFO write scoped scope=clients/mpl_usa_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/mpl_usa_client counts={'future_context_gaps': 14, 'semantic_mappings': 4}
+2026-05-25 02:42:23,257 INFO write scoped scope=clients/pine_labs_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/pine_labs_client counts={'future_context_gaps': 57, 'semantic_mappings': 24}
+2026-05-25 02:42:23,257 INFO write scoped scope=clients/prita_designs_private_limited_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/prita_designs_private_limited_client counts={'future_context_gaps': 31, 'semantic_mappings': 23}
+2026-05-25 02:42:23,258 INFO write scoped scope=clients/rosenza_international_trading_llc_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/rosenza_international_trading_llc_client counts={'future_context_gaps': 4, 'semantic_mappings': 16}
+2026-05-25 02:42:23,259 INFO write scoped scope=clients/tanvi_fitness_private_limited_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/tanvi_fitness_private_limited_client counts={'future_context_gaps': 39, 'semantic_mappings': 28}
+2026-05-25 02:42:23,259 INFO write scoped scope=clients/teaxpress_private_limited_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/teaxpress_private_limited_client counts={'future_context_gaps': 13, 'semantic_mappings': 24}
+2026-05-25 02:42:23,259 INFO write scoped scope=clients/volans_epic_llc_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/volans_epic_llc_client counts={'semantic_mappings': 15}
+2026-05-25 02:42:23,260 INFO write scoped scope=clients/volans_uptown_llc_client dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/clients/volans_uptown_llc_client counts={'semantic_mappings': 15}
+2026-05-25 02:42:23,265 INFO write scoped scope=logistics/delhivery_logistics dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/delhivery_logistics counts={'cards': 114, 'documents': 1, 'edges': 309, 'evidence': 6, 'review_items': 5}
+2026-05-25 02:42:23,267 INFO write scoped scope=logistics/dtdc_logistics dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/dtdc_logistics counts={'cards': 53, 'documents': 1, 'edges': 129, 'evidence': 1, 'review_items': 2}
+2026-05-25 02:42:23,268 INFO write scoped scope=logistics/ecom_express dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/ecom_express counts={'cards': 7, 'documents': 1, 'edges': 24, 'evidence': 1, 'review_items': 2}
+2026-05-25 02:42:23,271 INFO write scoped scope=logistics/ekart_logistics dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/ekart_logistics counts={'cards': 48, 'documents': 1, 'edges': 133, 'evidence': 1, 'review_items': 2}
+2026-05-25 02:42:23,281 INFO write scoped scope=logistics/logistics_domain dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/logistics_domain counts={'cards': 139, 'documents': 1, 'edges': 350, 'review_items': 1}
+2026-05-25 02:42:23,290 INFO write scoped scope=logistics/logistics_reconciliation_patterns dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/logistics_reconciliation_patterns counts={'cards': 263, 'documents': 1, 'edges': 684, 'review_items': 1}
+2026-05-25 02:42:23,291 INFO write scoped scope=logistics/shadowfax_logistics dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/shadowfax_logistics counts={'cards': 7, 'documents': 1, 'edges': 23, 'evidence': 1, 'review_items': 2}
+2026-05-25 02:42:23,296 INFO write scoped scope=logistics/shiprocket_logistics dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/shiprocket_logistics counts={'cards': 90, 'documents': 1, 'edges': 268, 'evidence': 1, 'review_items': 3}
+2026-05-25 02:42:23,301 INFO write scoped scope=logistics/shiprocket_logistics_aggregator dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/shiprocket_logistics_aggregator counts={'cards': 86, 'documents': 1, 'edges': 247, 'evidence': 1, 'review_items': 2}
+2026-05-25 02:42:23,303 INFO write scoped scope=logistics/xpressbees_logistics dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/logistics/xpressbees_logistics counts={'cards': 34, 'documents': 1, 'edges': 95, 'evidence': 6, 'review_items': 5}
+2026-05-25 02:42:23,319 INFO write scoped scope=marketplace/ajio_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/ajio_marketplace counts={'cards': 389, 'documents': 1, 'edges': 1333}
+2026-05-25 02:42:23,332 INFO write scoped scope=marketplace/amazon_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/amazon_marketplace counts={'cards': 348, 'documents': 1, 'edges': 942, 'evidence': 47, 'review_items': 8, 'sql_patterns': 37}
+2026-05-25 02:42:23,344 INFO write scoped scope=marketplace/flipkart_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/flipkart_marketplace counts={'cards': 289, 'documents': 1, 'edges': 870, 'evidence': 20, 'review_items': 8, 'sql_patterns': 30}
+2026-05-25 02:42:23,362 INFO write scoped scope=marketplace/healthkart_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/healthkart_marketplace counts={'cards': 437, 'documents': 1, 'edges': 1390}
+2026-05-25 02:42:23,375 INFO write scoped scope=marketplace/jiomart_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/jiomart_marketplace counts={'cards': 384, 'documents': 1, 'edges': 1020, 'evidence': 126, 'review_items': 5, 'sql_patterns': 29}
+2026-05-25 02:42:23,384 INFO write scoped scope=marketplace/limeroad_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/limeroad_marketplace counts={'cards': 309, 'documents': 1, 'edges': 392, 'review_items': 3, 'sql_patterns': 19}
+2026-05-25 02:42:23,426 INFO write scoped scope=marketplace/meesho_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/meesho_marketplace counts={'cards': 714, 'documents': 1, 'edges': 3468, 'evidence': 141, 'review_items': 35}
+2026-05-25 02:42:23,444 INFO write scoped scope=marketplace/myntra_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/myntra_marketplace counts={'cards': 533, 'documents': 1, 'edges': 1526, 'evidence': 14, 'review_items': 10, 'sql_patterns': 13}
+2026-05-25 02:42:23,470 INFO write scoped scope=marketplace/nykaa_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/nykaa_marketplace counts={'cards': 786, 'documents': 1, 'edges': 2072, 'evidence': 15, 'review_items': 10, 'sql_patterns': 28}
+2026-05-25 02:42:23,512 INFO write scoped scope=marketplace/snapdeal_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/snapdeal_marketplace counts={'cards': 832, 'documents': 1, 'edges': 4038, 'evidence': 151, 'review_items': 55, 'sql_patterns': 50}
+2026-05-25 02:42:23,532 INFO write scoped scope=marketplace/target_plus dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/target_plus counts={'cards': 286, 'documents': 1, 'edges': 795, 'evidence': 144, 'review_items': 5, 'sql_patterns': 29}
+2026-05-25 02:42:23,541 INFO write scoped scope=marketplace/tatacliq_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/tatacliq_marketplace counts={'cards': 263, 'documents': 1, 'edges': 597, 'evidence': 74, 'review_items': 5, 'sql_patterns': 24}
+2026-05-25 02:42:23,558 INFO write scoped scope=marketplace/walmart_marketplace dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/marketplace/walmart_marketplace counts={'cards': 282, 'documents': 1, 'edges': 941, 'evidence': 14, 'review_items': 3, 'sql_patterns': 19}
+2026-05-25 02:42:23,563 INFO write scoped scope=oms/shopify_d2c_oms dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/oms/shopify_d2c_oms counts={'cards': 169, 'documents': 1, 'edges': 112, 'evidence': 12, 'sql_patterns': 18}
+2026-05-25 02:42:23,569 INFO write scoped scope=oms/unicommerce_d2c_oms dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/oms/unicommerce_d2c_oms counts={'cards': 231, 'documents': 1, 'edges': 163, 'evidence': 15, 'sql_patterns': 23}
+2026-05-25 02:42:23,607 INFO write scoped scope=payments/payment_gateway dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/payments/payment_gateway counts={'cards': 1164, 'documents': 1, 'edges': 2480, 'evidence': 25, 'review_items': 14, 'sql_patterns': 16}
+2026-05-25 02:42:23,629 INFO write scoped scope=wms/increff_operations dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/wms/increff_operations counts={'cards': 406, 'documents': 1, 'edges': 1427, 'evidence': 91, 'review_items': 9, 'sql_patterns': 19}
+2026-05-25 02:42:23,641 INFO write scoped scope=wms/unicommerce_operations dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/source_type/wms/unicommerce_operations counts={'cards': 278, 'documents': 1, 'edges': 859}
+2026-05-25 02:42:23,641 INFO write scoped view done view=source_type
+2026-05-25 02:42:24,007 INFO write scoped view start view=platform_type scopes=124 records=40153
+2026-05-25 02:42:24,008 INFO write scoped scope=bank/axis_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/axis_bank counts={'cards': 2, 'edges': 4, 'semantic_mappings': 1}
+2026-05-25 02:42:24,023 INFO write scoped scope=bank/bank_statement dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/bank_statement counts={'cards': 421, 'documents': 1, 'edges': 919, 'evidence': 50, 'review_items': 5}
+2026-05-25 02:42:24,024 INFO write scoped scope=bank/citibank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/citibank counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,024 INFO write scoped scope=bank/hdfc_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/hdfc_bank counts={'cards': 2, 'edges': 4, 'semantic_mappings': 1}
+2026-05-25 02:42:24,025 INFO write scoped scope=bank/hsbc dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/hsbc counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,025 INFO write scoped scope=bank/icici_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/icici_bank counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,026 INFO write scoped scope=bank/icici_bank_uk dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/icici_bank_uk counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,026 INFO write scoped scope=bank/idfc_first_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/idfc_first_bank counts={'cards': 2, 'edges': 6}
+2026-05-25 02:42:24,027 INFO write scoped scope=bank/nbf dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/nbf counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,027 INFO write scoped scope=bank/rbl_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/rbl_bank counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,028 INFO write scoped scope=bank/yes_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/bank/yes_bank counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,028 INFO write scoped scope=clients/amazon_br dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_br counts={'semantic_mappings': 2}
+2026-05-25 02:42:24,028 INFO write scoped scope=clients/amazon_ca dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_ca counts={'semantic_mappings': 5}
+2026-05-25 02:42:24,028 INFO write scoped scope=clients/amazon_de dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_de counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,029 INFO write scoped scope=clients/amazon_es dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_es counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,029 INFO write scoped scope=clients/amazon_fr dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_fr counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,029 INFO write scoped scope=clients/amazon_gc dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_gc counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,029 INFO write scoped scope=clients/amazon_ksa dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_ksa counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,030 INFO write scoped scope=clients/amazon_mx dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_mx counts={'semantic_mappings': 2}
+2026-05-25 02:42:24,030 INFO write scoped scope=clients/amazon_se dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_se counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,030 INFO write scoped scope=clients/amazon_shipping_india_post dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amazon_shipping_india_post counts={'semantic_mappings': 2}
+2026-05-25 02:42:24,030 INFO write scoped scope=clients/amica_technologies dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/amica_technologies counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,031 INFO write scoped scope=clients/aza_own_platform dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/aza_own_platform counts={'cards': 4, 'edges': 20, 'semantic_mappings': 1}
+2026-05-25 02:42:24,031 INFO write scoped scope=clients/braintree dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/braintree counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,031 INFO write scoped scope=clients/cashfree_payout dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/cashfree_payout counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,032 INFO write scoped scope=clients/dreamplug dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/dreamplug counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,032 INFO write scoped scope=clients/easebuzz_payin dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/easebuzz_payin counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,032 INFO write scoped scope=clients/escrow_treasury dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/escrow_treasury counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,032 INFO write scoped scope=clients/first_pay dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/first_pay counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,032 INFO write scoped scope=clients/flipkart_distribution dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/flipkart_distribution counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,033 INFO write scoped scope=clients/getsupp dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/getsupp counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,033 INFO write scoped scope=clients/giftcard_reference_reports dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/giftcard_reference_reports counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,033 INFO write scoped scope=clients/gullak dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/gullak counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,033 INFO write scoped scope=clients/hyperwallet dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/hyperwallet counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,034 INFO write scoped scope=clients/india_post dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/india_post counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,034 INFO write scoped scope=clients/indusind_bank dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/indusind_bank counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,034 INFO write scoped scope=clients/maximize_pay dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/maximize_pay counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,034 INFO write scoped scope=clients/nearby dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/nearby counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,034 INFO write scoped scope=clients/onemg dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/onemg counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,035 INFO write scoped scope=clients/paynimo_payin dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/paynimo_payin counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,035 INFO write scoped scope=clients/paytm_giftcard dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/paytm_giftcard counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,035 INFO write scoped scope=clients/phonepe_giftcard dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/phonepe_giftcard counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,035 INFO write scoped scope=clients/pinelabs_pos dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/pinelabs_pos counts={'semantic_mappings': 2}
+2026-05-25 02:42:24,036 INFO write scoped scope=clients/red_giraffe dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/red_giraffe counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,036 INFO write scoped scope=clients/skrill dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/skrill counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,036 INFO write scoped scope=clients/smartr dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/smartr counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,036 INFO write scoped scope=clients/target dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/target counts={'semantic_mappings': 8}
+2026-05-25 02:42:24,040 INFO write scoped scope=clients/unknown dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/unknown counts={'cards': 53, 'edges': 105, 'future_context_gaps': 240, 'review_items': 5, 'semantic_mappings': 8}
+2026-05-25 02:42:24,040 INFO write scoped scope=clients/wallet_ledger dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/wallet_ledger counts={'semantic_mappings': 2}
+2026-05-25 02:42:24,040 INFO write scoped scope=clients/woohoo dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/woohoo counts={'semantic_mappings': 1}
+2026-05-25 02:42:24,041 INFO write scoped scope=clients/zeal_item_master dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/clients/zeal_item_master counts={'cards': 1, 'edges': 2, 'semantic_mappings': 1}
+2026-05-25 02:42:24,041 INFO write scoped scope=logistics/astrotalk_oda dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/astrotalk_oda counts={'cards': 2, 'edges': 6, 'semantic_mappings': 1}
+2026-05-25 02:42:24,042 INFO write scoped scope=logistics/astrotalk_service dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/astrotalk_service counts={'cards': 1}
+2026-05-25 02:42:24,042 INFO write scoped scope=logistics/bluedart dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/bluedart counts={'cards': 2, 'edges': 6, 'semantic_mappings': 4}
+2026-05-25 02:42:24,043 INFO write scoped scope=logistics/criticalog dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/criticalog counts={'cards': 1, 'edges': 3, 'semantic_mappings': 1}
+2026-05-25 02:42:24,048 INFO write scoped scope=logistics/delhivery dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/delhivery counts={'cards': 117, 'documents': 1, 'edges': 321, 'evidence': 6, 'review_items': 5, 'semantic_mappings': 5}
+2026-05-25 02:42:24,050 INFO write scoped scope=logistics/dtdc dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/dtdc counts={'cards': 56, 'documents': 1, 'edges': 141, 'evidence': 1, 'review_items': 2, 'semantic_mappings': 3}
+2026-05-25 02:42:24,052 INFO write scoped scope=logistics/ecom_express dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/ecom_express counts={'cards': 7, 'documents': 1, 'edges': 24, 'evidence': 1, 'review_items': 2}
+2026-05-25 02:42:24,055 INFO write scoped scope=logistics/ekart dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/ekart counts={'cards': 50, 'documents': 1, 'edges': 142, 'evidence': 1, 'review_items': 2, 'semantic_mappings': 4}
+2026-05-25 02:42:24,055 INFO write scoped scope=logistics/goswift dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/goswift counts={'cards': 1, 'edges': 3, 'semantic_mappings': 1}
+2026-05-25 02:42:24,056 INFO write scoped scope=logistics/ithink dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/ithink counts={'cards': 1, 'edges': 3, 'semantic_mappings': 1}
+2026-05-25 02:42:24,056 INFO write scoped scope=logistics/kwikship dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/kwikship counts={'cards': 1, 'edges': 3, 'semantic_mappings': 1}
+2026-05-25 02:42:24,062 INFO write scoped scope=logistics/logistics_domain dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/logistics_domain counts={'cards': 139, 'documents': 1, 'edges': 350, 'review_items': 1}
+2026-05-25 02:42:24,071 INFO write scoped scope=logistics/logistics_reconciliation_patterns dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/logistics_reconciliation_patterns counts={'cards': 263, 'documents': 1, 'edges': 684, 'review_items': 1}
+2026-05-25 02:42:24,072 INFO write scoped scope=logistics/shadowfax dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/shadowfax counts={'cards': 7, 'documents': 1, 'edges': 23, 'evidence': 1, 'review_items': 2, 'semantic_mappings': 1}
+2026-05-25 02:42:24,080 INFO write scoped scope=logistics/shiprocket dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/shiprocket counts={'cards': 181, 'documents': 2, 'edges': 539, 'evidence': 1, 'review_items': 4, 'semantic_mappings': 2}
+2026-05-25 02:42:24,080 INFO write scoped scope=logistics/shiprocket_order_source dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/shiprocket_order_source counts={'cards': 2, 'edges': 8, 'semantic_mappings': 3}
+2026-05-25 02:42:24,081 INFO write scoped scope=logistics/shipway dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/shipway counts={'cards': 1, 'edges': 3, 'semantic_mappings': 1}
+2026-05-25 02:42:24,083 INFO write scoped scope=logistics/xpressbees dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/xpressbees counts={'cards': 36, 'documents': 1, 'edges': 104, 'evidence': 6, 'review_items': 5, 'semantic_mappings': 6}
+2026-05-25 02:42:24,084 INFO write scoped scope=logistics/yolojet dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/logistics/yolojet counts={'cards': 1, 'edges': 4, 'semantic_mappings': 1}
+2026-05-25 02:42:24,100 INFO write scoped scope=marketplace/ajio dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/ajio counts={'cards': 399, 'documents': 1, 'edges': 1369, 'semantic_mappings': 2}
+2026-05-25 02:42:24,116 INFO write scoped scope=marketplace/amazon dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/amazon counts={'cards': 366, 'documents': 1, 'edges': 1005, 'evidence': 47, 'review_items': 8, 'semantic_mappings': 24, 'sql_patterns': 37}
+2026-05-25 02:42:24,117 INFO write scoped scope=marketplace/amazon_pay dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/amazon_pay counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,117 INFO write scoped scope=marketplace/blitz dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/blitz counts={'cards': 1, 'edges': 2, 'semantic_mappings': 3}
+2026-05-25 02:42:24,118 INFO write scoped scope=marketplace/cred dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/cred counts={'cards': 1, 'edges': 2, 'semantic_mappings': 3}
+2026-05-25 02:42:24,118 INFO write scoped scope=marketplace/firstcry dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/firstcry counts={'cards': 1, 'edges': 2, 'semantic_mappings': 1}
+2026-05-25 02:42:24,133 INFO write scoped scope=marketplace/flipkart dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/flipkart counts={'cards': 309, 'documents': 1, 'edges': 941, 'evidence': 20, 'review_items': 8, 'semantic_mappings': 7, 'sql_patterns': 30}
+2026-05-25 02:42:24,154 INFO write scoped scope=marketplace/healthkart dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/healthkart counts={'cards': 437, 'documents': 1, 'edges': 1390, 'semantic_mappings': 1}
+2026-05-25 02:42:24,169 INFO write scoped scope=marketplace/jiomart dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/jiomart counts={'cards': 393, 'documents': 1, 'edges': 1053, 'evidence': 126, 'review_items': 5, 'semantic_mappings': 4, 'sql_patterns': 29}
+2026-05-25 02:42:24,169 INFO write scoped scope=marketplace/klip dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/klip counts={'cards': 1, 'edges': 2, 'semantic_mappings': 3}
+2026-05-25 02:42:24,183 INFO write scoped scope=marketplace/limeroad dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/limeroad counts={'cards': 312, 'documents': 1, 'edges': 404, 'review_items': 3, 'semantic_mappings': 1, 'sql_patterns': 19}
+2026-05-25 02:42:24,183 INFO write scoped scope=marketplace/marketplace_transactions dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/marketplace_transactions counts={'cards': 1, 'edges': 3, 'semantic_mappings': 3}
+2026-05-25 02:42:24,220 INFO write scoped scope=marketplace/meesho dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/meesho counts={'cards': 731, 'documents': 1, 'edges': 3525, 'evidence': 141, 'review_items': 35, 'semantic_mappings': 4}
+2026-05-25 02:42:24,239 INFO write scoped scope=marketplace/myntra dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/myntra counts={'cards': 557, 'documents': 1, 'edges': 1609, 'evidence': 14, 'review_items': 10, 'semantic_mappings': 7, 'sql_patterns': 13}
+2026-05-25 02:42:24,268 INFO write scoped scope=marketplace/nykaa dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/nykaa counts={'cards': 798, 'documents': 1, 'edges': 2114, 'evidence': 15, 'review_items': 10, 'semantic_mappings': 4, 'sql_patterns': 28}
+2026-05-25 02:42:24,270 INFO write scoped scope=marketplace/nykaa_fashion dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/nykaa_fashion counts={'cards': 47, 'edges': 27}
+2026-05-25 02:42:24,311 INFO write scoped scope=marketplace/snapdeal dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/snapdeal counts={'cards': 840, 'documents': 1, 'edges': 4068, 'evidence': 151, 'review_items': 55, 'semantic_mappings': 4, 'sql_patterns': 50}
+2026-05-25 02:42:24,324 INFO write scoped scope=marketplace/target_plus dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/target_plus counts={'cards': 286, 'documents': 1, 'edges': 795, 'evidence': 144, 'review_items': 5, 'semantic_mappings': 1, 'sql_patterns': 29}
+2026-05-25 02:42:24,336 INFO write scoped scope=marketplace/tatacliq dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/tatacliq counts={'cards': 272, 'documents': 1, 'edges': 633, 'evidence': 74, 'review_items': 5, 'semantic_mappings': 5, 'sql_patterns': 24}
+2026-05-25 02:42:24,351 INFO write scoped scope=marketplace/walmart dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/marketplace/walmart counts={'cards': 282, 'documents': 1, 'edges': 941, 'evidence': 14, 'review_items': 3, 'semantic_mappings': 7, 'sql_patterns': 19}
+2026-05-25 02:42:24,352 INFO write scoped scope=oms/petpooja dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/petpooja counts={'cards': 1}
+2026-05-25 02:42:24,352 INFO write scoped scope=oms/petpooja_pos dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/petpooja_pos counts={'cards': 1, 'edges': 2, 'semantic_mappings': 1}
+2026-05-25 02:42:24,352 INFO write scoped scope=oms/posist dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/posist counts={'cards': 1}
+2026-05-25 02:42:24,355 INFO write scoped scope=oms/posist_pos dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/posist_pos counts={'cards': 1, 'edges': 2, 'semantic_mappings': 1}
+2026-05-25 02:42:24,360 INFO write scoped scope=oms/shopify dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/shopify counts={'cards': 171, 'documents': 1, 'edges': 116, 'evidence': 12, 'semantic_mappings': 2, 'sql_patterns': 18}
+2026-05-25 02:42:24,361 INFO write scoped scope=oms/shopify_d2c dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/shopify_d2c counts={'cards': 4, 'edges': 21, 'semantic_mappings': 8}
+2026-05-25 02:42:24,362 INFO write scoped scope=oms/unicommerce_oms dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/oms/unicommerce_oms counts={'cards': 12, 'edges': 44, 'semantic_mappings': 4}
+2026-05-25 02:42:24,363 INFO write scoped scope=payments/affirm dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/affirm counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,363 INFO write scoped scope=payments/afterpay dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/afterpay counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,364 INFO write scoped scope=payments/apple_play dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/apple_play counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,365 INFO write scoped scope=payments/cashfree dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/cashfree counts={'cards': 4, 'edges': 15, 'semantic_mappings': 4}
+2026-05-25 02:42:24,366 INFO write scoped scope=payments/easebuzz dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/easebuzz counts={'cards': 1, 'edges': 3, 'semantic_mappings': 3}
+2026-05-25 02:42:24,366 INFO write scoped scope=payments/flex dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/flex counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,367 INFO write scoped scope=payments/gokwik dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/gokwik counts={'cards': 1, 'edges': 4, 'semantic_mappings': 1}
+2026-05-25 02:42:24,367 INFO write scoped scope=payments/google_play dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/google_play counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,368 INFO write scoped scope=payments/klarna dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/klarna counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,368 INFO write scoped scope=payments/navi dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/navi counts={'cards': 2, 'edges': 4, 'semantic_mappings': 1}
+2026-05-25 02:42:24,369 INFO write scoped scope=payments/payglocal dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/payglocal counts={'cards': 1}
+2026-05-25 02:42:24,369 INFO write scoped scope=payments/payglocal_global dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/payglocal_global counts={'cards': 1, 'edges': 3, 'semantic_mappings': 1}
+2026-05-25 02:42:24,416 INFO write scoped scope=payments/payment_gateway dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/payment_gateway counts={'cards': 1164, 'documents': 1, 'edges': 2480, 'evidence': 25, 'review_items': 14, 'sql_patterns': 16}
+2026-05-25 02:42:24,418 INFO write scoped scope=payments/paypal dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/paypal counts={'cards': 6, 'edges': 26, 'semantic_mappings': 2}
+2026-05-25 02:42:24,419 INFO write scoped scope=payments/paytm dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/paytm counts={'cards': 2, 'edges': 6, 'semantic_mappings': 3}
+2026-05-25 02:42:24,420 INFO write scoped scope=payments/payu dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/payu counts={'cards': 1, 'edges': 3, 'semantic_mappings': 4}
+2026-05-25 02:42:24,421 INFO write scoped scope=payments/phonepe dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/phonepe counts={'cards': 4, 'edges': 13, 'semantic_mappings': 3}
+2026-05-25 02:42:24,425 INFO write scoped scope=payments/razorpay dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/razorpay counts={'cards': 6, 'edges': 26, 'semantic_mappings': 5}
+2026-05-25 02:42:24,425 INFO write scoped scope=payments/shopify_payments dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/shopify_payments counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,426 INFO write scoped scope=payments/sika dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/sika counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,426 INFO write scoped scope=payments/simpl dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/simpl counts={'cards': 2, 'edges': 4}
+2026-05-25 02:42:24,427 INFO write scoped scope=payments/snapmint dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/snapmint counts={'cards': 1, 'edges': 4, 'semantic_mappings': 3}
+2026-05-25 02:42:24,427 INFO write scoped scope=payments/stripe dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/stripe counts={'cards': 2, 'edges': 6}
+2026-05-25 02:42:24,428 INFO write scoped scope=payments/tata_digital dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/payments/tata_digital counts={'cards': 2, 'edges': 4, 'semantic_mappings': 1}
+2026-05-25 02:42:24,454 INFO write scoped scope=wms/increff dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/wms/increff counts={'cards': 407, 'documents': 1, 'edges': 1429, 'evidence': 91, 'review_items': 9, 'sql_patterns': 19}
+2026-05-25 02:42:24,455 INFO write scoped scope=wms/increff_wms dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/wms/increff_wms counts={'cards': 3, 'edges': 11, 'semantic_mappings': 3}
+2026-05-25 02:42:24,472 INFO write scoped scope=wms/unicommerce dir=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/scoped/platform_type/wms/unicommerce counts={'cards': 392, 'documents': 2, 'edges': 919, 'evidence': 15, 'semantic_mappings': 2, 'sql_patterns': 23}
+2026-05-25 02:42:24,472 INFO write scoped view done view=platform_type
+2026-05-25 02:42:24,499 INFO wrote manifest path=/Users/kvsnnpavan/Documents/zenstatement/recon_repo/processed_kb_docs/cleaned/manifest.json
+2026-05-25 02:42:24,499 INFO finished cleaned_v2 ingestion parse_errors=0 dangling_edges=138

@@ -1,0 +1,119 @@
+{
+  "aliases": [
+    "gross sales",
+    "gross revenue",
+    "GMV",
+    "topline"
+  ],
+  "benchmarks": {
+    "oms_total_context": "₹59,69,978 gross sales across 11,503 OMS rows in source summary",
+    "settlement_delivered_context": "₹48,61,346 charged amount for Delivered forward settlement rows in source status breakdown",
+    "source": "docx section 9 and healthkart_oms / healthkart_settlement summaries"
+  },
+  "business_definition": "Tax-inclusive customer charged amount for HealthKart forward sales.",
+  "canonical_formula_pattern": "See vendor-specific metric_implementation and formula_template cards; this business metric uses colloquial aliases for user query matching.",
+  "canonical_id": "metric.gross_sales",
+  "canonical_name": "Gross Sales",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Gross Sales",
+    "GMV",
+    "gross merchandise value",
+    "topline",
+    "sales value",
+    "customer selling price"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_filter": "transaction_type = 'forward'",
+  "default_grain": "created_date or settlement_date depending source table",
+  "default_unit": "INR",
+  "description": "Tax-inclusive customer charged amount for HealthKart forward sales.",
+  "display_name": "Gross GMV (Forward Sales)",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.healthkart.overview",
+    "evidence.meesho.7_1_forward_gmv_summary",
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees",
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.benchmark_context",
+    "evidence.nykaa.manifest_cleanup_v9",
+    "evidence.snapdeal.7_2_monthly_gmv_trend",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_1_forward_gmv_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": true,
+  "implementation_ids": [
+    "metric_impl.meesho.brand_gmv_from_sales",
+    "metric_impl.meesho.brand_level_gmv",
+    "metric_impl.meesho.forward_gmv_summary",
+    "metric_impl.meesho.forward_vs_reverse_net_gmv",
+    "metric_impl.meesho.gross_gmv_forward_sales",
+    "metric_impl.nykaa_oms.gross_sales_forward",
+    "metric_impl.snapdeal.gross_gmv",
+    "metric_impl.snapdeal.monthly_gmv_trend",
+    "metric_implementation.healthkart.gross_sales.00",
+    "metric_implementation.healthkart.gross_sales.10",
+    "metric_implementation.healthkart.gross_sales_delivered_only.13",
+    "metric_implementation.myntra_oms.gross_sales",
+    "metric_implementation.myntra_settlement.gross_sales_charged_amount"
+  ],
+  "marketplace_only": true,
+  "metric_family": "orders",
+  "metric_key": "gross_sales",
+  "metric_pattern": "sum_charged_amount",
+  "name": "Gross Sales",
+  "platform_agnostic": true,
+  "platform_agnostic_name": "Gross Sales",
+  "review_status": "accepted",
+  "scope": "HealthKart marketplace metric implemented by HealthKart-specific metric_implementation cards; not tenant/account binding.",
+  "source_card_id": "metric.gross_sales",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md",
+    "/mnt/data/Meesho Recon Doc.docx",
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx",
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx",
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5428,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+    "raw/cleaned_v2/marketplace/snapdeal_marketplace.md"
+  ],
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Generic marketplace metric for gross sales. Use colloquial aliases for user query matching and platform-specific implementation cards for Myntra SQL semantics.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "HealthKart",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

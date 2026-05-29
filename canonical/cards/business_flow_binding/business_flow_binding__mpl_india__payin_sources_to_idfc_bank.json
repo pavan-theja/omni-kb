@@ -1,0 +1,110 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.mpl_india.idfc_bank.primary.idfc_bank",
+    "account_data_binding.mpl_india.razorpay_payin.primary.razorpay_payin",
+    "account_data_binding.mpl_india.cashfree_payin.primary.cashfree_payin",
+    "account_data_binding.mpl_india.paytm_payin.primary.paytm_payin",
+    "account_data_binding.mpl_india.phonepe_payin.primary.phonepe_payin",
+    "account_data_binding.mpl_india.amazon_payin.primary.amazon_payin",
+    "account_data_binding.mpl_india.rbl_payin.primary.rbl_oms_payin"
+  ],
+  "active": true,
+  "binding_name": "MPL India Pay-in Sources to IDFC Bank",
+  "binding_type": "bank_reconciliation_flow",
+  "business_process_ids": [
+    "business_process.gateway_settlement_to_bank"
+  ],
+  "business_scope_set_id": "business_scope_set.mpl_india.bank_reconciliation",
+  "canonical_id": "business_flow_binding.mpl_india.payin_sources_to_idfc_bank",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/mpl_india.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mpl_india.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_ingest.idfc_bank",
+    "table.zs_observe.amazon_payin",
+    "table.zs_observe.cashfree_payin",
+    "table.zs_observe.paytm_payin",
+    "table.zs_observe.phonepe_payin",
+    "table.zs_observe.razorpay_payin",
+    "table.zs_observe.rbl_oms_payin"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.mpl_india.mpl",
+  "money_flow_paths": [
+    "payin_gateway_to_bank"
+  ],
+  "name": "Payin Sources To Idfc Bank",
+  "notes": [
+    "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+  ],
+  "package_id": "mpl_india_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.mpl_india.idfc_bank.primary",
+      "required": true,
+      "role": "bank_statement_source"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_india.razorpay_payin.primary",
+      "required": false,
+      "role": "payin_source"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_india.cashfree_payin.primary",
+      "required": false,
+      "role": "payin_source"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_india.paytm_payin.primary",
+      "required": false,
+      "role": "payin_source"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_india.phonepe_payin.primary",
+      "required": false,
+      "role": "payin_source"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_india.amazon_payin.primary",
+      "required": false,
+      "role": "payin_source"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_india.rbl_payin.primary",
+      "required": false,
+      "role": "direct_bank_payin_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.gateway_to_bank"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "high",
+  "source_documents": [
+    "MPL India.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "payment_gateway.md",
+    "bank_statement.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mpl_india.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.mpl_india",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

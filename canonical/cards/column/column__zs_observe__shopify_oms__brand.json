@@ -1,0 +1,55 @@
+{
+  "canonical_id": "column.zs_observe.shopify_oms.brand",
+  "card_type": "column",
+  "column_name": "brand",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Brand name.",
+  "display_name": "brand",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.schema.oms.001",
+    "ev.shopify.schema.extended.001",
+    "ev.shopify.data_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.schema.oms.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 1183
+    },
+    {
+      "evidence_id": "ev.shopify.schema.extended.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 1183
+    },
+    {
+      "evidence_id": "ev.shopify.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 1183
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "brand",
+  "review_status": "accepted",
+  "semantic_role": "product_attribute",
+  "source_card_id": "column.zs_observe.shopify_oms.brand",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1183,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.shopify_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

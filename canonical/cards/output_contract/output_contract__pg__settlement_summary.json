@@ -1,0 +1,81 @@
+{
+  "canonical_id": "output_contract.pg.settlement_summary",
+  "card_type": "output_contract",
+  "confidence": "inferred",
+  "contract_name": "Settlement summary",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Settlement summary",
+  "display_guidance": "preserve currency and source-specific IDs; mask PII",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 54352
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_output_shape": {
+    "reason": "string",
+    "status": "failed_or_partial",
+    "unresolved_items": "array"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Settlement summary",
+  "optional_sections": [
+    "assumptions",
+    "review_items",
+    "source_citations"
+  ],
+  "output_type": "analytical",
+  "recommended_fields": [
+    "platform",
+    "payment_mode",
+    "status"
+  ],
+  "record_grouping": "by reconciliation unit or requested analytical grain",
+  "required_fields": [
+    "settlement_id",
+    "settlement_date",
+    "currency",
+    "gross_amount",
+    "fee_amount",
+    "tax_amount",
+    "net_settlement_amount",
+    "row_count"
+  ],
+  "required_sections": [
+    "summary",
+    "metrics",
+    "source_caveats"
+  ],
+  "review_status": "accepted",
+  "schema": {
+    "records": "array",
+    "summary": "object"
+  },
+  "sorting_guidance": "largest variance first for reconciliation; date ascending for time series",
+  "source_card_id": "output_contract.pg.settlement_summary",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 54352,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

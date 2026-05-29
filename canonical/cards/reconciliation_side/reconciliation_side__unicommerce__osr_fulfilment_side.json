@@ -1,0 +1,56 @@
+{
+  "canonical_id": "reconciliation_side.unicommerce.osr_fulfilment_side",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/wms/unicommerce_operations.md.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.033.3_schema_details_49_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.033.3_schema_details_49_columns",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12286
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Osr Fulfilment Side",
+  "optional_fields": [
+    "side_role",
+    "source_table",
+    "key_columns",
+    "amount_columns",
+    "status_columns",
+    "filter_columns",
+    "pre_aggregation"
+  ],
+  "review_status": "ready",
+  "side_name": "OSR fulfilment side",
+  "side_role": "actual_or_target",
+  "source_card_id": "reconciliation_side.unicommerce.osr_fulfilment_side",
+  "source_columns": [
+    "order_id",
+    "sku_id",
+    "order_status",
+    "other_id",
+    "shipping_method",
+    "mrp"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12286,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.unicommerce_order_sales_report",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

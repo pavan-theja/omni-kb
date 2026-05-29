@@ -1,0 +1,44 @@
+{
+  "applicable_tables": [
+    "table.zs_observe.walmart_settlement"
+  ],
+  "canonical_id": "formula_template.walmart.mpf_tax_identity",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.business_model.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.business_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4075
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "charged_amount = charged_amount_excluding_tax + total_tax; marketplace_withheld_tax mirrors tax withheld with sign context",
+  "formula_key": "mpf_tax_identity",
+  "name": "Walmart MPF tax identity",
+  "notes": "Walmart MPF tax identity",
+  "review_status": "accepted",
+  "scope": "marketplace_semantic_formula",
+  "sign_semantics": "Use total_tax for buyer tax collected and marketplace_withheld_tax for withheld settlement sign semantics",
+  "source_card_id": "formula_template.walmart.mpf_tax_identity",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4075,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.increff.9_6_monthly_dispatch_trend",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "9.6 Monthly Dispatch Trend",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.026.9_6_monthly_dispatch_trend"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.026.9_6_monthly_dispatch_trend",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 9459
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "9.6 Monthly Dispatch Trend",
+  "natural_language_patterns": [
+    "9.6 Monthly Dispatch Trend"
+  ],
+  "output_contract_id": "output_contract.increff.operations_metric_summary",
+  "primary_metrics": [],
+  "required_rules": [
+    "rule.increff.active_filter",
+    "rule.increff.completed_sales_revenue_filter",
+    "rule.increff.sales_created_date_cast"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.increff.9_6_monthly_dispatch_trend",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9459,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.increff_sales"
+  ],
+  "sql_ref": "sql_pattern.increff.9_6_monthly_dispatch_trend",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

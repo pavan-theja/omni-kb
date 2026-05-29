@@ -1,0 +1,49 @@
+{
+  "applies_to": [
+    "metric.settlement_cycle_days",
+    "metric.fixed_fee",
+    "column.settlement.tier"
+  ],
+  "canonical_id": "rule.flipkart.seller_tier_guidance_only",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Seller tier affects fixed-fee level and payout speed conceptually, but the DOCX does not identify a reliable seller-tier schema column; do not build seller-tier process cards or tier-specific metric implementations from this markdown alone.",
+  "deterministic_action": "keep seller-tier as contextual guidance/review item unless an explicit seller-tier source column is supplied",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.seller_tier"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.seller_tier",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7238
+    }
+  ],
+  "exceptions": [
+    "external runtime account scope or a later schema source can bind seller tier"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Flipkart seller-tier guidance only",
+  "review_status": "accepted",
+  "rule_name": "seller_tier_guidance_only",
+  "rule_statement": "Seller tier affects fixed-fee level and payout speed conceptually, but the DOCX does not identify a reliable seller-tier schema column; do not build seller-tier process cards or tier-specific metric implementations from this markdown alone.",
+  "rule_type": "benchmark_scope_guidance",
+  "severity": "medium",
+  "source_card_id": "rule.flipkart.seller_tier_guidance_only",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7238,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

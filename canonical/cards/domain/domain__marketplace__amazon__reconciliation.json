@@ -1,0 +1,55 @@
+{
+  "candidate_notes": "OMS-settlement, settlement-disbursement, fee preview-actual fee, returns-settlement",
+  "canonical_id": "domain.marketplace.amazon.reconciliation",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain_key": "reconciliation",
+  "domain_scope": "OMS-settlement, settlement-disbursement, fee preview-actual fee, returns-settlement",
+  "evidence_ids": [
+    "ev.amazon.recon.oms_settlement.001",
+    "ev.amazon.recon.settlement_disbursement.001",
+    "ev.amazon.recon.fee_preview_actual.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.oms_settlement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1303
+    },
+    {
+      "evidence_id": "ev.amazon.recon.settlement_disbursement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1303
+    },
+    {
+      "evidence_id": "ev.amazon.recon.fee_preview_actual.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1303
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon marketplace-internal reconciliation",
+  "out_of_scope_guardrail": "no tenant/account/logistics/bank/ERP/statutory filing card creation",
+  "platform_context": "platform_context.amazon.in",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.amazon.reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1303,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

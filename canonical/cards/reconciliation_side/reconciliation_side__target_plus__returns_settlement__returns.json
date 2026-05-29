@@ -1,0 +1,60 @@
+{
+  "amount_columns": [
+    "column.zs_observe.target_returns.charged_amount"
+  ],
+  "canonical_id": "reconciliation_side.target_plus.returns_settlement.returns",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_columns": [
+    "column.zs_observe.target_returns.returned_date",
+    "column.zs_observe.target_returns.created_date"
+  ],
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_2_returns_settlement_refund_match"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_2_returns_settlement_refund_match",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10182
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true",
+    "internal_txn_type = reverse"
+  ],
+  "grain": "return item_id/event-line",
+  "key_columns": [
+    "column.zs_observe.target_returns.item_id",
+    "column.zs_observe.target_returns.order_id",
+    "column.zs_observe.target_returns.tcin"
+  ],
+  "name": "Returns",
+  "profile_id": "reconciliation_profile.target_plus.returns_settlement",
+  "review_status": "ready",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.target_plus.returns_settlement.returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10182,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_table_id": "table.zs_observe.target_returns",
+  "status": "draft",
+  "status_columns": [
+    "column.zs_observe.target_returns.internal_txn_type",
+    "column.zs_observe.target_returns.transaction_type"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

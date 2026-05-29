@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "International context is evidence-backed, but amazon_returns active analytics remain gated by the returns availability rule.",
+  "canonical_id": "platform_context.amazon.international",
+  "card_type": "platform_context",
+  "confidence": "curated",
+  "country_or_region": "US; Canada; France; Spain; International",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "USD; CAD; international currencies",
+  "data_availability": "amazon_returns currently inactive; international OMS/settlement present as mentioned in DOCX",
+  "description": "platform_context card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.segmentation.001",
+    "ev.amazon_returns.purpose.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.segmentation.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1092
+    },
+    {
+      "evidence_id": "ev.amazon_returns.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1092
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon International marketplace context",
+  "platform": "platform.amazon",
+  "review_status": "accepted",
+  "source_card_id": "platform_context.amazon.international",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1092,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

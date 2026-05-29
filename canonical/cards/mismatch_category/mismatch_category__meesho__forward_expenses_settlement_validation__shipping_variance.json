@@ -1,0 +1,48 @@
+{
+  "business_meaning": "Forward expense shipping does not match settlement freight deduction.",
+  "canonical_id": "mismatch_category.meesho.forward_expenses_settlement_validation.shipping_variance",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Forward expense shipping does not match settlement freight deduction.",
+  "detection_logic": "ROUND(f.taxable_shipping - ABS(s.freight_charge), 2) from source SQL.",
+  "display_name": "forward expenses settlement validation — shipping variance",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.037.8_reconciliation_use_cases",
+    "evidence.meesho.043.9_data_quality_observations_and_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.037.8_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18519
+    },
+    {
+      "evidence_id": "evidence.meesho.043.9_data_quality_observations_and_known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18519
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "shipping_variance",
+  "name": "forward expenses settlement validation — shipping variance",
+  "profile_id": "reconciliation_profile.meesho.forward_expenses_settlement_validation",
+  "review_priority": "high",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.meesho.forward_expenses_settlement_validation.shipping_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18519,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

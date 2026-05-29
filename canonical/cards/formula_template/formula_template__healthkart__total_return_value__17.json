@@ -1,0 +1,55 @@
+{
+  "aggregation_order": "Follow SQL pattern and pre-aggregation rules in source.",
+  "canonical_id": "formula_template.healthkart.total_return_value.17",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6101
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "SELECT\n  COUNT(*) AS return_count,\n  SUM(quantity) AS returned_qty,\n  SUM(charged_amount) AS return_value\nFROM zs_observe.healthkart_return\nWHERE is_active = true\n  AND transaction_type = 'reverse'",
+  "input_variables": [
+    "healthkart_return",
+    "return_count",
+    "quantity",
+    "returned_qty",
+    "charged_amount",
+    "return_value",
+    "zs_observe",
+    "is_active",
+    "transaction_type"
+  ],
+  "name": "HealthKart Total Return Value formula",
+  "null_handling": "Not specified unless stated in SQL/source; review if material.",
+  "review_status": "ready",
+  "sign_rules": "Use source sign semantics; negative rows generally represent reversals/deductions when documented.",
+  "source_card_id": "formula_template.healthkart.total_return_value.17",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6101,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

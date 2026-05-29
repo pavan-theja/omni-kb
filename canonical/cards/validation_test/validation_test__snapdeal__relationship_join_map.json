@@ -1,0 +1,40 @@
+{
+  "canonical_id": "validation_test.snapdeal.relationship_join_map",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Check generated joins use DOCX join keys and do not use seller_code to force OMS↔commission matching.",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 20835
+    }
+  ],
+  "expected_result": "pass",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Check generated joins use DOCX join keys and do not use seller_code to force OMS↔commission matching.",
+  "review_status": "ready",
+  "source_card_id": "validation_test.snapdeal.relationship_join_map",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 20835,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "targets_rule_id": "rule.snapdeal.seller_code_not_cross_table_join_key",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_type": "parser_semantic_guardrail"
+}

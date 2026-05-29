@@ -1,0 +1,64 @@
+{
+  "active": true,
+  "canonical_id": "account_data_binding.aza_fashions.aza_own_platform.primary.aza_sales_dump",
+  "card_type": "account_data_binding",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "account_data_binding card from raw/cleaned_v2/clients/aza_fashions.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/aza_fashions.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Aza Sales Dump",
+  "notes": [
+    "Bind platform_account.aza_fashions.aza_own_platform.primary to table.zs_observe.aza_sales_dump using client-level group_id and group_level_id scope filters.",
+    "Runtime filters are held in Account Data Binding scope_keys. group_id and group_level_id are not stored as universal table, metric, process, or reconciliation-card properties."
+  ],
+  "package_id": "aza_fashions_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_id": "platform_account.aza_fashions.aza_own_platform.primary",
+  "review_status": "unreviewed",
+  "scope_keys": [
+    {
+      "business_key": "group_id",
+      "column": "group_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 56
+    },
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 203
+    }
+  ],
+  "source_confidence": "curated",
+  "source_config_text": "AZA own platform: Sales dump, Return dump, Wallet ledger",
+  "source_documents": [
+    "Aza Fashions Private Limited.docx",
+    "Client Tables - Shopify.md",
+    "Cognee KB Design v4.md",
+    "delhivery_logistics.md",
+    "dtdc_logistics.md",
+    "ekart_logistics.md",
+    "payment_gateway.md",
+    "shiprocket_logistics_aggregator.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/aza_fashions.json",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.aza_sales_dump",
+  "table_support_level": "client_table_evidence",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

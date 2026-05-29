@@ -1,0 +1,52 @@
+{
+  "allowed_usage": "cashflow inclusion by settlement_id/settlement_date/transaction_type/internal_txn_type",
+  "canonical_id": "matching_logic.myntra.non_order_no_oms_join",
+  "canonical_name": "non_order_no_oms_join",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.relationships",
+    "evidence.myntra.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11136
+    },
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11136
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "forbidden_join_targets": [
+    "table.zs_observe.myntra_oms",
+    "table.zs_observe.myntra_reverse"
+  ],
+  "logic_type": "join_guardrail",
+  "marketplace_only": true,
+  "name": "non_order_no_oms_join",
+  "review_status": "unreviewed",
+  "source_card_id": "matching_logic.myntra.non_order_no_oms_join",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11136,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Non-order settlement rows are not tied to specific orders and must not be joined to OMS or reverse tables.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

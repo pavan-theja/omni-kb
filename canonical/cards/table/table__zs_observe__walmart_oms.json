@@ -1,0 +1,88 @@
+{
+  "canonical_id": "table.zs_observe.walmart_oms",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.walmart_oms.charged_amount",
+    "column.zs_observe.walmart_oms.created_at",
+    "column.zs_observe.walmart_oms.created_date",
+    "column.zs_observe.walmart_oms.currency_type",
+    "column.zs_observe.walmart_oms.deleted_at",
+    "column.zs_observe.walmart_oms.destination_city",
+    "column.zs_observe.walmart_oms.destination_state",
+    "column.zs_observe.walmart_oms.group_level_id",
+    "column.zs_observe.walmart_oms.hsn",
+    "column.zs_observe.walmart_oms.internal_txn_type",
+    "column.zs_observe.walmart_oms.is_active",
+    "column.zs_observe.walmart_oms.item_id",
+    "column.zs_observe.walmart_oms.item_name",
+    "column.zs_observe.walmart_oms.metadata_2",
+    "column.zs_observe.walmart_oms.mp_sin",
+    "column.zs_observe.walmart_oms.order_id",
+    "column.zs_observe.walmart_oms.order_status",
+    "column.zs_observe.walmart_oms.parent_id",
+    "column.zs_observe.walmart_oms.quantity",
+    "column.zs_observe.walmart_oms.shipped_date",
+    "column.zs_observe.walmart_oms.sku_id",
+    "column.zs_observe.walmart_oms.source_zipcode",
+    "column.zs_observe.walmart_oms.txn_uuid",
+    "column.zs_observe.walmart_oms.unique_id",
+    "column.zs_observe.walmart_oms.unique_value",
+    "column.zs_observe.walmart_oms.updated_at",
+    "column.zs_observe.walmart_oms.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_column": "created_date",
+  "description": "table card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "documented_scope_values": {
+    "group_level_id": [
+      22
+    ]
+  },
+  "domain": "domain.marketplace.walmart.orders",
+  "evidence_ids": [
+    "ev.walmart_oms.schema.001",
+    "ev.walmart.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_oms.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 702
+    },
+    {
+      "evidence_id": "ev.walmart.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 702
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_observe.walmart_oms",
+  "grain": "one order line item / SKU purchase row",
+  "mandatory_filters": "is_active = true; group_level_id = 22; for delivered sales use order_status = 'DELIVERED' AND internal_txn_type = 'sales'",
+  "name": "zs_observe.walmart_oms",
+  "notes": "zs_observe.walmart_oms",
+  "optional_filters": "currency_type = 'USD' for clean financial rows; LENGTH(destination_state)=2 for geography",
+  "platform_context": "platform_context.walmart.us",
+  "quality_notes": "currency_type = 'USD' for clean financial rows; LENGTH(destination_state)=2 for geography",
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "scope": "marketplace source table",
+  "source_card_id": "table.zs_observe.walmart_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 702,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "walmart_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

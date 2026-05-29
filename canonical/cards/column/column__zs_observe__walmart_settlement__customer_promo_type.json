@@ -1,0 +1,43 @@
+{
+  "business_meaning": "Customer promotion type",
+  "canonical_id": "column.zs_observe.walmart_settlement.customer_promo_type",
+  "card_type": "column",
+  "column_name": "customer_promo_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Customer promotion type",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_settlement.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_settlement.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 2847
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "walmart_settlement.customer_promo_type",
+  "notes": "Customer promotion type",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "classification",
+  "source_card_id": "column.zs_observe.walmart_settlement.customer_promo_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2847,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.walmart_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

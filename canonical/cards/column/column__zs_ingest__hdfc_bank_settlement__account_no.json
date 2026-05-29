@@ -1,0 +1,55 @@
+{
+  "banking_only": true,
+  "business_meaning": "HDFC account number",
+  "candidate_notes": "HDFC account number",
+  "canonical_id": "column.zs_ingest.hdfc_bank_settlement.account_no",
+  "card_type": "column",
+  "column_name": "account_no",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "HDFC account number",
+  "direction_role": "",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.hdfc_bank_settlement.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.hdfc_bank_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 7992
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "",
+  "name": "hdfc_bank_settlement.account_no",
+  "numeric_quality": "not_applicable",
+  "review_status": "accepted",
+  "scope_guardrail": "column_only_not_platform_account_or_account_binding",
+  "semantic_roles": [
+    "counterparty_or_account_detail"
+  ],
+  "semantic_type": "descriptor",
+  "source_card_id": "column.zs_ingest.hdfc_bank_settlement.account_no",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_data_type": "Text",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7992,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_ingest.hdfc_bank_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

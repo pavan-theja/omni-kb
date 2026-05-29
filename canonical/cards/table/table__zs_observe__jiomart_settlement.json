@@ -1,0 +1,110 @@
+{
+  "business_purpose": "Event-based multi-row financial settlement ledger for TANVI Fitness / MYFITNESS group_level_id 26.",
+  "canonical_id": "table.zs_observe.jiomart_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.jiomart_settlement.account_book",
+    "column.zs_observe.jiomart_settlement.accountable_number",
+    "column.zs_observe.jiomart_settlement.accountable_type",
+    "column.zs_observe.jiomart_settlement.amount",
+    "column.zs_observe.jiomart_settlement.ancestry",
+    "column.zs_observe.jiomart_settlement.created_at",
+    "column.zs_observe.jiomart_settlement.created_at_1",
+    "column.zs_observe.jiomart_settlement.created_at_temp_old",
+    "column.zs_observe.jiomart_settlement.currency_type",
+    "column.zs_observe.jiomart_settlement.description",
+    "column.zs_observe.jiomart_settlement.document_number",
+    "column.zs_observe.jiomart_settlement.event",
+    "column.zs_observe.jiomart_settlement.event_temp_old",
+    "column.zs_observe.jiomart_settlement.group_level_id",
+    "column.zs_observe.jiomart_settlement.invoice_number",
+    "column.zs_observe.jiomart_settlement.is_active",
+    "column.zs_observe.jiomart_settlement.is_duplicated",
+    "column.zs_observe.jiomart_settlement.item_id",
+    "column.zs_observe.jiomart_settlement.number",
+    "column.zs_observe.jiomart_settlement.order_id",
+    "column.zs_observe.jiomart_settlement.other_id",
+    "column.zs_observe.jiomart_settlement.parent_id",
+    "column.zs_observe.jiomart_settlement.settled_amount",
+    "column.zs_observe.jiomart_settlement.settlement_date",
+    "column.zs_observe.jiomart_settlement.sheetname",
+    "column.zs_observe.jiomart_settlement.shipment_number",
+    "column.zs_observe.jiomart_settlement.transaction_type",
+    "column.zs_observe.jiomart_settlement.txn_uuid",
+    "column.zs_observe.jiomart_settlement.unique_id",
+    "column.zs_observe.jiomart_settlement.unique_id_1",
+    "column.zs_observe.jiomart_settlement.unique_value",
+    "column.zs_observe.jiomart_settlement.zen_sheet_name",
+    "column.zs_observe.jiomart_settlement.zen_status"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "2025-01-01 to 2025-12-31",
+  "description": "table card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "zs_observe.jiomart_settlement",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "documented_scope_values": {
+    "entity": "TANVI Fitness Pvt Ltd / MYFITNESS",
+    "group_level_id": 26
+  },
+  "evidence_ids": [
+    "ev.jiomart.settlement.1_table_overview",
+    "ev.jiomart.settlement.2_key_statistics",
+    "ev.jiomart.settlement.3_schema_details_40_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.1_table_overview",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 5689
+    },
+    {
+      "evidence_id": "ev.jiomart.settlement.2_key_statistics",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 5689
+    },
+    {
+      "evidence_id": "ev.jiomart.settlement.3_schema_details_40_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 5689
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "settlement_event_line; aggregate by order_id for per-order net",
+  "join_caveat": "Use order_id for OMS/returns joins; invoice_number format differs and document_number is mostly NULL.",
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 26",
+    "event IS NOT NULL for structured event analysis"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.jiomart.credit_debit_note_impact",
+    "metric_impl.jiomart.monthly_settlement_summary",
+    "metric_impl.jiomart.net_settled_revenue",
+    "metric_impl.jiomart.net_settlement_per_order",
+    "metric_impl.jiomart.tcs_reconciliation"
+  ],
+  "name": "zs_observe.jiomart_settlement",
+  "review_status": "ready",
+  "row_count_evidence": "237,129 total / 188,345 active",
+  "schema": "zs_observe",
+  "scope_caveats": "group_level_id/seller/entity/GSTIN values are columns/filters/caveats only; no tenant/group/account cards emitted.",
+  "semantic_domain_id": "domain.jiomart.settlement",
+  "source_card_id": "table.zs_observe.jiomart_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5689,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "jiomart_settlement",
+  "table_role": "settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

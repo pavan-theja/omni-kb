@@ -1,0 +1,48 @@
+{
+  "active": true,
+  "business_meaning": "Operational group from the Volans Uptown LLC client scope. Source identifies GROUP ID 9 and GROUP LEVEL ID 132; these are applied through Account Data Binding filters. Pure Americas-market client with no Indian marketplace, INR, or Indian logistics exposure.",
+  "canonical_id": "group.volans_uptown_llc.mensa_brands",
+  "card_type": "group",
+  "client_source_identifiers_note": "Source doc gives GROUP ID 9 and GROUP LEVEL ID 132; these are applied as Account Data Binding filters, not as universal Group properties.",
+  "confidence": "unknown",
+  "country_or_region": "United States primary, Canada, Brazil",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "USD",
+    "CAD",
+    "BRL"
+  ],
+  "default_currency": "USD",
+  "description": "Operational group from the Volans Uptown LLC client scope. Source identifies GROUP ID 9 and GROUP LEVEL ID 132; these are applied through Account Data Binding filters. Pure Americas-market client with no Indian marketplace, INR, or Indian logistics exposure.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/volans_uptown_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_code": "MENSA_BRANDS_VOLANS_UPTOWN",
+  "group_name": "Mensa Brands",
+  "group_type": "operational_unit",
+  "name": "Mensa Brands",
+  "package_id": "client_runtime_binding_pack.volans_uptown_llc.v0_1",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Uptown LLC.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_uptown_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.volans_uptown_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

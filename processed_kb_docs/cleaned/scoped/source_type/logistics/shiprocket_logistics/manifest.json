@@ -1,0 +1,45 @@
+{
+  "card_types": {
+    "column": 41,
+    "metric": 15,
+    "metric_implementation": 21,
+    "platform": 1,
+    "platform_context": 1,
+    "relationship": 6,
+    "table": 1,
+    "value_profile": 4
+  },
+  "counts": {
+    "cards": 90,
+    "documents": 1,
+    "edges": 268,
+    "evidence": 1,
+    "review_items": 3
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM": 1,
+    "BELONGS_TO_DOMAIN": 17,
+    "BELONGS_TO_PLATFORM": 1,
+    "BELONGS_TO_TABLE": 41,
+    "HAS_COLUMN": 41,
+    "HAS_IMPLEMENTATION": 21,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "HAS_RELATIONSHIP": 12,
+    "HAS_VALUE_PROFILE": 8,
+    "IMPLEMENTS_METRIC": 21,
+    "PROFILES_COLUMN": 4,
+    "PROFILES_TABLE": 4,
+    "SOURCED_FROM_PLATFORM": 1,
+    "SOURCE_TABLE": 6,
+    "TARGET_TABLE": 6,
+    "USES_COLUMN": 29,
+    "USES_FORMULA_TEMPLATE": 21,
+    "USES_SOURCE_COLUMN": 6,
+    "USES_TABLE": 21,
+    "USES_TARGET_COLUMN": 6
+  },
+  "scope": [
+    "logistics",
+    "shiprocket_logistics"
+  ]
+}

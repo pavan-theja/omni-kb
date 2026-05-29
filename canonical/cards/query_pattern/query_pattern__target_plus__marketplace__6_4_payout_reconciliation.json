@@ -1,0 +1,60 @@
+{
+  "canonical_id": "query_pattern.target_plus.marketplace.6_4_payout_reconciliation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus query pattern — 6.4 Payout Reconciliation",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_4_payout_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_4_payout_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10899
+    }
+  ],
+  "execution_constraints": [
+    "execution_constraint_set.target_plus.marketplace_parser_constraints"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "6.4 Payout Reconciliation",
+  "name": "Target Plus query pattern — 6.4 Payout Reconciliation",
+  "natural_language_patterns": [
+    "6.4 Payout Reconciliation",
+    "Target Plus 6.4 Payout Reconciliation"
+  ],
+  "output_contract_id": "output_contract.target_plus.reconciliation_status",
+  "primary_metric_id": "metric.target_plus.payout_batch_total",
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.target_plus.payout_batch"
+  ],
+  "required_filters": [
+    "rule.target_plus.active_filter",
+    "rule.target_plus.currency_label_usd_values",
+    "rule.target_plus.settlement_recency_gap",
+    "rule.target_plus.reverse_charge_not_return"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.target_plus.marketplace.6_4_payout_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10899,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.target_settlement"
+  ],
+  "sql_ref": "sql.target_plus.marketplace.6_4_payout_reconciliation",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,44 @@
+{
+  "canonical_id": "formula_template.tatacliq.return_rate",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq return rate formula",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6935
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "Return Rate = COUNT_IF(transaction_type = reverse) / COUNT_IF(transaction_type = forward) on active settlement rows.",
+  "name": "TataCliq return rate formula",
+  "parameters": [
+    "transaction_type",
+    "is_active"
+  ],
+  "review_status": "ready",
+  "sign_convention": "Count-based metric; no amount sign normalization required.",
+  "source_card_id": "formula_template.tatacliq.return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6935,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "percent",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

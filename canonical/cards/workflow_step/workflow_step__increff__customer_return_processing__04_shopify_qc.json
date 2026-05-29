@@ -1,0 +1,47 @@
+{
+  "canonical_id": "workflow_step.increff.customer_return_processing.04_shopify_qc",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "QC PASS/FAIL and qc_reject_reasons are populated only for Shopify D2C returns; marketplace returns have NULL QC values.",
+  "display_name": "QC PASS/FAIL and qc_reject_reasons are populated only for Shopify D2C returns; marketplace returns h",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.013.6_3_return_flow_customer_return"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.013.6_3_return_flow_customer_return",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 8593
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "QC PASS/FAIL and qc_reject_reasons are populated only for Shopify D2C returns; marketplace returns h",
+  "process_id": "business_process.increff.customer_return_processing",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.increff.customer_return_processing.04_shopify_qc",
+  "source_columns": [
+    "column.zs_observe.increff_returns.return_order_qc_status",
+    "column.zs_observe.increff_returns.qc_reject_reasons",
+    "column.zs_observe.increff_returns.sales_channel"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8593,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.increff_returns"
+  ],
+  "status": "draft",
+  "step_order": 4,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

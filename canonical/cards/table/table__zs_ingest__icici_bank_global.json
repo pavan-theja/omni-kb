@@ -1,0 +1,147 @@
+{
+  "amount_columns": [
+    "withdrawal_amt_inr",
+    "deposit_amt_inr",
+    "balance_inr",
+    "withdrawal_amount",
+    "deposit_amount",
+    "withdrawal_amt",
+    "deposit_amt",
+    "balance"
+  ],
+  "authoritative_decimal_amount_columns": [
+    "deposit_amt_inr",
+    "withdrawal_amt_inr",
+    "balance_inr"
+  ],
+  "avoid_text_amount_columns": [
+    "deposit_amount",
+    "withdrawal_amount",
+    "withdrawal_amt",
+    "deposit_amt",
+    "balance"
+  ],
+  "bank": "ICICI Bank",
+  "banking_only": true,
+  "business_purpose": "ICICI Bank's global/international banking statement, used for accounts that may serve NRI customers, global trade, or multi-geography settlement accounts. The `_inr` suffix on amount columns indicates all amounts are reported in INR regardless of origin currency. Distinct from `icici_bank` (GBP-denominated UK account).",
+  "candidate_notes": "Generic bank statement table card; account-level filtering comes from AccountDataBinding in tenant-specific docs, not this markdown.",
+  "canonical_id": "table.zs_ingest.icici_bank_global",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_ingest.icici_bank_global.balance",
+    "column.zs_ingest.icici_bank_global.balance_inr",
+    "column.zs_ingest.icici_bank_global.cheque_double_no_double_ref_double_no",
+    "column.zs_ingest.icici_bank_global.cheque_no",
+    "column.zs_ingest.icici_bank_global.cheque_no_ref_no",
+    "column.zs_ingest.icici_bank_global.date",
+    "column.zs_ingest.icici_bank_global.deposit_amount",
+    "column.zs_ingest.icici_bank_global.deposit_amt",
+    "column.zs_ingest.icici_bank_global.deposit_amt_inr",
+    "column.zs_ingest.icici_bank_global.s_n",
+    "column.zs_ingest.icici_bank_global.tran_double_id",
+    "column.zs_ingest.icici_bank_global.tran_id",
+    "column.zs_ingest.icici_bank_global.transaction_date",
+    "column.zs_ingest.icici_bank_global.transaction_posted_date_and_time",
+    "column.zs_ingest.icici_bank_global.transaction_remarks",
+    "column.zs_ingest.icici_bank_global.txn_posted_date",
+    "column.zs_ingest.icici_bank_global.value_date",
+    "column.zs_ingest.icici_bank_global.withdrawal_amount",
+    "column.zs_ingest.icici_bank_global.withdrawal_amt",
+    "column.zs_ingest.icici_bank_global.withdrawal_amt_inr"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active_schema_reference_partial_columns",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "INR",
+  "declared_column_count": "38",
+  "description": "table card from raw/cleaned_v2/bank/bank_statement.md.",
+  "direction_columns": [
+    "deposit_amt_inr",
+    "withdrawal_amt_inr"
+  ],
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "documented_business_column_count": 20,
+  "domain": "domain.banking.bank_statement.core",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.bank_statement.icici_bank_global.purpose.001",
+    "ev.bank_statement.icici_bank_global.columns.001",
+    "ev.bank_statement.icici_bank_global.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.icici_bank_global.purpose.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2612
+    },
+    {
+      "evidence_id": "ev.bank_statement.icici_bank_global.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2612
+    },
+    {
+      "evidence_id": "ev.bank_statement.icici_bank_global.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2612
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_ingest.icici_bank_global",
+  "geography": "India/Global",
+  "grain": "raw bank statement transaction row; source-specific grain and reference fields",
+  "key_reconciliation_columns": [
+    "`tran_id` — primary ICICI transaction reference",
+    "`cheque_no_ref_no` — UTR number for NEFT/RTGS; critical for matching gateway settlements",
+    "`deposit_amt_inr` (Decimal) — use for inflow calculations",
+    "`withdrawal_amt_inr` (Decimal) — use for outflow calculations",
+    "`balance_inr` (Decimal) — running balance"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "name": "zs_ingest.icici_bank_global",
+  "platform_context": "platform_context.icici_bank.global_inr",
+  "quality_notes": [
+    "This table has **parallel columns**: `deposit_amt_inr` (Decimal) + `deposit_amount` (Text), `withdrawal_amt_inr` (Decimal) + `withdrawal_amount` (Text), `balance_inr` (Decimal) + `balance` (Text). Always use the `**_inr**` **suffixed Decimal columns** for calculations.",
+    "`tran_id` and `tran__id` are two fields that represent the same data from different CSV export formats",
+    "`transaction_date_temp_old` and `value_date_temp_old` are migration artifacts — ignore",
+    "`cheque_no_ref_no` and `cheque__no__ref__no_` are duplicated from different report versions"
+  ],
+  "recommended_date_columns": [
+    "transaction_date",
+    "value_date",
+    "transaction_posted_date_and_time"
+  ],
+  "reference_columns": [
+    "tran_id",
+    "cheque_no_ref_no",
+    "cheque__no__ref__no_",
+    "transaction_remarks"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_ingest",
+  "scope_columns_as_columns_only": [],
+  "source_card_id": "table.zs_ingest.icici_bank_global",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2612,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_platform_ids": [
+    "platform.icici_bank"
+  ],
+  "source_status": "accepted",
+  "statement_type": "NRI / Global Account Statement",
+  "status": "active",
+  "table_name": "icici_bank_global",
+  "table_type": "raw_bank_statement_feed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

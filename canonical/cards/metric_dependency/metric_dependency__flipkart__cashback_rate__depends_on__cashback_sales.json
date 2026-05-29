@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "dependencies must be computed/normalized before parent metric",
+  "canonical_id": "metric_dependency.flipkart.cashback_rate.depends_on.cashback_sales",
+  "card_type": "metric_dependency",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "ratio_denominator",
+  "depends_on": [
+    "metric.net_cashback",
+    "metric.gross_merchandise_value"
+  ],
+  "description": "metric_dependency card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4698
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "metric_id": "metric.cashback_rate",
+  "name": "Flipkart cashback_rate.depends_on.cashback_sales",
+  "required_before_computation": true,
+  "review_status": "accepted",
+  "source_card_id": "metric_dependency.flipkart.cashback_rate.depends_on.cashback_sales",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4698,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

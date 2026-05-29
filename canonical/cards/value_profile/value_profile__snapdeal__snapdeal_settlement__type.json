@@ -1,0 +1,80 @@
+{
+  "canonical_id": "value_profile.snapdeal.snapdeal_settlement.type",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.snapdeal_settlement.type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal snapdeal_settlement.type value profile",
+  "distribution_summary": "Title-case settlement type labels encode forward invoice, reverse return, RTO/RTS/RTV/RPR charges, TCS/TDS, ads, penalty, reimbursement, and stock-out adjustments.",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.overview",
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.tax_v9",
+    "evidence.snapdeal.data_quality_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12236
+    },
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12236
+    },
+    {
+      "evidence_id": "evidence.snapdeal.tax_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12236
+    },
+    {
+      "evidence_id": "evidence.snapdeal.data_quality_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12236
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Snapdeal snapdeal_settlement.type value profile",
+  "normalization_rule": "Preserve source spelling/case in evidence; normalize only in downstream deterministic parser where explicitly configured.",
+  "observed_values": [
+    "COD Vendor Invoice",
+    "NCOD Vendor Invoice",
+    "COD Return to Vendor",
+    "NCOD Ret to Vendor",
+    "COD RTS to Vendor",
+    "NCOD RTS to Vendor",
+    "COD RTO Charges",
+    "NCOD RTO Charges",
+    "COD RPR Charges",
+    "Web Ads Invoice",
+    "NCOD Web Ads Invoice",
+    "COD TDS INV",
+    "COD TDS DM",
+    "TCS-COD Vendor Invoice",
+    "TCS-COD Return to Vendor",
+    "Penalty from Seller",
+    "TDS Reimbursement_2024_25",
+    "Stock Out Commission"
+  ],
+  "profile_kind": "enum_or_observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.snapdeal.snapdeal_settlement.type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12236,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.snapdeal_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

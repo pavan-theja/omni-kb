@@ -1,0 +1,56 @@
+{
+  "account_name": "Teaxpress Bluedart Courier Account",
+  "account_type": "logistics_account",
+  "active": true,
+  "canonical_id": "platform_account.teaxpress_private_limited.bluedart.primary",
+  "canonical_platform_status": "source_described_pending_platform_context",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "INR"
+  ],
+  "default_currency": "INR",
+  "description": "platform_account card from raw/cleaned_v2/clients/teaxpress_private_limited.json.",
+  "evidence_ids": [
+    "Bluedart configured: Settlement + Invoice; variants PP-Teabox, COD-Teabox, PP-Sammvaad, COD-Sammvaad"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "Bluedart configured: Settlement + Invoice; variants PP-Teabox, COD-Teabox, PP-Sammvaad, COD-Sammvaad",
+      "source_doc": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.teaxpress_private_limited.teabox",
+  "name": "Teaxpress Bluedart Courier Account",
+  "notes": [
+    "No Bluedart canonical logistics markdown was uploaded; bindings are source-described only."
+  ],
+  "package_id": "client_runtime_binding_pack.teaxpress_private_limited.v0_1",
+  "platform_context_id": "platform_context.bluedart.in",
+  "platform_id": "platform.bluedart",
+  "region_or_market": "India",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_account_identifier_status": "not_provided_in_client_doc",
+  "source_confidence": null,
+  "source_documents": [
+    "Teaxpress Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": "Bluedart configured: Settlement + Invoice; variants PP-Teabox, COD-Teabox, PP-Sammvaad, COD-Sammvaad",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.teaxpress_private_limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

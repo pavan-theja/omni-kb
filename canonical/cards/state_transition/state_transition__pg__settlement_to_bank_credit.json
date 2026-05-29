@@ -1,0 +1,56 @@
+{
+  "business_object": "settlement",
+  "business_process_id": "business_process.pg.gateway_settlement_cycle",
+  "canonical_id": "state_transition.pg.settlement_to_bank_credit",
+  "card_type": "state_transition",
+  "confidence": "inferred",
+  "confirmation_evidence": [
+    "status/value in gateway table",
+    "date columns",
+    "settlement/payout reference"
+  ],
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "settlement_batch_created to bank_credit_observed",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 51615
+    }
+  ],
+  "expected_lag": "T+0_to_T+n",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_if_missing": "bank_credit_missing_or_delayed",
+  "from_state": "settlement_batch_created",
+  "lag_type": "configurable",
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "settlement_batch_created to bank_credit_observed",
+  "review_status": "accepted",
+  "severity_if_breached": "medium",
+  "source_card_id": "state_transition.pg.settlement_to_bank_credit",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 51615,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "to_state": "bank_credit_observed",
+  "triggering_step_id": "workflow_step.pg.bank_credit_observed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

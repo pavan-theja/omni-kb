@@ -1,0 +1,62 @@
+{
+  "canonical_id": "query_pattern.healthkart.gross_sales.00",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7073
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "Gross Sales",
+  "name": "Gross Sales",
+  "natural_language_patterns": [
+    "Gross Sales",
+    "gross sales"
+  ],
+  "parser_note": "Preserve SQL exactly; parser may normalize schema aliases separately.",
+  "required_columns": [
+    "healthkart_oms",
+    "healthkart_settlement",
+    "charged_amount",
+    "zs_observe",
+    "is_active",
+    "orders",
+    "order_status"
+  ],
+  "required_tables": [
+    "zs_observe.healthkart_oms",
+    "zs_observe.healthkart_settlement"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.healthkart.gross_sales.00",
+  "source_confidence": "high",
+  "source_context": "9. Key Business Metrics & How to Calculate Them",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7073,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "sql_pattern": "-- From OMS (forward invoices only)\nSELECT SUM(charged_amount) FROM zs_observe.healthkart_oms WHERE is_active = true\n-- From Settlement (delivered orders only)\nSELECT SUM(charged_amount) FROM zs_observe.healthkart_settlement\nWHERE is_active = true AND order_status = 'Delivered'",
+  "sql_ref": "sql.healthkart.gross_sales.00",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

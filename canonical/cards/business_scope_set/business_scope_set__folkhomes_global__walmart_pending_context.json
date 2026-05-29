@@ -1,0 +1,52 @@
+{
+  "active": false,
+  "canonical_id": "business_scope_set.folkhomes_global.walmart_pending_context",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Walmart US source scope requiring canonical platform/table context before active use.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/folkhomes_global.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.folkhomes_global.mensa_brands",
+  "name": "Walmart Pending Context",
+  "notes": [],
+  "package_id": "folkhomes_global_runtime_card_pack_v1_0",
+  "platform_account_ids": [
+    "platform_account.folkhomes.walmart_us.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.walmart.us"
+  ],
+  "platform_ids": [
+    "platform.walmart"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Folkhomes Walmart Pending Context",
+  "scope_type": "source_confirmed_requires_context",
+  "source_confidence": null,
+  "source_documents": [
+    "Folkhomes Global.docx",
+    "Cognee KB Design v4.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "amazon_marketplace.md",
+    "target_plus.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/folkhomes_global.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.folkhomes_global",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

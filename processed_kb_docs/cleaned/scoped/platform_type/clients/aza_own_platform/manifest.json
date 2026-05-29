@@ -1,0 +1,23 @@
+{
+  "card_types": {
+    "account_data_binding": 3,
+    "platform_account": 1
+  },
+  "counts": {
+    "cards": 4,
+    "edges": 20,
+    "semantic_mappings": 1
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 3,
+    "HAS_ACCOUNT_DATA_BINDING": 3,
+    "HAS_PLATFORM_ACCOUNT": 1,
+    "INCLUDES_PLATFORM_ACCOUNT": 1,
+    "PARTICIPATES_WITH_ACCOUNT": 3,
+    "USES_ACCOUNT_DATA_BINDING": 9
+  },
+  "scope": [
+    "clients",
+    "aza_own_platform"
+  ]
+}

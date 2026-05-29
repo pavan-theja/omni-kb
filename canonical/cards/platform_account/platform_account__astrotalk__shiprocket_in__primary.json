@@ -1,0 +1,55 @@
+{
+  "account_name": "AstroTalk Shiprocket Logistics Account",
+  "account_role": "courier_reconciliation_source",
+  "account_type": "logistics_account",
+  "active": true,
+  "canonical_id": "platform_account.astrotalk.shiprocket_in.primary",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "country_or_region": "India",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "platform_account card from raw/cleaned_v2/clients/astrotalk.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/astrotalk.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.astrotalk.astrotalk",
+  "name": "AstroTalk Shiprocket Logistics Account",
+  "notes": [
+    "The client document confirms this platform/system is configured. Exact seller/merchant/store account identifier was not supplied."
+  ],
+  "package_id": "astrotalk_business_hierarchy_runtime_cards_v1_0",
+  "platform_context_id": "platform_context.shiprocket.in",
+  "platform_id": "platform.shiprocket",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_confidence": null,
+  "source_config_text": "Shiprocket: Invoice + Settlement report",
+  "source_documents": [
+    "AstroTalk.docx",
+    "Client Tables - Shopify.md",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "myntra_marketplace.md",
+    "payment_gateway.md",
+    "shiprocket_logistics_aggregator.md",
+    "shopify_d2c_oms.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/astrotalk.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.astrotalk",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

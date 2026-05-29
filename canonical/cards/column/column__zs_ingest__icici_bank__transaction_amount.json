@@ -1,0 +1,56 @@
+{
+  "banking_only": true,
+  "business_meaning": "Transaction amount (Text form — do not use for math)",
+  "candidate_notes": "Transaction amount (Text form — do not use for math)",
+  "canonical_id": "column.zs_ingest.icici_bank.transaction_amount",
+  "card_type": "column",
+  "column_name": "transaction_amount",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Transaction amount (Text form — do not use for math)",
+  "direction_role": "",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.icici_bank.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.icici_bank.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 5717
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "metric_amount",
+  "name": "icici_bank.transaction_amount",
+  "numeric_quality": "requires_cast_before_math",
+  "review_status": "accepted",
+  "scope_guardrail": "banking_semantic_column",
+  "semantic_roles": [
+    "financial_amount",
+    "measure"
+  ],
+  "semantic_type": "financial_amount",
+  "source_card_id": "column.zs_ingest.icici_bank.transaction_amount",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_data_type": "Text",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5717,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_ingest.icici_bank",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

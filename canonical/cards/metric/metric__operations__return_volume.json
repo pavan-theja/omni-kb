@@ -1,0 +1,56 @@
+{
+  "aliases": [
+    "return count",
+    "returns by type"
+  ],
+  "business_definition": "metric card from raw/cleaned_v2/wms/increff_operations.md.",
+  "canonical_id": "metric.operations.return_volume",
+  "canonical_name": "return_volume",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "definition": "Count of return rows / distinct return orders by sales_channel and transaction_type.",
+  "description": "metric card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Return volume",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "domain_id": "domain.increff.cross_channel_wms_operations",
+  "evidence_ids": [
+    "evidence.increff.020.9_key_business_metrics_with_sql",
+    "evidence.increff.tab_table_increff_returns_table_knowledge_base"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.020.9_key_business_metrics_with_sql",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7562
+    },
+    {
+      "evidence_id": "evidence.increff.tab_table_increff_returns_table_knowledge_base",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7562
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.increff.return_volume"
+  ],
+  "metric_family": "returns",
+  "name": "Return volume",
+  "review_status": "ready",
+  "source_card_id": "metric.operations.return_volume",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7562,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

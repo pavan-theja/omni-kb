@@ -1,0 +1,214 @@
+{
+  "amount_columns": [
+    "settlement_id",
+    "charged_amount",
+    "mp_fees",
+    "settled_amount",
+    "amount",
+    "fee",
+    "net",
+    "network",
+    "presentment_amount",
+    "vat"
+  ],
+  "avoid_columns": [
+    "settlement_id",
+    "amount",
+    "fee",
+    "net",
+    "order_temp_old",
+    "checkout_temp_old",
+    "network",
+    "presentment_amount",
+    "vat"
+  ],
+  "business_purpose": "Shopify Payments settlement transactions — charges, refunds, adjustments, and fee entries per payout cycle.",
+  "canonical_id": "table.zs_observe.shopify_payments_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.shopify_payments_settlement.amount",
+    "column.zs_observe.shopify_payments_settlement.available_on",
+    "column.zs_observe.shopify_payments_settlement.card_brand",
+    "column.zs_observe.shopify_payments_settlement.card_source",
+    "column.zs_observe.shopify_payments_settlement.card_type",
+    "column.zs_observe.shopify_payments_settlement.charged_amount",
+    "column.zs_observe.shopify_payments_settlement.checkout",
+    "column.zs_observe.shopify_payments_settlement.checkout_temp_old",
+    "column.zs_observe.shopify_payments_settlement.created_date",
+    "column.zs_observe.shopify_payments_settlement.currency",
+    "column.zs_observe.shopify_payments_settlement.currency_type",
+    "column.zs_observe.shopify_payments_settlement.fee",
+    "column.zs_observe.shopify_payments_settlement.mp_fees",
+    "column.zs_observe.shopify_payments_settlement.net",
+    "column.zs_observe.shopify_payments_settlement.network",
+    "column.zs_observe.shopify_payments_settlement.order_id",
+    "column.zs_observe.shopify_payments_settlement.order_temp_old",
+    "column.zs_observe.shopify_payments_settlement.other_id",
+    "column.zs_observe.shopify_payments_settlement.payment_method_name",
+    "column.zs_observe.shopify_payments_settlement.payout_date",
+    "column.zs_observe.shopify_payments_settlement.payout_status",
+    "column.zs_observe.shopify_payments_settlement.presentment_amount",
+    "column.zs_observe.shopify_payments_settlement.presentment_currency",
+    "column.zs_observe.shopify_payments_settlement.quantity",
+    "column.zs_observe.shopify_payments_settlement.recon_transaction_type",
+    "column.zs_observe.shopify_payments_settlement.settled_amount",
+    "column.zs_observe.shopify_payments_settlement.settlement_date",
+    "column.zs_observe.shopify_payments_settlement.settlement_id",
+    "column.zs_observe.shopify_payments_settlement.transaction_date",
+    "column.zs_observe.shopify_payments_settlement.transaction_type",
+    "column.zs_observe.shopify_payments_settlement.type",
+    "column.zs_observe.shopify_payments_settlement.vat"
+  ],
+  "columns": [
+    "column.zs_observe.shopify_payments_settlement.order_id",
+    "column.zs_observe.shopify_payments_settlement.settlement_id",
+    "column.zs_observe.shopify_payments_settlement.created_date",
+    "column.zs_observe.shopify_payments_settlement.settlement_date",
+    "column.zs_observe.shopify_payments_settlement.transaction_type",
+    "column.zs_observe.shopify_payments_settlement.recon_transaction_type",
+    "column.zs_observe.shopify_payments_settlement.type",
+    "column.zs_observe.shopify_payments_settlement.payout_date",
+    "column.zs_observe.shopify_payments_settlement.payout_status",
+    "column.zs_observe.shopify_payments_settlement.transaction_date",
+    "column.zs_observe.shopify_payments_settlement.available_on",
+    "column.zs_observe.shopify_payments_settlement.currency",
+    "column.zs_observe.shopify_payments_settlement.presentment_currency",
+    "column.zs_observe.shopify_payments_settlement.charged_amount",
+    "column.zs_observe.shopify_payments_settlement.mp_fees",
+    "column.zs_observe.shopify_payments_settlement.settled_amount",
+    "column.zs_observe.shopify_payments_settlement.amount",
+    "column.zs_observe.shopify_payments_settlement.fee",
+    "column.zs_observe.shopify_payments_settlement.net",
+    "column.zs_observe.shopify_payments_settlement.checkout",
+    "column.zs_observe.shopify_payments_settlement.order_temp_old",
+    "column.zs_observe.shopify_payments_settlement.checkout_temp_old",
+    "column.zs_observe.shopify_payments_settlement.payment_method_name",
+    "column.zs_observe.shopify_payments_settlement.card_brand",
+    "column.zs_observe.shopify_payments_settlement.card_source",
+    "column.zs_observe.shopify_payments_settlement.card_type",
+    "column.zs_observe.shopify_payments_settlement.network",
+    "column.zs_observe.shopify_payments_settlement.presentment_amount",
+    "column.zs_observe.shopify_payments_settlement.vat",
+    "column.zs_observe.shopify_payments_settlement.other_id",
+    "column.zs_observe.shopify_payments_settlement.quantity",
+    "column.zs_observe.shopify_payments_settlement.currency_type"
+  ],
+  "confidence": "low_confidence",
+  "coverage_status": "source_described_but_missing_from_zs_observe_at_kb_creation",
+  "create_action": "create_draft_do_not_use_for_active_queries_until_warehouse_presence_confirmed",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date",
+    "settlement_date",
+    "payout_date",
+    "transaction_date",
+    "available_on"
+  ],
+  "description": "Shopify Payments settlement transactions — charges, refunds, adjustments, and fee entries per payout cycle.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.shopify_payments"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.shopify_payments",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 5216
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.shopify_payments_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "order_id",
+    "settlement_id",
+    "order_temp_old",
+    "other_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "schema_type_manifest_review_required_missing_warehouse_table"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.shopify.payments.net_payout"
+  ],
+  "name": "zs_observe.shopify_payments_settlement",
+  "recommended_date_columns": [
+    "created_date",
+    "settlement_date",
+    "payout_date",
+    "transaction_date"
+  ],
+  "reconciliation_key_columns": [
+    "settlement_id"
+  ],
+  "relationships": [],
+  "review_status": "review_required",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.shopify_payments_settlement",
+  "source_caveats": [
+    "`amount`, `fee`, `net` are stored as **Text** — always use `charged_amount`, `mp_fees`, `settled_amount` (Decimal) for calculations.",
+    "`available_on` determines when funds are accessible — may lag `transaction_date` by 2-3 days.",
+    "`presentment_currency` ≠ `currency` when customers pay in a different currency (DCC — Dynamic Currency Conversion).",
+    "`checkout` field is the Shopify checkout ID — legacy field, now mapped to `order_id`.",
+    "`recon_transaction_type` is a platform-derived classification for reconciliation use.",
+    "Shopify Payments is powered by Stripe — `settlement_id` corresponds to a Stripe `po_XXXX` payout ID in the underlying Stripe account.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "low_confidence",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5216,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.shopify_payments"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "draft",
+  "status": "draft",
+  "status_columns": [
+    "transaction_type",
+    "recon_transaction_type",
+    "type",
+    "payout_status",
+    "currency",
+    "presentment_currency",
+    "card_type",
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.shopify_payments.global"
+    ],
+    "platform_ids": [
+      "platform.shopify_payments"
+    ]
+  },
+  "table_name": "shopify_payments_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": [],
+  "warehouse_availability_review": {
+    "issue": "The source also documents this table, but later says it was not found in zs_observe at KB creation.",
+    "resolution": "Keep card as draft source-described knowledge; do not route production queries until table existence is confirmed.",
+    "source_section": "Payment Gateway KB.docx > Missing Tables (Not in zs_observe)"
+  }
+}

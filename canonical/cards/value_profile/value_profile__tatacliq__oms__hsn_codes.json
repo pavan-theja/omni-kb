@@ -1,0 +1,52 @@
+{
+  "canonical_id": "value_profile.tatacliq.oms.hsn_codes",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.tatacliq_oms.hsn_code",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq OMS HSN code profile",
+  "distribution_summary": "Sample of 51 total HSN codes across apparel and textile categories.",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.values.oms.hsn_codes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.values.oms.hsn_codes",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 5882
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq OMS HSN code profile",
+  "observed_values": [
+    "6206xxxx",
+    "6211xxxx",
+    "6204xxxx",
+    "6205xxxx",
+    "6103/6104xxxx",
+    "6091000",
+    "6307xxxx",
+    "6306xxxx",
+    "5207/5408xxxx"
+  ],
+  "profile_kind": "hsn_category_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.tatacliq.oms.hsn_codes",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5882,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

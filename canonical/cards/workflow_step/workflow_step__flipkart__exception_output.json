@@ -1,0 +1,58 @@
+{
+  "canonical_id": "workflow_step.flipkart.exception_output",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.reconciliation_framework"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.reconciliation_framework",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5129
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "charged_amount",
+    "charged_amount + total_tax",
+    "total_tcs_amount",
+    "total_tds_amount",
+    "settled_amount"
+  ],
+  "input_tables": [
+    "table.flipkart.oms",
+    "table.flipkart.settlement",
+    "table.flipkart.commission",
+    "table.flipkart.cashback"
+  ],
+  "name": "Output exceptions",
+  "output_semantics": "compare OMS charged_amount minus commission fees, fee GST, TCS, and TDS against settlement.settled_amount and surface discrepancies",
+  "process_id": "business_process.flipkart.marketplace_reconciliation_pipeline",
+  "required_keys": [
+    "order_id",
+    "item_id"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.flipkart.exception_output",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5129,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_name": "Step 5 cross-table discrepancy detection",
+  "step_order": 5,
+  "trigger": "order, fee, cashback, and settlement sides have been filtered, normalized, and aggregated",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

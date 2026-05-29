@@ -1,0 +1,43 @@
+{
+  "business_meaning": "Credit Note → Reverse Matching: status or type mismatch",
+  "canonical_id": "mismatch_category.ajio.credit_note_reverse_matching.status_or_type_mismatch",
+  "card_type": "mismatch_category",
+  "category_family": "status_or_type_mismatch",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Credit Note → Reverse Matching: status or type mismatch",
+  "detection_rule": "Use documented status/type values only; settlement transaction_type is FORWARD, reverse transaction_type is RVP/RTO/REPL, credit_note payment_status is POSTING_COMPLETED.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6241
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Status Or Type Mismatch",
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.ajio.credit_note_reverse_matching.status_or_type_mismatch",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6241,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

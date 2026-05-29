@@ -1,0 +1,41 @@
+{
+  "candidate_notes": "Order, adjustment, or refund appears in different settlement period.",
+  "canonical_id": "mismatch_category.amazon.settlement_to_disbursement.timing_difference",
+  "card_type": "mismatch_category",
+  "category_key": "timing_difference",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Order, adjustment, or refund appears in different settlement period.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.settlement_disbursement.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.settlement_disbursement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7294
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon Settlement to Disbursement Reconciliation: timing difference",
+  "profile": "reconciliation_profile.amazon.settlement_to_disbursement",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.amazon.settlement_to_disbursement.timing_difference",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7294,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

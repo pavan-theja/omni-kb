@@ -1,0 +1,54 @@
+{
+  "canonical_id": "workflow_step.myntra.reverse.item_returned",
+  "canonical_name": "item_returned",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "documented_business_event": "Item Returned",
+  "evidence_ids": [
+    "evidence.myntra.lifecycle",
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10253
+    },
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10253
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "item_returned",
+  "process_id": "business_process.myntra.reverse_transaction_lifecycle",
+  "review_status": "unreviewed",
+  "secondary_source_columns": [
+    "return_awb_number"
+  ],
+  "sequence": 2,
+  "source_card_id": "workflow_step.myntra.reverse.item_returned",
+  "source_column": "return_date",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10253,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_reverse",
+  "status": "draft",
+  "summary": "Returned item is received/shipped back; myntra_reverse.return_date and return_awb_number are documented return evidence fields.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

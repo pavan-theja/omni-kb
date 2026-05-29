@@ -1,0 +1,68 @@
+{
+  "canonical_id": "query_pattern.snapdeal.020.5_1_return_financial_summary",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal query pattern — 5.1 Return Financial Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.5_1_return_financial_summary",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.5_1_return_financial_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 19545
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 19545
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Snapdeal query pattern — 5.1 Return Financial Summary",
+  "output_fields": [
+    "transaction_type",
+    "returns",
+    "total_reversed",
+    "gst_reversed",
+    "avg_return_value"
+  ],
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "required_rule_ids": [
+    "rule.snapdeal.active_filter",
+    "rule.snapdeal.scope_fields_are_columns",
+    "rule.snapdeal.sales_return_future_ready_only"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.snapdeal.020.5_1_return_financial_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 19545,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.snapdeal_sales_return"
+  ],
+  "sql_pattern_id": "sql.snapdeal.5_1_return_financial_summary",
+  "sql_template": "SELECT\n  transaction_type,\n  COUNT(*) AS returns,\n  SUM(charged_amount) AS total_reversed,\n  SUM(total_tax) AS gst_reversed,\n  AVG(charged_amount) AS avg_return_value\nFROM zs_observe.snapdeal_sales_return\nWHERE is_active = true\nGROUP BY transaction_type\nORDER BY returns DESC;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

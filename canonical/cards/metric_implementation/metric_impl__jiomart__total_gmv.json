@@ -1,0 +1,55 @@
+{
+  "aggregation_order": "Pre-aggregate multi-row settlement/return tables by order_id or source SQL grain before joining.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.jiomart.total_gmv",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart implementation — Total GMV",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_1_total_gmv"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_1_total_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10719
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use filters exactly as shown in source SQL and mandatory filter rules.",
+  "formula_sql": "SELECT\n  SUM(CASE WHEN transaction_type = 'forward' THEN charged_amount ELSE 0 END) AS forward_gmv,\n  SUM(CASE WHEN transaction_type = 'reverse' THEN ABS(charged_amount) ELSE 0 END) AS reversed_gmv,\n  SUM(charged_amount) AS net_gmv\nFROM zs_observe.jiomart_oms\nWHERE is_active = true;\n-- Forward GMV: ~₹1.63 Cr | Reversed: ~₹22.4L | Net: ~₹1.40 Cr",
+  "formula_sql_ref": "sql.jiomart.marketplace.6_1_total_gmv",
+  "formula_text": "Executable source SQL pattern retained verbatim.",
+  "implementation_scope": "jiomart",
+  "metric_id": "metric.jiomart.total_gmv",
+  "name": "JioMart implementation — Total GMV",
+  "platform_code": "jiomart",
+  "platform_context_id": "platform_context.jiomart.in",
+  "review_status": "ready",
+  "sign_semantics": "Respect source transaction_type/accountable_type sign semantics before summing amounts.",
+  "source_card_id": "metric_impl.jiomart.total_gmv",
+  "source_columns": [
+    "charged_amount",
+    "transaction_type"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10719,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

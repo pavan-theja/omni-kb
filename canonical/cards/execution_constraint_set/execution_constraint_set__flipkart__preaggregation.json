@@ -1,0 +1,65 @@
+{
+  "aggregation_order": [
+    "filter active rows",
+    "normalize keys",
+    "pre-aggregate many-side tables",
+    "join/compare",
+    "compute metrics"
+  ],
+  "applies_to": [
+    "Flipkart marketplace parser-ready markdown"
+  ],
+  "canonical_id": "execution_constraint_set.flipkart.preaggregation",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_name": "Pre-aggregation before joins",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window_rules": [
+    "only use source-provided date windows; otherwise mark review"
+  ],
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7758
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_rules": [
+    "do not add tenant/account filters from marketplace doc"
+  ],
+  "join_rules": [
+    "use relationship cards"
+  ],
+  "name": "Pre-aggregation before joins",
+  "out_of_scope_runtime_constraints": [
+    "avoid double counting"
+  ],
+  "review_status": "accepted",
+  "semantic_constraints": [
+    "aggregate commission and cashback by order_id,item_id before joins"
+  ],
+  "sign_rules": [
+    "source sign preserving"
+  ],
+  "source_card_id": "execution_constraint_set.flipkart.preaggregation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7758,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

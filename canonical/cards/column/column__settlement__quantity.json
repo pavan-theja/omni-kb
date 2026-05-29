@@ -1,0 +1,45 @@
+{
+  "business_meaning": "Quantity at settlement line.",
+  "canonical_id": "column.settlement.quantity",
+  "card_type": "column",
+  "column_name": "quantity",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "Quantity at settlement line.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 1194
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "metric_amount",
+  "name": "table.flipkart.settlement.quantity",
+  "review_status": "accepted",
+  "semantic_type": "settled_quantity",
+  "source_card_id": "column.settlement.quantity",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1194,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

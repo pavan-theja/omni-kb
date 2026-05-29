@@ -1,0 +1,166 @@
+{
+  "amount_columns": [
+    "charged_amount",
+    "settled_amount",
+    "gross_commission",
+    "net_amount",
+    "sale_amount",
+    "sale_settled_amount",
+    "refund_amount",
+    "net_after_refund",
+    "sika_fee",
+    "amount"
+  ],
+  "avoid_columns": [
+    "net_amount",
+    "sale_amount",
+    "sale_settled_amount",
+    "refund_amount",
+    "net_after_refund",
+    "sika_fee",
+    "amount"
+  ],
+  "business_purpose": "Sika is an African digital payments platform enabling online payments across Sub-Saharan Africa. It serves merchants operating in West African markets (primarily Francophone Africa). Settlement data is notably compact with a focus on simple fee structure.",
+  "canonical_id": "table.zs_observe.sika_payin",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.sika_payin.amount",
+    "column.zs_observe.sika_payin.charged_amount",
+    "column.zs_observe.sika_payin.created_date",
+    "column.zs_observe.sika_payin.currency_type",
+    "column.zs_observe.sika_payin.gross_commission",
+    "column.zs_observe.sika_payin.merchant_reference",
+    "column.zs_observe.sika_payin.net_after_refund",
+    "column.zs_observe.sika_payin.net_amount",
+    "column.zs_observe.sika_payin.order_id",
+    "column.zs_observe.sika_payin.order_status",
+    "column.zs_observe.sika_payin.refund_amount",
+    "column.zs_observe.sika_payin.sale_amount",
+    "column.zs_observe.sika_payin.sale_settled_amount",
+    "column.zs_observe.sika_payin.settled_amount",
+    "column.zs_observe.sika_payin.sika_fee",
+    "column.zs_observe.sika_payin.status"
+  ],
+  "columns": [
+    "column.zs_observe.sika_payin.order_id",
+    "column.zs_observe.sika_payin.merchant_reference",
+    "column.zs_observe.sika_payin.created_date",
+    "column.zs_observe.sika_payin.order_status",
+    "column.zs_observe.sika_payin.status",
+    "column.zs_observe.sika_payin.charged_amount",
+    "column.zs_observe.sika_payin.settled_amount",
+    "column.zs_observe.sika_payin.gross_commission",
+    "column.zs_observe.sika_payin.net_amount",
+    "column.zs_observe.sika_payin.sale_amount",
+    "column.zs_observe.sika_payin.sale_settled_amount",
+    "column.zs_observe.sika_payin.refund_amount",
+    "column.zs_observe.sika_payin.net_after_refund",
+    "column.zs_observe.sika_payin.sika_fee",
+    "column.zs_observe.sika_payin.amount",
+    "column.zs_observe.sika_payin.currency_type"
+  ],
+  "confidence": "low_confidence",
+  "coverage_status": "source_described_but_missing_from_zs_observe_at_kb_creation",
+  "create_action": "create_draft_do_not_use_for_active_queries_until_warehouse_presence_confirmed",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date"
+  ],
+  "description": "Sika is an African digital payments platform enabling online payments across Sub-Saharan Africa. It serves merchants operating in West African markets (primarily Francophone Africa). Settlement data is notably compact with a focus on simple fee structure.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.sika"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.sika",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 5574
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.sika_payin",
+  "grain": "one row per payin/payment/refund/adjustment gateway event",
+  "grain_keys": [
+    "order_id",
+    "merchant_reference",
+    "order_status",
+    "refund_amount",
+    "net_after_refund"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "schema_type_manifest_review_required_missing_warehouse_table"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.sika_payin",
+  "recommended_date_columns": [
+    "created_date"
+  ],
+  "reconciliation_key_columns": [
+    "merchant_reference"
+  ],
+  "relationships": [],
+  "review_status": "review_required",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.sika_payin",
+  "source_caveats": [
+    "This is one of the simplest tables — only 39 columns, reflecting Sika's lean API.",
+    "`charged_amount` and `settled_amount` are the reliable Decimal columns; all other amount fields are Text.",
+    "`merchant_reference` is the primary cross-reference between Sika and merchant internal systems.",
+    "`sika_fee` is stored as Text — parse for fee analysis.",
+    "`net_after_refund` = settled amount net of any refunds.",
+    "Currency is typically West African CFA Franc (XOF/XAF) or USD.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "low_confidence",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5574,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.sika"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "draft",
+  "status": "draft",
+  "status_columns": [
+    "order_status",
+    "status",
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.sika.africa"
+    ],
+    "platform_ids": [
+      "platform.sika"
+    ]
+  },
+  "table_name": "sika_payin",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": [],
+  "warehouse_availability_review": {
+    "issue": "The source also documents this table, but later says it was not found in zs_observe at KB creation.",
+    "resolution": "Keep card as draft source-described knowledge; do not route production queries until table existence is confirmed.",
+    "source_section": "Payment Gateway KB.docx > Missing Tables (Not in zs_observe)"
+  }
+}

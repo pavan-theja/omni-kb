@@ -1,0 +1,195 @@
+{
+  "amount_columns": [
+    "sale_or_return",
+    "charged_amount",
+    "settled_amount",
+    "country_of_sale"
+  ],
+  "avoid_columns": [
+    "sale_or_return",
+    "country_of_sale"
+  ],
+  "business_purpose": "Apple App Store revenue settlement data. Records app purchases, subscriptions, and in-app purchases settled by Apple to developers.",
+  "canonical_id": "table.zs_observe.apple_play",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.apple_play.apple_identifier",
+    "column.zs_observe.apple_play.charged_amount",
+    "column.zs_observe.apple_play.country_of_sale",
+    "column.zs_observe.apple_play.created_date",
+    "column.zs_observe.apple_play.currency",
+    "column.zs_observe.apple_play.currency_type",
+    "column.zs_observe.apple_play.customer_currency",
+    "column.zs_observe.apple_play.customer_price",
+    "column.zs_observe.apple_play.description",
+    "column.zs_observe.apple_play.destination_country",
+    "column.zs_observe.apple_play.developer_name",
+    "column.zs_observe.apple_play.end_date",
+    "column.zs_observe.apple_play.extended_partner_share",
+    "column.zs_observe.apple_play.metadata_2",
+    "column.zs_observe.apple_play.metadata_3",
+    "column.zs_observe.apple_play.mp_sin",
+    "column.zs_observe.apple_play.order_id",
+    "column.zs_observe.apple_play.order_type",
+    "column.zs_observe.apple_play.partner_share",
+    "column.zs_observe.apple_play.partner_share_currency",
+    "column.zs_observe.apple_play.product_type_identifier",
+    "column.zs_observe.apple_play.promo_code",
+    "column.zs_observe.apple_play.quantity",
+    "column.zs_observe.apple_play.region",
+    "column.zs_observe.apple_play.sale_or_return",
+    "column.zs_observe.apple_play.settled_amount",
+    "column.zs_observe.apple_play.settled_date",
+    "column.zs_observe.apple_play.settlement_date",
+    "column.zs_observe.apple_play.sku",
+    "column.zs_observe.apple_play.sku_id",
+    "column.zs_observe.apple_play.start_date",
+    "column.zs_observe.apple_play.title",
+    "column.zs_observe.apple_play.transaction_date",
+    "column.zs_observe.apple_play.transaction_type",
+    "column.zs_observe.apple_play.vendor_name"
+  ],
+  "columns": [
+    "column.zs_observe.apple_play.order_id",
+    "column.zs_observe.apple_play.apple_identifier",
+    "column.zs_observe.apple_play.sku_id",
+    "column.zs_observe.apple_play.sku",
+    "column.zs_observe.apple_play.mp_sin",
+    "column.zs_observe.apple_play.vendor_name",
+    "column.zs_observe.apple_play.developer_name",
+    "column.zs_observe.apple_play.title",
+    "column.zs_observe.apple_play.product_type_identifier",
+    "column.zs_observe.apple_play.created_date",
+    "column.zs_observe.apple_play.settlement_date",
+    "column.zs_observe.apple_play.metadata_2",
+    "column.zs_observe.apple_play.metadata_3",
+    "column.zs_observe.apple_play.settled_date",
+    "column.zs_observe.apple_play.transaction_date",
+    "column.zs_observe.apple_play.start_date",
+    "column.zs_observe.apple_play.end_date",
+    "column.zs_observe.apple_play.transaction_type",
+    "column.zs_observe.apple_play.order_type",
+    "column.zs_observe.apple_play.sale_or_return",
+    "column.zs_observe.apple_play.charged_amount",
+    "column.zs_observe.apple_play.settled_amount",
+    "column.zs_observe.apple_play.currency",
+    "column.zs_observe.apple_play.customer_currency",
+    "column.zs_observe.apple_play.customer_price",
+    "column.zs_observe.apple_play.currency_type",
+    "column.zs_observe.apple_play.destination_country",
+    "column.zs_observe.apple_play.country_of_sale",
+    "column.zs_observe.apple_play.region",
+    "column.zs_observe.apple_play.partner_share",
+    "column.zs_observe.apple_play.partner_share_currency",
+    "column.zs_observe.apple_play.extended_partner_share",
+    "column.zs_observe.apple_play.promo_code",
+    "column.zs_observe.apple_play.quantity",
+    "column.zs_observe.apple_play.description"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date",
+    "settlement_date",
+    "settled_date",
+    "transaction_date",
+    "start_date",
+    "end_date"
+  ],
+  "description": "Apple App Store revenue settlement data. Records app purchases, subscriptions, and in-app purchases settled by Apple to developers.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.apple_play"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.apple_play",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 6425
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.apple_play",
+  "grain": "one row per app-store financial transaction/settlement line",
+  "grain_keys": [
+    "order_id",
+    "apple_identifier",
+    "sku_id",
+    "product_type_identifier",
+    "order_type"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.apple_play",
+  "recommended_date_columns": [
+    "created_date",
+    "settlement_date",
+    "transaction_date"
+  ],
+  "reconciliation_key_columns": [],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.apple_play",
+  "source_caveats": [
+    "Apple takes a 15-30% commission (`partner_share`) — `settled_amount` is after this deduction.",
+    "`sale_or_return` = 'S' for sales, 'R' for refunds.",
+    "`metadata_2` and `metadata_3` are report period start/end dates.",
+    "Subscription products will have `start_date` and `end_date` populated.",
+    "Apple pays in 45+ currencies — always check `currency` vs `currency_type`.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6425,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.apple_play"
+  ],
+  "source_platform_types": [
+    "app_store_platform"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "product_type_identifier",
+    "transaction_type",
+    "order_type",
+    "currency",
+    "customer_currency",
+    "currency_type",
+    "partner_share_currency"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.apple_play.global"
+    ],
+    "platform_ids": [
+      "platform.apple_play"
+    ]
+  },
+  "table_name": "apple_play",
+  "table_type": "ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

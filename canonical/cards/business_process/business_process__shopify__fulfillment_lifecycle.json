@@ -1,0 +1,59 @@
+{
+  "canonical_id": "business_process.shopify.fulfillment_lifecycle",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "transaction_type/order_status/fulfillment_status represent fulfilled, pending, partial and unfulfilled lifecycle state.",
+  "display_name": "Shopify fulfillment lifecycle",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "domain_id": "domain.shopify.d2c_order_capture",
+  "evidence_ids": [
+    "ev.shopify.order_grain.001",
+    "ev.shopify.lifecycle.001",
+    "ev.shopify.returns.001",
+    "ev.shopify.shiprocket_join.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.order_grain.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2867
+    },
+    {
+      "evidence_id": "ev.shopify.lifecycle.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2867
+    },
+    {
+      "evidence_id": "ev.shopify.returns.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2867
+    },
+    {
+      "evidence_id": "ev.shopify.shiprocket_join.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2867
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Shopify fulfillment lifecycle",
+  "process_summary": "transaction_type/order_status/fulfillment_status represent fulfilled, pending, partial and unfulfilled lifecycle state.",
+  "review_status": "accepted",
+  "source_card_id": "business_process.shopify.fulfillment_lifecycle",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2867,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

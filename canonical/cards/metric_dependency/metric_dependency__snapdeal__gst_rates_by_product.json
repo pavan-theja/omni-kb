@@ -1,0 +1,39 @@
+{
+  "calculation_order": "Compute numerator and denominator at the specified grain before ratio calculation.",
+  "canonical_id": "metric_dependency.snapdeal.gst_rates_by_product",
+  "card_type": "metric_dependency",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "ratio_or_derived_metric_dependency",
+  "description": "metric_dependency card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.8_2_gst_rates_by_product"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.8_2_gst_rates_by_product",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14683
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Gst Rates By Product",
+  "parent_metric_id": "metric.gst_rates_by_product",
+  "review_status": "candidate",
+  "source_card_id": "metric_dependency.snapdeal.gst_rates_by_product",
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14683,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

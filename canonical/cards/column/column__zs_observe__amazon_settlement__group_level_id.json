@@ -1,0 +1,57 @@
+{
+  "business_meaning": "Data partition/scope column, integer type",
+  "candidate_notes": "Column/caveat only; no account-binding card.",
+  "canonical_id": "column.zs_observe.amazon_settlement.group_level_id",
+  "card_type": "column",
+  "column_name": "group_level_id",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "integer",
+  "description": "Data partition/scope column, integer type",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "documented_scope_values": {
+    "amazon_india_primary": 22,
+    "amazon_india_secondary": 26,
+    "amazon_international_us_fr_es": 123
+  },
+  "evidence_ids": [
+    "ev.amazon_settlement.quality.001",
+    "ev.amazon.tenant_scope_mention.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_settlement.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3005
+    },
+    {
+      "evidence_id": "ev.amazon.tenant_scope_mention.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3005
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "amazon_settlement.group_level_id",
+  "review_status": "accepted",
+  "scope_guardrail": "column_only_not_domain_ownership",
+  "scope_value_notes": "Settlement benchmark contexts explicitly reference 22/26 for India and 123 for US/international; runtime selection remains external.",
+  "semantic_category": "scope_column",
+  "source_card_id": "column.zs_observe.amazon_settlement.group_level_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3005,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.amazon_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

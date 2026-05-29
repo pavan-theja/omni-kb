@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.settlement.8_1_net_settlement_per_order_structured_rows",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 8.1 Net Settlement per Order (Structured Rows)",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.8_1_net_settlement_per_order_structured_rows"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.8_1_net_settlement_per_order_structured_rows",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12955
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 8.1 Net Settlement per Order (Structured Rows)",
+  "natural_language_patterns": [
+    "8.1 Net Settlement per Order (Structured Rows)"
+  ],
+  "output_contract_id": "output_contract.jiomart.metric_summary",
+  "primary_metric_id": "metric.jiomart.net_settlement_per_order",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.settlement.8_1_net_settlement_per_order_structured_rows",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12955,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "sql_ref": "sql.jiomart.settlement.8_1_net_settlement_per_order_structured_rows",
+  "sql_template": "SELECT\n  order_id,\n  SUM(CASE WHEN accountable_type = 'Receivable' THEN settled_amount ELSE 0 END) AS sale_proceeds,\n  SUM(CASE WHEN accountable_type = 'BaseTcs' THEN settled_amount ELSE 0 END) AS tcs_impact,\n  SUM(CASE WHEN accountable_type = 'Tds' THEN settled_amount ELSE 0 END) AS tds_impact,\n  SUM(settled_amount) AS net_settled\nFROM zs_observe.jiomart_settlement\nWHERE is_active = true AND event IS NOT NULL\nGROUP BY order_id\nORDER BY net_settled DESC\nLIMIT 20;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

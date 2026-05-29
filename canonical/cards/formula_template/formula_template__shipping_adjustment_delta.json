@@ -1,0 +1,43 @@
+{
+  "canonical_id": "formula_template.shipping_adjustment_delta",
+  "canonical_name": "Shipping Adjustment Delta",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 14736
+    }
+  ],
+  "expression_summary": "SUM(diff_shipping_charge) + SUM(diff_shipping_charge_tax).",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Shipping Adjustment Delta",
+  "reusable": true,
+  "review_status": "unreviewed",
+  "source_card_id": "formula_template.shipping_adjustment_delta",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14736,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "sql_dialect": "Athena / Trino",
+  "status": "draft",
+  "summary": "SUM(diff_shipping_charge) + SUM(diff_shipping_charge_tax).",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

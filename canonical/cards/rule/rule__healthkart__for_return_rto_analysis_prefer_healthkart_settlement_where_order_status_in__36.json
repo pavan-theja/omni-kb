@@ -1,0 +1,43 @@
+{
+  "canonical_id": "rule.healthkart.for_return_rto_analysis_prefer_healthkart_settlement_where_order_status_in.36",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "For return/RTO analysis, prefer `healthkart_settlement` where `order_status IN ('RTO', 'REVERSE_PICKUP')` — it has 1,700+ return records with richer fields (mp_fees, settled_amount, return_type)",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7634
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "For return/RTO analysis, prefer `healthkart_settlement` where `order_status IN ('RTO', 'REVERSE_PICKUP')` — it has 1,700",
+  "review_status": "ready",
+  "rule_statement": "For return/RTO analysis, prefer `healthkart_settlement` where `order_status IN ('RTO', 'REVERSE_PICKUP')` — it has 1,700+ return records with richer fields (mp_fees, settled_amount, return_type)",
+  "rule_type": "source_instruction_or_parser_guard",
+  "severity": "medium",
+  "source_card_id": "rule.healthkart.for_return_rto_analysis_prefer_healthkart_settlement_where_order_status_in.36",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7634,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.meesho.008.7_2_net_revenue_gmv_minus_returns",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — Net revenue / net GMV after returns",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_2_net_revenue_gmv_minus_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_2_net_revenue_gmv_minus_returns",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 16104
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_net_revenue_query",
+  "name": "Meesho query pattern — Net revenue / net GMV after returns",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "primary_metric_id": "metric.net_revenue",
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.008.7_2_net_revenue_gmv_minus_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16104,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_reverse",
+    "zs_observe.meesho_sales"
+  ],
+  "sql_template": "SELECT\n  (SELECT SUM(charged_amount) FROM zs_observe.meesho_sales WHERE is_active = true)\n  - (SELECT SUM(charged_amount) FROM zs_observe.meesho_reverse WHERE is_active = true)\n  AS net_gmv;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

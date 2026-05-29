@@ -1,0 +1,52 @@
+{
+  "business_definition": "GMV aggregated to order_id grain to avoid multi-line duplication.",
+  "canonical_id": "metric.shopify.order_level_gmv",
+  "card_type": "metric",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order",
+  "description": "GMV aggregated to order_id grain to avoid multi-line duplication.",
+  "display_name": "Order Level Gmv",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.tax_recon.001",
+    "ev.shopify.data_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.tax_recon.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2283
+    },
+    {
+      "evidence_id": "ev.shopify.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2283
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.shopify.order_level_gmv"
+  ],
+  "metric_key": "order_level_gmv",
+  "name": "Order Level Gmv",
+  "review_status": "accepted",
+  "source_card_id": "metric.shopify.order_level_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2283,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

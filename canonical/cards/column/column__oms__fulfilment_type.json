@@ -1,0 +1,45 @@
+{
+  "business_meaning": "OMS fulfilment naming such as FBF or NON_FBF.",
+  "canonical_id": "column.oms.fulfilment_type",
+  "card_type": "column",
+  "column_name": "fulfilment_type",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "OMS fulfilment naming such as FBF or NON_FBF.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.oms"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.oms",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 911
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "filter",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.oms.fulfilment_type",
+  "review_status": "review_required",
+  "semantic_type": "fulfilment_model",
+  "source_card_id": "column.oms.fulfilment_type",
+  "source_caveats": [],
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 911,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "review_required",
+  "status": "draft",
+  "table_id": "table.flipkart.oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

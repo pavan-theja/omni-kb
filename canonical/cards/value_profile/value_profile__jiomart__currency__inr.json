@@ -1,0 +1,43 @@
+{
+  "canonical_id": "value_profile.jiomart.currency.inr",
+  "card_type": "value_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart currency profile",
+  "distribution_summary": "Currency type INR is documented across source tables.",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.10_table_summary_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.10_table_summary_reference",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10332
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "JioMart currency profile",
+  "normalization_rule": "Preserve source spelling/case and code values; normalize only downstream where explicitly configured.",
+  "observed_values": [
+    "INR"
+  ],
+  "profile_kind": "currency_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.jiomart.currency.inr",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10332,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

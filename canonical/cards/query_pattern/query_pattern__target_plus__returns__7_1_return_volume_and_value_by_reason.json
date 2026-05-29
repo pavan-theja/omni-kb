@@ -1,0 +1,55 @@
+{
+  "canonical_id": "query_pattern.target_plus.returns.7_1_return_volume_and_value_by_reason",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus query pattern — 7.1 Return Volume and Value by Reason",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.returns.7_1_return_volume_and_value_by_reason"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.returns.7_1_return_volume_and_value_by_reason",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11160
+    }
+  ],
+  "execution_constraints": [
+    "execution_constraint_set.target_plus.marketplace_parser_constraints"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "7.1 Return Volume and Value by Reason",
+  "name": "Target Plus query pattern — 7.1 Return Volume and Value by Reason",
+  "natural_language_patterns": [
+    "7.1 Return Volume and Value by Reason",
+    "Target Plus 7.1 Return Volume and Value by Reason"
+  ],
+  "output_contract_id": "output_contract.target_plus.metric_timeseries",
+  "primary_metric_id": "metric.target_plus.return_reason_value",
+  "reconciliation_profile_ids": [],
+  "required_filters": [
+    "rule.target_plus.active_filter"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.target_plus.returns.7_1_return_volume_and_value_by_reason",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11160,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.target_returns"
+  ],
+  "sql_ref": "sql.target_plus.returns.7_1_return_volume_and_value_by_reason",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

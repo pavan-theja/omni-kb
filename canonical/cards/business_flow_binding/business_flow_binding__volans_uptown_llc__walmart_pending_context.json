@@ -1,0 +1,53 @@
+{
+  "active": false,
+  "business_scope_set_ids": [
+    "business_scope_set.volans_uptown_llc.walmart_us_pending_context"
+  ],
+  "canonical_id": "business_flow_binding.volans_uptown_llc.walmart_pending_context",
+  "card_type": "business_flow_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Walmart is configured but not query-routable until canonical platform context exists.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/volans_uptown_llc.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "flow_name": "Volans Uptown LLC Walmart marketplace flow pending platform context",
+  "flow_type": "marketplace_oms_settlement",
+  "group_id": "group.volans_uptown_llc.mensa_brands",
+  "name": "Walmart Pending Context",
+  "notes": [],
+  "package_id": "client_runtime_binding_pack.volans_uptown_llc.v0_1",
+  "participant_platform_account_ids": [
+    "platform_account.volans_uptown_llc.walmart_us.primary"
+  ],
+  "required_runtime_resolution": [
+    "walmart platform markdown",
+    "Walmart OMS and settlement table IDs",
+    "Walmart lookup schema confirmation"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Uptown LLC.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": null,
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_uptown_llc.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.volans_uptown_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

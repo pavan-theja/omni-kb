@@ -1,0 +1,73 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement"
+  ],
+  "active": false,
+  "binding_name": "Fraternitas Delhivery Settlement to Bank Requires Bank Binding",
+  "binding_type": "money_flow",
+  "business_process_ids": [
+    "business_process.logistics_settlement_to_bank"
+  ],
+  "business_scope_set_id": "business_scope_set.fraternitas_ventures.logistics",
+  "canonical_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/fraternitas_ventures.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.delhivery_settlement"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.fraternitas_ventures.legendtoys",
+  "money_flow_paths": [
+    "logistics_cod_to_bank"
+  ],
+  "name": "Delhivery Settlement To Bank Requires Bank Binding",
+  "notes": [
+    "Delhivery settlement evidence exists, but no bank destination account/binding was supplied."
+  ],
+  "package_id": "fraternitas_ventures_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.fraternitas.delhivery_in.primary",
+      "required": true,
+      "role": "logistics_settlement_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.logistics_cod_to_bank"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "medium",
+  "source_documents": [
+    "Fraternitas Ventures Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "unicommerce_d2c_oms.md",
+    "unicommerce_operations.md",
+    "delhivery_logistics.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.fraternitas_ventures",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

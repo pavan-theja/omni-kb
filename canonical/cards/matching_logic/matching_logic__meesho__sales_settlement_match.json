@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "Sales is order/sub-order grain; pre-aggregate settlement by order_id if duplicates appear.",
+  "amount_comparison": "Compare meesho_sales.charged_amount to settlement sale/net payout context; report matched/unmatched and amount fields.",
+  "canonical_id": "matching_logic.meesho.sales_settlement_match",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho matching logic — Sales ↔ Settlement Match",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_1_sales_settlement_match"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_1_sales_settlement_match",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15925
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "meesho_sales.sub_order_num = meesho_settlement.order_id",
+  "key_normalization": "Preserve sub_order_num/order_id text; do not match sales.order_id to settlement.order_id for this use case.",
+  "match_type": "left_join_key_and_amount_review",
+  "name": "Meesho matching logic — Sales ↔ Settlement Match",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.meesho.sales_settlement_match",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15925,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timing_rule": "7-day post-delivery settlement timing; unmatched rows may be unsettled timing gaps.",
+  "tolerance_rule": "Numeric amount tolerance not specified in DOCX; keep review open for runtime threshold.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,66 @@
+{
+  "business_object": "reverse_pickup",
+  "business_process_id": "business_process.delivery_rto_return_resolution",
+  "canonical_id": "state_transition.rto_delivered_to_reverse_qc_completed",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "confirmation_evidence": [
+    "Shadowfax reverse QC evidence through Shiprocket courier_company"
+  ],
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Expected state movement in Delivery, RTO, and Return Resolution: rto_delivered → reverse_qc_completed.",
+  "deterministic_rule": "If evidence for rto_delivered exists but confirmation evidence for reverse_qc_completed is missing after the applicable lag window, classify as reverse_qc_not_confirmed.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5452
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5452
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5452
+    }
+  ],
+  "expected_lag": "source_specific_or_bfb_override",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_if_missing": "reverse_qc_not_confirmed",
+  "from_state": "rto_delivered",
+  "lag_type": "configurable",
+  "name": "rto_delivered to reverse_qc_completed",
+  "review_status": "unreviewed",
+  "severity_if_breached": "medium",
+  "source_card_id": "state_transition.rto_delivered_to_reverse_qc_completed",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5452,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "to_state": "reverse_qc_completed",
+  "triggering_step_id": "workflow_step.reverse_qc_completed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

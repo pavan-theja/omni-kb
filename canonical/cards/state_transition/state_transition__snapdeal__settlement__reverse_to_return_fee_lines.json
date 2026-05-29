@@ -1,0 +1,49 @@
+{
+  "canonical_id": "state_transition.snapdeal.settlement.reverse_to_return_fee_lines",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "COD Return to Vendor / COD RTS to Vendor → RTO/RPR/return charge rows",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17283
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17283
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "COD Return to Vendor / COD RTS to Vendor",
+  "marketplace_only": true,
+  "name": "COD Return to Vendor / COD RTS to Vendor → RTO/RPR/return charge rows",
+  "process_id": "business_process.snapdeal.reverse_return_flow",
+  "review_status": "ready",
+  "source_card_id": "state_transition.snapdeal.settlement.reverse_to_return_fee_lines",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17283,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "state_column_id": "column.zs_observe.snapdeal_settlement.type",
+  "status": "draft",
+  "to_state": "RTO/RPR/return charge rows",
+  "trigger": "Return settlement can be accompanied by RTO, RTS, RTV, or RPR charges according to settlement type labels.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

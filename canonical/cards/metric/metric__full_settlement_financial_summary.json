@@ -1,0 +1,62 @@
+{
+  "business_definition": "Settlement waterfall by type, aggregating charged_amount, commission/mp_fees, courier_fee, closing_fee, marketing_fee, payment_collection_fee, discounts, cash_discount_adjustment, fee GST, and settled_amount.",
+  "canonical_id": "metric.full_settlement_financial_summary",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Full Settlement Financial Summary"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "Settlement waterfall by type, aggregating charged_amount, commission/mp_fees, courier_fee, closing_fee, marketing_fee, payment_collection_fee, discounts, cash_discount_adjustment, fee GST, and settled_amount.",
+  "display_name": "Full Settlement Financial Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.snapdeal.orders",
+  "evidence_ids": [
+    "evidence.snapdeal.8_1_full_settlement_financial_summary",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.8_1_full_settlement_financial_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12374
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12374
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12374
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.snapdeal.full_settlement_financial_summary"
+  ],
+  "metric_family": "marketplace_metric",
+  "metric_pattern": "settlement_waterfall_by_type",
+  "name": "Full Settlement Financial Summary",
+  "review_status": "ready",
+  "source_card_id": "metric.full_settlement_financial_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12374,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,45 @@
+{
+  "applies_to_cards": [
+    "metric_impl.target_plus.commission_validation",
+    "matching_logic.target_plus.commission_15pct"
+  ],
+  "assertion": "Commission validation must compare gross_commission against charged_amount_excluding_tax * 0.15 for forward rows.",
+  "canonical_id": "validation_test.target_plus.commission_15pct",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Commission validation must compare gross_commission against charged_amount_excluding_tax * 0.15 for forward rows.",
+  "display_name": "Validate commission formula",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_3_commission_validation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_3_commission_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11862
+    }
+  ],
+  "expected_result": "Formula and transaction_type filter present",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Commission validation uses wrong base or includes reverse charge rows.",
+  "name": "Validate commission formula",
+  "review_status": "ready",
+  "source_card_id": "validation_test.target_plus.commission_15pct",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11862,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "sql_lint",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

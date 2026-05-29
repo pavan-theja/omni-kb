@@ -1,0 +1,69 @@
+{
+  "business_object": "rto_event",
+  "business_process_id": "business_process.delivery_rto_return_resolution",
+  "canonical_id": "workflow_step.rto_initiated",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Evidence-bearing checkpoint in Delivery, RTO, and Return Resolution: RTO Initiated.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 4050
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 4050
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 4050
+    }
+  ],
+  "expected_input": "ndr_recorded",
+  "expected_output": "rto_initiated",
+  "expected_state": "rto_initiated",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "rto_not_initiated"
+  ],
+  "name": "RTO Initiated",
+  "parser_use": "Retrieve this step when the user asks whether this checkpoint occurred, what evidence confirms it, or why the next state is missing.",
+  "platform_role": "source_or_evidence_provider",
+  "platform_type": "logistics; courier; reverse_logistics",
+  "required_evidence": [
+    "column.zs_observe.shiprocket_oms.rto_initiated_date"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "workflow_step.rto_initiated",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4050,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "step_name": "RTO Initiated",
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

@@ -1,0 +1,54 @@
+{
+  "canonical_id": "relationship.target_plus.sales_returns.order_id",
+  "card_type": "relationship",
+  "cardinality": "source-documented coverage; validate grain before metric joins",
+  "confidence": "curated",
+  "coverage": "~1,050 sales orders with returns",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus Sales → Returns on order_id",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.3_2_primary_join_keys",
+    "ev.target_plus.returns.7_4_returns_sales_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.3_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8549
+    },
+    {
+      "evidence_id": "ev.target_plus.returns.7_4_returns_sales_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8549
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain_warning": "order_id is order-level; multiple return/refund rows may exist.",
+  "join_condition": "target_sales.order_id = target_returns.order_id",
+  "join_keys": [
+    "order_id"
+  ],
+  "name": "Target Plus Sales → Returns on order_id",
+  "preaggregation_required": "aggregate many-side settlement/return rows before comparing order-level metrics",
+  "relationship_type": "marketplace_internal_join",
+  "review_status": "ready",
+  "source_card_id": "relationship.target_plus.sales_returns.order_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8549,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_table_id": "table.zs_observe.target_sales",
+  "status": "draft",
+  "target_table_id": "table.zs_observe.target_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

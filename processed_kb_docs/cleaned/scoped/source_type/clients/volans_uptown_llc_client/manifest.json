@@ -1,0 +1,11 @@
+{
+  "card_types": {},
+  "counts": {
+    "semantic_mappings": 15
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "volans_uptown_llc_client"
+  ]
+}

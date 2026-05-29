@@ -1,0 +1,60 @@
+{
+  "canonical_id": "reconciliation_profile.limeroad.reverse_entries_audit",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.recon.sql.001",
+    "ev.limeroad.lifecycle.return.001",
+    "ev.limeroad.lifecycle.rto_cancel.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.recon.sql.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5820
+    },
+    {
+      "evidence_id": "ev.limeroad.lifecycle.return.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5820
+    },
+    {
+      "evidence_id": "ev.limeroad.lifecycle.rto_cancel.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5820
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "matching_or_validation_logic": "Audit ITEM_RETURN, ITEM_RTO, and ITEM_CANCEL rows against original OMS line value and reverse evidence.",
+  "name": "LimeRoad reverse entry audit",
+  "participating_tables": [
+    "table.zs_observe.limeroad_settlement",
+    "table.zs_observe.limeroad_oms"
+  ],
+  "profile_family": "marketplace_internal_reconciliation",
+  "review_status": "accepted",
+  "scope_boundary": "Marketplace tables only; no bank/logistics/ERP/statutory reconciliation.",
+  "source_card_id": "reconciliation_profile.limeroad.reverse_entries_audit",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5820,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "sql_ref": "sql.limeroad.recon.reverse_entries_audit",
+  "status": "active",
+  "unit_grain": "invoice_number + item_id reverse row",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

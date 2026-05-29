@@ -1,0 +1,57 @@
+{
+  "canonical_id": "rule.ajio.benchmarks_guidance_only",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Observed AJIO values such as 14% return rate, 43% SLA compliance, 4.3% overdue settlement, 85% MRP discount, and 5% GST context are canonical guidance/context fields, not hard universal validation thresholds.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.041_11_key_business_observations",
+    "evidence.ajio.070_payment_status_breakdown",
+    "evidence.ajio.054_hsn_codes_and_tax_rates"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.041_11_key_business_observations",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    },
+    {
+      "evidence_id": "evidence.ajio.070_payment_status_breakdown",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    },
+    {
+      "evidence_id": "evidence.ajio.054_hsn_codes_and_tax_rates",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "AJIO observed benchmarks are guidance only",
+  "review_status": "ready",
+  "rule_statement": "Observed AJIO values such as 14% return rate, 43% SLA compliance, 4.3% overdue settlement, 85% MRP discount, and 5% GST context are canonical guidance/context fields, not hard universal validation thresholds.",
+  "rule_type": "semantic_query_rule",
+  "severity": "high",
+  "source_card_id": "rule.ajio.benchmarks_guidance_only",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.041_11_key_business_observations",
+    "evidence.ajio.070_payment_status_breakdown",
+    "evidence.ajio.054_hsn_codes_and_tax_rates"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7316,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

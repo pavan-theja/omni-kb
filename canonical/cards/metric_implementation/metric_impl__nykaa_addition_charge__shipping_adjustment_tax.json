@@ -1,0 +1,72 @@
+{
+  "base_tables": [
+    "table.zs_observe.nykaa_addition_charge"
+  ],
+  "canonical_id": "metric_impl.nykaa_addition_charge.shipping_adjustment_tax",
+  "canonical_name": "Shipping Adjustment Tax",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.query_rules",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15005
+    },
+    {
+      "evidence_id": "evidence.nykaa.query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15005
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15005
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true AND group_level_id = 22"
+  ],
+  "formula_sql": "SUM(diff_shipping_charge_tax)",
+  "formula_template_id": "formula_template.shipping_adjustment_delta",
+  "grain": "shipping_adjustment_line",
+  "implementation_scope": "nykaa_addition_charge",
+  "marketplace_only": true,
+  "metric_id": "metric.shipping_adjustment_tax",
+  "name": "Shipping Adjustment Tax",
+  "platform_code": "nykaa",
+  "platform_context_id": "platform_context.nykaa_fashion.in",
+  "review_status": "unreviewed",
+  "source_card_id": "metric_impl.nykaa_addition_charge.shipping_adjustment_tax",
+  "source_columns": [
+    "diff_shipping_charge_tax",
+    "diff_shipping_charge"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15005,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.nykaa_addition_charge",
+  "sql_dialect": "Athena / Trino",
+  "sql_pattern_id": "sql.nykaa.shipping_adjustment_monthly",
+  "status": "draft",
+  "summary": "Tax on shipping diff, typically ₹1.80 when diff is ₹10; executable formula and filters normalized in V9.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

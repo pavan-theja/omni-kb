@@ -1,0 +1,82 @@
+{
+  "aliases": [
+    "lost shipments",
+    "damaged shipments"
+  ],
+  "business_concepts": [
+    "logistics",
+    "damaged_lost_shipment_count"
+  ],
+  "business_definition": "Count of shipments marked damaged or lost.",
+  "canonical_id": "metric.damaged_lost_shipment_count",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "default_aggregation": "SUM or COUNT or ratio by metric",
+  "default_grain": "shipment_awb_or_settlement_batch",
+  "description": "Count of shipments marked damaged or lost.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "domain_ids": [
+    "domain.logistics_reconciliation"
+  ],
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 851
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 851
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 851
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.shiprocket_oms.damaged_lost_shipment_count"
+  ],
+  "implementations": [
+    "see metric_impl blocks in shiprocket_logistics_partner_parser_ready_v6_role_split.md and shiprocket_services_aggregator_parser_ready_v6_role_split.md"
+  ],
+  "metric_name": "Damaged or Lost Shipment Count",
+  "metric_type": "amount/count/rate/days_by_metric",
+  "name": "Damaged or Lost Shipment Count",
+  "polarity": "context_dependent",
+  "review_status": "unreviewed",
+  "source_card_id": "metric.damaged_lost_shipment_count",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 851,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_paths": [
+    "raw/cleaned_v2/logistics/logistics_domain.md",
+    "raw/cleaned_v2/logistics/shiprocket_logistics.md"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "unit": "currency/count/percentage/days_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

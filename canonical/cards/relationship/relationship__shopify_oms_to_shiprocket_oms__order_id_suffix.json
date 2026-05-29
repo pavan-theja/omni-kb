@@ -1,0 +1,53 @@
+{
+  "business_semantics": "Operational shipment linkage only; not a courier settlement or account binding.",
+  "canonical_id": "relationship.shopify_oms_to_shiprocket_oms.order_id_suffix",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "create_action": "create_reference_relationship",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "Shopify order to Shiprocket shipment",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.shiprocket_join.001",
+    "ev.shopify.order_grain.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.shiprocket_join.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2064
+    },
+    {
+      "evidence_id": "ev.shopify.order_grain.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2064
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.shopify_oms",
+  "join_keys": [
+    "sr.order_id LIKE CONCAT(s.order_id, '-%')"
+  ],
+  "join_safety_rule": "Filter both s.is_active=true and sr.is_active=true; aggregate Shopify to order_id before shipment-level joins when computing order value.",
+  "name": "Shopify order to Shiprocket shipment",
+  "relationship_grain": "Shopify order/order-line to downstream shipment rows",
+  "review_status": "accepted",
+  "source_card_id": "relationship.shopify_oms_to_shiprocket_oms.order_id_suffix",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2064,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_table": "table.zs_observe.shiprocket_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

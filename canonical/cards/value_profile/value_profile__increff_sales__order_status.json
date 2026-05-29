@@ -1,0 +1,55 @@
+{
+  "canonical_id": "value_profile.increff_sales.order_status",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.increff_sales.order_status",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff sales order_status values",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.046.order_status_values_wms_internal_status"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.046.order_status_values_wms_internal_status",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7210
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Increff sales order_status values",
+  "profile_notes": [
+    "Filter order_status = COMPLETED for delivered GMV."
+  ],
+  "profile_type": "documented_distinct_values_or_mapping",
+  "review_status": "ready",
+  "source_card_id": "value_profile.increff_sales.order_status",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7210,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.increff_sales",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_meanings": {
+    "CANCELLED": "Cancelled before delivery",
+    "COMPLETED": "Order successfully delivered to buyer",
+    "PACKED": "Packed but not dispatched",
+    "READY_TO_DISPATCH": "Picked/packed awaiting handover"
+  },
+  "values": [
+    "COMPLETED",
+    "READY_TO_DISPATCH",
+    "CANCELLED",
+    "PACKED"
+  ]
+}

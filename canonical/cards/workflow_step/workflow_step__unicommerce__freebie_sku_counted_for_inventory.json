@@ -1,0 +1,55 @@
+{
+  "canonical_id": "workflow_step.unicommerce.freebie_sku_counted_for_inventory",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Freebie SKU RD_0325_05 is physical inventory movement even when excluded from revenue-per-order analysis.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.009.7_product_catalogue"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.009.7_product_catalogue",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 11733
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Freebie Sku Counted For Inventory",
+  "optional_fields": [
+    "sequence_number",
+    "input_state",
+    "output_state",
+    "source_tables",
+    "source_columns",
+    "business_action",
+    "handoff_context"
+  ],
+  "process_id": "business_process.unicommerce.inventory_product_catalogue_movement",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.unicommerce.freebie_sku_counted_for_inventory",
+  "source_columns": [
+    "sku_id",
+    "charged_amount",
+    "quantity"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11733,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "table.zs_observe.unicommerce"
+  ],
+  "status": "draft",
+  "step_name": "Freebie SKU RD_0325_05 is physical inventory movement even when excluded from revenue-per-order analysis.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

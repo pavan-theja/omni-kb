@@ -1,0 +1,51 @@
+{
+  "canonical_id": "value_profile.flipkart.oms.fulfilment_type",
+  "card_type": "value_profile",
+  "column_name": "fulfilment_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.fulfilment",
+    "evidence.flipkart.pitfalls"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.fulfilment",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 3029
+    },
+    {
+      "evidence_id": "evidence.flipkart.pitfalls",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 3029
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_values": [
+    "FBF",
+    "NON_FBF"
+  ],
+  "name": "Flipkart oms.fulfilment_type",
+  "normalization": "case/source-value preserving unless query pattern says otherwise",
+  "null_semantics": "preserve nulls where observed",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.flipkart.oms.fulfilment_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3029,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_meanings": "OMS fulfilment naming; FBF maps to flipkart_fulfilment, NON_FBF maps to seller_easy_ship in settlement."
+}

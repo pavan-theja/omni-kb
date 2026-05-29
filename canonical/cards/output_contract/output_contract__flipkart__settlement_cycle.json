@@ -1,0 +1,58 @@
+{
+  "canonical_id": "output_contract.flipkart.settlement_cycle",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_name": "Settlement cycle report",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "diagnostic_columns": [
+    "order_id",
+    "item_id",
+    "variance_reason",
+    "source_table"
+  ],
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7626
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "as required by use case",
+  "metric_columns": [],
+  "name": "Flipkart settlement_cycle",
+  "recommended_fields": [
+    "fulfilment_type",
+    "neft_type"
+  ],
+  "required_fields": [
+    "settlement_date",
+    "avg_settlement_cycle_days"
+  ],
+  "review_status": "accepted",
+  "sort_order": [
+    "largest variance first for exception outputs",
+    "date ascending for time series"
+  ],
+  "source_card_id": "output_contract.flipkart.settlement_cycle",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7626,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "use_case": "Settlement cycle report"
+}

@@ -1,0 +1,96 @@
+{
+  "candidate_notes": "zen_status and is_duplicated are boolean; estimated fee string columns may need TRY_CAST.",
+  "canonical_id": "table.zs_observe.amazon_fee_preview",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.amazon_fee_preview.amazon_store",
+    "column.zs_observe.amazon_fee_preview.asin",
+    "column.zs_observe.amazon_fee_preview.brand",
+    "column.zs_observe.amazon_fee_preview.charged_amount",
+    "column.zs_observe.amazon_fee_preview.description",
+    "column.zs_observe.amazon_fee_preview.estimated_fee_total",
+    "column.zs_observe.amazon_fee_preview.final_weight",
+    "column.zs_observe.amazon_fee_preview.fixed_fee",
+    "column.zs_observe.amazon_fee_preview.fnsku",
+    "column.zs_observe.amazon_fee_preview.fulfilled_by",
+    "column.zs_observe.amazon_fee_preview.gross_commission",
+    "column.zs_observe.amazon_fee_preview.gross_weight",
+    "column.zs_observe.amazon_fee_preview.hsn",
+    "column.zs_observe.amazon_fee_preview.is_active",
+    "column.zs_observe.amazon_fee_preview.is_duplicated",
+    "column.zs_observe.amazon_fee_preview.longest_side",
+    "column.zs_observe.amazon_fee_preview.median_side",
+    "column.zs_observe.amazon_fee_preview.pick_and_pack_fee",
+    "column.zs_observe.amazon_fee_preview.product_group",
+    "column.zs_observe.amazon_fee_preview.product_name",
+    "column.zs_observe.amazon_fee_preview.referal_fee",
+    "column.zs_observe.amazon_fee_preview.referral_fee",
+    "column.zs_observe.amazon_fee_preview.shipping_amount",
+    "column.zs_observe.amazon_fee_preview.shortest_side",
+    "column.zs_observe.amazon_fee_preview.sku",
+    "column.zs_observe.amazon_fee_preview.volumetric_weight",
+    "column.zs_observe.amazon_fee_preview.zen_status"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_column": "not specified",
+  "description": "table card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain": "domain.marketplace.amazon.fee_preview",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.amazon_fee_preview.purpose.001",
+    "ev.amazon_fee_preview.quality.001",
+    "ev.amazon_fee_preview.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_fee_preview.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1411
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1411
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1411
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_observe.amazon_fee_preview",
+  "grain": "SKU-level expected-fee estimate row",
+  "mandatory_filters": [
+    "is_active = true",
+    "zen_status = true",
+    "is_duplicated = false"
+  ],
+  "marketplace_only": true,
+  "name": "Amazon SKU-level fee preview",
+  "optional_filters": "none specified",
+  "platform_context": "platform_context.amazon.in",
+  "quality_notes": "zen_status and is_duplicated are boolean; estimated fee string columns may need TRY_CAST.",
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "scope": "Amazon India fee preview only",
+  "source_card_id": "table.zs_observe.amazon_fee_preview",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1411,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "amazon_fee_preview",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

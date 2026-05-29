@@ -1,0 +1,48 @@
+{
+  "amount_comparison": "ABS(o.charged_amount - ABS(s.charged_amount)) AS price_variance",
+  "canonical_id": "matching_logic.tatacliq.oms_settlement_forward",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq matching logic — OMS settlement forward",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.recon_oms_settlement",
+    "ev.tatacliq.join.coverage"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.recon_oms_settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7523
+    },
+    {
+      "evidence_id": "ev.tatacliq.join.coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7523
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "o.order_id = s.order_id AND s.is_active = true AND s.transaction_type = forward",
+  "key_normalization": "Use order_id exactly; document_number/parent_id is forbidden because coverage is 0%.",
+  "match_type": "left_join_key_and_amount_status",
+  "name": "TataCliq matching logic — OMS settlement forward",
+  "review_status": "ready",
+  "source_card_id": "matching_logic.tatacliq.oms_settlement_forward",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7523,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "tolerance_rule": "Source query classifies Price Variance when variance > 1.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

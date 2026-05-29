@@ -1,0 +1,60 @@
+{
+  "boundary_tags": [],
+  "canonical_id": "column.zs_observe.nykaa_addition_charge.delivered_date_temp_old",
+  "canonical_name": "zs_observe.nykaa_addition_charge.delivered_date_temp_old",
+  "card_type": "column",
+  "column_group": "Dates",
+  "column_name": "delivered_date_temp_old",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar/date",
+  "description": "column card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "do_not_use": true,
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.tables",
+    "evidence.nykaa.data_quality"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 1164
+    },
+    {
+      "evidence_id": "evidence.nykaa.data_quality",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 1164
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_addition_charge.delivered_date_temp_old",
+  "parser_notes": [
+    "Use only with marketplace-specific semantics.",
+    "Do not use in new queries unless explicitly required for lineage/debugging.",
+    "Migration residue / _temp_old column; ignore in production queries."
+  ],
+  "raw_notes": "Migration residue.",
+  "review_status": "unreviewed",
+  "semantic_role": "date_or_timestamp",
+  "source_card_id": "column.zs_observe.nykaa_addition_charge.delivered_date_temp_old",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1164,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Migration residue.",
+  "table_id": "table.zs_observe.nykaa_addition_charge",
+  "table_name": "zs_observe.nykaa_addition_charge",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

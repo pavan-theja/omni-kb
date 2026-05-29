@@ -1,0 +1,158 @@
+{
+  "amount_columns": [
+    "settled_amount",
+    "sale_settled_amount",
+    "refund_settled_amount",
+    "offer_settled_amount",
+    "my_share_settled_amount",
+    "addon_settled_amount",
+    "taxes_settled_amount",
+    "offer_adjustment_settled_amount",
+    "protection_fund_settled_amount",
+    "mp_fee",
+    "gst_on_mp_fees",
+    "total_tcs_amount",
+    "total_tds_amount",
+    "total_tax"
+  ],
+  "business_keys": [
+    "order_id",
+    "item_id",
+    "invoice_number",
+    "sku_id"
+  ],
+  "canonical_id": "table.flipkart.settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.settlement.addon_settled_amount",
+    "column.settlement.collection_fee",
+    "column.settlement.commission_fee",
+    "column.settlement.created_date",
+    "column.settlement.fixed_fee",
+    "column.settlement.franchise_fee",
+    "column.settlement.fulfilment_type",
+    "column.settlement.gross_weight",
+    "column.settlement.group_id",
+    "column.settlement.group_level_id",
+    "column.settlement.gst_on_mp_fees",
+    "column.settlement.invoice_number",
+    "column.settlement.is_active",
+    "column.settlement.is_duplicated",
+    "column.settlement.item_id",
+    "column.settlement.mp_fee",
+    "column.settlement.my_share_settled_amount",
+    "column.settlement.neft_type",
+    "column.settlement.offer_adjustment_settled_amount",
+    "column.settlement.offer_settled_amount",
+    "column.settlement.order_id",
+    "column.settlement.pick_and_pack_fee",
+    "column.settlement.product_sub_category",
+    "column.settlement.protection_fund_settled_amount",
+    "column.settlement.quantity",
+    "column.settlement.refund_settled_amount",
+    "column.settlement.return_type",
+    "column.settlement.reverse_shipping_fee",
+    "column.settlement.sale_settled_amount",
+    "column.settlement.settled_amount",
+    "column.settlement.settlement_date",
+    "column.settlement.settlement_id",
+    "column.settlement.shipping_fee",
+    "column.settlement.sku_id",
+    "column.settlement.taxes_settled_amount",
+    "column.settlement.tier",
+    "column.settlement.total_tax",
+    "column.settlement.total_tcs_amount",
+    "column.settlement.total_tds_amount",
+    "column.settlement.vendor_payout",
+    "column.settlement.vol_weight",
+    "column.settlement.zen_status",
+    "column.settlement.zone"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_columns": [
+    "settlement_date",
+    "created_date"
+  ],
+  "description": "table card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": [
+      66388
+    ]
+  },
+  "evidence_ids": [
+    "evidence.flipkart.settlement",
+    "evidence.flipkart.settlement_logic",
+    "evidence.flipkart.scope_caveats"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 645
+    },
+    {
+      "evidence_id": "evidence.flipkart.settlement_logic",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 645
+    },
+    {
+      "evidence_id": "evidence.flipkart.scope_caveats",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 645
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "settlement line / order item settlement row",
+  "known_filters": [
+    "is_active = true",
+    "documented scope value: group_level_id = 66388"
+  ],
+  "marketplace_module": "settlement",
+  "name": "zs_observe.flipkart_settlement",
+  "primary_keys": [
+    "settlement_id",
+    "order_id",
+    "item_id"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_observe",
+  "scope_columns_as_columns_only": [
+    "group_level_id",
+    "group_id"
+  ],
+  "source_aliases": [
+    "zs_refined.flipkart_settlement in sample SQL",
+    "zs_observe.flipkart_settlement in table header and most source examples"
+  ],
+  "source_card_id": "table.flipkart.settlement",
+  "source_caveats": [
+    "Granular fee columns can be null; mp_fee is the reliable aggregate for fee impact.",
+    "Core waterfall includes my_share_settled_amount, addon_settled_amount, and taxes_settled_amount in addition to sale/refund/offer/protection/fee/tax components.",
+    "group_level_id value 66388 appears in settlement examples; do not treat as account binding."
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 645,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "status_columns": [
+    "neft_type",
+    "fulfilment_type",
+    "return_type",
+    "is_active",
+    "is_duplicated",
+    "zen_status"
+  ],
+  "table_name": "flipkart_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

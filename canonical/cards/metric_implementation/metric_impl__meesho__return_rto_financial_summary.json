@@ -1,0 +1,52 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.meesho.return_rto_financial_summary",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho implementation — Return + RTO Financial Summary",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_1_return_rto_financial_summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_1_return_rto_financial_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 12705
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use active-row and source-specified marketplace filters; scope fields remain columns/caveats only.",
+  "formula_text": "SELECT\n  COALESCE(order_status, 'Unknown') AS status,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS reversed_gmv,\n  SUM(charged_amount_excluding_tax) AS taxable_base,\n  SUM(total_tax) AS gst_reversed,\n  SUM(tcs_taxable_amount) AS tcs_base_reversed,\n  AVG(charged_amount) AS avg_order_value\nFROM zs_observe.meesho_reverse\nWHERE is_active = true\nGROUP BY 1 ORDER BY cnt DESC;",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "meesho",
+  "metric_id": "metric.return_rto_financial_summary",
+  "metric_pattern": "meesho_specific_implementation_of_return_rto_financial_summary",
+  "name": "Meesho implementation — Return + RTO Financial Summary",
+  "platform_code": "meesho",
+  "platform_context_id": "platform_context.meesho.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.meesho.return_rto_financial_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12705,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_reverse"
+  ],
+  "sql_pattern": "SELECT\n  COALESCE(order_status, 'Unknown') AS status,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS reversed_gmv,\n  SUM(charged_amount_excluding_tax) AS taxable_base,\n  SUM(total_tax) AS gst_reversed,\n  SUM(tcs_taxable_amount) AS tcs_base_reversed,\n  AVG(charged_amount) AS avg_order_value\nFROM zs_observe.meesho_reverse\nWHERE is_active = true\nGROUP BY 1 ORDER BY cnt DESC;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,53 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.target_sales",
+    "table.zs_observe.target_returns",
+    "table.zs_observe.target_settlement",
+    "table.zs_observe.target_tcin_mapping"
+  ],
+  "canonical_id": "rule.target_plus.currency_label_usd_values",
+  "card_type": "rule",
+  "condition": "All financial analysis",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus currency label caveat",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.7_data_quality_observations_and_known_issues",
+    "ev.target_plus.settlement.2_key_statistics_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.7_data_quality_observations_and_known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11496
+    },
+    {
+      "evidence_id": "ev.target_plus.settlement.2_key_statistics_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11496
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus currency label caveat",
+  "review_status": "ready",
+  "rule_type": "semantic_rule",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.currency_label_usd_values",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11496,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "currency_type is labeled INR in tables, but financial values are USD-priced values; treat amounts as USD unless an external currency conversion layer says otherwise.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

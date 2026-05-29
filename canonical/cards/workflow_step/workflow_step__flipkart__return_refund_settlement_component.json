@@ -1,0 +1,60 @@
+{
+  "canonical_id": "workflow_step.flipkart.return_refund_settlement_component",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.cashback_schema",
+    "evidence.flipkart.settlement_logic"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.cashback_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5282
+    },
+    {
+      "evidence_id": "evidence.flipkart.settlement_logic",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5282
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "return_type",
+    "refund_settled_amount",
+    "settled_amount"
+  ],
+  "input_tables": [
+    "table.flipkart.cashback",
+    "table.flipkart.settlement"
+  ],
+  "name": "Settlement refund component capture",
+  "output_semantics": "refund_settled_amount and return_type capture return/refund settlement impact for order item reconciliation.",
+  "process_id": "business_process.flipkart.return_cancel_reversal",
+  "required_keys": [
+    "order_id",
+    "item_id"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.flipkart.return_refund_settlement_component",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5282,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_name": "Settlement refund component capture",
+  "step_order": 2,
+  "trigger": "return or cancellation signal appears in cashback or settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

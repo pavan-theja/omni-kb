@@ -1,0 +1,68 @@
+{
+  "benchmarks": {
+    "observed_range": "0.8 to 1.03 percent in source examples",
+    "rate_context": "~1 percent of net taxable value",
+    "source": "DOCX section 5.1"
+  },
+  "business_definition": "TCS deduction from marketplace settlement, stored as negative debit in meesho_settlement.total_tcs_amount and reconciled against sales tcs_taxable_amount base.",
+  "canonical_id": "metric.tcs_collected",
+  "card_type": "metric",
+  "colloquial_names": [
+    "TCS collected",
+    "GST TCS",
+    "tax collected at source"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "month or settlement period",
+  "default_unit": "INR",
+  "description": "TCS deduction from marketplace settlement, stored as negative debit in meesho_settlement.total_tcs_amount and reconciled against sales tcs_taxable_amount base.",
+  "display_name": "TCS deducted / collected at source",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.tax",
+  "evidence_ids": [
+    "evidence.meesho.8_5_tcs_reconciliation",
+    "evidence.snapdeal.8_6_tcs_summary_by_settlement",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_5_tcs_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11670
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_ids": [
+    "metric_impl.meesho.tcs_reconciliation",
+    "metric_impl.snapdeal.tcs_summary_by_settlement",
+    "metric_impl.snapdeal.tcs_tax_collected_at_source_gst_section_52"
+  ],
+  "metric_family": "tax",
+  "metric_pattern": "sum_settled_amount_where_type_like_tcs",
+  "name": "TCS deducted / collected at source",
+  "review_status": "accepted",
+  "source_card_id": "metric.tcs_collected",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx",
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11670,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+    "raw/cleaned_v2/marketplace/snapdeal_marketplace.md"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

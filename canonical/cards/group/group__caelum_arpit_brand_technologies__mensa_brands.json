@@ -1,0 +1,55 @@
+{
+  "active": true,
+  "business_meaning": "Mensa Brands operating scope for Caelum Arpit Brand Technologies Private Limited in North American D2C and Amazon marketplace channels.",
+  "canonical_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+  "card_type": "group",
+  "confidence": "unknown",
+  "country_or_region": "United States and Canada",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "USD",
+    "CAD"
+  ],
+  "default_currency": "USD",
+  "description": "Mensa Brands operating scope for Caelum Arpit Brand Technologies Private Limited in North American D2C and Amazon marketplace channels.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_code": "MENSA_BRANDS",
+  "group_name": "Mensa Brands",
+  "group_type": "operational_unit",
+  "name": "Mensa Brands",
+  "notes": [],
+  "package_id": "caelum_arpit_brand_technologies_runtime_card_pack_v1_0",
+  "review_status": "unreviewed",
+  "runtime_scope_policy": "group_id and group_level_id are represented in Account Data Binding scope_keys; generic platform/domain cards remain reusable.",
+  "source_confidence": null,
+  "source_documents": [
+    "Caelum Arpit Brand Technologies Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json",
+  "source_scope_identifiers": {
+    "group_id": 9,
+    "group_level_id": 135,
+    "group_name": "Mensa Brands"
+  },
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.caelum_arpit_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

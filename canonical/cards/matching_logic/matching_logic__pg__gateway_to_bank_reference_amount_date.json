@@ -1,0 +1,65 @@
+{
+  "amount_tolerance": "0.01 or currency minor unit",
+  "canonical_id": "matching_logic.pg.gateway_to_bank_reference_amount_date",
+  "card_type": "matching_logic",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Gateway to bank reference, amount, date",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 52340
+    }
+  ],
+  "expected_alignment_type": "one_to_one_or_many_to_one",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fallback_match_strategy": "amount/date fallback after reference extraction",
+  "logic_name": "Gateway to bank reference, amount, date",
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "match_confidence_rules": [
+    "exact reference + amount = high",
+    "amount/date only = medium/low",
+    "missing reference = review_required"
+  ],
+  "matching_strategy": "hybrid",
+  "name": "Gateway to bank reference, amount, date",
+  "notes": [
+    "Do not embed tenant account filters in matching logic."
+  ],
+  "primary_match_keys": [
+    "UTR/trace/RRN/ARN/payout/deposit/reference exact match"
+  ],
+  "reconciliation_profile_id": "reconciliation_profile.pg.gateway_payout_to_bank_credit",
+  "review_status": "accepted",
+  "secondary_match_keys": [
+    "amount + currency + date window",
+    "narration reference extraction"
+  ],
+  "source_card_id": "matching_logic.pg.gateway_to_bank_reference_amount_date",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 52340,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "time_tolerance": "T+0 to T+n; provider-specific",
+  "unmatched_handling": "Classify using mismatch categories and output diagnostics.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

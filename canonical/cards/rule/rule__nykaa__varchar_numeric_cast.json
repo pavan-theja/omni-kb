@@ -1,0 +1,55 @@
+{
+  "canonical_id": "rule.nykaa.varchar_numeric_cast",
+  "canonical_name": "Varchar Numeric Cast",
+  "card_type": "rule",
+  "cast_policy": "TRY_CAST before arithmetic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.query_rules",
+    "evidence.nykaa.data_quality",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 19174
+    },
+    {
+      "evidence_id": "evidence.nykaa.data_quality",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 19174
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 19174
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Varchar Numeric Cast",
+  "review_status": "unreviewed",
+  "rule_scope": "nykaa_marketplace_parser_rule",
+  "rule_type": "schema_type_guardrail",
+  "source_card_id": "rule.nykaa.varchar_numeric_cast",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 19174,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Use TRY_CAST/CAST before arithmetic on varchar duplicate or schema-drift numeric columns, and prefer earlier decimal/timestamp-typed duplicates where available.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,50 @@
+{
+  "canonical_id": "column.zs_observe.tatacliq_oms.quantity",
+  "card_type": "column",
+  "column_name": "quantity",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [
+    "NULL for ~76% of forward OMS rows; use row count as unit proxy where documented."
+  ],
+  "data_type": "integer",
+  "description": "Quantity (NULL for \\~76% of forward rows)",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.schema.oms.classification"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.schema.oms.classification",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 3814
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": false,
+  "is_date": false,
+  "is_key": false,
+  "is_scope_field": false,
+  "is_status": false,
+  "name": "tatacliq_oms",
+  "review_status": "ready_with_caveat",
+  "schema": "zs_observe",
+  "semantic_role": "attribute",
+  "source_card_id": "column.zs_observe.tatacliq_oms.quantity",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3814,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready_with_caveat",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_oms",
+  "table_name": "tatacliq_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

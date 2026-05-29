@@ -1,0 +1,48 @@
+{
+  "candidate_notes": "Group/context differences affect marketplace labels and realization benchmarks; not account-binding. Accepted after cleanup as evidence-backed variant metadata, not lazy process population.",
+  "canonical_id": "reconciliation_variant.amazon.oms_to_settlement.india_vs_international",
+  "card_type": "reconciliation_variant",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_variant card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.oms_settlement.001",
+    "ev.amazon.join_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.oms_settlement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7460
+    },
+    {
+      "evidence_id": "ev.amazon.join_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7460
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "India vs international OMS-settlement variant",
+  "profile": "reconciliation_profile.amazon.oms_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_variant.amazon.oms_to_settlement.india_vs_international",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7460,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "variant_key": "india_vs_international",
+  "variant_reason": "Group/context differences affect marketplace labels and realization benchmarks; not account-binding."
+}

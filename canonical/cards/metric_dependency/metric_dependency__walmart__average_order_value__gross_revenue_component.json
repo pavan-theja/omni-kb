@@ -1,0 +1,42 @@
+{
+  "aggregation_order": "aggregate GMV and distinct orders at the same order grain before averaging",
+  "canonical_id": "metric_dependency.walmart.average_order_value.gross_revenue_component",
+  "card_type": "metric_dependency",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "numerator_context",
+  "depends_on": "metric.marketplace.gross_revenue",
+  "description": "metric_dependency card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.metrics.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.metrics.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4190
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "metric_id": "metric.marketplace.average_order_value",
+  "name": "Average order value depends on gross revenue",
+  "notes": "AOV is an order-grain average over forward/delivered sales context.",
+  "required_before_computation": true,
+  "review_status": "accepted",
+  "source_card_id": "metric_dependency.walmart.average_order_value.gross_revenue_component",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4190,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

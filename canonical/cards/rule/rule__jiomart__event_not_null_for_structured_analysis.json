@@ -1,0 +1,43 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "canonical_id": "rule.jiomart.event_not_null_for_structured_analysis",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "Use event IS NOT NULL for structured settlement analysis",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.7_data_quality_observations"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.7_data_quality_observations",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13562
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Use event IS NOT NULL for structured settlement analysis",
+  "review_status": "ready",
+  "rule_type": "filter_rule",
+  "severity": "medium",
+  "source_card_id": "rule.jiomart.event_not_null_for_structured_analysis",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13562,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "statement": "Filter event IS NOT NULL for structured Receivable/BaseTcs/Tds analysis; include NULL event rows only for total settlement views.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

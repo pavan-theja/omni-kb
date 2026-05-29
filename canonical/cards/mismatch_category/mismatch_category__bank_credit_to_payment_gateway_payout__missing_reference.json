@@ -1,0 +1,62 @@
+{
+  "banking_only": true,
+  "canonical_id": "mismatch_category.bank_credit_to_payment_gateway_payout.missing_reference",
+  "card_type": "mismatch_category",
+  "category_key": "missing_reference",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Bank row lacks usable reference/UTR/customer reference.",
+  "detection_rule": "derived from matching_logic result",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 13464
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "likely_causes": [
+    "timing difference",
+    "reference extraction issue",
+    "source duplicate",
+    "partial settlement",
+    "bank charges",
+    "currency/FX issue"
+  ],
+  "name": "Bank credit to payment gateway settlement missing_reference",
+  "profile": "reconciliation_profile.bank_credit_to_payment_gateway_payout",
+  "recommended_output_fields": [
+    "bank_table",
+    "bank_reference",
+    "external_reference",
+    "bank_amount",
+    "external_amount",
+    "difference",
+    "currency",
+    "bank_date",
+    "external_date",
+    "match_status"
+  ],
+  "review_status": "accepted",
+  "severity": "medium unless amount_mismatch or duplicate_reference is material",
+  "source_card_id": "mismatch_category.bank_credit_to_payment_gateway_payout.missing_reference",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13464,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

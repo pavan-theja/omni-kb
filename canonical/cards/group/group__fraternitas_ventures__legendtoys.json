@@ -1,0 +1,59 @@
+{
+  "active": true,
+  "business_meaning": "LegendToys brand/group scope for Fraternitas Ventures Private Limited India marketplace and D2C commerce operations.",
+  "canonical_id": "group.fraternitas_ventures.legendtoys",
+  "card_type": "group",
+  "confidence": "unknown",
+  "country_or_region": "India",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "INR"
+  ],
+  "default_currency": "INR",
+  "description": "LegendToys brand/group scope for Fraternitas Ventures Private Limited India marketplace and D2C commerce operations.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_code": "LEGENDTOYS",
+  "group_name": "LegendToys",
+  "group_type": "brand",
+  "name": "LegendToys",
+  "notes": [],
+  "package_id": "fraternitas_ventures_runtime_card_pack_v1_0",
+  "review_status": "unreviewed",
+  "runtime_scope_policy": "group_id and group_level_id are represented in Account Data Binding scope_keys; generic platform/domain cards remain reusable.",
+  "source_confidence": null,
+  "source_documents": [
+    "Fraternitas Ventures Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "unicommerce_d2c_oms.md",
+    "unicommerce_operations.md",
+    "delhivery_logistics.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+  "source_scope_identifiers": {
+    "group_id": 118,
+    "group_level_id": 337,
+    "group_name": "LegendToys"
+  },
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.fraternitas_ventures",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,87 @@
+{
+  "benchmarks": {
+    "rate_context": "0.1 percent of gross taxable sale value",
+    "source": "DOCX section 5.2"
+  },
+  "business_definition": "TDS deduction under Section 194-O, stored as negative debit in meesho_settlement.total_tds; source confirms tds_rate__ = 0.1000.",
+  "business_question": "SUM total_tds_amount",
+  "canonical_id": "metric.tds_deducted",
+  "canonical_name": "tds_deducted",
+  "card_type": "metric",
+  "colloquial_names": [
+    "TDS",
+    "tax deducted at source"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order item or settlement line depending implementation",
+  "default_time_basis": "settlement_date for settlement metrics; created/order date for order metrics",
+  "default_unit": "INR",
+  "description": "metric card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "display_name": "TDS deducted",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.tax",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns",
+    "evidence.meesho.8_4_tcs_tds_summary",
+    "evidence.snapdeal.8_4_reconcile_non_order_vs_settlement_tds_rows",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 3723
+    }
+  ],
+  "evidence_table_ids": [],
+  "excluded_components": [
+    "COGS",
+    "bank deposits",
+    "external logistics charges",
+    "ERP/accounting adjustments"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_ids": [
+    "metric_impl.meesho.tcs_tds_summary",
+    "metric_impl.snapdeal.join_to_oms_for_tds_rate_validation",
+    "metric_impl.snapdeal.net_tds_deducted_after_reversals",
+    "metric_impl.snapdeal.reconcile_non_order_vs_settlement_tds_rows",
+    "metric_impl.snapdeal.tds_reconciliation_non_order_vs_settlement",
+    "metric_impl.snapdeal.tds_summary_by_month",
+    "metric_impl.snapdeal.tds_tax_deducted_at_source_income_tax_section_194_o",
+    "metric_impl.snapdeal.total_tds_deducted",
+    "metric_implementation.flipkart.tds_deducted"
+  ],
+  "included_components": [
+    "marketplace-owned Flipkart fields only"
+  ],
+  "metric_family": "tax_deduction",
+  "metric_pattern": "sum_abs_gross_amount_for_tds_inv_rows",
+  "name": "Tds Deducted",
+  "positive_direction": "higher_is_better except fees/taxes/returns/cancellations",
+  "review_status": "accepted",
+  "source_card_id": "metric.tds_deducted",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx",
+    "/mnt/data/Meesho Recon Doc.docx",
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3723,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+    "raw/cleaned_v2/marketplace/snapdeal_marketplace.md"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

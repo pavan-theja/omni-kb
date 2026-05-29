@@ -1,0 +1,57 @@
+{
+  "affected_side": "both",
+  "business_interpretation": "Fee timing, tax inclusion, source text field parsing, or aggregation mismatch.",
+  "canonical_id": "mismatch_category.pg.fee_variance",
+  "card_type": "mismatch_category",
+  "category_name": "fee_variance",
+  "category_type": "amount_mismatch",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Fee totals differ between detail and settlement/balance entries.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 52805
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Fee Variance",
+  "recommended_next_actions": [
+    "Check active/duplicate filters",
+    "Verify account data binding/runtime scope",
+    "Review reference extraction and date window",
+    "Inspect source-specific caveats"
+  ],
+  "review_status": "accepted",
+  "severity": "medium",
+  "source_card_id": "mismatch_category.pg.fee_variance",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 52805,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "temporary_or_final": "depends_on_window",
+  "typical_root_causes": [
+    "Fee timing, tax inclusion, source text field parsing, or aggregation mismatch."
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

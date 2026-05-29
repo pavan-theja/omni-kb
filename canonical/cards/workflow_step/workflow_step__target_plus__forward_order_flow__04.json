@@ -1,0 +1,49 @@
+{
+  "canonical_id": "workflow_step.target_plus.forward_order_flow.04",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "payout_id groups many transfer_id rows; settled_amount = charged_amount_excluding_tax + shipping_amount - gross_commission.",
+  "display_name": "Payout batch aggregates transfers",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.2_1_forward_order_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.2_1_forward_order_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9860
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "table.zs_observe.target_settlement"
+  ],
+  "name": "Payout batch aggregates transfers",
+  "output_tables": [
+    "table.zs_observe.target_settlement"
+  ],
+  "process_id": "business_process.target_plus.forward_order_flow",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.target_plus.forward_order_flow.04",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9860,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "status_conditions": [
+    "payout_id groups multiple transfer_id rows",
+    "settled_amount waterfall"
+  ],
+  "step_order": 4,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

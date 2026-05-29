@@ -1,0 +1,45 @@
+{
+  "business_meaning": "Transaction type documented as 'Order Item' for active commission invoice rows.",
+  "canonical_id": "column.commission.transaction_type",
+  "card_type": "column",
+  "column_name": "transaction_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "Transaction type documented as 'Order Item' for active commission invoice rows.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.commission_schema"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.commission_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 2724
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "filter/status",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.commission.transaction_type",
+  "review_status": "accepted",
+  "semantic_type": "commission_transaction_type",
+  "source_card_id": "column.commission.transaction_type",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2724,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.commission",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

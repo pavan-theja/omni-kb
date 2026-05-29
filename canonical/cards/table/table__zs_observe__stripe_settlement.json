@@ -1,0 +1,224 @@
+{
+  "amount_columns": [
+    "balance_transaction_id",
+    "charge_id",
+    "gross",
+    "fee",
+    "net",
+    "customer_facing_amount"
+  ],
+  "avoid_columns": [
+    "balance_transaction_id",
+    "charge_id"
+  ],
+  "business_purpose": "Full balance transaction history linked to automatic payouts. Each row is a balance event that contributed to a bank payout.",
+  "canonical_id": "table.zs_observe.stripe_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.stripe_settlement.account_id",
+    "column.zs_observe.stripe_settlement.account_name",
+    "column.zs_observe.stripe_settlement.automatic_payout_effective_at",
+    "column.zs_observe.stripe_settlement.automatic_payout_effective_at_utc",
+    "column.zs_observe.stripe_settlement.automatic_payout_id",
+    "column.zs_observe.stripe_settlement.available_on",
+    "column.zs_observe.stripe_settlement.available_on_utc",
+    "column.zs_observe.stripe_settlement.balance_transaction_id",
+    "column.zs_observe.stripe_settlement.card_brand",
+    "column.zs_observe.stripe_settlement.card_country",
+    "column.zs_observe.stripe_settlement.card_funding",
+    "column.zs_observe.stripe_settlement.charge_id",
+    "column.zs_observe.stripe_settlement.connected_account_country",
+    "column.zs_observe.stripe_settlement.connected_account_id",
+    "column.zs_observe.stripe_settlement.connected_account_name",
+    "column.zs_observe.stripe_settlement.created",
+    "column.zs_observe.stripe_settlement.created_utc",
+    "column.zs_observe.stripe_settlement.currency",
+    "column.zs_observe.stripe_settlement.customer_email",
+    "column.zs_observe.stripe_settlement.customer_facing_amount",
+    "column.zs_observe.stripe_settlement.customer_facing_currency",
+    "column.zs_observe.stripe_settlement.customer_id",
+    "column.zs_observe.stripe_settlement.customer_name",
+    "column.zs_observe.stripe_settlement.description",
+    "column.zs_observe.stripe_settlement.destination_payment_id",
+    "column.zs_observe.stripe_settlement.dispute_reason",
+    "column.zs_observe.stripe_settlement.fee",
+    "column.zs_observe.stripe_settlement.gross",
+    "column.zs_observe.stripe_settlement.invoice_id",
+    "column.zs_observe.stripe_settlement.invoice_number",
+    "column.zs_observe.stripe_settlement.is_link",
+    "column.zs_observe.stripe_settlement.net",
+    "column.zs_observe.stripe_settlement.order_id",
+    "column.zs_observe.stripe_settlement.payment_intent_id",
+    "column.zs_observe.stripe_settlement.payment_method_type",
+    "column.zs_observe.stripe_settlement.reporting_category",
+    "column.zs_observe.stripe_settlement.source_id",
+    "column.zs_observe.stripe_settlement.statement_descriptor",
+    "column.zs_observe.stripe_settlement.subscription_id",
+    "column.zs_observe.stripe_settlement.trace_id",
+    "column.zs_observe.stripe_settlement.trace_id_status",
+    "column.zs_observe.stripe_settlement.transaction_type"
+  ],
+  "columns": [
+    "column.zs_observe.stripe_settlement.balance_transaction_id",
+    "column.zs_observe.stripe_settlement.automatic_payout_id",
+    "column.zs_observe.stripe_settlement.automatic_payout_effective_at",
+    "column.zs_observe.stripe_settlement.automatic_payout_effective_at_utc",
+    "column.zs_observe.stripe_settlement.created",
+    "column.zs_observe.stripe_settlement.created_utc",
+    "column.zs_observe.stripe_settlement.available_on",
+    "column.zs_observe.stripe_settlement.available_on_utc",
+    "column.zs_observe.stripe_settlement.source_id",
+    "column.zs_observe.stripe_settlement.charge_id",
+    "column.zs_observe.stripe_settlement.payment_intent_id",
+    "column.zs_observe.stripe_settlement.destination_payment_id",
+    "column.zs_observe.stripe_settlement.order_id",
+    "column.zs_observe.stripe_settlement.invoice_id",
+    "column.zs_observe.stripe_settlement.invoice_number",
+    "column.zs_observe.stripe_settlement.subscription_id",
+    "column.zs_observe.stripe_settlement.reporting_category",
+    "column.zs_observe.stripe_settlement.transaction_type",
+    "column.zs_observe.stripe_settlement.currency",
+    "column.zs_observe.stripe_settlement.customer_facing_currency",
+    "column.zs_observe.stripe_settlement.gross",
+    "column.zs_observe.stripe_settlement.fee",
+    "column.zs_observe.stripe_settlement.net",
+    "column.zs_observe.stripe_settlement.customer_facing_amount",
+    "column.zs_observe.stripe_settlement.description",
+    "column.zs_observe.stripe_settlement.statement_descriptor",
+    "column.zs_observe.stripe_settlement.payment_method_type",
+    "column.zs_observe.stripe_settlement.is_link",
+    "column.zs_observe.stripe_settlement.card_brand",
+    "column.zs_observe.stripe_settlement.card_funding",
+    "column.zs_observe.stripe_settlement.card_country",
+    "column.zs_observe.stripe_settlement.dispute_reason",
+    "column.zs_observe.stripe_settlement.trace_id",
+    "column.zs_observe.stripe_settlement.trace_id_status",
+    "column.zs_observe.stripe_settlement.customer_id",
+    "column.zs_observe.stripe_settlement.customer_email",
+    "column.zs_observe.stripe_settlement.customer_name",
+    "column.zs_observe.stripe_settlement.connected_account_id",
+    "column.zs_observe.stripe_settlement.connected_account_name",
+    "column.zs_observe.stripe_settlement.connected_account_country",
+    "column.zs_observe.stripe_settlement.account_id",
+    "column.zs_observe.stripe_settlement.account_name"
+  ],
+  "confidence": "low_confidence",
+  "coverage_status": "source_described_but_missing_from_zs_observe_at_kb_creation",
+  "create_action": "create_draft_do_not_use_for_active_queries_until_warehouse_presence_confirmed",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created",
+    "created_utc",
+    "available_on",
+    "available_on_utc"
+  ],
+  "description": "Full balance transaction history linked to automatic payouts. Each row is a balance event that contributed to a bank payout.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.stripe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 4898
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.stripe_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "balance_transaction_id",
+    "automatic_payout_id",
+    "source_id",
+    "charge_id",
+    "payment_intent_id",
+    "destination_payment_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "schema_type_manifest_review_required_missing_warehouse_table"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.stripe.settlement.net_payout"
+  ],
+  "name": "zs_observe.stripe_settlement",
+  "recommended_date_columns": [
+    "created"
+  ],
+  "reconciliation_key_columns": [
+    "balance_transaction_id",
+    "automatic_payout_id",
+    "charge_id",
+    "trace_id",
+    "trace_id_status"
+  ],
+  "relationships": [],
+  "review_status": "review_required",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.stripe_settlement",
+  "source_caveats": [
+    "`gross` is positive for credits, negative for debits — use `CASE` or `ABS()` accordingly.",
+    "`automatic_payout_id` = bank payout reference; one `po_XXXX` = one bank deposit.",
+    "`trace_id` is the bank-side reference for wire reconciliation.",
+    "`payment_metadata_1` to `payment_metadata_33` are merchant-customized — content varies by merchant.",
+    "`_temp_old` suffixed columns are migration artifacts — do not use.",
+    "`connected_account_id` is relevant for Stripe Connect/marketplace setups.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "low_confidence",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4898,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.stripe"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "draft",
+  "status": "draft",
+  "status_columns": [
+    "reporting_category",
+    "transaction_type",
+    "currency",
+    "customer_facing_currency",
+    "payment_method_type",
+    "dispute_reason",
+    "trace_id_status"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.stripe.global"
+    ],
+    "platform_ids": [
+      "platform.stripe"
+    ]
+  },
+  "table_name": "stripe_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": [],
+  "warehouse_availability_review": {
+    "issue": "The source also documents this table, but later says it was not found in zs_observe at KB creation.",
+    "resolution": "Keep card as draft source-described knowledge; do not route production queries until table existence is confirmed.",
+    "source_section": "Payment Gateway KB.docx > Missing Tables (Not in zs_observe)"
+  }
+}

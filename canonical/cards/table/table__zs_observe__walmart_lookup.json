@@ -1,0 +1,77 @@
+{
+  "canonical_id": "table.zs_observe.walmart_lookup",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.walmart_lookup.ancestry",
+    "column.zs_observe.walmart_lookup.created_at",
+    "column.zs_observe.walmart_lookup.currency_type",
+    "column.zs_observe.walmart_lookup.file_uuid",
+    "column.zs_observe.walmart_lookup.group_level_id",
+    "column.zs_observe.walmart_lookup.is_active",
+    "column.zs_observe.walmart_lookup.is_duplicated",
+    "column.zs_observe.walmart_lookup.item_name",
+    "column.zs_observe.walmart_lookup.sku",
+    "column.zs_observe.walmart_lookup.sku_id",
+    "column.zs_observe.walmart_lookup.txn_uuid",
+    "column.zs_observe.walmart_lookup.unique_id",
+    "column.zs_observe.walmart_lookup.unique_value",
+    "column.zs_observe.walmart_lookup.updated_at",
+    "column.zs_observe.walmart_lookup.zen_sheet_name",
+    "column.zs_observe.walmart_lookup.zen_status"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_column": "created_at",
+  "description": "table card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "documented_scope_values": {
+    "group_level_id": [
+      22
+    ]
+  },
+  "domain": "domain.marketplace.walmart.catalogue",
+  "evidence_ids": [
+    "ev.walmart_lookup.schema.001",
+    "ev.walmart.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 759
+    },
+    {
+      "evidence_id": "ev.walmart.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 759
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_observe.walmart_lookup",
+  "grain": "catalogue/reference row; only sku-populated rows are joinable SKU records",
+  "mandatory_filters": "is_active = true; group_level_id = 22; sku IS NOT NULL for joins",
+  "name": "zs_observe.walmart_lookup",
+  "notes": "zs_observe.walmart_lookup",
+  "optional_filters": "sku-null rows are content/attribute rows and not safe for SKU joins",
+  "platform_context": "platform_context.walmart.us",
+  "quality_notes": "sku-null rows are content/attribute rows and not safe for SKU joins",
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "scope": "marketplace source table",
+  "source_card_id": "table.zs_observe.walmart_lookup",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 759,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "walmart_lookup",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

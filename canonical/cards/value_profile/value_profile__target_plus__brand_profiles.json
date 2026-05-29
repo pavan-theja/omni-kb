@@ -1,0 +1,45 @@
+{
+  "canonical_id": "value_profile.target_plus.brand_profiles",
+  "card_type": "value_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Folkculture and Katchon brand profile",
+  "distribution_summary": "Party supplies, craft kits, seasonal décor, and craft/party accessory categories.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.1_4_brand_profiles"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.1_4_brand_profiles",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8673
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Folkculture and Katchon brand profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "Folkculture: 187 SKUs / 170 active in sales / ASP $25.56",
+    "Katchon: 144 SKUs / 119 active in sales / ASP $12.99"
+  ],
+  "profile_kind": "brand_product_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.brand_profiles",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8673,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.target_tcin_mapping",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

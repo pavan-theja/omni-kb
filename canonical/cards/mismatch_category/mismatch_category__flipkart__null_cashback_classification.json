@@ -1,0 +1,55 @@
+{
+  "canonical_id": "mismatch_category.flipkart.null_cashback_classification",
+  "card_type": "mismatch_category",
+  "category_name": "null_cashback_classification",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "definition": "Cashback document type/subtype is null",
+  "description": "mismatch_category card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "detection_rule": "document_type IS NULL OR document_sub_type IS NULL",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6181
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "likely_causes": [
+    "source timing",
+    "sign convention",
+    "missing row",
+    "join key mismatch",
+    "aggregation error"
+  ],
+  "name": "Null Cashback Classification",
+  "recommended_output_fields": [
+    "order_id",
+    "item_id",
+    "expected_amount",
+    "actual_amount",
+    "variance_amount",
+    "variance_reason"
+  ],
+  "review_status": "accepted",
+  "severity": "medium",
+  "source_card_id": "mismatch_category.flipkart.null_cashback_classification",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6181,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

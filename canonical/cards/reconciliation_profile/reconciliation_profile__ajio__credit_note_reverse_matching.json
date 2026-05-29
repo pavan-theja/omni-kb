@@ -1,0 +1,70 @@
+{
+  "actual_side": "ajio_reverse return/RTO/REPL rows",
+  "canonical_id": "reconciliation_profile.ajio.credit_note_reverse_matching",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Match posted AJIO credit notes to reverse records by purchase_po_no.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules",
+    "evidence.ajio.042_12_data_quality_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.036_10_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5740
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5740
+    },
+    {
+      "evidence_id": "evidence.ajio.042_12_data_quality_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5740
+    }
+  ],
+  "expected_side": "ajio_credit_note posted credit notes",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Credit Note → Reverse Matching",
+  "participating_tables": [
+    "ajio_settlement",
+    "ajio_reverse",
+    "ajio_credit_note"
+  ],
+  "primary_join_key": "purchase_po_no",
+  "profile_family": "marketplace_internal_reconciliation",
+  "required_filters": [
+    "c.is_active = true",
+    "r.is_active = true"
+  ],
+  "review_status": "ready",
+  "scope_boundary": "Do not convert into bank/logistics/payment/ERP reconciliation.",
+  "source_card_id": "reconciliation_profile.ajio.credit_note_reverse_matching",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules",
+    "evidence.ajio.042_12_data_quality_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5740,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "tolerance_policy": "Only explicit source tolerance; otherwise review required.",
+  "unit_grain": "order/invoice/item/PO grain as documented in matching logic",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

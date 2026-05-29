@@ -1,0 +1,48 @@
+{
+  "business_meaning": "Documented gap ₹39,614 vs ₹54,389 means some returns are not yet invoiced in other_charges.",
+  "canonical_id": "mismatch_category.meesho.return_reverse_logistics_reconciliation.timing_gap",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Documented gap ₹39,614 vs ₹54,389 means some returns are not yet invoiced in other_charges.",
+  "detection_logic": "Compare other_charges reverse_shipping total to settlement return_logistic_charge_excluding_tax total.",
+  "display_name": "return reverse logistics reconciliation — timing gap",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.037.8_reconciliation_use_cases",
+    "evidence.meesho.043.9_data_quality_observations_and_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.037.8_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18553
+    },
+    {
+      "evidence_id": "evidence.meesho.043.9_data_quality_observations_and_known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18553
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "reverse_logistics_timing_gap",
+  "name": "return reverse logistics reconciliation — timing gap",
+  "profile_id": "reconciliation_profile.meesho.return_reverse_logistics_reconciliation",
+  "review_priority": "medium",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.meesho.return_reverse_logistics_reconciliation.timing_gap",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18553,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "canonical_id": "rule.tatacliq.abs_charged_for_forward_gmv",
+  "card_type": "rule",
+  "condition": "Forward GMV, commission rate, payout ratio.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq rule — gmv sign rule",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.total_forward_gmv",
+    "ev.tatacliq.settlement.quality"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.total_forward_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8397
+    },
+    {
+      "evidence_id": "ev.tatacliq.settlement.quality",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8397
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq rule — gmv sign rule",
+  "review_status": "ready",
+  "rule_type": "gmv_sign_rule",
+  "severity": "high",
+  "source_card_id": "rule.tatacliq.abs_charged_for_forward_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8397,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "statement": "Use ABS(charged_amount) for forward settlement GMV calculations exactly as source SQL does.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

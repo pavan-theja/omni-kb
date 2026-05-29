@@ -1,0 +1,91 @@
+{
+  "allowed_dimensions": [
+    "courier_partner",
+    "date",
+    "awb"
+  ],
+  "allowed_grains": [
+    "awb",
+    "order",
+    "day",
+    "month",
+    "courier_partner",
+    "batch where safe"
+  ],
+  "applicability": "platform=shadowfax; table=zs_observe.shiprocket_oms; account filters via Account Data Binding only",
+  "base_tables": [
+    "table.zs_observe.shiprocket_oms"
+  ],
+  "canonical_id": "metric_impl.shiprocket_oms.shadowfax.shipment_count",
+  "card_type": "metric_implementation",
+  "caveats": "Shadowfax has no dedicated native table; reverse/QC evidence appears through Shiprocket OMS only.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "dependent_metrics": [],
+  "description": "Shipment Count implementation for Shadowfax using shiprocket_oms.",
+  "document_id": "shadowfax_logistics_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/shadowfax_logistics.md",
+      "source_line": 1120
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/shadowfax_logistics.md",
+      "source_line": 1120
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/shadowfax_logistics.md",
+      "source_line": 1120
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_description": "COUNT(*)",
+  "formula_sql": "COUNT(*)",
+  "implementation_name": "Shadowfax Shipment Count",
+  "implementation_scope": "shiprocket_oms",
+  "metric_id": "metric.shipment_count",
+  "metric_pattern": "indirect_only_filtered_count_or_sum",
+  "name": "Shadowfax Shipment Count Implementation",
+  "platform_code": "shiprocket",
+  "precision": "2_decimal_places",
+  "recommended_date_columns": [
+    "created_date",
+    "order_delivered_date"
+  ],
+  "required_columns": [
+    "column.zs_observe.shiprocket_oms.courier_company"
+  ],
+  "review_status": "unreviewed",
+  "semantic_filters": [
+    "courier_company contains Shadowfax"
+  ],
+  "source_card_id": "metric_impl.shiprocket_oms.shadowfax.shipment_count",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1120,
+  "source_path": "raw/cleaned_v2/logistics/shadowfax_logistics.md",
+  "source_status": "active",
+  "status": "active",
+  "unit": "currency/count/percentage/days_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

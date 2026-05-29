@@ -1,0 +1,60 @@
+{
+  "brands_in_dataset": [
+    "Anubhutee",
+    "Ishin",
+    "High Star"
+  ],
+  "canonical_id": "platform_context.limeroad.in",
+  "card_type": "platform_context",
+  "confidence": "curated",
+  "country": "India",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency": "INR",
+  "description": "platform_context card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": [
+      22
+    ]
+  },
+  "evidence_ids": [
+    "ev.limeroad.overview.001",
+    "ev.limeroad.scope.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.overview.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 435
+    },
+    {
+      "evidence_id": "ev.limeroad.scope.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 435
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "LimeRoad India marketplace context",
+  "platform_id": "platform.limeroad",
+  "review_status": "accepted",
+  "scope_policy": "Documented group_level_id can appear as column/scope metadata; runtime account binding is external.",
+  "seller_entity_from_source": "Mensa Brand Technologies Pvt Ltd",
+  "source_card_id": "platform_context.limeroad.in",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 435,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

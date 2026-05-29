@@ -1,0 +1,55 @@
+{
+  "canonical_id": "value_profile.nykaa.nykaa_mapping.gstin_of_the_seller",
+  "canonical_name": "zs_observe.nykaa_mapping.gstin_of_the_seller value profile",
+  "card_type": "value_profile",
+  "column_name": "gstin_of_the_seller",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [],
+  "description": "value_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.relationships",
+    "evidence.nykaa.tax"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13663
+    },
+    {
+      "evidence_id": "evidence.nykaa.tax",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13663
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_mapping.gstin_of_the_seller value profile",
+  "observed_values": [
+    "06",
+    "19",
+    "27",
+    "29"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "value_profile.nykaa.nykaa_mapping.gstin_of_the_seller",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13663,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "GSTIN first two characters encode state code; duplicate GSTINs can map multiple aliases and are deliberate.",
+  "table_id": "table.zs_observe.nykaa_mapping",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

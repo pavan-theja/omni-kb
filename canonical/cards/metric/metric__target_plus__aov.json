@@ -1,0 +1,49 @@
+{
+  "business_definition": "Average charged_amount for shipped target_sales rows.",
+  "canonical_id": "metric.target_plus.aov",
+  "card_type": "metric",
+  "colloquial_names": [
+    "aov"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "USD",
+  "description": "Average charged_amount for shipped target_sales rows.",
+  "display_name": "Target Plus Average Order Value",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.target_plus.orders",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.5_4_average_order_value_aov"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.5_4_average_order_value_aov",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9099
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.target_plus.aov"
+  ],
+  "metric_family": "aov",
+  "name": "Target Plus Average Order Value",
+  "review_status": "ready",
+  "source_card_id": "metric.target_plus.aov",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9099,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

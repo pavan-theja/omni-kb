@@ -1,0 +1,88 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.pine_labs.amazon_gc.primary.amazon_seller_flex",
+    "account_data_binding.pine_labs.amazon_gc.primary.amazon_gc_settlement",
+    "account_data_binding.pine_labs.paytm_giftcard.primary.paytm_giftcard_settlement",
+    "account_data_binding.pine_labs.gullak.primary.gullak_technologies_settlement",
+    "account_data_binding.pine_labs.nearby.primary.nearby_marketplace",
+    "account_data_binding.pine_labs.first_pay.primary.first_pay_settlement",
+    "account_data_binding.pine_labs.red_giraffe.primary.red_giraffe_settlement",
+    "account_data_binding.pine_labs.indusind_bank.primary.indusind_bank_statement"
+  ],
+  "active": false,
+  "binding_name": "Pine distribution settlements to IndusInd bank",
+  "binding_type": "settlement_to_bank",
+  "business_process_ids": [],
+  "business_scope_set_id": "business_scope_set.pine_labs.distribution_settlements",
+  "canonical_id": "business_flow_binding.pine_labs.distribution_partner_settlement_to_bank_review",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_ingest.indusind_bank_statement",
+    "table.zs_observe.amazon_gc_settlement",
+    "table.zs_observe.paytm_giftcard_settlement"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.pine_labs.pine_labs_private_limited",
+  "money_flow_paths": [
+    "Distributor settlement -> UTR/settlement reference -> IndusInd bank credit"
+  ],
+  "name": "Distribution Partner Settlement To Bank Review",
+  "notes": [
+    "Bank statement destination is source-confirmed but current bank table binding requires review because source scope identifiers conflict."
+  ],
+  "package_id": "pine_labs_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.pine_labs.amazon_gc.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.pine_labs.paytm_giftcard.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.pine_labs.gullak.primary",
+      "required": false,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.pine_labs.indusind_bank.primary",
+      "required": true,
+      "role": "bank_destination"
+    }
+  ],
+  "reconciliation_profile_ids": [],
+  "review_status": "unreviewed",
+  "source_confidence": "source_configured",
+  "source_documents": [
+    "Pine Labs.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "flipkart_marketplace.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+  "source_status": "review_required",
+  "status": "draft",
+  "tenant_id": "tenant.pine_labs",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

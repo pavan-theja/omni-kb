@@ -1,0 +1,41 @@
+{
+  "canonical_id": "state_transition.meesho.forward_order_flow.12_to_13",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.007.2_1_forward_order_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.007.2_1_forward_order_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 14928
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "Payment credited to seller bank account",
+  "name": "12 To 13",
+  "process_id": "business_process.meesho.forward_order_flow",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.meesho.forward_order_flow.12_to_13",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14928,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_state": "(7-day payment cycle from delivery)",
+  "transition_key": "12->13",
+  "trigger": "Documented forward lifecycle sequence from DOCX section 2.1; transition is only valid within Meesho sales/settlement flow.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

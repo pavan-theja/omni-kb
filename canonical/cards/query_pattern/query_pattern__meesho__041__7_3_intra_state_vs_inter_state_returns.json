@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.meesho.041.7_3_intra_state_vs_inter_state_returns",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — 7.3 Intra-State vs Inter-State Returns",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_3_intra_state_vs_inter_state_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_3_intra_state_vs_inter_state_returns",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 16929
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Meesho query pattern — 7.3 Intra-State vs Inter-State Returns",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.041.7_3_intra_state_vs_inter_state_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16929,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_reverse"
+  ],
+  "sql_template": "SELECT\n  CASE\n    WHEN UPPER(source_state) = UPPER(destination_state) THEN 'Intra-State'\n    ELSE 'Inter-State'\n  END AS gst_type,\n  COUNT(*) AS cnt,\n  SUM(tax_igst_amount) AS igst,\n  SUM(tax_cgst_amount) AS cgst,\n  SUM(tax_sgst_amount) AS sgst\nFROM zs_observe.meesho_reverse\nWHERE is_active = true\nGROUP BY 1;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

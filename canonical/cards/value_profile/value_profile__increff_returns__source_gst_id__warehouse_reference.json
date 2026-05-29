@@ -1,0 +1,53 @@
+{
+  "canonical_id": "value_profile.increff_returns.source_gst_id.warehouse_reference",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.increff_returns.source_gst_id",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "increff_returns source GSTIN warehouse reference",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.009.5_warehouse_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.009.5_warehouse_reference",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7164
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "increff_returns source GSTIN warehouse reference",
+  "profile_notes": [
+    "Gurugram and Bangalore share GSTIN 06AAOCM5326J1Z6; source_city is required to distinguish warehouses."
+  ],
+  "profile_type": "documented_distinct_values_or_mapping",
+  "review_status": "ready",
+  "source_card_id": "value_profile.increff_returns.source_gst_id.warehouse_reference",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7164,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.increff_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_meanings": {
+    "06AAOCM5326J1Z6": "Gurugram and Bangalore; distinguish by source_city",
+    "19AAOCM5326J1ZZ": "Hooghly / West Bengal",
+    "27AAOCM5326J1Z2": "Bhiwandi / Maharashtra"
+  },
+  "values": [
+    "06AAOCM5326J1Z6",
+    "27AAOCM5326J1Z2",
+    "19AAOCM5326J1ZZ"
+  ]
+}

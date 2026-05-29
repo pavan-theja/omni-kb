@@ -1,0 +1,47 @@
+{
+  "canonical_id": "column.zs_observe.snapdeal_oms.return_date",
+  "card_type": "column",
+  "column_name": "return_date",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "timestamp",
+  "description": "Date return was initiated",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 5700
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": false,
+  "is_date": true,
+  "is_key": false,
+  "is_scope_field": false,
+  "is_status": false,
+  "name": "snapdeal_oms",
+  "review_status": "ready",
+  "schema": "zs_observe",
+  "semantic_role": "date",
+  "source_card_id": "column.zs_observe.snapdeal_oms.return_date",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5700,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.snapdeal_oms",
+  "table_name": "snapdeal_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

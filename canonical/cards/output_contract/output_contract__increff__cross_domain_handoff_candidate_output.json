@@ -1,0 +1,57 @@
+{
+  "canonical_id": "output_contract.increff.cross_domain_handoff_candidate_output",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "operations_parser_output",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff cross-domain handoff candidate output",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.020.9_key_business_metrics_with_sql",
+    "evidence.increff.016.8_entity_relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.020.9_key_business_metrics_with_sql",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 10061
+    },
+    {
+      "evidence_id": "evidence.increff.016.8_entity_relationships",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 10061
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "varies_by_query_pattern",
+  "name": "Increff cross-domain handoff candidate output",
+  "optional_columns": [
+    "candidate_target_card_id",
+    "review_item_id"
+  ],
+  "required_columns": [
+    "handoff_type",
+    "source_table",
+    "source_column",
+    "target_domain_hint",
+    "identifier_value_or_pattern",
+    "boundary_note"
+  ],
+  "review_status": "ready",
+  "source_card_id": "output_contract.increff.cross_domain_handoff_candidate_output",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10061,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

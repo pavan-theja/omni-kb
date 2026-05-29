@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.shipment.7_1_shipment_status_summary",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 7.1 Shipment Status Summary",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.shipment.7_1_shipment_status_summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.shipment.7_1_shipment_status_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12861
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 7.1 Shipment Status Summary",
+  "natural_language_patterns": [
+    "7.1 Shipment Status Summary"
+  ],
+  "output_contract_id": "output_contract.jiomart.shipment_summary",
+  "primary_metric_id": "metric.jiomart.shipment_status_gmv",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.shipment.7_1_shipment_status_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12861,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_shipment"
+  ],
+  "sql_ref": "sql.jiomart.shipment.7_1_shipment_status_summary",
+  "sql_template": "SELECT order_status,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS gmv,\n  SUM(mrp) AS total_mrp,\n  SUM(item_promo_discount) AS total_discount,\n  AVG(charged_amount) AS avg_selling_price,\n  ROUND(100.0 * AVG(item_promo_discount) / NULLIF(AVG(mrp), 0), 2) AS avg_discount_pct\nFROM zs_observe.jiomart_shipment\nWHERE is_active = true\nGROUP BY order_status;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

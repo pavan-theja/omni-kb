@@ -1,0 +1,65 @@
+{
+  "canonical_id": "business_process.meesho.return_rto_flow",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "DOCX-backed reverse lifecycle: buyer return or courier RTO creates a meesho_reverse row, return logistics are tracked in meesho_returns and reverse shipping costs in meesho_other_charges_expenses, while meesho_reverse_expenses is currently empty/provisioned; settlement is adjusted as negative payout in meesho_settlement.",
+  "display_name": "Meesho return / RTO settlement-adjustment flow",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "entry_condition": "Return is initiated within window or courier fails delivery; meesho_reverse uses transaction_type = 'reverse' and order_status in Return/rto where populated.",
+  "evidence_ids": [
+    "evidence.meesho.008.2_2_return_rto_flow",
+    "evidence.meesho.048.2_current_status",
+    "evidence.meesho.040.8_3_return_reverse_logistics_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.008.2_2_return_rto_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13987
+    },
+    {
+      "evidence_id": "evidence.meesho.048.2_current_status",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13987
+    },
+    {
+      "evidence_id": "evidence.meesho.040.8_3_return_reverse_logistics_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13987
+    }
+  ],
+  "exit_condition": "meesho_settlement has order_status in ('Return','RTO') with return_logistic_charge_excluding_tax and negative or zero settlement effect applied to a later payment cycle.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Meesho return / RTO settlement-adjustment flow",
+  "process_family": "marketplace_transaction_lifecycle",
+  "review_status": "accepted",
+  "source_card_id": "business_process.meesho.return_rto_flow",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13987,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "zs_observe.meesho_reverse",
+    "zs_observe.meesho_returns",
+    "zs_observe.meesho_other_charges_expenses",
+    "zs_observe.meesho_reverse_expenses",
+    "zs_observe.meesho_settlement"
+  ],
+  "state_fields": [
+    "meesho_reverse.transaction_type",
+    "meesho_reverse.order_status",
+    "meesho_settlement.order_status",
+    "meesho_settlement.return_logistic_charge_excluding_tax"
+  ],
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

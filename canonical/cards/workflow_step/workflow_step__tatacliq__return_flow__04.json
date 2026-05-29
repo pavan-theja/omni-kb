@@ -1,0 +1,47 @@
+{
+  "canonical_id": "workflow_step.tatacliq.return_flow.04",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "For reverse rows, charged_amount is POSITIVE refund credit, gross_commission is NEGATIVE reversal, and settled_amount is POSITIVE recovery from seller next payout.",
+  "display_name": "Reverse settlement signs captured",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.lifecycle.return"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.lifecycle.return",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7316
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "zs_observe.tatacliq_settlement"
+  ],
+  "name": "Reverse settlement signs captured",
+  "process_id": "business_process.tatacliq.return_flow",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.tatacliq.return_flow.04",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7316,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "status_conditions": [
+    "charged_amount>0",
+    "gross_commission<0",
+    "settled_amount>0"
+  ],
+  "step_order": 4,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,56 @@
+{
+  "canonical_id": "reconciliation_profile.unicommerce.invoice_to_osr_fulfilment_alignment",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Unicommerce transaction/invoice to OSR fulfilment alignment",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.004.the_critical_join",
+    "ev.unicommerce.section.063.6_entity_relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.004.the_critical_join",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12176
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.063.6_entity_relationships",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12176
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Invoice To Osr Fulfilment Alignment",
+  "optional_fields": [
+    "expected_side",
+    "actual_side",
+    "primary_unit",
+    "secondary_units",
+    "matching_logic",
+    "mismatch_categories",
+    "query_patterns",
+    "tolerance",
+    "known_gaps"
+  ],
+  "process_id": "business_process.unicommerce.awb_and_dispatch_handoff",
+  "profile_name": "Unicommerce transaction/invoice to OSR fulfilment alignment",
+  "profile_scope": "warehouse_inventory_operational_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.unicommerce.invoice_to_osr_fulfilment_alignment",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12176,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

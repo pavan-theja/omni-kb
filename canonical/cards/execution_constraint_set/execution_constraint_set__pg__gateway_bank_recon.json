@@ -1,0 +1,78 @@
+{
+  "applies_to": [
+    "payment_gateway metrics",
+    "payment_gateway reconciliation",
+    "payment_gateway diagnostics"
+  ],
+  "blocking_failures": [
+    "validation_test.pg.business_flow_for_bank_recon"
+  ],
+  "canonical_id": "execution_constraint_set.pg.gateway_bank_recon",
+  "card_type": "execution_constraint_set",
+  "confidence": "inferred",
+  "constraint_set_name": "Gateway-bank reconciliation constraints",
+  "constraint_set_type": "reconciliation",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Gateway-bank reconciliation constraints",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 54682
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Gateway-bank reconciliation constraints",
+  "output_contract_id": "output_contract.pg.gateway_to_bank_recon",
+  "query_patterns": [
+    "query_pattern.pg.net_settlement_by_batch",
+    "query_pattern.pg.payment_mode_breakdown",
+    "query_pattern.pg.refund_analysis",
+    "query_pattern.pg.failed_payments",
+    "query_pattern.pg.payout_success",
+    "query_pattern.pg.gateway_to_bank_recon",
+    "query_pattern.pg.chargeback_tracking",
+    "query_pattern.pg.bnpl_settlement",
+    "query_pattern.pg.app_store_commission"
+  ],
+  "review_status": "accepted",
+  "rules": [
+    "rule.pg.active_filter",
+    "rule.pg.duplicate_filter",
+    "rule.pg.reference_key_priority",
+    "rule.pg.business_flow_required_for_cross_platform",
+    "rule.pg.bank_feed_boundary"
+  ],
+  "source_card_id": "execution_constraint_set.pg.gateway_bank_recon",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 54682,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_tests": [
+    "validation_test.pg.active_filter_present",
+    "validation_test.pg.reference_before_fallback",
+    "validation_test.pg.business_flow_for_bank_recon",
+    "validation_test.pg.rbl_boundary"
+  ],
+  "warning_failures": []
+}

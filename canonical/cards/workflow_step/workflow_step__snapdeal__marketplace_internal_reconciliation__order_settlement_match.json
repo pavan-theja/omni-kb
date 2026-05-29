@@ -1,0 +1,46 @@
+{
+  "canonical_id": "workflow_step.snapdeal.marketplace_internal_reconciliation.order_settlement_match",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Compare delivered/forward snapdeal_oms.invoice_number to snapdeal_settlement.invoice_number with settlement transaction_type='forward'; DOCX observed 3,218 of 3,494 matched.",
+  "display_name": "OMS-to-settlement order match",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.join_map_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17070
+    },
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17070
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "OMS-to-settlement order match",
+  "process_id": "business_process.snapdeal.marketplace_internal_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.snapdeal.marketplace_internal_reconciliation.order_settlement_match",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17070,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "step_order": 1,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

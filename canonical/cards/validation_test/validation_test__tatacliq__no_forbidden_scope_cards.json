@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "assertion": "No forbidden card types are emitted from scope identifiers or external mentions.",
+  "canonical_id": "validation_test.tatacliq.no_forbidden_scope_cards",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "No forbidden card types are emitted from scope identifiers or external mentions.",
+  "display_name": "TataCliq validation — forbidden scope guardrail",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.join.coverage",
+    "ev.tatacliq.filters.mandatory"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.join.coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8530
+    },
+    {
+      "evidence_id": "ev.tatacliq.filters.mandatory",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8530
+    }
+  ],
+  "expected_result": "forbidden_scope_cards_from_scope_ids = 0",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Out-of-scope entity leakage.",
+  "name": "TataCliq validation — forbidden scope guardrail",
+  "review_status": "ready",
+  "source_card_id": "validation_test.tatacliq.no_forbidden_scope_cards",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8530,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "forbidden_scope_guardrail",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

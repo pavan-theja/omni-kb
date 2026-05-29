@@ -1,0 +1,52 @@
+{
+  "boundary_tags": [],
+  "canonical_id": "column.zs_observe.nykaa_settlement.coupon_nykaa_funded",
+  "canonical_name": "zs_observe.nykaa_settlement.coupon_nykaa_funded",
+  "card_type": "column",
+  "column_group": "Financial — Settlement Output (key business fields)",
+  "column_name": "coupon_nykaa_funded",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "column card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "do_not_use": false,
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 9727
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_settlement.coupon_nykaa_funded",
+  "parser_notes": [
+    "Use only with marketplace-specific semantics."
+  ],
+  "raw_notes": "Coupon-funding attribution.",
+  "review_status": "unreviewed",
+  "semantic_role": "descriptive_attribute",
+  "source_card_id": "column.zs_observe.nykaa_settlement.coupon_nykaa_funded",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9727,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Coupon-funding attribution.",
+  "table_id": "table.zs_observe.nykaa_settlement",
+  "table_name": "zs_observe.nykaa_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

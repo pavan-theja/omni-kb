@@ -1,0 +1,65 @@
+{
+  "canonical_id": "business_process.snapdeal.reverse_return_flow",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Source-backed reverse/return flow: snapdeal_oms transaction_type='reverse' and current_order_state Return Initiated/Accepted/Delivered; settlement reversal uses transaction_type='reverse' and type values such as COD Return to Vendor or COD RTS to Vendor; sales_return is a provisioned credit-note table but empty in current data; commission reversals are optional.",
+  "display_name": "Snapdeal Reverse / Return Flow",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "entry_condition": "buyer return creates snapdeal_oms.transaction_type = 'reverse' / current_order_state = 'Return Initiated'",
+  "evidence_ids": [
+    "evidence.snapdeal.2_2_reverse_return_flow",
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.join_map_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.2_2_reverse_return_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16933
+    },
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16933
+    },
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16933
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16933
+    }
+  ],
+  "exit_condition": "reverse settlement is deducted in settlement/payment batch, with optional commission reversal and future sales_return credit note",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Snapdeal Reverse / Return Flow",
+  "not_a_process_variant_container": true,
+  "process_family": "marketplace_transaction_lifecycle",
+  "review_status": "ready",
+  "source_card_id": "business_process.snapdeal.reverse_return_flow",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16933,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.snapdeal_oms",
+    "zs_observe.snapdeal_settlement",
+    "zs_observe.snapdeal_sales_return",
+    "zs_observe.snapdeal_commission"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

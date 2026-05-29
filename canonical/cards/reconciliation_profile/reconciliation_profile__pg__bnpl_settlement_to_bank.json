@@ -1,0 +1,84 @@
+{
+  "applicability_scope": {
+    "notes": [
+      "Business Flow Binding selects tenant/group participant accounts for cross-platform reconciliation."
+    ],
+    "platform_types": [
+      "bnpl_gateway",
+      "banking"
+    ],
+    "scope_level": "platform_type"
+  },
+  "business_object": "bnpl_disbursement",
+  "business_process_id": "business_process.pg.bnpl_settlement",
+  "canonical_id": "reconciliation_profile.pg.bnpl_settlement_to_bank",
+  "card_type": "reconciliation_profile",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "BNPL Settlement to Bank Credit",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay",
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 51896
+    },
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 51896
+    }
+  ],
+  "expected_alignment_type": "one_to_one_or_aggregated",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "edge_integrity_manifest_reconciliation_side_refs_repaired"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "matching_logic_id": "matching_logic.pg.bnpl_provider_reference",
+  "mismatch_categories": [
+    "mismatch_category.pg.bank_credit_missing",
+    "mismatch_category.pg.reference_missing",
+    "mismatch_category.pg.amount_mismatch"
+  ],
+  "name": "BNPL Settlement to Bank Credit",
+  "participating_platform_types": [
+    "bnpl_gateway",
+    "banking"
+  ],
+  "primary_reconciliation_unit_id": "reconciliation_unit.pg.provider_batch_reference",
+  "process_variant_id": null,
+  "profile_name": "BNPL Settlement to Bank Credit",
+  "reconciliation_sides": [
+    "reconciliation_side.pg.gateway_expected",
+    "reconciliation_side.pg.bank_actual"
+  ],
+  "reconciliation_type": "bnpl_to_bank",
+  "review_status": "accepted",
+  "secondary_reconciliation_unit_ids": [
+    "reconciliation_unit.pg.amount_date_reference_fallback"
+  ],
+  "source_card_id": "reconciliation_profile.pg.bnpl_settlement_to_bank",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 51896,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

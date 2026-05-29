@@ -1,0 +1,57 @@
+{
+  "canonical_id": "relationship.meesho.meesho_reverse.meesho_settlement.sub_order_num_to_order_id",
+  "card_type": "relationship",
+  "cardinality": "documented_join_or_conditional_review_if_duplicates",
+  "confidence": "curated",
+  "coverage_evidence": "Reverse sub-orders partially match settlement; source notes approximately 770 suborders partial match.",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho documented relationship: Reverse → Settlement on sub_order_num = order_id",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.010.3_entity_relationships_across_tables",
+    "evidence.meesho.045.11_table_summary_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.010.3_entity_relationships_across_tables",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18264
+    },
+    {
+      "evidence_id": "evidence.meesho.045.11_table_summary_reference",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18264
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain_warning": "Use documented key direction; do not infer broad shared-key joins outside the DOCX join map.",
+  "join_condition": "meesho_reverse.sub_order_num = meesho_settlement.order_id",
+  "join_keys": [
+    "sub_order_num",
+    "order_id"
+  ],
+  "name": "Meesho documented relationship: Reverse → Settlement on sub_order_num = order_id",
+  "preaggregation_required": "preaggregate_many_side_before_amount_comparison_when_needed",
+  "relationship_type": "documented_marketplace_internal_join",
+  "review_status": "accepted",
+  "source_card_id": "relationship.meesho.meesho_reverse.meesho_settlement.sub_order_num_to_order_id",
+  "source_column_id": "column.zs_observe.meesho_reverse.sub_order_num",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18264,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "source_table_id": "table.zs_observe.meesho_reverse",
+  "status": "active",
+  "target_column_id": "column.zs_observe.meesho_settlement.order_id",
+  "target_table_id": "table.zs_observe.meesho_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

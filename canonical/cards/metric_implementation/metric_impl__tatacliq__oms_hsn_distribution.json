@@ -1,0 +1,60 @@
+{
+  "aggregation_order": "Aggregate at source SQL grain before joining or comparing amounts.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.tatacliq.oms_hsn_distribution",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq SQL implementation — hsn distribution",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.oms_hsn_distribution"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.oms_hsn_distribution",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6836
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use source SQL filters exactly; group_level_id scope filters remain column filters, not account bindings.",
+  "formula_text": "Executable SQL pattern referenced by sql_ref; see SQL Pattern Registry.",
+  "grain": "as specified in source SQL",
+  "implementation_scope": "tatacliq",
+  "metric_id": "metric.tatacliq.hsn_distribution",
+  "name": "TataCliq SQL implementation — hsn distribution",
+  "platform_code": "tatacliq",
+  "platform_context_id": "platform_context.tatacliq.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve TataCliq settlement sign convention; use ABS only where source SQL does.",
+  "source_card_id": "metric_impl.tatacliq.oms_hsn_distribution",
+  "source_columns": [
+    "hsn_code",
+    "brand",
+    "charged_amount",
+    "tax_igst_rate",
+    "transaction_type",
+    "seller_name",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6836,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.tatacliq_oms"
+  ],
+  "sql_ref": "sql.tatacliq.oms.hsn_distribution",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

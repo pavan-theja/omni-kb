@@ -1,0 +1,280 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "error": null,
+  "question": "Generate a courier-wise channel mapping report.",
+  "question_index": 4,
+  "result": {
+    "datasets": [
+      "zenstatement_canonical"
+    ],
+    "discovery": {
+      "GRAPH_COMPLETION": [
+        "Physical Tables: `zs_observe.increff_sales`. Physical Columns: `zs_observe.increff_sales.fulfilment_channel` (described as 'Courier/logistics partner used'), `zs_observe.increff_sales.group_level_id`. Tenant Filters: `group_level_id = 22` for 'Mensa Brands'. Join Keys: No explicit join keys found for a single-table query. Source Table Relationships: `fulfilment_channel` and `group_level_id` belong to `zs_observe.increff_sales`. Missing Context: A distinct physical column to represent the 'channel' for a 'courier-wise channel mapping report', as `fulfilment_channel` is explicitly described as the 'courier/logistics partner'."
+      ],
+      "RAG_COMPLETION": [
+        "Physical Tables: `zs_observe.increff_returns` (contains `fulfilment_channel` and `courier_partner`), `zs_observe.increff_sales` (contains `fulfilment_channel`). Physical Columns: `zs_observe.increff_returns.fulfilment_channel` (channel identification), `zs_observe.increff_returns.courier_partner` (courier identification), `zs_observe.increff_returns.group_level_id` (tenant filter). Tenant Filters: `group_level_id` for 'Mensa Brands' (specific ID needs to be grounded from account data binding). Source table relationships: `platform_context.increff.in` applies to numerous columns in both `zs_observe.increff_returns` and `zs_observe.increff_sales`."
+      ]
+    },
+    "generated_at": "2026-05-27T07:43:54+00:00",
+    "query": "Generate a courier-wise channel mapping report.",
+    "scope": {
+      "tenant": "Mensa Brands"
+    },
+    "search_types": [
+      "RAG_COMPLETION",
+      "GRAPH_COMPLETION"
+    ],
+    "stages": {
+      "field_join_resolution": {
+        "deduplication": "DISTINCT combination of forward_transporter and fulfilment_channel.",
+        "fields": [
+          {
+            "field": "fulfilment_channel",
+            "reason": "Requested channel dimension, explicitly available in zs_observe.increff_returns.",
+            "role": "Dimension",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "forward_transporter",
+            "reason": "Maps to the requested 'courier_partner' dimension as per column description 'Original outbound courier' within zs_observe.increff_returns.",
+            "role": "Dimension",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Tenant filter for Mensa Brands (value 22), as inferred from the intent and grounded by execution constraints and account data binding.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "is_active",
+            "reason": "Standard operational filter for active records, as inferred from the intent and grounded by execution constraints.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "order_status",
+            "reason": "Standard filter ('order_status = 'COMPLETED' for relevant sales records) as per Increff operations constraints for completeness, applied by analogy to returns data to ensure relevant operational status.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "transaction_type",
+            "reason": "Standard filter ('transaction_type = 'RETURN') for relevant return records, inferred based on the table name and the type of report being generated (courier-wise channel mapping for returns).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          }
+        ],
+        "filters": [
+          "zs_observe.increff_returns.group_level_id = 22",
+          "zs_observe.increff_returns.is_active = true",
+          "zs_observe.increff_returns.order_status = 'COMPLETED'",
+          "zs_observe.increff_returns.transaction_type = 'RETURN'"
+        ],
+        "joins": "No joins are needed as all required dimensions and filters are contained within the single selected table zs_observe.increff_returns.",
+        "metric_logic": {
+          "aggregation_grain": "forward_transporter, fulfilment_channel",
+          "deduplication_rule": "DISTINCT forward_transporter, fulfilment_channel",
+          "denominator": null,
+          "formula": "LIST(DISTINCT forward_transporter, fulfilment_channel)",
+          "numerator": null
+        },
+        "missing_or_ambiguous": "None.",
+        "reason": "All required dimensions (courier_partner mapped to forward_transporter, and fulfilment_channel) and filters (group_level_id and is_active) are directly available or strongly inferred within the zs_observe.increff_returns table. Additional standard operational filters (order_status, transaction_type) are inferred for data relevance.",
+        "tables": [
+          {
+            "field": "zs_observe.increff_returns",
+            "reason": "This table was selected by the Source Resolver as it explicitly contains both 'fulfilment_channel' (channel) and 'forward_transporter' (courier) which directly map to the requested dimensions for Mensa Brands.",
+            "role": "Primary Source",
+            "selected?": "Yes"
+          }
+        ]
+      },
+      "intent": {
+        "dimensions": [
+          "courier_partner",
+          "fulfilment_channel"
+        ],
+        "filters": [
+          {
+            "column": "group_level_id",
+            "operator": "=",
+            "reason": "Tenant filter for Mensa Brands, inferred from constraints.",
+            "value": 22
+          },
+          {
+            "column": "is_active",
+            "operator": "=",
+            "reason": "Standard operational filter for active records, from Increff constraints.",
+            "value": true
+          }
+        ],
+        "grain": "courier_channel_mapping",
+        "metric_or_status_logic": "list unique courier-channel pairs",
+        "must_enumerate_sources": true,
+        "reason": "The user is asking for a mapping between couriers and channels. The `zs_observe.increff_returns` table explicitly contains both `fulfilment_channel` (identified as channel) and `courier_partner` (identified as courier) columns for Mensa Brands. The `zs_observe.increff_sales` table describes `fulfilment_channel` as a courier, making it unsuitable for a distinct channel dimension.",
+        "scope": {
+          "tenant": "Mensa Brands"
+        },
+        "source_mode": "single_source",
+        "table_limit": 1
+      },
+      "source_resolution": {
+        "candidates": [
+          {
+            "field": "table.zs_observe.increff_returns",
+            "reason": "This table explicitly contains both 'fulfilment_channel' (identified as channel) and 'courier_partner' (identified as courier) columns, directly supporting the requested dimensions for a courier-wise channel mapping report for Mensa Brands.",
+            "role": "Direct Candidate",
+            "selected?": "Yes"
+          },
+          {
+            "field": "table.zs_observe.increff_sales",
+            "reason": "While zs_observe.increff_sales contains 'fulfilment_channel', the context describes this column as 'Courier/logistics partner used', meaning it represents the courier, not a distinct channel dimension needed for a 'courier-wise channel mapping report'.",
+            "role": "Risky Candidate",
+            "selected?": "No"
+          }
+        ],
+        "missing_or_risky": "No critical blocking gaps. The required dimensions and tenant filters are directly available in 'zs_observe.increff_returns'.",
+        "reason": "The 'zs_observe.increff_returns' table is selected as it directly provides both the 'courier_partner' and 'fulfilment_channel' dimensions needed for the report, along with the correct tenant scope for Mensa Brands. The 'zs_observe.increff_sales' table is unsuitable as its 'fulfilment_channel' column conflates channel and courier, not providing a distinct channel dimension.",
+        "rejected_sources": [],
+        "selected_sources": [
+          "table.zs_observe.increff_returns"
+        ],
+        "supporting_metadata": [
+          {
+            "field": "account_data_binding.mensa.increff_wms.primary.increff_returns",
+            "reason": "Confirms Mensa Brands uses Increff and provides the tenant filter (group_level_id = 22) for zs_observe.increff_returns.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "execution_constraint_set.increff.operations_manifest_refactored_constraints",
+            "reason": "Provides general operational filters and constraints for Increff data, including Mensa-specific scope ('group_level_id = 22' and 'is_active = true').",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          }
+        ]
+      },
+      "sql_handoff": {
+        "filters": [
+          "zs_observe.increff_returns.group_level_id = 22",
+          "zs_observe.increff_returns.is_active = true",
+          "zs_observe.increff_returns.order_status = 'COMPLETED'",
+          "zs_observe.increff_returns.transaction_type = 'RETURN'"
+        ],
+        "joins": "No joins are needed as all required dimensions and filters are contained within the single selected table zs_observe.increff_returns.",
+        "metric_logic": {
+          "aggregation_grain": "forward_transporter, fulfilment_channel",
+          "deduplication_rule": "DISTINCT forward_transporter, fulfilment_channel",
+          "denominator": null,
+          "formula": "LIST(DISTINCT forward_transporter, fulfilment_channel)",
+          "numerator": null
+        },
+        "missing_or_ambiguous": "None.",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [],
+        "require_tables": [
+          {
+            "field": "zs_observe.increff_returns",
+            "reason": "This table was selected by the Source Resolver as it explicitly contains both 'fulfilment_channel' (channel) and 'forward_transporter' (courier) which directly map to the requested dimensions for Mensa Brands.",
+            "role": "Primary Source",
+            "selected?": "Yes"
+          },
+          {
+            "field": "table.zs_observe.increff_sales",
+            "reason": "While zs_observe.increff_sales contains 'fulfilment_channel', the context describes this column as 'Courier/logistics partner used', meaning it represents the courier, not a distinct channel dimension needed for a 'courier-wise channel mapping report'.",
+            "role": "Risky Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "account_data_binding.mensa.increff_wms.primary.increff_returns",
+            "reason": "Confirms Mensa Brands uses Increff and provides the tenant filter (group_level_id = 22) for zs_observe.increff_returns.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "execution_constraint_set.increff.operations_manifest_refactored_constraints",
+            "reason": "Provides general operational filters and constraints for Increff data, including Mensa-specific scope ('group_level_id = 22' and 'is_active = true').",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          }
+        ],
+        "required_fields": [
+          {
+            "field": "fulfilment_channel",
+            "reason": "Requested channel dimension, explicitly available in zs_observe.increff_returns.",
+            "role": "Dimension",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "forward_transporter",
+            "reason": "Maps to the requested 'courier_partner' dimension as per column description 'Original outbound courier' within zs_observe.increff_returns.",
+            "role": "Dimension",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Tenant filter for Mensa Brands (value 22), as inferred from the intent and grounded by execution constraints and account data binding.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "is_active",
+            "reason": "Standard operational filter for active records, as inferred from the intent and grounded by execution constraints.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "order_status",
+            "reason": "Standard filter ('order_status = 'COMPLETED' for relevant sales records) as per Increff operations constraints for completeness, applied by analogy to returns data to ensure relevant operational status.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "transaction_type",
+            "reason": "Standard filter ('transaction_type = 'RETURN') for relevant return records, inferred based on the table name and the type of report being generated (courier-wise channel mapping for returns).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          }
+        ],
+        "selected_source": "zs_observe.increff_returns",
+        "sql_skeleton": "SELECT DISTINCT\n    fulfilment_channel,\n    forward_transporter\nFROM\n    zs_observe.increff_returns\nWHERE\n    group_level_id = 22 AND\n    is_active = true AND\n    order_status = 'COMPLETED' AND\n    transaction_type = 'RETURN'\nORDER BY\n    fulfilment_channel, forward_transporter;"
+      }
+    },
+    "timing": {
+      "duration_seconds": 95.111
+    },
+    "validation": {
+      "errors": [
+        "sql_skeleton has no FROM clause and is not a commented partial template"
+      ],
+      "ok": false,
+      "warnings": []
+    }
+  },
+  "scope": {
+    "tenant": "Mensa Brands"
+  },
+  "search_types": [
+    "RAG_COMPLETION",
+    "GRAPH_COMPLETION"
+  ],
+  "started_at": "2026-05-27T07:42:19+00:00",
+  "timing": {
+    "duration_seconds": 95.111
+  }
+}

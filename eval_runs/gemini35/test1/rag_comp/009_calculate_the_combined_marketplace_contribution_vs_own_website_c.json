@@ -1,0 +1,90 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "RAG_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = 22",
+          "sales_channel IS NOT NULL"
+        ],
+        "joins": "No joins needed as multi-channel sales are consolidated inside the single zs_observe.increff_sales table.",
+        "metric_logic": {
+          "aggregation_grain": "channel_group (Marketplace vs Own Website)",
+          "deduplication_rule": "GROUP BY channel_group",
+          "denominator": "SUM(SUM(selling_price)) OVER()",
+          "formula": "SUM(selling_price) and COUNT(DISTINCT channel_order_id) aggregated by channel group (Marketplace vs Own Website)",
+          "numerator": "SUM(selling_price)"
+        },
+        "missing_or_ambiguous": "None",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "zs_observe.nykaa_oms",
+          "zs_observe.myntra_oms",
+          "zs_observe.amazon_oms",
+          "zs_observe.meesho_sales"
+        ],
+        "required_fields": [
+          {
+            "field": "sales_channel",
+            "reason": "Identifies whether the transaction belongs to a marketplace (e.g., AMAZON_SC, MYNTRAV4) or the own website (e.g., SHOPIFY).",
+            "role": "Channel Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "channel_order_id",
+            "reason": "Used to calculate distinct order volumes for contribution share.",
+            "role": "Order Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Filters records for Mensa Brands (group_level_id = 22).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "selling_price",
+            "reason": "Inferred revenue metric to calculate GMV/sales contribution.",
+            "role": "Revenue Metric",
+            "selected?": "Inferred",
+            "table": "zs_observe.increff_sales"
+          }
+        ],
+        "required_tables": [
+          {
+            "field": "zs_observe.increff_sales",
+            "reason": "Consolidates both marketplace and D2C/Shopify orders in one table, allowing direct comparison without risky unions.",
+            "role": "Multi-channel sales transactions table",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": "zs_observe.increff_sales",
+        "sql_skeleton": "WITH categorized_sales AS (SELECT CASE WHEN sales_channel IN ('MYNTRAV4', 'FLIPKARTV3', 'AMAZON_SC', 'NYKAA_FASHION', 'NYKAA', 'TATACLIQ', 'SNAPDEAL', 'LIMEROAD_MENSA_GURGAON', 'LIMEROAD_MENSA_BLR', 'LIMEROAD_MENSA_BHIWANDI', 'MENSA_MEESHO_BLR', 'MENSA_MEESHO_GGN', 'MENSA_MEESHO_MUM') THEN 'Marketplace' ELSE 'Own Website' END AS channel_group, COUNT(DISTINCT channel_order_id) AS order_volume, SUM(TRY_CAST(selling_price AS DOUBLE)) AS total_revenue FROM zs_observe.increff_sales WHERE group_level_id = 22 AND sales_channel IS NOT NULL GROUP BY 1) SELECT channel_group, order_volume, order_volume * 100.0 / SUM(order_volume) OVER() AS order_volume_share, total_revenue, total_revenue * 100.0 / SUM(total_revenue) OVER() AS revenue_share FROM categorized_sales;"
+      }
+    ]
+  },
+  "question": "Calculate the combined marketplace contribution vs own website contribution.",
+  "question_index": 9,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\"selected_source\":\"zs_observe.increff_sales\",\"rejected_sources\":[\"zs_observe.nykaa_oms\",\"zs_observe.myntra_oms\",\"zs_observe.amazon_oms\",\"zs_observe.meesho_sales\"],\"required_tables\":[{\"field\":\"zs_observe.increff_sales\",\"role\":\"Multi-channel sales transactions table\",\"selected?\":\"Yes\",\"reason\":\"Consolidates both marketplace and D2C/Shopify orders in one table, allowing direct comparison without risky unions.\"}],\"required_fields\":[{\"field\":\"sales_channel\",\"role\":\"Channel Identifier\",\"selected?\":\"Yes\",\"reason\":\"Identifies whether the transaction belongs to a marketplace (e.g., AMAZON_SC, MYNTRAV4) or the own website (e.g., SHOPIFY).\",\"table\":\"zs_observe.increff_sales\"},{\"field\":\"channel_order_id\",\"role\":\"Order Identifier\",\"selected?\":\"Yes\",\"reason\":\"Used to calculate distinct order volumes for contribution share.\",\"table\":\"zs_observe.increff_sales\"},{\"field\":\"group_level_id\",\"role\":\"Filter Column\",\"selected?\":\"Yes\",\"reason\":\"Filters records for Mensa Brands (group_level_id = 22).\",\"table\":\"zs_observe.increff_sales\"},{\"field\":\"selling_price\",\"role\":\"Revenue Metric\",\"selected?\":\"Inferred\",\"reason\":\"Inferred revenue metric to calculate GMV/sales contribution.\",\"table\":\"zs_observe.increff_sales\"}],\"rejected_or_ambiguous_fields\":[],\"metric_logic\":{\"formula\":\"SUM(selling_price) and COUNT(DISTINCT channel_order_id) aggregated by channel group (Marketplace vs Own Website)\",\"numerator\":\"SUM(selling_price)\",\"denominator\":\"SUM(SUM(selling_price)) OVER()\",\"aggregation_grain\":\"channel_group (Marketplace vs Own Website)\",\"deduplication_rule\":\"GROUP BY channel_group\"},\"filters\":[\"group_level_id = 22\",\"sales_channel IS NOT NULL\"],\"joins\":\"No joins needed as multi-channel sales are consolidated inside the single zs_observe.increff_sales table.\",\"missing_or_ambiguous\":\"None\",\"sql_skeleton\":\"WITH categorized_sales AS (SELECT CASE WHEN sales_channel IN ('MYNTRAV4', 'FLIPKARTV3', 'AMAZON_SC', 'NYKAA_FASHION', 'NYKAA', 'TATACLIQ', 'SNAPDEAL', 'LIMEROAD_MENSA_GURGAON', 'LIMEROAD_MENSA_BLR', 'LIMEROAD_MENSA_BHIWANDI', 'MENSA_MEESHO_BLR', 'MENSA_MEESHO_GGN', 'MENSA_MEESHO_MUM') THEN 'Marketplace' ELSE 'Own Website' END AS channel_group, COUNT(DISTINCT channel_order_id) AS order_volume, SUM(TRY_CAST(selling_price AS DOUBLE)) AS total_revenue FROM zs_observe.increff_sales WHERE group_level_id = 22 AND sales_channel IS NOT NULL GROUP BY 1) SELECT channel_group, order_volume, order_volume * 100.0 / SUM(order_volume) OVER() AS order_volume_share, total_revenue, total_revenue * 100.0 / SUM(total_revenue) OVER() AS revenue_share FROM categorized_sales;\"}"
+    ]
+  },
+  "scoped_query": "Calculate the combined marketplace contribution vs own website contribution.\n\nScope:\n- platform account: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Default to a single source table or single relationship path.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nResponse Format:\nReturn a single answer string containing one valid JSON object.\nDo not wrap it in Markdown or code fences.\nThe JSON object must be emitted as plain text, not as a nested object under a content key.\n\nThe JSON object must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"required_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "RAG_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 24.372,
+    "search_seconds": {
+      "RAG_COMPLETION": 24.372
+    },
+    "started_at": "2026-05-28T10:11:37+00:00"
+  }
+}

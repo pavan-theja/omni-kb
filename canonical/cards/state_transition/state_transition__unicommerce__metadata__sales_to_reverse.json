@@ -1,0 +1,54 @@
+{
+  "canonical_id": "state_transition.unicommerce.metadata.sales_to_reverse",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Reverse rows represent return movement relative to original sale; not necessarily an in-row state mutation.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.015.9_3_customer_return",
+    "ev.unicommerce.section.005.3_transaction_types_in_unicommerce"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.015.9_3_customer_return",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 11997
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.005.3_transaction_types_in_unicommerce",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 11997
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "sales",
+  "name": "Sales To Reverse",
+  "optional_fields": [
+    "state_column",
+    "from_state",
+    "to_state",
+    "trigger",
+    "business_meaning",
+    "valid_process_binding_tests"
+  ],
+  "process_id": "business_process.unicommerce.customer_return_to_warehouse_lifecycle",
+  "review_status": "ready",
+  "source_card_id": "state_transition.unicommerce.metadata.sales_to_reverse",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11997,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "state_column": "order_status or metadata depending transition",
+  "status": "draft",
+  "to_state": "reverse",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

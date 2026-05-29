@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "GST fields, TCS, TDS as marketplace deduction columns, not tax filing compliance",
+  "canonical_id": "domain.marketplace.amazon.tax_deductions",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain_key": "tax_deductions",
+  "domain_scope": "GST fields, TCS, TDS as marketplace deduction columns, not tax filing compliance",
+  "evidence_ids": [
+    "ev.amazon.gst.001",
+    "ev.amazon.fee_taxonomy.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.gst.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1265
+    },
+    {
+      "evidence_id": "ev.amazon.fee_taxonomy.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1265
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon marketplace tax deduction fields",
+  "out_of_scope_guardrail": "no tenant/account/logistics/bank/ERP/statutory filing card creation",
+  "platform_context": "platform_context.amazon.in",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.amazon.tax_deductions",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1265,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

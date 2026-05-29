@@ -1,0 +1,55 @@
+{
+  "canonical_id": "relationship.flipkart.commission_settlement",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 2776
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_grain": "order_id + item_id",
+  "join_keys": [
+    "commission.order_id = REPLACE(settlement.order_id, 'OD', '') AND item_id"
+  ],
+  "left_table": "table.flipkart.commission",
+  "many_side": "commission/cashback detail side",
+  "name": "Flipkart commission_settlement",
+  "normalization": "OD prefix removal is required when joining commission order_id to other tables.",
+  "notes": "Aggregate commission by order_id,item_id before joining.",
+  "pre_aggregation_required": true,
+  "relationship_type": "many_to_one_after_aggregation",
+  "review_status": "accepted",
+  "right_table": "table.flipkart.settlement",
+  "safe_join_conditions": [
+    "filter is_active = true on both sides",
+    "pre-aggregate many-side detail tables before amount comparison"
+  ],
+  "source_card_id": "relationship.flipkart.commission_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2776,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unsafe_join_conditions": [
+    "joining raw commission/cashback rows directly to settlement and summing settlement amounts",
+    "using group_level_id as a cross-table join key"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

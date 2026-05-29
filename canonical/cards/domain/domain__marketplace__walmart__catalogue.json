@@ -1,0 +1,44 @@
+{
+  "canonical_id": "domain.marketplace.walmart.catalogue",
+  "card_type": "domain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "SKU-to-product-name enrichment and catalogue reference semantics",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "domain_key": "catalogue",
+  "domain_scope": "SKU-to-product-name enrichment and catalogue reference semantics",
+  "evidence_ids": [
+    "ev.walmart_lookup.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 595
+    }
+  ],
+  "excluded_topics": "marketplace_semantic_domain_only",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_module": "catalogue",
+  "name": "Walmart catalogue lookup domain",
+  "notes": "Walmart catalogue lookup domain",
+  "out_of_scope_guardrail": "marketplace_semantic_domain_only",
+  "parent_domain": "marketplace",
+  "platform_context": "platform_context.walmart.us",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.walmart.catalogue",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 595,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

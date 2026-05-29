@@ -1,0 +1,260 @@
+{
+  "amount_columns": [
+    "settlement_id",
+    "amount",
+    "fee",
+    "tax",
+    "cgst",
+    "sgst",
+    "igst",
+    "settled_amount",
+    "sale_type",
+    "credit",
+    "a_baseamount",
+    "a_refund_req_reference"
+  ],
+  "avoid_columns": [
+    "settlement_id",
+    "sale_type",
+    "a_baseamount",
+    "a_refund_req_reference"
+  ],
+  "business_purpose": "All inbound transactions via PhonePe — sales, refunds, adjustments, and settlements.",
+  "canonical_id": "table.zs_observe.phonepe_payin",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.phonepe_payin.a_baseamount",
+    "column.zs_observe.phonepe_payin.a_contact_id",
+    "column.zs_observe.phonepe_payin.a_created_at",
+    "column.zs_observe.phonepe_payin.a_current_state",
+    "column.zs_observe.phonepe_payin.a_operator_reference",
+    "column.zs_observe.phonepe_payin.a_payment_resp_reference",
+    "column.zs_observe.phonepe_payin.a_provider_reference",
+    "column.zs_observe.phonepe_payin.a_reference_id",
+    "column.zs_observe.phonepe_payin.a_refund_req_reference",
+    "column.zs_observe.phonepe_payin.a_selling_price",
+    "column.zs_observe.phonepe_payin.amount",
+    "column.zs_observe.phonepe_payin.bankreferenceno",
+    "column.zs_observe.phonepe_payin.card_type",
+    "column.zs_observe.phonepe_payin.cgst",
+    "column.zs_observe.phonepe_payin.creationdate",
+    "column.zs_observe.phonepe_payin.credit",
+    "column.zs_observe.phonepe_payin.fee",
+    "column.zs_observe.phonepe_payin.flow_type",
+    "column.zs_observe.phonepe_payin.from",
+    "column.zs_observe.phonepe_payin.igst",
+    "column.zs_observe.phonepe_payin.instrument",
+    "column.zs_observe.phonepe_payin.issuer_name",
+    "column.zs_observe.phonepe_payin.item_id",
+    "column.zs_observe.phonepe_payin.merchantorderid",
+    "column.zs_observe.phonepe_payin.merchantreferenceid",
+    "column.zs_observe.phonepe_payin.order_id",
+    "column.zs_observe.phonepe_payin.order_id2",
+    "column.zs_observe.phonepe_payin.originalmerchantreferenceid",
+    "column.zs_observe.phonepe_payin.originaltransactionid",
+    "column.zs_observe.phonepe_payin.parent_id",
+    "column.zs_observe.phonepe_payin.payment_gateway",
+    "column.zs_observe.phonepe_payin.payment_mode",
+    "column.zs_observe.phonepe_payin.paymenttype",
+    "column.zs_observe.phonepe_payin.phonepereferenceid",
+    "column.zs_observe.phonepe_payin.sale_type",
+    "column.zs_observe.phonepe_payin.settled_amount",
+    "column.zs_observe.phonepe_payin.settlement_date",
+    "column.zs_observe.phonepe_payin.settlement_id",
+    "column.zs_observe.phonepe_payin.settlementdate",
+    "column.zs_observe.phonepe_payin.sgst",
+    "column.zs_observe.phonepe_payin.status",
+    "column.zs_observe.phonepe_payin.storeid",
+    "column.zs_observe.phonepe_payin.storename",
+    "column.zs_observe.phonepe_payin.tax",
+    "column.zs_observe.phonepe_payin.terminalid",
+    "column.zs_observe.phonepe_payin.terminalname",
+    "column.zs_observe.phonepe_payin.transaction_id",
+    "column.zs_observe.phonepe_payin.transaction_type",
+    "column.zs_observe.phonepe_payin.transactiondate",
+    "column.zs_observe.phonepe_payin.transactionutr",
+    "column.zs_observe.phonepe_payin.txn_date",
+    "column.zs_observe.phonepe_payin.txn_sub_type",
+    "column.zs_observe.phonepe_payin.txn_type"
+  ],
+  "columns": [
+    "column.zs_observe.phonepe_payin.transaction_id",
+    "column.zs_observe.phonepe_payin.phonepereferenceid",
+    "column.zs_observe.phonepe_payin.merchantreferenceid",
+    "column.zs_observe.phonepe_payin.merchantorderid",
+    "column.zs_observe.phonepe_payin.order_id",
+    "column.zs_observe.phonepe_payin.order_id2",
+    "column.zs_observe.phonepe_payin.txn_type",
+    "column.zs_observe.phonepe_payin.txn_sub_type",
+    "column.zs_observe.phonepe_payin.txn_date",
+    "column.zs_observe.phonepe_payin.transactiondate",
+    "column.zs_observe.phonepe_payin.creationdate",
+    "column.zs_observe.phonepe_payin.settlement_date",
+    "column.zs_observe.phonepe_payin.settlementdate",
+    "column.zs_observe.phonepe_payin.settlement_id",
+    "column.zs_observe.phonepe_payin.amount",
+    "column.zs_observe.phonepe_payin.fee",
+    "column.zs_observe.phonepe_payin.tax",
+    "column.zs_observe.phonepe_payin.cgst",
+    "column.zs_observe.phonepe_payin.sgst",
+    "column.zs_observe.phonepe_payin.igst",
+    "column.zs_observe.phonepe_payin.settled_amount",
+    "column.zs_observe.phonepe_payin.payment_mode",
+    "column.zs_observe.phonepe_payin.paymenttype",
+    "column.zs_observe.phonepe_payin.instrument",
+    "column.zs_observe.phonepe_payin.status",
+    "column.zs_observe.phonepe_payin.payment_gateway",
+    "column.zs_observe.phonepe_payin.bankreferenceno",
+    "column.zs_observe.phonepe_payin.transactionutr",
+    "column.zs_observe.phonepe_payin.originaltransactionid",
+    "column.zs_observe.phonepe_payin.originalmerchantreferenceid",
+    "column.zs_observe.phonepe_payin.sale_type",
+    "column.zs_observe.phonepe_payin.from",
+    "column.zs_observe.phonepe_payin.flow_type",
+    "column.zs_observe.phonepe_payin.storeid",
+    "column.zs_observe.phonepe_payin.storename",
+    "column.zs_observe.phonepe_payin.terminalid",
+    "column.zs_observe.phonepe_payin.terminalname",
+    "column.zs_observe.phonepe_payin.credit",
+    "column.zs_observe.phonepe_payin.card_type",
+    "column.zs_observe.phonepe_payin.issuer_name",
+    "column.zs_observe.phonepe_payin.transaction_type",
+    "column.zs_observe.phonepe_payin.item_id",
+    "column.zs_observe.phonepe_payin.parent_id",
+    "column.zs_observe.phonepe_payin.a_provider_reference",
+    "column.zs_observe.phonepe_payin.a_payment_resp_reference",
+    "column.zs_observe.phonepe_payin.a_operator_reference",
+    "column.zs_observe.phonepe_payin.a_current_state",
+    "column.zs_observe.phonepe_payin.a_baseamount",
+    "column.zs_observe.phonepe_payin.a_selling_price",
+    "column.zs_observe.phonepe_payin.a_contact_id",
+    "column.zs_observe.phonepe_payin.a_refund_req_reference",
+    "column.zs_observe.phonepe_payin.a_reference_id",
+    "column.zs_observe.phonepe_payin.a_created_at"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "txn_date",
+    "transactiondate",
+    "creationdate",
+    "settlement_date",
+    "settlementdate",
+    "a_created_at"
+  ],
+  "description": "All inbound transactions via PhonePe — sales, refunds, adjustments, and settlements.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.phonepe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.phonepe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 4144
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.phonepe_payin",
+  "grain": "one row per payin/payment/refund/adjustment gateway event",
+  "grain_keys": [
+    "transaction_id",
+    "phonepereferenceid",
+    "merchantreferenceid",
+    "merchantorderid",
+    "order_id",
+    "order_id2"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.phonepe.payin.settlement"
+  ],
+  "name": "zs_observe.phonepe_payin",
+  "recommended_date_columns": [
+    "txn_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "phonepereferenceid",
+    "merchantreferenceid",
+    "settlement_id",
+    "bankreferenceno",
+    "transactionutr",
+    "originalmerchantreferenceid",
+    "a_provider_reference",
+    "a_payment_resp_reference",
+    "a_operator_reference",
+    "a_refund_req_reference",
+    "a_reference_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.phonepe_payin",
+  "source_caveats": [
+    "`phonepereferenceid` is PhonePe's primary transaction ID — use for bank reconciliation.",
+    "`bankreferenceno` is the UTR number — matches bank statement credits.",
+    "Two sets of date columns exist: mapped (`txn_date`, `settlement_date`) and PhonePe-native (`transactiondate`, `settlementdate`) — prefer mapped columns for consistency.",
+    "`paymenttype` and `paymenttype_temp_old` — the `_temp_old` is a legacy column.",
+    "`a_*` columns are from an alternate PhonePe data feed — may not always be populated.",
+    "GST is split into CGST/SGST for intra-state and IGST for inter-state transactions.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4144,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.phonepe"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "txn_type",
+    "txn_sub_type",
+    "payment_mode",
+    "paymenttype",
+    "status",
+    "sale_type",
+    "flow_type",
+    "card_type",
+    "transaction_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.phonepe.in"
+    ],
+    "platform_ids": [
+      "platform.phonepe"
+    ]
+  },
+  "table_name": "phonepe_payin",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

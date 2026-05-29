@@ -1,0 +1,44 @@
+{
+  "applicable_tables": [
+    "table.zs_observe.walmart_settlement"
+  ],
+  "canonical_id": "formula_template.walmart.refund_reversal",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.lifecycle.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.lifecycle.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4114
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "Refund rows have negative charged_amount, positive gross_commission, and positive marketplace_withheld_tax",
+  "formula_key": "refund_reversal",
+  "name": "Walmart refund reversal formula",
+  "notes": "Walmart refund reversal formula",
+  "review_status": "accepted",
+  "scope": "marketplace_semantic_formula",
+  "sign_semantics": "Match reverse rows to original forward rows by order_id and sku_id when available",
+  "source_card_id": "formula_template.walmart.refund_reversal",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4114,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

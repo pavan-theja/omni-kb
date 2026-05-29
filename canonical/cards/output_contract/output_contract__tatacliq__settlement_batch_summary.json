@@ -1,0 +1,58 @@
+{
+  "canonical_id": "output_contract.tatacliq.settlement_batch_summary",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "settlement_batch_summary",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq output contract — settlement_batch_summary",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.settlement_batch_completeness",
+    "ev.tatacliq.sql.recon_oms_settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.settlement_batch_completeness",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8729
+    },
+    {
+      "evidence_id": "ev.tatacliq.sql.recon_oms_settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8729
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "settlement_id",
+  "name": "TataCliq output contract — settlement_batch_summary",
+  "optional_columns": [
+    "total_tds",
+    "return_refunds"
+  ],
+  "required_columns": [
+    "settlement_id",
+    "settlement_date",
+    "line_items",
+    "orders",
+    "gross_gmv",
+    "commission",
+    "net_settled_or_net_payout"
+  ],
+  "review_status": "ready",
+  "source_card_id": "output_contract.tatacliq.settlement_batch_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8729,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,57 @@
+{
+  "account_name": "Volans Epic LLC Target/Target Plus US Account",
+  "account_type": "marketplace_seller_account",
+  "active": true,
+  "canonical_id": "platform_account.volans_epic_llc.target_us.primary",
+  "canonical_platform_status": "canonical",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "USD"
+  ],
+  "default_currency": "USD",
+  "description": "platform_account card from raw/cleaned_v2/clients/volans_epic_llc.json.",
+  "evidence_ids": [
+    "Target US configured: Sales, Settlement, Returns, TCIN mapping"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "Target US configured: Sales, Settlement, Returns, TCIN mapping",
+      "source_doc": "raw/cleaned_v2/clients/volans_epic_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.volans_epic_llc.mensa_brands",
+  "name": "Volans Epic LLC Target/Target Plus US Account",
+  "notes": [
+    "Client labels the channel Target. Current canonical context is Target Plus; this pack maps semantically to target_plus canonical cards."
+  ],
+  "package_id": "client_runtime_binding_pack.volans_epic_llc.v0_1",
+  "platform_context_id": "platform_context.target_plus.us",
+  "platform_id": "platform.target_plus",
+  "region_or_market": "US",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_account_identifier_status": "not_provided_in_client_doc",
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Epic LLC.docx",
+    "target_plus.md",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": "Target US configured: Sales, Settlement, Returns, TCIN mapping",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_epic_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.volans_epic_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

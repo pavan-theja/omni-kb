@@ -1,0 +1,45 @@
+{
+  "candidate_notes": "type = Service Fee and description LIKE Advertising",
+  "canonical_id": "query_pattern.amazon.advertising_spend",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.analytical_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.analytical_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7606
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "How much did we spend on advertising?",
+  "natural_language_patterns": "How much did we spend on advertising?",
+  "primary_metric": "metric.marketplace.advertising_spend",
+  "query_logic": "type = Service Fee and description LIKE Advertising",
+  "review_status": "accepted",
+  "scope_policy": "runtime filters may be applied externally; do not hardcode group_level_id in canonical pattern",
+  "source_card_id": "query_pattern.amazon.advertising_spend",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7606,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_settlement",
+  "sql_ref": "sql.amazon.settlement.advertising_spend",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

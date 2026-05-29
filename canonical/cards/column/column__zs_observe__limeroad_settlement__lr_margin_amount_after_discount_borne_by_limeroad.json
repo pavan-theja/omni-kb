@@ -1,0 +1,47 @@
+{
+  "business_meaning": "LR margin after LR-funded discount",
+  "canonical_id": "column.zs_observe.limeroad_settlement.lr_margin_amount_after_discount_borne_by_limeroad",
+  "card_type": "column",
+  "column_group": "financial",
+  "column_name": "lr_margin_amount_after_discount_borne_by_limeroad___",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "LR margin after LR-funded discount",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.settlement.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.settlement.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 1386
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "limeroad_settlement.lr_margin_amount_after_discount_borne_by_limeroad___",
+  "review_status": "accepted",
+  "schema_name": "zs_observe",
+  "semantic_role": "amount",
+  "source_card_id": "column.zs_observe.limeroad_settlement.lr_margin_amount_after_discount_borne_by_limeroad",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1386,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.limeroad_settlement",
+  "table_name": "limeroad_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

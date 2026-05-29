@@ -1,0 +1,65 @@
+{
+  "business_definition": "Count unicommerce reverse rows with transaction_type Courier Return",
+  "canonical_id": "metric.unicommerce.rto_order_count",
+  "card_type": "metric",
+  "colloquial_names": [
+    "courier returns",
+    "return to origin"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order / SKU line / shipment line depending implementation",
+  "description": "Count unicommerce reverse rows with transaction_type Courier Return",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.005.3_transaction_types_in_unicommerce",
+    "ev.unicommerce.section.014.9_2_return_to_origin_rto_courier_return"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.005.3_transaction_types_in_unicommerce",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 10261
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.014.9_2_return_to_origin_rto_courier_return",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 10261
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.unicommerce.rto_order_count.unicommerce_v10"
+  ],
+  "metric_name": "RTO order count",
+  "name": "Rto Order Count",
+  "optional_fields": [
+    "colloquial_names",
+    "metric_family",
+    "grain",
+    "default_filters",
+    "business_interpretation",
+    "benchmarks",
+    "exclusions",
+    "dependencies"
+  ],
+  "review_status": "ready",
+  "source_card_id": "metric.unicommerce.rto_order_count",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10261,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

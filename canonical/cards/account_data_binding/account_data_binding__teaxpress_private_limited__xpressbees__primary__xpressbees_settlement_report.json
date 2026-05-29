@@ -1,0 +1,74 @@
+{
+  "active": false,
+  "canonical_id": "account_data_binding.teaxpress_private_limited.xpressbees.primary.xpressbees_settlement_report",
+  "card_type": "account_data_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type_configured": "Settlement report",
+  "description": "account_data_binding card from raw/cleaned_v2/clients/teaxpress_private_limited.json.",
+  "evidence_ids": [
+    "Xpressbees | Settlement report"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "Xpressbees | Settlement report",
+      "source_doc": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "logical_scope": {
+    "currency_scope": [
+      "INR"
+    ],
+    "region_or_market": "India"
+  },
+  "mapping_confidence": "source_described",
+  "name": "Xpressbees Settlement Report",
+  "notes": [
+    "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards.",
+    "Source/client document describes this pipeline target, but no canonical platform context/table card was available in the uploaded platform markdowns. Keep non-queryable until platform context is added."
+  ],
+  "package_id": "client_runtime_binding_pack.teaxpress_private_limited.v0_1",
+  "platform_account_id": "platform_account.teaxpress_private_limited.xpressbees.primary",
+  "review_status": "unreviewed",
+  "scope_keys": [
+    {
+      "business_key": "client_group_id",
+      "column": "group_id",
+      "data_type": "integer",
+      "notes": "Client Tables - Shopify.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards.",
+      "operator": "=",
+      "source": "client_identity_doc",
+      "value": 52
+    },
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards.",
+      "operator": "=",
+      "source": "client_identity_doc",
+      "value": 190
+    }
+  ],
+  "source_confidence": null,
+  "source_documents": [
+    "Teaxpress Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": "Xpressbees | Settlement report",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+  "source_status": "draft",
+  "status": "draft",
+  "table_canonical_status": "source_described_pending_platform_context",
+  "table_id": "table.zs_observe.xpressbees_settlement_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

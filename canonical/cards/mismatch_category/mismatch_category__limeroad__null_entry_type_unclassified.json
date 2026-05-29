@@ -1,0 +1,42 @@
+{
+  "canonical_id": "mismatch_category.limeroad.null_entry_type_unclassified",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "mismatch_category card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 6236
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "mismatch_definition": "14 old settlement rows carry financial data but cannot be sale/return-classified; include in totals, exclude from type-specific ratios unless explicitly handled.",
+  "mismatch_key": "null_entry_type_unclassified",
+  "name": "NULL entry_type unclassified",
+  "profile_id": "reconciliation_profile.limeroad.waterfall_mrp_nsp_settled",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.limeroad.null_entry_type_unclassified",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6236,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

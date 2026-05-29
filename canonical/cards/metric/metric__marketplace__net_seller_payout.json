@@ -1,0 +1,53 @@
+{
+  "benchmarks": {
+    "source_context": "Net Payout = charged_amount_excluding_tax + gross_commission"
+  },
+  "business_definition": "Estimated seller payout from Walmart report calculated as product revenue excluding tax plus gross_commission; do not use settled_amount.",
+  "canonical_id": "metric.marketplace.net_seller_payout",
+  "card_type": "metric",
+  "colloquial_names": [
+    "net payout",
+    "seller payout",
+    "estimated payout",
+    "net seller revenue"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "payout_cycle",
+  "description": "Estimated seller payout from Walmart report calculated as product revenue excluding tax plus gross_commission; do not use settled_amount.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "domain": "domain.marketplace.walmart.settlement",
+  "evidence_ids": [
+    "ev.walmart.business_model.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.business_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 3541
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "metric_key": "net_seller_payout",
+  "metric_pattern": "sum_product_revenue_plus_gross_commission",
+  "name": "Net seller payout",
+  "notes": "Estimated seller payout from Walmart report calculated as product revenue excluding tax plus gross_commission; do not use settled_amount.",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by Walmart-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.net_seller_payout",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3541,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

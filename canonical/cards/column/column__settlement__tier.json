@@ -1,0 +1,53 @@
+{
+  "business_meaning": "City tier / marketplace settlement tier field if populated; do not treat as seller performance tier without a documented seller-tier column.",
+  "canonical_id": "column.settlement.tier",
+  "card_type": "column",
+  "column_name": "tier",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "City tier / marketplace settlement tier field if populated; do not treat as seller performance tier without a documented seller-tier column.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.settlement_logic",
+    "evidence.flipkart.seller_tier"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.settlement_logic",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 1721
+    },
+    {
+      "evidence_id": "evidence.flipkart.seller_tier",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 1721
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "filter",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.settlement.tier",
+  "review_status": "accepted",
+  "semantic_type": "marketplace_city_tier",
+  "source_card_id": "column.settlement.tier",
+  "source_caveats": [
+    "DOCX fulfilment/logistics section lists tier as City tier; seller-tier system is described conceptually but no seller-tier schema column is identified."
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1721,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

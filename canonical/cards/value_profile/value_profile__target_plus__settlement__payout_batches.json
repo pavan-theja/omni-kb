@@ -1,0 +1,46 @@
+{
+  "canonical_id": "value_profile.target_plus.settlement.payout_batches",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.target_settlement.payout_id",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Settlement payout batch profile",
+  "distribution_summary": "payout_id groups multiple Stripe transfer rows into bank-deposit batches.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.settlement.payout_batch_structure_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.settlement.payout_batch_structure_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8937
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Settlement payout batch profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "31 distinct payout_id values",
+    "po_1SZh3kGgYJvT8MDtnFnpYLpX largest sample",
+    "po_1RLZ0yGgYJvT8MDt10K8Q4Ew first payout sample"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.settlement.payout_batches",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8937,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

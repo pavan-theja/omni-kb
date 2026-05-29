@@ -1,0 +1,55 @@
+{
+  "applies_to": [
+    "value_profile.flipkart.settlement.neft_type",
+    "metric.collection_fee",
+    "metric.effective_fee_rate"
+  ],
+  "canonical_id": "rule.flipkart.prepaid_postpaid_collection_fee",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Collection fee is documented as 2% for Prepaid and 2.5% for Postpaid/COD; neft_type/payment method may segment analysis but is not itself a process variant.",
+  "deterministic_action": "encode as rule/value-profile guidance; do not create prepaid_vs_postpaid process_variant",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.fee_structure",
+    "evidence.flipkart.settlement_logic"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.fee_structure",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7213
+    },
+    {
+      "evidence_id": "evidence.flipkart.settlement_logic",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7213
+    }
+  ],
+  "exceptions": [
+    "hard validation requires current account/category rate-card evidence"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Flipkart prepaid/postpaid collection fee guidance",
+  "review_status": "accepted",
+  "rule_name": "prepaid_postpaid_collection_fee",
+  "rule_statement": "Collection fee is documented as 2% for Prepaid and 2.5% for Postpaid/COD; neft_type/payment method may segment analysis but is not itself a process variant.",
+  "rule_type": "fee_segment_guidance",
+  "severity": "medium",
+  "source_card_id": "rule.flipkart.prepaid_postpaid_collection_fee",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7213,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

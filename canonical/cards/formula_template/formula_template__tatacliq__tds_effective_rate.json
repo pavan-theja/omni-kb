@@ -1,0 +1,51 @@
+{
+  "canonical_id": "formula_template.tatacliq.tds_effective_rate",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq effective TDS rate formula",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.tax.tds",
+    "ev.tatacliq.sql.tds_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.tax.tds",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6954
+    },
+    {
+      "evidence_id": "ev.tatacliq.sql.tds_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6954
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "Effective TDS Rate = SUM(forward total_tds) / SUM(forward ABS(charged_amount)); reverse rows reverse TDS impact.",
+  "name": "TataCliq effective TDS rate formula",
+  "parameters": [
+    "total_tds",
+    "charged_amount",
+    "transaction_type"
+  ],
+  "review_status": "ready",
+  "sign_convention": "TDS positive for forward deduction and negative for reverse reversal.",
+  "source_card_id": "formula_template.tatacliq.tds_effective_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6954,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "percent",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

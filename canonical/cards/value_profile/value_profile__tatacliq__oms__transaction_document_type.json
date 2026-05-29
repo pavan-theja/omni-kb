@@ -1,0 +1,47 @@
+{
+  "canonical_id": "value_profile.tatacliq.oms.transaction_document_type",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.tatacliq_oms.transaction_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq OMS transaction_type/document_type profile",
+  "distribution_summary": "OMS forward invoices, reverse credit notes, and shifted-row NULL document types.",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.values.oms.transaction_document"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.values.oms.transaction_document",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 5819
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq OMS transaction_type/document_type profile",
+  "observed_values": [
+    "forward + Invoice",
+    "reverse + Credit Note",
+    "forward + NULL shifted rows",
+    "reverse + NULL shifted rows"
+  ],
+  "profile_kind": "document_status_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.tatacliq.oms.transaction_document_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5819,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

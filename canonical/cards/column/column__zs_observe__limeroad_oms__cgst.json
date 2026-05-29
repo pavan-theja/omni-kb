@@ -1,0 +1,47 @@
+{
+  "business_meaning": "Legacy CGST string field; use typed tax_cgst_amount instead",
+  "canonical_id": "column.zs_observe.limeroad_oms.cgst",
+  "card_type": "column",
+  "column_group": "system",
+  "column_name": "cgst",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Legacy CGST string field; use typed tax_cgst_amount instead",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.oms.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.oms.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 3813
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "limeroad_oms.cgst",
+  "review_status": "accepted",
+  "schema_name": "zs_observe",
+  "semantic_role": "legacy",
+  "source_card_id": "column.zs_observe.limeroad_oms.cgst",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3813,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.limeroad_oms",
+  "table_name": "limeroad_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,63 @@
+{
+  "canonical_id": "value_profile.walmart.settlement.product_type",
+  "card_type": "value_profile",
+  "column": "column.zs_observe.walmart_settlement.product_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_settlement.values.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_settlement.values.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 3381
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_values": {
+    "values": [
+      "Bath Rugs",
+      "Coasters",
+      "Cooking Spoons",
+      "Decorative Bowls",
+      "Decorative Pillow Covers",
+      "Floor Mats & Doormats",
+      "Handbags",
+      "Incense",
+      "Incense Burners & Holders",
+      "Kitchen & Cooking Utensil Sets",
+      "Kitchen Towels",
+      "Messenger & Shoulder Bags",
+      "Plant Hangers",
+      "Pot Holders",
+      "Shower Curtains & Liners",
+      "Table Runners",
+      "Tablecloths",
+      "Wallets",
+      "Whiteboards"
+    ]
+  },
+  "name": "Walmart product_type values",
+  "notes": "Walmart product_type values",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.walmart.settlement.product_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3381,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unknown_or_null_handling": "Use for product type segmentation; no separate process topology",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_semantics": "Use for product type segmentation; no separate process topology"
+}

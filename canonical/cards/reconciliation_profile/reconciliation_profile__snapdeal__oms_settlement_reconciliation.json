@@ -1,0 +1,55 @@
+{
+  "actual_side": "snapdeal_settlement forward rows by invoice_number with settled_amount and fee columns",
+  "canonical_id": "reconciliation_profile.snapdeal.oms_settlement_reconciliation",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Forward OMS-to-settlement reconciliation by invoice_number with charged_amount, settled_amount, commission, courier_fee, and settlement type context.",
+  "display_name": "Snapdeal OMS ↔ Settlement Reconciliation",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.8_4_oms_settlement_reconciliation",
+    "evidence.snapdeal.join_map_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.8_4_oms_settlement_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17341
+    },
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17341
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17341
+    }
+  ],
+  "expected_side": "snapdeal_oms forward rows by invoice_number",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Snapdeal OMS ↔ Settlement Reconciliation",
+  "process_id": "business_process.snapdeal.marketplace_internal_reconciliation",
+  "reconciliation_family": "marketplace_internal_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.snapdeal.oms_settlement_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17341,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_window": "as specified in source section or review_required",
+  "tolerance": "open_review_no_universal_numeric_tolerance_in_docx",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

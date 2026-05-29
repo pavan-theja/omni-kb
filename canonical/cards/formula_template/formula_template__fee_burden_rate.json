@@ -1,0 +1,48 @@
+{
+  "canonical_id": "formula_template.fee_burden_rate",
+  "canonical_name": "fee_burden_rate",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "dialect": "Trino/Athena v3",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.fees",
+    "evidence.myntra.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9681
+    },
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9681
+    }
+  ],
+  "expression_family": "fee_burden_rate",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "fee_burden_rate",
+  "review_status": "unreviewed",
+  "source_card_id": "formula_template.fee_burden_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9681,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "100 * total marketplace deductions / gross sales.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

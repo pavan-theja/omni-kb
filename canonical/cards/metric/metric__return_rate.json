@@ -1,0 +1,160 @@
+{
+  "aliases": [
+    "reverse return rate"
+  ],
+  "benchmark_policy": "no_myntra_benchmarks_documented_in_source",
+  "benchmarks": {
+    "interpretation": "Typical for fashion e-commerce in this document; not a hard validation threshold.",
+    "observed_context": "~14% of delivered orders",
+    "source": "docx section 11 and AJIO Reverse common query patterns"
+  },
+  "business_concepts": [
+    "logistics",
+    "return_rate"
+  ],
+  "business_definition": "Share of delivered forward OMS orders with a processed reverse record linked by parent_id to original order_id.",
+  "business_question": "reverse/return orders divided by forward orders",
+  "canonical_formula_pattern": "distinct_return_parent_orders_over_distinct_delivered_forward_orders",
+  "canonical_id": "metric.return_rate",
+  "canonical_name": "return_rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Return Rate",
+    "RTO rate",
+    "reverse rate",
+    "returns percentage"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "default_aggregation": "SUM or COUNT or ratio by metric",
+  "default_grain": "shipment_awb_or_settlement_batch",
+  "default_time_basis": "settlement_date for settlement metrics; created/order date for order metrics",
+  "default_unit": "percent",
+  "description": "Customer return shipments divided by eligible shipments.",
+  "display_name": "Return rate",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "domain_id": "domain.meesho.returns",
+  "domain_ids": [
+    "domain.logistics_reconciliation"
+  ],
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope",
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations",
+    "evidence.flipkart.query_patterns",
+    "evidence.flipkart.metrics_benchmarks",
+    "evidence.meesho.7_4_return_rate_calculation",
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees",
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.benchmark_context",
+    "evidence.nykaa.manifest_cleanup_v9",
+    "evidence.snapdeal.7_3_return_rate_by_category",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 964
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 964
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 964
+    }
+  ],
+  "evidence_table_ids": [],
+  "excluded_components": [
+    "COGS",
+    "bank deposits",
+    "external logistics charges",
+    "ERP/accounting adjustments"
+  ],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": false,
+  "implementation_ids": [
+    "metric_impl.meesho.brand_level_return_rate",
+    "metric_impl.meesho.return_rate",
+    "metric_impl.meesho.return_rate_calculation",
+    "metric_impl.meesho.sku_level_return_rate",
+    "metric_impl.nykaa_oms.return_rate",
+    "metric_impl.snapdeal.return_rate",
+    "metric_impl.snapdeal.return_rate_by_category",
+    "metric_impl.snapdeal.return_rate_by_tax_rate",
+    "metric_implementation.ajio.return_rate.02",
+    "metric_implementation.flipkart.return_rate",
+    "metric_implementation.myntra_settlement.return_rate"
+  ],
+  "included_components": [
+    "marketplace-owned Flipkart fields only"
+  ],
+  "marketplace_only": true,
+  "metric_family": "returns",
+  "metric_key": "return_rate",
+  "metric_name": "Return Rate",
+  "metric_pattern": "distinct_return_parent_orders_over_distinct_delivered_forward_orders",
+  "metric_type": "amount/count/rate/days_by_metric",
+  "name": "Return Rate",
+  "platform_agnostic": true,
+  "platform_agnostic_name": "Return Rate",
+  "polarity": "context_dependent",
+  "positive_direction": "higher_is_better except fees/taxes/returns/cancellations",
+  "requires_case_normalization": true,
+  "review_status": "ready",
+  "source_card_id": "metric.return_rate",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx",
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md",
+    "/mnt/data/Flipkart Recon Doc.docx",
+    "/mnt/data/Meesho Recon Doc.docx",
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx",
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx",
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 964,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_paths": [
+    "raw/cleaned_v2/logistics/logistics_domain.md",
+    "raw/cleaned_v2/marketplace/snapdeal_marketplace.md"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "summary": "Generic marketplace metric for return rate. Use colloquial aliases for user query matching and platform-specific implementation cards for Myntra SQL semantics.",
+  "unit": "currency/count/percentage/days_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "valid_contexts": [
+    "AJIO",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ],
+  "version": "5.0-manifest-aligned"
+}

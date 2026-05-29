@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 7.3 Intra-State vs Inter-State GST Analysis",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13313
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 7.3 Intra-State vs Inter-State GST Analysis",
+  "natural_language_patterns": [
+    "7.3 Intra-State vs Inter-State GST Analysis"
+  ],
+  "output_contract_id": "output_contract.jiomart.metric_summary",
+  "primary_metric_id": "metric.jiomart.gst_breakdown",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13313,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms"
+  ],
+  "sql_ref": "sql.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis",
+  "sql_template": "SELECT\n  CASE\n    WHEN UPPER(source_state) = UPPER(destination_state) THEN 'Intra-State'\n    ELSE 'Inter-State'\n  END AS gst_type,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS gmv,\n  SUM(tax_igst_amount) AS igst,\n  SUM(tax_cgst_amount + tax_sgst_amount) AS cgst_sgst\nFROM zs_observe.jiomart_oms\nWHERE is_active = true\n  AND transaction_type = 'forward'\n  AND hsn IS NOT NULL\nGROUP BY 1;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

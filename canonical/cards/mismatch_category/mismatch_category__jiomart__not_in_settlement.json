@@ -1,0 +1,41 @@
+{
+  "business_meaning": "Forward delivered OMS order has no settlement row under source filters; documented coverage gap about 944 orders / 1.6%.",
+  "canonical_id": "mismatch_category.jiomart.not_in_settlement",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Forward delivered OMS order has no settlement row under source filters; documented coverage gap about 944 orders / 1.6%.",
+  "detection_logic": "s.order_id IS NULL",
+  "display_name": "Not in Settlement",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12430
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "not_in_settlement",
+  "name": "Not in Settlement",
+  "review_priority": "medium",
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.jiomart.not_in_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12430,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

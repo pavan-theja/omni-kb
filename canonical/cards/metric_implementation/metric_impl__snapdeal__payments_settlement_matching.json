@@ -1,0 +1,85 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.snapdeal.payments_settlement_matching",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal implementation — Payments ↔ Settlement Matching",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.10_2_payments_settlement_matching",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.10_2_payments_settlement_matching",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16048
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16048
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16048
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use exactly the filters in formula_sql / linked sql_pattern, especially is_active=true, transaction_type/type scope, and group_level_id column scope where runtime supplies it.",
+  "formula_sql": "SELECT\n  p.utr_no_,\n  p.gross_amount AS payment_received,\n  SUM(s.settled_amount) AS sum_of_settlement_lines,\n  p.gross_amount - SUM(s.settled_amount) AS variance\nFROM zs_observe.snapdeal_payments p\nLEFT JOIN zs_observe.snapdeal_settlement s\n  ON p.utr_no_ = s.settlement_id\n  AND s.is_active = true\nWHERE p.is_active = true\nGROUP BY p.utr_no_, p.gross_amount;",
+  "formula_text": "Executable SQL-like implementation normalized in V9; see formula_sql and sql_pattern_id.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "snapdeal",
+  "metric_id": "metric.payments_settlement_matching",
+  "metric_pattern": "snapdeal_specific_implementation_of_payments_settlement_matching",
+  "name": "Snapdeal implementation — Payments ↔ Settlement Matching",
+  "platform_code": "snapdeal",
+  "platform_context_id": "platform_context.snapdeal.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.snapdeal.payments_settlement_matching",
+  "source_columns": [
+    "utr_no_",
+    "gross_amount",
+    "settled_amount",
+    "snapdeal_payments",
+    "snapdeal_settlement",
+    "settlement_id",
+    "is_active",
+    "p",
+    "payment_received",
+    "s",
+    "sum_of_settlement_lines",
+    "variance"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16048,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_table_ids": [
+    "table.zs_observe.snapdeal_payments",
+    "table.zs_observe.snapdeal_settlement"
+  ],
+  "source_tables": [
+    "zs_observe.snapdeal_payments",
+    "zs_observe.snapdeal_settlement"
+  ],
+  "sql_pattern": "SELECT\n  p.utr_no_,\n  p.gross_amount AS payment_received,\n  SUM(s.settled_amount) AS sum_of_settlement_lines,\n  p.gross_amount - SUM(s.settled_amount) AS variance\nFROM zs_observe.snapdeal_payments p\nLEFT JOIN zs_observe.snapdeal_settlement s\n  ON p.utr_no_ = s.settlement_id\n  AND s.is_active = true\nWHERE p.is_active = true\nGROUP BY p.utr_no_, p.gross_amount;",
+  "sql_pattern_id": "sql.snapdeal.10_2_payments_settlement_matching",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

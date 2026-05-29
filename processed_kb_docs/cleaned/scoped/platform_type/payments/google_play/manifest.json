@@ -1,0 +1,20 @@
+{
+  "card_types": {
+    "platform": 1,
+    "platform_context": 1
+  },
+  "counts": {
+    "cards": 2,
+    "edges": 4
+  },
+  "edge_types": {
+    "BELONGS_TO_PLATFORM": 1,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "SOURCED_FROM_PLATFORM": 1,
+    "SOURCED_FROM_PLATFORM_CONTEXT": 1
+  },
+  "scope": [
+    "payments",
+    "google_play"
+  ]
+}

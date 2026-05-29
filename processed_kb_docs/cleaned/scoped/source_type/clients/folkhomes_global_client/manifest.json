@@ -1,0 +1,12 @@
+{
+  "card_types": {},
+  "counts": {
+    "future_context_gaps": 1,
+    "semantic_mappings": 7
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "folkhomes_global_client"
+  ]
+}

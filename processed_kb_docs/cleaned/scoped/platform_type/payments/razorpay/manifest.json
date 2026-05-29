@@ -1,0 +1,31 @@
+{
+  "card_types": {
+    "account_data_binding": 2,
+    "platform": 1,
+    "platform_account": 2,
+    "platform_context": 1
+  },
+  "counts": {
+    "cards": 6,
+    "edges": 26,
+    "semantic_mappings": 5
+  },
+  "edge_types": {
+    "BELONGS_TO_PLATFORM": 1,
+    "BINDS_TO_TABLE": 2,
+    "HAS_ACCOUNT_DATA_BINDING": 2,
+    "HAS_PLATFORM_ACCOUNT": 2,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "INCLUDES_PLATFORM_ACCOUNT": 2,
+    "PARTICIPATES_WITH_ACCOUNT": 4,
+    "SOURCED_FROM_PLATFORM": 3,
+    "SOURCED_FROM_PLATFORM_CONTEXT": 3,
+    "USES_ACCOUNT_DATA_BINDING": 2,
+    "USES_PLATFORM": 2,
+    "USES_PLATFORM_CONTEXT": 2
+  },
+  "scope": [
+    "payments",
+    "razorpay"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "canonical_id": "business_process.walmart.catalogue_enrichment",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_lookup.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4264
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Walmart product catalogue enrichment",
+  "notes": "Walmart product catalogue enrichment",
+  "platform_context": "platform_context.walmart.us",
+  "process_description": "walmart_lookup supplies clean item_name enrichment for OMS and settlement via sku_id = sku with sku IS NOT NULL.",
+  "process_key": "catalogue_enrichment",
+  "process_scope": "marketplace_semantic_process",
+  "review_status": "accepted",
+  "source_card_id": "business_process.walmart.catalogue_enrichment",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4264,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

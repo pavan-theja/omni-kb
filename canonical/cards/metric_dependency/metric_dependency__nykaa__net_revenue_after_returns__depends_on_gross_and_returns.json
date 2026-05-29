@@ -1,0 +1,43 @@
+{
+  "canonical_id": "metric_dependency.nykaa.net_revenue_after_returns.depends_on_gross_and_returns",
+  "canonical_name": "depends_on_gross_and_returns",
+  "card_type": "metric_dependency",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "calculation_dependency",
+  "dependent_metric_id": "metric.gross_sales",
+  "description": "metric_dependency card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 14864
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "depends_on_gross_and_returns",
+  "parent_metric_id": "metric.net_revenue_after_returns",
+  "review_status": "unreviewed",
+  "source_card_id": "metric_dependency.nykaa.net_revenue_after_returns.depends_on_gross_and_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14864,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Net revenue after returns starts from gross sales and subtracts reverse/returns.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

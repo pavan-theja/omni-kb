@@ -1,0 +1,48 @@
+{
+  "canonical_id": "validation_test.unicommerce.group_level_scope_filter",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Require explicit group_level_id filter for Astrotalk analyses; do not convert it into tenant/group card.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.028.13_mandatory_query_filters"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.028.13_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13392
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Group Level Scope Filter",
+  "optional_fields": [
+    "test_sql",
+    "expected_result",
+    "severity",
+    "blocked_card_types",
+    "runtime_scope_dependency"
+  ],
+  "review_status": "ready",
+  "rule_ids": [
+    "rule.unicommerce.scope_group_level_211_without_tenant_card"
+  ],
+  "severity": "medium",
+  "source_card_id": "validation_test.unicommerce.group_level_scope_filter",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13392,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "test_name": "Group-level scope filter validation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

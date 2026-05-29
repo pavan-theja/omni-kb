@@ -1,0 +1,43 @@
+{
+  "active": true,
+  "canonical_id": "tenant.bear_house_clothing",
+  "card_type": "tenant",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "India premium fashion/lifestyle marketplace-focused client using ZenStatement for marketplace settlement, OMS, and courier reconciliation scope; no configured D2C/payment gateway layer.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bear_house_clothing.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Bear House Clothing Private Limited",
+  "package_id": "bear_house_clothing_business_hierarchy_runtime_cards_v1_0",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Bear House Clothing Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "ajio_marketplace.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bear_house_clothing.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_code": "BEAR_HOUSE",
+  "tenant_name": "Bear House Clothing Private Limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

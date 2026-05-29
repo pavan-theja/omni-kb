@@ -1,0 +1,46 @@
+{
+  "active": true,
+  "business_meaning": "Primary operating group/brand scope for Teaxpress. Source identifies GROUP ID 52 and GROUP LEVEL ID 190. The client source also identifies Sammvaad as a second operating brand sharing logistics and payment infrastructure; brand-specific filtering is kept as logical scope until concrete source columns are confirmed.",
+  "canonical_id": "group.teaxpress_private_limited.teabox",
+  "card_type": "group",
+  "client_source_identifiers_note": "Source doc gives GROUP ID 52 and GROUP LEVEL ID 190; these are applied as Account Data Binding filters, not as universal Group properties.",
+  "confidence": "unknown",
+  "country_or_region": "India",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "INR"
+  ],
+  "default_currency": "INR",
+  "description": "Primary operating group/brand scope for Teaxpress. Source identifies GROUP ID 52 and GROUP LEVEL ID 190. The client source also identifies Sammvaad as a second operating brand sharing logistics and payment infrastructure; brand-specific filtering is kept as logical scope until concrete source columns are confirmed.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_code": "TEABOX",
+  "group_name": "TeaBox",
+  "group_type": "brand",
+  "name": "TeaBox",
+  "package_id": "client_runtime_binding_pack.teaxpress_private_limited.v0_1",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Teaxpress Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.teaxpress_private_limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

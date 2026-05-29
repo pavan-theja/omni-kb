@@ -1,0 +1,47 @@
+{
+  "business_definition": "Month-level forward order count, GMV, and AOV from OMS.",
+  "canonical_id": "metric.jiomart.monthly_forward_orders_gmv",
+  "card_type": "metric",
+  "colloquial_names": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "INR",
+  "description": "Month-level forward order count, GMV, and AOV from OMS.",
+  "display_name": "Monthly Forward Orders and GMV",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.jiomart.orders",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_6_monthly_forward_orders_and_gmv"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_6_monthly_forward_orders_and_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10441
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.jiomart.monthly_forward_orders_and_gmv"
+  ],
+  "metric_family": "revenue",
+  "name": "Monthly Forward Orders and GMV",
+  "review_status": "ready",
+  "source_card_id": "metric.jiomart.monthly_forward_orders_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10441,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

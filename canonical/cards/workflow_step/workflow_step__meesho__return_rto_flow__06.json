@@ -1,0 +1,50 @@
+{
+  "canonical_id": "workflow_step.meesho.return_rto_flow.06",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Courier, AWB, dates, SKU, and category are enrichment fields; no external logistics account cards are created.",
+  "display_name": "Courier/AWB/category return context",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.008.2_2_return_rto_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.008.2_2_return_rto_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 14509
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "zs_observe.meesho_returns"
+  ],
+  "name": "Courier/AWB/category return context",
+  "output_tables": [
+    "zs_observe.meesho_returns"
+  ],
+  "process_id": "business_process.meesho.return_rto_flow",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.meesho.return_rto_flow.06",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14509,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "status_conditions": [
+    "meesho_returns.other_id",
+    "meesho_returns.category",
+    "meesho_returns.sku"
+  ],
+  "step_order": 6,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

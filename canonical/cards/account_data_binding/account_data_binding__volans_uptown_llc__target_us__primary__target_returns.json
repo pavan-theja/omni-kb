@@ -1,0 +1,74 @@
+{
+  "active": true,
+  "canonical_id": "account_data_binding.volans_uptown_llc.target_us.primary.target_returns",
+  "card_type": "account_data_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type_configured": "Returns",
+  "description": "account_data_binding card from raw/cleaned_v2/clients/volans_uptown_llc.json.",
+  "evidence_ids": [
+    "Target | Returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "Target | Returns",
+      "source_doc": "raw/cleaned_v2/clients/volans_uptown_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "logical_scope": {
+    "currency_scope": [
+      "USD"
+    ],
+    "region_or_market": "US"
+  },
+  "mapping_confidence": "semantic_exact",
+  "name": "Target Returns",
+  "notes": [
+    "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+  ],
+  "package_id": "client_runtime_binding_pack.volans_uptown_llc.v0_1",
+  "platform_account_id": "platform_account.volans_uptown_llc.target_us.primary",
+  "review_status": "unreviewed",
+  "scope_keys": [
+    {
+      "business_key": "client_group_id",
+      "column": "group_id",
+      "data_type": "integer",
+      "notes": "Client Tables - Shopify.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards.",
+      "operator": "=",
+      "source": "client_identity_doc",
+      "value": 9
+    },
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards.",
+      "operator": "=",
+      "source": "client_identity_doc",
+      "value": 132
+    }
+  ],
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Uptown LLC.docx",
+    "target_plus.md",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": "Target | Returns",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_uptown_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "table_canonical_status": "canonical",
+  "table_id": "table.zs_observe.target_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

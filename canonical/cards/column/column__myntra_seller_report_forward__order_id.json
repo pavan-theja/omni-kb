@@ -1,0 +1,45 @@
+{
+  "canonical_id": "column.myntra_seller_report_forward.order_id",
+  "canonical_name": "order_id",
+  "card_type": "column",
+  "column_name": "order_id",
+  "confidence": "low_confidence",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "column card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 744
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "order_id",
+  "review_status": "unreviewed",
+  "semantic_role": "identifier",
+  "source_card_id": "column.myntra_seller_report_forward.order_id",
+  "source_confidence": "low",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 744,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_preserved_name": true,
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Order ID reference from forward seller report.",
+  "table_id": "table.myntra_seller_report_forward",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

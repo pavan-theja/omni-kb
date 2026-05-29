@@ -1,0 +1,52 @@
+{
+  "benchmarks": {
+    "observed_context": "$9.23 total in current source stats; rare/occasional"
+  },
+  "business_definition": "Walmart-funded promotional savings credit from settlement rows.",
+  "canonical_id": "metric.marketplace.walmart_funded_savings",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Walmart savings",
+    "Walmart promo credit",
+    "funded savings"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "month",
+  "description": "Walmart-funded promotional savings credit from settlement rows.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "domain": "domain.marketplace.walmart.settlement",
+  "evidence_ids": [
+    "ev.walmart.metrics.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.metrics.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 3716
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "metric_key": "walmart_funded_savings",
+  "metric_pattern": "sum_total_walmart_funded_savings",
+  "name": "Walmart-funded savings credit",
+  "notes": "Walmart-funded promotional savings credit from settlement rows.",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by Walmart-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.walmart_funded_savings",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3716,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

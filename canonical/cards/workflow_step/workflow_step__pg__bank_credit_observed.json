@@ -1,0 +1,75 @@
+{
+  "business_object": "bank_credit",
+  "business_process_id": "business_process.pg.gateway_settlement_cycle",
+  "canonical_id": "workflow_step.pg.bank_credit_observed",
+  "card_type": "workflow_step",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Bank credit/debit observed",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 51381
+    }
+  ],
+  "expected_input": "gateway expected amount",
+  "expected_lag": "source/platform dependent",
+  "expected_output": "bank-side evidence row",
+  "expected_state": "bank_credit_observed",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "missing_evidence",
+    "status_mismatch",
+    "timing_delay"
+  ],
+  "lazy_load_detection": "passed_source_specific_columns_present",
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "lazy_load_detection_manifest_passed"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Bank credit/debit observed",
+  "platform_role": "banking",
+  "platform_type": "banking",
+  "required_evidence": [
+    "utr",
+    "transaction_details",
+    "credit_debit",
+    "transaction_amount"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.pg.bank_credit_observed",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 51381,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_specific_columns": [
+    "transaction_amount",
+    "credit_debit",
+    "date",
+    "posted_date",
+    "value_date",
+    "cheque_id",
+    "description"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "step_description": "Bank-side evidence row uses RBL/bank statement amount, date, credit_debit, cheque/reference, and narration fields; this step remains bank evidence only, not a bank account card.",
+  "step_name": "Bank credit/debit observed",
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,53 @@
+{
+  "canonical_id": "rule.unicommerce.valid_awb_shape",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Use LENGTH(other_id)>10 or courier-specific pattern checks to avoid method-name contaminants.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.044.other_id_awb_format_examples",
+    "ev.unicommerce.section.027.12_data_quality_observations_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.044.other_id_awb_format_examples",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13255
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.027.12_data_quality_observations_known_issues",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13255
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Valid Awb Shape",
+  "optional_fields": [
+    "rule_type",
+    "applies_to_tables",
+    "applies_to_columns",
+    "safe_query_behavior",
+    "exceptions",
+    "handoff_context"
+  ],
+  "review_status": "ready",
+  "rule_name": "Validate AWB shape",
+  "source_card_id": "rule.unicommerce.valid_awb_shape",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13255,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

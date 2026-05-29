@@ -1,0 +1,11 @@
+{
+  "card_types": {},
+  "counts": {
+    "semantic_mappings": 1
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "flipkart_distribution"
+  ]
+}

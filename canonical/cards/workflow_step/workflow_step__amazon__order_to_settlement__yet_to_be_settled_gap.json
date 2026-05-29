@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "DOCX-backed gap semantics; this is a timing gap, not a material settlement discrepancy by default.",
+  "canonical_id": "workflow_step.amazon.order_to_settlement.yet_to_be_settled_gap",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.oms_settlement.001",
+    "ev.amazon.settlement_cycle.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.oms_settlement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6479
+    },
+    {
+      "evidence_id": "ev.amazon.settlement_cycle.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6479
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon OMS to settlement reconciliation: yet-to-be-settled gap",
+  "process": "business_process.amazon.order_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.amazon.order_to_settlement.yet_to_be_settled_gap",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6479,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "The reconciliation gap is the yet-to-be-settled timing difference for orders in the billing cycle.",
+  "step_key": "yet_to_be_settled_gap",
+  "step_order": "3",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

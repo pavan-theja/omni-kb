@@ -1,0 +1,43 @@
+{
+  "aggregation_rule": "Aggregate settlement rows by item_id and transaction_type before comparing sales/returns.",
+  "canonical_id": "reconciliation_unit.target_plus.item_id_line",
+  "card_type": "reconciliation_unit",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_unit card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus item_id order-line unit",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.3_2_primary_join_keys"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.3_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10385
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "one Target order-line item",
+  "name": "Target Plus item_id order-line unit",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_unit.target_plus.item_id_line",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10385,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit_keys": [
+    "item_id"
+  ],
+  "unit_type": "order_line",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

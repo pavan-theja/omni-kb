@@ -1,0 +1,17 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "question": "Generate a report showing COD remittance type by courier.",
+  "question_index": 6,
+  "results": {
+    "GRAPH_COMPLETION": [
+      "The provided context does not contain information about 'COD remittance type' or specific columns for 'COD remitted amount' in the available tables (`increff_sales`, `dtdc_invoice`, `myntra_oms`). While `myntra_oms.postpaid_amount` is related to COD, it is not explicitly a remitted amount, nor is a 'remittance type' column present."
+    ]
+  },
+  "scoped_query": "Generate a report showing COD remittance type by courier.\n\nScope:\n- tenant: Mensa\n\nAnswer for SQL query construction. Return concise, source-grounded details:\n- relevant canonical ids and entity names\n- source tables with schema/table names\n- required columns, including join keys, filter columns, date columns, and amount columns\n- relationships or join paths between tables/accounts/platforms/workflows\n- metrics or formulas needed, including aggregation grain and deduplication rules\n- tenant/group/platform/account filters that must appear in SQL\n- assumptions, missing information, and any ambiguity\nIf useful, include a SQL skeleton, but do not invent columns or tables that are not in context.",
+  "search_types": [
+    "GRAPH_COMPLETION"
+  ]
+}

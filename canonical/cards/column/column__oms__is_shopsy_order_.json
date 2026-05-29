@@ -1,0 +1,45 @@
+{
+  "business_meaning": "String Shopsy flag; treat true/false as strings unless typed otherwise in warehouse.",
+  "canonical_id": "column.oms.is_shopsy_order_",
+  "card_type": "column",
+  "column_name": "is_shopsy_order_",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "String Shopsy flag; treat true/false as strings unless typed otherwise in warehouse.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.oms"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.oms",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 932
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "filter",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.oms.is_shopsy_order_",
+  "review_status": "review_required",
+  "semantic_type": "sub_platform_flag",
+  "source_card_id": "column.oms.is_shopsy_order_",
+  "source_caveats": [],
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 932,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "review_required",
+  "status": "draft",
+  "table_id": "table.flipkart.oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

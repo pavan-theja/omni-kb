@@ -1,0 +1,26 @@
+{
+  "card_types": {
+    "metric_implementation": 5,
+    "platform": 1,
+    "platform_context": 1
+  },
+  "counts": {
+    "cards": 7,
+    "documents": 1,
+    "edges": 23,
+    "evidence": 1,
+    "review_items": 2
+  },
+  "edge_types": {
+    "BELONGS_TO_PLATFORM": 1,
+    "HAS_IMPLEMENTATION": 5,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "IMPLEMENTS_METRIC": 5,
+    "USES_COLUMN": 6,
+    "USES_TABLE": 5
+  },
+  "scope": [
+    "logistics",
+    "shadowfax_logistics"
+  ]
+}

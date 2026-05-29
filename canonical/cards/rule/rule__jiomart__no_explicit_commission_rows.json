@@ -1,0 +1,43 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "canonical_id": "rule.jiomart.no_explicit_commission_rows",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "No explicit commission deductions visible in settlement",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.2_1_jiomart_s_revenue_sources_from_sellers"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.2_1_jiomart_s_revenue_sources_from_sellers",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13652
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "No explicit commission deductions visible in settlement",
+  "review_status": "ready",
+  "rule_type": "interpretation_rule",
+  "severity": "medium",
+  "source_card_id": "rule.jiomart.no_explicit_commission_rows",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13652,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "statement": "Do not create executable commission-fee implementation from jiomart_settlement because source states no explicit commission deductions are visible; Receivable may be post-commission payout.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,44 @@
+{
+  "canonical_id": "workflow_step.jiomart.settlement_event_model.03",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "event NULL rows are included for total settlement but excluded from structured analysis.",
+  "display_name": "Older format rows handled",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.4_settlement_structure_event_based_multi_row_model"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.4_settlement_structure_event_based_multi_row_model",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 11929
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "name": "Older format rows handled",
+  "output_evidence": "Source-specific status/amount/date fields are named in the description.",
+  "process_id": "business_process.jiomart.settlement_event_model",
+  "responsible_platform_side": "marketplace_or_seller_side_as_source_describes; no external account/logistics card emitted.",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.jiomart.settlement_event_model.03",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11929,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "step_order": 3,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

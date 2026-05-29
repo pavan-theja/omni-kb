@@ -1,0 +1,71 @@
+{
+  "canonical_id": "business_process.flipkart.commission_fee_invoice",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "end_state": "fee detail aggregated and reconciled to settlement mp_fee",
+  "evidence_ids": [
+    "evidence.flipkart.commission_schema",
+    "evidence.flipkart.relationships",
+    "evidence.flipkart.reconciliation_framework"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.commission_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4824
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4824
+    },
+    {
+      "evidence_id": "evidence.flipkart.reconciliation_framework",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4824
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "order_id",
+    "item_id",
+    "description",
+    "fee_name",
+    "charged_amount",
+    "total_tax",
+    "mp_fee"
+  ],
+  "marketplace_module": "Flipkart marketplace",
+  "name": "Commission fee invoice",
+  "out_of_scope_external_steps": [
+    "external logistics lifecycle",
+    "bank deposit matching",
+    "account binding"
+  ],
+  "participating_tables": [
+    "table.flipkart.commission",
+    "table.flipkart.settlement"
+  ],
+  "process_name": "Commission fee invoice validation",
+  "review_status": "accepted",
+  "source_card_id": "business_process.flipkart.commission_fee_invoice",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4824,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "start_state": "fee invoice line by order_id,item_id,description",
+  "status": "active",
+  "trigger_event": "active flipkart_commission fee invoice rows with metadata = 'commission invoice'",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

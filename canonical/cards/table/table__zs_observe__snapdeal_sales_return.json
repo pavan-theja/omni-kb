@@ -1,0 +1,161 @@
+{
+  "business_purpose": "Return invoices & credit notes",
+  "canonical_id": "table.zs_observe.snapdeal_sales_return",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.snapdeal_sales_return.ancestry",
+    "column.zs_observe.snapdeal_sales_return.cgst",
+    "column.zs_observe.snapdeal_sales_return.cgst_rate",
+    "column.zs_observe.snapdeal_sales_return.cgst_temp_old",
+    "column.zs_observe.snapdeal_sales_return.charged_amount",
+    "column.zs_observe.snapdeal_sales_return.charged_amount_excluding_tax",
+    "column.zs_observe.snapdeal_sales_return.comp_cess",
+    "column.zs_observe.snapdeal_sales_return.comp_cess_rate",
+    "column.zs_observe.snapdeal_sales_return.created_at",
+    "column.zs_observe.snapdeal_sales_return.created_date",
+    "column.zs_observe.snapdeal_sales_return.currency_type",
+    "column.zs_observe.snapdeal_sales_return.customer_state",
+    "column.zs_observe.snapdeal_sales_return.deleted_at",
+    "column.zs_observe.snapdeal_sales_return.file_uuid",
+    "column.zs_observe.snapdeal_sales_return.group_id",
+    "column.zs_observe.snapdeal_sales_return.group_level_id",
+    "column.zs_observe.snapdeal_sales_return.hold_flag",
+    "column.zs_observe.snapdeal_sales_return.hsn",
+    "column.zs_observe.snapdeal_sales_return.hsn_cxode",
+    "column.zs_observe.snapdeal_sales_return.igst",
+    "column.zs_observe.snapdeal_sales_return.igst_rate",
+    "column.zs_observe.snapdeal_sales_return.igst_rate_temp_old",
+    "column.zs_observe.snapdeal_sales_return.invoice_amount",
+    "column.zs_observe.snapdeal_sales_return.invoice_number",
+    "column.zs_observe.snapdeal_sales_return.is_active",
+    "column.zs_observe.snapdeal_sales_return.is_active_false_reason",
+    "column.zs_observe.snapdeal_sales_return.is_duplicated",
+    "column.zs_observe.snapdeal_sales_return.metadata",
+    "column.zs_observe.snapdeal_sales_return.order_date",
+    "column.zs_observe.snapdeal_sales_return.order_id",
+    "column.zs_observe.snapdeal_sales_return.order_invoice_date",
+    "column.zs_observe.snapdeal_sales_return.payment_date",
+    "column.zs_observe.snapdeal_sales_return.seller_code",
+    "column.zs_observe.snapdeal_sales_return.seller_gstn",
+    "column.zs_observe.snapdeal_sales_return.settlement_date",
+    "column.zs_observe.snapdeal_sales_return.sgst",
+    "column.zs_observe.snapdeal_sales_return.sgst_rate",
+    "column.zs_observe.snapdeal_sales_return.sgst_temp_old",
+    "column.zs_observe.snapdeal_sales_return.source_gst_name",
+    "column.zs_observe.snapdeal_sales_return.sub_order_no",
+    "column.zs_observe.snapdeal_sales_return.tax_amount",
+    "column.zs_observe.snapdeal_sales_return.tax_cgst_amount",
+    "column.zs_observe.snapdeal_sales_return.tax_cgst_rate",
+    "column.zs_observe.snapdeal_sales_return.tax_comp_cess_amount",
+    "column.zs_observe.snapdeal_sales_return.tax_comp_cess_rate",
+    "column.zs_observe.snapdeal_sales_return.tax_igst_amount",
+    "column.zs_observe.snapdeal_sales_return.tax_igst_rate",
+    "column.zs_observe.snapdeal_sales_return.tax_overall_rate",
+    "column.zs_observe.snapdeal_sales_return.tax_rate",
+    "column.zs_observe.snapdeal_sales_return.tax_rate_temp_old",
+    "column.zs_observe.snapdeal_sales_return.tax_sgst_amount",
+    "column.zs_observe.snapdeal_sales_return.tax_sgst_rate",
+    "column.zs_observe.snapdeal_sales_return.tax_type",
+    "column.zs_observe.snapdeal_sales_return.tax_ugst_amount",
+    "column.zs_observe.snapdeal_sales_return.tax_ugst_rate",
+    "column.zs_observe.snapdeal_sales_return.taxable_amount",
+    "column.zs_observe.snapdeal_sales_return.tenant_id",
+    "column.zs_observe.snapdeal_sales_return.total_tax",
+    "column.zs_observe.snapdeal_sales_return.transaction_date",
+    "column.zs_observe.snapdeal_sales_return.transaction_type",
+    "column.zs_observe.snapdeal_sales_return.txn_uuid",
+    "column.zs_observe.snapdeal_sales_return.unique_id",
+    "column.zs_observe.snapdeal_sales_return.unique_value",
+    "column.zs_observe.snapdeal_sales_return.updated_at",
+    "column.zs_observe.snapdeal_sales_return.utgst",
+    "column.zs_observe.snapdeal_sales_return.utgst_rate",
+    "column.zs_observe.snapdeal_sales_return.utgst_rate_temp_old",
+    "column.zs_observe.snapdeal_sales_return.zen_sheet_name",
+    "column.zs_observe.snapdeal_sales_return.zen_status",
+    "column.zs_observe.snapdeal_sales_return.zen_status_false_reason"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "current_population_note": "Schema provisioned but 0 active rows in current data; use OMS + settlement for return analysis until populated.",
+  "description": "table card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "zs_observe.snapdeal_sales_return",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": [
+      "22"
+    ],
+    "marketplace_context": "Snapdeal India / DROPSHIP seller dataset"
+  },
+  "evidence_ids": [
+    "evidence.snapdeal.overview",
+    "evidence.snapdeal.scope_runtime_v9",
+    "evidence.snapdeal.data_quality_v9",
+    "evidence.snapdeal.sales_return_empty_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1989
+    },
+    {
+      "evidence_id": "evidence.snapdeal.scope_runtime_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1989
+    },
+    {
+      "evidence_id": "evidence.snapdeal.data_quality_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1989
+    },
+    {
+      "evidence_id": "evidence.snapdeal.sales_return_empty_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1989
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fully_qualified_name": "zs_observe.snapdeal_sales_return",
+  "grain": "return_or_reverse_order_line",
+  "join_key_candidates": [
+    "sub_order_no",
+    "invoice_number"
+  ],
+  "mandatory_filters": [
+    "is_active = true"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.snapdeal.gst_reversal_on_returns",
+    "metric_impl.snapdeal.return_financial_summary",
+    "metric_impl.snapdeal.return_oms_reconciliation",
+    "metric_impl.snapdeal.return_rate_by_tax_rate",
+    "metric_impl.snapdeal.unmatched_returns_return_without_settlement"
+  ],
+  "name": "zs_observe.snapdeal_sales_return",
+  "primary_key_candidates": [
+    "invoice_number"
+  ],
+  "recommended_scope_filter": "group_level_id = '22'",
+  "review_status": "ready_with_population_caveat",
+  "runtime_scope_binding_policy": "group_level_id='22' is a documented column/filter value, not a tenant/group/account-binding card.",
+  "schema": "zs_observe",
+  "scope_caveats": "Scope-like fields such as group_level_id/group_id/seller/supplier identifiers are columns or filters only, not account-binding cards.",
+  "semantic_module": "orders",
+  "source_card_id": "table.zs_observe.snapdeal_sales_return",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1989,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_section": "Table: Snapdeal Sales Return — Table Knowledge Base",
+  "source_status": "ready_with_population_caveat",
+  "status": "draft",
+  "table_name": "snapdeal_sales_return",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

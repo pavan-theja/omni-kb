@@ -1,0 +1,51 @@
+{
+  "business_semantics": "Use order volume and selling price to contextualize expected fees",
+  "candidate_notes": "Use order volume and selling price to contextualize expected fees",
+  "canonical_id": "relationship.amazon.fee_preview_to_oms.sku",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_fee_preview.columns.001",
+    "ev.amazon.join_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_fee_preview.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4415
+    },
+    {
+      "evidence_id": "ev.amazon.join_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4415
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.amazon_fee_preview",
+  "join_keys": "amazon_fee_preview.sku = amazon_oms.sku_id",
+  "join_safety_rule": "Do not compare one SKU preview row to raw order rows without aggregation.",
+  "marketplace_only": true,
+  "name": "amazon_fee_preview to amazon_oms",
+  "relationship_grain": "SKU-level fee estimate to order volume and selling price",
+  "review_status": "accepted",
+  "source_card_id": "relationship.amazon.fee_preview_to_oms.sku",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4415,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_table": "table.zs_observe.amazon_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

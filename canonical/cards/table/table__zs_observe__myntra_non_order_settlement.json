@@ -1,0 +1,91 @@
+{
+  "canonical_id": "table.zs_observe.myntra_non_order_settlement",
+  "canonical_name": "myntra_non_order_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.myntra_non_order_settlement.created_at",
+    "column.zs_observe.myntra_non_order_settlement.currency_type",
+    "column.zs_observe.myntra_non_order_settlement.file_uuid",
+    "column.zs_observe.myntra_non_order_settlement.group_id",
+    "column.zs_observe.myntra_non_order_settlement.group_level_id",
+    "column.zs_observe.myntra_non_order_settlement.internal_txn_type",
+    "column.zs_observe.myntra_non_order_settlement.invoice_number",
+    "column.zs_observe.myntra_non_order_settlement.is_active",
+    "column.zs_observe.myntra_non_order_settlement.is_active_false_reason",
+    "column.zs_observe.myntra_non_order_settlement.is_duplicated",
+    "column.zs_observe.myntra_non_order_settlement.metadata",
+    "column.zs_observe.myntra_non_order_settlement.settled_amount",
+    "column.zs_observe.myntra_non_order_settlement.settlement_date",
+    "column.zs_observe.myntra_non_order_settlement.settlement_id",
+    "column.zs_observe.myntra_non_order_settlement.source_gst_name",
+    "column.zs_observe.myntra_non_order_settlement.tenant_id",
+    "column.zs_observe.myntra_non_order_settlement.transaction_type",
+    "column.zs_observe.myntra_non_order_settlement.txn_uuid",
+    "column.zs_observe.myntra_non_order_settlement.unique_id",
+    "column.zs_observe.myntra_non_order_settlement.unique_value",
+    "column.zs_observe.myntra_non_order_settlement.updated_at",
+    "column.zs_observe.myntra_non_order_settlement.zen_sheet_name",
+    "column.zs_observe.myntra_non_order_settlement.zen_status",
+    "column.zs_observe.myntra_non_order_settlement.zen_status_false_reason"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "table card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.myntra.non_order_adjustments",
+  "evidence_ids": [
+    "evidence.myntra.tables",
+    "evidence.myntra.filters",
+    "evidence.myntra.scope_runtime"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 584
+    },
+    {
+      "evidence_id": "evidence.myntra.filters",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 584
+    },
+    {
+      "evidence_id": "evidence.myntra.scope_runtime",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 584
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mandatory_filters": [
+    "is_active = true"
+  ],
+  "marketplace_only": true,
+  "metric_implementation_ids": [
+    "metric_implementation.myntra_non_order_settlement.non_order_settlement_amount"
+  ],
+  "name": "myntra_non_order_settlement",
+  "platform_context_id": "platform_context.myntra.in",
+  "query_aliases": [],
+  "review_status": "unreviewed",
+  "runtime_scope_filter": "group_level_id = <client_id>",
+  "schema": "zs_observe",
+  "scope_caveat": "group_level_id is required runtime scope, but the value is external context; do not create tenant/group/account binding cards.",
+  "source_card_id": "table.zs_observe.myntra_non_order_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 584,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Non-order settlement entries such as penalties, incentives, adjustments, marketing reimbursements, and platform charges.",
+  "table_name": "myntra_non_order_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

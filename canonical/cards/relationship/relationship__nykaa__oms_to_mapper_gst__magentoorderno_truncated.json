@@ -1,0 +1,51 @@
+{
+  "canonical_id": "relationship.nykaa.oms_to_mapper_gst.magentoorderno_truncated",
+  "canonical_name": "OMS to mapper_gst by truncated magentoorderno",
+  "card_type": "relationship",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13218
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_transform": "truncate magentoorderno",
+  "join_type": "transformed_join",
+  "marketplace_only": true,
+  "matching_coverage_summary": "Truncate magentoorderno to first 3 dash segments; ~54% match. orderno NYKF does not join to OMS directly.",
+  "name": "OMS to mapper_gst by truncated magentoorderno",
+  "review_status": "unreviewed",
+  "source_card_id": "relationship.nykaa.oms_to_mapper_gst.magentoorderno_truncated",
+  "source_columns": [
+    "order_id"
+  ],
+  "source_confidence": "medium",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13218,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.nykaa_oms",
+  "status": "draft",
+  "summary": "Truncate magentoorderno to first 3 dash segments; ~54% match. orderno NYKF does not join to OMS directly.",
+  "target_columns": [
+    "magentoorderno"
+  ],
+  "target_table_id": "table.zs_observe.nykaa_mapper_gst",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

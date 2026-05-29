@@ -1,0 +1,43 @@
+{
+  "business_meaning": "Walmart order number and primary join key to settlement",
+  "canonical_id": "column.zs_observe.walmart_oms.order_id",
+  "card_type": "column",
+  "column_name": "order_id",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Walmart order number and primary join key to settlement",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_oms.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_oms.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 846
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "walmart_oms.order_id",
+  "notes": "Walmart order number and primary join key to settlement",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "identifier",
+  "source_card_id": "column.zs_observe.walmart_oms.order_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 846,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.walmart_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,51 @@
+{
+  "business_semantics": "International returns table relates to OMS reverse semantics; India returns are in OMS, not returns table",
+  "candidate_notes": "International returns table relates to OMS reverse semantics; India returns are in OMS, not returns table",
+  "canonical_id": "relationship.amazon.returns_to_oms.order_id",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_returns.purpose.001",
+    "ev.amazon_returns.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_returns.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4436
+    },
+    {
+      "evidence_id": "ev.amazon_returns.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4436
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.amazon_returns",
+  "join_keys": "order_id",
+  "join_safety_rule": "Current returns table inactive; use only when re-ingested.",
+  "marketplace_only": true,
+  "name": "amazon_returns to amazon_oms",
+  "relationship_grain": "International returns to OMS reverse rows",
+  "review_status": "accepted",
+  "source_card_id": "relationship.amazon.returns_to_oms.order_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4436,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_table": "table.zs_observe.amazon_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

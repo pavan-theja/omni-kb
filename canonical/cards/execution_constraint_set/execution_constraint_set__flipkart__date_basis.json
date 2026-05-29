@@ -1,0 +1,67 @@
+{
+  "aggregation_order": [
+    "filter active rows",
+    "normalize keys",
+    "pre-aggregate many-side tables",
+    "join/compare",
+    "compute metrics"
+  ],
+  "applies_to": [
+    "Flipkart marketplace parser-ready markdown"
+  ],
+  "canonical_id": "execution_constraint_set.flipkart.date_basis",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_name": "Date basis",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window_rules": [
+    "only use source-provided date windows; otherwise mark review"
+  ],
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7858
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_rules": [
+    "do not add tenant/account filters from marketplace doc"
+  ],
+  "join_rules": [
+    "use relationship cards"
+  ],
+  "name": "Date basis",
+  "out_of_scope_runtime_constraints": [
+    "dispatch date requires source review"
+  ],
+  "review_status": "accepted",
+  "semantic_constraints": [
+    "settlement_date for settlement metrics",
+    "created_date for cashback",
+    "created_date fallback for cycle metric"
+  ],
+  "sign_rules": [
+    "source sign preserving"
+  ],
+  "source_card_id": "execution_constraint_set.flipkart.date_basis",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7858,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,55 @@
+{
+  "banking_only": true,
+  "business_meaning": "Failure reason if payout did not post on expected date",
+  "candidate_notes": "Failure reason if payout did not post on expected date",
+  "canonical_id": "column.zs_ingest.yesbank_oms_payout.failure_reason_posted_date",
+  "card_type": "column",
+  "column_name": "failure_reason_posted_date",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Failure reason if payout did not post on expected date",
+  "direction_role": "",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.yesbank_oms_payout.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.yesbank_oms_payout.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 3874
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "date_filter",
+  "join_role": "",
+  "metric_role": "",
+  "name": "yesbank_oms_payout.failure_reason_posted_date",
+  "numeric_quality": "not_applicable",
+  "review_status": "accepted",
+  "scope_guardrail": "banking_semantic_column",
+  "semantic_roles": [
+    "date"
+  ],
+  "semantic_type": "date_or_timestamp",
+  "source_card_id": "column.zs_ingest.yesbank_oms_payout.failure_reason_posted_date",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_data_type": "Text",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3874,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_ingest.yesbank_oms_payout",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

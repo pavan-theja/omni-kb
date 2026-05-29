@@ -1,0 +1,52 @@
+{
+  "active": true,
+  "canonical_id": "business_scope_set.mensa_brands.shopify_d2c",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Reusable scope for Mensa D2C Shopify OMS and returns analysis.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mensa_business.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.mensa_brands",
+  "name": "Shopify D2C",
+  "package_id": "mensa_business_hierarchy_runtime_cards_v0_1",
+  "platform_account_ids": [
+    "platform_account.mensa.shopify_d2c.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.shopify.in"
+  ],
+  "platform_ids": [
+    "platform.shopify"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Mensa Brands Shopify D2C Scope",
+  "scope_type": "group_platform_scope",
+  "source_confidence": null,
+  "source_documents": [
+    "Mensa Brand Technologies Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "myntra_marketplace.md",
+    "increff_operations.md",
+    "payment_gateway.md",
+    "logistics_reconciliation_patterns.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mensa_business.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.mensa_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

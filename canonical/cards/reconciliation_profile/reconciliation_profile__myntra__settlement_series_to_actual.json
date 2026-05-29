@@ -1,0 +1,50 @@
+{
+  "canonical_id": "reconciliation_profile.myntra.settlement_series_to_actual",
+  "canonical_name": "settlement_series_to_actual",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10820
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "matching_logic_id": "matching_logic.myntra.series_vs_actual_settlement",
+  "mismatch_category_ids": [
+    "mismatch_category.myntra.settlement_variance"
+  ],
+  "name": "settlement_series_to_actual",
+  "primary_unit_id": "reconciliation_unit.myntra.settlement_cycle",
+  "process_id": "business_process.myntra.marketplace_settlement_lifecycle",
+  "review_status": "unreviewed",
+  "side_ids": [
+    "reconciliation_side.myntra.series_settled_expected",
+    "reconciliation_side.myntra.actual_settlement_total"
+  ],
+  "source_card_id": "reconciliation_profile.myntra.settlement_series_to_actual",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10820,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Series-settled vs actual settlement reconciliation.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

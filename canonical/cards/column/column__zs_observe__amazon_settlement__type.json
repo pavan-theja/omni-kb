@@ -1,0 +1,51 @@
+{
+  "business_meaning": "Settlement transaction type including Order, Refund, Service Fee, SAFE-T, NULL",
+  "candidate_notes": "NULL values carry financial data.",
+  "canonical_id": "column.zs_observe.amazon_settlement.type",
+  "card_type": "column",
+  "column_name": "type",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Settlement transaction type including Order, Refund, Service Fee, SAFE-T, NULL",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_settlement.columns.001",
+    "ev.amazon_settlement.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 2416
+    },
+    {
+      "evidence_id": "ev.amazon_settlement.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 2416
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "amazon_settlement.type",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "status",
+  "source_card_id": "column.zs_observe.amazon_settlement.type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2416,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.amazon_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,49 @@
+{
+  "canonical_id": "formula_template.limeroad.gross_commission",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.nsp_model.001",
+    "ev.limeroad.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.nsp_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4762
+    },
+    {
+      "evidence_id": "ev.limeroad.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4762
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "gross_commission = sale_return_amount - settled_amount; sale_return_amount, not charged_amount, is the COD-adjusted commission base",
+  "formula_key": "limeroad_gross_commission",
+  "marketplace_only": true,
+  "name": "LimeRoad gross commission formula",
+  "notes": "Executable SQL references are provided in sql_pattern blocks.",
+  "platform_context": "platform_context.limeroad.in",
+  "review_status": "accepted",
+  "source_card_id": "formula_template.limeroad.gross_commission",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4762,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

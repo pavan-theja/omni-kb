@@ -1,0 +1,206 @@
+{
+  "amount_columns": [
+    "balance_transaction_id",
+    "shopify_refund_id",
+    "balance_transaction_created",
+    "settlement_id",
+    "charged_amount",
+    "amount_temp_old",
+    "mp_fees",
+    "fee_temp_old",
+    "net_temp_old",
+    "settled_amount",
+    "amount",
+    "fee",
+    "net"
+  ],
+  "avoid_columns": [
+    "balance_transaction_id",
+    "shopify_refund_id",
+    "balance_transaction_created",
+    "settlement_id",
+    "amount_temp_old",
+    "fee_temp_old",
+    "net_temp_old",
+    "amount",
+    "fee",
+    "net"
+  ],
+  "business_purpose": "Flex is a Stripe-powered settlement mechanism used by merchants on Shopify or other platforms with Stripe-backed payments. The settlement structure mirrors Stripe's balance transaction format.",
+  "canonical_id": "table.zs_observe.flex_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.flex_settlement.amount",
+    "column.zs_observe.flex_settlement.amount_temp_old",
+    "column.zs_observe.flex_settlement.available_on",
+    "column.zs_observe.flex_settlement.balance_transaction_created",
+    "column.zs_observe.flex_settlement.balance_transaction_id",
+    "column.zs_observe.flex_settlement.charged_amount",
+    "column.zs_observe.flex_settlement.checkout_session_id",
+    "column.zs_observe.flex_settlement.created_date",
+    "column.zs_observe.flex_settlement.currency_type",
+    "column.zs_observe.flex_settlement.customer_email",
+    "column.zs_observe.flex_settlement.fee",
+    "column.zs_observe.flex_settlement.fee_temp_old",
+    "column.zs_observe.flex_settlement.item_id",
+    "column.zs_observe.flex_settlement.mp_fees",
+    "column.zs_observe.flex_settlement.net",
+    "column.zs_observe.flex_settlement.net_temp_old",
+    "column.zs_observe.flex_settlement.order_id",
+    "column.zs_observe.flex_settlement.other_id",
+    "column.zs_observe.flex_settlement.other_id_2",
+    "column.zs_observe.flex_settlement.parent_id",
+    "column.zs_observe.flex_settlement.payout_id",
+    "column.zs_observe.flex_settlement.quantity",
+    "column.zs_observe.flex_settlement.reporting_category",
+    "column.zs_observe.flex_settlement.settled_amount",
+    "column.zs_observe.flex_settlement.settlement_date",
+    "column.zs_observe.flex_settlement.settlement_id",
+    "column.zs_observe.flex_settlement.shopify_payment_id",
+    "column.zs_observe.flex_settlement.shopify_refund_id",
+    "column.zs_observe.flex_settlement.source_created_at",
+    "column.zs_observe.flex_settlement.source_id",
+    "column.zs_observe.flex_settlement.trace_id",
+    "column.zs_observe.flex_settlement.transaction_type"
+  ],
+  "columns": [
+    "column.zs_observe.flex_settlement.balance_transaction_id",
+    "column.zs_observe.flex_settlement.payout_id",
+    "column.zs_observe.flex_settlement.source_id",
+    "column.zs_observe.flex_settlement.shopify_payment_id",
+    "column.zs_observe.flex_settlement.shopify_refund_id",
+    "column.zs_observe.flex_settlement.trace_id",
+    "column.zs_observe.flex_settlement.checkout_session_id",
+    "column.zs_observe.flex_settlement.customer_email",
+    "column.zs_observe.flex_settlement.balance_transaction_created",
+    "column.zs_observe.flex_settlement.source_created_at",
+    "column.zs_observe.flex_settlement.available_on",
+    "column.zs_observe.flex_settlement.created_date",
+    "column.zs_observe.flex_settlement.settlement_date",
+    "column.zs_observe.flex_settlement.settlement_id",
+    "column.zs_observe.flex_settlement.reporting_category",
+    "column.zs_observe.flex_settlement.transaction_type",
+    "column.zs_observe.flex_settlement.order_id",
+    "column.zs_observe.flex_settlement.item_id",
+    "column.zs_observe.flex_settlement.parent_id",
+    "column.zs_observe.flex_settlement.quantity",
+    "column.zs_observe.flex_settlement.charged_amount",
+    "column.zs_observe.flex_settlement.amount_temp_old",
+    "column.zs_observe.flex_settlement.mp_fees",
+    "column.zs_observe.flex_settlement.fee_temp_old",
+    "column.zs_observe.flex_settlement.net_temp_old",
+    "column.zs_observe.flex_settlement.settled_amount",
+    "column.zs_observe.flex_settlement.other_id",
+    "column.zs_observe.flex_settlement.other_id_2",
+    "column.zs_observe.flex_settlement.amount",
+    "column.zs_observe.flex_settlement.fee",
+    "column.zs_observe.flex_settlement.net",
+    "column.zs_observe.flex_settlement.currency_type"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "balance_transaction_created",
+    "source_created_at",
+    "available_on",
+    "created_date",
+    "settlement_date"
+  ],
+  "description": "Flex is a Stripe-powered settlement mechanism used by merchants on Shopify or other platforms with Stripe-backed payments. The settlement structure mirrors Stripe's balance transaction format.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.flex"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.flex",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 6192
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.flex_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "balance_transaction_id",
+    "payout_id",
+    "source_id",
+    "shopify_payment_id",
+    "shopify_refund_id",
+    "trace_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.flex_settlement",
+  "recommended_date_columns": [
+    "created_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "balance_transaction_id",
+    "payout_id",
+    "trace_id",
+    "settlement_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.flex_settlement",
+  "source_caveats": [
+    "`amount`, `fee`, `net` are stored as Text — use `charged_amount`, `mp_fees`, `settled_amount` (Decimal) for calculations.",
+    "`reporting_category` maps to Stripe's native categories: `charge`, `refund`, `payout`, `stripe_fee`, `adjustment`.",
+    "`balance_transaction_id` (btxn_XXXX) is the Stripe primary reference.",
+    "`payout_id` (po_XXXX) is the bank payout reference — one payout_id per bank credit.",
+    "`available_on` determines when funds are released; compare with `settlement_date` for timing analysis.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6192,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.flex"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "reporting_category",
+    "transaction_type",
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.flex.global"
+    ],
+    "platform_ids": [
+      "platform.flex"
+    ]
+  },
+  "table_name": "flex_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

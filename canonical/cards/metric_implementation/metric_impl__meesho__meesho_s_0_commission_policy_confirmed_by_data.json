@@ -1,0 +1,49 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.meesho.meesho_s_0_commission_policy_confirmed_by_data",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho implementation — Meesho's 0% Commission Policy (Confirmed by Data)",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.4_1_meesho_s_0_commission_policy_confirmed_by_data"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.4_1_meesho_s_0_commission_policy_confirmed_by_data",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 12294
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use active-row and source-specified marketplace filters; scope fields remain columns/caveats only.",
+  "formula_text": "SELECT\n  COUNT(*) AS forward_expense_rows,\n  SUM(net_commission) AS total_net_commission,\n  SUM(commission_gst) AS total_commission_gst,\n  ROUND(100.0 * SUM(net_commission) / NULLIF(SUM(taxable_shipping + meesho_mall_platformfee + fixed_fee), 0), 2) AS observed_commission_rate_pct\nFROM zs_observe.meesho_forward_expenses\nWHERE CAST(is_active AS VARCHAR) = 'true';\n-- Source context: net_commission = 0 for all 1,253 rows.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "meesho",
+  "metric_id": "metric.commission_or_take_rate",
+  "metric_pattern": "meesho_specific_implementation_of_commission_or_take_rate",
+  "name": "Meesho implementation — Meesho's 0% Commission Policy (Confirmed by Data)",
+  "platform_code": "meesho",
+  "platform_context_id": "platform_context.meesho.in",
+  "review_status": "accepted",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.meesho.meesho_s_0_commission_policy_confirmed_by_data",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12294,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "sql_pattern": "SELECT\n  COUNT(*) AS forward_expense_rows,\n  SUM(net_commission) AS total_net_commission,\n  SUM(commission_gst) AS total_commission_gst,\n  ROUND(100.0 * SUM(net_commission) / NULLIF(SUM(taxable_shipping + meesho_mall_platformfee + fixed_fee), 0), 2) AS observed_commission_rate_pct\nFROM zs_observe.meesho_forward_expenses\nWHERE CAST(is_active AS VARCHAR) = 'true';\n-- Source context: net_commission = 0 for all 1,253 rows.",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

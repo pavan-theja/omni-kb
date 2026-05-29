@@ -1,0 +1,37 @@
+{
+  "active": true,
+  "canonical_id": "tenant.volans_epic_llc",
+  "card_type": "tenant",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Volans Epic LLC uses ZenStatement for Americas-focused marketplace and Shopify D2C sales/settlement reasoning across Amazon, Walmart, Target, and Shopify. Logistics and payment gateways are explicitly out of scope in the client source.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/volans_epic_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Volans Epic LLC",
+  "package_id": "client_runtime_binding_pack.volans_epic_llc.v0_1",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Epic LLC.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_epic_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_code": "VOLANS_EPIC",
+  "tenant_name": "Volans Epic LLC",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

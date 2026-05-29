@@ -1,0 +1,49 @@
+{
+  "assertion": "Tax-rate validation should normalize values >1 by dividing by 100.",
+  "canonical_id": "validation_test.limeroad.tax_rate_normalization",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Tax-rate validation should normalize values >1 by dividing by 100.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.quality.001",
+    "ev.limeroad.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 7262
+    },
+    {
+      "evidence_id": "ev.limeroad.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 7262
+    }
+  ],
+  "expected_result": "pass",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Prevents 0.12 vs 12.0 false variance.",
+  "marketplace_only": true,
+  "name": "Tax rate normalization applied",
+  "review_status": "accepted",
+  "source_card_id": "validation_test.limeroad.tax_rate_normalization",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7262,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "test_type": "data_quality_guard",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,50 @@
+{
+  "canonical_id": "workflow_step.meesho.forward_order_flow.11",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "meesho_forward_expenses validates taxable_shipping, shipping_gst_18_percent, Meesho Mall fee, fixed fee, and net_commission = 0 for forward delivered orders.",
+  "display_name": "Forward expense invoice row",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.007.2_1_forward_order_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.007.2_1_forward_order_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 14342
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "zs_observe.meesho_forward_expenses"
+  ],
+  "name": "Forward expense invoice row",
+  "output_tables": [
+    "zs_observe.meesho_forward_expenses"
+  ],
+  "process_id": "business_process.meesho.forward_order_flow",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.meesho.forward_order_flow.11",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14342,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "status_conditions": [
+    "meesho_forward_expenses.taxable_shipping",
+    "meesho_forward_expenses.meesho_mall_platformfee",
+    "meesho_forward_expenses.net_commission"
+  ],
+  "step_order": 11,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

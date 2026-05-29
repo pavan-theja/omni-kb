@@ -1,0 +1,36 @@
+{
+  "card_types": {
+    "account_data_binding": 43,
+    "business_flow_binding": 6,
+    "business_scope_set": 7,
+    "group": 1,
+    "platform_account": 21,
+    "tenant": 1
+  },
+  "counts": {
+    "cards": 79,
+    "edges": 261,
+    "future_context_gaps": 15,
+    "review_items": 1,
+    "semantic_mappings": 21
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 43,
+    "HAS_ACCOUNT_DATA_BINDING": 43,
+    "HAS_BUSINESS_FLOW_BINDING": 6,
+    "HAS_BUSINESS_SCOPE_SET": 7,
+    "HAS_GROUP": 1,
+    "HAS_PLATFORM_ACCOUNT": 21,
+    "INCLUDES_PLATFORM_ACCOUNT": 21,
+    "PARTICIPATES_WITH_ACCOUNT": 29,
+    "USES_ACCOUNT_DATA_BINDING": 44,
+    "USES_BUSINESS_SCOPE_SET": 6,
+    "USES_EVIDENCE_TABLE": 10,
+    "USES_PLATFORM": 15,
+    "USES_PLATFORM_CONTEXT": 15
+  },
+  "scope": [
+    "clients",
+    "bracheium_brand_technologies_client"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "calculation_order": "Forward rows determine effective TDS rate; reverse rows quantify reversal impact separately.",
+  "canonical_id": "metric_dependency.tatacliq.effective_tds_rate",
+  "card_type": "metric_dependency",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "ratio",
+  "dependent_metric_ids": [
+    "SUM(forward total_tds)",
+    "SUM(forward ABS(charged_amount))"
+  ],
+  "description": "metric_dependency card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.total_forward_gmv",
+    "ev.tatacliq.sql.return_rate",
+    "ev.tatacliq.sql.tds_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.total_forward_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7053
+    },
+    {
+      "evidence_id": "ev.tatacliq.sql.return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7053
+    },
+    {
+      "evidence_id": "ev.tatacliq.sql.tds_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7053
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Effective Tds Rate",
+  "parent_metric_id": "metric.tatacliq.effective_tds_rate",
+  "review_status": "ready",
+  "source_card_id": "metric_dependency.tatacliq.effective_tds_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7053,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

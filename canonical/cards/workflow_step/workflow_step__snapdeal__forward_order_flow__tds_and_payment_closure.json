@@ -1,0 +1,46 @@
+{
+  "canonical_id": "workflow_step.snapdeal.forward_order_flow.tds_and_payment_closure",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "snapdeal_non_order records COD/NCOD TDS INV rows by sub_order_no; snapdeal_payments closes cash movement when utr_no_ equals snapdeal_settlement.settlement_id.",
+  "display_name": "TDS and payment closure",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.join_map_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17039
+    },
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17039
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "TDS and payment closure",
+  "process_id": "business_process.snapdeal.forward_order_flow",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.snapdeal.forward_order_flow.tds_and_payment_closure",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17039,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "step_order": 6,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

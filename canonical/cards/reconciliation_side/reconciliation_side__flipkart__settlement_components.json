@@ -1,0 +1,63 @@
+{
+  "amount_columns": [
+    "sale_settled_amount",
+    "refund_settled_amount",
+    "offer_settled_amount",
+    "my_share_settled_amount",
+    "addon_settled_amount",
+    "taxes_settled_amount",
+    "offer_adjustment_settled_amount",
+    "protection_fund_settled_amount",
+    "mp_fee",
+    "gst_on_mp_fees",
+    "total_tcs_amount",
+    "total_tds_amount"
+  ],
+  "canonical_id": "reconciliation_side.flipkart.settlement_components",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.settlement_logic"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.settlement_logic",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5676
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true where applicable"
+  ],
+  "grain": "order/item or settlement line",
+  "key_columns": [
+    "settlement_id",
+    "order_id",
+    "item_id"
+  ],
+  "name": "Flipkart settlement_components",
+  "profile_id": "reconciliation_profile.flipkart.settlement_waterfall",
+  "review_status": "accepted",
+  "side_role": "expected",
+  "sign_handling": "credits are summed with source sign; fee/tax deductions use ABS where DOCX waterfall expresses them as deductions",
+  "source_card_id": "reconciliation_side.flipkart.settlement_components",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5676,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "source_table": "table.flipkart.settlement",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

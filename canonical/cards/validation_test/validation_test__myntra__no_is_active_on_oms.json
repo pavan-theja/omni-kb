@@ -1,0 +1,47 @@
+{
+  "canonical_id": "validation_test.myntra.no_is_active_on_oms",
+  "canonical_name": "no_is_active_on_oms",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.reconciliation",
+    "evidence.myntra.filters"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 12090
+    },
+    {
+      "evidence_id": "evidence.myntra.filters",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 12090
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "no_is_active_on_oms",
+  "review_status": "unreviewed",
+  "source_card_id": "validation_test.myntra.no_is_active_on_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12090,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Queries touching OMS must not invent an is_active filter.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_scope": "semantic"
+}

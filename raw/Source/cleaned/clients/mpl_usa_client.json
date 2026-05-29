@@ -1,0 +1,2991 @@
+{
+  "document_metadata": {
+    "package_id": "mpl_usa_client_runtime_cards_v2_1_refactored",
+    "created_for": "MPL USA",
+    "created_on": "2026-05-24",
+    "version": "v2_1_refactored",
+    "status": "parser_ready_with_explicit_registry_gaps",
+    "source_documents": [
+      "Cognee KB Design v4.md",
+      "MPL USA.docx",
+      "shopify_d2c_oms_v2.md"
+    ],
+    "source_client_profile": {
+      "business": "International MPL wallet platform with proprietary deposit/withdrawal ledger plus Braintree, Skrill, and Hyperwallet payment infrastructure.",
+      "geography": "International; source text indicates US, Europe, and other global markets",
+      "source_group_id": 2,
+      "source_group_level_id": 3,
+      "source_group_name": "MPL",
+      "default_currency": "USD",
+      "currencies_in_scope": [
+        "USD",
+        "EUR",
+        "GBP"
+      ]
+    },
+    "build_policy": [
+      "Create active bindings only for current canonical platform tables or explicit client-observed table evidence.",
+      "Represent source-confirmed artifacts without table context as review-required bindings or future context gaps, not active mappings.",
+      "Keep group_id and group_level_id in Account Data Binding scope_keys rather than generic platform/domain cards.",
+      "Create Business Flow Bindings only for reusable client/group-level cross-account flows."
+    ],
+    "negative_scope_constraints": [
+      "No marketplace channels",
+      "No logistics",
+      "No Shopify",
+      "No Unicommerce",
+      "No bank statement binding provided"
+    ],
+    "generated_date": "2026-05-24",
+    "client_slug": "mpl_usa",
+    "source_json_bad_state": "mpl_usa.json",
+    "source_docx": "MPL USA.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "canonical_markdowns_loaded": [
+      "ajio_marketplace.md",
+      "amazon_marketplace.md",
+      "bank_statement.md",
+      "delhivery_logistics.md",
+      "dtdc_logistics.md",
+      "ecom_express.md",
+      "ekart_logistics.md",
+      "flipkart_marketplace.md",
+      "healthkart_marketplace.md",
+      "increff_operations.md",
+      "jiomart_marketplace.md",
+      "limeroad_marketplace.md",
+      "logistics_domain.md",
+      "logistics_reconciliation_patterns.md",
+      "meesho_marketplace.md",
+      "myntra_marketplace.md",
+      "nykaa_marketplace.md",
+      "payment_gateway.md",
+      "shadowfax_logistics.md",
+      "shiprocket_logistics.md",
+      "shiprocket_logistics_aggregator.md",
+      "shopify_d2c_oms_v2.md",
+      "snapdeal_marketplace.md",
+      "target_plus.md",
+      "tatacliq_marketplace.md",
+      "unicommerce_d2c_oms.md",
+      "unicommerce_operations.md",
+      "walmart_marketplace.md",
+      "xpressbees_logistics.md"
+    ],
+    "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+    "client_runtime_layer": true,
+    "allowed_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "forbidden_in_this_client_layer": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "boundary_policy": {
+      "client_runtime_cards_allowed": [
+        "tenant",
+        "group",
+        "platform_account",
+        "account_data_binding",
+        "business_scope_set",
+        "business_flow_binding"
+      ],
+      "do_not_create_in_client_runtime_pack": [
+        "platform",
+        "platform_context",
+        "domain",
+        "table",
+        "column",
+        "metric",
+        "business_process",
+        "workflow_step",
+        "reconciliation_profile",
+        "matching_logic",
+        "bank_account",
+        "payment_gateway_account",
+        "logistics_account",
+        "erp_accounting_mapping",
+        "statutory_tax_filing",
+        "connector"
+      ],
+      "dangling_reference_policy": "No candidate_edge is emitted unless both source and target resolve to a client card in this file or an uploaded canonical card.",
+      "scope_key_policy": "group_id/group_level_id/currency/country filters stay in account_data_binding.scope_keys, not in reusable platform/domain/table cards.",
+      "missing_account_identifier_policy": "A missing seller/merchant/store/account identifier is not by itself a blocker when the client DOCX confirms the account and table-level scope keys are present."
+    }
+  },
+  "parser_instructions": {
+    "create_only_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "do_not_create_from_this_file": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "edge_reference_policy": [
+      "Emit client runtime edges only when source_id and target_id resolve either to a client runtime card in this file or to an uploaded canonical card.",
+      "Do not emit USES_PLATFORM / USES_PLATFORM_CONTEXT / BINDS_TO_TABLE if the canonical target card is absent.",
+      "Runtime filters belong in account_data_binding.scope_keys; do not push group_id/group_level_id into platform/table/metric/process cards."
+    ],
+    "source_correction_policy": {
+      "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+      "superseded_shopify_canonical": "shopify_d2c_oms.md",
+      "replacement_ids": {
+        "platform_context.shopify.in.d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.global_d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.international_d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.us_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.increff.in.wms_operations": "platform_context.increff.in",
+        "platform_context.shiprocket.in.oms_order_source": "platform_context.shiprocket.in",
+        "platform_context.amazon.us": "platform_context.amazon.international",
+        "platform_context.amazon.ca": "platform_context.amazon.international",
+        "platform_context.amazon.uk": "platform_context.amazon.international",
+        "platform_context.amazon.mx": "platform_context.amazon.international",
+        "platform_context.nykaa.in": "platform_context.nykaa_fashion.in",
+        "platform_context.rbl_bank.in_payin": "platform_context.rbl_bank.in",
+        "platform.idfc_bank": "platform.idfc_first_bank",
+        "platform_context.idfc_bank.in": "platform_context.idfc_first_bank.in",
+        "platform_context.paypal.in": "platform_context.paypal.global",
+        "platform_context.paypal.us": "platform_context.paypal.global",
+        "table.zs_observe.idfc_bank": "table.zs_ingest.idfc_bank",
+        "table.zs_observe.idfc_bank_inr": "table.zs_ingest.idfc_bank_inr",
+        "table.zs_observe.yesbank_oms_payout": "table.zs_ingest.yesbank_oms_payout"
+      },
+      "replacement_documents": {
+        "shopify_d2c_oms.md": "shopify_d2c_oms_v2.md",
+        "Client Tables - Shopify.md": "shopify_d2c_oms_v2.md"
+      }
+    },
+    "status_policy": {
+      "active": "source-confirmed and routable against at least the available canonical/client table context",
+      "review_required": "source-confirmed but missing a required canonical platform/context/table card for production routing",
+      "draft": "intentionally inactive pending bank binding, external account binding, or future platform-context authoring"
+    }
+  },
+  "clean_refactor_manifest": {
+    "source_json": "mpl_usa.json",
+    "source_docx": "MPL USA.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "corrections_applied": [
+      "Replaced old Shopify references with shopify_d2c_oms_v2 canonical context.",
+      "Collapsed Amazon US/CA/UK/MX aliases to uploaded platform_context.amazon.international while preserving country/currency guards on account bindings.",
+      "Remapped Nykaa India alias to Nykaa Fashion canonical context.",
+      "Remapped IDFC Bank alias to IDFC First Bank canonical bank-statement context where present.",
+      "Remapped role-specific Shopify/Increff/Shiprocket/Amazon/Paytm/PhonePe context aliases to uploaded broader canonical contexts while preserving the role in account fields.",
+      "Blocked unresolved platform/context/table edges rather than emitting dangling references.",
+      "Normalized status/active conflicts from the bad-state JSON.",
+      "Added DOCX section and row-level evidence references for configured sources."
+    ],
+    "id_replacement_hits": [
+      {
+        "card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      }
+    ],
+    "status_changes": [
+      {
+        "card_id": "platform_account.mpl_usa.braintree.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      },
+      {
+        "card_id": "platform_account.mpl_usa.skrill.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      },
+      {
+        "card_id": "platform_account.mpl_usa.hyperwallet.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      }
+    ],
+    "blocked_edge_count": 14,
+    "canonical_resolution_gap_count": 29,
+    "resolved_prior_review_count": 0
+  },
+  "source_evidence": [
+    {
+      "id": "ev.mpl_usa.docx.section.01_identity",
+      "source_document": "MPL USA.docx",
+      "source_section": "Identity",
+      "evidence_type": "docx_section",
+      "source_lines": "L2-L12",
+      "summary": "* Business: Digital gaming / fantasy sports platform — international operations variant\n* Model: Same wallet-based deposit/withdrawal model as domestic gaming config, but served via international payment infrastructure\n* Geography: International (US, Europe, and other global markets — inferred from gateway selection)\n* OMS: Proprietary platform OMS — same `mpl_oms_deposit` / `mpl_oms_withdrawal` ledger as domestic entity\n* GROUP LEVEL ID :  3\n* GROUP ID:  2\n* CLIENT NAME: MPL USA\n* GROUP NAME : MPL\n\\\n> The combination of Braintree, Skrill, and Hyperwallet is a strong indicator of an international-facing real-money gaming or fantasy sports platform. These three gateways are the standard stack for cross-border gaming operators. This appears to be the international counterpart to the domestic India gaming client configured with Razorpay, Cashfree, PhonePe, etc.",
+      "raw_lines": [
+        "* Business: Digital gaming / fantasy sports platform — international operations variant",
+        "* Model: Same wallet-based deposit/withdrawal model as domestic gaming config, but served via international payment infrastructure",
+        "* Geography: International (US, Europe, and other global markets — inferred from gateway selection)",
+        "* OMS: Proprietary platform OMS — same `mpl_oms_deposit` / `mpl_oms_withdrawal` ledger as domestic entity",
+        "* GROUP LEVEL ID :  3",
+        "* GROUP ID:  2",
+        "* CLIENT NAME: MPL USA",
+        "* GROUP NAME : MPL",
+        "\\",
+        "> The combination of Braintree, Skrill, and Hyperwallet is a strong indicator of an international-facing real-money gaming or fantasy sports platform. These three gateways are the standard stack for cross-border gaming operators. This appears to be the international counterpart to the domestic India gaming client configured with Razorpay, Cashfree, PhonePe, etc."
+      ],
+      "row_count": 0,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+      "source_document": "MPL USA.docx",
+      "source_section": "Platform wallet ledger",
+      "evidence_type": "docx_section",
+      "source_lines": "L13-L17",
+      "summary": "| File | Pipeline target | Purpose |\n|------|-----------------|---------|\n| OMS Deposit | mpl_oms_deposit | Platform-side record of user deposits into wallet |\n| OMS Withdrawal | mpl_oms_withdrawal | Platform-side record of user withdrawal requests/payouts |",
+      "raw_lines": [
+        "| File | Pipeline target | Purpose |",
+        "|------|-----------------|---------|",
+        "| OMS Deposit | mpl_oms_deposit | Platform-side record of user deposits into wallet |",
+        "| OMS Withdrawal | mpl_oms_withdrawal | Platform-side record of user withdrawal requests/payouts |"
+      ],
+      "row_count": 2,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+      "source_document": "MPL USA.docx",
+      "source_section": "Platform wallet ledger",
+      "evidence_type": "configured_source_row",
+      "source_line": "L16",
+      "row_key": "OMS Deposit",
+      "columns": {
+        "file": "OMS Deposit",
+        "pipeline_target": "mpl_oms_deposit",
+        "purpose": "Platform-side record of user deposits into wallet"
+      },
+      "raw_text": "| OMS Deposit | mpl_oms_deposit | Platform-side record of user deposits into wallet |",
+      "summary": "OMS Deposit: file=OMS Deposit; pipeline_target=mpl_oms_deposit; purpose=Platform-side record of user deposits into wallet",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+      "source_document": "MPL USA.docx",
+      "source_section": "Platform wallet ledger",
+      "evidence_type": "configured_source_row",
+      "source_line": "L17",
+      "row_key": "OMS Withdrawal",
+      "columns": {
+        "file": "OMS Withdrawal",
+        "pipeline_target": "mpl_oms_withdrawal",
+        "purpose": "Platform-side record of user withdrawal requests/payouts"
+      },
+      "raw_text": "| OMS Withdrawal | mpl_oms_withdrawal | Platform-side record of user withdrawal requests/payouts |",
+      "summary": "OMS Withdrawal: file=OMS Withdrawal; pipeline_target=mpl_oms_withdrawal; purpose=Platform-side record of user withdrawal requests/payouts",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.mpl_usa.docx.section.03_payment_gateways",
+      "source_document": "MPL USA.docx",
+      "source_section": "Payment gateways",
+      "evidence_type": "docx_section",
+      "source_lines": "L18-L24",
+      "summary": "| Gateway | Pipeline target | Role | Notes |\n|---------|-----------------|------|-------|\n| Braintree | braintree       | Pay-in (deposits) | PayPal-owned gateway; handles card payments (Visa/MC/Amex) across US, Europe, and global markets |\n| Skrill  | skrill          | Pay-in (deposits) | E-wallet popular in European gaming markets; also supports crypto deposits on some platforms |\n| Hyperwallet | hyperwallet     | Pay-out (withdrawals) | PayPal-owned mass payout platform; used specifically for disbursing winnings to users at scale |\n##",
+      "raw_lines": [
+        "| Gateway | Pipeline target | Role | Notes |",
+        "|---------|-----------------|------|-------|",
+        "| Braintree | braintree       | Pay-in (deposits) | PayPal-owned gateway; handles card payments (Visa/MC/Amex) across US, Europe, and global markets |",
+        "| Skrill  | skrill          | Pay-in (deposits) | E-wallet popular in European gaming markets; also supports crypto deposits on some platforms |",
+        "| Hyperwallet | hyperwallet     | Pay-out (withdrawals) | PayPal-owned mass payout platform; used specifically for disbursing winnings to users at scale |",
+        "##"
+      ],
+      "row_count": 3,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+      "source_document": "MPL USA.docx",
+      "source_section": "Payment gateways",
+      "evidence_type": "configured_source_row",
+      "source_line": "L21",
+      "row_key": "Braintree",
+      "columns": {
+        "gateway": "Braintree",
+        "pipeline_target": "braintree",
+        "role": "Pay-in (deposits)",
+        "notes": "PayPal-owned gateway; handles card payments (Visa/MC/Amex) across US, Europe, and global markets"
+      },
+      "raw_text": "| Braintree | braintree       | Pay-in (deposits) | PayPal-owned gateway; handles card payments (Visa/MC/Amex) across US, Europe, and global markets |",
+      "summary": "Braintree: gateway=Braintree; pipeline_target=braintree; role=Pay-in (deposits); notes=PayPal-owned gateway; handles card payments (Visa/MC/Amex) across US, Europe, and global markets",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill",
+      "source_document": "MPL USA.docx",
+      "source_section": "Payment gateways",
+      "evidence_type": "configured_source_row",
+      "source_line": "L22",
+      "row_key": "Skrill",
+      "columns": {
+        "gateway": "Skrill",
+        "pipeline_target": "skrill",
+        "role": "Pay-in (deposits)",
+        "notes": "E-wallet popular in European gaming markets; also supports crypto deposits on some platforms"
+      },
+      "raw_text": "| Skrill  | skrill          | Pay-in (deposits) | E-wallet popular in European gaming markets; also supports crypto deposits on some platforms |",
+      "summary": "Skrill: gateway=Skrill; pipeline_target=skrill; role=Pay-in (deposits); notes=E-wallet popular in European gaming markets; also supports crypto deposits on some platforms",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.mpl_usa.docx.row.03_payment_gateways.03_hyperwallet",
+      "source_document": "MPL USA.docx",
+      "source_section": "Payment gateways",
+      "evidence_type": "configured_source_row",
+      "source_line": "L23",
+      "row_key": "Hyperwallet",
+      "columns": {
+        "gateway": "Hyperwallet",
+        "pipeline_target": "hyperwallet",
+        "role": "Pay-out (withdrawals)",
+        "notes": "PayPal-owned mass payout platform; used specifically for disbursing winnings to users at scale"
+      },
+      "raw_text": "| Hyperwallet | hyperwallet     | Pay-out (withdrawals) | PayPal-owned mass payout platform; used specifically for disbursing winnings to users at scale |",
+      "summary": "Hyperwallet: gateway=Hyperwallet; pipeline_target=hyperwallet; role=Pay-out (withdrawals); notes=PayPal-owned mass payout platform; used specifically for disbursing winnings to users at scale",
+      "confidence": "high"
+    }
+  ],
+  "candidate_cards": [
+    {
+      "card_type": "tenant",
+      "card_id": "tenant.mpl_usa",
+      "canonical_id": "tenant.mpl_usa",
+      "name": "MPL USA",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.01_identity",
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill",
+        "ev.mpl_usa.docx.row.03_payment_gateways.03_hyperwallet",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit"
+      ],
+      "description": "International wallet-ledger client using ZenStatement for deposit and withdrawal reasoning across Braintree, Skrill, Hyperwallet, and MPL proprietary ledger evidence.",
+      "fields": {
+        "tenant_name": "MPL USA",
+        "tenant_code": "MPL_USA",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "group",
+      "card_id": "group.mpl_usa.mpl",
+      "canonical_id": "group.mpl_usa.mpl",
+      "name": "MPL",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.01_identity",
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_name": "MPL",
+        "group_code": "MPL",
+        "group_type": "business_unit",
+        "business_meaning": "MPL USA / international wallet-ledger operating scope for deposits, withdrawals, and international payment infrastructure.",
+        "country_or_region": "International; source text indicates US, Europe, and other global markets",
+        "default_currency": "USD",
+        "currency_scope": [
+          "USD",
+          "EUR",
+          "GBP"
+        ],
+        "source_scope_identifiers": {
+          "group_id": 2,
+          "group_level_id": 3,
+          "group_name": "MPL"
+        },
+        "runtime_scope_policy": "group_id and group_level_id are represented in Account Data Binding scope_keys; generic platform/domain cards remain reusable.",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "canonical_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "name": "MPL USA Proprietary Wallet Ledger",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "account_name": "MPL USA Proprietary Wallet Ledger",
+        "account_type": "proprietary_wallet_ledger_account",
+        "account_role": "wallet_ledger_source",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 2,
+          "group_level_id": 3,
+          "group_name": "MPL"
+        },
+        "country_or_region": "International",
+        "currency_scope": [
+          "USD",
+          "EUR",
+          "GBP"
+        ],
+        "configured_data_types": [
+          "mpl_oms_deposit",
+          "mpl_oms_withdrawal"
+        ],
+        "source_config_text": "OMS Deposit -> mpl_oms_deposit; OMS Withdrawal -> mpl_oms_withdrawal",
+        "declared_platform_id": "platform.mpl_proprietary",
+        "declared_platform_label": "MPL proprietary wallet ledger",
+        "declared_platform_context_id": "platform_context.mpl.wallet_ledger",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform.mpl_proprietary"
+          },
+          "platform_context_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform_context.mpl.wallet_ledger"
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "canonical_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "name": "account data binding / mpl usa / wallet ledger / primary / mpl oms deposit",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+        "table_id": "table.zs_observe.mpl_oms_deposit",
+        "table_support_level": "client_observed_table_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 2,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 3,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "wallet_deposit_ledger"
+        ],
+        "source_config_text": "OMS Deposit -> mpl_oms_deposit; OMS Withdrawal -> mpl_oms_withdrawal",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.mpl_oms_deposit",
+          "source_documents": [
+            "shopify_d2c_oms_v2.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "canonical_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "name": "account data binding / mpl usa / wallet ledger / primary / mpl oms withdrawal",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+        "table_id": "table.zs_observe.mpl_oms_withdrawal",
+        "table_support_level": "client_observed_table_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 2,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 3,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "wallet_withdrawal_ledger"
+        ],
+        "source_config_text": "OMS Deposit -> mpl_oms_deposit; OMS Withdrawal -> mpl_oms_withdrawal",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.mpl_oms_withdrawal",
+          "source_documents": [
+            "shopify_d2c_oms_v2.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.mpl_usa.braintree.primary",
+      "canonical_id": "platform_account.mpl_usa.braintree.primary",
+      "name": "MPL USA Braintree Pay-in",
+      "status": "review_required",
+      "active": false,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "account_name": "MPL USA Braintree Pay-in",
+        "account_type": "payment_gateway_merchant_account",
+        "account_role": "payin_source_requires_context",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 2,
+          "group_level_id": 3,
+          "group_name": "MPL"
+        },
+        "country_or_region": "International",
+        "currency_scope": [
+          "USD",
+          "EUR",
+          "GBP"
+        ],
+        "configured_data_types": [
+          "braintree"
+        ],
+        "source_config_text": "Braintree | braintree | Pay-in deposits",
+        "declared_platform_id": "platform.braintree",
+        "declared_platform_label": "Braintree international payment gateway",
+        "declared_platform_context_id": "platform_context.braintree.global",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform.braintree"
+          },
+          "platform_context_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform_context.braintree.global"
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": true
+        },
+        "status_correction_reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.mpl_usa.braintree.primary.braintree",
+      "canonical_id": "account_data_binding.mpl_usa.braintree.primary.braintree",
+      "name": "account data binding / mpl usa / braintree / primary / braintree",
+      "status": "review_required",
+      "active": false,
+      "confidence": "source_confirmed",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.mpl_usa.braintree.primary",
+        "table_support_level": "source_described_requires_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 2,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 3,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "braintree_card_payin"
+        ],
+        "source_config_text": "Braintree | braintree | Pay-in deposits",
+        "declared_table_id": "table.zs_observe.braintree",
+        "canonical_table_resolution": {
+          "status": "missing_from_uploaded_canonical_markdowns",
+          "declared_id": "table.zs_observe.braintree"
+        },
+        "routing_status": "blocked_until_table_card_exists",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Source confirms Braintree as pay-in deposit gateway; canonical Braintree table context is not available in the current uploaded KB."
+        ],
+        "original_bad_state_status": {
+          "status": "review_required",
+          "active": false
+        },
+        "status_correction_reason": "table_binding_missing_canonical_table_card"
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.mpl_usa.skrill.primary",
+      "canonical_id": "platform_account.mpl_usa.skrill.primary",
+      "name": "MPL USA Skrill Pay-in",
+      "status": "review_required",
+      "active": false,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "account_name": "MPL USA Skrill Pay-in",
+        "account_type": "payment_gateway_merchant_account",
+        "account_role": "payin_source_requires_context",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 2,
+          "group_level_id": 3,
+          "group_name": "MPL"
+        },
+        "country_or_region": "International",
+        "currency_scope": [
+          "USD",
+          "EUR",
+          "GBP"
+        ],
+        "configured_data_types": [
+          "skrill"
+        ],
+        "source_config_text": "Skrill | skrill | Pay-in deposits",
+        "declared_platform_id": "platform.skrill",
+        "declared_platform_label": "Skrill international payment gateway",
+        "declared_platform_context_id": "platform_context.skrill.global",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform.skrill"
+          },
+          "platform_context_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform_context.skrill.global"
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": true
+        },
+        "status_correction_reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.mpl_usa.skrill.primary.skrill",
+      "canonical_id": "account_data_binding.mpl_usa.skrill.primary.skrill",
+      "name": "account data binding / mpl usa / skrill / primary / skrill",
+      "status": "review_required",
+      "active": false,
+      "confidence": "source_confirmed",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.mpl_usa.skrill.primary",
+        "table_support_level": "source_described_requires_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 2,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 3,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "skrill_wallet_payin"
+        ],
+        "source_config_text": "Skrill | skrill | Pay-in deposits",
+        "declared_table_id": "table.zs_observe.skrill",
+        "canonical_table_resolution": {
+          "status": "missing_from_uploaded_canonical_markdowns",
+          "declared_id": "table.zs_observe.skrill"
+        },
+        "routing_status": "blocked_until_table_card_exists",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Source confirms Skrill as pay-in deposit gateway; canonical Skrill table context is not available in the current uploaded KB."
+        ],
+        "original_bad_state_status": {
+          "status": "review_required",
+          "active": false
+        },
+        "status_correction_reason": "table_binding_missing_canonical_table_card"
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "canonical_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "name": "MPL USA Hyperwallet Payout",
+      "status": "review_required",
+      "active": false,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.03_hyperwallet",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "account_name": "MPL USA Hyperwallet Payout",
+        "account_type": "payment_gateway_merchant_account",
+        "account_role": "payout_source_requires_context",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 2,
+          "group_level_id": 3,
+          "group_name": "MPL"
+        },
+        "country_or_region": "International",
+        "currency_scope": [
+          "USD",
+          "EUR",
+          "GBP"
+        ],
+        "configured_data_types": [
+          "hyperwallet"
+        ],
+        "source_config_text": "Hyperwallet | hyperwallet | Pay-out withdrawals",
+        "declared_platform_id": "platform.hyperwallet",
+        "declared_platform_label": "Hyperwallet mass payout platform",
+        "declared_platform_context_id": "platform_context.hyperwallet.global",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform.hyperwallet"
+          },
+          "platform_context_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform_context.hyperwallet.global"
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": true
+        },
+        "status_correction_reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet",
+      "canonical_id": "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet",
+      "name": "account data binding / mpl usa / hyperwallet / primary / hyperwallet",
+      "status": "review_required",
+      "active": false,
+      "confidence": "source_confirmed",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.03_hyperwallet",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.mpl_usa.hyperwallet.primary",
+        "table_support_level": "source_described_requires_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 2,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 3,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "hyperwallet_mass_payout"
+        ],
+        "source_config_text": "Hyperwallet | hyperwallet | Pay-out withdrawals",
+        "declared_table_id": "table.zs_observe.hyperwallet",
+        "canonical_table_resolution": {
+          "status": "missing_from_uploaded_canonical_markdowns",
+          "declared_id": "table.zs_observe.hyperwallet"
+        },
+        "routing_status": "blocked_until_table_card_exists",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Source confirms Hyperwallet as payout/withdrawal rail; canonical Hyperwallet table context is not available in the current uploaded KB."
+        ],
+        "original_bad_state_status": {
+          "status": "review_required",
+          "active": false
+        },
+        "status_correction_reason": "table_binding_missing_canonical_table_card"
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.mpl_usa.wallet_ledger",
+      "canonical_id": "business_scope_set.mpl_usa.wallet_ledger",
+      "name": "MPL USA Wallet Ledger",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "description": "MPL USA deposit and withdrawal ledger scope.",
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "scope_name": "MPL USA Wallet Ledger",
+        "scope_type": "proprietary_wallet_ledger_scope",
+        "platform_account_ids": [
+          "platform_account.mpl_usa.wallet_ledger.primary"
+        ],
+        "platform_ids": [],
+        "platform_context_ids": [],
+        "declared_unresolved_platform_ids": [
+          "platform.mpl_proprietary"
+        ],
+        "declared_unresolved_platform_context_ids": [
+          "platform_context.mpl.wallet_ledger"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "canonical_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "name": "MPL USA International Gateways Requiring Context",
+      "status": "draft",
+      "active": false,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "MPL USA.docx"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.01_braintree",
+        "ev.mpl_usa.docx.row.03_payment_gateways.02_skrill",
+        "ev.mpl_usa.docx.row.03_payment_gateways.03_hyperwallet",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit"
+      ],
+      "description": "Braintree, Skrill, and Hyperwallet accounts are source-confirmed but need table context before active reconciliation.",
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "scope_name": "MPL USA International Gateways Requiring Context",
+        "scope_type": "source_confirmed_requires_context",
+        "platform_account_ids": [
+          "platform_account.mpl_usa.braintree.primary",
+          "platform_account.mpl_usa.skrill.primary",
+          "platform_account.mpl_usa.hyperwallet.primary"
+        ],
+        "platform_ids": [],
+        "platform_context_ids": [],
+        "declared_unresolved_platform_ids": [
+          "platform.braintree",
+          "platform.skrill",
+          "platform.hyperwallet"
+        ],
+        "declared_unresolved_platform_context_ids": [
+          "platform_context.braintree.global",
+          "platform_context.skrill.global",
+          "platform_context.hyperwallet.global"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "canonical_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "name": "MPL USA Wallet Ledger Core",
+      "status": "active",
+      "active": true,
+      "confidence": "high",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "MPL USA.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "binding_name": "MPL USA Wallet Ledger Core",
+        "binding_type": "wallet_ledger_flow",
+        "business_scope_set_id": "business_scope_set.mpl_usa.wallet_ledger",
+        "money_flow_paths": [
+          "wallet_deposit_ledger",
+          "wallet_withdrawal_ledger"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+            "role": "wallet_ledger_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.mpl_oms_deposit",
+          "table.zs_observe.mpl_oms_withdrawal"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+          "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.wallet_deposit_capture",
+          "business_process.wallet_withdrawal_payout"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.wallet_ledger_integrity"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "canonical_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "name": "MPL USA Wallet Deposit to International Gateways Requires Context",
+      "status": "draft",
+      "active": false,
+      "confidence": "medium",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "MPL USA.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "binding_name": "MPL USA Wallet Deposit to International Gateways Requires Context",
+        "binding_type": "wallet_deposit_reconciliation_flow",
+        "business_scope_set_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+        "money_flow_paths": [
+          "wallet_deposit_to_payin_gateway"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+            "role": "wallet_deposit_ledger",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.mpl_usa.braintree.primary",
+            "role": "payin_source_requires_context",
+            "required": false
+          },
+          {
+            "platform_account_id": "platform_account.mpl_usa.skrill.primary",
+            "role": "payin_source_requires_context",
+            "required": false
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.mpl_oms_deposit"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+          "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+          "account_data_binding.mpl_usa.braintree.primary.braintree",
+          "account_data_binding.mpl_usa.skrill.primary.skrill"
+        ],
+        "conditions": [],
+        "declared_unresolved_evidence_table_ids": [
+          "table.zs_observe.braintree",
+          "table.zs_observe.skrill"
+        ],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.wallet_deposit_capture"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.wallet_deposit_to_payin"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "canonical_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "name": "MPL USA Wallet Withdrawal to Hyperwallet Requires Context",
+      "status": "draft",
+      "active": false,
+      "confidence": "medium",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "MPL USA.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.mpl_usa.docx.section.02_platform_wallet_ledger",
+        "ev.mpl_usa.docx.row.03_payment_gateways.03_hyperwallet",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.01_oms_deposit",
+        "ev.mpl_usa.docx.row.02_platform_wallet_ledger.02_oms_withdrawal"
+      ],
+      "fields": {
+        "tenant_id": "tenant.mpl_usa",
+        "group_id": "group.mpl_usa.mpl",
+        "binding_name": "MPL USA Wallet Withdrawal to Hyperwallet Requires Context",
+        "binding_type": "wallet_withdrawal_reconciliation_flow",
+        "business_scope_set_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+        "money_flow_paths": [
+          "wallet_withdrawal_to_payout_gateway"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+            "role": "wallet_withdrawal_ledger",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.mpl_usa.hyperwallet.primary",
+            "role": "payout_source_requires_context",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.mpl_oms_withdrawal"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+          "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+          "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet"
+        ],
+        "conditions": [],
+        "declared_unresolved_evidence_table_ids": [
+          "table.zs_observe.hyperwallet"
+        ],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.wallet_withdrawal_payout"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.wallet_withdrawal_to_payout"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    }
+  ],
+  "semantic_mappings": [
+    {
+      "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "client_config_text": "MPL USA OMS Deposit/Withdrawal ledger",
+      "source_confirmed_requires_context": [],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.mpl_oms_deposit",
+        "table.zs_observe.mpl_oms_withdrawal"
+      ],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.mpl_usa.braintree.primary",
+      "client_config_text": "Braintree pay-in deposits",
+      "source_confirmed_requires_context": [
+        "braintree"
+      ],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.mpl_usa.skrill.primary",
+      "client_config_text": "Skrill pay-in deposits",
+      "source_confirmed_requires_context": [
+        "skrill"
+      ],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "client_config_text": "Hyperwallet payouts",
+      "source_confirmed_requires_context": [
+        "hyperwallet"
+      ],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [],
+      "unresolved_canonical_requested": []
+    }
+  ],
+  "candidate_edges": [
+    {
+      "edge_id": "edge.mpl_usa.has_group.794d8d58b8de",
+      "edge_type": "HAS_GROUP",
+      "canonical_edge_type": "HAS_GROUP",
+      "source_card_id": "tenant.mpl_usa",
+      "target_card_id": "group.mpl_usa.mpl",
+      "source_type": "tenant",
+      "target_type": "group",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_GROUP"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_platform_account.678a59b5aff9",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_account_data_binding.523e072f3f39",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.binds_to_table.dcf5036d0973",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "target_card_id": "table.zs_observe.mpl_oms_deposit",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_account_data_binding.4f04fc02c335",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.binds_to_table.96e1ae71373b",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "target_card_id": "table.zs_observe.mpl_oms_withdrawal",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_platform_account.17d53f463e27",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "platform_account.mpl_usa.braintree.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_account_data_binding.6fe0118a17db",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.mpl_usa.braintree.primary",
+      "target_card_id": "account_data_binding.mpl_usa.braintree.primary.braintree",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_platform_account.ab3a2ac34752",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "platform_account.mpl_usa.skrill.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_account_data_binding.ac9a30acd76f",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.mpl_usa.skrill.primary",
+      "target_card_id": "account_data_binding.mpl_usa.skrill.primary.skrill",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_platform_account.27facc3f2fe3",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_account_data_binding.e8b1c8a753b7",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "target_card_id": "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_business_scope_set.0ff43eb4b0fd",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "business_scope_set.mpl_usa.wallet_ledger",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.includes_platform_account.4653d39974a2",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.mpl_usa.wallet_ledger",
+      "target_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_business_scope_set.7e90b58d58fe",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.includes_platform_account.d103adb951ea",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "target_card_id": "platform_account.mpl_usa.braintree.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.includes_platform_account.376eae1e8372",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "target_card_id": "platform_account.mpl_usa.skrill.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.includes_platform_account.1d1b432cfdd2",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "target_card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_business_flow_binding.855581bb28be",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_business_scope_set.24a13599062a",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "target_card_id": "business_scope_set.mpl_usa.wallet_ledger",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.participates_with_account.e078ac8bdb4c",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "target_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.53c3f921921b",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.331c7fd647b2",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_evidence_table.fe48ad5fdd2d",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "target_card_id": "table.zs_observe.mpl_oms_deposit",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_evidence_table.c1927fc9b3c8",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_ledger_core",
+      "target_card_id": "table.zs_observe.mpl_oms_withdrawal",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_business_flow_binding.485042ed2fee",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_business_scope_set.7b4d5a8d5b9d",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.participates_with_account.b0c9e6c45897",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.participates_with_account.89068377a892",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "platform_account.mpl_usa.braintree.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.participates_with_account.49a61d706305",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "platform_account.mpl_usa.skrill.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.536e92bcc505",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.c43b2f8b3252",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.bbfdd8706545",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.braintree.primary.braintree",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.0193f80a2b87",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.skrill.primary.skrill",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_evidence_table.feb8233907b2",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "target_card_id": "table.zs_observe.mpl_oms_deposit",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.has_business_flow_binding.34e6a26c6f54",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.mpl_usa.mpl",
+      "target_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_business_scope_set.3e0c8b5ebaa1",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.participates_with_account.97fbb0a2c52e",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.participates_with_account.9a83913c74b9",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.90cb149815ce",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.9e471453917e",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_account_data_binding.1537d9efbbf2",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.mpl_usa.uses_evidence_table.5cd8c9e2d998",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "target_card_id": "table.zs_observe.mpl_oms_withdrawal",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch3",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    }
+  ],
+  "blocked_edges": [
+    {
+      "source_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "edge_type": "USES_PLATFORM",
+      "target_card_id": "platform.mpl_proprietary",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform.mpl_proprietary"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.wallet_ledger.primary",
+        "edge": "USES_PLATFORM",
+        "target": "platform.mpl_proprietary",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "target_card_id": "platform_context.mpl.wallet_ledger",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform_context.mpl.wallet_ledger"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.wallet_ledger.primary",
+        "edge": "USES_PLATFORM_CONTEXT",
+        "target": "platform_context.mpl.wallet_ledger",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.braintree.primary",
+      "edge_type": "USES_PLATFORM",
+      "target_card_id": "platform.braintree",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform.braintree"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.braintree.primary",
+        "edge": "USES_PLATFORM",
+        "target": "platform.braintree",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.braintree.primary",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "target_card_id": "platform_context.braintree.global",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform_context.braintree.global"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.braintree.primary",
+        "edge": "USES_PLATFORM_CONTEXT",
+        "target": "platform_context.braintree.global",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "account_data_binding.mpl_usa.braintree.primary.braintree",
+      "edge_type": "BINDS_TO_TABLE",
+      "target_card_id": "table.zs_observe.braintree",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.braintree"
+        }
+      ],
+      "original_edge": {
+        "source": "account_data_binding.mpl_usa.braintree.primary.braintree",
+        "edge": "BINDS_TO_TABLE",
+        "target": "table.zs_observe.braintree",
+        "reference_status": "source_described_requires_platform_context"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.skrill.primary",
+      "edge_type": "USES_PLATFORM",
+      "target_card_id": "platform.skrill",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform.skrill"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.skrill.primary",
+        "edge": "USES_PLATFORM",
+        "target": "platform.skrill",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.skrill.primary",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "target_card_id": "platform_context.skrill.global",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform_context.skrill.global"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.skrill.primary",
+        "edge": "USES_PLATFORM_CONTEXT",
+        "target": "platform_context.skrill.global",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "account_data_binding.mpl_usa.skrill.primary.skrill",
+      "edge_type": "BINDS_TO_TABLE",
+      "target_card_id": "table.zs_observe.skrill",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.skrill"
+        }
+      ],
+      "original_edge": {
+        "source": "account_data_binding.mpl_usa.skrill.primary.skrill",
+        "edge": "BINDS_TO_TABLE",
+        "target": "table.zs_observe.skrill",
+        "reference_status": "source_described_requires_platform_context"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "edge_type": "USES_PLATFORM",
+      "target_card_id": "platform.hyperwallet",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform.hyperwallet"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.hyperwallet.primary",
+        "edge": "USES_PLATFORM",
+        "target": "platform.hyperwallet",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "platform_account.mpl_usa.hyperwallet.primary",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "target_card_id": "platform_context.hyperwallet.global",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform_context.hyperwallet.global"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.mpl_usa.hyperwallet.primary",
+        "edge": "USES_PLATFORM_CONTEXT",
+        "target": "platform_context.hyperwallet.global",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet",
+      "edge_type": "BINDS_TO_TABLE",
+      "target_card_id": "table.zs_observe.hyperwallet",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.hyperwallet"
+        }
+      ],
+      "original_edge": {
+        "source": "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet",
+        "edge": "BINDS_TO_TABLE",
+        "target": "table.zs_observe.hyperwallet",
+        "reference_status": "source_described_requires_platform_context"
+      }
+    },
+    {
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "target_card_id": "table.zs_observe.braintree",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.braintree"
+        }
+      ],
+      "original_edge": {
+        "source": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+        "edge": "USES_EVIDENCE_TABLE",
+        "target": "table.zs_observe.braintree",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "target_card_id": "table.zs_observe.skrill",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.skrill"
+        }
+      ],
+      "original_edge": {
+        "source": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+        "edge": "USES_EVIDENCE_TABLE",
+        "target": "table.zs_observe.skrill",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "target_card_id": "table.zs_observe.hyperwallet",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.hyperwallet"
+        }
+      ],
+      "original_edge": {
+        "source": "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context",
+        "edge": "USES_EVIDENCE_TABLE",
+        "target": "table.zs_observe.hyperwallet",
+        "reference_status": "external"
+      }
+    }
+  ],
+  "future_context_gaps": [
+    {
+      "platform_or_area": "Braintree",
+      "source_confirmed_artifacts": [
+        "braintree"
+      ],
+      "source_evidence_text": "MPL USA lists Braintree as a pay-in deposit gateway.",
+      "impact": "Braintree cannot be active gateway evidence until table context is authored.",
+      "required_action": "author_platform_context_or_confirm_table_schema_then_add_account_data_binding",
+      "severity": "high",
+      "source_documents": [
+        "MPL USA.docx"
+      ]
+    },
+    {
+      "platform_or_area": "Skrill",
+      "source_confirmed_artifacts": [
+        "skrill"
+      ],
+      "source_evidence_text": "MPL USA lists Skrill as a pay-in deposit gateway.",
+      "impact": "Skrill cannot be active gateway evidence until table context is authored.",
+      "required_action": "author_platform_context_or_confirm_table_schema_then_add_account_data_binding",
+      "severity": "high",
+      "source_documents": [
+        "MPL USA.docx"
+      ]
+    },
+    {
+      "platform_or_area": "Hyperwallet",
+      "source_confirmed_artifacts": [
+        "hyperwallet"
+      ],
+      "source_evidence_text": "MPL USA lists Hyperwallet as a pay-out withdrawal rail.",
+      "impact": "Hyperwallet cannot be active payout evidence until table context is authored.",
+      "required_action": "author_platform_context_or_confirm_table_schema_then_add_account_data_binding",
+      "severity": "high",
+      "source_documents": [
+        "MPL USA.docx"
+      ]
+    },
+    {
+      "platform_or_area": "table.zs_observe.braintree",
+      "missing_artifacts": [
+        "table.zs_observe.braintree"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "medium",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "table.zs_observe.hyperwallet",
+      "missing_artifacts": [
+        "table.zs_observe.hyperwallet"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "medium",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "table.zs_observe.skrill",
+      "missing_artifacts": [
+        "table.zs_observe.skrill"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "medium",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform_context.braintree.global",
+      "missing_artifacts": [
+        "platform_context.braintree.global"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.braintree.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform_context.hyperwallet.global",
+      "missing_artifacts": [
+        "platform_context.hyperwallet.global"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.hyperwallet.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform_context.mpl.wallet_ledger",
+      "missing_artifacts": [
+        "platform_context.mpl.wallet_ledger"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.wallet_ledger.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform_context.skrill.global",
+      "missing_artifacts": [
+        "platform_context.skrill.global"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.skrill.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform.braintree",
+      "missing_artifacts": [
+        "platform.braintree"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.braintree.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform.hyperwallet",
+      "missing_artifacts": [
+        "platform.hyperwallet"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.hyperwallet.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform.mpl_proprietary",
+      "missing_artifacts": [
+        "platform.mpl_proprietary"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.wallet_ledger.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform.skrill",
+      "missing_artifacts": [
+        "platform.skrill"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.mpl_usa.skrill.primary"
+      ],
+      "generated_by_refactor": true
+    }
+  ],
+  "resolved_context_gaps": [],
+  "open_review_items": [
+    {
+      "item": "tenant.mpl_usa",
+      "issue": "Source geography says international, inferred as US, Europe, and other global markets from gateway selection. Confirm exact country/currency filters before production routing.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "review_resolution_status": "open"
+    },
+    {
+      "item": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+      "issue": "Gateway account cards exist but Braintree and Skrill table contexts are not available in the current uploaded KB.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "review_resolution_status": "open"
+    },
+    {
+      "item": "table.zs_observe.braintree",
+      "issue": "Referenced as evidence_table_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "table.zs_observe.hyperwallet",
+      "issue": "Referenced as evidence_table_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "table.zs_observe.skrill",
+      "issue": "Referenced as evidence_table_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.braintree.global",
+      "issue": "Referenced as platform_context_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.braintree.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.hyperwallet.global",
+      "issue": "Referenced as platform_context_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.hyperwallet.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.mpl.wallet_ledger",
+      "issue": "Referenced as platform_context_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.wallet_ledger.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.skrill.global",
+      "issue": "Referenced as platform_context_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.skrill.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.braintree.global",
+      "issue": "Referenced as platform_context_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.international_gateways_requiring_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.hyperwallet.global",
+      "issue": "Referenced as platform_context_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.international_gateways_requiring_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.mpl.wallet_ledger",
+      "issue": "Referenced as platform_context_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.wallet_ledger"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.skrill.global",
+      "issue": "Referenced as platform_context_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.international_gateways_requiring_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.braintree",
+      "issue": "Referenced as platform_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.braintree.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.hyperwallet",
+      "issue": "Referenced as platform_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.hyperwallet.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.mpl_proprietary",
+      "issue": "Referenced as platform_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.wallet_ledger.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.skrill",
+      "issue": "Referenced as platform_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.mpl_usa.skrill.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.braintree",
+      "issue": "Referenced as platform_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.international_gateways_requiring_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.hyperwallet",
+      "issue": "Referenced as platform_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.international_gateways_requiring_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.mpl_proprietary",
+      "issue": "Referenced as platform_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.wallet_ledger"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.skrill",
+      "issue": "Referenced as platform_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.mpl_usa.international_gateways_requiring_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "table.zs_observe.braintree",
+      "issue": "Referenced as table_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": true,
+      "affected_client_cards": [
+        "account_data_binding.mpl_usa.braintree.primary.braintree"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "table.zs_observe.hyperwallet",
+      "issue": "Referenced as table_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": true,
+      "affected_client_cards": [
+        "account_data_binding.mpl_usa.hyperwallet.primary.hyperwallet"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "table.zs_observe.skrill",
+      "issue": "Referenced as table_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": true,
+      "affected_client_cards": [
+        "account_data_binding.mpl_usa.skrill.primary.skrill"
+      ],
+      "generated_by_refactor": true
+    }
+  ],
+  "resolved_review_items": [],
+  "non_blocking_declared_semantic_reference_gaps": [
+    {
+      "reference_id": "business_process.wallet_deposit_capture",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+        "business_flow_binding.mpl_usa.wallet_ledger_core"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.wallet_withdrawal_payout",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_ledger_core",
+        "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.wallet_deposit_to_payin",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.wallet_ledger_integrity",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_ledger_core"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.wallet_withdrawal_to_payout",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.mpl_usa.wallet_withdrawal_to_hyperwallet_requires_context"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    }
+  ],
+  "validation_summary": {
+    "result": "pass",
+    "original_card_count": 16,
+    "refactored_card_count": 16,
+    "original_edge_count": 57,
+    "refactored_edge_count": 43,
+    "blocked_edge_count": 14,
+    "source_evidence_count": 8,
+    "source_row_evidence_count": 5,
+    "card_type_counts": {
+      "tenant": 1,
+      "group": 1,
+      "platform_account": 4,
+      "account_data_binding": 5,
+      "business_scope_set": 2,
+      "business_flow_binding": 3
+    },
+    "status_counts": {
+      "active": 7,
+      "review_required": 6,
+      "draft": 3
+    },
+    "review_status_counts": {
+      "accepted": 6,
+      "review_required": 10
+    },
+    "active_bindings_to_missing_tables": [],
+    "edge_reference_error_count": 0,
+    "edge_reference_errors": [],
+    "status_active_conflicts": [],
+    "forbidden_candidate_cards": [],
+    "duplicate_card_id_count": 0,
+    "old_shopify_source_docs_in_candidate_cards": [],
+    "canonical_resolution_gap_count": 29,
+    "canonical_resolution_gap_type_counts": {
+      "platform_id": 4,
+      "platform_context_id": 4,
+      "table_id": 3,
+      "platform_ids": 4,
+      "platform_context_ids": 4,
+      "business_process_ids": 4,
+      "reconciliation_profile_ids": 3,
+      "evidence_table_ids": 3
+    },
+    "status_correction_count": 3,
+    "status_changes": [
+      {
+        "card_id": "platform_account.mpl_usa.braintree.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      },
+      {
+        "card_id": "platform_account.mpl_usa.skrill.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      },
+      {
+        "card_id": "platform_account.mpl_usa.hyperwallet.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      }
+    ],
+    "id_or_source_replacement_count": 2,
+    "id_or_source_replacements": [
+      {
+        "card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      }
+    ],
+    "resolved_prior_review_count": 0,
+    "open_review_count": 24,
+    "future_context_gap_count": 14,
+    "resolved_context_gap_count": 0,
+    "non_blocking_declared_semantic_reference_gap_count": 5,
+    "non_blocking_declared_semantic_reference_gap_type_counts": {
+      "business_process_ids": 2,
+      "reconciliation_profile_ids": 3
+    },
+    "edge_status_counts": {
+      "emitted": 43,
+      "blocked_unresolved": 14
+    }
+  }
+}

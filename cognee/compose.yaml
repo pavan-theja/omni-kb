@@ -1,0 +1,34 @@
+services:
+  cognee:
+    image: zenstatement-cognee:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zenstatement-cognee
+    env_file:
+      - ${COGNEE_RUNTIME_ENV_FILE:-./runtime/cognee.env}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./export/documents:/data/cognee-documents:ro
+      - ./runtime/google-credentials:/app/.google-credentials:ro
+      - ${COGNEE_RUNTIME_SYSTEM_DIR:-./runtime/system}:/app/.cognee_system
+      - ${COGNEE_RUNTIME_DATA_DIR:-./runtime/data_storage}:/app/.data_storage
+    environment:
+      HTTP_API_HOST: 0.0.0.0
+      HTTP_API_PORT: 8000
+      REQUIRE_AUTHENTICATION: "false"
+      ENABLE_BACKEND_ACCESS_CONTROL: "false"
+      ACCEPT_LOCAL_FILE_PATH: "true"
+      ENV: local
+      SYSTEM_ROOT_DIRECTORY: /app/.cognee_system
+      DATA_ROOT_DIRECTORY: /app/.data_storage
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)"
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    restart: unless-stopped

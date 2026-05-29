@@ -1,0 +1,42 @@
+{
+  "aggregation_order": "sum product revenue excluding tax before adding signed commission deduction",
+  "canonical_id": "metric_dependency.walmart.net_seller_payout.product_revenue_component",
+  "card_type": "metric_dependency",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "base_component",
+  "depends_on": "metric.marketplace.product_revenue_excluding_tax",
+  "description": "metric_dependency card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.business_model.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.business_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4172
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "metric_id": "metric.marketplace.net_seller_payout",
+  "name": "Net seller payout depends on product revenue excluding tax",
+  "notes": "Net seller payout is charged_amount_excluding_tax + gross_commission.",
+  "required_before_computation": true,
+  "review_status": "accepted",
+  "source_card_id": "metric_dependency.walmart.net_seller_payout.product_revenue_component",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4172,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,41 @@
+{
+  "canonical_id": "rule.walmart.hsn_is_barcode",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_oms.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_oms.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5608
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "OMS hsn is barcode not Indian HSN",
+  "notes": "walmart_oms.hsn is a barcode/GTIN-like value, not an Indian HSN code; use item_id/partner_gtin for barcode matching and do not use hsn for tax classification.",
+  "related_canonical_id": "column.zs_observe.walmart_oms.hsn",
+  "review_status": "accepted",
+  "rule_text": "walmart_oms.hsn is a barcode/GTIN-like value, not an Indian HSN code; use item_id/partner_gtin for barcode matching and do not use hsn for tax classification.",
+  "rule_type": "schema_caveat",
+  "severity": "medium",
+  "source_card_id": "rule.walmart.hsn_is_barcode",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5608,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

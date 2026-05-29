@@ -1,0 +1,66 @@
+{
+  "amount_tolerance": "0 unless documented by source-specific rule",
+  "canonical_id": "matching_logic.logistics.batch_deduplicated_amount_match",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Aggregate AWB-level records to settlement batch before matching a bank credit.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 3143
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 3143
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 3143
+    }
+  ],
+  "expected_alignment_type": "one_to_one_or_aggregated_by_pattern",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fallback_match_strategy": "use staged fallback only after primary reference failure",
+  "logic_name": "Batch Deduplicated Amount Match",
+  "match_confidence_rules": "exact reference high; batch/reference medium-high; amount/date fallback medium; sparse native low",
+  "matching_logic_boundary": "Defines generic matching behavior, not tenant/group account routing.",
+  "matching_strategy": "aggregated",
+  "name": "Batch Deduplicated Amount Match",
+  "notes": "This additional matching logic card expands profile-level matching into reusable deterministic key-level patterns.",
+  "primary_match_keys": "settlement_id; total_amount_of_batch; utr; bank_reference",
+  "reconciliation_profile_id": "applies_to_multiple_logistics_reconciliation_profiles",
+  "review_status": "unreviewed",
+  "secondary_match_keys": "amount; date window; platform/vendor; account scope when needed",
+  "source_card_id": "matching_logic.logistics.batch_deduplicated_amount_match",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3143,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_status": "active",
+  "status": "active",
+  "time_tolerance": "source-specific date window",
+  "unmatched_handling": "classify using mismatch_category cards",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

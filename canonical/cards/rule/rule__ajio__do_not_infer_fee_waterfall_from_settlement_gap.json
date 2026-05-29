@@ -1,0 +1,50 @@
+{
+  "canonical_id": "rule.ajio.do_not_infer_fee_waterfall_from_settlement_gap",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Settlement charged_amount is AJIO B2B PO value and the settlement table has no commission/fee breakdown; the difference versus OMS customer price is B2B2C pricing context, not a deterministic fee waterfall.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.014_5_fee_structure_and_commission",
+    "evidence.ajio.042_12_data_quality_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.014_5_fee_structure_and_commission",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    },
+    {
+      "evidence_id": "evidence.ajio.042_12_data_quality_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Do not infer commission waterfall from OMS-settlement gap",
+  "review_status": "ready",
+  "rule_statement": "Settlement charged_amount is AJIO B2B PO value and the settlement table has no commission/fee breakdown; the difference versus OMS customer price is B2B2C pricing context, not a deterministic fee waterfall.",
+  "rule_type": "semantic_query_rule",
+  "severity": "high",
+  "source_card_id": "rule.ajio.do_not_infer_fee_waterfall_from_settlement_gap",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.014_5_fee_structure_and_commission",
+    "evidence.ajio.042_12_data_quality_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7316,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

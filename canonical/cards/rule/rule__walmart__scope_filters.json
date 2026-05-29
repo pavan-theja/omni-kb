@@ -1,0 +1,41 @@
+{
+  "canonical_id": "rule.walmart.scope_filters",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5456
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Walmart mandatory scope filters",
+  "notes": "All Walmart production queries should apply is_active = true and group_level_id = 22 unless runtime scope overrides are supplied by a separate account-binding layer.",
+  "related_canonical_id": "table.zs_observe.walmart_oms",
+  "review_status": "accepted",
+  "rule_text": "All Walmart production queries should apply is_active = true and group_level_id = 22 unless runtime scope overrides are supplied by a separate account-binding layer.",
+  "rule_type": "query_filter",
+  "severity": "medium",
+  "source_card_id": "rule.walmart.scope_filters",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5456,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

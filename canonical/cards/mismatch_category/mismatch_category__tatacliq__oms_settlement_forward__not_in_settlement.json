@@ -1,0 +1,42 @@
+{
+  "business_meaning": "OMS invoice lacks settlement row, especially Oct-Dec 2025 gap if periods are not aligned",
+  "canonical_id": "mismatch_category.tatacliq.oms_settlement_forward.not_in_settlement",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "OMS invoice lacks settlement row, especially Oct-Dec 2025 gap if periods are not aligned",
+  "detection_logic": "s.order_id IS NULL",
+  "display_name": "Not In Settlement",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.recon_oms_settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.recon_oms_settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7561
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "not_in_settlement",
+  "name": "Not In Settlement",
+  "profile_id": "reconciliation_profile.tatacliq.oms_settlement_forward",
+  "review_priority": "high",
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.tatacliq.oms_settlement_forward.not_in_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7561,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

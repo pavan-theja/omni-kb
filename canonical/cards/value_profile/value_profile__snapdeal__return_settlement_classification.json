@@ -1,0 +1,74 @@
+{
+  "canonical_id": "value_profile.snapdeal.return_settlement_classification",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.snapdeal_settlement.type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal return settlement classification values",
+  "do_not_create_process_variant": true,
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 10721
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 10721
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Snapdeal return settlement classification values",
+  "profile_kind": "documented_return_settlement_classification",
+  "review_status": "ready",
+  "source_card_id": "value_profile.snapdeal.return_settlement_classification",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10721,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.snapdeal_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "values": [
+    {
+      "courier_cost": "charged to seller",
+      "settlement_type": "COD/NCOD RTO Charges",
+      "trigger": "Delivery failed, returned to origin hub",
+      "type": "RTO"
+    },
+    {
+      "courier_cost": "reverse logistics charged",
+      "settlement_type": "COD/NCOD RTS to Vendor",
+      "trigger": "Buyer-initiated return after delivery / return-to-seller",
+      "type": "RTS"
+    },
+    {
+      "courier_cost": "forward and reverse both reversed",
+      "settlement_type": "COD Return to Vendor / NCOD Ret to Vendor",
+      "trigger": "Buyer-initiated return to vendor",
+      "type": "RTV"
+    },
+    {
+      "courier_cost": "premium repackage charge",
+      "settlement_type": "COD RPR Charges",
+      "trigger": "Return + repackage at Snapdeal hub",
+      "type": "RPR"
+    }
+  ]
+}

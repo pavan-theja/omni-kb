@@ -1,0 +1,11 @@
+{
+  "card_types": {},
+  "counts": {
+    "semantic_mappings": 8
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "target"
+  ]
+}

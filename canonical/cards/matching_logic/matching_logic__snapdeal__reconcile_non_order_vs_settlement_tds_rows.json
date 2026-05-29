@@ -1,0 +1,57 @@
+{
+  "aggregation_order": "Aggregate many-side rows before amount comparison where settlement/non_order/commission lines can repeat per sub-order or settlement batch.",
+  "amount_comparison": "Row-level TDS matching between non_order and settlement.",
+  "canonical_id": "matching_logic.snapdeal.reconcile_non_order_vs_settlement_tds_rows",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal matching logic — Reconcile Non-Order vs Settlement TDS Rows",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.8_4_reconcile_non_order_vs_settlement_tds_rows",
+    "evidence.snapdeal.join_map_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.8_4_reconcile_non_order_vs_settlement_tds_rows",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 18138
+    },
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 18138
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 18138
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "n.sub_order_no = s.item_id AND LOWER(s.type) LIKE '%tds%'",
+  "key_normalization": "Preserve source keys; apply documented normalization only if the DOCX states it.",
+  "match_key": "sub_order_no/item_id",
+  "match_type": "key_and_amount_or_status_reconciliation",
+  "name": "Snapdeal matching logic — Reconcile Non-Order vs Settlement TDS Rows",
+  "review_status": "ready",
+  "source_card_id": "matching_logic.snapdeal.reconcile_non_order_vs_settlement_tds_rows",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18138,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_rule": "Use source-documented settlement/return/payment timing; otherwise review_required.",
+  "tolerance_rule": "No universal numeric tolerance documented; see review.snapdeal.reconciliation_tolerance.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

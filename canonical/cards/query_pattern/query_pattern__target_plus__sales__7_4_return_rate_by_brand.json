@@ -1,0 +1,56 @@
+{
+  "canonical_id": "query_pattern.target_plus.sales.7_4_return_rate_by_brand",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus query pattern — 7.4 Return Rate by Brand",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.sales.7_4_return_rate_by_brand"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.sales.7_4_return_rate_by_brand",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11362
+    }
+  ],
+  "execution_constraints": [
+    "execution_constraint_set.target_plus.marketplace_parser_constraints"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "7.4 Return Rate by Brand",
+  "name": "Target Plus query pattern — 7.4 Return Rate by Brand",
+  "natural_language_patterns": [
+    "7.4 Return Rate by Brand",
+    "Target Plus 7.4 Return Rate by Brand"
+  ],
+  "output_contract_id": "output_contract.target_plus.metric_timeseries",
+  "primary_metric_id": null,
+  "reconciliation_profile_ids": [],
+  "required_filters": [
+    "rule.target_plus.active_filter"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.target_plus.sales.7_4_return_rate_by_brand",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11362,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.target_returns",
+    "table.zs_observe.target_sales"
+  ],
+  "sql_ref": "sql.target_plus.sales.7_4_return_rate_by_brand",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

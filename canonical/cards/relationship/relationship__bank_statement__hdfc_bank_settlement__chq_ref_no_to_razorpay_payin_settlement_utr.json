@@ -1,0 +1,54 @@
+{
+  "aggregation_risk": "Many external settlement rows can map to one bank credit; aggregate before join.",
+  "banking_only": true,
+  "business_semantics": "Matches bank statement reference column chq__ref_no_ to external payment/settlement reference razorpay_payin.settlement_utr.",
+  "canonical_id": "relationship.bank_statement.hdfc_bank_settlement.chq_ref_no_to_razorpay_payin_settlement_utr",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 9106
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_keys": [
+    {
+      "source_column": "chq__ref_no_",
+      "target_reference": "razorpay_payin.settlement_utr"
+    }
+  ],
+  "join_safety_rule": "Do not create the external table/card from this bank markdown; use external payment/marketplace KB when available. Pre-aggregate external settlement rows by reference before comparing to bank amount.",
+  "name": "hdfc_bank_settlement chq__ref_no_ to razorpay_payin.settlement_utr",
+  "relationship_grain": "bank transaction reference to external settlement/payout/reference grain",
+  "relationship_type": "cross_domain_reconciliation_reference",
+  "review_status": "accepted",
+  "safe_for_metrics": false,
+  "safe_for_reconciliation": true,
+  "source_card_id": "relationship.bank_statement.hdfc_bank_settlement.chq_ref_no_to_razorpay_payin_settlement_utr",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9106,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "source_table": "table.zs_ingest.hdfc_bank_settlement",
+  "status": "active",
+  "target_table": "external_reference_only",
+  "target_table_ref": "razorpay_payin.settlement_utr",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

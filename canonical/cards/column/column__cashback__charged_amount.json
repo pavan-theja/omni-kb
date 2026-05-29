@@ -1,0 +1,47 @@
+{
+  "business_meaning": "Signed cashback/promo amount.",
+  "canonical_id": "column.cashback.charged_amount",
+  "card_type": "column",
+  "column_name": "charged_amount",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "Signed cashback/promo amount.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.cashback"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.cashback",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 2375
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "metric_amount",
+  "name": "table.flipkart.cashback.charged_amount",
+  "review_status": "accepted",
+  "semantic_type": "cashback_or_promo_amount",
+  "source_card_id": "column.cashback.charged_amount",
+  "source_caveats": [
+    "Signed amount; preserve negative reverse/cancel semantics."
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2375,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.cashback",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

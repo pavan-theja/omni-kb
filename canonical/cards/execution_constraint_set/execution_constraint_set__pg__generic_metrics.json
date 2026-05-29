@@ -1,0 +1,74 @@
+{
+  "applies_to": [
+    "payment_gateway metrics",
+    "payment_gateway reconciliation",
+    "payment_gateway diagnostics"
+  ],
+  "blocking_failures": [],
+  "canonical_id": "execution_constraint_set.pg.generic_metrics",
+  "card_type": "execution_constraint_set",
+  "confidence": "inferred",
+  "constraint_set_name": "Generic payment gateway metric constraints",
+  "constraint_set_type": "analytical",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Generic payment gateway metric constraints",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 54631
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Generic payment gateway metric constraints",
+  "output_contract_id": "output_contract.pg.settlement_summary",
+  "query_patterns": [
+    "query_pattern.pg.net_settlement_by_batch",
+    "query_pattern.pg.payment_mode_breakdown",
+    "query_pattern.pg.refund_analysis",
+    "query_pattern.pg.failed_payments",
+    "query_pattern.pg.payout_success",
+    "query_pattern.pg.gateway_to_bank_recon",
+    "query_pattern.pg.chargeback_tracking",
+    "query_pattern.pg.bnpl_settlement",
+    "query_pattern.pg.app_store_commission"
+  ],
+  "review_status": "accepted",
+  "rules": [
+    "rule.pg.active_filter",
+    "rule.pg.duplicate_filter",
+    "rule.pg.text_amount_cast",
+    "rule.pg.source_sign_preserving"
+  ],
+  "source_card_id": "execution_constraint_set.pg.generic_metrics",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 54631,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_tests": [
+    "validation_test.pg.active_filter_present",
+    "validation_test.pg.duplicate_filter_present",
+    "validation_test.pg.amount_columns_decimal_or_cast"
+  ],
+  "warning_failures": []
+}

@@ -1,0 +1,46 @@
+{
+  "canonical_id": "workflow_step.tatacliq.forward_sale_flow.03",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Settlement cycle creates zs_observe.tatacliq_settlement rows with transaction_type=forward and order_tag=NOR.",
+  "display_name": "Weekly settlement row creation",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.lifecycle.forward"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.lifecycle.forward",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7196
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "zs_observe.tatacliq_settlement"
+  ],
+  "name": "Weekly settlement row creation",
+  "process_id": "business_process.tatacliq.forward_sale_flow",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.tatacliq.forward_sale_flow.03",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7196,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "status_conditions": [
+    "transaction_type=forward",
+    "order_tag=NOR"
+  ],
+  "step_order": 3,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,39 @@
+{
+  "card_types": {
+    "column": 13,
+    "metric": 7,
+    "metric_implementation": 8,
+    "platform": 1,
+    "platform_context": 1,
+    "table": 1,
+    "value_profile": 3
+  },
+  "counts": {
+    "cards": 34,
+    "documents": 1,
+    "edges": 95,
+    "evidence": 6,
+    "review_items": 5
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM": 1,
+    "BELONGS_TO_DOMAIN": 7,
+    "BELONGS_TO_PLATFORM": 1,
+    "BELONGS_TO_TABLE": 13,
+    "HAS_COLUMN": 13,
+    "HAS_IMPLEMENTATION": 8,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "HAS_VALUE_PROFILE": 6,
+    "IMPLEMENTS_METRIC": 8,
+    "PROFILES_COLUMN": 3,
+    "PROFILES_TABLE": 3,
+    "SOURCED_FROM_PLATFORM": 1,
+    "USES_COLUMN": 14,
+    "USES_FORMULA_TEMPLATE": 8,
+    "USES_TABLE": 8
+  },
+  "scope": [
+    "logistics",
+    "xpressbees_logistics"
+  ]
+}

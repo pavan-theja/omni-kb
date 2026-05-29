@@ -1,0 +1,43 @@
+{
+  "candidate_notes": "Aggregate actual fees by SKU before comparison.",
+  "canonical_id": "formula_template.amazon.amazon_fee_variance",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.fee_preview_actual.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.fee_preview_actual.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6213
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "expected_fee + actual_fee because actual ItemFees are negative",
+  "formula_key": "amazon_fee_variance",
+  "marketplace_only": true,
+  "name": "Amazon expected vs actual fee variance",
+  "notes": "Aggregate actual fees by SKU before comparison.",
+  "platform_context": "platform_context.amazon.in",
+  "review_status": "accepted",
+  "source_card_id": "formula_template.amazon.amazon_fee_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6213,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

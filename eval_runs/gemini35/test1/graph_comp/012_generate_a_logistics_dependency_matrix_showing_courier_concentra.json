@@ -1,0 +1,91 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "GRAPH_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = 22",
+          "sales_channel IS NOT NULL",
+          "fulfilment_channel IS NOT NULL"
+        ],
+        "joins": "No joins are needed as both sales channel and courier (fulfilment_channel) reside in the single consolidated table zs_observe.increff_sales.",
+        "metric_logic": {
+          "aggregation_grain": "sales_channel, fulfilment_channel",
+          "deduplication_rule": "GROUP BY sales_channel, fulfilment_channel",
+          "denominator": "SUM(COUNT(DISTINCT channel_order_id)) OVER(PARTITION BY sales_channel)",
+          "formula": "COUNT(DISTINCT channel_order_id) / SUM(COUNT(DISTINCT channel_order_id)) OVER(PARTITION BY sales_channel)",
+          "numerator": "COUNT(DISTINCT channel_order_id)"
+        },
+        "missing_or_ambiguous": "None",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "zs_observe.ajio_oms",
+          "zs_observe.myntra_oms",
+          "zs_observe.healthkart_settlement",
+          "zs_observe.meesho_returns"
+        ],
+        "required_fields": [
+          {
+            "field": "sales_channel",
+            "reason": "Identifies the marketplace channel (e.g., Myntra, Ajio, Shopify, Amazon).",
+            "role": "Marketplace Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "fulfilment_channel",
+            "reason": "Identifies the logistics/courier partner handling the shipment.",
+            "role": "Courier Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Restricts records to the Mensa tenant (group_level_id = 22).",
+            "role": "Tenant Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "channel_order_id",
+            "reason": "Used to count shipments/orders to determine logistics concentration.",
+            "role": "Metric Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          }
+        ],
+        "required_tables": [
+          {
+            "field": "zs_observe.increff_sales",
+            "reason": "Contains multi-channel sales transaction records alongside courier assignment data.",
+            "role": "Consolidated sales transactions table",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": "zs_observe.increff_sales",
+        "sql_skeleton": "SELECT sales_channel AS marketplace, fulfilment_channel AS courier, COUNT(DISTINCT channel_order_id) AS shipment_count, COUNT(DISTINCT channel_order_id) * 100.0 / SUM(COUNT(DISTINCT channel_order_id)) OVER (PARTITION BY sales_channel) AS concentration_pct FROM zs_observe.increff_sales WHERE group_level_id = 22 AND sales_channel IS NOT NULL AND fulfilment_channel IS NOT NULL GROUP BY 1, 2 ORDER BY marketplace, shipment_count DESC;"
+      }
+    ]
+  },
+  "question": "Generate a logistics dependency matrix showing courier concentration across marketplaces.",
+  "question_index": 12,
+  "results": {
+    "GRAPH_COMPLETION": [
+      "{\"selected_source\": \"zs_observe.increff_sales\", \"rejected_sources\": [\"zs_observe.ajio_oms\", \"zs_observe.myntra_oms\", \"zs_observe.healthkart_settlement\", \"zs_observe.meesho_returns\"], \"required_tables\": [{\"field\": \"zs_observe.increff_sales\", \"role\": \"Consolidated sales transactions table\", \"selected?\": \"Yes\", \"reason\": \"Contains multi-channel sales transaction records alongside courier assignment data.\"}], \"required_fields\": [{\"field\": \"sales_channel\", \"role\": \"Marketplace Identifier\", \"selected?\": \"Yes\", \"reason\": \"Identifies the marketplace channel (e.g., Myntra, Ajio, Shopify, Amazon).\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"fulfilment_channel\", \"role\": \"Courier Identifier\", \"selected?\": \"Yes\", \"reason\": \"Identifies the logistics/courier partner handling the shipment.\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"group_level_id\", \"role\": \"Tenant Filter Column\", \"selected?\": \"Yes\", \"reason\": \"Restricts records to the Mensa tenant (group_level_id = 22).\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"channel_order_id\", \"role\": \"Metric Column\", \"selected?\": \"Yes\", \"reason\": \"Used to count shipments/orders to determine logistics concentration.\", \"table\": \"zs_observe.increff_sales\"}], \"rejected_or_ambiguous_fields\": [], \"metric_logic\": {\"formula\": \"COUNT(DISTINCT channel_order_id) / SUM(COUNT(DISTINCT channel_order_id)) OVER(PARTITION BY sales_channel)\", \"numerator\": \"COUNT(DISTINCT channel_order_id)\", \"denominator\": \"SUM(COUNT(DISTINCT channel_order_id)) OVER(PARTITION BY sales_channel)\", \"aggregation_grain\": \"sales_channel, fulfilment_channel\", \"deduplication_rule\": \"GROUP BY sales_channel, fulfilment_channel\"}, \"filters\": [\"group_level_id = 22\", \"sales_channel IS NOT NULL\", \"fulfilment_channel IS NOT NULL\"], \"joins\": \"No joins are needed as both sales channel and courier (fulfilment_channel) reside in the single consolidated table zs_observe.increff_sales.\", \"missing_or_ambiguous\": \"None\", \"sql_skeleton\": \"SELECT sales_channel AS marketplace, fulfilment_channel AS courier, COUNT(DISTINCT channel_order_id) AS shipment_count, COUNT(DISTINCT channel_order_id) * 100.0 / SUM(COUNT(DISTINCT channel_order_id)) OVER (PARTITION BY sales_channel) AS concentration_pct FROM zs_observe.increff_sales WHERE group_level_id = 22 AND sales_channel IS NOT NULL AND fulfilment_channel IS NOT NULL GROUP BY 1, 2 ORDER BY marketplace, shipment_count DESC;\"}"
+    ]
+  },
+  "scoped_query": "Generate a logistics dependency matrix showing courier concentration across marketplaces.\n\nScope:\n- tenant: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Default to a single source table or single relationship path.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nResponse Format:\nReturn a single answer string containing one valid JSON object.\nDo not wrap it in Markdown or code fences.\nThe JSON object must be emitted as plain text, not as a nested object under a content key.\n\nThe JSON object must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"required_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "GRAPH_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 27.355,
+    "search_seconds": {
+      "GRAPH_COMPLETION": 27.354
+    },
+    "started_at": "2026-05-28T11:15:59+00:00"
+  }
+}

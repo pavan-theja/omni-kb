@@ -1,0 +1,57 @@
+{
+  "business_meaning": "healthkart_return has only 169 single-batch rows; settlement has 1,700+ RTO/reverse records with fee and settled_amount fields.",
+  "canonical_id": "mismatch_category.healthkart.return_settlement_reconciliation.settlement_preferred_for_rto_analysis",
+  "card_type": "mismatch_category",
+  "category_family": "source_coverage_gap",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "healthkart_return has only 169 single-batch rows; settlement has 1,700+ RTO/reverse records with fee and settled_amount fields.",
+  "detection_rule": "healthkart_return has only 169 single-batch rows; settlement has 1,700+ RTO/reverse records with fee and settled_amount fields.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.035_11_reconciliation_use_cases",
+    "evidence.healthkart.097_important_notes",
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.035_11_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7010
+    },
+    {
+      "evidence_id": "evidence.healthkart.097_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7010
+    },
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7010
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Settlement preferred for RTO analysis because return table is sparse",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.healthkart.return_settlement_reconciliation.settlement_preferred_for_rto_analysis",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.035_11_reconciliation_use_cases",
+    "evidence.healthkart.097_important_notes",
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7010,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

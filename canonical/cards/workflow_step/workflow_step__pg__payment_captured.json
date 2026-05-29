@@ -1,0 +1,75 @@
+{
+  "business_object": "payment",
+  "business_process_id": "business_process.pg.customer_payment_capture",
+  "canonical_id": "workflow_step.pg.payment_captured",
+  "card_type": "workflow_step",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Payment captured or failed",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 51276
+    }
+  ],
+  "expected_input": "payment attempt",
+  "expected_lag": "source/platform dependent",
+  "expected_output": "captured/failed status",
+  "expected_state": "payment_captured_or_failed",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "missing_evidence",
+    "status_mismatch",
+    "timing_delay"
+  ],
+  "lazy_load_detection": "passed_source_specific_columns_present",
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "lazy_load_detection_manifest_passed"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Payment captured or failed",
+  "platform_role": "payment_gateway",
+  "platform_type": "payment_gateway",
+  "required_evidence": [
+    "status",
+    "amount",
+    "fee",
+    "payment_mode"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.pg.payment_captured",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 51276,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_specific_columns": [
+    "status",
+    "txn_type",
+    "amount",
+    "fee",
+    "tax",
+    "settled_amount",
+    "payment_mode"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "step_description": "Captured/failed state is read from status/txn_type/payment_mode plus amount/fee/tax fields in the gateway payin table; do not infer capture without documented status/amount evidence.",
+  "step_name": "Payment captured or failed",
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

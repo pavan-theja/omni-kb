@@ -1,0 +1,47 @@
+{
+  "canonical_id": "column.zs_observe.tatacliq_settlement.fulfillment_type",
+  "card_type": "column",
+  "column_name": "fulfillment_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Same as `fulfilment_channel`",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.schema.settlement.classification"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.schema.settlement.classification",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 4739
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": false,
+  "is_date": false,
+  "is_key": false,
+  "is_scope_field": false,
+  "is_status": true,
+  "name": "tatacliq_settlement",
+  "review_status": "ready",
+  "schema": "zs_observe",
+  "semantic_role": "status_or_classification",
+  "source_card_id": "column.zs_observe.tatacliq_settlement.fulfillment_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4739,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_settlement",
+  "table_name": "tatacliq_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

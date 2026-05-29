@@ -1,0 +1,49 @@
+{
+  "benchmark_policy": "guidance_only_not_hard_validation",
+  "business_definition": "TDS amounts from total_tds/tds_on_e_commerce_operations, positive forward and negative reverse.",
+  "canonical_id": "metric.tatacliq.tds_deducted",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "source_query_defined_grain",
+  "default_unit": "INR",
+  "description": "TDS amounts from total_tds/tds_on_e_commerce_operations, positive forward and negative reverse.",
+  "display_name": "TDS Deducted",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.tatacliq.tax",
+  "evidence_ids": [
+    "ev.tatacliq.tax.tds"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.tax.tds",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6209
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_ids": [
+    "metric_impl.tatacliq.tds_summary"
+  ],
+  "metric_family": "tax",
+  "name": "TDS Deducted",
+  "observed_source_value": "Total TDS Mar-Sep 2025 ₹15,578.45; guidance only",
+  "review_status": "ready",
+  "source_card_id": "metric.tatacliq.tds_deducted",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6209,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

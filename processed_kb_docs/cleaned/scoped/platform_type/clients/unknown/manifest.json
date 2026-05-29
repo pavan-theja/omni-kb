@@ -1,0 +1,26 @@
+{
+  "card_types": {
+    "business_flow_binding": 21,
+    "business_scope_set": 22,
+    "group": 5,
+    "tenant": 5
+  },
+  "counts": {
+    "cards": 53,
+    "edges": 105,
+    "future_context_gaps": 240,
+    "review_items": 5,
+    "semantic_mappings": 8
+  },
+  "edge_types": {
+    "HAS_BUSINESS_FLOW_BINDING": 21,
+    "HAS_BUSINESS_SCOPE_SET": 22,
+    "HAS_GROUP": 5,
+    "USES_BUSINESS_SCOPE_SET": 21,
+    "USES_EVIDENCE_TABLE": 36
+  },
+  "scope": [
+    "clients",
+    "unknown"
+  ]
+}

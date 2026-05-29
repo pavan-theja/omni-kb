@@ -1,0 +1,53 @@
+{
+  "canonical_id": "query_pattern.myntra.oms_settlement_reconciliation",
+  "canonical_name": "OMS Settlement Reconciliation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11595
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "OMS Settlement Reconciliation",
+  "output_contract_id": "output_contract.myntra.reconciliation_result",
+  "produced_metric_ids": [],
+  "reconciliation_profile_id": "reconciliation_profile.myntra.oms_to_settlement_level_1",
+  "review_status": "unreviewed",
+  "rule_ids": [
+    "rule.myntra.oms_amount_cast"
+  ],
+  "source_card_id": "query_pattern.myntra.oms_settlement_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11595,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_sql_status": "docx_sql_or_manifest_executable_sql",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_oms_settlement",
+  "sql_ref": "sql.myntra.oms_settlement_reconciliation",
+  "sql_template": "SELECT order_id,\n       sales_amount AS expected_amount,\n       sales_settled_amount AS actual_amount,\n       sales_settled_amount - sales_amount AS variance_amount,\n       recon_status\nFROM zs_observe.myntra_oms_settlement;\n-- Apply group_level_id = <client_id> only if the physical reconciliation table exposes group_level_id; the DOCX gives only a partial schema.",
+  "status": "draft",
+  "summary": "Myntra query pattern: OMS Settlement Reconciliation.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_test_ids": [
+    "validation_test.myntra.recon_status_values"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "canonical_id": "workflow_step.healthkart.forward_flow_sale_delivery_settlement.order_created",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6409
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Customer order placed in HealthKart marketplace",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.healthkart.forward_flow_sale_delivery_settlement.order_created",
+  "source_columns": [
+    "order_id",
+    "payment_mode",
+    "created_date",
+    "group_level_id"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6409,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "source_table": "healthkart_oms",
+  "specific_semantics": "Customer places COD or prepaid B2C-MKT order; OMS is forward-only in zs_observe.",
+  "status": "draft",
+  "step_order": 1,
+  "step_trigger": "customer_order_placed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

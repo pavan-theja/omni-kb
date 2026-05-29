@@ -1,0 +1,55 @@
+{
+  "business_explanation": "metric.gateway_to_bank_reconciliation_gap requires aligned dependent metrics before computation.",
+  "canonical_id": "metric_dependency.pg.recon_gap",
+  "card_type": "metric_dependency",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "variance",
+  "dependent_metric_ids": [
+    "metric.net_settlement_amount",
+    "metric.bank_credit_amount"
+  ],
+  "description": "metric.gateway_to_bank_reconciliation_gap depends on ['metric.net_settlement_amount', 'metric.bank_credit_amount_pending_runtime']",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50812
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_template_id": null,
+  "grain_alignment_required": true,
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "metric_dependency_reference_repaired"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "missing_dependency_behavior": "mark review_required / unresolved",
+  "name": "pg.recon_gap",
+  "parent_metric_id": "metric.gateway_to_bank_reconciliation_gap",
+  "review_status": "accepted",
+  "scope_alignment_required": true,
+  "source_card_id": "metric_dependency.pg.recon_gap",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 50812,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "time_alignment_required": true,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

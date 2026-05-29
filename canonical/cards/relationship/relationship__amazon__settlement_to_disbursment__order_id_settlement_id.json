@@ -1,0 +1,48 @@
+{
+  "business_semantics": "Settlement total reconciles to sum charged_amount in disbursement for same order/settlement",
+  "candidate_notes": "Settlement total reconciles to sum charged_amount in disbursement for same order/settlement",
+  "canonical_id": "relationship.amazon.settlement_to_disbursment.order_id_settlement_id",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.settlement_disbursement.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.settlement_disbursement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4372
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.amazon_settlement",
+  "join_keys": [
+    "order_id",
+    "settlement_id"
+  ],
+  "join_safety_rule": "Use both order_id and settlement_id when available; account for timing and mapping differences.",
+  "marketplace_only": true,
+  "name": "amazon_settlement to amazon_disbursment",
+  "relationship_grain": "Settlement ledger to line-level disbursement rows",
+  "review_status": "accepted",
+  "source_card_id": "relationship.amazon.settlement_to_disbursment.order_id_settlement_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4372,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_table": "table.zs_observe.amazon_disbursment",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

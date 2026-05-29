@@ -1,0 +1,46 @@
+{
+  "canonical_id": "formula_template.meesho.return_order_net_impact",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho formula pattern — Return Order Net Impact",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.4_4_return_order_net_impact"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.4_4_return_order_net_impact",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13516
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "SELECT\n  order_status,\n  COUNT(*) AS return_orders,\n  SUM(sale_settled_amount) AS gross_return_value_reversed,\n  SUM(return_logistic_charge_excluding_tax) AS return_logistics_excl_gst,\n  SUM(return_logistic_charge_gst) AS return_logistics_gst,\n  SUM(settled_amount) AS net_settlement_impact\nFROM zs_observe.meesho_settlement\nWHERE is_active = true\n  AND order_status IN ('Return', 'RTO')\nGROUP BY order_status;",
+  "name": "Meesho formula pattern — Return Order Net Impact",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "formula_template.meesho.return_order_net_impact",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13516,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

@@ -1,0 +1,119 @@
+{
+  "applicability_scope": {
+    "notes": [
+      "Tenant/group-specific account participation is resolved through Business Flow Binding."
+    ],
+    "platform_types": [
+      "logistics",
+      "courier_aggregator",
+      "courier"
+    ],
+    "scope_level": "platform_type"
+  },
+  "business_objects": [
+    "freight_invoice",
+    "freight_component",
+    "zone",
+    "weight",
+    "variance"
+  ],
+  "canonical_id": "business_process.freight_charge_validation",
+  "card_type": "business_process",
+  "common_failure_modes": [
+    "freight_overcharge",
+    "cod_charge_on_prepaid",
+    "unexpected_rto_charge",
+    "gst_mismatch"
+  ],
+  "common_metrics": [
+    "metric.freight_billed_amount",
+    "metric.expected_freight_amount",
+    "metric.freight_overcharge_amount",
+    "metric.freight_variance_amount"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Reusable process for comparing actual freight billed against expected freight based on components, zone, weight, COD, RTO, DTO, and taxes.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "domain_id": "domain.logistics_reconciliation",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3240
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3240
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3240
+    }
+  ],
+  "expected_end_state": "freight_variance_classified",
+  "expected_start_state": "expected_freight_basis_identified",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Freight Charge Validation",
+  "operational_test": "A downstream system should be able to decide whether an object moved from expected_freight_basis_identified to freight_variance_classified using evidence cards and relationships, not prose alone.",
+  "participating_platform_types": [
+    "logistics",
+    "courier_aggregator",
+    "courier"
+  ],
+  "process_name": "Freight Charge Validation",
+  "process_type": "reconciliation_and_diagnostics",
+  "process_variants": [
+    "process_variant.shiprocket_services_aggregator.financial_intermediary",
+    "process_variant.direct_courier_delhivery"
+  ],
+  "reconciliation_profiles": [
+    "reconciliation_profile.freight_charge_validation"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "business_process.freight_charge_validation",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3240,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "state_transitions": [
+    "state_transition.expected_freight_basis_identified_to_actual_freight_extracted",
+    "state_transition.actual_freight_extracted_to_component_sum_validated",
+    "state_transition.component_sum_validated_to_freight_variance_classified"
+  ],
+  "status": "active",
+  "typical_platform_roles": [
+    "order_source",
+    "operational_evidence",
+    "logistics_source",
+    "settlement_source",
+    "bank_destination_when_cross_domain"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges",
+  "workflow_steps": [
+    "workflow_step.expected_freight_basis_identified",
+    "workflow_step.actual_freight_extracted",
+    "workflow_step.component_sum_validated",
+    "workflow_step.freight_variance_classified"
+  ]
+}

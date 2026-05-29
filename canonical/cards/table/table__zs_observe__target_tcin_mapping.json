@@ -1,0 +1,104 @@
+{
+  "business_purpose": "Product catalogue cross-reference table mapping Target TCIN to clean seller SKU, ASIN, barcode, and brand.",
+  "canonical_id": "table.zs_observe.target_tcin_mapping",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.target_tcin_mapping.asin",
+    "column.zs_observe.target_tcin_mapping.barcode",
+    "column.zs_observe.target_tcin_mapping.brand",
+    "column.zs_observe.target_tcin_mapping.created_at",
+    "column.zs_observe.target_tcin_mapping.currency_type",
+    "column.zs_observe.target_tcin_mapping.deleted_at",
+    "column.zs_observe.target_tcin_mapping.file_uuid",
+    "column.zs_observe.target_tcin_mapping.group_id",
+    "column.zs_observe.target_tcin_mapping.group_level_id",
+    "column.zs_observe.target_tcin_mapping.is_active",
+    "column.zs_observe.target_tcin_mapping.is_duplicated",
+    "column.zs_observe.target_tcin_mapping.sku_id",
+    "column.zs_observe.target_tcin_mapping.tcin",
+    "column.zs_observe.target_tcin_mapping.txn_uuid",
+    "column.zs_observe.target_tcin_mapping.unique_id",
+    "column.zs_observe.target_tcin_mapping.unique_value",
+    "column.zs_observe.target_tcin_mapping.updated_at",
+    "column.zs_observe.target_tcin_mapping.zen_sheet_name",
+    "column.zs_observe.target_tcin_mapping.zen_status"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "not specified by source",
+  "description": "table card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "zs_observe.target_tcin_mapping",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "documented_scope_values": {
+    "brands": [
+      "Folkculture",
+      "Katchon"
+    ],
+    "group_level_id": 123
+  },
+  "evidence_ids": [
+    "ev.target_plus.mapping.1_table_overview",
+    "ev.target_plus.mapping.2_key_statistics",
+    "ev.target_plus.mapping.3_schema_details_21_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.mapping.1_table_overview",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 6021
+    },
+    {
+      "evidence_id": "ev.target_plus.mapping.2_key_statistics",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 6021
+    },
+    {
+      "evidence_id": "ev.target_plus.mapping.3_schema_details_21_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 6021
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "tcin_product_variant",
+  "join_caveat": "Join sales/returns/settlement through tcin. Do not assume Shopify-format sku_id in sales/returns equals clean seller sku_id.",
+  "join_key_candidates": [
+    "tcin",
+    "sku_id",
+    "asin"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 123"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.target_plus.mapping_sales_coverage",
+    "metric_impl.target_plus.top_selling_skus"
+  ],
+  "name": "zs_observe.target_tcin_mapping",
+  "primary_key_candidates": [
+    "tcin",
+    "unique_id"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": "331 total / 331 active",
+  "schema": "zs_observe",
+  "scope_caveats": "group_level_id/seller/entity/brand/Stripe/carrier values are columns, filters, identifiers, caveats, or source evidence only; no account/bank/logistics/payment-gateway cards emitted.",
+  "semantic_domain_id": "domain.target_plus.mapping_enrichment",
+  "source_card_id": "table.zs_observe.target_tcin_mapping",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6021,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "target_tcin_mapping",
+  "table_role": "product_mapping",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

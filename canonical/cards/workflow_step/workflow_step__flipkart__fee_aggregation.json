@@ -1,0 +1,59 @@
+{
+  "canonical_id": "workflow_step.flipkart.fee_aggregation",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.relationships",
+    "evidence.flipkart.commission_schema"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5018
+    },
+    {
+      "evidence_id": "evidence.flipkart.commission_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5018
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "description",
+    "charged_amount",
+    "total_tax"
+  ],
+  "input_tables": [
+    "table.flipkart.commission"
+  ],
+  "name": "Aggregate fee detail",
+  "output_semantics": "commission fee lines are pre-aggregated by normalized order_id,item_id before comparison to settlement mp_fee",
+  "process_id": "business_process.flipkart.commission_fee_invoice",
+  "required_keys": [
+    "order_id_without_od_prefix",
+    "item_id"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.flipkart.fee_aggregation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5018,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_name": "Aggregate fee detail",
+  "step_order": 2,
+  "trigger": "source row available",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

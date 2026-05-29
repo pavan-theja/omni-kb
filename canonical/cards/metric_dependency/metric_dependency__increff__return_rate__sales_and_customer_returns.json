@@ -1,0 +1,43 @@
+{
+  "canonical_id": "metric_dependency.increff.return_rate.sales_and_customer_returns",
+  "card_type": "metric_dependency",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependency_type": "formula_dependency",
+  "dependent_metric_ids": [
+    "metric.operations.return_volume",
+    "metric.operations.warehouse_dispatch_count"
+  ],
+  "description": "metric_dependency card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Return rate depends on returned-order numerator and dispatched/sold-order denominator.",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.020.9_key_business_metrics_with_sql"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.020.9_key_business_metrics_with_sql",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 8263
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Return rate depends on returned-order numerator and dispatched/sold-order denominator.",
+  "parent_metric_id": "metric.operations.return_rate_pct",
+  "review_status": "ready",
+  "source_card_id": "metric_dependency.increff.return_rate.sales_and_customer_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8263,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,56 @@
+{
+  "canonical_id": "reconciliation_profile.unicommerce.awb_dispatch_enrichment",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "AWB dispatch enrichment from OSR",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.044.other_id_awb_format_examples",
+    "ev.unicommerce.section.027.12_data_quality_observations_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.044.other_id_awb_format_examples",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12149
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.027.12_data_quality_observations_known_issues",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12149
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Awb Dispatch Enrichment",
+  "optional_fields": [
+    "expected_side",
+    "actual_side",
+    "primary_unit",
+    "secondary_units",
+    "matching_logic",
+    "mismatch_categories",
+    "query_patterns",
+    "tolerance",
+    "known_gaps"
+  ],
+  "process_id": "business_process.unicommerce.awb_and_dispatch_handoff",
+  "profile_name": "AWB dispatch enrichment from OSR",
+  "profile_scope": "warehouse_inventory_operational_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.unicommerce.awb_dispatch_enrichment",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12149,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "Output shape explicitly supported by DOCX query or reconciliation pattern.",
+  "canonical_id": "output_contract.amazon.fee_variance",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "marketplace_analysis_output",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.fee_preview_actual.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.fee_preview_actual.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 8189
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Fee variance output",
+  "output_columns": [
+    "sku",
+    "expected_fee",
+    "actual_fee",
+    "order_count",
+    "variance",
+    "variance_reason_candidate"
+  ],
+  "related_canonical_id": "reconciliation_profile.amazon.fee_preview_to_actual_fee",
+  "review_status": "accepted",
+  "source_card_id": "output_contract.amazon.fee_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8189,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

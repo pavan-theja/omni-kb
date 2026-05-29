@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "assertion": "Metric implementations must have executable SQL refs and documented source columns.",
+  "canonical_id": "validation_test.tatacliq.no_unsupported_metric_implementations",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Metric implementations must have executable SQL refs and documented source columns.",
+  "display_name": "TataCliq validation — metric executability guardrail",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.join.coverage",
+    "ev.tatacliq.filters.mandatory"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.join.coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8620
+    },
+    {
+      "evidence_id": "ev.tatacliq.filters.mandatory",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8620
+    }
+  ],
+  "expected_result": "unsupported_metric_implementations = 0",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Prose or placeholder formula treated as executable.",
+  "name": "TataCliq validation — metric executability guardrail",
+  "review_status": "ready",
+  "source_card_id": "validation_test.tatacliq.no_unsupported_metric_implementations",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8620,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "metric_executability_guardrail",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

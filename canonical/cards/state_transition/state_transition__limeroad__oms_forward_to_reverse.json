@@ -1,0 +1,50 @@
+{
+  "binding_process": "business_process.limeroad.return_item_settlement_reversal",
+  "canonical_id": "state_transition.limeroad.oms_forward_to_reverse",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.lifecycle.return.001",
+    "ev.limeroad.oms.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.lifecycle.return.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5730
+    },
+    {
+      "evidence_id": "ev.limeroad.oms.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5730
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "forward",
+  "marketplace_only": true,
+  "name": "OMS forward -> OMS reverse",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.limeroad.oms_forward_to_reverse",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5730,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "state_column": "limeroad_oms.transaction_type",
+  "status": "active",
+  "to_state": "reverse",
+  "trigger": "Return/RTO/cancel credit-note context appears as OMS reverse; eventtype may be NULL for old rows.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

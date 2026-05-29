@@ -1,0 +1,124 @@
+{
+  "aggregation_rules": [
+    "Do not join raw many-side rows and sum both sides; aggregate to reconciliation unit first."
+  ],
+  "allowed_dimensions": [
+    "txn_date",
+    "refunded_date",
+    "transaction_type",
+    "order_id",
+    "reference_txn_id"
+  ],
+  "allowed_grains": [
+    "transaction",
+    "settlement_batch",
+    "payout_batch",
+    "day",
+    "month",
+    "currency",
+    "payment_mode",
+    "status"
+  ],
+  "applicability_scope": {
+    "platform_types": [
+      "payment_gateway",
+      "bnpl_gateway",
+      "app_store_platform",
+      "banking_when_reconciliation"
+    ],
+    "scope_level": "platform_type"
+  },
+  "canonical_id": "query_pattern.pg.refund_analysis",
+  "card_type": "query_pattern",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Filter refund rows and aggregate amount/count",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay",
+    "evidence.pg.cashfree"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 53124
+    },
+    {
+      "evidence_id": "evidence.pg.cashfree",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 53124
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_constraints": [
+    "Use relationship cards; pre-aggregate before joins."
+  ],
+  "linked_rules": [
+    "rule.pg.active_filter",
+    "rule.pg.duplicate_filter",
+    "rule.pg.text_amount_cast"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "query_output_manifest_checked"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Refund analysis",
+  "optional_table_notes": [
+    "Use only for bank-side reconciliation evidence, not gateway-owned analysis."
+  ],
+  "optional_tables": [
+    "table.zs_observe.rbl_oms_payin"
+  ],
+  "output_contract_id": "output_contract.pg.standard_metric_or_reconciliation",
+  "pattern_name": "Refund analysis",
+  "pattern_type": "diagnostic",
+  "query_shape": "Filter refund rows and aggregate amount/count",
+  "recommended_date_columns": [
+    "settlement_date",
+    "txn_date",
+    "created_date",
+    "payout_date",
+    "posted_date"
+  ],
+  "required_metrics": [
+    "metric.refund_amount"
+  ],
+  "required_tables": [
+    "contextual_payment_gateway_tables"
+  ],
+  "review_status": "accepted",
+  "semantic_filters": [
+    "is_active = true where available",
+    "is_duplicated = false where available",
+    "exclude failed/canceled where metric requires settled success"
+  ],
+  "source_card_id": "query_pattern.pg.refund_analysis",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 53124,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "sql_pattern_ref": "sql.pg.refund_analysis",
+  "status": "active",
+  "supported_intents": [
+    "refunds",
+    "refund amount",
+    "refund by date"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_tests": [
+    "validation_test.pg.active_filter_present",
+    "validation_test.pg.amount_columns_decimal_or_cast"
+  ]
+}

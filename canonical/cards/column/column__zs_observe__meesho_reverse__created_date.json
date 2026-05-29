@@ -1,0 +1,59 @@
+{
+  "canonical_id": "column.zs_observe.meesho_reverse.created_date",
+  "card_type": "column",
+  "column_name": "created_date",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "date",
+  "description": "Reverse/order creation date used for time grouping where applicable.",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.108.table_meesho_reverse_table_knowledge_base",
+    "evidence.meesho.111.3_schema_details",
+    "evidence.meesho.120.6_data_quality_observations"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.108.table_meesho_reverse_table_knowledge_base",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18191
+    },
+    {
+      "evidence_id": "evidence.meesho.111.3_schema_details",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18191
+    },
+    {
+      "evidence_id": "evidence.meesho.120.6_data_quality_observations",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18191
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": false,
+  "is_date": true,
+  "is_key": false,
+  "is_scope_field": false,
+  "is_status": false,
+  "name": "meesho_reverse",
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "semantic_role": "date",
+  "source_card_id": "column.zs_observe.meesho_reverse.created_date",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18191,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.meesho_reverse",
+  "table_name": "meesho_reverse",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

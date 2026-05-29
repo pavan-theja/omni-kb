@@ -1,0 +1,90 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_oms",
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_settlement",
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_returns",
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_fee_preview",
+    "account_data_binding.folkhomes.amazon_uk.primary.amazon_settlement",
+    "account_data_binding.folkhomes.amazon_mx.primary.amazon_settlement",
+    "account_data_binding.folkhomes.amazon_ca.primary.amazon_settlement"
+  ],
+  "active": true,
+  "binding_name": "Folkhomes Amazon Multi-country Settlement",
+  "binding_type": "marketplace_settlement_flow",
+  "business_process_ids": [
+    "business_process.marketplace_settlement_payout"
+  ],
+  "business_scope_set_id": "business_scope_set.folkhomes_global.amazon_multicountry",
+  "canonical_id": "business_flow_binding.folkhomes_global.amazon_multicountry_settlement",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/folkhomes_global.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/folkhomes_global.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.amazon_settlement"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.folkhomes_global.mensa_brands",
+  "money_flow_paths": [
+    "marketplace_settlement_analysis"
+  ],
+  "name": "Amazon Multicountry Settlement",
+  "notes": [
+    "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+  ],
+  "package_id": "folkhomes_global_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_us.primary",
+      "required": true,
+      "role": "amazon_us_settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_uk.primary",
+      "required": true,
+      "role": "amazon_uk_settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_mx.primary",
+      "required": true,
+      "role": "amazon_mx_settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_ca.primary",
+      "required": true,
+      "role": "amazon_ca_settlement_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.amazon_settlement"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "high",
+  "source_documents": [
+    "Folkhomes Global.docx",
+    "Cognee KB Design v4.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "amazon_marketplace.md",
+    "target_plus.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/folkhomes_global.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.folkhomes_global",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

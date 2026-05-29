@@ -1,0 +1,215 @@
+{
+  "amount_columns": [
+    "gross_amount",
+    "net_amount",
+    "total_fees_net_billed",
+    "fee",
+    "campaign_discount",
+    "campaign_fees",
+    "campaign_fees_currency",
+    "campaign_discount_currency",
+    "credit_transaction_fees",
+    "digital_currency_gross_amount",
+    "digital_currency_fees_net_amount",
+    "digital_currency_fees_net_billed",
+    "digital_currency_net_amount",
+    "credit_term"
+  ],
+  "avoid_columns": [
+    "campaign_fees_currency",
+    "campaign_discount_currency",
+    "digital_currency_net_amount",
+    "credit_term"
+  ],
+  "business_purpose": "Aggregated report view of PayPal Express Checkout activity. Contains campaign, digital currency, and summary financial figures.",
+  "canonical_id": "table.zs_observe.paypal_express_checkout_reports",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.paypal_express_checkout_reports.annual_percentage_rate",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_discount",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_discount_currency",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_fees",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_fees_currency",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_name",
+    "column.zs_observe.paypal_express_checkout_reports.case_id",
+    "column.zs_observe.paypal_express_checkout_reports.counterparty_account_id",
+    "column.zs_observe.paypal_express_checkout_reports.counterparty_name",
+    "column.zs_observe.paypal_express_checkout_reports.created_date",
+    "column.zs_observe.paypal_express_checkout_reports.credit_term",
+    "column.zs_observe.paypal_express_checkout_reports.credit_transaction_fees",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_fees_net_amount",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_fees_net_billed",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_gross_amount",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_net_amount",
+    "column.zs_observe.paypal_express_checkout_reports.external_payout_instrument",
+    "column.zs_observe.paypal_express_checkout_reports.fee",
+    "column.zs_observe.paypal_express_checkout_reports.gross_amount",
+    "column.zs_observe.paypal_express_checkout_reports.invoice_id",
+    "column.zs_observe.paypal_express_checkout_reports.memo",
+    "column.zs_observe.paypal_express_checkout_reports.merchant_account_id",
+    "column.zs_observe.paypal_express_checkout_reports.net_amount",
+    "column.zs_observe.paypal_express_checkout_reports.original_invoice_id",
+    "column.zs_observe.paypal_express_checkout_reports.original_record_id",
+    "column.zs_observe.paypal_express_checkout_reports.partner_identifier",
+    "column.zs_observe.paypal_express_checkout_reports.payment_channel",
+    "column.zs_observe.paypal_express_checkout_reports.payment_instrument_subtype",
+    "column.zs_observe.paypal_express_checkout_reports.payment_instrument_type",
+    "column.zs_observe.paypal_express_checkout_reports.payment_tracking_id",
+    "column.zs_observe.paypal_express_checkout_reports.reader_id",
+    "column.zs_observe.paypal_express_checkout_reports.reason_code",
+    "column.zs_observe.paypal_express_checkout_reports.record_currency",
+    "column.zs_observe.paypal_express_checkout_reports.record_id",
+    "column.zs_observe.paypal_express_checkout_reports.record_subtype",
+    "column.zs_observe.paypal_express_checkout_reports.record_type",
+    "column.zs_observe.paypal_express_checkout_reports.related_record_id",
+    "column.zs_observe.paypal_express_checkout_reports.store_id",
+    "column.zs_observe.paypal_express_checkout_reports.total_fees_net_billed",
+    "column.zs_observe.paypal_express_checkout_reports.transfer_id"
+  ],
+  "columns": [
+    "column.zs_observe.paypal_express_checkout_reports.created_date",
+    "column.zs_observe.paypal_express_checkout_reports.record_id",
+    "column.zs_observe.paypal_express_checkout_reports.record_type",
+    "column.zs_observe.paypal_express_checkout_reports.record_subtype",
+    "column.zs_observe.paypal_express_checkout_reports.transfer_id",
+    "column.zs_observe.paypal_express_checkout_reports.original_invoice_id",
+    "column.zs_observe.paypal_express_checkout_reports.related_record_id",
+    "column.zs_observe.paypal_express_checkout_reports.merchant_account_id",
+    "column.zs_observe.paypal_express_checkout_reports.counterparty_account_id",
+    "column.zs_observe.paypal_express_checkout_reports.counterparty_name",
+    "column.zs_observe.paypal_express_checkout_reports.store_id",
+    "column.zs_observe.paypal_express_checkout_reports.reader_id",
+    "column.zs_observe.paypal_express_checkout_reports.gross_amount",
+    "column.zs_observe.paypal_express_checkout_reports.net_amount",
+    "column.zs_observe.paypal_express_checkout_reports.total_fees_net_billed",
+    "column.zs_observe.paypal_express_checkout_reports.fee",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_discount",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_fees",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_fees_currency",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_discount_currency",
+    "column.zs_observe.paypal_express_checkout_reports.campaign_name",
+    "column.zs_observe.paypal_express_checkout_reports.credit_transaction_fees",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_gross_amount",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_fees_net_amount",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_fees_net_billed",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency_net_amount",
+    "column.zs_observe.paypal_express_checkout_reports.digital_currency",
+    "column.zs_observe.paypal_express_checkout_reports.record_currency",
+    "column.zs_observe.paypal_express_checkout_reports.payment_instrument_type",
+    "column.zs_observe.paypal_express_checkout_reports.payment_instrument_subtype",
+    "column.zs_observe.paypal_express_checkout_reports.payment_channel",
+    "column.zs_observe.paypal_express_checkout_reports.reason_code",
+    "column.zs_observe.paypal_express_checkout_reports.case_id",
+    "column.zs_observe.paypal_express_checkout_reports.partner_identifier",
+    "column.zs_observe.paypal_express_checkout_reports.memo",
+    "column.zs_observe.paypal_express_checkout_reports.invoice_id",
+    "column.zs_observe.paypal_express_checkout_reports.payment_tracking_id",
+    "column.zs_observe.paypal_express_checkout_reports.original_record_id",
+    "column.zs_observe.paypal_express_checkout_reports.external_payout_instrument",
+    "column.zs_observe.paypal_express_checkout_reports.annual_percentage_rate",
+    "column.zs_observe.paypal_express_checkout_reports.credit_term"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date"
+  ],
+  "description": "Aggregated report view of PayPal Express Checkout activity. Contains campaign, digital currency, and summary financial figures.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.paypal"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.paypal",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 4454
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.paypal_express_checkout_reports",
+  "grain": "source row grain; review required",
+  "grain_keys": [
+    "record_id",
+    "transfer_id",
+    "original_invoice_id",
+    "related_record_id",
+    "merchant_account_id",
+    "counterparty_account_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.paypal_express_checkout_reports",
+  "recommended_date_columns": [
+    "created_date"
+  ],
+  "reconciliation_key_columns": [],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.paypal_express_checkout_reports",
+  "source_caveats": [
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4454,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.paypal"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "record_type",
+    "record_subtype",
+    "campaign_fees_currency",
+    "campaign_discount_currency",
+    "digital_currency_gross_amount",
+    "digital_currency_fees_net_amount",
+    "digital_currency_fees_net_billed",
+    "digital_currency_net_amount",
+    "digital_currency",
+    "record_currency",
+    "payment_instrument_type",
+    "payment_instrument_subtype",
+    "payment_channel",
+    "reason_code"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.paypal.global"
+    ],
+    "platform_ids": [
+      "platform.paypal"
+    ]
+  },
+  "table_name": "paypal_express_checkout_reports",
+  "table_type": "summary_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

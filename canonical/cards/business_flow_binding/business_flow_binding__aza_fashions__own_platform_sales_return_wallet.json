@@ -1,0 +1,77 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.aza_fashions.aza_own_platform.primary.aza_sales_dump",
+    "account_data_binding.aza_fashions.aza_own_platform.primary.aza_return_dump",
+    "account_data_binding.aza_fashions.aza_own_platform.primary.aza_wallet_ledger"
+  ],
+  "active": true,
+  "binding_name": "AZA Own Platform Sales Return Wallet Flow",
+  "binding_type": "operational_reconciliation_flow",
+  "business_process_ids": [
+    "business_process.d2c_order_lifecycle",
+    "business_process.return_refund_lifecycle"
+  ],
+  "business_scope_set_id": "business_scope_set.aza_fashions.aza_own_platform",
+  "canonical_id": "business_flow_binding.aza_fashions.own_platform_sales_return_wallet",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/aza_fashions.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/aza_fashions.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.aza_return_dump",
+    "table.zs_observe.aza_sales_dump",
+    "table.zs_observe.aza_wallet_ledger"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.aza_fashions.aza_fashion",
+  "money_flow_paths": [
+    "own_platform_sales_to_returns",
+    "return_to_wallet_refund"
+  ],
+  "name": "Own Platform Sales Return Wallet",
+  "notes": [
+    "Client-specific flow binding. Account and table filters are resolved through Account Data Binding."
+  ],
+  "package_id": "aza_fashions_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.aza_fashions.aza_own_platform.primary",
+      "required": true,
+      "role": "order_return_wallet_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.return_to_wallet_credit"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Aza Fashions Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "delhivery_logistics.md",
+    "dtdc_logistics.md",
+    "ekart_logistics.md",
+    "payment_gateway.md",
+    "shiprocket_logistics_aggregator.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/aza_fashions.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.aza_fashions",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

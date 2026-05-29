@@ -1,0 +1,124 @@
+{
+  "avoid_columns": [
+    "see amount semantics caveats"
+  ],
+  "business_purpose": "One row per AWB-level Shiprocket freight invoice.",
+  "canonical_id": "table.zs_observe.shiprocket_invoice",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.shiprocket_invoice.charge_cod",
+    "column.zs_observe.shiprocket_invoice.charge_cod_adjust",
+    "column.zs_observe.shiprocket_invoice.charge_dl",
+    "column.zs_observe.shiprocket_invoice.charge_fsc",
+    "column.zs_observe.shiprocket_invoice.charge_rto",
+    "column.zs_observe.shiprocket_invoice.charged_amount",
+    "column.zs_observe.shiprocket_invoice.charged_amount_excluding_tax",
+    "column.zs_observe.shiprocket_invoice.charged_weight",
+    "column.zs_observe.shiprocket_invoice.courier_partner",
+    "column.zs_observe.shiprocket_invoice.destination_zipcode",
+    "column.zs_observe.shiprocket_invoice.final_weight",
+    "column.zs_observe.shiprocket_invoice.group_level_id",
+    "column.zs_observe.shiprocket_invoice.is_active",
+    "column.zs_observe.shiprocket_invoice.mp_sin",
+    "column.zs_observe.shiprocket_invoice.order_id",
+    "column.zs_observe.shiprocket_invoice.order_status",
+    "column.zs_observe.shiprocket_invoice.other_id",
+    "column.zs_observe.shiprocket_invoice.payment_mode",
+    "column.zs_observe.shiprocket_invoice.referal_fee",
+    "column.zs_observe.shiprocket_invoice.settled_amount",
+    "column.zs_observe.shiprocket_invoice.source_zipcode",
+    "column.zs_observe.shiprocket_invoice.total_tax",
+    "column.zs_observe.shiprocket_invoice.zone"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "date_columns": [
+    "see date column cards"
+  ],
+  "description": "Shiprocket Invoice: One row per AWB-level Shiprocket freight invoice.",
+  "document_id": "shiprocket_services_aggregator_parser_ready_v6_role_split",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/shiprocket_logistics_aggregator.md",
+      "source_line": 565
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/shiprocket_logistics_aggregator.md",
+      "source_line": 565
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/shiprocket_logistics_aggregator.md",
+      "source_line": 565
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.shiprocket_invoice",
+  "grain": "One row per AWB-level Shiprocket freight invoice.",
+  "grain_keys": [
+    "awb/order/reference as specified by columns"
+  ],
+  "group_ids": "203",
+  "metric_implementation_ids": [
+    "metric_impl.shiprocket_invoice.actual_weight",
+    "metric_impl.shiprocket_invoice.average_freight_per_awb",
+    "metric_impl.shiprocket_invoice.billable_weight",
+    "metric_impl.shiprocket_invoice.cod_fee_amount",
+    "metric_impl.shiprocket_invoice.ecom_air.freight_billed_amount",
+    "metric_impl.shiprocket_invoice.forward_freight_amount",
+    "metric_impl.shiprocket_invoice.freight_billed_amount",
+    "metric_impl.shiprocket_invoice.freight_excluding_tax_amount",
+    "metric_impl.shiprocket_invoice.fuel_surcharge_amount",
+    "metric_impl.shiprocket_invoice.gst_on_freight_amount",
+    "metric_impl.shiprocket_invoice.rto_freight_amount",
+    "metric_impl.shiprocket_invoice.xpressbees_air.freight_billed_amount"
+  ],
+  "name": "Shiprocket Invoice",
+  "period": "Jan-Oct 2025",
+  "recommended_date_columns": [
+    "see metric implementations"
+  ],
+  "review_status": "unreviewed",
+  "row_count": "5038",
+  "schema": "zs_observe",
+  "schema_coverage": "curated_key_fields",
+  "scope_caveat": "Observed group/account values are source data observations only. Do not create tenant, group, platform_account, account_data_binding, business_scope_set, or business_flow_binding cards from this generic logistics document.",
+  "source_card_id": "table.zs_observe.shiprocket_invoice",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 565,
+  "source_path": "raw/cleaned_v2/logistics/shiprocket_logistics_aggregator.md",
+  "source_platform_ids": [
+    "platform.shiprocket"
+  ],
+  "source_platform_types": [
+    "logistics"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "structural_applicability": "platform.shiprocket; account filters are not defined here",
+  "table_name": "shiprocket_invoice",
+  "table_type": "freight_invoice",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

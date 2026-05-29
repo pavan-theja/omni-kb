@@ -1,0 +1,50 @@
+{
+  "canonical_id": "query_pattern.jiomart.settlement.8_3_settlement_oms_reconciliation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 8.3 Settlement ↔ OMS Reconciliation",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.8_3_settlement_oms_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.8_3_settlement_oms_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13020
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "reconciliation",
+  "name": "JioMart query — 8.3 Settlement ↔ OMS Reconciliation",
+  "natural_language_patterns": [
+    "8.3 Settlement to OMS Reconciliation"
+  ],
+  "output_contract_id": "output_contract.jiomart.order_reconciliation",
+  "reconciliation_profile_id": "reconciliation_profile.jiomart.oms_settlement_3way",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.settlement.8_3_settlement_oms_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13020,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms",
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "sql_ref": "sql.jiomart.settlement.8_3_settlement_oms_reconciliation",
+  "sql_template": "SELECT\n  o.order_id,\n  o.charged_amount AS oms_gmv,\n  o.total_tcs_amount AS oms_tcs,\n  o.total_tds AS oms_tds,\n  SUM(CASE WHEN s.accountable_type = 'Receivable' THEN s.settled_amount ELSE 0 END) AS settled_receivable,\n  SUM(CASE WHEN s.accountable_type = 'BaseTcs' THEN s.settled_amount ELSE 0 END) AS settled_tcs,\n  SUM(CASE WHEN s.accountable_type = 'Tds' THEN s.settled_amount ELSE 0 END) AS settled_tds,\n  CASE WHEN SUM(s.settled_amount) IS NULL THEN 'Not in Settlement' ELSE 'Matched' END AS status\nFROM zs_observe.jiomart_oms o\nLEFT JOIN zs_observe.jiomart_settlement s\n  ON o.order_id = s.order_id\n  AND s.is_active = true\n  AND s.event IS NOT NULL\nWHERE o.is_active = true\n  AND o.transaction_type = 'forward'\n  AND o.order_status = 'delivered'\n  AND o.hsn IS NOT NULL\nGROUP BY o.order_id, o.charged_amount, o.total_tcs_amount, o.total_tds;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

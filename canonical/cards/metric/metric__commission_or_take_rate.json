@@ -1,0 +1,75 @@
+{
+  "benchmarks": {
+    "commission_policy": "0 percent commission",
+    "observed_forward_expenses": "net_commission = ₹0.00 for all 1,253 rows",
+    "source": "DOCX sections 1.2 and 4.1"
+  },
+  "business_definition": "Commission charged by Meesho on sales. In this source, net_commission = ₹0.00 for all 1,253 rows in meesho_forward_expenses, confirming the 0% commission model.",
+  "canonical_id": "metric.commission_or_take_rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "commission rate",
+    "take rate",
+    "referral fee rate",
+    "marketplace fee burden"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "marketplace, supplier, or order group",
+  "default_unit": "percent or INR",
+  "description": "Commission charged by Meesho on sales. In this source, net_commission = ₹0.00 for all 1,253 rows in meesho_forward_expenses, confirming the 0% commission model.",
+  "display_name": "Meesho commission / take rate",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.fees",
+  "evidence_ids": [
+    "evidence.meesho.4_1_meesho_s_0_commission_policy_confirmed_by_data",
+    "evidence.snapdeal.8_5_effective_commission_rate",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.4_1_meesho_s_0_commission_policy_confirmed_by_data",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11363
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": false,
+  "implementation_ids": [
+    "metric_impl.meesho.meesho_s_0_commission_policy_confirmed_by_data",
+    "metric_impl.snapdeal.commission_invoice_validation_vs_settlement",
+    "metric_impl.snapdeal.commission_structure",
+    "metric_impl.snapdeal.commission_summary_by_transaction_type",
+    "metric_impl.snapdeal.commission_validation",
+    "metric_impl.snapdeal.effective_commission_rate",
+    "metric_impl.snapdeal.effective_take_rate_observed",
+    "metric_impl.snapdeal.effective_take_rate_per_order",
+    "metric_impl.snapdeal.gst_on_commission_itc_eligibility"
+  ],
+  "metric_family": "fees",
+  "metric_pattern": "abs_total_marketplace_fees_over_gmv",
+  "name": "Meesho commission / take rate",
+  "review_status": "accepted",
+  "source_card_id": "metric.commission_or_take_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx",
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11363,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+    "raw/cleaned_v2/marketplace/snapdeal_marketplace.md"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

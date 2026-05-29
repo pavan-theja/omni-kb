@@ -1,0 +1,64 @@
+{
+  "base_tables": [],
+  "candidate_notes": "Marketplace deduction fields only; not statutory filing.",
+  "canonical_id": "metric_implementation.amazon.amazon_settlement.tds_tcs_deductions",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.analytical_patterns.001",
+    "ev.amazon_settlement.columns.001",
+    "ev.amazon.gst.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.analytical_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6008
+    },
+    {
+      "evidence_id": "ev.amazon_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6008
+    },
+    {
+      "evidence_id": "ev.amazon.gst.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6008
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "SUM(tds) + SUM(tcs_igst + tcs_cgst + tcs_sgst)",
+  "grain": "month",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.tds_tcs_deductions",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "sum_tds_plus_tcs_marketplace_fields",
+  "name": "Amazon implementation: tds_tcs_deductions on amazon_settlement",
+  "notes": "Marketplace deduction fields only; not statutory filing.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_settlement.tds_tcs_deductions",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6008,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_settlement",
+  "sql_ref": "sql.amazon.settlement.tds_tcs_deductions",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,41 @@
+{
+  "canonical_id": "rule.walmart.wfs_fees_external",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5646
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "WFS fees not in settlement report",
+  "notes": "WFS storage, inbound, and removal fees are not broken out in walmart_settlement; request external WFS fee report before analyzing those costs.",
+  "related_canonical_id": "table.zs_observe.walmart_settlement",
+  "review_status": "accepted",
+  "rule_text": "WFS storage, inbound, and removal fees are not broken out in walmart_settlement; request external WFS fee report before analyzing those costs.",
+  "rule_type": "source_gap",
+  "severity": "medium",
+  "source_card_id": "rule.walmart.wfs_fees_external",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5646,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

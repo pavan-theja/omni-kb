@@ -1,0 +1,65 @@
+{
+  "canonical_id": "business_process.nykaa.courier_marketplace_enrichment",
+  "canonical_name": "Courier marketplace enrichment",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.nykaa_fashion.courier_enrichment",
+  "evidence_ids": [
+    "evidence.nykaa.lifecycle",
+    "evidence.nykaa.reconciliation",
+    "evidence.nykaa.relationships",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15685
+    },
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15685
+    },
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15685
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15685
+    }
+  ],
+  "external_logistics_cards_allowed": false,
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Courier marketplace enrichment",
+  "participating_table_ids": [
+    "table.zs_observe.nykaa_mapper_gst",
+    "table.zs_observe.nykaa_oms"
+  ],
+  "platform_context_id": "platform_context.nykaa_fashion.in",
+  "review_status": "unreviewed",
+  "source_card_id": "business_process.nykaa.courier_marketplace_enrichment",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15685,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Marketplace-side courier/status enrichment through nykaa_mapper_gst, not an external logistics lifecycle; join to OMS by truncating magentoorderno to base order_id when match exists.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

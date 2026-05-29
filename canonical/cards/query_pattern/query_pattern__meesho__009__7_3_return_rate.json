@@ -1,0 +1,50 @@
+{
+  "canonical_id": "query_pattern.meesho.009.7_3_return_rate",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — 7.3 Return Rate",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_3_return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_3_return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 16132
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Meesho query pattern — 7.3 Return Rate",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.009.7_3_return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16132,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_reverse",
+    "zs_observe.meesho_sales"
+  ],
+  "sql_template": "SELECT\n  ROUND(100.0 * (SELECT COUNT(*) FROM zs_observe.meesho_reverse WHERE is_active = true)\n    / NULLIF((SELECT COUNT(*) FROM zs_observe.meesho_sales WHERE is_active = true), 0), 2)\n  AS return_rate_pct;\n-- Observed: ~44% (938/2131) — includes bulk NULL transaction_type rows",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

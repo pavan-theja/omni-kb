@@ -1,0 +1,91 @@
+{
+  "allowed_dimensions": [
+    "courier_partner",
+    "date",
+    "awb"
+  ],
+  "allowed_grains": [
+    "awb",
+    "order",
+    "day",
+    "month",
+    "courier_partner",
+    "batch where safe"
+  ],
+  "applicability": "platform=delhivery; table=zs_observe.delhivery_settlement; account filters via Account Data Binding only",
+  "base_tables": [
+    "table.zs_observe.delhivery_settlement"
+  ],
+  "canonical_id": "metric_impl.delhivery_settlement.payable_amount",
+  "card_type": "metric_implementation",
+  "caveats": "Use only with documented amount semantics and grain safety.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "dependent_metrics": [],
+  "description": "Payable Amount implementation for Delhivery using delhivery_settlement.",
+  "document_id": "delhivery_logistics_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 5303
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 5303
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 5303
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_description": "SUM(payable)",
+  "formula_sql": "SUM(payable)",
+  "formula_template_id": "formula_template.logistics.filtered_sum_amount",
+  "implementation_name": "Delhivery Payable Amount",
+  "implementation_scope": "delhivery_settlement",
+  "metric_id": "metric.payable_amount",
+  "metric_pattern": "filtered_sum_amount",
+  "name": "Delhivery Payable Amount Implementation",
+  "platform_code": "delhivery",
+  "precision": "2_decimal_places",
+  "recommended_date_columns": [
+    "settlement_date"
+  ],
+  "required_columns": [
+    "column.zs_observe.delhivery_settlement.payable"
+  ],
+  "review_status": "unreviewed",
+  "semantic_filters": [
+    "txn_type='CR'"
+  ],
+  "source_card_id": "metric_impl.delhivery_settlement.payable_amount",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5303,
+  "source_path": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+  "source_status": "active",
+  "status": "active",
+  "unit": "currency/count/percentage/days_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

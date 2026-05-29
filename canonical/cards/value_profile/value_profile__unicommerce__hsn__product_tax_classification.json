@@ -1,0 +1,56 @@
+{
+  "canonical_id": "value_profile.unicommerce.hsn.product_tax_classification",
+  "card_type": "value_profile",
+  "column_names": [
+    "hsn",
+    "hsn_code",
+    "product_hsn_code"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "HSN-to-product category map retained as product/tax handoff; not statutory filing ownership",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "documented_values": {
+    "14049070": "rudraksha beads 0-5%",
+    "71179090": "fashion jewellery 3%"
+  },
+  "evidence_ids": [
+    "ev.unicommerce.section.010.hsn_code_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.010.hsn_code_reference",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9506
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Product Tax Classification",
+  "optional_fields": [
+    "documented_values",
+    "value_meanings",
+    "normalization_rules",
+    "quality_caveats",
+    "examples",
+    "excluded_interpretations"
+  ],
+  "profile_name": "product_tax_classification",
+  "review_status": "ready",
+  "source_card_id": "value_profile.unicommerce.hsn.product_tax_classification",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9506,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.unicommerce",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "supporting_or_handoff"
+}

@@ -1,0 +1,45 @@
+{
+  "canonical_id": "workflow_step.increff.replacement_dispatch.01_replacement_trigger",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Replacement flow is triggered by damaged/wrong item context and appears in increff_sales as transaction_type = REPLACEMENT.",
+  "display_name": "Replacement flow is triggered by damaged/wrong item context and appears in increff_sales as transact",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.012.6_2_replacement_order_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.012.6_2_replacement_order_flow",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 8496
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Replacement flow is triggered by damaged/wrong item context and appears in increff_sales as transact",
+  "process_id": "business_process.increff.replacement_dispatch",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.increff.replacement_dispatch.01_replacement_trigger",
+  "source_columns": [
+    "column.zs_observe.increff_sales.transaction_type"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8496,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.increff_sales"
+  ],
+  "status": "draft",
+  "step_order": 1,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

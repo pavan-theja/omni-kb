@@ -1,0 +1,46 @@
+{
+  "base_profile": "reconciliation_profile.flipkart.settlement_commission",
+  "canonical_id": "reconciliation_variant.flipkart.commission_od_normalized",
+  "card_type": "reconciliation_variant",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_variant card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.shopsy",
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.shopsy",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6328
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6328
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Flipkart commission_od_normalized",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_variant.flipkart.commission_od_normalized",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6328,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "variant_condition": "commission order_id lacks OD prefix",
+  "variant_matching_change": "requires REPLACE on settlement/OMS/cashback order_id before join",
+  "variant_tolerance": "same as base profile unless source says otherwise"
+}

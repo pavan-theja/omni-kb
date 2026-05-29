@@ -1,0 +1,148 @@
+{
+  "amount_columns": [
+    "settlement_id",
+    "charged_amount",
+    "settled_amount",
+    "discount",
+    "mp_fees",
+    "actuals",
+    "commission",
+    "gst_split",
+    "tds_splitn"
+  ],
+  "avoid_columns": [
+    "settlement_id"
+  ],
+  "business_purpose": "Navi is a fintech D2C marketplace platform. Settlement captures brand-level data with detailed fee splits.",
+  "canonical_id": "table.zs_observe.navi_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.navi_settlement.actuals",
+    "column.zs_observe.navi_settlement.brand",
+    "column.zs_observe.navi_settlement.charged_amount",
+    "column.zs_observe.navi_settlement.commission",
+    "column.zs_observe.navi_settlement.created_date",
+    "column.zs_observe.navi_settlement.currency_type",
+    "column.zs_observe.navi_settlement.discount",
+    "column.zs_observe.navi_settlement.gst_split",
+    "column.zs_observe.navi_settlement.item_id",
+    "column.zs_observe.navi_settlement.mp_fees",
+    "column.zs_observe.navi_settlement.order_id",
+    "column.zs_observe.navi_settlement.settled_amount",
+    "column.zs_observe.navi_settlement.settlement_date",
+    "column.zs_observe.navi_settlement.settlement_id",
+    "column.zs_observe.navi_settlement.tds_splitn"
+  ],
+  "columns": [
+    "column.zs_observe.navi_settlement.settlement_id",
+    "column.zs_observe.navi_settlement.order_id",
+    "column.zs_observe.navi_settlement.item_id",
+    "column.zs_observe.navi_settlement.brand",
+    "column.zs_observe.navi_settlement.created_date",
+    "column.zs_observe.navi_settlement.settlement_date",
+    "column.zs_observe.navi_settlement.charged_amount",
+    "column.zs_observe.navi_settlement.settled_amount",
+    "column.zs_observe.navi_settlement.discount",
+    "column.zs_observe.navi_settlement.mp_fees",
+    "column.zs_observe.navi_settlement.actuals",
+    "column.zs_observe.navi_settlement.commission",
+    "column.zs_observe.navi_settlement.gst_split",
+    "column.zs_observe.navi_settlement.tds_splitn",
+    "column.zs_observe.navi_settlement.currency_type"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date",
+    "settlement_date"
+  ],
+  "description": "Navi is a fintech D2C marketplace platform. Settlement captures brand-level data with detailed fee splits.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.navi"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.navi",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 6330
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.navi_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "settlement_id",
+    "order_id",
+    "item_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.navi_settlement",
+  "recommended_date_columns": [
+    "created_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "settlement_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.navi_settlement",
+  "source_caveats": [
+    "`tds_splitn` — TDS (Tax Deducted at Source) is Indian tax deducted by the marketplace.",
+    "`gst_split` — GST split applicable on the commission/fees.",
+    "`brand` field allows brand-level reconciliation for multi-brand merchants.",
+    "`actuals` is a platform-computed column for verification.",
+    "Net to merchant = `settled_amount` (already net of `mp_fees`, `commission`, `gst_split`, `tds_splitn`).",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6330,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.navi"
+  ],
+  "source_platform_types": [
+    "ecommerce_payment_platform"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.navi.in"
+    ],
+    "platform_ids": [
+      "platform.navi"
+    ]
+  },
+  "table_name": "navi_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

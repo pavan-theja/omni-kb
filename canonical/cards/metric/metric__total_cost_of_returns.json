@@ -1,0 +1,55 @@
+{
+  "benchmarks": {
+    "average_loss_per_return": "₹194",
+    "return_logistics_cost_context": "₹54,389 return logistics cost and ₹55,984 batch return loss in DOCX waterfall",
+    "source": "DOCX section 4.4 and 7.7"
+  },
+  "business_definition": "Total seller-borne return cost from meesho_settlement Return/RTO rows: return_logistic_charge_excluding_tax, return_logistic_charge_gst, and negative settlement impact.",
+  "canonical_id": "metric.total_cost_of_returns",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Total Cost of Returns"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "settlement period, return status, brand, or order group",
+  "default_unit": "INR",
+  "description": "Total seller-borne return cost from meesho_settlement Return/RTO rows: return_logistic_charge_excluding_tax, return_logistic_charge_gst, and negative settlement impact.",
+  "display_name": "Total cost of returns",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.meesho.7_7_total_cost_of_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_7_total_cost_of_returns",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11721
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": false,
+  "implementation_ids": [
+    "metric_impl.meesho.total_cost_of_returns"
+  ],
+  "metric_family": "returns",
+  "name": "Total cost of returns",
+  "review_status": "accepted",
+  "source_card_id": "metric.total_cost_of_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11721,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

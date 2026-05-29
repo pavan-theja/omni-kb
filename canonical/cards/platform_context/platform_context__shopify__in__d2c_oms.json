@@ -1,0 +1,65 @@
+{
+  "canonical_id": "platform_context.shopify.in.d2c_oms",
+  "card_type": "platform_context",
+  "confidence": "curated",
+  "country_code": "IN",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": [
+    "INR primary; GBP/USD possible via returns/order context"
+  ],
+  "description": "platform_context card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "Shopify India D2C OMS context",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.scope.001",
+    "ev.shopify.schema.oms.001",
+    "ev.shopify.schema.extended.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.scope.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 407
+    },
+    {
+      "evidence_id": "ev.shopify.schema.oms.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 407
+    },
+    {
+      "evidence_id": "ev.shopify.schema.extended.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 407
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Shopify India D2C OMS context",
+  "platform_id": "platform.shopify",
+  "platform_model": "brand_direct_shopify_storefront_oms",
+  "review_status": "accepted",
+  "scope_filter_columns": [
+    "group_level_id",
+    "currency_type",
+    "brand",
+    "payment_mode",
+    "financial_status"
+  ],
+  "source_card_id": "platform_context.shopify.in.d2c_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 407,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timezone": "Asia/Kolkata",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

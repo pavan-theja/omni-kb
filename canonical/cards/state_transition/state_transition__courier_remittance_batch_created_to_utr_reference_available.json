@@ -1,0 +1,66 @@
+{
+  "business_object": "utr",
+  "business_process_id": "business_process.courier_batch_to_bank_reconciliation",
+  "canonical_id": "state_transition.courier_remittance_batch_created_to_utr_reference_available",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "confirmation_evidence": [
+    "utr_no, bank_reference_no, remittance_number"
+  ],
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Expected state movement in Courier Batch to Bank Reconciliation: courier_remittance_batch_created → utr_reference_available.",
+  "deterministic_rule": "If evidence for courier_remittance_batch_created exists but confirmation evidence for utr_reference_available is missing after the applicable lag window, classify as utr_missing.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 6000
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 6000
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 6000
+    }
+  ],
+  "expected_lag": "source_specific_or_bfb_override",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_if_missing": "utr_missing",
+  "from_state": "courier_remittance_batch_created",
+  "lag_type": "configurable",
+  "name": "courier_remittance_batch_created to utr_reference_available",
+  "review_status": "unreviewed",
+  "severity_if_breached": "high",
+  "source_card_id": "state_transition.courier_remittance_batch_created_to_utr_reference_available",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6000,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "to_state": "utr_reference_available",
+  "triggering_step_id": "workflow_step.utr_or_reference_assigned",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

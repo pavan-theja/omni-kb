@@ -1,0 +1,51 @@
+{
+  "canonical_id": "state_transition.ajio.forward_flow_order_delivery_settlement.dispatch_to_delivered_revenue",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.010_4_transaction_lifecycle",
+    "evidence.ajio.059_important_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.010_4_transaction_lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5644
+    },
+    {
+      "evidence_id": "evidence.ajio.059_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5644
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_step_id": "workflow_step.ajio.forward_flow_order_delivery_settlement.drop_ship_dispatch_recorded",
+  "name": "Drop-ship dispatch → delivered revenue scope",
+  "process_id": "business_process.ajio.forward_flow_order_delivery_settlement",
+  "review_status": "ready",
+  "source_card_id": "state_transition.ajio.forward_flow_order_delivery_settlement.dispatch_to_delivered_revenue",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.010_4_transaction_lifecycle",
+    "evidence.ajio.059_important_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5644,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "to_step_id": "workflow_step.ajio.forward_flow_order_delivery_settlement.delivered_order_revenue_scope",
+  "transition_description": "OMS order_status becomes Delivered; row qualifies for revenue queries using charged_amount.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

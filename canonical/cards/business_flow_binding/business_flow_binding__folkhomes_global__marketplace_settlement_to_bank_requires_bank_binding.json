@@ -1,0 +1,100 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_oms",
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_settlement",
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_returns",
+    "account_data_binding.folkhomes.amazon_us.primary.amazon_fee_preview",
+    "account_data_binding.folkhomes.amazon_uk.primary.amazon_settlement",
+    "account_data_binding.folkhomes.amazon_mx.primary.amazon_settlement",
+    "account_data_binding.folkhomes.amazon_ca.primary.amazon_settlement",
+    "account_data_binding.folkhomes.target_plus_us.primary.target_settlement",
+    "account_data_binding.folkhomes.target_plus_us.primary.target_sales",
+    "account_data_binding.folkhomes.target_plus_us.primary.target_returns",
+    "account_data_binding.folkhomes.target_plus_us.primary.target_tcin_mapping"
+  ],
+  "active": false,
+  "binding_name": "Folkhomes Marketplace Settlement to Bank Requires Bank Binding",
+  "binding_type": "money_flow",
+  "business_process_ids": [
+    "business_process.marketplace_payout_to_bank"
+  ],
+  "business_scope_set_id": "business_scope_set.folkhomes_global.amazon_multicountry",
+  "canonical_id": "business_flow_binding.folkhomes_global.marketplace_settlement_to_bank_requires_bank_binding",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/folkhomes_global.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/folkhomes_global.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.amazon_settlement",
+    "table.zs_observe.target_settlement"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.folkhomes_global.mensa_brands",
+  "money_flow_paths": [
+    "marketplace_to_bank"
+  ],
+  "name": "Marketplace Settlement To Bank Requires Bank Binding",
+  "notes": [
+    "Marketplace settlement evidence exists; bank account and bank-statement binding were not supplied in the client reference."
+  ],
+  "package_id": "folkhomes_global_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_us.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_uk.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_mx.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.amazon_ca.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.folkhomes.target_plus_us.primary",
+      "required": false,
+      "role": "settlement_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.marketplace_settlement_to_bank"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "medium",
+  "source_documents": [
+    "Folkhomes Global.docx",
+    "Cognee KB Design v4.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "amazon_marketplace.md",
+    "target_plus.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/folkhomes_global.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.folkhomes_global",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

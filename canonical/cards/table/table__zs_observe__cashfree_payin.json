@@ -1,0 +1,259 @@
+{
+  "amount_columns": [
+    "settlement_id",
+    "amount",
+    "event_amount",
+    "transaction_amount",
+    "transaction_service_charge",
+    "fee",
+    "tax",
+    "txn_st_gst",
+    "net_settlement_amount",
+    "event_settlement_amount",
+    "settled_amount",
+    "refund_arn",
+    "refund_type",
+    "credit_ref_no",
+    "redemption_amount"
+  ],
+  "avoid_columns": [
+    "settlement_date_temp_old",
+    "settlement_id",
+    "refund_arn",
+    "refund_type",
+    "credit_ref_no",
+    "redemption_amount"
+  ],
+  "business_purpose": "All inbound payment transactions — sales, refunds, chargebacks, adjustments. Also captures split/vendor amounts.",
+  "canonical_id": "table.zs_observe.cashfree_payin",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.cashfree_payin.amount",
+    "column.zs_observe.cashfree_payin.auth_id",
+    "column.zs_observe.cashfree_payin.bank_name",
+    "column.zs_observe.cashfree_payin.card_type",
+    "column.zs_observe.cashfree_payin.card_type_1",
+    "column.zs_observe.cashfree_payin.cashfree_reference_id",
+    "column.zs_observe.cashfree_payin.cf_link_id",
+    "column.zs_observe.cashfree_payin.credit_ref_no",
+    "column.zs_observe.cashfree_payin.currency",
+    "column.zs_observe.cashfree_payin.customer_email",
+    "column.zs_observe.cashfree_payin.customer_name",
+    "column.zs_observe.cashfree_payin.customer_phone",
+    "column.zs_observe.cashfree_payin.customer_reference_id",
+    "column.zs_observe.cashfree_payin.event_amount",
+    "column.zs_observe.cashfree_payin.event_currency",
+    "column.zs_observe.cashfree_payin.event_id",
+    "column.zs_observe.cashfree_payin.event_settlement_amount",
+    "column.zs_observe.cashfree_payin.event_time",
+    "column.zs_observe.cashfree_payin.event_type",
+    "column.zs_observe.cashfree_payin.fee",
+    "column.zs_observe.cashfree_payin.link_id",
+    "column.zs_observe.cashfree_payin.merchant_reference_id",
+    "column.zs_observe.cashfree_payin.net_settlement_amount",
+    "column.zs_observe.cashfree_payin.offer_code",
+    "column.zs_observe.cashfree_payin.offer_id",
+    "column.zs_observe.cashfree_payin.offer_type",
+    "column.zs_observe.cashfree_payin.order_id",
+    "column.zs_observe.cashfree_payin.order_id2",
+    "column.zs_observe.cashfree_payin.payment_mode",
+    "column.zs_observe.cashfree_payin.payment_mode_subtype",
+    "column.zs_observe.cashfree_payin.processed_on",
+    "column.zs_observe.cashfree_payin.redemption_amount",
+    "column.zs_observe.cashfree_payin.refund_arn",
+    "column.zs_observe.cashfree_payin.refund_type",
+    "column.zs_observe.cashfree_payin.remitter_account",
+    "column.zs_observe.cashfree_payin.settled_amount",
+    "column.zs_observe.cashfree_payin.settlement_date",
+    "column.zs_observe.cashfree_payin.settlement_date_temp_old",
+    "column.zs_observe.cashfree_payin.settlement_id",
+    "column.zs_observe.cashfree_payin.status",
+    "column.zs_observe.cashfree_payin.tax",
+    "column.zs_observe.cashfree_payin.transaction_amount",
+    "column.zs_observe.cashfree_payin.transaction_id",
+    "column.zs_observe.cashfree_payin.transaction_service_charge",
+    "column.zs_observe.cashfree_payin.transaction_time",
+    "column.zs_observe.cashfree_payin.txn_date",
+    "column.zs_observe.cashfree_payin.txn_st_gst",
+    "column.zs_observe.cashfree_payin.txn_sub_type",
+    "column.zs_observe.cashfree_payin.txn_type",
+    "column.zs_observe.cashfree_payin.utr",
+    "column.zs_observe.cashfree_payin.virtual_account_id",
+    "column.zs_observe.cashfree_payin.virtual_bank_account_number"
+  ],
+  "columns": [
+    "column.zs_observe.cashfree_payin.transaction_id",
+    "column.zs_observe.cashfree_payin.cashfree_reference_id",
+    "column.zs_observe.cashfree_payin.merchant_reference_id",
+    "column.zs_observe.cashfree_payin.customer_reference_id",
+    "column.zs_observe.cashfree_payin.order_id",
+    "column.zs_observe.cashfree_payin.order_id2",
+    "column.zs_observe.cashfree_payin.txn_type",
+    "column.zs_observe.cashfree_payin.txn_sub_type",
+    "column.zs_observe.cashfree_payin.txn_date",
+    "column.zs_observe.cashfree_payin.transaction_time",
+    "column.zs_observe.cashfree_payin.processed_on",
+    "column.zs_observe.cashfree_payin.settlement_date",
+    "column.zs_observe.cashfree_payin.settlement_date_temp_old",
+    "column.zs_observe.cashfree_payin.settlement_id",
+    "column.zs_observe.cashfree_payin.event_id",
+    "column.zs_observe.cashfree_payin.event_type",
+    "column.zs_observe.cashfree_payin.event_time",
+    "column.zs_observe.cashfree_payin.amount",
+    "column.zs_observe.cashfree_payin.event_amount",
+    "column.zs_observe.cashfree_payin.transaction_amount",
+    "column.zs_observe.cashfree_payin.transaction_service_charge",
+    "column.zs_observe.cashfree_payin.fee",
+    "column.zs_observe.cashfree_payin.tax",
+    "column.zs_observe.cashfree_payin.txn_st_gst",
+    "column.zs_observe.cashfree_payin.net_settlement_amount",
+    "column.zs_observe.cashfree_payin.event_settlement_amount",
+    "column.zs_observe.cashfree_payin.settled_amount",
+    "column.zs_observe.cashfree_payin.payment_mode",
+    "column.zs_observe.cashfree_payin.payment_mode_subtype",
+    "column.zs_observe.cashfree_payin.status",
+    "column.zs_observe.cashfree_payin.refund_arn",
+    "column.zs_observe.cashfree_payin.refund_type",
+    "column.zs_observe.cashfree_payin.utr",
+    "column.zs_observe.cashfree_payin.auth_id",
+    "column.zs_observe.cashfree_payin.bank_name",
+    "column.zs_observe.cashfree_payin.card_type",
+    "column.zs_observe.cashfree_payin.card_type_1",
+    "column.zs_observe.cashfree_payin.currency",
+    "column.zs_observe.cashfree_payin.event_currency",
+    "column.zs_observe.cashfree_payin.customer_name",
+    "column.zs_observe.cashfree_payin.customer_email",
+    "column.zs_observe.cashfree_payin.customer_phone",
+    "column.zs_observe.cashfree_payin.virtual_account_id",
+    "column.zs_observe.cashfree_payin.virtual_bank_account_number",
+    "column.zs_observe.cashfree_payin.remitter_account",
+    "column.zs_observe.cashfree_payin.link_id",
+    "column.zs_observe.cashfree_payin.cf_link_id",
+    "column.zs_observe.cashfree_payin.credit_ref_no",
+    "column.zs_observe.cashfree_payin.offer_id",
+    "column.zs_observe.cashfree_payin.offer_code",
+    "column.zs_observe.cashfree_payin.offer_type",
+    "column.zs_observe.cashfree_payin.redemption_amount"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "txn_date",
+    "transaction_time",
+    "processed_on",
+    "settlement_date",
+    "settlement_date_temp_old",
+    "event_time"
+  ],
+  "description": "All inbound payment transactions — sales, refunds, chargebacks, adjustments. Also captures split/vendor amounts.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.cashfree"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.cashfree",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 3236
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.cashfree_payin",
+  "grain": "one row per payin/payment/refund/adjustment gateway event",
+  "grain_keys": [
+    "transaction_id",
+    "cashfree_reference_id",
+    "merchant_reference_id",
+    "customer_reference_id",
+    "order_id",
+    "order_id2"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.cashfree.payin.batch_settlement"
+  ],
+  "name": "zs_observe.cashfree_payin",
+  "recommended_date_columns": [
+    "txn_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "cashfree_reference_id",
+    "merchant_reference_id",
+    "customer_reference_id",
+    "settlement_id",
+    "refund_arn",
+    "utr"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.cashfree_payin",
+  "source_caveats": [
+    "Cashfree uses an **event-based** model: payment events, settlement events, and transfer events may each create separate rows.",
+    "`key_1..key_10` and `key1..key10` are duplicated field sets from different report versions — check which is populated.",
+    "`virtual_account_id` transactions represent B2B collections via Cashfree's VA feature.",
+    "Split payments: up to 5 vendor splits per transaction captured natively.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3236,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.cashfree"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "txn_type",
+    "txn_sub_type",
+    "event_type",
+    "payment_mode",
+    "payment_mode_subtype",
+    "status",
+    "refund_type",
+    "card_type",
+    "card_type_1",
+    "currency",
+    "event_currency",
+    "offer_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.cashfree.in"
+    ],
+    "platform_ids": [
+      "platform.cashfree"
+    ]
+  },
+  "table_name": "cashfree_payin",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

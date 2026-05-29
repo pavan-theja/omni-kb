@@ -1,0 +1,46 @@
+{
+  "aliases": [
+    "TataCliq",
+    "Tata CLiQ",
+    "TataCliq Marketplace"
+  ],
+  "canonical_id": "platform.tatacliq",
+  "canonical_name": "TataCliq",
+  "card_type": "platform",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "platform card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.overview.background"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.overview.background",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2581
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_category": "curated_ecommerce_marketplace",
+  "name": "TataCliq",
+  "operator": "Tata Unistore Limited",
+  "review_status": "ready",
+  "source_card_id": "platform.tatacliq",
+  "source_confidence": "high",
+  "source_documents": [
+    "TataCliq Recon KB.docx",
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2581,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

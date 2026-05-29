@@ -1,0 +1,58 @@
+{
+  "canonical_id": "state_transition.healthkart.forward_flow_sale_delivery_settlement.delivered_to_settlement_processed",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_columns": [
+    "healthkart_settlement.settlement_date",
+    "healthkart_settlement.settled_amount",
+    "healthkart_settlement.gross_commission",
+    "healthkart_settlement.mp_fees",
+    "healthkart_settlement.total_tax_on_charges"
+  ],
+  "evidence_ids": [
+    "evidence.healthkart.011_4_fee_structure_and_financial_waterfall",
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.011_4_fee_structure_and_financial_waterfall",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6586
+    },
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6586
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "delivered_in_settlement",
+  "name": "delivered_in_settlement → settlement_processed",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.healthkart.forward_flow_sale_delivery_settlement.delivered_to_settlement_processed",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.011_4_fee_structure_and_financial_waterfall",
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6586,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "state_column": "healthkart_settlement.settlement_date / settled_amount",
+  "status": "draft",
+  "to_state": "settlement_processed",
+  "trigger": "HealthKart deducts gross_commission, mp_fees, and total_tax_on_charges and records settled_amount.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

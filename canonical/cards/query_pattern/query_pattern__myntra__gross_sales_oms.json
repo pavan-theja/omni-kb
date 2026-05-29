@@ -1,0 +1,56 @@
+{
+  "canonical_id": "query_pattern.myntra.gross_sales_oms",
+  "canonical_name": "Gross Sales from OMS",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11502
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Gross Sales from OMS",
+  "output_contract_id": "output_contract.myntra.metric_summary",
+  "produced_metric_ids": [
+    "metric.gross_sales"
+  ],
+  "reconciliation_profile_id": null,
+  "review_status": "unreviewed",
+  "rule_ids": [
+    "rule.myntra.oms_amount_cast",
+    "rule.myntra.oms_no_is_active"
+  ],
+  "source_card_id": "query_pattern.myntra.gross_sales_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11502,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_sql_status": "docx_sql_or_manifest_executable_sql",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_oms",
+  "sql_ref": "sql.myntra.gross_sales_oms",
+  "sql_template": "SELECT SUM(TRY_CAST(total_amount AS DOUBLE)) AS gross_sales\nFROM zs_ingest.myntra_oms\nWHERE group_level_id = '<client_id>';",
+  "status": "draft",
+  "summary": "Myntra query pattern: Gross Sales from OMS.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_test_ids": [
+    "validation_test.myntra.oms_cast_amounts"
+  ]
+}

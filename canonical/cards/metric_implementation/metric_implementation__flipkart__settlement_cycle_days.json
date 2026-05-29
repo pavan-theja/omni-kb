@@ -1,0 +1,68 @@
+{
+  "aggregation_rule": "aggregate at declared grain before joins",
+  "base_tables": [],
+  "canonical_id": "metric_implementation.flipkart.settlement_cycle_days",
+  "card_type": "metric_implementation",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns",
+    "evidence.flipkart.settlement_logic"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4226
+    },
+    {
+      "evidence_id": "evidence.flipkart.settlement_logic",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4226
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true AND settlement_date IS NOT NULL"
+  ],
+  "formula": "AVG(DATE_DIFF('day', created_date, settlement_date))",
+  "grain": "settlement line",
+  "implementation_caveats": [
+    "Dispatch date is preferable but not present in source excerpts."
+  ],
+  "implementation_scope": "flipkart",
+  "join_dependencies": [
+    "see relationship cards when cross-table"
+  ],
+  "metric_id": "metric.settlement_cycle_days",
+  "metric_pattern": "platform-specific implementation of generic colloquial metric",
+  "name": "Flipkart settlement_cycle_days",
+  "platform_code": "flipkart",
+  "platform_context": "platform_context.flipkart.in",
+  "review_status": "review_required",
+  "sign_handling": "preserve source sign unless formula explicitly uses ABS for reporting ratio",
+  "source_card_id": "metric_implementation.flipkart.settlement_cycle_days",
+  "source_columns": [
+    "created_date",
+    "settlement_date"
+  ],
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4226,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "review_required",
+  "source_table": "table.flipkart.settlement",
+  "sql_pattern_ref": "sql.flipkart.settlement_cycle",
+  "status": "draft",
+  "time_basis": "settlement_date",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

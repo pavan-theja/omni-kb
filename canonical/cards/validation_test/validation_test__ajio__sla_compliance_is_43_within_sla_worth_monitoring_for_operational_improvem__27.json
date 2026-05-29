@@ -1,0 +1,44 @@
+{
+  "assertion": "SLA compliance is 43% (`Within SLA`) — worth monitoring for operational improvement",
+  "canonical_id": "validation_test.ajio.sla_compliance_is_43_within_sla_worth_monitoring_for_operational_improvem.27",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "SLA compliance is 43% (`Within SLA`) — worth monitoring for operational improvement",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7998
+    }
+  ],
+  "expected_result": "Parser output preserves or enforces this rule.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential incorrect card creation, missing evidence capture, or query misuse.",
+  "name": "Validate: SLA compliance is 43% (`Within SLA`) — worth monitoring for operational improvem",
+  "review_status": "ready",
+  "source_card_id": "validation_test.ajio.sla_compliance_is_43_within_sla_worth_monitoring_for_operational_improvem.27",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7998,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "test_type": "semantic_guard",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,63 @@
+{
+  "canonical_id": "formula_template.snapdeal.tds_tax_deducted_at_source_income_tax_section_194_o",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal formula pattern — TDS — Tax Deducted at Source (Income Tax, Section 194-O)",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.6_2_tds_tax_deducted_at_source_income_tax_section_194_o",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.6_2_tds_tax_deducted_at_source_income_tax_section_194_o",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14514
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14514
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14514
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_sql": "SELECT SUM(ABS(gross_amount)) AS total_tds_deducted FROM zs_observe.snapdeal_non_order WHERE is_active = true AND transaction_type IN ('COD TDS INV', 'NCOD TDS INV')",
+  "formula_text": "SELECT SUM(ABS(gross_amount)) AS total_tds_deducted FROM zs_observe.snapdeal_non_order WHERE is_active = true AND transaction_type IN ('COD TDS INV', 'NCOD TDS INV')",
+  "name": "Snapdeal formula pattern — TDS — Tax Deducted at Source (Income Tax, Section 194-O)",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter",
+    "is_active_filter",
+    "transaction_type_scope",
+    "group_level_id_scope_column"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.snapdeal.tds_tax_deducted_at_source_income_tax_section_194_o",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14514,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "sql_pattern_id": "sql.snapdeal.tds_tax_deducted_at_source_income_tax_section_194_o",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

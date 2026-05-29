@@ -1,0 +1,19 @@
+{
+  "card_types": {
+    "platform_account": 2
+  },
+  "counts": {
+    "cards": 2,
+    "edges": 6,
+    "semantic_mappings": 4
+  },
+  "edge_types": {
+    "HAS_PLATFORM_ACCOUNT": 2,
+    "INCLUDES_PLATFORM_ACCOUNT": 2,
+    "PARTICIPATES_WITH_ACCOUNT": 2
+  },
+  "scope": [
+    "logistics",
+    "bluedart"
+  ]
+}

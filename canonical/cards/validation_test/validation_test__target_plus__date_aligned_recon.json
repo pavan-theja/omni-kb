@@ -1,0 +1,45 @@
+{
+  "applies_to_cards": [
+    "reconciliation_profile.target_plus.sales_settlement",
+    "rule.target_plus.settlement_recency_gap"
+  ],
+  "assertion": "Sales-settlement reconciliation over sales through Dec 2025 must identify Nov settlement cutoff timing gap.",
+  "canonical_id": "validation_test.target_plus.date_aligned_recon",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Sales-settlement reconciliation over sales through Dec 2025 must identify Nov settlement cutoff timing gap.",
+  "display_name": "Validate settlement date alignment",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.3_2_primary_join_keys"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.3_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11845
+    }
+  ],
+  "expected_result": "timing gap surfaced as Not Yet Settled / date caveat",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Dec sales may be falsely treated as missing settlement.",
+  "name": "Validate settlement date alignment",
+  "review_status": "ready",
+  "source_card_id": "validation_test.target_plus.date_aligned_recon",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11845,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "semantic_lint",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

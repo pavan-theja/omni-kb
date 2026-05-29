@@ -1,0 +1,84 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.snapdeal.return_rate_by_tax_rate",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal implementation — Return Rate by Tax Rate",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.5_2_return_rate_by_tax_rate",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9",
+    "evidence.snapdeal.sales_return_empty_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.5_2_return_rate_by_tax_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16357
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16357
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16357
+    },
+    {
+      "evidence_id": "evidence.snapdeal.sales_return_empty_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 16357
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use exactly the filters in formula_sql / linked sql_pattern, especially is_active=true, transaction_type/type scope, and group_level_id column scope where runtime supplies it.",
+  "formula_sql": "SELECT\n  tax_overall_rate,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS total_reversed\nFROM zs_observe.snapdeal_sales_return\nWHERE is_active = true\nGROUP BY tax_overall_rate;",
+  "formula_text": "Executable SQL-like implementation normalized in V9; see formula_sql and sql_pattern_id.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "snapdeal",
+  "metric_id": "metric.return_rate",
+  "metric_pattern": "snapdeal_specific_implementation_of_return_rate",
+  "name": "Snapdeal implementation — Return Rate by Tax Rate",
+  "platform_code": "snapdeal",
+  "platform_context_id": "platform_context.snapdeal.in",
+  "population_caveat": "snapdeal_sales_return is empty in current data; implementation is future-ready only.",
+  "review_status": "ready_with_population_caveat",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.snapdeal.return_rate_by_tax_rate",
+  "source_columns": [
+    "snapdeal_sales_return",
+    "tax_overall_rate",
+    "cnt",
+    "charged_amount",
+    "total_reversed",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16357,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready_with_population_caveat",
+  "source_table_ids": [
+    "table.zs_observe.snapdeal_sales_return"
+  ],
+  "source_tables": [
+    "zs_observe.snapdeal_sales_return"
+  ],
+  "sql_pattern": "SELECT\n  tax_overall_rate,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS total_reversed\nFROM zs_observe.snapdeal_sales_return\nWHERE is_active = true\nGROUP BY tax_overall_rate;",
+  "sql_pattern_id": "sql.snapdeal.5_2_return_rate_by_tax_rate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,46 @@
+{
+  "canonical_id": "formula_template.meesho.effective_cost_per_delivered_order",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho formula pattern — Effective Cost Per Delivered Order",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_4_effective_cost_per_delivered_order"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_4_effective_cost_per_delivered_order",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13114
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "SELECT\n  supplier_id,\n  COUNT(*) AS orders,\n  SUM(taxable_shipping + shipping_gst_18_percent\n      + meesho_mall_platformfee + meesho_mall_platformfee_gst\n      + fixed_fee) AS total_platform_cost,\n  AVG(taxable_shipping + shipping_gst_18_percent\n      + meesho_mall_platformfee + meesho_mall_platformfee_gst) AS avg_cost_per_order\nFROM zs_observe.meesho_forward_expenses\nWHERE CAST(is_active AS VARCHAR) = 'true'\nGROUP BY supplier_id;",
+  "name": "Meesho formula pattern — Effective Cost Per Delivered Order",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.meesho.effective_cost_per_delivered_order",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13114,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

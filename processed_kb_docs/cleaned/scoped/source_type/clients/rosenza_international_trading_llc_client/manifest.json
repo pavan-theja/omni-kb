@@ -1,0 +1,12 @@
+{
+  "card_types": {},
+  "counts": {
+    "future_context_gaps": 4,
+    "semantic_mappings": 16
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "rosenza_international_trading_llc_client"
+  ]
+}

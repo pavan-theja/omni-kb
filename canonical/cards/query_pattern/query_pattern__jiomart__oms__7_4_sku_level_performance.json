@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.oms.7_4_sku_level_performance",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 7.4 SKU-Level Performance",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.oms.7_4_sku_level_performance"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.oms.7_4_sku_level_performance",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13349
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 7.4 SKU-Level Performance",
+  "natural_language_patterns": [
+    "7.4 SKU-Level Performance"
+  ],
+  "output_contract_id": "output_contract.jiomart.sku_summary",
+  "primary_metric_id": "metric.jiomart.oms_sku_performance",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.oms.7_4_sku_level_performance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13349,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms"
+  ],
+  "sql_ref": "sql.jiomart.oms.7_4_sku_level_performance",
+  "sql_template": "SELECT sku_id, mp_sin,\n  COUNT(*) AS orders,\n  SUM(charged_amount) AS gmv,\n  AVG(charged_amount) AS avg_price,\n  ROUND(100.0 * COUNT_IF(transaction_type = 'forward' AND order_status = 'shipment_returned')\n    / NULLIF(COUNT_IF(transaction_type = 'forward'), 0), 2) AS rto_rate_pct\nFROM zs_observe.jiomart_oms\nWHERE is_active = true AND hsn IS NOT NULL\nGROUP BY sku_id, mp_sin\nORDER BY gmv DESC;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

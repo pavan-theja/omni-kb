@@ -1,0 +1,68 @@
+{
+  "allowed_metric_types": [
+    "amount",
+    "rate",
+    "ratio",
+    "variance",
+    "duration"
+  ],
+  "canonical_id": "formula.pg.payout_success_rate",
+  "card_type": "formula_template",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "denominator_handling": "Use NULLIF denominator, 0.",
+  "description": "successful payouts divided by total payout attempts",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50604
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_plain_english": "successful payouts divided by total payout attempts",
+  "formula_sql_pattern": "COUNT(CASE WHEN status IN success_values THEN 1 END) / NULLIF(COUNT(*),0)",
+  "formula_type": "rate",
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Payout success rate",
+  "null_handling": "Preserve nulls unless source rule says otherwise.",
+  "optional_inputs": [
+    "currency",
+    "status",
+    "payment_mode",
+    "settlement_id",
+    "payout_id"
+  ],
+  "output_unit_logic": "Currency for amounts, percentage for rates, days for duration.",
+  "required_date_logic": "Use recommended date basis from the table/metric implementation.",
+  "required_inputs": [
+    "amount_column_or_metric",
+    "date_column_when_applicable"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "formula.pg.payout_success_rate",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 50604,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "template_name": "Payout success rate",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

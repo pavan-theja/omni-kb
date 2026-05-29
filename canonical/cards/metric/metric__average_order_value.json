@@ -1,0 +1,118 @@
+{
+  "aliases": [
+    "AOV",
+    "average basket value"
+  ],
+  "benchmarks": {
+    "observed_average_selling_price": "₹314",
+    "source": "docx section 8 Product Catalog & Pricing"
+  },
+  "business_definition": "Average customer charged_amount for delivered AJIO OMS orders.",
+  "business_question": "GMV divided by order count",
+  "canonical_formula_pattern": "avg_oms_customer_charged_amount_delivered_orders",
+  "canonical_id": "metric.average_order_value",
+  "canonical_name": "average_order_value",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Average Order Value",
+    "AOV",
+    "average basket value",
+    "avg order value"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "period",
+  "default_time_basis": "settlement_date for settlement metrics; created/order date for order metrics",
+  "default_unit": "INR",
+  "description": "Average customer charged_amount for delivered AJIO OMS orders.",
+  "display_name": "Average order value",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations",
+    "evidence.flipkart.query_patterns",
+    "evidence.meesho.7_4_average_order_value_aov",
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees",
+    "evidence.nykaa.metrics",
+    "evidence.snapdeal.9_4_average_order_value_aov",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4586
+    }
+  ],
+  "evidence_table_ids": [],
+  "excluded_components": [
+    "COGS",
+    "bank deposits",
+    "external logistics charges",
+    "ERP/accounting adjustments"
+  ],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": true,
+  "implementation_ids": [
+    "metric_impl.meesho.average_order_value_aov",
+    "metric_impl.nykaa_oms.aov_by_payment_mode",
+    "metric_impl.snapdeal.average_order_value_aov",
+    "metric_implementation.ajio.average_order_value.04",
+    "metric_implementation.myntra_oms.average_order_value"
+  ],
+  "included_components": [
+    "marketplace-owned Flipkart fields only"
+  ],
+  "marketplace_only": true,
+  "metric_family": "operations",
+  "metric_key": "average_order_value",
+  "metric_pattern": "avg_oms_customer_charged_amount_delivered_orders",
+  "name": "Average Order Value",
+  "platform_agnostic": true,
+  "platform_agnostic_name": "Average Order Value",
+  "positive_direction": "higher_is_better except fees/taxes/returns/cancellations",
+  "review_status": "ready",
+  "source_card_id": "metric.average_order_value",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md",
+    "/mnt/data/Flipkart Recon Doc.docx",
+    "/mnt/data/Meesho Recon Doc.docx",
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx",
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx",
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4586,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+    "raw/cleaned_v2/marketplace/snapdeal_marketplace.md"
+  ],
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Generic marketplace metric for average order value. Use colloquial aliases for user query matching and platform-specific implementation cards for Myntra SQL semantics.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "AJIO",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

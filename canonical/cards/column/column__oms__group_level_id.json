@@ -1,0 +1,60 @@
+{
+  "business_meaning": "Table-level scope column; not a marketplace account card.",
+  "canonical_id": "column.oms.group_level_id",
+  "card_type": "column",
+  "column_name": "group_level_id",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "integer",
+  "description": "Table-level scope column; not a marketplace account card.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": [
+    22,
+    26,
+    65787,
+    65853
+  ],
+  "evidence_ids": [
+    "evidence.flipkart.scope_caveats",
+    "evidence.flipkart.pitfalls"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.scope_caveats",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 1039
+    },
+    {
+      "evidence_id": "evidence.flipkart.pitfalls",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 1039
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "filter_caveat",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.oms.group_level_id",
+  "review_status": "review_required",
+  "semantic_type": "scope_column_only",
+  "source_card_id": "column.oms.group_level_id",
+  "source_caveats": [
+    "Scope column only; never emit tenant/group/account-binding cards from this field.",
+    "Documented scope value only; do not create tenant/group/account-binding cards."
+  ],
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1039,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "review_required",
+  "status": "draft",
+  "table_id": "table.flipkart.oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

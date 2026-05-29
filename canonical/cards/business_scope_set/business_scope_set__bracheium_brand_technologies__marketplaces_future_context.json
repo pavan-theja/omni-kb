@@ -1,0 +1,71 @@
+{
+  "active": false,
+  "canonical_id": "business_scope_set.bracheium_brand_technologies.marketplaces_future_context",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Source-confirmed marketplaces requiring platform context before active binding.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.bracheium_brand_technologies.mensa_brands",
+  "name": "Marketplaces Future Context",
+  "notes": [],
+  "package_id": "bracheium_brand_technologies_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_ids": [
+    "platform_account.bracheium_brand_technologies.cred_in.primary",
+    "platform_account.bracheium_brand_technologies.firstcry_in.primary",
+    "platform_account.bracheium_brand_technologies.klip_in.primary",
+    "platform_account.bracheium_brand_technologies.blitz_in.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.cred.in",
+    "platform_context.firstcry.in",
+    "platform_context.klip.in",
+    "platform_context.blitz.in"
+  ],
+  "platform_ids": [
+    "platform.cred",
+    "platform.firstcry",
+    "platform.klip",
+    "platform.blitz"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Bracheium Marketplace Future Context",
+  "scope_type": "platform_account_group",
+  "source_confidence": null,
+  "source_documents": [
+    "Bracheium Brand Technologies Pvt Ltd.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "increff_operations.md",
+    "jiomart_marketplace.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "payment_gateway.md",
+    "shiprocket_logistics.md",
+    "shopify_d2c_oms.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md",
+    "xpressbees_logistics.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.bracheium_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

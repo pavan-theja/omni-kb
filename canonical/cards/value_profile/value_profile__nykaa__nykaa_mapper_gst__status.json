@@ -1,0 +1,59 @@
+{
+  "canonical_id": "value_profile.nykaa.nykaa_mapper_gst.status",
+  "canonical_name": "zs_observe.nykaa_mapper_gst.status value profile",
+  "card_type": "value_profile",
+  "column_name": "status",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [],
+  "description": "value_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.payment_logistics",
+    "evidence.nykaa.lifecycle"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.payment_logistics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13563
+    },
+    {
+      "evidence_id": "evidence.nykaa.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13563
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_mapper_gst.status value profile",
+  "observed_values": [
+    "Delivered",
+    "Returned",
+    "RTO Delivered",
+    "Cancelled",
+    "Shipped",
+    "Lost In Transit",
+    "Confirmed",
+    "Ready for Ship"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "value_profile.nykaa.nykaa_mapper_gst.status",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13563,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "mapper_gst order lifecycle status values include Delivered, Returned, RTO Delivered, Cancelled, Shipped, Lost In Transit, Confirmed, Ready for Ship.",
+  "table_id": "table.zs_observe.nykaa_mapper_gst",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

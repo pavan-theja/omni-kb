@@ -1,0 +1,49 @@
+{
+  "canonical_id": "workflow_step.target_plus.return_flow.02",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "target_settlement reverse/refunds row posts refund impact; settled_amount is negative and gross_commission may reverse as a seller credit.",
+  "display_name": "Refund settlement posts",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.2_2_return_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.2_2_return_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9901
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "table.zs_observe.target_returns"
+  ],
+  "name": "Refund settlement posts",
+  "output_tables": [
+    "table.zs_observe.target_settlement"
+  ],
+  "process_id": "business_process.target_plus.return_flow",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.target_plus.return_flow.02",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9901,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "status_conditions": [
+    "transaction_type='reverse'",
+    "internal_txn_type='refunds'"
+  ],
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

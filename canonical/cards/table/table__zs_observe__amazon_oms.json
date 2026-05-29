@@ -1,0 +1,110 @@
+{
+  "candidate_notes": "Active rate is very low due to duplication; transaction_type must be explicitly filtered.",
+  "canonical_id": "table.zs_observe.amazon_oms",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.amazon_oms.asin",
+    "column.zs_observe.amazon_oms.charged_amount",
+    "column.zs_observe.amazon_oms.charged_amount_excluding_tax",
+    "column.zs_observe.amazon_oms.created_date",
+    "column.zs_observe.amazon_oms.currency_type",
+    "column.zs_observe.amazon_oms.destination_gst_id",
+    "column.zs_observe.amazon_oms.destination_state",
+    "column.zs_observe.amazon_oms.fulfilment_channel",
+    "column.zs_observe.amazon_oms.fulfilment_type",
+    "column.zs_observe.amazon_oms.gross_commission",
+    "column.zs_observe.amazon_oms.group_id",
+    "column.zs_observe.amazon_oms.group_level_id",
+    "column.zs_observe.amazon_oms.invoice_date",
+    "column.zs_observe.amazon_oms.invoice_number",
+    "column.zs_observe.amazon_oms.is_active",
+    "column.zs_observe.amazon_oms.is_duplicated",
+    "column.zs_observe.amazon_oms.item_amount_excluding_tax",
+    "column.zs_observe.amazon_oms.item_id",
+    "column.zs_observe.amazon_oms.item_promo_discount",
+    "column.zs_observe.amazon_oms.metadata",
+    "column.zs_observe.amazon_oms.mrp",
+    "column.zs_observe.amazon_oms.order_date",
+    "column.zs_observe.amazon_oms.order_id",
+    "column.zs_observe.amazon_oms.order_shipped_date",
+    "column.zs_observe.amazon_oms.principal_amount",
+    "column.zs_observe.amazon_oms.settled_amount",
+    "column.zs_observe.amazon_oms.settlement_date",
+    "column.zs_observe.amazon_oms.shipping_amount",
+    "column.zs_observe.amazon_oms.shipping_promo_discount",
+    "column.zs_observe.amazon_oms.sku_id",
+    "column.zs_observe.amazon_oms.source_gst_id",
+    "column.zs_observe.amazon_oms.source_state",
+    "column.zs_observe.amazon_oms.tax_cgst_rate",
+    "column.zs_observe.amazon_oms.tax_igst_rate",
+    "column.zs_observe.amazon_oms.tax_ugst_rate",
+    "column.zs_observe.amazon_oms.total_tax",
+    "column.zs_observe.amazon_oms.total_tcs_amount",
+    "column.zs_observe.amazon_oms.total_tds",
+    "column.zs_observe.amazon_oms.transaction_type",
+    "column.zs_observe.amazon_oms.zen_status",
+    "column.zs_observe.amazon_oms.zone",
+    "column.zs_observe.amazon_oms.zone_new"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_column": "created_date",
+  "description": "table card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain": "domain.marketplace.amazon.orders",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.amazon_oms.purpose.001",
+    "ev.amazon_oms.quality.001",
+    "ev.amazon_oms.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_oms.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1325
+    },
+    {
+      "evidence_id": "ev.amazon_oms.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1325
+    },
+    {
+      "evidence_id": "ev.amazon_oms.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1325
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_observe.amazon_oms",
+  "grain": "transaction row at order/item/event level",
+  "mandatory_filters": "is_active = true",
+  "marketplace_only": true,
+  "name": "Amazon OMS order management system",
+  "optional_filters": [
+    "zen_status = true",
+    "is_duplicated = false"
+  ],
+  "platform_context": "platform_context.amazon.in",
+  "quality_notes": "Active rate is very low due to duplication; transaction_type must be explicitly filtered.",
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "scope": "Amazon India B2B, B2C, and international order rows",
+  "source_card_id": "table.zs_observe.amazon_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1325,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "amazon_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

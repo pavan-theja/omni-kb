@@ -1,0 +1,56 @@
+{
+  "banking_only": true,
+  "business_meaning": "Current ledger balance (real-time)",
+  "candidate_notes": "Current ledger balance (real-time)",
+  "canonical_id": "column.zs_ingest.hsbc_bank.current_ledger_balance",
+  "card_type": "column",
+  "column_name": "current_ledger_balance",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "Current ledger balance (real-time)",
+  "direction_role": "",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.hsbc_bank.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.hsbc_bank.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 6321
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "metric_amount",
+  "name": "hsbc_bank.current_ledger_balance",
+  "numeric_quality": "usable_if_type_confirmed",
+  "review_status": "accepted",
+  "scope_guardrail": "banking_semantic_column",
+  "semantic_roles": [
+    "financial_amount",
+    "measure"
+  ],
+  "semantic_type": "financial_amount",
+  "source_card_id": "column.zs_ingest.hsbc_bank.current_ledger_balance",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_data_type": "Decimal",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6321,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_ingest.hsbc_bank",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

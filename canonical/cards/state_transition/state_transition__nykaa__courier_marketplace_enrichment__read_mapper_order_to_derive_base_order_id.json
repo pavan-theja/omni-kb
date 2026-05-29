@@ -1,0 +1,43 @@
+{
+  "canonical_id": "state_transition.nykaa.courier_marketplace_enrichment.read_mapper_order_to_derive_base_order_id",
+  "canonical_name": "read_mapper_order to derive_base_order_id",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.lifecycle"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 16627
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_step_id": "workflow_step.nykaa.courier_marketplace_enrichment.read_mapper_order",
+  "marketplace_only": true,
+  "name": "read_mapper_order to derive_base_order_id",
+  "process_id": "business_process.nykaa.courier_marketplace_enrichment",
+  "review_status": "unreviewed",
+  "source_card_id": "state_transition.nykaa.courier_marketplace_enrichment.read_mapper_order_to_derive_base_order_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16627,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Transition in Nykaa courier_marketplace_enrichment process: Truncate magentoorderno to OMS base order_id.",
+  "to_step_id": "workflow_step.nykaa.courier_marketplace_enrichment.derive_base_order_id",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

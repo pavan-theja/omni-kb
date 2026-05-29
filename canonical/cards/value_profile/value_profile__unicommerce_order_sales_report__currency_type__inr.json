@@ -1,0 +1,53 @@
+{
+  "canonical_id": "value_profile.unicommerce_order_sales_report.currency_type.inr",
+  "card_type": "value_profile",
+  "column_names": [
+    "currency_type"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Currency is INR for OSR",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "documented_values": {
+    "INR": "Indian Rupee"
+  },
+  "evidence_ids": [
+    "ev.unicommerce.section.033.3_schema_details_49_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.033.3_schema_details_49_columns",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9726
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Inr",
+  "optional_fields": [
+    "documented_values",
+    "value_meanings",
+    "normalization_rules",
+    "quality_caveats",
+    "examples",
+    "excluded_interpretations"
+  ],
+  "profile_name": "inr",
+  "review_status": "ready",
+  "source_card_id": "value_profile.unicommerce_order_sales_report.currency_type.inr",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9726,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.unicommerce_order_sales_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "supporting_or_handoff"
+}

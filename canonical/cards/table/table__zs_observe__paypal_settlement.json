@@ -1,0 +1,206 @@
+{
+  "amount_columns": [
+    "gross",
+    "fee",
+    "net",
+    "balance",
+    "balance_impact",
+    "vat",
+    "charged_amount",
+    "mp_fee",
+    "settled_amount"
+  ],
+  "avoid_columns": [
+    "balance_impact",
+    "vat"
+  ],
+  "business_purpose": "Traditional PayPal settlement report. Used by merchants on PayPal's standard payment system (non-EC). Similar structure to PayPal activity download.",
+  "canonical_id": "table.zs_observe.paypal_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.paypal_settlement.balance",
+    "column.zs_observe.paypal_settlement.balance_impact",
+    "column.zs_observe.paypal_settlement.bank_account",
+    "column.zs_observe.paypal_settlement.bank_arn",
+    "column.zs_observe.paypal_settlement.bank_name",
+    "column.zs_observe.paypal_settlement.charged_amount",
+    "column.zs_observe.paypal_settlement.country",
+    "column.zs_observe.paypal_settlement.country_code",
+    "column.zs_observe.paypal_settlement.created_date",
+    "column.zs_observe.paypal_settlement.currency",
+    "column.zs_observe.paypal_settlement.custom_number",
+    "column.zs_observe.paypal_settlement.date",
+    "column.zs_observe.paypal_settlement.description",
+    "column.zs_observe.paypal_settlement.fee",
+    "column.zs_observe.paypal_settlement.from_email_address",
+    "column.zs_observe.paypal_settlement.gross",
+    "column.zs_observe.paypal_settlement.invoice_id",
+    "column.zs_observe.paypal_settlement.invoice_number",
+    "column.zs_observe.paypal_settlement.item_id",
+    "column.zs_observe.paypal_settlement.item_title",
+    "column.zs_observe.paypal_settlement.mp_fee",
+    "column.zs_observe.paypal_settlement.name",
+    "column.zs_observe.paypal_settlement.net",
+    "column.zs_observe.paypal_settlement.order_id",
+    "column.zs_observe.paypal_settlement.other_id",
+    "column.zs_observe.paypal_settlement.parent_id",
+    "column.zs_observe.paypal_settlement.quantity",
+    "column.zs_observe.paypal_settlement.receipt_id",
+    "column.zs_observe.paypal_settlement.reference_txn_id",
+    "column.zs_observe.paypal_settlement.settled_amount",
+    "column.zs_observe.paypal_settlement.status",
+    "column.zs_observe.paypal_settlement.subject",
+    "column.zs_observe.paypal_settlement.time",
+    "column.zs_observe.paypal_settlement.time_zone",
+    "column.zs_observe.paypal_settlement.to_email_address",
+    "column.zs_observe.paypal_settlement.transaction_id",
+    "column.zs_observe.paypal_settlement.transaction_type",
+    "column.zs_observe.paypal_settlement.type",
+    "column.zs_observe.paypal_settlement.vat"
+  ],
+  "columns": [
+    "column.zs_observe.paypal_settlement.transaction_id",
+    "column.zs_observe.paypal_settlement.reference_txn_id",
+    "column.zs_observe.paypal_settlement.invoice_id",
+    "column.zs_observe.paypal_settlement.invoice_number",
+    "column.zs_observe.paypal_settlement.date",
+    "column.zs_observe.paypal_settlement.time",
+    "column.zs_observe.paypal_settlement.time_zone",
+    "column.zs_observe.paypal_settlement.type",
+    "column.zs_observe.paypal_settlement.status",
+    "column.zs_observe.paypal_settlement.currency",
+    "column.zs_observe.paypal_settlement.gross",
+    "column.zs_observe.paypal_settlement.fee",
+    "column.zs_observe.paypal_settlement.net",
+    "column.zs_observe.paypal_settlement.balance",
+    "column.zs_observe.paypal_settlement.balance_impact",
+    "column.zs_observe.paypal_settlement.from_email_address",
+    "column.zs_observe.paypal_settlement.to_email_address",
+    "column.zs_observe.paypal_settlement.bank_account",
+    "column.zs_observe.paypal_settlement.bank_name",
+    "column.zs_observe.paypal_settlement.name",
+    "column.zs_observe.paypal_settlement.bank_arn",
+    "column.zs_observe.paypal_settlement.vat",
+    "column.zs_observe.paypal_settlement.description",
+    "column.zs_observe.paypal_settlement.transaction_type",
+    "column.zs_observe.paypal_settlement.order_id",
+    "column.zs_observe.paypal_settlement.charged_amount",
+    "column.zs_observe.paypal_settlement.mp_fee",
+    "column.zs_observe.paypal_settlement.settled_amount",
+    "column.zs_observe.paypal_settlement.other_id",
+    "column.zs_observe.paypal_settlement.created_date",
+    "column.zs_observe.paypal_settlement.parent_id",
+    "column.zs_observe.paypal_settlement.receipt_id",
+    "column.zs_observe.paypal_settlement.item_id",
+    "column.zs_observe.paypal_settlement.item_title",
+    "column.zs_observe.paypal_settlement.quantity",
+    "column.zs_observe.paypal_settlement.country",
+    "column.zs_observe.paypal_settlement.country_code",
+    "column.zs_observe.paypal_settlement.subject",
+    "column.zs_observe.paypal_settlement.custom_number"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "date",
+    "time",
+    "time_zone",
+    "created_date"
+  ],
+  "description": "Traditional PayPal settlement report. Used by merchants on PayPal's standard payment system (non-EC). Similar structure to PayPal activity download.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.paypal"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.paypal",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 4593
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.paypal_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "transaction_id",
+    "reference_txn_id",
+    "invoice_id",
+    "invoice_number",
+    "bank_arn",
+    "order_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.paypal_settlement",
+  "recommended_date_columns": [
+    "created_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "reference_txn_id",
+    "bank_arn"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.paypal_settlement",
+  "source_caveats": [
+    "`bank_arn` is the UTR for bank reconciliation.",
+    "`balance_impact` distinguishes credits from debits across all PayPal activity.",
+    "`reference_txn_id` links refunds/chargebacks to original transactions.",
+    "`balance_temp_old` is a legacy migration column — ignore.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4593,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.paypal"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "type",
+    "status",
+    "currency",
+    "balance_impact",
+    "transaction_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.paypal.global"
+    ],
+    "platform_ids": [
+      "platform.paypal"
+    ]
+  },
+  "table_name": "paypal_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

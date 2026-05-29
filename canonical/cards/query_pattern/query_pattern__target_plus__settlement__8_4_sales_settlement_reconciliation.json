@@ -1,0 +1,60 @@
+{
+  "canonical_id": "query_pattern.target_plus.settlement.8_4_sales_settlement_reconciliation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus query pattern — 8.4 Sales ↔ Settlement Reconciliation",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.settlement.8_4_sales_settlement_reconciliation_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.settlement.8_4_sales_settlement_reconciliation_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11029
+    }
+  ],
+  "execution_constraints": [
+    "execution_constraint_set.target_plus.marketplace_parser_constraints"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "8.4 Sales ↔ Settlement Reconciliation",
+  "name": "Target Plus query pattern — 8.4 Sales ↔ Settlement Reconciliation",
+  "natural_language_patterns": [
+    "8.4 Sales ↔ Settlement Reconciliation",
+    "Target Plus 8.4 Sales ↔ Settlement Reconciliation"
+  ],
+  "output_contract_id": "output_contract.target_plus.reconciliation_status",
+  "primary_metric_id": null,
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.target_plus.sales_settlement"
+  ],
+  "required_filters": [
+    "rule.target_plus.active_filter",
+    "rule.target_plus.currency_label_usd_values",
+    "rule.target_plus.settlement_recency_gap"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.target_plus.settlement.8_4_sales_settlement_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11029,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.target_sales",
+    "table.zs_observe.target_settlement"
+  ],
+  "sql_ref": "sql.target_plus.settlement.8_4_sales_settlement_reconciliation",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

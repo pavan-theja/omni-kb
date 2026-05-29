@@ -1,0 +1,58 @@
+{
+  "base_tables": [],
+  "candidate_notes": "SKU-level estimate; not actual fee.",
+  "canonical_id": "metric_implementation.amazon.amazon_fee_preview.fee_burden",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.kpi.fee_cost.001",
+    "ev.amazon_fee_preview.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.kpi.fee_cost.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5632
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5632
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "gross_commission / NULLIF(charged_amount, 0)",
+  "grain": "sku",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.fee_burden",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "gross_commission_over_revenue",
+  "name": "Amazon implementation: fee_burden on amazon_fee_preview",
+  "notes": "SKU-level estimate; not actual fee.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true AND zen_status = true AND is_duplicated = false",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_fee_preview.fee_burden",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5632,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_fee_preview",
+  "sql_ref": "sql.amazon.fee_preview.sku_fee_summary",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

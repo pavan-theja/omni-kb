@@ -1,0 +1,44 @@
+{
+  "aggregation_rule": "Pre-aggregate many-side fee/settlement/reverse sources at the reconciliation unit before comparing amounts.",
+  "canonical_id": "reconciliation_unit.meesho.forward_expenses_settlement_validation",
+  "card_type": "reconciliation_unit",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_unit card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho unit for Forward Expenses ↔ Settlement Validation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_2_forward_expenses_settlement_validation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_2_forward_expenses_settlement_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15697
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "sub-order/order settlement line; sales/forward/reverse sub_order_num maps to settlement order_id",
+  "name": "Meesho unit for Forward Expenses ↔ Settlement Validation",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_unit.meesho.forward_expenses_settlement_validation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15697,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit_keys": [
+    "sub_order_num",
+    "order_id"
+  ],
+  "unit_type": "marketplace_order_or_settlement_line",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

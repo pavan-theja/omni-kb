@@ -1,0 +1,257 @@
+{
+  "completed_at": "2026-05-28T10:17:44+00:00",
+  "count": 22,
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "duration_seconds": 565.97,
+  "questions": "inline QUESTIONS",
+  "results": [
+    {
+      "duration_seconds": 17.813,
+      "errors": {},
+      "json": "001_which_channel_has_the_highest_order_volume_share.json",
+      "markdown": "001_which_channel_has_the_highest_order_volume_share.md",
+      "question": "Which channel has the highest order volume share?",
+      "question_index": 1,
+      "search_seconds": {
+        "RAG_COMPLETION": 17.812
+      }
+    },
+    {
+      "duration_seconds": 34.144,
+      "errors": {},
+      "json": "002_generate_a_report_of_all_channels_using_manual_csv_integration.json",
+      "markdown": "002_generate_a_report_of_all_channels_using_manual_csv_integration.md",
+      "question": "Generate a report of all channels using Manual CSV integration.",
+      "question_index": 2,
+      "search_seconds": {
+        "RAG_COMPLETION": 34.143
+      }
+    },
+    {
+      "duration_seconds": 18.132,
+      "errors": {},
+      "json": "003_list_all_marketplaces_handled_through_unicommerce.json",
+      "markdown": "003_list_all_marketplaces_handled_through_unicommerce.md",
+      "question": "List all marketplaces handled through Unicommerce.",
+      "question_index": 3,
+      "search_seconds": {
+        "RAG_COMPLETION": 18.132
+      }
+    },
+    {
+      "duration_seconds": 15.508,
+      "errors": {},
+      "json": "004_generate_a_courier_wise_channel_mapping_report.json",
+      "markdown": "004_generate_a_courier_wise_channel_mapping_report.md",
+      "question": "Generate a courier-wise channel mapping report.",
+      "question_index": 4,
+      "search_seconds": {
+        "RAG_COMPLETION": 15.508
+      }
+    },
+    {
+      "duration_seconds": 27.136,
+      "errors": {},
+      "json": "005_which_courier_handles_the_own_website_shipments.json",
+      "markdown": "005_which_courier_handles_the_own_website_shipments.md",
+      "question": "Which courier handles the own website shipments?",
+      "question_index": 5,
+      "search_seconds": {
+        "RAG_COMPLETION": 27.136
+      }
+    },
+    {
+      "duration_seconds": 24.452,
+      "errors": {},
+      "json": "006_generate_a_report_showing_cod_remittance_type_by_courier.json",
+      "markdown": "006_generate_a_report_showing_cod_remittance_type_by_courier.md",
+      "question": "Generate a report showing COD remittance type by courier.",
+      "question_index": 6,
+      "search_seconds": {
+        "RAG_COMPLETION": 24.451
+      }
+    },
+    {
+      "duration_seconds": 36.989,
+      "errors": {},
+      "json": "007_which_channels_use_marketplace_managed_returns.json",
+      "markdown": "007_which_channels_use_marketplace_managed_returns.md",
+      "question": "Which channels use marketplace-managed returns?",
+      "question_index": 7,
+      "search_seconds": {
+        "RAG_COMPLETION": 36.988
+      }
+    },
+    {
+      "duration_seconds": 24.774,
+      "errors": {},
+      "json": "008_generate_a_summary_report_of_oms_systems_and_their_connected_mar.json",
+      "markdown": "008_generate_a_summary_report_of_oms_systems_and_their_connected_mar.md",
+      "question": "Generate a summary report of OMS systems and their connected marketplaces.",
+      "question_index": 8,
+      "search_seconds": {
+        "RAG_COMPLETION": 24.773
+      }
+    },
+    {
+      "duration_seconds": 24.372,
+      "errors": {},
+      "json": "009_calculate_the_combined_marketplace_contribution_vs_own_website_c.json",
+      "markdown": "009_calculate_the_combined_marketplace_contribution_vs_own_website_c.md",
+      "question": "Calculate the combined marketplace contribution vs own website contribution.",
+      "question_index": 9,
+      "search_seconds": {
+        "RAG_COMPLETION": 24.372
+      }
+    },
+    {
+      "duration_seconds": 22.154,
+      "errors": {},
+      "json": "010_identify_channels_with_higher_operational_dependency_on_manual_p.json",
+      "markdown": "010_identify_channels_with_higher_operational_dependency_on_manual_p.md",
+      "question": "Identify channels with higher operational dependency on manual processes.",
+      "question_index": 10,
+      "search_seconds": {
+        "RAG_COMPLETION": 22.154
+      }
+    },
+    {
+      "duration_seconds": 21.538,
+      "errors": {},
+      "json": "011_create_a_marketplace_risk_report_showing_which_channels_depend_o.json",
+      "markdown": "011_create_a_marketplace_risk_report_showing_which_channels_depend_o.md",
+      "question": "Create a marketplace risk report showing which channels depend on the same OMS.",
+      "question_index": 11,
+      "search_seconds": {
+        "RAG_COMPLETION": 21.538
+      }
+    },
+    {
+      "duration_seconds": 19.006,
+      "errors": {},
+      "json": "012_generate_a_logistics_dependency_matrix_showing_courier_concentra.json",
+      "markdown": "012_generate_a_logistics_dependency_matrix_showing_courier_concentra.md",
+      "question": "Generate a logistics dependency matrix showing courier concentration across marketplaces.",
+      "question_index": 12,
+      "search_seconds": {
+        "RAG_COMPLETION": 19.005
+      }
+    },
+    {
+      "duration_seconds": 27.198,
+      "errors": {},
+      "json": "013_build_a_report_identifying_channels_that_may_face_reconciliation.json",
+      "markdown": "013_build_a_report_identifying_channels_that_may_face_reconciliation.md",
+      "question": "Build a report identifying channels that may face reconciliation delays due to marketplace-based settlements.",
+      "question_index": 13,
+      "search_seconds": {
+        "RAG_COMPLETION": 27.198
+      }
+    },
+    {
+      "duration_seconds": 26.123,
+      "errors": {},
+      "json": "014_compare_return_handling_models_between_own_website_and_marketpla.json",
+      "markdown": "014_compare_return_handling_models_between_own_website_and_marketpla.md",
+      "question": "Compare return handling models between own website and marketplace channels.",
+      "question_index": 14,
+      "search_seconds": {
+        "RAG_COMPLETION": 26.122
+      }
+    },
+    {
+      "duration_seconds": 67.14,
+      "errors": {},
+      "json": "015_generate_a_report_showing_potential_operational_bottlenecks_if_u.json",
+      "markdown": "015_generate_a_report_showing_potential_operational_bottlenecks_if_u.md",
+      "question": "Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.",
+      "question_index": 15,
+      "search_seconds": {
+        "RAG_COMPLETION": 67.14
+      }
+    },
+    {
+      "duration_seconds": 18.437,
+      "errors": {},
+      "json": "016_create_a_sales_concentration_analysis_report_to_determine_depend.json",
+      "markdown": "016_create_a_sales_concentration_analysis_report_to_determine_depend.md",
+      "question": "Create a sales concentration analysis report to determine dependency on top 2 marketplaces.",
+      "question_index": 16,
+      "search_seconds": {
+        "RAG_COMPLETION": 18.436
+      }
+    },
+    {
+      "duration_seconds": 40.872,
+      "errors": {},
+      "json": "017_generate_a_unified_dashboard_combining_sales_oms_dependency_cour.json",
+      "markdown": "017_generate_a_unified_dashboard_combining_sales_oms_dependency_cour.md",
+      "question": "Generate a unified dashboard combining sales, OMS dependency, courier dependency, and return ownership.",
+      "question_index": 17,
+      "search_seconds": {
+        "RAG_COMPLETION": 40.87
+      }
+    },
+    {
+      "duration_seconds": 20.82,
+      "errors": {},
+      "json": "018_design_a_profitability_analysis_report_estimating_operational_co.json",
+      "markdown": "018_design_a_profitability_analysis_report_estimating_operational_co.md",
+      "question": "Design a profitability analysis report estimating operational complexity cost per marketplace.",
+      "question_index": 18,
+      "search_seconds": {
+        "RAG_COMPLETION": 20.82
+      }
+    },
+    {
+      "duration_seconds": 20.54,
+      "errors": {},
+      "json": "019_build_a_sku_profitability_report.json",
+      "markdown": "019_build_a_sku_profitability_report.md",
+      "question": "Build a SKU profitability report.",
+      "question_index": 19,
+      "search_seconds": {
+        "RAG_COMPLETION": 20.539
+      }
+    },
+    {
+      "duration_seconds": 16.187,
+      "errors": {},
+      "json": "020_build_an_average_order_value_report_per_channel.json",
+      "markdown": "020_build_an_average_order_value_report_per_channel.md",
+      "question": "Build an Average order value report per channel.",
+      "question_index": 20,
+      "search_seconds": {
+        "RAG_COMPLETION": 16.187
+      }
+    },
+    {
+      "duration_seconds": 18.531,
+      "errors": {},
+      "json": "021_gross_sales_trend_across_all_marketplaces.json",
+      "markdown": "021_gross_sales_trend_across_all_marketplaces.md",
+      "question": "Gross sales trend across all marketplaces.",
+      "question_index": 21,
+      "search_seconds": {
+        "RAG_COMPLETION": 18.53
+      }
+    },
+    {
+      "duration_seconds": 24.067,
+      "errors": {},
+      "json": "022_return_trend_across_all_the_marketplaces.json",
+      "markdown": "022_return_trend_across_all_the_marketplaces.md",
+      "question": "Return trend across all the marketplaces.",
+      "question_index": 22,
+      "search_seconds": {
+        "RAG_COMPLETION": 24.067
+      }
+    }
+  ],
+  "search_types": [
+    "RAG_COMPLETION"
+  ],
+  "started_at": "2026-05-28T10:08:18+00:00"
+}

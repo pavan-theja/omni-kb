@@ -1,0 +1,85 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.snapdeal.commission_validation",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal implementation — Commission Validation",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.10_3_commission_validation",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.10_3_commission_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14960
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14960
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14960
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use exactly the filters in formula_sql / linked sql_pattern, especially is_active=true, transaction_type/type scope, and group_level_id column scope where runtime supplies it.",
+  "formula_sql": "SELECT\n  c.invoice_number,\n  c.total_commission_amount AS commission_invoice,\n  s.commission AS settlement_commission,\n  ABS(c.total_commission_amount - s.commission) AS variance\nFROM zs_observe.snapdeal_commission c\nLEFT JOIN zs_observe.snapdeal_settlement s\n  ON c.invoice_number = s.invoice_number\n  AND s.is_active = true\nWHERE c.is_active = true;",
+  "formula_text": "Executable SQL-like implementation normalized in V9; see formula_sql and sql_pattern_id.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "snapdeal",
+  "metric_id": "metric.commission_or_take_rate",
+  "metric_pattern": "snapdeal_specific_implementation_of_commission_or_take_rate",
+  "name": "Snapdeal implementation — Commission Validation",
+  "platform_code": "snapdeal",
+  "platform_context_id": "platform_context.snapdeal.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.snapdeal.commission_validation",
+  "source_columns": [
+    "invoice_number",
+    "total_commission_amount",
+    "commission",
+    "snapdeal_commission",
+    "snapdeal_settlement",
+    "is_active",
+    "c",
+    "commission_invoice",
+    "s",
+    "settlement_commission",
+    "ABS",
+    "variance"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14960,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_table_ids": [
+    "table.zs_observe.snapdeal_commission",
+    "table.zs_observe.snapdeal_settlement"
+  ],
+  "source_tables": [
+    "zs_observe.snapdeal_commission",
+    "zs_observe.snapdeal_settlement"
+  ],
+  "sql_pattern": "SELECT\n  c.invoice_number,\n  c.total_commission_amount AS commission_invoice,\n  s.commission AS settlement_commission,\n  ABS(c.total_commission_amount - s.commission) AS variance\nFROM zs_observe.snapdeal_commission c\nLEFT JOIN zs_observe.snapdeal_settlement s\n  ON c.invoice_number = s.invoice_number\n  AND s.is_active = true\nWHERE c.is_active = true;",
+  "sql_pattern_id": "sql.snapdeal.10_3_commission_validation",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

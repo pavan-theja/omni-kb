@@ -1,0 +1,101 @@
+{
+  "canonical_id": "table.zs_observe.healthkart_return",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.healthkart_return.charged_amount",
+    "column.zs_observe.healthkart_return.charged_amount_excluding_tax",
+    "column.zs_observe.healthkart_return.cod_charge",
+    "column.zs_observe.healthkart_return.cod_charge_excluding_gst",
+    "column.zs_observe.healthkart_return.courier_partner",
+    "column.zs_observe.healthkart_return.created_at",
+    "column.zs_observe.healthkart_return.created_date",
+    "column.zs_observe.healthkart_return.description",
+    "column.zs_observe.healthkart_return.destination_city",
+    "column.zs_observe.healthkart_return.destination_country",
+    "column.zs_observe.healthkart_return.destination_state",
+    "column.zs_observe.healthkart_return.destination_zipcode",
+    "column.zs_observe.healthkart_return.discount",
+    "column.zs_observe.healthkart_return.dispatch_time",
+    "column.zs_observe.healthkart_return.file_uuid",
+    "column.zs_observe.healthkart_return.group_level_id",
+    "column.zs_observe.healthkart_return.invoice_number",
+    "column.zs_observe.healthkart_return.is_active",
+    "column.zs_observe.healthkart_return.item_amount_excluding_tax",
+    "column.zs_observe.healthkart_return.order_id",
+    "column.zs_observe.healthkart_return.order_status",
+    "column.zs_observe.healthkart_return.other_attributes",
+    "column.zs_observe.healthkart_return.other_id",
+    "column.zs_observe.healthkart_return.quantity",
+    "column.zs_observe.healthkart_return.sales_channel",
+    "column.zs_observe.healthkart_return.shipping_amount",
+    "column.zs_observe.healthkart_return.shipping_amount_excluding_tax",
+    "column.zs_observe.healthkart_return.sku_id",
+    "column.zs_observe.healthkart_return.source_gst_id",
+    "column.zs_observe.healthkart_return.source_gst_name",
+    "column.zs_observe.healthkart_return.tax_cgst_amount",
+    "column.zs_observe.healthkart_return.tax_cgst_rate",
+    "column.zs_observe.healthkart_return.tax_igst_amount",
+    "column.zs_observe.healthkart_return.tax_igst_rate",
+    "column.zs_observe.healthkart_return.tax_sgst_amount",
+    "column.zs_observe.healthkart_return.tax_sgst_rate",
+    "column.zs_observe.healthkart_return.total_tax",
+    "column.zs_observe.healthkart_return.transaction_type",
+    "column.zs_observe.healthkart_return.txn_uuid",
+    "column.zs_observe.healthkart_return.unique_value",
+    "column.zs_observe.healthkart_return.updated_at"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "Single batch — all records dated 2024-07-07",
+  "description": "Tracks reverse/return transactions — orders returned by customers or returned to origin (courier returns)",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "scope_policy": "Use schema-appropriate value; do not create tenant/group/account-binding cards.",
+    "zs_observe_group_level_id": 26,
+    "zs_recon_processor_group_level_id": 22
+  },
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 942
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mandatory_filters": [
+    "is_active = true if column exists or source instructions require it"
+  ],
+  "name": "zs_observe.healthkart_return",
+  "purpose": "Tracks reverse/return transactions — orders returned by customers or returned to origin (courier returns)",
+  "review_status": "accepted",
+  "row_count": "169 active records",
+  "schema_name": "zs_observe",
+  "scope_columns": [
+    "group_level_id/group_id only as columns/caveats if present"
+  ],
+  "source_card_id": "table.zs_observe.healthkart_return",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 942,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_section": "Table: healthkart_return",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_name": "healthkart_return",
+  "table_role": "returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

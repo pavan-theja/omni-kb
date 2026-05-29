@@ -1,0 +1,51 @@
+{
+  "business_semantics": "Expected fee vs actual charged fee by SKU",
+  "candidate_notes": "Expected fee vs actual charged fee by SKU",
+  "canonical_id": "relationship.amazon.fee_preview_to_disbursment.sku",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.fee_preview_actual.001",
+    "ev.amazon_fee_preview.recon.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.fee_preview_actual.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4394
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.recon.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4394
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.amazon_fee_preview",
+  "join_keys": "amazon_fee_preview.sku = amazon_disbursment.sku_id",
+  "join_safety_rule": "Aggregate actual ItemFees at SKU level before joining.",
+  "marketplace_only": true,
+  "name": "amazon_fee_preview to amazon_disbursment",
+  "relationship_grain": "SKU-level expected fee to actual fee aggregation",
+  "review_status": "accepted",
+  "source_card_id": "relationship.amazon.fee_preview_to_disbursment.sku",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4394,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_table": "table.zs_observe.amazon_disbursment",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

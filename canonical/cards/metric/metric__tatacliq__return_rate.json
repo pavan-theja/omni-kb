@@ -1,0 +1,49 @@
+{
+  "benchmark_policy": "guidance_only_not_hard_validation",
+  "business_definition": "Count of reverse rows divided by count of forward rows in settlement.",
+  "canonical_id": "metric.tatacliq.return_rate",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "source_query_defined_grain",
+  "default_unit": "percent",
+  "description": "Count of reverse rows divided by count of forward rows in settlement.",
+  "display_name": "Return Rate",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.tatacliq.returns",
+  "evidence_ids": [
+    "ev.tatacliq.sql.return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6052
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_ids": [
+    "metric_impl.tatacliq.return_rate"
+  ],
+  "metric_family": "returns",
+  "name": "Return Rate",
+  "observed_source_value": "5,464 returns / 14,884 sales = 36.7%; guidance only",
+  "review_status": "ready",
+  "source_card_id": "metric.tatacliq.return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6052,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

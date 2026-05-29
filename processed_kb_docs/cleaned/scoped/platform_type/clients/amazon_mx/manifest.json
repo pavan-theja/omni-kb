@@ -1,0 +1,11 @@
+{
+  "card_types": {},
+  "counts": {
+    "semantic_mappings": 2
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "amazon_mx"
+  ]
+}

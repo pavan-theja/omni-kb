@@ -1,0 +1,89 @@
+{
+  "canonical_id": "table.zs_observe.ajio_credit_note",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.ajio_credit_note.created_at",
+    "column.zs_observe.ajio_credit_note.created_date",
+    "column.zs_observe.ajio_credit_note.currency_type",
+    "column.zs_observe.ajio_credit_note.deleted_at",
+    "column.zs_observe.ajio_credit_note.file_uuid",
+    "column.zs_observe.ajio_credit_note.group_id",
+    "column.zs_observe.ajio_credit_note.group_level_id",
+    "column.zs_observe.ajio_credit_note.invoice_number",
+    "column.zs_observe.ajio_credit_note.is_active",
+    "column.zs_observe.ajio_credit_note.is_duplicated",
+    "column.zs_observe.ajio_credit_note.order_status",
+    "column.zs_observe.ajio_credit_note.payment_status",
+    "column.zs_observe.ajio_credit_note.purchase_po_no",
+    "column.zs_observe.ajio_credit_note.txn_uuid",
+    "column.zs_observe.ajio_credit_note.unique_id",
+    "column.zs_observe.ajio_credit_note.unique_value",
+    "column.zs_observe.ajio_credit_note.updated_at",
+    "column.zs_observe.ajio_credit_note.zen_sheet_name",
+    "column.zs_observe.ajio_credit_note.zen_status"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "Nov 30 – Dec 31, 2025",
+  "description": "Tracks credit notes issued by AJIO for returned/reversed orders — the financial document that offsets the original B2B invoice when goods are returned",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_id": 65,
+    "group_level_id": 221
+  },
+  "evidence_ids": [
+    "evidence.ajio.095_ajio_credit_note_table_level_knowledge_base",
+    "evidence.ajio.108_important_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.095_ajio_credit_note_table_level_knowledge_base",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1510
+    },
+    {
+      "evidence_id": "evidence.ajio.108_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1510
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_caveats": [
+    "Reference/status table only; no financial amount columns.",
+    "payment_status is POSTING_COMPLETED for all rows in current data."
+  ],
+  "mandatory_filters": [
+    "is_active = true"
+  ],
+  "name": "zs_observe.ajio_credit_note",
+  "purpose": "Tracks credit notes issued by AJIO for returned/reversed orders — the financial document that offsets the original B2B invoice when goods are returned",
+  "review_status": "ready",
+  "row_count": "943 active records",
+  "schema_name": "zs_observe",
+  "scope_columns": [
+    "group_level_id/group_id only as columns/caveats if present"
+  ],
+  "source_card_id": "table.zs_observe.ajio_credit_note",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.095_ajio_credit_note_table_level_knowledge_base",
+    "evidence.ajio.108_important_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1510,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_section": "AJIO Credit Note — Table-Level Knowledge Base",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_name": "ajio_credit_note",
+  "table_role": "returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

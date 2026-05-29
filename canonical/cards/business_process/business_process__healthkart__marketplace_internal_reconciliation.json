@@ -1,0 +1,48 @@
+{
+  "business_trigger": "OMS, return, and settlement comparison for missing or discrepant order_id-level records",
+  "canonical_id": "business_process.healthkart.marketplace_internal_reconciliation",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6352
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Marketplace Internal Reconciliation",
+  "participating_tables": [
+    "zs_observe.healthkart_oms",
+    "zs_observe.healthkart_return",
+    "zs_observe.healthkart_settlement"
+  ],
+  "process_family": "marketplace_internal_reconciliation",
+  "process_notes": "Source-backed reconciliation use cases: OMS orders missing from settlement, OMS charged_amount vs settlement charged_amount with ABS(diff) > 1, and return rows matched to reverse settlement rows by order_id.",
+  "review_status": "accepted",
+  "source_card_id": "business_process.healthkart.marketplace_internal_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6352,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

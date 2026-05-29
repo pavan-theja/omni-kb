@@ -1,0 +1,58 @@
+{
+  "aggregation_order": "Apply filters before aggregation; aggregate many-side tables before joining where applicable.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.target_plus.monthly_sales_gmv",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus monthly sales GMV by brand",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.sales.7_1_monthly_sales_gmv_by_brand"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.sales.7_1_monthly_sales_gmv_by_brand",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9563
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true",
+    "order_status = SHIPPED"
+  ],
+  "formula_sql_ref": "sql.target_plus.sales.7_1_monthly_sales_gmv_by_brand",
+  "formula_text": "DATE_TRUNC(month, created_date), COUNT(*), SUM(quantity), SUM(charged_amount), AVG(charged_amount)",
+  "grain": "source SQL grain",
+  "implementation_scope": "target_plus",
+  "metric_id": "metric.target_plus.monthly_sales_gmv",
+  "name": "Target Plus monthly sales GMV by brand",
+  "platform_code": "target",
+  "platform_context_id": "platform_context.target_plus.us",
+  "review_status": "ready",
+  "sign_convention": "Use source SQL and documented transaction_type context.",
+  "source_card_id": "metric_impl.target_plus.monthly_sales_gmv",
+  "source_columns": [
+    "column.zs_observe.target_sales.created_date",
+    "column.zs_observe.target_sales.charged_amount"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9563,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.target_sales"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

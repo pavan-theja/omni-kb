@@ -1,0 +1,50 @@
+{
+  "canonical_id": "column.zs_observe.target_tcin_mapping.file_uuid",
+  "card_type": "column",
+  "column_group": "3. Schema Details (21 Columns)",
+  "column_name": "file_uuid",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Source file UUID",
+  "display_name": "target_tcin_mapping.file_uuid",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.mapping.3_schema_details_21_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.mapping.3_schema_details_21_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 7081
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": false,
+  "is_date": false,
+  "is_key": true,
+  "is_scope_field": false,
+  "is_status": false,
+  "name": "target_tcin_mapping.file_uuid",
+  "review_status": "ready",
+  "schema": "zs_observe",
+  "semantic_role": "identity_or_join_key",
+  "source_card_id": "column.zs_observe.target_tcin_mapping.file_uuid",
+  "source_confidence": "high",
+  "source_declared_type": "varchar",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7081,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.target_tcin_mapping",
+  "table_name": "target_tcin_mapping",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

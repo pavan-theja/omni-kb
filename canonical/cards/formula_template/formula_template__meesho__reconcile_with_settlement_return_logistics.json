@@ -1,0 +1,46 @@
+{
+  "canonical_id": "formula_template.meesho.reconcile_with_settlement_return_logistics",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho formula pattern — Reconcile with Settlement Return Logistics",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_3_reconcile_with_settlement_return_logistics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_3_reconcile_with_settlement_return_logistics",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13428
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "SELECT\n  'Other Charges (invoice-level)' AS source,\n  SUM(taxable_value) AS total_reverse_logistics\nFROM zs_observe.meesho_other_charges_expenses\nWHERE is_active = true AND LOWER(type) = 'reverse_shipping'\nUNION ALL\nSELECT\n  'Settlement (order-level)',\n  SUM(return_logistic_charge_excluding_tax)\nFROM zs_observe.meesho_settlement\nWHERE is_active = true AND order_status IN ('Return', 'RTO');",
+  "name": "Meesho formula pattern — Reconcile with Settlement Return Logistics",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.meesho.reconcile_with_settlement_return_logistics",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13428,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

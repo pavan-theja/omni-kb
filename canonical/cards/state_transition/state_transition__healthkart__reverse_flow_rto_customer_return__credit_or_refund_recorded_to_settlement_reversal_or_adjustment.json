@@ -1,0 +1,50 @@
+{
+  "canonical_id": "state_transition.healthkart.reverse_flow_rto_customer_return.credit_or_refund_recorded_to_settlement_reversal_or_adjustment",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_columns": [
+    "healthkart_settlement.order_status",
+    "healthkart_settlement.transaction_type",
+    "healthkart_settlement.settled_amount",
+    "healthkart_settlement.mp_fees"
+  ],
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6586
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "return_invoice_value_captured",
+  "name": "return_invoice_value_captured → reverse_settlement_negative_impact",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.healthkart.reverse_flow_rto_customer_return.credit_or_refund_recorded_to_settlement_reversal_or_adjustment",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6586,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "state_column": "healthkart_settlement.order_status / settled_amount",
+  "status": "draft",
+  "to_state": "reverse_settlement_negative_impact",
+  "trigger": "healthkart_settlement reverse row posts RTO/REVERSE_PICKUP negative settlement impact",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,47 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.target_sales",
+    "table.zs_observe.target_returns",
+    "table.zs_observe.target_settlement",
+    "table.zs_observe.target_tcin_mapping"
+  ],
+  "canonical_id": "rule.target_plus.scope_group_123",
+  "card_type": "rule",
+  "condition": "Target Plus table queries",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus group scope filter",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.8_mandatory_query_filters"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.8_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11406
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus group scope filter",
+  "review_status": "ready",
+  "rule_type": "query_filter",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.scope_group_123",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11406,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "Apply group_level_id = 123 to all four Target Plus tables when group scope is required.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

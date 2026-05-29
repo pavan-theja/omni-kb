@@ -1,0 +1,51 @@
+{
+  "canonical_id": "workflow_step.healthkart.reverse_flow_rto_customer_return.reverse_record_created",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6409
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Courier return record created in sparse return table",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.healthkart.reverse_flow_rto_customer_return.reverse_record_created",
+  "source_columns": [
+    "transaction_type",
+    "order_status",
+    "invoice_number",
+    "dispatch_time",
+    "created_date"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6409,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "source_table": "healthkart_return",
+  "specific_semantics": "healthkart_return currently has 169 active rows from 2024-07-07 with transaction_type='reverse' and order_status='Courier Return'.",
+  "status": "draft",
+  "step_order": 2,
+  "step_trigger": "courier_return_recorded",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

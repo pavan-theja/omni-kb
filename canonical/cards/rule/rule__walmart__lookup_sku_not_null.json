@@ -1,0 +1,41 @@
+{
+  "canonical_id": "rule.walmart.lookup_sku_not_null",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_lookup.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5551
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Lookup SKU join filter",
+  "notes": "Use walmart_lookup.sku IS NOT NULL for all SKU-to-name joins because sku-null rows are catalogue content/attribute rows.",
+  "related_canonical_id": "table.zs_observe.walmart_lookup",
+  "review_status": "accepted",
+  "rule_text": "Use walmart_lookup.sku IS NOT NULL for all SKU-to-name joins because sku-null rows are catalogue content/attribute rows.",
+  "rule_type": "join_guardrail",
+  "severity": "medium",
+  "source_card_id": "rule.walmart.lookup_sku_not_null",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5551,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

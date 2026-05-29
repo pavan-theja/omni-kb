@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "assertion": "Every candidate_edge source_card_id and target_card_id exists.",
+  "canonical_id": "validation_test.tatacliq.edge_refs_resolve",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Every candidate_edge source_card_id and target_card_id exists.",
+  "display_name": "TataCliq validation — edge referential integrity",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.join.coverage",
+    "ev.tatacliq.filters.mandatory"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.join.coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8566
+    },
+    {
+      "evidence_id": "ev.tatacliq.filters.mandatory",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8566
+    }
+  ],
+  "expected_result": "missing_edge_references = 0",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Graph corruption.",
+  "name": "TataCliq validation — edge referential integrity",
+  "review_status": "ready",
+  "source_card_id": "validation_test.tatacliq.edge_refs_resolve",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8566,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "edge_referential_integrity",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

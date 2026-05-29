@@ -1,0 +1,56 @@
+{
+  "canonical_id": "table.zs_observe.myntra_oms_settlement",
+  "canonical_name": "myntra_oms_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.myntra_oms_settlement.order_id",
+    "column.zs_observe.myntra_oms_settlement.recon_status",
+    "column.zs_observe.myntra_oms_settlement.sales_amount",
+    "column.zs_observe.myntra_oms_settlement.sales_settled_amount"
+  ],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "table card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.myntra.reconciliation",
+  "evidence_ids": [
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 639
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "order-level reconciliation result row",
+  "mandatory_filters": [],
+  "marketplace_only": true,
+  "name": "myntra_oms_settlement",
+  "platform_context_id": "platform_context.myntra.in",
+  "query_aliases": [],
+  "review_status": "unreviewed",
+  "runtime_scope_filter": "group_level_id = <client_id> if present in the physical table; detailed schema is partial in source",
+  "schema": "zs_observe",
+  "schema_caveat": "DOCX defines sales_amount, sales_settled_amount, order_id, and recon_status but does not give a full table schema.",
+  "scope_caveat": "group_level_id is a column/filter caveat only; do not create account binding.",
+  "source_card_id": "table.zs_observe.myntra_oms_settlement",
+  "source_confidence": "medium",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 639,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Partial Level 1 OMS-to-settlement reconciliation result table; use documented columns only and keep full-schema review open.",
+  "table_name": "myntra_oms_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,48 @@
+{
+  "canonical_id": "workflow_step.meesho.forward_order_flow.04",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Seller fulfilment moves the order toward shipment; courier/AWB are logistics identifiers and remain columns/caveats, not external logistics cards.",
+  "display_name": "Seller pick-pack and courier assignment",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.007.2_1_forward_order_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.007.2_1_forward_order_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 14202
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "zs_observe.meesho_sales"
+  ],
+  "name": "Seller pick-pack and courier assignment",
+  "output_tables": [
+    "zs_observe.meesho_sales"
+  ],
+  "process_id": "business_process.meesho.forward_order_flow",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.meesho.forward_order_flow.04",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14202,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "status_conditions": [
+    "meesho_sales.order_status"
+  ],
+  "step_order": 4,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

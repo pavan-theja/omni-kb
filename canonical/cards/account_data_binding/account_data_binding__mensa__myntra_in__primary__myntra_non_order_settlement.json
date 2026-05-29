@@ -1,0 +1,53 @@
+{
+  "active": true,
+  "canonical_id": "account_data_binding.mensa.myntra_in.primary.myntra_non_order_settlement",
+  "card_type": "account_data_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "account_data_binding card from raw/cleaned_v2/clients/mensa_business.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mensa_business.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Myntra Non Order Settlement",
+  "notes": [
+    "Mensa client text mentions broader Myntra artifacts, but current binding intentionally maps only canonical Myntra OMS, settlement, returns/reverse, non-order settlement, and the OMS-settlement reconciliation helper. GSTR, VHS/VFS expenses, seller reports, transactions remain future platform-context gaps."
+  ],
+  "package_id": "mensa_business_hierarchy_runtime_cards_v0_1",
+  "platform_account_id": "platform_account.mensa.myntra_in.primary",
+  "review_status": "unreviewed",
+  "scope_keys": [
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 22
+    }
+  ],
+  "source_confidence": null,
+  "source_documents": [
+    "Mensa Brand Technologies Private Limited.docx",
+    "myntra_marketplace.md",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "increff_operations.md",
+    "payment_gateway.md",
+    "logistics_reconciliation_patterns.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mensa_business.json",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.myntra_non_order_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

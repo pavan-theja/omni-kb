@@ -1,0 +1,44 @@
+{
+  "base_process_id": "business_process.increff.rto_processing",
+  "canonical_id": "process_variant.increff.return_to_origin",
+  "card_type": "process_variant",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "process_variant card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Return-to-origin variant",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.014.6_4_rto_return_to_origin_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.014.6_4_rto_return_to_origin_flow",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 8944
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Return-to-origin variant",
+  "review_status": "ready",
+  "source_card_id": "process_variant.increff.return_to_origin",
+  "source_columns": [
+    "column.zs_observe.increff_returns.transaction_type",
+    "column.zs_observe.increff_returns.return_order_type"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8944,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "variant_basis": "documented different operational path or column-driven behavior, not merely a segment label",
+  "variant_rule": "transaction_type = return_to_origin and return_order_type RETURN_TO_ORIGIN represent failed-delivery/RTO path."
+}

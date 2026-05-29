@@ -1,0 +1,61 @@
+{
+  "base_tables": [],
+  "candidate_notes": "Period-level deterministic proxy for eligible return refund value using documented reason codes; not a hard claim-eligibility decision.",
+  "canonical_id": "metric_implementation.amazon.amazon_settlement.safe_t_recovery_rate",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.safet.001",
+    "ev.amazon_settlement.kpis.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.safet.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5899
+    },
+    {
+      "evidence_id": "ev.amazon_settlement.kpis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5899
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "SUM(CASE WHEN s.type = 'SAFE-T Reimbursement' THEN s.total ELSE 0 END) / NULLIF(SUM(CASE WHEN r.return_reason IN ('DAMAGED_BY_FC','DAMAGED_BY_CARRIER','SWITCHEROO','UNAUTHORIZED_PURCHASE','NOT_AS_DESCRIBED') THEN ABS(r.charged_amount) ELSE 0 END), 0)",
+  "grain": "settlement_period",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.safe_t_recovery_rate",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "safe_t_credits_over_eligible_refund_value",
+  "name": "Amazon implementation: safe_t_recovery_rate on amazon_settlement",
+  "notes": "Period-level deterministic proxy for eligible return refund value using documented reason codes; not a hard claim-eligibility decision.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "s.is_active = true; r.is_active = true; amazon_returns must be active/re-ingested; NOT_AS_DESCRIBED eligibility may require listing-accuracy review",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_settlement.safe_t_recovery_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5899,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "table.zs_observe.amazon_settlement",
+    "table.zs_observe.amazon_returns"
+  ],
+  "sql_ref": "sql.amazon.settlement.reimbursements_safet",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,39 @@
+{
+  "active": true,
+  "canonical_id": "tenant.pine_labs",
+  "card_type": "tenant",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Gift card / stored value card issuer and distributor using ZenStatement for gift-card issuance, distribution, redemption, breakage, liability, payment, bank, and settlement reconciliation.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Pine Labs",
+  "package_id": "pine_labs_business_hierarchy_runtime_cards_v1_0",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Pine Labs.docx",
+    "Client Tables - Shopify.md",
+    "Cognee KB Design v4.md",
+    "flipkart_marketplace.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_code": "PINE_LABS",
+  "tenant_name": "Pine Labs",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

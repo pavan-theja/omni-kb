@@ -1,0 +1,50 @@
+{
+  "applies_to_cards": [
+    "reconciliation_profile.target_plus.sales_settlement"
+  ],
+  "canonical_id": "rule.target_plus.settlement_recency_gap",
+  "card_type": "rule",
+  "condition": "Sales↔Settlement reconciliation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus settlement recency gap rule",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.3_2_primary_join_keys",
+    "ev.target_plus.marketplace.7_data_quality_observations_and_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.3_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11517
+    },
+    {
+      "evidence_id": "ev.target_plus.marketplace.7_data_quality_observations_and_known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11517
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus settlement recency gap rule",
+  "review_status": "ready",
+  "rule_type": "timing_rule",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.settlement_recency_gap",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11517,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "Settlement data runs Apr-Nov 2025 while sales run Apr-Dec 2025; date-align periods before classifying unmatched sales as issues.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

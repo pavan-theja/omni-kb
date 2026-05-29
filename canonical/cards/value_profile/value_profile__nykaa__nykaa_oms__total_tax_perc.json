@@ -1,0 +1,57 @@
+{
+  "canonical_id": "value_profile.nykaa.nykaa_oms.total_tax_perc",
+  "canonical_name": "zs_observe.nykaa_oms.total_tax_perc value profile",
+  "card_type": "value_profile",
+  "column_name": "total_tax_perc",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [],
+  "description": "value_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.tax",
+    "evidence.nykaa.data_quality"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.tax",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13804
+    },
+    {
+      "evidence_id": "evidence.nykaa.data_quality",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13804
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_oms.total_tax_perc value profile",
+  "observed_values": [
+    "NULL",
+    "5%",
+    "12%",
+    "18%",
+    "0%",
+    "0.12"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "value_profile.nykaa.nykaa_oms.total_tax_perc",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13804,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "OMS tax rate is 65.5% NULL; observed slabs include 5%, 12%, 18%, 0%, plus likely unit-error value 0.12.",
+  "table_id": "table.zs_observe.nykaa_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

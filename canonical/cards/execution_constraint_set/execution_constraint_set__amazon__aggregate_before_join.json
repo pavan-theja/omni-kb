@@ -1,0 +1,42 @@
+{
+  "candidate_notes": "Aggregate amazon_disbursment to order/SKU grain before joining to OMS or fee_preview.",
+  "canonical_id": "execution_constraint_set.amazon.aggregate_before_join",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_key": "aggregate_before_join",
+  "constraint_scope": "marketplace_semantic_execution",
+  "constraint_text": "Aggregate amazon_disbursment to order/SKU grain before joining to OMS or fee_preview.",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.join_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.join_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 8303
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Aggregate-before-join execution constraint",
+  "review_status": "accepted",
+  "source_card_id": "execution_constraint_set.amazon.aggregate_before_join",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8303,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

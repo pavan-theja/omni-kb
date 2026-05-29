@@ -1,0 +1,269 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "GRAPH_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = '22'",
+          "is_active = true",
+          "order_status = 'COMPLETED' OR order_status = 'Delivered' (depending on source)",
+          "transaction_type = 'SALES' (where applicable)"
+        ],
+        "joins": "Multiple CTEs are created for each sales source to extract order value and count, then combined using UNION ALL. The final AOV calculation is performed by grouping the unified dataset by `sales_channel`.",
+        "metric_logic": {
+          "aggregation_grain": "sales_channel",
+          "deduplication_rule": "Each `order_id` represents a unique order for AOV calculation. Values are summed to calculate total sales value, and counts are used for total orders.",
+          "denominator": "COUNT(DISTINCT order_id)",
+          "formula": "SUM(order_value) / COUNT(DISTINCT order_id) grouped by sales_channel",
+          "numerator": "SUM(order_value)"
+        },
+        "missing_or_ambiguous": "The explicit presence of `order_id` in `zs_observe.myntra_oms`, `zs_observe.limeroad_settlement`, `zs_observe.amazon_oms`, and `zs_observe.meesho_sales` is inferred as standard practice for order management/settlement systems when calculating AOV. Similarly, `total_amount` for Myntra/Amazon OMS and `gmv_amount` for LimeRoad settlement are inferred to represent order-level values or sums that can be normalized to individual orders for AOV. Filters like `order_status = 'COMPLETED'` and `transaction_type = 'SALES'` are inferred for non-Increff tables based on best practices and Increff patterns, which explicitly state them. The Meesho sales data filter for `order_status = 'Delivered'` is taken directly from its formula template, demonstrating platform-specific filter needs.",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "query_pattern.logistics.amount_semantics_audit",
+          "query_pattern.logistics.awb_duplicate_detection",
+          "query_pattern.logistics.bank_credit_unmatched_courier_reference",
+          "query_pattern.logistics.cod_expected_vs_remitted",
+          "query_pattern.myntra.net_settlement",
+          "query_pattern.myntra.non_order_adjustments",
+          "query_pattern.myntra.oms_settlement_reconciliation",
+          "query_pattern.myntra.pending_receivables_by_aging",
+          "query_pattern.myntra.prepaid_postpaid_split",
+          "query_pattern.myntra.realization_rate",
+          "formula_template.logistics.variance_amount",
+          "formula_template.mapper_gst_base_order_id",
+          "formula_template.meesho.brand_gmv_from_sales",
+          "formula_template.meesho.brand_level_gmv",
+          "formula_template.meesho.brand_level_return_rate",
+          "formula_template.meesho.category_level_return_analysis",
+          "formula_template.meesho.effective_cost_per_delivered_order",
+          "formula_template.meesho.effective_payout_ratio",
+          "formula_template.meesho.effective_shipping_cost_rate"
+        ],
+        "require_tables": [
+          {
+            "field": "zs_observe.myntra_oms",
+            "reason": "`query_pattern.myntra.gross_sales_oms` explicitly uses this table to calculate gross sales (`total_amount`) and refers to `group_level_id` for scoping. It is inferred to contain `order_id` for AOV calculation.",
+            "role": "Source for Myntra sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.limeroad_settlement",
+            "reason": "`query_pattern.limeroad.total_forward_gmv` uses this table for GMV (`gmv_amount`) and explicitly mentions `group_level_id=22` for Mensa Brands. It is inferred to contain `order_id` for AOV calculation.",
+            "role": "Source for LimeRoad sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.increff_sales",
+            "reason": "Previous interactions and constraint sets for Increff confirm this table contains sales data with `sales_channel`, `order_id`, and `total_amount` for Mensa Brands.",
+            "role": "Source for general sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.amazon_oms",
+            "reason": "Inferred to contain sales data (`total_amount`, `order_id`) for Amazon marketplace based on its role as an Order Management System for Mensa Brands, similar to Myntra OMS.",
+            "role": "Source for Amazon sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.meesho_sales",
+            "reason": "`formula_template.meesho.average_order_value_aov` explicitly uses `zs_observe.meesho_sales` with `charged_amount` to calculate AOV. It is inferred to contain `order_id` for order counting.",
+            "role": "Source for Meesho sales data",
+            "selected?": "Yes"
+          }
+        ],
+        "required_fields": [
+          {
+            "field": "sales_channel",
+            "reason": "The primary dimension for grouping the AOV report. Derived from literal strings for marketplace-specific tables and directly from `sales_channel` column for Increff/Meesho.",
+            "role": "Dimension (Channel Identifier)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_value",
+            "reason": "Represents the total value of an order, used for summing total sales. Derived from `total_amount` or `gmv_amount` or `charged_amount` across different sources.",
+            "role": "Metric (Numerator for AOV)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_id",
+            "reason": "Unique identifier for each order, used for counting distinct orders. Inferred to be present in all selected sales/OMS tables.",
+            "role": "Metric (Denominator for AOV)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Mandatory filter (`group_level_id = '22'`) to scope all data to 'Mensa Brands', consistently applied across all tables as per various scope policies and previous interactions.",
+            "role": "Filter Column (Tenant Scope)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "is_active",
+            "reason": "Inferred as a mandatory filter (`is_active = true`) for data validity across all operational tables, ensuring only active records contribute to the AOV.",
+            "role": "Filter Column (Status)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_status",
+            "reason": "Mandatory filter (`order_status = 'COMPLETED'`) for accurate sales metrics from `increff_sales` (and inferred for other OMS/sales tables if applicable), ensuring only completed orders are considered for AOV. For Meesho, it's 'Delivered'.",
+            "role": "Filter Column (Sales Status)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "transaction_type",
+            "reason": "Mandatory filter (`transaction_type = 'SALES'`) for accurate sales metrics from `increff_sales` (and inferred for other sales tables if applicable), ensuring only sales transactions are considered.",
+            "role": "Filter Column (Transaction Type)",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": null,
+        "sql_skeleton": "WITH AllSalesData AS (\n    SELECT\n        'Myntra' AS sales_channel,\n        TRY_CAST(oms.total_amount AS DOUBLE) AS order_value,\n        oms.order_id\n    FROM\n        zs_observe.myntra_oms oms\n    WHERE\n        oms.group_level_id = '22'\n        AND oms.is_active = true\n        AND oms.order_status = 'COMPLETED'\n\n    UNION ALL\n\n    SELECT\n        'LimeRoad' AS sales_channel,\n        settlement.gmv_amount AS order_value,\n        settlement.order_id\n    FROM\n        zs_observe.limeroad_settlement settlement\n    WHERE\n        settlement.group_level_id = '22'\n        AND settlement.is_active = true\n        AND settlement.order_status = 'COMPLETED'\n\n    UNION ALL\n\n    SELECT\n        sales.sales_channel,\n        sales.total_amount AS order_value,\n        sales.order_id\n    FROM\n        zs_observe.increff_sales sales\n    WHERE\n        sales.group_level_id = '22'\n        AND sales.is_active = true\n        AND sales.order_status = 'COMPLETED'\n        AND sales.transaction_type = 'SALES'\n\n    UNION ALL\n\n    SELECT\n        'Amazon' AS sales_channel,\n        TRY_CAST(amazon_oms.total_amount AS DOUBLE) AS order_value,\n        amazon_oms.order_id\n    FROM\n        zs_observe.amazon_oms amazon_oms\n    WHERE\n        amazon_oms.group_level_id = '22'\n        AND amazon_oms.is_active = true\n        AND amazon_oms.order_status = 'COMPLETED'\n\n    UNION ALL\n\n    SELECT\n        'Meesho' AS sales_channel,\n        meesho_sales.charged_amount AS order_value,\n        meesho_sales.order_id\n    FROM\n        zs_observe.meesho_sales meesho_sales\n    WHERE\n        meesho_sales.group_level_id = '22'\n        AND meesho_sales.is_active = true\n        AND meesho_sales.order_status = 'Delivered'\n)\nSELECT\n    sales_channel,\n    SUM(order_value) AS total_sales_value,\n    COUNT(DISTINCT order_id) AS total_orders,\n    SUM(order_value) / COUNT(DISTINCT order_id) AS average_order_value\nFROM\n    AllSalesData\nGROUP BY\n    sales_channel\nORDER BY\n    sales_channel;"
+      }
+    ],
+    "RAG_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = '22'",
+          "is_active = true",
+          "order_status = 'COMPLETED' OR order_status = 'Delivered' (depending on source)",
+          "transaction_type = 'SALES' (where applicable)"
+        ],
+        "joins": "Multiple CTEs are created for each sales source to extract order value and count, then combined using UNION ALL. The final AOV calculation is performed by grouping the unified dataset by `sales_channel`.",
+        "metric_logic": {
+          "aggregation_grain": "sales_channel",
+          "deduplication_rule": "Each `order_id` represents a unique order for AOV calculation. Values are summed to calculate total sales value, and counts are used for total orders.",
+          "denominator": "COUNT(DISTINCT order_id)",
+          "formula": "SUM(order_value) / COUNT(DISTINCT order_id) grouped by sales_channel",
+          "numerator": "SUM(order_value)"
+        },
+        "missing_or_ambiguous": "The explicit presence of `order_id` in `zs_observe.myntra_oms`, `zs_observe.limeroad_settlement`, `zs_observe.amazon_oms`, and `zs_observe.meesho_sales` is inferred as standard practice for order management/settlement systems when calculating AOV. Similarly, `total_amount` for Myntra/Amazon OMS and `gmv_amount` for LimeRoad settlement are inferred to represent order-level values or sums that can be normalized to individual orders for AOV. Filters like `order_status = 'COMPLETED'` and `transaction_type = 'SALES'` are inferred for non-Increff tables based on best practices and Increff patterns, which explicitly state them. The Meesho sales data filter for `order_status = 'Delivered'` is taken directly from its formula template, demonstrating platform-specific filter needs.",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "query_pattern.logistics.amount_semantics_audit",
+          "query_pattern.logistics.awb_duplicate_detection",
+          "query_pattern.logistics.bank_credit_unmatched_courier_reference",
+          "query_pattern.logistics.cod_expected_vs_remitted",
+          "query_pattern.myntra.net_settlement",
+          "query_pattern.myntra.non_order_adjustments",
+          "query_pattern.myntra.oms_settlement_reconciliation",
+          "query_pattern.myntra.pending_receivables_by_aging",
+          "query_pattern.myntra.prepaid_postpaid_split",
+          "query_pattern.myntra.realization_rate",
+          "formula_template.logistics.variance_amount",
+          "formula_template.mapper_gst_base_order_id",
+          "formula_template.meesho.brand_gmv_from_sales",
+          "formula_template.meesho.brand_level_gmv",
+          "formula_template.meesho.brand_level_return_rate",
+          "formula_template.meesho.category_level_return_analysis",
+          "formula_template.meesho.effective_cost_per_delivered_order",
+          "formula_template.meesho.effective_payout_ratio",
+          "formula_template.meesho.effective_shipping_cost_rate"
+        ],
+        "require_tables": [
+          {
+            "field": "zs_observe.myntra_oms",
+            "reason": "`query_pattern.myntra.gross_sales_oms` explicitly uses this table to calculate gross sales (`total_amount`) and refers to `group_level_id` for scoping. It is inferred to contain `order_id` for AOV calculation.",
+            "role": "Source for Myntra sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.limeroad_settlement",
+            "reason": "`query_pattern.limeroad.total_forward_gmv` uses this table for GMV (`gmv_amount`) and explicitly mentions `group_level_id=22` for Mensa Brands. It is inferred to contain `order_id` for AOV calculation.",
+            "role": "Source for LimeRoad sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.increff_sales",
+            "reason": "Previous interactions and constraint sets for Increff confirm this table contains sales data with `sales_channel`, `order_id`, and `total_amount` for Mensa Brands.",
+            "role": "Source for general sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.amazon_oms",
+            "reason": "Inferred to contain sales data (`total_amount`, `order_id`) for Amazon marketplace based on its role as an Order Management System for Mensa Brands, similar to Myntra OMS.",
+            "role": "Source for Amazon sales data",
+            "selected?": "Yes"
+          },
+          {
+            "field": "zs_observe.meesho_sales",
+            "reason": "`formula_template.meesho.average_order_value_aov` explicitly uses `zs_observe.meesho_sales` with `charged_amount` to calculate AOV. It is inferred to contain `order_id` for order counting.",
+            "role": "Source for Meesho sales data",
+            "selected?": "Yes"
+          }
+        ],
+        "required_fields": [
+          {
+            "field": "sales_channel",
+            "reason": "The primary dimension for grouping the AOV report. Derived from literal strings for marketplace-specific tables and directly from `sales_channel` column for Increff/Meesho.",
+            "role": "Dimension (Channel Identifier)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_value",
+            "reason": "Represents the total value of an order, used for summing total sales. Derived from `total_amount` or `gmv_amount` or `charged_amount` across different sources.",
+            "role": "Metric (Numerator for AOV)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_id",
+            "reason": "Unique identifier for each order, used for counting distinct orders. Inferred to be present in all selected sales/OMS tables.",
+            "role": "Metric (Denominator for AOV)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Mandatory filter (`group_level_id = '22'`) to scope all data to 'Mensa Brands', consistently applied across all tables as per various scope policies and previous interactions.",
+            "role": "Filter Column (Tenant Scope)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "is_active",
+            "reason": "Inferred as a mandatory filter (`is_active = true`) for data validity across all operational tables, ensuring only active records contribute to the AOV.",
+            "role": "Filter Column (Status)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_status",
+            "reason": "Mandatory filter (`order_status = 'COMPLETED'`) for accurate sales metrics from `increff_sales` (and inferred for other OMS/sales tables if applicable), ensuring only completed orders are considered for AOV. For Meesho, it's 'Delivered'.",
+            "role": "Filter Column (Sales Status)",
+            "selected?": "Yes"
+          },
+          {
+            "field": "transaction_type",
+            "reason": "Mandatory filter (`transaction_type = 'SALES'`) for accurate sales metrics from `increff_sales` (and inferred for other sales tables if applicable), ensuring only sales transactions are considered.",
+            "role": "Filter Column (Transaction Type)",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": null,
+        "sql_skeleton": "WITH AllSalesData AS (\n    SELECT\n        'Myntra' AS sales_channel,\n        TRY_CAST(oms.total_amount AS DOUBLE) AS order_value,\n        oms.order_id\n    FROM\n        zs_observe.myntra_oms oms\n    WHERE\n        oms.group_level_id = '22'\n        AND oms.is_active = true\n        AND oms.order_status = 'COMPLETED'\n\n    UNION ALL\n\n    SELECT\n        'LimeRoad' AS sales_channel,\n        settlement.gmv_amount AS order_value,\n        settlement.order_id\n    FROM\n        zs_observe.limeroad_settlement settlement\n    WHERE\n        settlement.group_level_id = '22'\n        AND settlement.is_active = true\n        AND settlement.order_status = 'COMPLETED'\n\n    UNION ALL\n\n    SELECT\n        sales.sales_channel,\n        sales.total_amount AS order_value,\n        sales.order_id\n    FROM\n        zs_observe.increff_sales sales\n    WHERE\n        sales.group_level_id = '22'\n        AND sales.is_active = true\n        AND sales.order_status = 'COMPLETED'\n        AND sales.transaction_type = 'SALES'\n\n    UNION ALL\n\n    SELECT\n        'Amazon' AS sales_channel,\n        TRY_CAST(amazon_oms.total_amount AS DOUBLE) AS order_value,\n        amazon_oms.order_id\n    FROM\n        zs_observe.amazon_oms amazon_oms\n    WHERE\n        amazon_oms.group_level_id = '22'\n        AND amazon_oms.is_active = true\n        AND amazon_oms.order_status = 'COMPLETED'\n\n    UNION ALL\n\n    SELECT\n        'Meesho' AS sales_channel,\n        meesho_sales.charged_amount AS order_value,\n        meesho_sales.order_id\n    FROM\n        zs_observe.meesho_sales meesho_sales\n    WHERE\n        meesho_sales.group_level_id = '22'\n        AND meesho_sales.is_active = true\n        AND meesho_sales.order_status = 'Delivered'\n)\nSELECT\n    sales_channel,\n    SUM(order_value) AS total_sales_value,\n    COUNT(DISTINCT order_id) AS total_orders,\n    SUM(order_value) / COUNT(DISTINCT order_id) AS average_order_value\nFROM\n    AllSalesData\nGROUP BY\n    sales_channel\nORDER BY\n    sales_channel;"
+      }
+    ]
+  },
+  "question": "Build an Average order value report per channel.",
+  "question_index": 20,
+  "results": {
+    "GRAPH_COMPLETION": [
+      "{\"selected_source\": null, \"rejected_sources\": [\"query_pattern.logistics.amount_semantics_audit\", \"query_pattern.logistics.awb_duplicate_detection\", \"query_pattern.logistics.bank_credit_unmatched_courier_reference\", \"query_pattern.logistics.cod_expected_vs_remitted\", \"query_pattern.myntra.net_settlement\", \"query_pattern.myntra.non_order_adjustments\", \"query_pattern.myntra.oms_settlement_reconciliation\", \"query_pattern.myntra.pending_receivables_by_aging\", \"query_pattern.myntra.prepaid_postpaid_split\", \"query_pattern.myntra.realization_rate\", \"formula_template.logistics.variance_amount\", \"formula_template.mapper_gst_base_order_id\", \"formula_template.meesho.brand_gmv_from_sales\", \"formula_template.meesho.brand_level_gmv\", \"formula_template.meesho.brand_level_return_rate\", \"formula_template.meesho.category_level_return_analysis\", \"formula_template.meesho.effective_cost_per_delivered_order\", \"formula_template.meesho.effective_payout_ratio\", \"formula_template.meesho.effective_shipping_cost_rate\"], \"require_tables\": [{\"field\": \"zs_observe.myntra_oms\", \"role\": \"Source for Myntra sales data\", \"selected?\": \"Yes\", \"reason\": \"`query_pattern.myntra.gross_sales_oms` explicitly uses this table to calculate gross sales (`total_amount`) and refers to `group_level_id` for scoping. It is inferred to contain `order_id` for AOV calculation.\"}, {\"field\": \"zs_observe.limeroad_settlement\", \"role\": \"Source for LimeRoad sales data\", \"selected?\": \"Yes\", \"reason\": \"`query_pattern.limeroad.total_forward_gmv` uses this table for GMV (`gmv_amount`) and explicitly mentions `group_level_id=22` for Mensa Brands. It is inferred to contain `order_id` for AOV calculation.\"}, {\"field\": \"zs_observe.increff_sales\", \"role\": \"Source for general sales data\", \"selected?\": \"Yes\", \"reason\": \"Previous interactions and constraint sets for Increff confirm this table contains sales data with `sales_channel`, `order_id`, and `total_amount` for Mensa Brands.\"}, {\"field\": \"zs_observe.amazon_oms\", \"role\": \"Source for Amazon sales data\", \"selected?\": \"Yes\", \"reason\": \"Inferred to contain sales data (`total_amount`, `order_id`) for Amazon marketplace based on its role as an Order Management System for Mensa Brands, similar to Myntra OMS.\"}, {\"field\": \"zs_observe.meesho_sales\", \"role\": \"Source for Meesho sales data\", \"selected?\": \"Yes\", \"reason\": \"`formula_template.meesho.average_order_value_aov` explicitly uses `zs_observe.meesho_sales` with `charged_amount` to calculate AOV. It is inferred to contain `order_id` for order counting.\"}], \"required_fields\": [{\"field\": \"sales_channel\", \"role\": \"Dimension (Channel Identifier)\", \"selected?\": \"Yes\", \"reason\": \"The primary dimension for grouping the AOV report. Derived from literal strings for marketplace-specific tables and directly from `sales_channel` column for Increff/Meesho.\"}, {\"field\": \"order_value\", \"role\": \"Metric (Numerator for AOV)\", \"selected?\": \"Yes\", \"reason\": \"Represents the total value of an order, used for summing total sales. Derived from `total_amount` or `gmv_amount` or `charged_amount` across different sources.\"}, {\"field\": \"order_id\", \"role\": \"Metric (Denominator for AOV)\", \"selected?\": \"Yes\", \"reason\": \"Unique identifier for each order, used for counting distinct orders. Inferred to be present in all selected sales/OMS tables.\"}, {\"field\": \"group_level_id\", \"role\": \"Filter Column (Tenant Scope)\", \"selected?\": \"Yes\", \"reason\": \"Mandatory filter (`group_level_id = '22'`) to scope all data to 'Mensa Brands', consistently applied across all tables as per various scope policies and previous interactions.\"}, {\"field\": \"is_active\", \"role\": \"Filter Column (Status)\", \"selected?\": \"Yes\", \"reason\": \"Inferred as a mandatory filter (`is_active = true`) for data validity across all operational tables, ensuring only active records contribute to the AOV.\"}, {\"field\": \"order_status\", \"role\": \"Filter Column (Sales Status)\", \"selected?\": \"Yes\", \"reason\": \"Mandatory filter (`order_status = 'COMPLETED'`) for accurate sales metrics from `increff_sales` (and inferred for other OMS/sales tables if applicable), ensuring only completed orders are considered for AOV. For Meesho, it's 'Delivered'.\"}, {\"field\": \"transaction_type\", \"role\": \"Filter Column (Transaction Type)\", \"selected?\": \"Yes\", \"reason\": \"Mandatory filter (`transaction_type = 'SALES'`) for accurate sales metrics from `increff_sales` (and inferred for other sales tables if applicable), ensuring only sales transactions are considered.\"}], \"rejected_or_ambiguous_fields\": [], \"metric_logic\": {\"formula\": \"SUM(order_value) / COUNT(DISTINCT order_id) grouped by sales_channel\", \"numerator\": \"SUM(order_value)\", \"denominator\": \"COUNT(DISTINCT order_id)\", \"aggregation_grain\": \"sales_channel\", \"deduplication_rule\": \"Each `order_id` represents a unique order for AOV calculation. Values are summed to calculate total sales value, and counts are used for total orders.\"}, \"filters\": [\"group_level_id = '22'\", \"is_active = true\", \"order_status = 'COMPLETED' OR order_status = 'Delivered' (depending on source)\", \"transaction_type = 'SALES' (where applicable)\"], \"joins\": \"Multiple CTEs are created for each sales source to extract order value and count, then combined using UNION ALL. The final AOV calculation is performed by grouping the unified dataset by `sales_channel`.\", \"missing_or_ambiguous\": \"The explicit presence of `order_id` in `zs_observe.myntra_oms`, `zs_observe.limeroad_settlement`, `zs_observe.amazon_oms`, and `zs_observe.meesho_sales` is inferred as standard practice for order management/settlement systems when calculating AOV. Similarly, `total_amount` for Myntra/Amazon OMS and `gmv_amount` for LimeRoad settlement are inferred to represent order-level values or sums that can be normalized to individual orders for AOV. Filters like `order_status = 'COMPLETED'` and `transaction_type = 'SALES'` are inferred for non-Increff tables based on best practices and Increff patterns, which explicitly state them. The Meesho sales data filter for `order_status = 'Delivered'` is taken directly from its formula template, demonstrating platform-specific filter needs.\", \"sql_skeleton\": \"WITH AllSalesData AS (\\n    SELECT\\n        'Myntra' AS sales_channel,\\n        TRY_CAST(oms.total_amount AS DOUBLE) AS order_value,\\n        oms.order_id\\n    FROM\\n        zs_observe.myntra_oms oms\\n    WHERE\\n        oms.group_level_id = '22'\\n        AND oms.is_active = true\\n        AND oms.order_status = 'COMPLETED'\\n\\n    UNION ALL\\n\\n    SELECT\\n        'LimeRoad' AS sales_channel,\\n        settlement.gmv_amount AS order_value,\\n        settlement.order_id\\n    FROM\\n        zs_observe.limeroad_settlement settlement\\n    WHERE\\n        settlement.group_level_id = '22'\\n        AND settlement.is_active = true\\n        AND settlement.order_status = 'COMPLETED'\\n\\n    UNION ALL\\n\\n    SELECT\\n        sales.sales_channel,\\n        sales.total_amount AS order_value,\\n        sales.order_id\\n    FROM\\n        zs_observe.increff_sales sales\\n    WHERE\\n        sales.group_level_id = '22'\\n        AND sales.is_active = true\\n        AND sales.order_status = 'COMPLETED'\\n        AND sales.transaction_type = 'SALES'\\n\\n    UNION ALL\\n\\n    SELECT\\n        'Amazon' AS sales_channel,\\n        TRY_CAST(amazon_oms.total_amount AS DOUBLE) AS order_value,\\n        amazon_oms.order_id\\n    FROM\\n        zs_observe.amazon_oms amazon_oms\\n    WHERE\\n        amazon_oms.group_level_id = '22'\\n        AND amazon_oms.is_active = true\\n        AND amazon_oms.order_status = 'COMPLETED'\\n\\n    UNION ALL\\n\\n    SELECT\\n        'Meesho' AS sales_channel,\\n        meesho_sales.charged_amount AS order_value,\\n        meesho_sales.order_id\\n    FROM\\n        zs_observe.meesho_sales meesho_sales\\n    WHERE\\n        meesho_sales.group_level_id = '22'\\n        AND meesho_sales.is_active = true\\n        AND meesho_sales.order_status = 'Delivered'\\n)\\nSELECT\\n    sales_channel,\\n    SUM(order_value) AS total_sales_value,\\n    COUNT(DISTINCT order_id) AS total_orders,\\n    SUM(order_value) / COUNT(DISTINCT order_id) AS average_order_value\\nFROM\\n    AllSalesData\\nGROUP BY\\n    sales_channel\\nORDER BY\\n    sales_channel;\"}"
+    ],
+    "RAG_COMPLETION": [
+      "{\n  \"selected_source\": null,\n  \"rejected_sources\": [\n    \"query_pattern.logistics.amount_semantics_audit\",\n    \"query_pattern.logistics.awb_duplicate_detection\",\n    \"query_pattern.logistics.bank_credit_unmatched_courier_reference\",\n    \"query_pattern.logistics.cod_expected_vs_remitted\",\n    \"query_pattern.myntra.net_settlement\",\n    \"query_pattern.myntra.non_order_adjustments\",\n    \"query_pattern.myntra.oms_settlement_reconciliation\",\n    \"query_pattern.myntra.pending_receivables_by_aging\",\n    \"query_pattern.myntra.prepaid_postpaid_split\",\n    \"query_pattern.myntra.realization_rate\",\n    \"formula_template.logistics.variance_amount\",\n    \"formula_template.mapper_gst_base_order_id\",\n    \"formula_template.meesho.brand_gmv_from_sales\",\n    \"formula_template.meesho.brand_level_gmv\",\n    \"formula_template.meesho.brand_level_return_rate\",\n    \"formula_template.meesho.category_level_return_analysis\",\n    \"formula_template.meesho.effective_cost_per_delivered_order\",\n    \"formula_template.meesho.effective_payout_ratio\",\n    \"formula_template.meesho.effective_shipping_cost_rate\"\n  ],\n  \"require_tables\": [\n    {\n      \"field\": \"zs_observe.myntra_oms\",\n      \"role\": \"Source for Myntra sales data\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"`query_pattern.myntra.gross_sales_oms` explicitly uses this table to calculate gross sales (`total_amount`) and refers to `group_level_id` for scoping. It is inferred to contain `order_id` for AOV calculation.\"\n    },\n    {\n      \"field\": \"zs_observe.limeroad_settlement\",\n      \"role\": \"Source for LimeRoad sales data\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"`query_pattern.limeroad.total_forward_gmv` uses this table for GMV (`gmv_amount`) and explicitly mentions `group_level_id=22` for Mensa Brands. It is inferred to contain `order_id` for AOV calculation.\"\n    },\n    {\n      \"field\": \"zs_observe.increff_sales\",\n      \"role\": \"Source for general sales data\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Previous interactions and constraint sets for Increff confirm this table contains sales data with `sales_channel`, `order_id`, and `total_amount` for Mensa Brands.\"\n    },\n    {\n      \"field\": \"zs_observe.amazon_oms\",\n      \"role\": \"Source for Amazon sales data\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Inferred to contain sales data (`total_amount`, `order_id`) for Amazon marketplace based on its role as an Order Management System for Mensa Brands, similar to Myntra OMS.\"\n    },\n    {\n      \"field\": \"zs_observe.meesho_sales\",\n      \"role\": \"Source for Meesho sales data\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"`formula_template.meesho.average_order_value_aov` explicitly uses `zs_observe.meesho_sales` with `charged_amount` to calculate AOV. It is inferred to contain `order_id` for order counting.\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"sales_channel\",\n      \"role\": \"Dimension (Channel Identifier)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"The primary dimension for grouping the AOV report. Derived from literal strings for marketplace-specific tables and directly from `sales_channel` column for Increff/Meesho.\"\n    },\n    {\n      \"field\": \"order_value\",\n      \"role\": \"Metric (Numerator for AOV)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Represents the total value of an order, used for summing total sales. Derived from `total_amount` or `gmv_amount` or `charged_amount` across different sources.\"\n    },\n    {\n      \"field\": \"order_id\",\n      \"role\": \"Metric (Denominator for AOV)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Unique identifier for each order, used for counting distinct orders. Inferred to be present in all selected sales/OMS tables.\"\n    },\n    {\n      \"field\": \"group_level_id\",\n      \"role\": \"Filter Column (Tenant Scope)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Mandatory filter (`group_level_id = '22'`) to scope all data to 'Mensa Brands', consistently applied across all tables as per various scope policies and previous interactions.\"\n    },\n    {\n      \"field\": \"is_active\",\n      \"role\": \"Filter Column (Status)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Inferred as a mandatory filter (`is_active = true`) for data validity across all operational tables, ensuring only active records contribute to the AOV.\"\n    },\n    {\n      \"field\": \"order_status\",\n      \"role\": \"Filter Column (Sales Status)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Mandatory filter (`order_status = 'COMPLETED'`) for accurate sales metrics from `increff_sales` (and inferred for other OMS/sales tables if applicable), ensuring only completed orders are considered for AOV. For Meesho, it's 'Delivered'.\"\n    },\n    {\n      \"field\": \"transaction_type\",\n      \"role\": \"Filter Column (Transaction Type)\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Mandatory filter (`transaction_type = 'SALES'`) for accurate sales metrics from `increff_sales` (and inferred for other sales tables if applicable), ensuring only sales transactions are considered.\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [],\n  \"metric_logic\": {\n    \"formula\": \"SUM(order_value) / COUNT(DISTINCT order_id) grouped by sales_channel\",\n    \"numerator\": \"SUM(order_value)\",\n    \"denominator\": \"COUNT(DISTINCT order_id)\",\n    \"aggregation_grain\": \"sales_channel\",\n    \"deduplication_rule\": \"Each `order_id` represents a unique order for AOV calculation. Values are summed to calculate total sales value, and counts are used for total orders.\"\n  },\n  \"filters\": [\n    \"group_level_id = '22'\",\n    \"is_active = true\",\n    \"order_status = 'COMPLETED' OR order_status = 'Delivered' (depending on source)\",\n    \"transaction_type = 'SALES' (where applicable)\"\n  ],\n  \"joins\": \"Multiple CTEs are created for each sales source to extract order value and count, then combined using UNION ALL. The final AOV calculation is performed by grouping the unified dataset by `sales_channel`.\",\n  \"missing_or_ambiguous\": \"The explicit presence of `order_id` in `zs_observe.myntra_oms`, `zs_observe.limeroad_settlement`, `zs_observe.amazon_oms`, and `zs_observe.meesho_sales` is inferred as standard practice for order management/settlement systems when calculating AOV. Similarly, `total_amount` for Myntra/Amazon OMS and `gmv_amount` for LimeRoad settlement are inferred to represent order-level values or sums that can be normalized to individual orders for AOV. Filters like `order_status = 'COMPLETED'` and `transaction_type = 'SALES'` are inferred for non-Increff tables based on best practices and Increff patterns, which explicitly state them. The Meesho sales data filter for `order_status = 'Delivered'` is taken directly from its formula template, demonstrating platform-specific filter needs.\",\n  \"sql_skeleton\": \"WITH AllSalesData AS (\\n    SELECT\\n        'Myntra' AS sales_channel,\\n        TRY_CAST(oms.total_amount AS DOUBLE) AS order_value,\\n        oms.order_id\\n    FROM\\n        zs_observe.myntra_oms oms\\n    WHERE\\n        oms.group_level_id = '22'\\n        AND oms.is_active = true\\n        AND oms.order_status = 'COMPLETED'\\n\\n    UNION ALL\\n\\n    SELECT\\n        'LimeRoad' AS sales_channel,\\n        settlement.gmv_amount AS order_value,\\n        settlement.order_id\\n    FROM\\n        zs_observe.limeroad_settlement settlement\\n    WHERE\\n        settlement.group_level_id = '22'\\n        AND settlement.is_active = true\\n        AND settlement.order_status = 'COMPLETED'\\n\\n    UNION ALL\\n\\n    SELECT\\n        sales.sales_channel,\\n        sales.total_amount AS order_value,\\n        sales.order_id\\n    FROM\\n        zs_observe.increff_sales sales\\n    WHERE\\n        sales.group_level_id = '22'\\n        AND sales.is_active = true\\n        AND sales.order_status = 'COMPLETED'\\n        AND sales.transaction_type = 'SALES'\\n\\n    UNION ALL\\n\\n    SELECT\\n        'Amazon' AS sales_channel,\\n        TRY_CAST(amazon_oms.total_amount AS DOUBLE) AS order_value,\\n        amazon_oms.order_id\\n    FROM\\n        zs_observe.amazon_oms amazon_oms\\n    WHERE\\n        amazon_oms.group_level_id = '22'\\n        AND amazon_oms.is_active = true\\n        AND amazon_oms.order_status = 'COMPLETED'\\n\\n    UNION ALL\\n\\n    SELECT\\n        'Meesho' AS sales_channel,\\n        meesho_sales.charged_amount AS order_value,\\n        meesho_sales.order_id\\n    FROM\\n        zs_observe.meesho_sales meesho_sales\\n    WHERE\\n        meesho_sales.group_level_id = '22'\\n        AND meesho_sales.is_active = true\\n        AND meesho_sales.order_status = 'Delivered'\\n)\\nSELECT\\n    sales_channel,\\n    SUM(order_value) AS total_sales_value,\\n    COUNT(DISTINCT order_id) AS total_orders,\\n    SUM(order_value) / COUNT(DISTINCT order_id) AS average_order_value\\nFROM\\n    AllSalesData\\nGROUP BY\\n    sales_channel\\nORDER BY\\n    sales_channel;\"\n}"
+    ]
+  },
+  "scoped_query": "Build an Average order value report per channel.\n\nScope:\n- tenant: Mensa Brands\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Do not default to a single source table. First identify all grounded candidate sources or relationship paths that could answer the request. Then mark each candidate as direct, supporting, risky, or irrelevant based on whether it contains the required grain, dimensions, measures, filters, and joins. If no candidate is fully grounded, return a partial recommended path with usable fields, risks, and blocking gaps.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nReturn up to 3 recommended SQL packages:\n- include only packages grounded in the provided context\n- rank packages by directness, completeness, and SQL safety\n- mark each package as complete, partial, or risky\n- explain what each package can answer and what it cannot answer\n- do not merge packages unless the context provides grounded join keys and deduplication rules\n\nResponse Format:\nCognee validates completion answers with a wrapper schema where `content` must be a string. To avoid parser failures, the top-level response MUST be a JSON object with exactly one key named `content`, and the value of `content` MUST be a string.\n\nThe `content` string must contain one valid JSON object serialized as text. Do not put a JSON object or array directly inside `content`.\n\nCorrect top-level shape:\n{\n  \"content\": \"{\\\"selected_source\\\":\\\"table.example\\\",\\\"rejected_sources\\\":[],\\\"require_tables\\\":[],\\\"required_fields\\\":[],\\\"rejected_or_ambiguous_fields\\\":[],\\\"metric_logic\\\":{\\\"formula\\\":null,\\\"numerator\\\":null,\\\"denominator\\\":null,\\\"aggregation_grain\\\":null,\\\"deduplication_rule\\\":null},\\\"filters\\\":[],\\\"joins\\\":\\\"No joins needed\\\",\\\"missing_or_ambiguous\\\":\\\"None\\\",\\\"sql_skeleton\\\":\\\"SELECT 1\\\"}\"\n}\n\nIncorrect top-level shape:\n{\n  \"content\": {\n    \"selected_source\": \"table.example\"\n  }\n}\n\nThe JSON object inside the `content` string must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"require_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ]\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "RAG_COMPLETION",
+    "GRAPH_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 180.933,
+    "search_seconds": {
+      "GRAPH_COMPLETION": 38.118,
+      "RAG_COMPLETION": 142.815
+    },
+    "started_at": "2026-05-27T04:27:00+00:00"
+  }
+}

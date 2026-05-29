@@ -1,0 +1,71 @@
+{
+  "benchmarks": {
+    "logistics_cost_context": "mp_fees average ~₹99/order and roughly 20 percent of charged_amount; largest cost lever",
+    "source": "docx sections 4 and 10",
+    "typical_total_deduction": "~30 percent in typical delivered-order waterfall"
+  },
+  "business_definition": "Percentage of delivered charged_amount deducted by HealthKart fees, commission, and tax on charges before seller payout.",
+  "canonical_formula_pattern": "See vendor-specific metric_implementation and formula_template cards; this business metric uses colloquial aliases for user query matching.",
+  "canonical_id": "metric.effective_take_rate_all_deductions_gross",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Effective Take Rate (All Deductions / Gross)",
+    "effective take rate all deductions gross",
+    "take rate",
+    "fee burden",
+    "deduction rate",
+    "platform charge rate"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "settlement_period",
+  "description": "Percentage of delivered charged_amount deducted by HealthKart fees, commission, and tax on charges before seller payout.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.healthkart.effective_take_rate_all_deductions_gross.05"
+  ],
+  "metric_family": "fees",
+  "metric_key": "effective_take_rate",
+  "metric_pattern": "one_minus_sum_settled_amount_over_sum_charged_amount",
+  "name": "Effective Take Rate (All Deductions / Gross)",
+  "review_status": "accepted",
+  "source_card_id": "metric.effective_take_rate_all_deductions_gross",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5428,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "HealthKart",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

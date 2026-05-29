@@ -1,0 +1,25 @@
+{
+  "card_types": {
+    "business_process": 7,
+    "domain": 9,
+    "metric_implementation": 23,
+    "platform_account": 2,
+    "platform_context": 1,
+    "table": 5
+  },
+  "counts": {
+    "cards": 47,
+    "edges": 27
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM_CONTEXT": 18,
+    "BELONGS_TO_PLATFORM": 1,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "SOURCED_FROM_PLATFORM_CONTEXT": 5,
+    "USES_PLATFORM_CONTEXT": 2
+  },
+  "scope": [
+    "marketplace",
+    "nykaa_fashion"
+  ]
+}

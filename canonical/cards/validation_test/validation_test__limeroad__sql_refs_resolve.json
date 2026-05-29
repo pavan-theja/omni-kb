@@ -1,0 +1,49 @@
+{
+  "assertion": "Every card fields.sql_ref/formula_sql_ref must exist in sql_pattern registry.",
+  "canonical_id": "validation_test.limeroad.sql_refs_resolve",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Every card fields.sql_ref/formula_sql_ref must exist in sql_pattern registry.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.quality.001",
+    "ev.limeroad.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 7123
+    },
+    {
+      "evidence_id": "ev.limeroad.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 7123
+    }
+  ],
+  "expected_result": "pass",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Prevents lazy “see source doc” SQL refs.",
+  "marketplace_only": true,
+  "name": "All SQL references resolve",
+  "review_status": "accepted",
+  "source_card_id": "validation_test.limeroad.sql_refs_resolve",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7123,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "test_type": "sql_integrity",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

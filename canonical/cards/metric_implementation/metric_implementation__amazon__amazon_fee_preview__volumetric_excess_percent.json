@@ -1,0 +1,58 @@
+{
+  "base_tables": [],
+  "candidate_notes": "Flag SKUs where volumetric_weight > gross_weight * 1.5.",
+  "canonical_id": "metric_implementation.amazon.amazon_fee_preview.volumetric_excess_percent",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.packaging_weight.001",
+    "ev.amazon_fee_preview.weights.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.packaging_weight.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5960
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.weights.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5960
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "(volumetric_weight / NULLIF(gross_weight, 0)) - 1",
+  "grain": "sku",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.volumetric_excess_percent",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "volumetric_weight_over_gross_weight_minus_one",
+  "name": "Amazon implementation: volumetric_excess_percent on amazon_fee_preview",
+  "notes": "Flag SKUs where volumetric_weight > gross_weight * 1.5.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true AND zen_status = true AND is_duplicated = false",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_fee_preview.volumetric_excess_percent",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5960,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_fee_preview",
+  "sql_ref": "sql.amazon.fee_preview.volumetric_gap",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

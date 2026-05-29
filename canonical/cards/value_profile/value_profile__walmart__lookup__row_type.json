@@ -1,0 +1,44 @@
+{
+  "canonical_id": "value_profile.walmart.lookup.row_type",
+  "card_type": "value_profile",
+  "column": "table.zs_observe.walmart_lookup",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart_lookup.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 3437
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_values": {
+    "content_rows": "3,093 rows with sku NULL; attribute/content rows not safe for SKU joins",
+    "sku_records": "673 rows with sku populated; safe for joins"
+  },
+  "name": "Walmart lookup row types",
+  "notes": "Walmart lookup row types",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.walmart.lookup.row_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3437,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unknown_or_null_handling": "Always filter sku IS NOT NULL for SKU-to-name joins",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_semantics": "Always filter sku IS NOT NULL for SKU-to-name joins"
+}

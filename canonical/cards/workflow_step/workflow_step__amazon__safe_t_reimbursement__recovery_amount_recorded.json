@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "DOCX SAFE-T recovery-rate formula and benchmark guidance.",
+  "canonical_id": "workflow_step.amazon.safe_t_reimbursement.recovery_amount_recorded",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.safet.001",
+    "ev.amazon.return_analysis.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.safet.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6698
+    },
+    {
+      "evidence_id": "ev.amazon.return_analysis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6698
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon SAFE-T reimbursement lifecycle: recovery amount recorded",
+  "process": "business_process.amazon.safe_t_reimbursement",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.amazon.safe_t_reimbursement.recovery_amount_recorded",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6698,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "SAFE-T recovered amount is summed and can be compared with eligible return refund value as a recovery-rate metric.",
+  "step_key": "safe_t_recovery_amount_and_rate_recorded",
+  "step_order": "3",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

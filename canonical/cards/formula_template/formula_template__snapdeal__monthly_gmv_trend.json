@@ -1,0 +1,63 @@
+{
+  "canonical_id": "formula_template.snapdeal.monthly_gmv_trend",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal formula pattern — Monthly GMV Trend",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.7_2_monthly_gmv_trend",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.7_2_monthly_gmv_trend",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13552
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13552
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13552
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_sql": "SELECT\n  CAST(DATE_TRUNC('month', CAST(order_date AS TIMESTAMP)) AS DATE) AS month,\n  COUNT(*) AS orders,\n  COUNT_IF(transaction_type = 'forward') AS forward_orders,\n  COUNT_IF(transaction_type = 'reverse') AS return_orders,\n  SUM(charged_amount) AS gmv\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true\nGROUP BY 1\nORDER BY 1;",
+  "formula_text": "SELECT\n  CAST(DATE_TRUNC('month', CAST(order_date AS TIMESTAMP)) AS DATE) AS month,\n  COUNT(*) AS orders,\n  COUNT_IF(transaction_type = 'forward') AS forward_orders,\n  COUNT_IF(transaction_type = 'reverse') AS return_orders,\n  SUM(charged_amount) AS gmv\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true\nGROUP BY 1\nORDER BY 1;",
+  "name": "Snapdeal formula pattern — Monthly GMV Trend",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter",
+    "is_active_filter",
+    "transaction_type_scope",
+    "group_level_id_scope_column"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.snapdeal.monthly_gmv_trend",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13552,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "sql_pattern_id": "sql.snapdeal.7_2_monthly_gmv_trend",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

@@ -1,0 +1,71 @@
+{
+  "affected_business_processes": [
+    "business_process.courier_batch_to_bank_reconciliation"
+  ],
+  "affected_metrics": [
+    "metric.freight_billed_amount",
+    "metric.cod_remitted_amount",
+    "metric.batch_settlement_amount"
+  ],
+  "affected_reconciliation": [
+    "reconciliation_profile.shipment_to_freight_invoice",
+    "reconciliation_profile.cod_expected_to_courier_remittance",
+    "reconciliation_profile.courier_batch_to_bank_credit"
+  ],
+  "base_business_process_id": "business_process.courier_batch_to_bank_reconciliation",
+  "canonical_id": "process_variant.batch_without_utr_review_required",
+  "card_type": "process_variant",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Batch amount exists but UTR or bank reference is absent or unreliable; bank matching requires review and broader date/amount matching.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 6563
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 6563
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 6563
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Batch without UTR review required",
+  "review_status": "unreviewed",
+  "source_card_id": "process_variant.batch_without_utr_review_required",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6563,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "tenant_group_boundary": "This is an operating-model variant only. Tenant/group-specific route participation belongs to Business Flow Binding.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "variant_condition": "bank_bridge = missing_or_low_confidence",
+  "variant_effect": "Batch amount exists but UTR or bank reference is absent or unreliable; bank matching requires review and broader date/amount matching.",
+  "variant_name": "Batch without UTR review required",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

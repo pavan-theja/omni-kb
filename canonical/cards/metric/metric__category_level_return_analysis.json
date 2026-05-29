@@ -1,0 +1,49 @@
+{
+  "business_definition": "7.3 Category-Level Return Analysis",
+  "canonical_id": "metric.category_level_return_analysis",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Category-Level Return Analysis"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "7.3 Category-Level Return Analysis",
+  "display_name": "Category-Level Return Analysis",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.meesho.7_3_category_level_return_analysis"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_3_category_level_return_analysis",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11345
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.meesho.category_level_return_analysis"
+  ],
+  "metric_family": "marketplace_metric",
+  "name": "Category-Level Return Analysis",
+  "review_status": "ready",
+  "source_card_id": "metric.category_level_return_analysis",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11345,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

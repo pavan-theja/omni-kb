@@ -1,0 +1,50 @@
+{
+  "canonical_id": "rule.healthkart.benchmark_guidance_only",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Observed HealthKart values such as ~14% RTO, ~65% realization, 5% commission, ~70% COD, and ₹99 average mp_fees are canonical guidance/context only, not universal hard validation thresholds.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.032_10_key_business_observations",
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.032_10_key_business_observations",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7634
+    },
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 7634
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Use HealthKart observed benchmark/context values as guidance only",
+  "review_status": "accepted",
+  "rule_statement": "Observed HealthKart values such as ~14% RTO, ~65% realization, 5% commission, ~70% COD, and ₹99 average mp_fees are canonical guidance/context only, not universal hard validation thresholds.",
+  "rule_type": "benchmark_context_guard",
+  "severity": "medium",
+  "source_card_id": "rule.healthkart.benchmark_guidance_only",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.032_10_key_business_observations",
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7634,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

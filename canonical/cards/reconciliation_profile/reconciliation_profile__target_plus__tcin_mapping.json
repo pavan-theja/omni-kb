@@ -1,0 +1,50 @@
+{
+  "actual_side": "target_tcin_mapping TCIN rows",
+  "canonical_id": "reconciliation_profile.target_plus.tcin_mapping",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus TCIN Mapping Coverage Reconciliation",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.3_2_primary_join_keys",
+    "ev.target_plus.mapping.7_1_full_catalogue_with_sales_coverage"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.3_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10105
+    },
+    {
+      "evidence_id": "ev.target_plus.mapping.7_1_full_catalogue_with_sales_coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10105
+    }
+  ],
+  "expected_side": "Target transaction TCIN values",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.target_plus.tcin_mapping_join",
+  "name": "Target Plus TCIN Mapping Coverage Reconciliation",
+  "reconciliation_family": "mapping_coverage",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.target_plus.tcin_mapping",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10105,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_window": "No settlement timing; mapping coverage should be checked by tcin.",
+  "tolerance": "Source SQL uses 0.01 amount tolerance where specified; otherwise review before hard validation.",
+  "unit_id": "reconciliation_unit.target_plus.tcin_product",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

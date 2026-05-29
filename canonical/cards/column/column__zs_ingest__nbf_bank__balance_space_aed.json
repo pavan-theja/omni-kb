@@ -1,0 +1,58 @@
+{
+  "banking_only": true,
+  "business_meaning": "Balance in AED (Text form — alternative field)",
+  "candidate_notes": "Balance in AED (Text form — alternative field)",
+  "canonical_id": "column.zs_ingest.nbf_bank.balance_space_aed",
+  "card_type": "column",
+  "column_name": "balance (aed)",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Balance in AED (Text form — alternative field)",
+  "direction_role": "",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.nbf_bank.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.nbf_bank.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 7794
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "metric_amount",
+  "name": "nbf_bank.balance (aed)",
+  "numeric_quality": "requires_cast_before_math",
+  "review_status": "accepted",
+  "scope_guardrail": "banking_semantic_column",
+  "semantic_roles": [
+    "financial_amount",
+    "measure"
+  ],
+  "semantic_type": "financial_amount",
+  "source_card_id": "column.zs_ingest.nbf_bank.balance_space_aed",
+  "source_caveats": [
+    "NBF has **three sets of amount columns**: native Decimal columns (`credit_amount`, `debit_amount`, `balance`) and two Text variants (`credit amount`, `debit amount`, `balance (aed)` — note the spaces in column names). Always use the Decimal columns."
+  ],
+  "source_confidence": "high",
+  "source_data_type": "Text",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7794,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_ingest.nbf_bank",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

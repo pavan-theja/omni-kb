@@ -1,0 +1,60 @@
+{
+  "banking_only": true,
+  "canonical_id": "domain.banking.bank_statement.amount_quality",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "domain_key": "amount_quality",
+  "domain_scope": "authoritative decimal columns, text amount casting, balance handling, currency separation",
+  "evidence_ids": [
+    "ev.bank_statement.overview.001",
+    "ev.bank_statement.table_index.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.overview.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2266
+    },
+    {
+      "evidence_id": "ev.bank_statement.table_index.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2266
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "included_tables": [
+    "table.zs_ingest.yesbank_oms_payout",
+    "table.zs_ingest.idfc_bank",
+    "table.zs_ingest.idfc_bank_inr",
+    "table.zs_ingest.icici_bank_global",
+    "table.zs_ingest.icici_bank",
+    "table.zs_ingest.hsbc_bank",
+    "table.zs_ingest.citi_bank",
+    "table.zs_ingest.nbf_bank",
+    "table.zs_ingest.hdfc_bank_settlement",
+    "table.zs_ingest.axis_bank_settlement"
+  ],
+  "name": "Bank amount-column normalization and quality",
+  "out_of_scope_guardrail": "No tenant/account/payment-gateway/marketplace/logistics/ERP cards from this generic bank statement document.",
+  "parent_domain": "banking",
+  "review_status": "accepted",
+  "source_card_id": "domain.banking.bank_statement.amount_quality",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2266,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

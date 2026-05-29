@@ -1,0 +1,60 @@
+{
+  "active": true,
+  "canonical_id": "business_scope_set.pine_labs.bank_and_treasury",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Bank, treasury, SOA, and reference-report scope.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.pine_labs.pine_labs_private_limited",
+  "name": "Bank And Treasury",
+  "notes": [],
+  "package_id": "pine_labs_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_ids": [
+    "platform_account.pine_labs.indusind_bank.primary",
+    "platform_account.pine_labs.escrow_treasury.primary",
+    "platform_account.pine_labs.giftcard_reference_reports.primary",
+    "platform_account.pine_labs.pinelabs_pos.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.indusind_bank.in",
+    "platform_context.escrow_treasury.in",
+    "platform_context.giftcard_reference_reports.in",
+    "platform_context.pinelabs_pos.in"
+  ],
+  "platform_ids": [
+    "platform.indusind_bank",
+    "platform.escrow_treasury",
+    "platform.giftcard_reference_reports",
+    "platform.pinelabs_pos"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Pine bank and treasury review scope",
+  "scope_type": "bank_treasury",
+  "source_confidence": null,
+  "source_documents": [
+    "Pine Labs.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "flipkart_marketplace.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.pine_labs",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,99 @@
+{
+  "candidate_notes": "type can be NULL and still carry financial values; group_level_id is integer column caveat.",
+  "canonical_id": "table.zs_observe.amazon_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.amazon_settlement.account_type",
+    "column.zs_observe.amazon_settlement.created_date",
+    "column.zs_observe.amazon_settlement.date_time",
+    "column.zs_observe.amazon_settlement.description",
+    "column.zs_observe.amazon_settlement.destination_state",
+    "column.zs_observe.amazon_settlement.fba_fees",
+    "column.zs_observe.amazon_settlement.fulfillment",
+    "column.zs_observe.amazon_settlement.gift_wrap_credits",
+    "column.zs_observe.amazon_settlement.gross_commission",
+    "column.zs_observe.amazon_settlement.group_level_id",
+    "column.zs_observe.amazon_settlement.is_active",
+    "column.zs_observe.amazon_settlement.is_duplicated",
+    "column.zs_observe.amazon_settlement.marketplace",
+    "column.zs_observe.amazon_settlement.marketplace_withheld_tax",
+    "column.zs_observe.amazon_settlement.mp_fees",
+    "column.zs_observe.amazon_settlement.order_id",
+    "column.zs_observe.amazon_settlement.other",
+    "column.zs_observe.amazon_settlement.other_transaction_fees",
+    "column.zs_observe.amazon_settlement.product_sales",
+    "column.zs_observe.amazon_settlement.promotional_rebates",
+    "column.zs_observe.amazon_settlement.selling_fees",
+    "column.zs_observe.amazon_settlement.settled_amount",
+    "column.zs_observe.amazon_settlement.settlement_date",
+    "column.zs_observe.amazon_settlement.settlement_id",
+    "column.zs_observe.amazon_settlement.shipping_credits",
+    "column.zs_observe.amazon_settlement.sku",
+    "column.zs_observe.amazon_settlement.sku_id",
+    "column.zs_observe.amazon_settlement.tcs_cgst",
+    "column.zs_observe.amazon_settlement.tcs_igst",
+    "column.zs_observe.amazon_settlement.tcs_sgst",
+    "column.zs_observe.amazon_settlement.tds",
+    "column.zs_observe.amazon_settlement.total",
+    "column.zs_observe.amazon_settlement.type",
+    "column.zs_observe.amazon_settlement.zen_status"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_column": "settlement_date; created_date",
+  "description": "table card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain": "domain.marketplace.amazon.settlement",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.amazon_settlement.purpose.001",
+    "ev.amazon_settlement.quality.001",
+    "ev.amazon_settlement.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_settlement.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1355
+    },
+    {
+      "evidence_id": "ev.amazon_settlement.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1355
+    },
+    {
+      "evidence_id": "ev.amazon_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1355
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_observe.amazon_settlement",
+  "grain": "settlement ledger row within settlement period",
+  "mandatory_filters": "is_active = true",
+  "marketplace_only": true,
+  "name": "Amazon settlement reports",
+  "optional_filters": "zen_status = true",
+  "platform_context": "platform_context.amazon.in",
+  "quality_notes": "type can be NULL and still carry financial values; group_level_id is integer column caveat.",
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "scope": "Amazon India active data with US/EU present in schema",
+  "source_card_id": "table.zs_observe.amazon_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1355,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "amazon_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

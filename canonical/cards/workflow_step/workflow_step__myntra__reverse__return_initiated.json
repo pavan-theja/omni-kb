@@ -1,0 +1,51 @@
+{
+  "canonical_id": "workflow_step.myntra.reverse.return_initiated",
+  "canonical_name": "return_initiated",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "documented_business_event": "Return Initiated",
+  "evidence_ids": [
+    "evidence.myntra.lifecycle",
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10299
+    },
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10299
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "return_initiated",
+  "process_id": "business_process.myntra.reverse_transaction_lifecycle",
+  "review_status": "unreviewed",
+  "sequence": 1,
+  "source_card_id": "workflow_step.myntra.reverse.return_initiated",
+  "source_column": "created_date",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10299,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_reverse",
+  "status": "draft",
+  "summary": "Return or cancellation is initiated; myntra_reverse.created_date is the documented initiation date.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

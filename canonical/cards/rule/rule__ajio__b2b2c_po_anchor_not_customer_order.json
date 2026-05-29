@@ -1,0 +1,50 @@
+{
+  "canonical_id": "rule.ajio.b2b2c_po_anchor_not_customer_order",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "AJIO financial reconciliation should treat purchase_po_no as the anchor document for PO-based B2B invoicing and credit notes; customer order_id is secondary.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.003_2_ajio_s_b2b2c_business_model",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.003_2_ajio_s_b2b2c_business_model",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "AJIO B2B2C PO anchor rule",
+  "review_status": "ready",
+  "rule_statement": "AJIO financial reconciliation should treat purchase_po_no as the anchor document for PO-based B2B invoicing and credit notes; customer order_id is secondary.",
+  "rule_type": "semantic_query_rule",
+  "severity": "high",
+  "source_card_id": "rule.ajio.b2b2c_po_anchor_not_customer_order",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.003_2_ajio_s_b2b2c_business_model",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7316,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

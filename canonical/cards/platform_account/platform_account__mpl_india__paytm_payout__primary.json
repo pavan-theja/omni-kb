@@ -1,0 +1,61 @@
+{
+  "account_name": "MPL India Paytm Payout",
+  "account_role": "payout_source",
+  "account_type": "payment_gateway_merchant_account",
+  "active": true,
+  "canonical_id": "platform_account.mpl_india.paytm_payout.primary",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "configured_data_types": [
+    "paytm_payout"
+  ],
+  "country_or_region": "India",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "INR"
+  ],
+  "description": "platform_account card from raw/cleaned_v2/clients/mpl_india.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mpl_india.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.mpl_india.mpl",
+  "name": "MPL India Paytm Payout",
+  "notes": [
+    "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+  ],
+  "package_id": "mpl_india_runtime_card_pack_v1_0",
+  "platform_context_id": "platform_context.paytm.in",
+  "platform_id": "platform.paytm",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_confidence": null,
+  "source_config_text": "Paytm | paytm_payout",
+  "source_documents": [
+    "MPL India.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "payment_gateway.md",
+    "bank_statement.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mpl_india.json",
+  "source_scope_identifiers": {
+    "group_id": 2,
+    "group_level_id": 2,
+    "group_name": "MPL"
+  },
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.mpl_india",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

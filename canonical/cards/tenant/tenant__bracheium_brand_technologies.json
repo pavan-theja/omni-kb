@@ -1,0 +1,50 @@
+{
+  "active": true,
+  "canonical_id": "tenant.bracheium_brand_technologies",
+  "card_type": "tenant",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "India domestic plus D2C multi-channel marketplace seller using ZenStatement for marketplace settlement, Shopify/Shiprocket D2C, Increff/Unicommerce operations, Xpressbees logistics, and payment gateway reconciliation.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Bracheium Brand Technologies Pvt Ltd",
+  "package_id": "bracheium_brand_technologies_business_hierarchy_runtime_cards_v1_0",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Bracheium Brand Technologies Pvt Ltd.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "increff_operations.md",
+    "jiomart_marketplace.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "payment_gateway.md",
+    "shiprocket_logistics.md",
+    "shopify_d2c_oms.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md",
+    "xpressbees_logistics.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_code": "BRACHEIUM",
+  "tenant_name": "Bracheium Brand Technologies Pvt Ltd",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

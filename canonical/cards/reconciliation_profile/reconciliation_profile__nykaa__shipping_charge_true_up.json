@@ -1,0 +1,71 @@
+{
+  "actual_side_semantics": "nykaa_settlement match when available",
+  "canonical_id": "reconciliation_profile.nykaa.shipping_charge_true_up",
+  "canonical_name": "Shipping Charge True Up",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "documented_coverage": {
+    "missing_settlement": "about 9 percent",
+    "oms_match": "100 percent",
+    "settlement_match": "about 91 percent"
+  },
+  "evidence_ids": [
+    "evidence.nykaa.reconciliation",
+    "evidence.nykaa.relationships",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17200
+    },
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17200
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17200
+    }
+  ],
+  "expected_side_semantics": "nykaa_addition_charge diff_shipping_charge/diff_shipping_charge_tax",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_internal_only": true,
+  "marketplace_only": true,
+  "matching_logic_id": "matching_logic.nykaa.shipping_true_up_by_order",
+  "mismatch_category_ids": [
+    "mismatch_category.nykaa.shipping_true_up",
+    "mismatch_category.nykaa.addition_missing_settlement"
+  ],
+  "name": "Shipping Charge True Up",
+  "primary_unit_id": "reconciliation_unit.nykaa.shipping_adjustment_line",
+  "process_id": "business_process.nykaa.shipping_charge_true_up",
+  "review_status": "unreviewed",
+  "side_ids": [
+    "reconciliation_side.nykaa.addition_shipping_adjustment",
+    "reconciliation_side.nykaa.settlement_actual_order"
+  ],
+  "source_card_id": "reconciliation_profile.nykaa.shipping_charge_true_up",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17200,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Shipping-charge true-ups in nykaa_addition_charge are reconciled to OMS and optionally settlement; 100% of addition_charge orders match OMS and about 91% match settlement, leaving about 9% not yet settled.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

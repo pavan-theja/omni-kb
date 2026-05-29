@@ -1,0 +1,53 @@
+{
+  "business_semantics": "Refund tracking back to original Shopify order.",
+  "canonical_id": "relationship.shopify_oms_to_shopify_returns.order_name",
+  "card_type": "relationship",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "Shopify order to Shopify return/refund event",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.returns.001",
+    "ev.shopify.order_grain.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.returns.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2084
+    },
+    {
+      "evidence_id": "ev.shopify.order_grain.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2084
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.shopify_oms",
+  "join_keys": [
+    "shopify_returns.order_name = shopify_oms.order_id OR shopify_returns.order_name = shopify_oms.name after # normalization"
+  ],
+  "join_safety_rule": "Normalize # prefixes and aggregate refunds by order_name before joining to order lines.",
+  "name": "Shopify order to Shopify return/refund event",
+  "relationship_grain": "Order to refund transaction events",
+  "review_status": "accepted_with_normalization_caveat",
+  "source_card_id": "relationship.shopify_oms_to_shopify_returns.order_name",
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2084,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted_with_normalization_caveat",
+  "status": "draft",
+  "to_table": "table.zs_observe.shopify_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

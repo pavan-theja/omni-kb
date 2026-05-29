@@ -1,0 +1,17 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "question": "Generate a courier-wise channel mapping report.",
+  "question_index": 4,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\n  \"relevant_canonical_ids\": [\n    \"table.zs_observe.increff_sales\",\n    \"column.zs_observe.increff_sales.transporter\",\n    \"column.zs_observe.increff_sales.sales_channel\",\n    \"column.zs_observe.increff_sales.group_level_id\",\n    \"column.zs_observe.increff_sales.is_active\"\n  ],\n  \"entity_names\": {\n    \"tenant\": \"Mensa Brands\"\n  },\n  \"source_tables\": [\n    {\n      \"schema_name\": \"zs_observe\",\n      \"table_name\": \"increff_sales\",\n      \"description\": \"Sales data from Increff WMS.\"\n    }\n  ],\n  \"required_columns\": [\n    {\n      \"column_name\": \"transporter\",\n      \"role\": \"courier identifier\",\n      \"notes\": \"To identify the courier partner.\"\n    },\n    {\n      \"column_name\": \"sales_channel\",\n      \"role\": \"channel identifier\",\n      \"notes\": \"To identify the sales channel/marketplace.\"\n    },\n    {\n      \"column_name\": \"group_level_id\",\n      \"role\": \"filter column\",\n      \"notes\": \"Used to filter data for the specific tenant (Mensa Brands).\"\n    },\n    {\n      \"column_name\": \"is_active\",\n      \"role\": \"filter column\",\n      \"notes\": \"Mandatory filter for active records.\"\n    }\n  ],\n  \"relationships_join_paths\": \"No explicit joins needed as all required information is within 'zs_observe.increff_sales' for this query.\",\n  \"metrics_formulas\": \"Not applicable; this query is for listing distinct values.\",\n  \"tenant_group_platform_account_filters\": [\n    {\n      \"type\": \"tenant\",\n      \"name\": \"Mensa Brands\",\n      \"column\": \"group_level_id\",\n      \"value\": \"22\",\n      \"operator\": \"=\"\n    },\n    {\n      \"type\": \"record_status\",\n      \"column\": \"is_active\",\n      \"value\": \"true\",\n      \"operator\": \"=\"\n    }\n  ],\n  \"assumptions_missing_information_ambiguity\": \"Assumes 'transporter' column accurately represents courier names and 'sales_channel' represents marketplace names. Assumes 'group_level_id = 22' is the correct identifier for Mensa Brands within the 'increff_sales' table.\",\n  \"sql_skeleton\": \"SELECT DISTINCT transporter, sales_channel FROM zs_observe.increff_sales WHERE group_level_id = 22 AND is_active = true;\"\n}"
+    ]
+  },
+  "scoped_query": "Generate a courier-wise channel mapping report.\n\nScope:\n- tenant: Mensa\n\nAnswer for SQL query construction. Return concise, source-grounded details:\n- relevant canonical ids and entity names\n- source tables with schema/table names\n- required columns, including join keys, filter columns, date columns, and amount columns\n- relationships or join paths between tables/accounts/platforms/workflows\n- metrics or formulas needed, including aggregation grain and deduplication rules\n- tenant/group/platform/account filters that must appear in SQL\n- assumptions, missing information, and any ambiguity\nIf useful, include a SQL skeleton, but do not invent columns or tables that are not in context.",
+  "search_types": [
+    "RAG_COMPLETION"
+  ]
+}

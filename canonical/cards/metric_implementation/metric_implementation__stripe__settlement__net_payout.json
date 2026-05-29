@@ -1,0 +1,109 @@
+{
+  "allowed_dimensions": [
+    "date",
+    "currency",
+    "payment_mode",
+    "status",
+    "gateway",
+    "settlement_id",
+    "payout_id"
+  ],
+  "allowed_grains": [
+    "transaction",
+    "batch",
+    "day",
+    "month",
+    "currency",
+    "payment_mode"
+  ],
+  "applicability": {
+    "notes": [
+      "Runtime account filters come from Account Data Binding."
+    ],
+    "platform_types": [
+      "payment_gateway",
+      "bnpl_gateway",
+      "app_store_platform"
+    ],
+    "scope_level": "table_or_platform_type"
+  },
+  "base_tables": [
+    "table.zs_observe.stripe_settlement"
+  ],
+  "canonical_id": "metric_implementation.stripe.settlement.net_payout",
+  "card_type": "metric_implementation",
+  "caveats": [
+    "Preserve source sign conventions and cast Text amount fields before arithmetic."
+  ],
+  "confidence": "low_confidence",
+  "create_action": "create_draft_do_not_use_until_base_table_availability_confirmed",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependent_metrics": [],
+  "description": "Stripe payout reconciliation net",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay",
+    "evidence.pg.stripe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50131
+    },
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50131
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_description": "SUM(net) GROUP BY automatic_payout_id, currency",
+  "formula_executable": true,
+  "formula_sql": "SUM(net) GROUP BY automatic_payout_id, currency",
+  "formula_template_id": null,
+  "implementation_name": "Stripe payout reconciliation net",
+  "implementation_scope": "stripe",
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "metric_implementation_manifest_base_table_review_required"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_id": "metric.net_settlement_amount",
+  "name": "Stripe payout reconciliation net",
+  "platform_code": "stripe",
+  "precision": "2_decimal_places",
+  "recommended_date_columns": [
+    "automatic_payout_effective_at"
+  ],
+  "required_columns": [
+    "column.zs_observe.stripe_settlement.net",
+    "column.zs_observe.stripe_settlement.gross",
+    "column.zs_observe.stripe_settlement.fee",
+    "column.zs_observe.stripe_settlement.automatic_payout_id",
+    "column.zs_observe.stripe_settlement.reporting_category"
+  ],
+  "review_status": "review_required",
+  "semantic_filters": [
+    "is_active = true",
+    "is_duplicated = false"
+  ],
+  "source_card_id": "metric_implementation.stripe.settlement.net_payout",
+  "source_confidence": "low_confidence",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 50131,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "draft",
+  "sql_pattern_ref": "sql.pg.gateway_settlement_batch_summary",
+  "status": "draft",
+  "unit": "currency_or_percentage_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

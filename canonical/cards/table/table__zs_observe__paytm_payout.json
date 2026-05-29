@@ -1,0 +1,180 @@
+{
+  "amount_columns": [
+    "amount",
+    "txn_amount",
+    "commission_amount",
+    "fee",
+    "tax",
+    "settled_amount",
+    "credit_debit",
+    "closing_balance"
+  ],
+  "avoid_columns": [
+    "credit_debit",
+    "closing_balance"
+  ],
+  "business_purpose": "Outbound payout tracking via Paytm for Business — covers vendor payments, wallet payouts, refunds.",
+  "canonical_id": "table.zs_observe.paytm_payout",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.paytm_payout.amount",
+    "column.zs_observe.paytm_payout.beneficiary_account",
+    "column.zs_observe.paytm_payout.closing_balance",
+    "column.zs_observe.paytm_payout.commission_amount",
+    "column.zs_observe.paytm_payout.contact_ref__id",
+    "column.zs_observe.paytm_payout.credit_debit",
+    "column.zs_observe.paytm_payout.fee",
+    "column.zs_observe.paytm_payout.internal_remark",
+    "column.zs_observe.paytm_payout.merchant_id",
+    "column.zs_observe.paytm_payout.merchant_name",
+    "column.zs_observe.paytm_payout.mode",
+    "column.zs_observe.paytm_payout.order_id",
+    "column.zs_observe.paytm_payout.payment_mode",
+    "column.zs_observe.paytm_payout.paytm_orderid",
+    "column.zs_observe.paytm_payout.purpose",
+    "column.zs_observe.paytm_payout.settled_amount",
+    "column.zs_observe.paytm_payout.settlement_date",
+    "column.zs_observe.paytm_payout.status",
+    "column.zs_observe.paytm_payout.sub_wallet_guid",
+    "column.zs_observe.paytm_payout.sub_wallet_name",
+    "column.zs_observe.paytm_payout.tax",
+    "column.zs_observe.paytm_payout.transaction_id",
+    "column.zs_observe.paytm_payout.txn_amount",
+    "column.zs_observe.paytm_payout.txn_date",
+    "column.zs_observe.paytm_payout.txn_id",
+    "column.zs_observe.paytm_payout.txn_status",
+    "column.zs_observe.paytm_payout.txn_type",
+    "column.zs_observe.paytm_payout.utr"
+  ],
+  "columns": [
+    "column.zs_observe.paytm_payout.transaction_id",
+    "column.zs_observe.paytm_payout.txn_id",
+    "column.zs_observe.paytm_payout.paytm_orderid",
+    "column.zs_observe.paytm_payout.order_id",
+    "column.zs_observe.paytm_payout.txn_type",
+    "column.zs_observe.paytm_payout.txn_date",
+    "column.zs_observe.paytm_payout.settlement_date",
+    "column.zs_observe.paytm_payout.amount",
+    "column.zs_observe.paytm_payout.txn_amount",
+    "column.zs_observe.paytm_payout.commission_amount",
+    "column.zs_observe.paytm_payout.fee",
+    "column.zs_observe.paytm_payout.tax",
+    "column.zs_observe.paytm_payout.settled_amount",
+    "column.zs_observe.paytm_payout.status",
+    "column.zs_observe.paytm_payout.txn_status",
+    "column.zs_observe.paytm_payout.payment_mode",
+    "column.zs_observe.paytm_payout.mode",
+    "column.zs_observe.paytm_payout.credit_debit",
+    "column.zs_observe.paytm_payout.beneficiary_account",
+    "column.zs_observe.paytm_payout.sub_wallet_name",
+    "column.zs_observe.paytm_payout.sub_wallet_guid",
+    "column.zs_observe.paytm_payout.utr",
+    "column.zs_observe.paytm_payout.merchant_id",
+    "column.zs_observe.paytm_payout.merchant_name",
+    "column.zs_observe.paytm_payout.purpose",
+    "column.zs_observe.paytm_payout.closing_balance",
+    "column.zs_observe.paytm_payout.internal_remark",
+    "column.zs_observe.paytm_payout.contact_ref__id"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "txn_date",
+    "settlement_date"
+  ],
+  "description": "Outbound payout tracking via Paytm for Business — covers vendor payments, wallet payouts, refunds.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.paytm"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.paytm",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 4030
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.paytm_payout",
+  "grain": "one row per payout/transfer event",
+  "grain_keys": [
+    "transaction_id",
+    "txn_id",
+    "paytm_orderid",
+    "order_id",
+    "sub_wallet_guid",
+    "utr"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.paytm_payout",
+  "recommended_date_columns": [
+    "txn_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "utr"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.paytm_payout",
+  "source_caveats": [
+    "This table is structurally similar to `razorpay_payout` but Paytm-specific.",
+    "`sub_wallet_name` and `sub_wallet_guid` relate to Paytm's sub-wallet ecosystem.",
+    "`credit_debit` field indicates direction — use to filter credits or debits.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4030,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.paytm"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "txn_type",
+    "status",
+    "txn_status",
+    "payment_mode",
+    "mode"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.paytm.in"
+    ],
+    "platform_ids": [
+      "platform.paytm"
+    ]
+  },
+  "table_name": "paytm_payout",
+  "table_type": "payout_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

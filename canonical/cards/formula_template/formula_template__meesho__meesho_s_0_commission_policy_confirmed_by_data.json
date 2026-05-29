@@ -1,0 +1,46 @@
+{
+  "canonical_id": "formula_template.meesho.meesho_s_0_commission_policy_confirmed_by_data",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho formula pattern — Meesho's 0% Commission Policy (Confirmed by Data)",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.4_1_meesho_s_0_commission_policy_confirmed_by_data"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.4_1_meesho_s_0_commission_policy_confirmed_by_data",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13348
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "SELECT\n  COUNT(*) AS forward_expense_rows,\n  SUM(net_commission) AS total_net_commission,\n  SUM(commission_gst) AS total_commission_gst,\n  ROUND(100.0 * SUM(net_commission) / NULLIF(SUM(taxable_shipping + meesho_mall_platformfee + fixed_fee), 0), 2) AS observed_commission_rate_pct\nFROM zs_observe.meesho_forward_expenses\nWHERE CAST(is_active AS VARCHAR) = 'true';",
+  "name": "Meesho formula pattern — Meesho's 0% Commission Policy (Confirmed by Data)",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "formula_template.meesho.meesho_s_0_commission_policy_confirmed_by_data",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13348,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

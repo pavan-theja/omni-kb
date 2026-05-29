@@ -1,0 +1,211 @@
+{
+  "amount_columns": [
+    "settlement_id",
+    "amount",
+    "fee",
+    "tax",
+    "settled_amount",
+    "sale_type",
+    "cards_network",
+    "settlement_utr",
+    "settled_at",
+    "settled_by",
+    "debit",
+    "credit"
+  ],
+  "avoid_columns": [
+    "settlement_id",
+    "sale_type",
+    "cards_network",
+    "settlement_utr",
+    "settled_by"
+  ],
+  "business_purpose": "Full transaction-level payin record including payment, refund, chargeback, and fee adjustment rows.",
+  "canonical_id": "table.zs_observe.razorpay_payin",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.razorpay_payin.amount",
+    "column.zs_observe.razorpay_payin.arn",
+    "column.zs_observe.razorpay_payin.cards_network",
+    "column.zs_observe.razorpay_payin.credit",
+    "column.zs_observe.razorpay_payin.currency",
+    "column.zs_observe.razorpay_payin.debit",
+    "column.zs_observe.razorpay_payin.dispute_id",
+    "column.zs_observe.razorpay_payin.dispute_reason",
+    "column.zs_observe.razorpay_payin.entity_created_at",
+    "column.zs_observe.razorpay_payin.entity_id",
+    "column.zs_observe.razorpay_payin.fee",
+    "column.zs_observe.razorpay_payin.order_id",
+    "column.zs_observe.razorpay_payin.order_id2",
+    "column.zs_observe.razorpay_payin.order_notes",
+    "column.zs_observe.razorpay_payin.order_receipt",
+    "column.zs_observe.razorpay_payin.payment_captured_at",
+    "column.zs_observe.razorpay_payin.payment_gateway",
+    "column.zs_observe.razorpay_payin.payment_method",
+    "column.zs_observe.razorpay_payin.payment_mode",
+    "column.zs_observe.razorpay_payin.payment_notes",
+    "column.zs_observe.razorpay_payin.sale_type",
+    "column.zs_observe.razorpay_payin.settled_amount",
+    "column.zs_observe.razorpay_payin.settled_at",
+    "column.zs_observe.razorpay_payin.settled_by",
+    "column.zs_observe.razorpay_payin.settlement_date",
+    "column.zs_observe.razorpay_payin.settlement_id",
+    "column.zs_observe.razorpay_payin.settlement_utr",
+    "column.zs_observe.razorpay_payin.status",
+    "column.zs_observe.razorpay_payin.tax",
+    "column.zs_observe.razorpay_payin.transaction_id",
+    "column.zs_observe.razorpay_payin.txn_date",
+    "column.zs_observe.razorpay_payin.txn_sub_type",
+    "column.zs_observe.razorpay_payin.txn_type",
+    "column.zs_observe.razorpay_payin.upi_flow",
+    "column.zs_observe.razorpay_payin.utr"
+  ],
+  "columns": [
+    "column.zs_observe.razorpay_payin.transaction_id",
+    "column.zs_observe.razorpay_payin.order_id",
+    "column.zs_observe.razorpay_payin.order_id2",
+    "column.zs_observe.razorpay_payin.txn_type",
+    "column.zs_observe.razorpay_payin.txn_sub_type",
+    "column.zs_observe.razorpay_payin.txn_date",
+    "column.zs_observe.razorpay_payin.settlement_date",
+    "column.zs_observe.razorpay_payin.settlement_id",
+    "column.zs_observe.razorpay_payin.amount",
+    "column.zs_observe.razorpay_payin.fee",
+    "column.zs_observe.razorpay_payin.tax",
+    "column.zs_observe.razorpay_payin.settled_amount",
+    "column.zs_observe.razorpay_payin.payment_mode",
+    "column.zs_observe.razorpay_payin.payment_method",
+    "column.zs_observe.razorpay_payin.status",
+    "column.zs_observe.razorpay_payin.payment_gateway",
+    "column.zs_observe.razorpay_payin.sale_type",
+    "column.zs_observe.razorpay_payin.arn",
+    "column.zs_observe.razorpay_payin.cards_network",
+    "column.zs_observe.razorpay_payin.currency",
+    "column.zs_observe.razorpay_payin.settlement_utr",
+    "column.zs_observe.razorpay_payin.settled_at",
+    "column.zs_observe.razorpay_payin.settled_by",
+    "column.zs_observe.razorpay_payin.entity_id",
+    "column.zs_observe.razorpay_payin.entity_created_at",
+    "column.zs_observe.razorpay_payin.payment_captured_at",
+    "column.zs_observe.razorpay_payin.dispute_id",
+    "column.zs_observe.razorpay_payin.dispute_reason",
+    "column.zs_observe.razorpay_payin.debit",
+    "column.zs_observe.razorpay_payin.credit",
+    "column.zs_observe.razorpay_payin.utr",
+    "column.zs_observe.razorpay_payin.upi_flow",
+    "column.zs_observe.razorpay_payin.order_receipt",
+    "column.zs_observe.razorpay_payin.order_notes",
+    "column.zs_observe.razorpay_payin.payment_notes"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "txn_date",
+    "settlement_date",
+    "settled_at",
+    "entity_created_at"
+  ],
+  "description": "Full transaction-level payin record including payment, refund, chargeback, and fee adjustment rows.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 3526
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.razorpay_payin",
+  "grain": "one row per payin/payment/refund/adjustment gateway event",
+  "grain_keys": [
+    "transaction_id",
+    "order_id",
+    "order_id2",
+    "settlement_id",
+    "arn",
+    "settlement_utr"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.razorpay.payin.net_settlement"
+  ],
+  "name": "zs_observe.razorpay_payin",
+  "recommended_date_columns": [
+    "txn_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id",
+    "settlement_id",
+    "arn",
+    "settlement_utr",
+    "utr"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.razorpay_payin",
+  "source_caveats": [
+    "Use `is_active = true` and `zen_status = true` (or `= 'true'`) as default filters.",
+    "`unique_value` is the deduplication key — rows with duplicates flagged via `is_duplicated`.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3526,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.razorpay"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "txn_type",
+    "txn_sub_type",
+    "payment_mode",
+    "status",
+    "sale_type",
+    "currency",
+    "dispute_reason",
+    "upi_flow"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.razorpay.in"
+    ],
+    "platform_ids": [
+      "platform.razorpay"
+    ]
+  },
+  "table_name": "razorpay_payin",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

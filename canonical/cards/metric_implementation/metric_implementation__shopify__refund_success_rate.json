@@ -1,0 +1,59 @@
+{
+  "base_tables": [],
+  "canonical_id": "metric_implementation.shopify.refund_success_rate",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "Shopify refund_success_rate implementation",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.data_quality.001",
+    "ev.shopify.tax_recon.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2685
+    },
+    {
+      "evidence_id": "ev.shopify.tax_recon.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2685
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "See sql.shopify.metric.refund_success_rate",
+  "grain": "order_or_order_line",
+  "implementation_scope": "shopify",
+  "metric_id": "metric.shopify.refund_success_rate",
+  "name": "Shopify refund_success_rate implementation",
+  "platform_code": "shopify",
+  "required_filters": [
+    "is_active = true",
+    "TRY_CAST varchar amount fields before financial aggregation"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.shopify.refund_success_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2685,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "source_table_ids": [
+    "table.zs_observe.shopify_returns"
+  ],
+  "sql_reference_id": "sql.shopify.metric.refund_success_rate",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

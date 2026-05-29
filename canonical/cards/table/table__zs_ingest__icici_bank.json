@@ -1,0 +1,130 @@
+{
+  "amount_columns": [
+    "transaction_amount_gbp_",
+    "available_balance_gbp_",
+    "transaction_amount",
+    "available_balance"
+  ],
+  "authoritative_decimal_amount_columns": [
+    "transaction_amount_gbp_",
+    "available_balance_gbp_"
+  ],
+  "avoid_text_amount_columns": [
+    "transaction_amount",
+    "available_balance"
+  ],
+  "bank": "ICICI Bank UK",
+  "banking_only": true,
+  "business_purpose": "ICICI Bank UK branch current account statement. This is ICICI's international banking entity (ICICI Bank UK Limited, FCA regulated). Used for GBP-denominated payments — likely for UK-based merchant settlements or international remittance account tracking.",
+  "candidate_notes": "Generic bank statement table card; account-level filtering comes from AccountDataBinding in tenant-specific docs, not this markdown.",
+  "canonical_id": "table.zs_ingest.icici_bank",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_ingest.icici_bank.available_balance",
+    "column.zs_ingest.icici_bank.available_balance_gbp",
+    "column.zs_ingest.icici_bank.chequeno",
+    "column.zs_ingest.icici_bank.cr_dr",
+    "column.zs_ingest.icici_bank.description",
+    "column.zs_ingest.icici_bank.metadata",
+    "column.zs_ingest.icici_bank.nan",
+    "column.zs_ingest.icici_bank.no",
+    "column.zs_ingest.icici_bank.other_id",
+    "column.zs_ingest.icici_bank.transaction_amount",
+    "column.zs_ingest.icici_bank.transaction_amount_gbp",
+    "column.zs_ingest.icici_bank.transaction_id",
+    "column.zs_ingest.icici_bank.txn_posted_date",
+    "column.zs_ingest.icici_bank.value_date"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active_schema_reference_partial_columns",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "GBP",
+  "declared_column_count": "34",
+  "description": "table card from raw/cleaned_v2/bank/bank_statement.md.",
+  "direction_columns": [
+    "cr_dr"
+  ],
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "documented_business_column_count": 14,
+  "domain": "domain.banking.bank_statement.core",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.bank_statement.icici_bank.purpose.001",
+    "ev.bank_statement.icici_bank.columns.001",
+    "ev.bank_statement.icici_bank.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.icici_bank.purpose.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2707
+    },
+    {
+      "evidence_id": "ev.bank_statement.icici_bank.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2707
+    },
+    {
+      "evidence_id": "ev.bank_statement.icici_bank.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2707
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_ingest.icici_bank",
+  "geography": "UK",
+  "grain": "raw bank statement transaction row; source-specific grain and reference fields",
+  "key_reconciliation_columns": [
+    "`transaction_id` — primary bank reference",
+    "`chequeno_` — CHAPS/BACS/Faster Payments reference; used for UK payment reconciliation",
+    "`cr_dr` — filter `CR` for inflows, `DR` for outflows",
+    "`transaction_amount_gbp_` (Decimal) — **always use this, not** `**transaction_amount**` **(Text)",
+    "`available_balance_gbp_` (Decimal) — running balance in GBP"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "name": "zs_ingest.icici_bank",
+  "platform_context": "platform_context.icici_bank_uk.uk",
+  "quality_notes": [
+    "`nan` column is an ingestion artifact — completely ignore",
+    "`txn_posted_date_temp_old` and `value_date_temp_old` are migration artifacts",
+    "`transaction_amount` (Text) and `transaction_amount_gbp_` (Decimal) exist in parallel — always use Decimal",
+    "This is GBP only — do not mix with INR tables in cross-currency analysis without FX conversion"
+  ],
+  "recommended_date_columns": [
+    "value_date",
+    "txn_posted_date"
+  ],
+  "reference_columns": [
+    "transaction_id",
+    "chequeno_",
+    "description"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_ingest",
+  "scope_columns_as_columns_only": [],
+  "source_card_id": "table.zs_ingest.icici_bank",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2707,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_platform_ids": [
+    "platform.icici_bank_uk"
+  ],
+  "source_status": "accepted",
+  "statement_type": "UK Current Account Statement",
+  "status": "active",
+  "table_name": "icici_bank",
+  "table_type": "raw_bank_statement_feed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

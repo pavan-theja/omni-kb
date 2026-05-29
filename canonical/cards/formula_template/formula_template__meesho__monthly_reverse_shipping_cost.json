@@ -1,0 +1,46 @@
+{
+  "canonical_id": "formula_template.meesho.monthly_reverse_shipping_cost",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho formula pattern — Monthly Reverse Shipping Cost",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_1_monthly_reverse_shipping_cost"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_1_monthly_reverse_shipping_cost",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13374
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "SELECT\n  DATE_TRUNC('month', order_date) AS month,\n  COUNT(*) AS returns,\n  SUM(taxable_value) AS reverse_shipping_excl_gst,\n  ROUND(SUM(taxable_value) * 1.18, 2) AS reverse_shipping_incl_gst\nFROM zs_observe.meesho_other_charges_expenses\nWHERE is_active = true\n  AND LOWER(type) = 'reverse_shipping'\nGROUP BY 1\nORDER BY 1;",
+  "name": "Meesho formula pattern — Monthly Reverse Shipping Cost",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.meesho.monthly_reverse_shipping_cost",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13374,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

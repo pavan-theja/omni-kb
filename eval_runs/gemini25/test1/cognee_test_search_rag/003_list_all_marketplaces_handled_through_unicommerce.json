@@ -1,0 +1,17 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "question": "List all marketplaces handled through Unicommerce.",
+  "question_index": 3,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\n  \"relevant_canonical_ids\": [\n    \"table.zs_observe.unicommerce\",\n    \"column.zs_observe.unicommerce.sales_channel\",\n    \"column.zs_observe.unicommerce.group_level_id\",\n    \"column.zs_observe.unicommerce.is_active\"\n  ],\n  \"entity_names\": {\n    \"tenant\": \"Mensa Brands\",\n    \"platform\": \"Unicommerce\"\n  },\n  \"source_tables\": [\n    {\n      \"schema_name\": \"zs_observe\",\n      \"table_name\": \"unicommerce\",\n      \"description\": \"Unified transaction ledger in Unicommerce OMS for sales, returns, and cancellations.\"\n    }\n  ],\n  \"required_columns\": [\n    {\n      \"column_name\": \"sales_channel\",\n      \"role\": \"marketplace identifier\",\n      \"notes\": \"To list the marketplaces\"\n    },\n    {\n      \"column_name\": \"group_level_id\",\n      \"role\": \"filter column\",\n      \"notes\": \"Used to filter data for the specific tenant (Mensa Brands, specifically Bracheium Brand Technologies entity within Mensa Brands)\"\n    },\n    {\n      \"column_name\": \"is_active\",\n      \"role\": \"filter column\",\n      \"notes\": \"Mandatory filter for active records\"\n    }\n  ],\n  \"relationships_join_paths\": \"No explicit joins needed as all required information is within 'zs_observe.unicommerce' for this query.\",\n  \"metrics_formulas\": \"Not applicable; this query is for listing distinct values.\",\n  \"tenant_group_platform_account_filters\": [\n    {\n      \"type\": \"tenant\",\n      \"name\": \"Mensa Brands\",\n      \"column\": \"group_level_id\",\n      \"value\": \"29\",\n      \"operator\": \"=\"\n    },\n    {\n      \"type\": \"record_status\",\n      \"column\": \"is_active\",\n      \"value\": \"true\",\n      \"operator\": \"=\"\n    }\n  ],\n  \"assumptions_missing_information_ambiguity\": \"Assumes 'sales_channel' column accurately represents marketplace names and that 'group_level_id = 29' is the correct identifier for the Bracheium Brand Technologies entity of Mensa Brands within the 'unicommerce' table context. The query will list all relevant sales channels from Unicommerce for this specific tenant entity.\",\n  \"sql_skeleton\": \"SELECT DISTINCT sales_channel FROM zs_observe.unicommerce WHERE group_level_id = 29 AND is_active = true;\"\n}"
+    ]
+  },
+  "scoped_query": "List all marketplaces handled through Unicommerce.\n\nScope:\n- tenant: Mensa\n\nAnswer for SQL query construction. Return concise, source-grounded details:\n- relevant canonical ids and entity names\n- source tables with schema/table names\n- required columns, including join keys, filter columns, date columns, and amount columns\n- relationships or join paths between tables/accounts/platforms/workflows\n- metrics or formulas needed, including aggregation grain and deduplication rules\n- tenant/group/platform/account filters that must appear in SQL\n- assumptions, missing information, and any ambiguity\nIf useful, include a SQL skeleton, but do not invent columns or tables that are not in context.",
+  "search_types": [
+    "RAG_COMPLETION"
+  ]
+}

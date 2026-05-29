@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "Aggregate both sides before comparison.",
+  "amount_comparison": "Other charges total taxable_value vs settlement ABS(return_logistic_charge_excluding_tax); DOCX expected ₹39,614 vs ₹54,389.",
+  "canonical_id": "matching_logic.meesho.return_reverse_logistics_reconciliation",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho matching logic — Return ↔ Reverse Logistics Reconciliation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_3_return_reverse_logistics_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_3_return_reverse_logistics_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15905
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "Aggregate other_charges where LOWER(type)='reverse_shipping' and settlement where order_status IN ('Return','RTO'); no forced order-level join is required for the documented use case.",
+  "key_normalization": "Use lower(type) for reverse shipping and active filters; settlement amounts use ABS(return_logistic_charge_excluding_tax).",
+  "match_type": "aggregate_amount_reconciliation_with_timing_gap",
+  "name": "Meesho matching logic — Return ↔ Reverse Logistics Reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.meesho.return_reverse_logistics_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15905,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timing_rule": "Documented gap means some returns are not yet invoiced in other_charges.",
+  "tolerance_rule": "No pass/fail threshold in source; treat gap as timing/context unless runtime tolerance is provided.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

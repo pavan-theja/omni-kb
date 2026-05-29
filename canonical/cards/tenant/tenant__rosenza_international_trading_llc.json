@@ -1,0 +1,37 @@
+{
+  "active": true,
+  "canonical_id": "tenant.rosenza_international_trading_llc",
+  "card_type": "tenant",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Global product brand using ZenStatement for multi-region marketplace and Shopify D2C settlement/revenue reasoning, with Americas, Europe, and Middle East coverage and FX-normalised rollups.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Rosenza International Trading L.L.C",
+  "package_id": "client_runtime_binding_pack.rosenza_international_trading_llc.v0_1",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Rosenza International Trading L.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_code": "ROSENZA",
+  "tenant_name": "Rosenza International Trading L.L.C",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

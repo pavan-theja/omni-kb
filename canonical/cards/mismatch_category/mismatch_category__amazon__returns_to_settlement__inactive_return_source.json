@@ -1,0 +1,53 @@
+{
+  "candidate_notes": "amazon_returns has no active rows until re-ingested; use OMS reverse for India.",
+  "canonical_id": "mismatch_category.amazon.returns_to_settlement.inactive_return_source",
+  "card_type": "mismatch_category",
+  "category_key": "inactive_return_source",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "amazon_returns has no active rows until re-ingested; use OMS reverse for India.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.return_analysis.001",
+    "ev.amazon_returns.purpose.001",
+    "ev.amazon_settlement.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.return_analysis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7439
+    },
+    {
+      "evidence_id": "ev.amazon_returns.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7439
+    },
+    {
+      "evidence_id": "ev.amazon_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7439
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon Returns to Settlement Reconciliation: inactive return source",
+  "profile": "reconciliation_profile.amazon.returns_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.amazon.returns_to_settlement.inactive_return_source",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7439,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

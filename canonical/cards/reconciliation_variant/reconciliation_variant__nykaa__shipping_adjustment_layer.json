@@ -1,0 +1,48 @@
+{
+  "canonical_id": "reconciliation_variant.nykaa.shipping_adjustment_layer",
+  "canonical_name": "Shipping Adjustment Layer",
+  "card_type": "reconciliation_variant",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_variant card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.reconciliation",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17952
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17952
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Shipping Adjustment Layer",
+  "not_process_variant": true,
+  "reconciliation_profile_id": "reconciliation_profile.nykaa.shipping_charge_true_up",
+  "review_status": "unreviewed",
+  "source_card_id": "reconciliation_variant.nykaa.shipping_adjustment_layer",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17952,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Shipping true-up exists as a selective addition-charge layer over settlement, not for every order; about 9% of addition_charge orders lack settlement match at DOCX snapshot.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

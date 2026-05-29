@@ -1,0 +1,90 @@
+{
+  "applicability_scope": {
+    "notes": [
+      "Tenant/account-specific participation is resolved by Business Flow Binding."
+    ],
+    "platform_types": [
+      "payment_gateway",
+      "banking"
+    ],
+    "scope_level": "platform_type"
+  },
+  "business_objects": [
+    "payment",
+    "settlement",
+    "payout",
+    "bank_credit"
+  ],
+  "canonical_id": "business_process.pg.gateway_settlement_cycle",
+  "card_type": "business_process",
+  "common_failure_modes": [
+    "bank_credit_missing",
+    "amount_mismatch",
+    "delayed_credit"
+  ],
+  "common_metrics": [
+    "metric.net_settlement_amount",
+    "metric.settlement_cycle_days",
+    "metric.gateway_to_bank_reconciliation_gap"
+  ],
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Gateway settlement cycle process for payment gateway domain.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "domain_id": "domain.payment_gateway.settlement",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50933
+    }
+  ],
+  "expected_end_state": "settled_to_merchant_or_bank_credit",
+  "expected_start_state": "captured_payment_or_balance_event",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Gateway settlement cycle",
+  "participating_platform_types": [
+    "payment_gateway",
+    "banking"
+  ],
+  "process_name": "Gateway settlement cycle",
+  "process_type": "reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "business_process.pg.gateway_settlement_cycle",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 50933,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "state_transitions": [],
+  "status": "active",
+  "typical_platform_roles": [
+    {
+      "platform_type": "payment_gateway",
+      "role": "creates settlement/payout evidence"
+    },
+    {
+      "platform_type": "banking",
+      "role": "receives bank credit"
+    }
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "workflow_steps": []
+}

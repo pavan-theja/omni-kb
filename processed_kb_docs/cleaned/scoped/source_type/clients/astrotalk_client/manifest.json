@@ -1,0 +1,36 @@
+{
+  "card_types": {
+    "account_data_binding": 20,
+    "business_flow_binding": 6,
+    "business_scope_set": 6,
+    "group": 1,
+    "platform_account": 16,
+    "tenant": 1
+  },
+  "counts": {
+    "cards": 50,
+    "edges": 153,
+    "future_context_gaps": 11,
+    "review_items": 1,
+    "semantic_mappings": 16
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 19,
+    "HAS_ACCOUNT_DATA_BINDING": 20,
+    "HAS_BUSINESS_FLOW_BINDING": 6,
+    "HAS_BUSINESS_SCOPE_SET": 6,
+    "HAS_GROUP": 1,
+    "HAS_PLATFORM_ACCOUNT": 16,
+    "INCLUDES_PLATFORM_ACCOUNT": 16,
+    "PARTICIPATES_WITH_ACCOUNT": 21,
+    "USES_ACCOUNT_DATA_BINDING": 20,
+    "USES_BUSINESS_SCOPE_SET": 6,
+    "USES_EVIDENCE_TABLE": 8,
+    "USES_PLATFORM": 7,
+    "USES_PLATFORM_CONTEXT": 7
+  },
+  "scope": [
+    "clients",
+    "astrotalk_client"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "canonical_id": "matching_logic.nykaa.source_gst_name_to_mapping",
+  "canonical_name": "Source Gst Name To Mapping",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.reconciliation",
+    "evidence.nykaa.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17684
+    },
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17684
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "logic_type": "marketplace_internal_matching",
+  "marketplace_only": true,
+  "name": "Source Gst Name To Mapping",
+  "review_status": "unreviewed",
+  "source_card_id": "matching_logic.nykaa.source_gst_name_to_mapping",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17684,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Canonicalize source_gst_name by LOWER/TRIM and sometimes fuzzy matching to nykaa_mapping.mbtpt_remarks.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

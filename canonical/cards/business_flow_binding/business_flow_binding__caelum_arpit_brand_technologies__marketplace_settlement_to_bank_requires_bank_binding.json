@@ -1,0 +1,77 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+    "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+    "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+    "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+    "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement"
+  ],
+  "active": false,
+  "binding_name": "Caelum Marketplace Settlement to Bank Requires Bank Binding",
+  "binding_type": "money_flow",
+  "business_process_ids": [
+    "business_process.marketplace_payout_to_bank"
+  ],
+  "business_scope_set_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+  "canonical_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.amazon_settlement"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+  "money_flow_paths": [
+    "marketplace_to_bank"
+  ],
+  "name": "Marketplace Settlement To Bank Requires Bank Binding",
+  "notes": [
+    "Marketplace payout evidence exists, but no bank account or bank-statement binding was supplied in the client reference."
+  ],
+  "package_id": "caelum_arpit_brand_technologies_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "required": true,
+      "role": "settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "required": true,
+      "role": "settlement_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.marketplace_settlement_to_bank"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "medium",
+  "source_documents": [
+    "Caelum Arpit Brand Technologies Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.caelum_arpit_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "Follow source SQL grain and filters before calculating.",
+  "canonical_id": "formula.jiomart.forward_gmv",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "Forward/reverse/net GMV from OMS",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_1_total_gmv"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_1_total_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 11414
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "forward_gmv = SUM(charged_amount where transaction_type='forward'); reversed_gmv = SUM(ABS(charged_amount) where transaction_type='reverse'); net_gmv = SUM(charged_amount).",
+  "input_variables": [
+    "charged_amount",
+    "transaction_type"
+  ],
+  "name": "Forward/reverse/net GMV from OMS",
+  "null_handling": "Use NULLIF/CASE/CAST patterns exactly as source SQL shows; do not aggregate varchar amounts without cast.",
+  "review_status": "ready",
+  "source_card_id": "formula.jiomart.forward_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11414,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

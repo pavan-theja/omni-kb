@@ -1,0 +1,63 @@
+{
+  "aggregation_risk": "parse and pre-aggregate by order and awb",
+  "business_use": "order-to-shipment reconciliation",
+  "canonical_id": "relationship.shopify_oms.shiprocket_oms.parsed_order_id",
+  "card_type": "relationship",
+  "cardinality": "one_to_many_possible",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Joins Shopify order ID to the Shopify portion of Shiprocket composite order_id before the -s suffix.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 512
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 512
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 512
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_keys": "shopify_oms.order_id = split(shiprocket_oms.order_id, -s)[0]",
+  "join_type_recommendation": "left_join",
+  "name": "Shopify OMS to Shiprocket OMS Parsed Order ID",
+  "relationship_type": "join; reconciliation_relation",
+  "review_status": "unreviewed",
+  "safe_for_metrics": false,
+  "safe_for_reconciliation": true,
+  "source_card_id": "relationship.shopify_oms.shiprocket_oms.parsed_order_id",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 512,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "source_table": "table.zs_observe.shopify_oms",
+  "status": "active",
+  "target_table": "table.zs_observe.shiprocket_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

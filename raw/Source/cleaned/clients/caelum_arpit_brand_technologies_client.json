@@ -1,0 +1,2718 @@
+{
+  "document_metadata": {
+    "package_id": "caelum_arpit_brand_technologies_client_runtime_cards_v2_1_refactored",
+    "created_for": "Caelum Arpit Brand Technologies Private Limited",
+    "created_on": "2026-05-24",
+    "version": "v2_1_refactored",
+    "status": "parser_ready_with_explicit_registry_gaps",
+    "source_documents": [
+      "Caelum Arpit Brand Technologies Private Limited.docx",
+      "Cognee KB Design v4.md",
+      "amazon_marketplace.md",
+      "logistics_domain.md",
+      "shopify_d2c_oms_v2.md"
+    ],
+    "source_client_profile": {
+      "business": "D2C brand with North American Amazon marketplace presence and Shopify US order source.",
+      "geography": "United States and Canada",
+      "source_group_id": 9,
+      "source_group_level_id": 135,
+      "source_group_name": "Mensa Brands",
+      "default_currency": "USD",
+      "currencies_in_scope": [
+        "USD",
+        "CAD"
+      ]
+    },
+    "build_policy": [
+      "Create active bindings only for current canonical platform tables or explicit client-observed table evidence.",
+      "Represent source-confirmed artifacts without table context as review-required bindings or future context gaps, not active mappings.",
+      "Keep group_id and group_level_id in Account Data Binding scope_keys rather than generic platform/domain cards.",
+      "Create Business Flow Bindings only for reusable client/group-level cross-account flows."
+    ],
+    "negative_scope_constraints": [
+      "Courier reconciliation is not configured",
+      "Payment-gateway reconciliation is not configured",
+      "Marketplace payouts are the only settlement path described"
+    ],
+    "generated_date": "2026-05-24",
+    "client_slug": "caelum_arpit_brand_technologies",
+    "source_json_bad_state": "caelum_arpit_brand_technologies.json",
+    "source_docx": "Caelum Arpit Brand Technologies Private Limited.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "canonical_markdowns_loaded": [
+      "ajio_marketplace.md",
+      "amazon_marketplace.md",
+      "bank_statement.md",
+      "delhivery_logistics.md",
+      "dtdc_logistics.md",
+      "ecom_express.md",
+      "ekart_logistics.md",
+      "flipkart_marketplace.md",
+      "healthkart_marketplace.md",
+      "increff_operations.md",
+      "jiomart_marketplace.md",
+      "limeroad_marketplace.md",
+      "logistics_domain.md",
+      "logistics_reconciliation_patterns.md",
+      "meesho_marketplace.md",
+      "myntra_marketplace.md",
+      "nykaa_marketplace.md",
+      "payment_gateway.md",
+      "shadowfax_logistics.md",
+      "shiprocket_logistics.md",
+      "shiprocket_logistics_aggregator.md",
+      "shopify_d2c_oms_v2.md",
+      "snapdeal_marketplace.md",
+      "target_plus.md",
+      "tatacliq_marketplace.md",
+      "unicommerce_d2c_oms.md",
+      "unicommerce_operations.md",
+      "walmart_marketplace.md",
+      "xpressbees_logistics.md"
+    ],
+    "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+    "client_runtime_layer": true,
+    "allowed_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "forbidden_in_this_client_layer": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "boundary_policy": {
+      "client_runtime_cards_allowed": [
+        "tenant",
+        "group",
+        "platform_account",
+        "account_data_binding",
+        "business_scope_set",
+        "business_flow_binding"
+      ],
+      "do_not_create_in_client_runtime_pack": [
+        "platform",
+        "platform_context",
+        "domain",
+        "table",
+        "column",
+        "metric",
+        "business_process",
+        "workflow_step",
+        "reconciliation_profile",
+        "matching_logic",
+        "bank_account",
+        "payment_gateway_account",
+        "logistics_account",
+        "erp_accounting_mapping",
+        "statutory_tax_filing",
+        "connector"
+      ],
+      "dangling_reference_policy": "No candidate_edge is emitted unless both source and target resolve to a client card in this file or an uploaded canonical card.",
+      "scope_key_policy": "group_id/group_level_id/currency/country filters stay in account_data_binding.scope_keys, not in reusable platform/domain/table cards.",
+      "missing_account_identifier_policy": "A missing seller/merchant/store/account identifier is not by itself a blocker when the client DOCX confirms the account and table-level scope keys are present."
+    }
+  },
+  "parser_instructions": {
+    "create_only_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "do_not_create_from_this_file": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "edge_reference_policy": [
+      "Emit client runtime edges only when source_id and target_id resolve either to a client runtime card in this file or to an uploaded canonical card.",
+      "Do not emit USES_PLATFORM / USES_PLATFORM_CONTEXT / BINDS_TO_TABLE if the canonical target card is absent.",
+      "Runtime filters belong in account_data_binding.scope_keys; do not push group_id/group_level_id into platform/table/metric/process cards."
+    ],
+    "source_correction_policy": {
+      "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+      "superseded_shopify_canonical": "shopify_d2c_oms.md",
+      "replacement_ids": {
+        "platform_context.shopify.in.d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.us_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.amazon.us": "platform_context.amazon.international",
+        "platform_context.amazon.ca": "platform_context.amazon.international",
+        "platform_context.amazon.uk": "platform_context.amazon.international",
+        "platform_context.amazon.mx": "platform_context.amazon.international",
+        "platform_context.nykaa.in": "platform_context.nykaa_fashion.in",
+        "platform_context.rbl_bank.in_payin": "platform_context.rbl_bank.in",
+        "platform.idfc_bank": "platform.idfc_first_bank",
+        "platform_context.idfc_bank.in": "platform_context.idfc_first_bank.in",
+        "platform_context.paypal.in": "platform_context.paypal.global",
+        "platform_context.paypal.us": "platform_context.paypal.global",
+        "table.zs_observe.idfc_bank": "table.zs_ingest.idfc_bank",
+        "table.zs_observe.idfc_bank_inr": "table.zs_ingest.idfc_bank_inr",
+        "table.zs_observe.yesbank_oms_payout": "table.zs_ingest.yesbank_oms_payout"
+      },
+      "replacement_documents": {
+        "shopify_d2c_oms.md": "shopify_d2c_oms_v2.md",
+        "Client Tables - Shopify.md": "shopify_d2c_oms_v2.md"
+      }
+    },
+    "status_policy": {
+      "active": "source-confirmed and routable against at least the available canonical/client table context",
+      "review_required": "source-confirmed but missing a required canonical platform/context/table card for production routing",
+      "draft": "intentionally inactive pending bank binding, external account binding, or future platform-context authoring"
+    }
+  },
+  "clean_refactor_manifest": {
+    "source_json": "caelum_arpit_brand_technologies.json",
+    "source_docx": "Caelum Arpit Brand Technologies Private Limited.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "corrections_applied": [
+      "Replaced old Shopify references with shopify_d2c_oms_v2 canonical context.",
+      "Collapsed Amazon US/CA/UK/MX aliases to uploaded platform_context.amazon.international while preserving country/currency guards on account bindings.",
+      "Remapped Nykaa India alias to Nykaa Fashion canonical context.",
+      "Remapped IDFC Bank alias to IDFC First Bank canonical bank-statement context where present.",
+      "Blocked unresolved platform/context/table edges rather than emitting dangling references.",
+      "Normalized status/active conflicts from the bad-state JSON.",
+      "Added DOCX section and row-level evidence references for configured sources."
+    ],
+    "id_replacement_hits": [
+      {
+        "card_id": "platform_account.caelum_arpit.amazon_us.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.us",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.ca",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "platform_account.caelum_arpit.shopify_us.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.us_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      },
+      {
+        "card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.us",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.ca",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.us_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      }
+    ],
+    "status_changes": [],
+    "blocked_edge_count": 0,
+    "canonical_resolution_gap_count": 9,
+    "resolved_prior_review_count": 0
+  },
+  "source_evidence": [
+    {
+      "id": "ev.caelum_arpit_brand_technologies.docx.section.01_identity",
+      "source_document": "Caelum Arpit Brand Technologies Private Limited.docx",
+      "source_section": "Identity",
+      "evidence_type": "docx_section",
+      "source_lines": "L2-L12",
+      "summary": "* Business: D2C brand with North American marketplace presence — lean, focused channel setup\n* Geography: United States, Canada\n* OMS/WMS: Shopify (D2C), Amazon native OMS\n* Logistics: Not configured — courier reconciliation not in scope\n* Payment gateways: Not configured — settlements via marketplace payouts only\n* Currencies in scope: USD, CAD\n* GROUP LEVEL ID :  135\n* GROUP ID : 9\n* GROUP NAME :  Mensa Brands\n* CLIENT NAME :  **Caelum Arpit Brand Technologies Private Limited**",
+      "raw_lines": [
+        "* Business: D2C brand with North American marketplace presence — lean, focused channel setup",
+        "* Geography: United States, Canada",
+        "* OMS/WMS: Shopify (D2C), Amazon native OMS",
+        "* Logistics: Not configured — courier reconciliation not in scope",
+        "* Payment gateways: Not configured — settlements via marketplace payouts only",
+        "* Currencies in scope: USD, CAD",
+        "* GROUP LEVEL ID :  135",
+        "* GROUP ID : 9",
+        "* GROUP NAME :  Mensa Brands",
+        "* CLIENT NAME :  **Caelum Arpit Brand Technologies Private Limited**"
+      ],
+      "row_count": 0,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+      "source_document": "Caelum Arpit Brand Technologies Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "docx_section",
+      "source_lines": "L13-L18",
+      "summary": "| Channel | Region | Data types configured |\n|---------|--------|-----------------------|\n| Amazon  | US     | OMS, Settlement, Returns, Fee preview |\n| Amazon  | Canada | Settlement            |\n| Shopify | D2C (US) | OMS                   |",
+      "raw_lines": [
+        "| Channel | Region | Data types configured |",
+        "|---------|--------|-----------------------|",
+        "| Amazon  | US     | OMS, Settlement, Returns, Fee preview |",
+        "| Amazon  | Canada | Settlement            |",
+        "| Shopify | D2C (US) | OMS                   |"
+      ],
+      "row_count": 3,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+      "source_document": "Caelum Arpit Brand Technologies Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L16",
+      "row_key": "Amazon",
+      "columns": {
+        "channel": "Amazon",
+        "region": "US",
+        "data_types_configured": "OMS, Settlement, Returns, Fee preview"
+      },
+      "raw_text": "| Amazon  | US     | OMS, Settlement, Returns, Fee preview |",
+      "summary": "Amazon: channel=Amazon; region=US; data_types_configured=OMS, Settlement, Returns, Fee preview",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon",
+      "source_document": "Caelum Arpit Brand Technologies Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L17",
+      "row_key": "Amazon",
+      "columns": {
+        "channel": "Amazon",
+        "region": "Canada",
+        "data_types_configured": "Settlement"
+      },
+      "raw_text": "| Amazon  | Canada | Settlement            |",
+      "summary": "Amazon: channel=Amazon; region=Canada; data_types_configured=Settlement",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.03_shopify",
+      "source_document": "Caelum Arpit Brand Technologies Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L18",
+      "row_key": "Shopify",
+      "columns": {
+        "channel": "Shopify",
+        "region": "D2C (US)",
+        "data_types_configured": "OMS"
+      },
+      "raw_text": "| Shopify | D2C (US) | OMS                   |",
+      "summary": "Shopify: channel=Shopify; region=D2C (US); data_types_configured=OMS",
+      "confidence": "high"
+    }
+  ],
+  "candidate_cards": [
+    {
+      "card_type": "tenant",
+      "card_id": "tenant.caelum_arpit_brand_technologies",
+      "canonical_id": "tenant.caelum_arpit_brand_technologies",
+      "name": "Caelum Arpit Brand Technologies Private Limited",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.01_identity",
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "description": "North America focused D2C and marketplace brand using ZenStatement for Amazon settlement/returns/fee-preview and Shopify D2C OMS reasoning.",
+      "fields": {
+        "tenant_name": "Caelum Arpit Brand Technologies Private Limited",
+        "tenant_code": "CAELUM",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "group",
+      "card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "canonical_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "name": "Mensa Brands",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.01_identity"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_name": "Mensa Brands",
+        "group_code": "MENSA_BRANDS",
+        "group_type": "operational_unit",
+        "business_meaning": "Mensa Brands operating scope for Caelum Arpit Brand Technologies Private Limited in North American D2C and Amazon marketplace channels.",
+        "country_or_region": "United States and Canada",
+        "default_currency": "USD",
+        "currency_scope": [
+          "USD",
+          "CAD"
+        ],
+        "source_scope_identifiers": {
+          "group_id": 9,
+          "group_level_id": 135,
+          "group_name": "Mensa Brands"
+        },
+        "runtime_scope_policy": "group_id and group_level_id are represented in Account Data Binding scope_keys; generic platform/domain cards remain reusable.",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "canonical_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "name": "Caelum Amazon US Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "platform_id": "platform.amazon",
+        "platform_context_id": "platform_context.amazon.international",
+        "account_name": "Caelum Amazon US Seller Account",
+        "account_type": "marketplace_seller_account",
+        "account_role": "marketplace_seller",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 9,
+          "group_level_id": 135,
+          "group_name": "Mensa Brands"
+        },
+        "country_or_region": "US",
+        "currency_scope": [
+          "USD"
+        ],
+        "configured_data_types": [
+          "OMS",
+          "Settlement",
+          "Returns",
+          "Fee preview"
+        ],
+        "source_config_text": "Amazon US | OMS, Settlement, Returns, Fee preview",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.amazon",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.amazon.international",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          }
+        },
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.amazon.us",
+            "to": "platform_context.amazon.international"
+          }
+        ],
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+      "canonical_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+      "name": "account data binding / caelum arpit / amazon us / primary / amazon oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_oms",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 135,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          },
+          {
+            "business_key": "marketplace_country_hint",
+            "column_candidates": [
+              "marketplace_country",
+              "country",
+              "marketplace",
+              "currency_type"
+            ],
+            "operator": "semantic_filter",
+            "value": "US",
+            "data_type": "string",
+            "scope_note": "Country/marketplace disambiguation hint; use the available country or currency column in the physical table."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_order_oms"
+        ],
+        "source_config_text": "Amazon US | OMS, Settlement, Returns, Fee preview",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_oms",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+      "canonical_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+      "name": "account data binding / caelum arpit / amazon us / primary / amazon settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 135,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          },
+          {
+            "business_key": "marketplace_country_hint",
+            "column_candidates": [
+              "marketplace_country",
+              "country",
+              "marketplace",
+              "currency_type"
+            ],
+            "operator": "semantic_filter",
+            "value": "US",
+            "data_type": "string",
+            "scope_note": "Country/marketplace disambiguation hint; use the available country or currency column in the physical table."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_settlement"
+        ],
+        "source_config_text": "Amazon US | OMS, Settlement, Returns, Fee preview",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_settlement",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+      "canonical_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+      "name": "account data binding / caelum arpit / amazon us / primary / amazon returns",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_returns",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 135,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          },
+          {
+            "business_key": "marketplace_country_hint",
+            "column_candidates": [
+              "marketplace_country",
+              "country",
+              "marketplace",
+              "currency_type"
+            ],
+            "operator": "semantic_filter",
+            "value": "US",
+            "data_type": "string",
+            "scope_note": "Country/marketplace disambiguation hint; use the available country or currency column in the physical table."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_returns"
+        ],
+        "source_config_text": "Amazon US | OMS, Settlement, Returns, Fee preview",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_returns",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+      "canonical_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+      "name": "account data binding / caelum arpit / amazon us / primary / amazon fee preview",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_fee_preview",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 135,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          },
+          {
+            "business_key": "marketplace_country_hint",
+            "column_candidates": [
+              "marketplace_country",
+              "country",
+              "marketplace",
+              "currency_type"
+            ],
+            "operator": "semantic_filter",
+            "value": "US",
+            "data_type": "string",
+            "scope_note": "Country/marketplace disambiguation hint; use the available country or currency column in the physical table."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_fee_preview"
+        ],
+        "source_config_text": "Amazon US | OMS, Settlement, Returns, Fee preview",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_fee_preview",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "canonical_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "name": "Caelum Amazon Canada Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "platform_id": "platform.amazon",
+        "platform_context_id": "platform_context.amazon.international",
+        "account_name": "Caelum Amazon Canada Seller Account",
+        "account_type": "marketplace_seller_account",
+        "account_role": "marketplace_seller",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 9,
+          "group_level_id": 135,
+          "group_name": "Mensa Brands"
+        },
+        "country_or_region": "Canada",
+        "currency_scope": [
+          "CAD"
+        ],
+        "configured_data_types": [
+          "Settlement"
+        ],
+        "source_config_text": "Amazon Canada | Settlement",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.amazon",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.amazon.international",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          }
+        },
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.amazon.ca",
+            "to": "platform_context.amazon.international"
+          }
+        ],
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "canonical_id": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "name": "account data binding / caelum arpit / amazon ca / primary / amazon settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.caelum_arpit.amazon_ca.primary",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 135,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "CAD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          },
+          {
+            "business_key": "marketplace_country_hint",
+            "column_candidates": [
+              "marketplace_country",
+              "country",
+              "marketplace",
+              "currency_type"
+            ],
+            "operator": "semantic_filter",
+            "value": "Canada",
+            "data_type": "string",
+            "scope_note": "Country/marketplace disambiguation hint; use the available country or currency column in the physical table."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_canada_settlement"
+        ],
+        "source_config_text": "Amazon Canada | Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_settlement",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "canonical_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "name": "Caelum Shopify US D2C Store",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "platform_id": "platform.shopify",
+        "platform_context_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "account_name": "Caelum Shopify US D2C Store",
+        "account_type": "d2c_store_account",
+        "account_role": "d2c_order_source",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 9,
+          "group_level_id": 135,
+          "group_name": "Mensa Brands"
+        },
+        "country_or_region": "US",
+        "currency_scope": [
+          "USD"
+        ],
+        "configured_data_types": [
+          "OMS"
+        ],
+        "source_config_text": "Shopify D2C US | OMS",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.shopify",
+            "source_documents": [
+              "shopify_d2c_oms_v2.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+            "source_documents": [
+              "shopify_d2c_oms_v2.md"
+            ]
+          }
+        },
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.shopify.us_d2c",
+            "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+          }
+        ],
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+      "canonical_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+      "name": "account data binding / caelum arpit / shopify us / primary / shopify oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "logistics_domain.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.caelum_arpit.shopify_us.primary",
+        "table_id": "table.zs_observe.shopify_oms",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 135,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "USD",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "shopify_d2c_oms"
+        ],
+        "source_config_text": "Shopify D2C US | OMS",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.shopify_oms",
+          "source_documents": [
+            "logistics_domain.md",
+            "shopify_d2c_oms_v2.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "shopify_d2c_oms.md",
+            "to": "shopify_d2c_oms_v2.md"
+          },
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "canonical_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "name": "Caelum Amazon North America",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "description": "Amazon US and Canada seller-account scope.",
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "scope_name": "Caelum Amazon North America",
+        "scope_type": "marketplace_account_group",
+        "platform_account_ids": [
+          "platform_account.caelum_arpit.amazon_us.primary",
+          "platform_account.caelum_arpit.amazon_ca.primary"
+        ],
+        "platform_ids": [
+          "platform.amazon"
+        ],
+        "platform_context_ids": [
+          "platform_context.amazon.international"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.amazon.us",
+            "to": "platform_context.amazon.international"
+          },
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.amazon.ca",
+            "to": "platform_context.amazon.international"
+          }
+        ],
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+      "canonical_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+      "name": "Caelum Shopify US D2C",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "description": "Shopify US D2C order/OMS scope.",
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "scope_name": "Caelum Shopify US D2C",
+        "scope_type": "d2c_order_scope",
+        "platform_account_ids": [
+          "platform_account.caelum_arpit.shopify_us.primary"
+        ],
+        "platform_ids": [
+          "platform.shopify"
+        ],
+        "platform_context_ids": [
+          "platform_context.shopify.in_and_global.d2c_oms_client_config"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.shopify.us_d2c",
+            "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+          }
+        ],
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "canonical_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "name": "Caelum Amazon US Order, Settlement, Returns and Fee Preview",
+      "status": "active",
+      "active": true,
+      "confidence": "high",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "binding_name": "Caelum Amazon US Order, Settlement, Returns and Fee Preview",
+        "binding_type": "marketplace_reconciliation_flow",
+        "business_scope_set_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "money_flow_paths": [
+          "marketplace_order_to_settlement",
+          "marketplace_return_to_refund",
+          "fee_preview_to_settlement"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+            "role": "marketplace_order_settlement_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.amazon_oms",
+          "table.zs_observe.amazon_settlement",
+          "table.zs_observe.amazon_returns",
+          "table.zs_observe.amazon_fee_preview"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.marketplace_order_to_settlement",
+          "business_process.marketplace_return_refund"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.amazon_oms_settlement_returns"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "canonical_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "name": "Caelum Amazon Canada Settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "high",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.01_amazon",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "binding_name": "Caelum Amazon Canada Settlement",
+        "binding_type": "marketplace_settlement_scope",
+        "business_scope_set_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "money_flow_paths": [
+          "marketplace_settlement_analysis"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.caelum_arpit.amazon_ca.primary",
+            "role": "marketplace_settlement_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.amazon_settlement"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.marketplace_settlement_payout"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.amazon_settlement"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "canonical_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "name": "Caelum Shopify US OMS Only",
+      "status": "active",
+      "active": true,
+      "confidence": "high",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md",
+        "logistics_domain.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.02_active_sales_channels",
+        "ev.caelum_arpit_brand_technologies.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "binding_name": "Caelum Shopify US OMS Only",
+        "binding_type": "d2c_order_flow",
+        "business_scope_set_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+        "money_flow_paths": [
+          "d2c_order_analytics"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.caelum_arpit.shopify_us.primary",
+            "role": "d2c_order_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.shopify_oms"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.d2c_order_lifecycle"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.shopify_order_analytics"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "canonical_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "name": "Caelum Marketplace Settlement to Bank Requires Bank Binding",
+      "status": "draft",
+      "active": false,
+      "confidence": "medium",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Caelum Arpit Brand Technologies Private Limited.docx",
+        "Cognee KB Design v4.md",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.caelum_arpit_brand_technologies.docx.section.01_identity"
+      ],
+      "fields": {
+        "tenant_id": "tenant.caelum_arpit_brand_technologies",
+        "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+        "binding_name": "Caelum Marketplace Settlement to Bank Requires Bank Binding",
+        "binding_type": "money_flow",
+        "business_scope_set_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "money_flow_paths": [
+          "marketplace_to_bank"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+            "role": "settlement_source",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.caelum_arpit.amazon_ca.primary",
+            "role": "settlement_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.amazon_settlement"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+          "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+          "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.marketplace_payout_to_bank"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.marketplace_settlement_to_bank"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Marketplace payout evidence exists, but no bank account or bank-statement binding was supplied in the client reference."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    }
+  ],
+  "semantic_mappings": [
+    {
+      "platform_account_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "client_config_text": "Amazon US: OMS, Settlement, Returns, Fee preview",
+      "source_confirmed_requires_context": [],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_oms",
+        "table.zs_observe.amazon_settlement",
+        "table.zs_observe.amazon_returns",
+        "table.zs_observe.amazon_fee_preview"
+      ],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "client_config_text": "Amazon Canada: Settlement",
+      "source_confirmed_requires_context": [],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_settlement"
+      ],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "client_config_text": "Shopify D2C US: OMS",
+      "source_confirmed_requires_context": [],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.shopify_oms"
+      ],
+      "unresolved_canonical_requested": []
+    }
+  ],
+  "candidate_edges": [
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasgroup.10f665864a89",
+      "edge_type": "HAS_GROUP",
+      "canonical_edge_type": "HAS_GROUP",
+      "source_card_id": "tenant.caelum_arpit_brand_technologies",
+      "target_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "source_type": "tenant",
+      "target_type": "group",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_GROUP"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasplatformaccount.115381f6db98",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesplatform.2b52a4266371",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "target_card_id": "platform.amazon",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesplatformcontext.340fb5b76b9a",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "target_card_id": "platform_context.amazon.international",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasaccountdatabinding.37f637b8c7c9",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.bindstotable.baeb0ea7a952",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+      "target_card_id": "table.zs_observe.amazon_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasaccountdatabinding.f74dfc2399d6",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.bindstotable.dd76dd7115ce",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasaccountdatabinding.05860dd5b4aa",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.bindstotable.a23faec1a468",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+      "target_card_id": "table.zs_observe.amazon_returns",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasaccountdatabinding.51e5c46485bd",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.bindstotable.57fe7ad43a17",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+      "target_card_id": "table.zs_observe.amazon_fee_preview",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasplatformaccount.ce7ec56fb5be",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesplatform.fbae53f851a7",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "target_card_id": "platform.amazon",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesplatformcontext.b988c0f53498",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "target_card_id": "platform_context.amazon.international",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasaccountdatabinding.9df8c1ef3cfa",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.bindstotable.71205297e7f5",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasplatformaccount.51b8052154db",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesplatform.69e5bbf8ee93",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "target_card_id": "platform.shopify",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesplatformcontext.39b16d884d4a",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "target_card_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasaccountdatabinding.3b6938e5819e",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "target_card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.bindstotable.354733cc6423",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+      "target_card_id": "table.zs_observe.shopify_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasbusinessscopeset.f18a6121645d",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.includesplatformaccount.4431e1f2e29a",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "target_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.includesplatformaccount.85e5abd37c62",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "target_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasbusinessscopeset.dbda51179eb0",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.includesplatformaccount.5eb394f50a98",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+      "target_card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasbusinessflowbinding.473dcc6bf054",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesbusinessscopeset.0a55c64eb308",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.participateswithaccount.ebe22fba77fc",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.0fa1b7a84e39",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.af1c9ac78892",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.15e68f2af076",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.1a41a6c3542f",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.c4484c76fe76",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "table.zs_observe.amazon_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.8ab44af8623d",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.42eb20bb10e5",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "table.zs_observe.amazon_returns",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.70dac95f7478",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns",
+      "target_card_id": "table.zs_observe.amazon_fee_preview",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasbusinessflowbinding.55304bd7f37f",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesbusinessscopeset.d38b33e10806",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "target_card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.participateswithaccount.f97dd2767233",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "target_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.db94bd60456c",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.f71aa28e22b9",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasbusinessflowbinding.440cfed3e48d",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesbusinessscopeset.35b933f49f2a",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "target_card_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.participateswithaccount.b6eeac9005f4",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "target_card_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.81ee4604b028",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "target_card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.61335c92ca4e",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+      "target_card_id": "table.zs_observe.shopify_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.hasbusinessflowbinding.4f97cd702e8c",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+      "target_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesbusinessscopeset.8da0a30c518e",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.participateswithaccount.11f1f1680e6b",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "platform_account.caelum_arpit.amazon_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.participateswithaccount.20695b7befa7",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.d9c34524a773",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.94eb875ca9d1",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.5bf0bb1f85c1",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_returns",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.3f00a967652a",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_us.primary.amazon_fee_preview",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesaccountdatabinding.48e3a96e39aa",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.caelum_arpit_brand_technologies.usesevidencetable.6475fad9e6bb",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    }
+  ],
+  "blocked_edges": [],
+  "future_context_gaps": [],
+  "resolved_context_gaps": [],
+  "open_review_items": [
+    {
+      "item": "account_data_binding.caelum_arpit.amazon_ca.primary.amazon_settlement",
+      "issue": "Canadian Amazon settlement uses the shared Amazon settlement table; confirm whether country is distinguishable by currency_type, marketplace, or another column at runtime.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "review_resolution_status": "open"
+    },
+    {
+      "item": "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding",
+      "issue": "No bank account or bank-statement table binding was supplied, so bank landing reconciliation remains inactive.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "review_resolution_status": "open"
+    }
+  ],
+  "resolved_review_items": [],
+  "non_blocking_declared_semantic_reference_gaps": [
+    {
+      "reference_id": "business_process.d2c_order_lifecycle",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.marketplace_order_to_settlement",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.marketplace_payout_to_bank",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.marketplace_return_refund",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.marketplace_settlement_payout",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.amazon_oms_settlement_returns",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.amazon_us_order_settlement_returns"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.amazon_settlement",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.amazon_ca_settlement_only"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.marketplace_settlement_to_bank",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.marketplace_settlement_to_bank_requires_bank_binding"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.shopify_order_analytics",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    }
+  ],
+  "validation_summary": {
+    "result": "pass",
+    "original_card_count": 17,
+    "refactored_card_count": 17,
+    "original_edge_count": 58,
+    "refactored_edge_count": 58,
+    "blocked_edge_count": 0,
+    "source_evidence_count": 5,
+    "source_row_evidence_count": 3,
+    "card_type_counts": {
+      "tenant": 1,
+      "group": 1,
+      "platform_account": 3,
+      "account_data_binding": 6,
+      "business_scope_set": 2,
+      "business_flow_binding": 4
+    },
+    "status_counts": {
+      "active": 16,
+      "draft": 1
+    },
+    "review_status_counts": {
+      "accepted": 16,
+      "review_required": 1
+    },
+    "active_bindings_to_missing_tables": [],
+    "edge_reference_error_count": 0,
+    "edge_reference_errors": [],
+    "status_active_conflicts": [],
+    "forbidden_candidate_cards": [],
+    "duplicate_card_id_count": 0,
+    "old_shopify_source_docs_in_candidate_cards": [],
+    "canonical_resolution_gap_count": 9,
+    "canonical_resolution_gap_type_counts": {
+      "business_process_ids": 5,
+      "reconciliation_profile_ids": 4
+    },
+    "status_correction_count": 0,
+    "status_changes": [],
+    "id_or_source_replacement_count": 8,
+    "id_or_source_replacements": [
+      {
+        "card_id": "platform_account.caelum_arpit.amazon_us.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.us",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "platform_account.caelum_arpit.amazon_ca.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.ca",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "platform_account.caelum_arpit.shopify_us.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.us_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      },
+      {
+        "card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.us",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "business_scope_set.caelum_arpit_brand_technologies.amazon_north_america",
+        "kind": "canonical_id",
+        "from": "platform_context.amazon.ca",
+        "to": "platform_context.amazon.international"
+      },
+      {
+        "card_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.us_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      }
+    ],
+    "resolved_prior_review_count": 0,
+    "open_review_count": 2,
+    "future_context_gap_count": 0,
+    "resolved_context_gap_count": 0,
+    "non_blocking_declared_semantic_reference_gap_count": 9,
+    "non_blocking_declared_semantic_reference_gap_type_counts": {
+      "business_process_ids": 5,
+      "reconciliation_profile_ids": 4
+    },
+    "edge_status_counts": {
+      "emitted": 58
+    }
+  }
+}

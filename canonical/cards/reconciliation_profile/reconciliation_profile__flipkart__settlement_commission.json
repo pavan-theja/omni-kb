@@ -1,0 +1,62 @@
+{
+  "actual_side": "reconciliation_side.flipkart.commission_detail_expected",
+  "canonical_id": "reconciliation_profile.flipkart.settlement_commission",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window": "review required unless query pattern defines one",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns",
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5403
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5403
+    }
+  ],
+  "expected_side": "reconciliation_side.flipkart.settlement_fee_actual",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "order_id + item_id or settlement line",
+  "matching_logic": "matching_logic.flipkart.settlement_commission_od_normalized",
+  "mismatch_categories": [
+    "missing_settlement",
+    "amount_variance",
+    "fee_variance",
+    "cashback_variance",
+    "normalization_failure"
+  ],
+  "name": "Flipkart settlement mp_fee to commission detail",
+  "out_of_scope_cross_domain": [
+    "bank deposits",
+    "external logistics",
+    "ERP/accounting"
+  ],
+  "profile_name": "Flipkart settlement mp_fee to commission detail",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_profile.flipkart.settlement_commission",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5403,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "tolerance": 0.01,
+  "unit": "reconciliation_unit.flipkart.normalized_order_item",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

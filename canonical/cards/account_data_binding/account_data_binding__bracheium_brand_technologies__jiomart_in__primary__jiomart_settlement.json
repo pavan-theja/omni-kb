@@ -1,0 +1,72 @@
+{
+  "active": true,
+  "canonical_id": "account_data_binding.bracheium_brand_technologies.jiomart_in.primary.jiomart_settlement",
+  "card_type": "account_data_binding",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "account_data_binding card from raw/cleaned_v2/clients/bracheium_brand_technologies.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Jiomart Settlement",
+  "notes": [
+    "Bind platform_account.bracheium_brand_technologies.jiomart_in.primary to table.zs_observe.jiomart_settlement using client-level group_id and group_level_id scope filters.",
+    "Runtime filters are held in Account Data Binding scope_keys. group_id and group_level_id are not stored as universal table, metric, process, or reconciliation-card properties."
+  ],
+  "package_id": "bracheium_brand_technologies_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_id": "platform_account.bracheium_brand_technologies.jiomart_in.primary",
+  "review_status": "unreviewed",
+  "scope_keys": [
+    {
+      "business_key": "group_id",
+      "column": "group_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 9
+    },
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 29
+    }
+  ],
+  "source_confidence": "curated",
+  "source_config_text": "JioMart: OMS, Settlement, Returns, Transactions",
+  "source_documents": [
+    "Bracheium Brand Technologies Pvt Ltd.docx",
+    "jiomart_marketplace.md",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "increff_operations.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "payment_gateway.md",
+    "shiprocket_logistics.md",
+    "shopify_d2c_oms.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md",
+    "xpressbees_logistics.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.jiomart_settlement",
+  "table_support_level": "canonical_platform_context",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

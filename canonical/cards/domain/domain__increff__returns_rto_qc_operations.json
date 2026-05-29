@@ -1,0 +1,53 @@
+{
+  "canonical_id": "domain.increff.returns_rto_qc_operations",
+  "card_type": "domain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff returns, RTO and QC operations",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "domain_boundary": "operations_domain_only",
+  "domain_family": "returns_rto_qc",
+  "evidence_ids": [
+    "evidence.increff.051.5_wms_return_processing_flow",
+    "evidence.increff.tab_table_increff_returns_table_knowledge_base"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.051.5_wms_return_processing_flow",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 1542
+    },
+    {
+      "evidence_id": "evidence.increff.tab_table_increff_returns_table_knowledge_base",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 1542
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "forbidden_derivations": [
+    "tenant",
+    "group",
+    "platform_account",
+    "account_data_binding",
+    "business_scope_set",
+    "business_flow_binding"
+  ],
+  "name": "Increff returns, RTO and QC operations",
+  "review_status": "ready",
+  "source_card_id": "domain.increff.returns_rto_qc_operations",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1542,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

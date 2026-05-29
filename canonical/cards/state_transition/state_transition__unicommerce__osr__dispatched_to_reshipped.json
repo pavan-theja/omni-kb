@@ -1,0 +1,54 @@
+{
+  "canonical_id": "state_transition.unicommerce.osr.dispatched_to_reshipped",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "RTO / failed courier delivery can lead to reshipped outcome.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.014.9_2_return_to_origin_rto_courier_return",
+    "ev.unicommerce.section.042.order_status_distribution"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.014.9_2_return_to_origin_rto_courier_return",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12072
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.042.order_status_distribution",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12072
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "DISPATCHED",
+  "name": "Dispatched To Reshipped",
+  "optional_fields": [
+    "state_column",
+    "from_state",
+    "to_state",
+    "trigger",
+    "business_meaning",
+    "valid_process_binding_tests"
+  ],
+  "process_id": "business_process.unicommerce.rto_return_to_warehouse_lifecycle",
+  "review_status": "ready",
+  "source_card_id": "state_transition.unicommerce.osr.dispatched_to_reshipped",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12072,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "state_column": "order_status or metadata depending transition",
+  "status": "draft",
+  "to_state": "RESHIPPED",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

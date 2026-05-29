@@ -1,0 +1,88 @@
+{
+  "banking_only": true,
+  "canonical_id": "business_process.bank_statement.multi_currency_balance_monitoring",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "domain": "domain.banking.bank_statement.multi_currency",
+  "end_state": "currency-separated credit/debit/balance summary produced",
+  "evidence_ids": [
+    "ev.bank_statement.overview.001",
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.overview.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11624
+    },
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11624
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "bank_reference",
+    "bic",
+    "chequeno_",
+    "cr_dr",
+    "credit_amount",
+    "current_ledger_as_at",
+    "customer_reference",
+    "date",
+    "debit_amount",
+    "description",
+    "iban",
+    "invoice_id",
+    "narrative",
+    "payment_details",
+    "post_date",
+    "posted_date",
+    "reference_number",
+    "transaction_date",
+    "transaction_id",
+    "transaction_type",
+    "trn_type",
+    "txn_posted_date",
+    "value_date"
+  ],
+  "name": "Multi-currency bank balance monitoring",
+  "out_of_scope_external_steps": [
+    "tenant/account selection",
+    "payment gateway table creation",
+    "ERP ledger posting",
+    "runtime SQL execution"
+  ],
+  "participating_tables": [
+    "table.zs_ingest.hsbc_bank",
+    "table.zs_ingest.citi_bank",
+    "table.zs_ingest.icici_bank",
+    "table.zs_ingest.nbf_bank"
+  ],
+  "platform_context": "bank_statement_multi_platform",
+  "process_description": "Multi-currency bank balance monitoring: multi-currency bank rows ingested -> currency-separated credit/debit/balance summary produced",
+  "process_key": "multi_currency_balance_monitoring",
+  "review_status": "accepted",
+  "source_card_id": "business_process.bank_statement.multi_currency_balance_monitoring",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11624,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "start_state": "multi-currency bank rows ingested",
+  "status": "active",
+  "trigger_event": "multi-currency bank rows ingested",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

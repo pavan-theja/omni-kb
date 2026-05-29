@@ -1,0 +1,51 @@
+{
+  "applies_to_cards": [
+    "column.zs_observe.target_settlement.total_tax",
+    "value_profile.target_plus.settlement.total_tax_zero"
+  ],
+  "canonical_id": "rule.target_plus.total_tax_zero",
+  "card_type": "rule",
+  "condition": "Settlement tax analysis",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus total_tax zero rule",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.4_3_us_sales_tax_marketplace_facilitator_model",
+    "ev.target_plus.settlement.total_tax_0_0_always_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.4_3_us_sales_tax_marketplace_facilitator_model",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11610
+    },
+    {
+      "evidence_id": "ev.target_plus.settlement.total_tax_0_0_always_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11610
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus total_tax zero rule",
+  "review_status": "ready",
+  "rule_type": "tax_rule",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.total_tax_zero",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11610,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "total_tax is 0 on settlement rows because Target collects/remits sales tax as marketplace facilitator; seller does not see gross tax amounts.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

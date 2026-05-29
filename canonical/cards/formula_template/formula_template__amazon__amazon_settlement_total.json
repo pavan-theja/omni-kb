@@ -1,0 +1,43 @@
+{
+  "candidate_notes": "Formula from settlement section; sign conventions must be preserved.",
+  "canonical_id": "formula_template.amazon.amazon_settlement_total",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_settlement.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6158
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "total ≈ product_sales + selling_fees + fba_fees + shipping_credits + promotional_rebates + gift_wrap_credits + other_transaction_fees + other - tcs_igst - tcs_cgst - tcs_sgst - tds",
+  "formula_key": "amazon_settlement_total",
+  "marketplace_only": true,
+  "name": "Amazon India settlement total formula",
+  "notes": "Formula from settlement section; sign conventions must be preserved.",
+  "platform_context": "platform_context.amazon.in",
+  "review_status": "accepted",
+  "source_card_id": "formula_template.amazon.amazon_settlement_total",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6158,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,42 @@
+{
+  "candidate_notes": "Use mp_fee_type, charged_amount_type, and transaction_type together to interpret fee signs.",
+  "canonical_id": "execution_constraint_set.amazon.fee_sign_semantics",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_key": "fee_sign_semantics",
+  "constraint_scope": "marketplace_semantic_execution",
+  "constraint_text": "Use mp_fee_type, charged_amount_type, and transaction_type together to interpret fee signs.",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_disbursment.taxonomy.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_disbursment.taxonomy.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 8338
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Fee sign-semantics constraint",
+  "review_status": "accepted",
+  "source_card_id": "execution_constraint_set.amazon.fee_sign_semantics",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8338,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

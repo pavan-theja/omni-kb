@@ -1,0 +1,49 @@
+{
+  "canonical_id": "formula_template.average_percentage_rate",
+  "canonical_name": "average_percentage_rate",
+  "card_type": "formula_template",
+  "caveat": "Weighted rate requires an explicit denominator/weight from source or runtime.",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "dialect": "Trino/Athena v3",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.fees",
+    "evidence.myntra.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9604
+    },
+    {
+      "evidence_id": "evidence.myntra.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9604
+    }
+  ],
+  "expression_family": "average_percentage_rate",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "average_percentage_rate",
+  "review_status": "unreviewed",
+  "source_card_id": "formula_template.average_percentage_rate",
+  "source_confidence": "medium",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9604,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "AVG(rate_column) for observed percentage/rate fields when the source documents a rate column but no weighting basis.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

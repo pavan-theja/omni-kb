@@ -1,0 +1,68 @@
+{
+  "canonical_id": "query_pattern.nykaa.settled_vs_actual_reconciliation",
+  "canonical_name": "Settled Vs Actual Reconciliation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "deterministic_parser_ready": true,
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.query_rules",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 18612
+    },
+    {
+      "evidence_id": "evidence.nykaa.query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 18612
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 18612
+    }
+  ],
+  "execution_constraint_set_id": "execution_constraint_set.nykaa.reconciliation_queries",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Settled Vs Actual Reconciliation",
+  "output_contract_id": "output_contract.nykaa.reconciliation_exception",
+  "required_rule_ids": [
+    "rule.nykaa.active_filter_required",
+    "rule.nykaa.mapper_gst_truncate_magentoorderno",
+    "rule.nykaa.source_gst_name_canonicalization"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "query_pattern.nykaa.settled_vs_actual_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18612,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_ids": [
+    "table.zs_observe.nykaa_settlement"
+  ],
+  "sql_dialect": "Athena / Trino",
+  "sql_pattern_id": "sql.nykaa.settled_vs_actual_reconciliation",
+  "status": "draft",
+  "summary": "Compare settled_amount - actual_settlement by transaction_type.",
+  "target_metric_ids": [
+    "metric.settlement_variance"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

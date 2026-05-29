@@ -1,0 +1,78 @@
+{
+  "canonical_id": "query_pattern.ajio.sla_compliance.06",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.036_10_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "SLA Compliance",
+  "name": "SLA Compliance",
+  "natural_language_patterns": [
+    "SLA Compliance",
+    "sla compliance"
+  ],
+  "parser_note": "Preserve SQL exactly; parser may normalize schema aliases separately.",
+  "primary_metric_id": "metric.sla_compliance",
+  "required_columns": [
+    "ajio_oms",
+    "sla_status",
+    "cnt",
+    "zs_observe",
+    "is_active"
+  ],
+  "required_rules": [
+    "rule.ajio.always_filter_is_active_true_without_this_queries_include_invalid_deleted.05",
+    "rule.ajio.use_zs_observe_schema_exclusively_for_analytics_queries.06"
+  ],
+  "required_tables": [
+    "zs_observe.ajio_oms"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.ajio.sla_compliance.06",
+  "source_confidence": "high",
+  "source_context": "Cancellation Rate",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6428,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "sql_pattern": "SELECT sla_status, COUNT(*) AS cnt,\n  ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER(), 1) AS pct\nFROM zs_observe.ajio_oms WHERE is_active = true\nGROUP BY sla_status",
+  "sql_ref": "sql.ajio.sla_compliance",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,45 @@
+{
+  "canonical_id": "value_profile.zs_observe.ajio_settlement.zen_status.09",
+  "card_type": "value_profile",
+  "column_name": "zen_status",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "distribution_summary": "Processing status",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 3677
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "ajio_settlement.zen_status value profile",
+  "observed_values": [],
+  "profile_kind": "column_semantic_or_enum",
+  "review_status": "ready",
+  "source_card_id": "value_profile.zs_observe.ajio_settlement.zen_status.09",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3677,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.ajio_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,54 @@
+{
+  "canonical_id": "value_profile.zs_observe.ajio_settlement.fulfillment_channel.03",
+  "card_type": "value_profile",
+  "column_name": "fulfillment_channel",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "distribution_summary": "DS (Drop Ship) in all current settlement rows.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.003_2_ajio_s_b2b2c_business_model",
+    "evidence.ajio.069_distinct_value_analysis"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.003_2_ajio_s_b2b2c_business_model",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 3677
+    },
+    {
+      "evidence_id": "evidence.ajio.069_distinct_value_analysis",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 3677
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "ajio_settlement.fulfillment_channel value profile",
+  "observed_values": [
+    "DS"
+  ],
+  "profile_kind": "observed_distribution",
+  "review_status": "ready",
+  "source_card_id": "value_profile.zs_observe.ajio_settlement.fulfillment_channel.03",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.003_2_ajio_s_b2b2c_business_model",
+    "evidence.ajio.069_distinct_value_analysis"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3677,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.ajio_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

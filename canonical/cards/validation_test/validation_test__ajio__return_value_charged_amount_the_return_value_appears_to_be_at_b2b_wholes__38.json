@@ -1,0 +1,44 @@
+{
+  "assertion": "`return_value` > `charged_amount` — the return value appears to be at B2B/wholesale level, not the customer selling price",
+  "canonical_id": "validation_test.ajio.return_value_charged_amount_the_return_value_appears_to_be_at_b2b_wholes.38",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "`return_value` > `charged_amount` — the return value appears to be at B2B/wholesale level, not the customer selling price",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7998
+    }
+  ],
+  "expected_result": "Parser output preserves or enforces this rule.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential incorrect card creation, missing evidence capture, or query misuse.",
+  "name": "Validate: `return_value` > `charged_amount` — the return value appears to be at B2B/wholes",
+  "review_status": "ready",
+  "source_card_id": "validation_test.ajio.return_value_charged_amount_the_return_value_appears_to_be_at_b2b_wholes.38",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7998,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "test_type": "semantic_guard",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

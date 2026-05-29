@@ -1,0 +1,39 @@
+{
+  "canonical_id": "mismatch_category.walmart.mpf_tax.identity_break",
+  "card_type": "mismatch_category",
+  "category_key": "identity_break",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "charged_amount does not reconcile to charged_amount_excluding_tax plus total_tax or withheld-tax sign semantics look inconsistent.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.business_model.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.business_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5092
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "MPF tax identity break",
+  "notes": "MPF tax identity break",
+  "profile": "reconciliation_profile.walmart.mpf_tax_identity",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.walmart.mpf_tax.identity_break",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5092,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,71 @@
+{
+  "aggregation_order": [
+    "pre-filter active/scope rows",
+    "pre-aggregate settlement rows before SKU or order-level enrichment where grain can multiply",
+    "compute payout components before derived rates"
+  ],
+  "applies_to": [
+    "query_pattern.walmart.*",
+    "metric_implementation.walmart.*"
+  ],
+  "canonical_id": "execution_constraint_set.walmart.query_scope_and_filters",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_name": "Walmart query scope and filter constraints",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.filters.001",
+    "ev.walmart_lookup.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 6051
+    },
+    {
+      "evidence_id": "ev.walmart_lookup.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 6051
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_rules": [
+    "rule.walmart.scope_filters",
+    "rule.walmart.forward_revenue_filter",
+    "rule.walmart.reverse_refund_filter",
+    "rule.walmart.lookup_sku_not_null",
+    "rule.walmart.oms_clean_rows"
+  ],
+  "name": "Walmart query scope and filter constraints",
+  "notes": "Runtime bundle for deterministic Walmart marketplace query generation.",
+  "out_of_scope_runtime_constraints": [
+    "runtime tenant/account binding",
+    "bank deposit reconciliation"
+  ],
+  "review_status": "accepted",
+  "semantic_constraints": [
+    "Use zs_observe Walmart tables only for this canonical.",
+    "Apply is_active = true where documented.",
+    "Use group_level_id = 22 as documented Walmart/Folkulture scope metadata; runtime account binding remains external.",
+    "Use explicit transaction_type, internal_txn_type, or order_status filters for forward, reverse, and cancellation analysis.",
+    "For lookup enrichment, filter walmart_lookup.sku IS NOT NULL."
+  ],
+  "source_card_id": "execution_constraint_set.walmart.query_scope_and_filters",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6051,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

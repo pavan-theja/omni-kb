@@ -1,0 +1,43 @@
+{
+  "canonical_id": "formula_template.return_rate_reverse_over_forward",
+  "canonical_name": "Return Rate Reverse Over Forward",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 14664
+    }
+  ],
+  "expression_summary": "100 * reverse_count_or_units / NULLIF(forward_count_or_units, 0).",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Return Rate Reverse Over Forward",
+  "reusable": true,
+  "review_status": "unreviewed",
+  "source_card_id": "formula_template.return_rate_reverse_over_forward",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14664,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "sql_dialect": "Athena / Trino",
+  "status": "draft",
+  "summary": "100 * reverse_count_or_units / NULLIF(forward_count_or_units, 0).",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

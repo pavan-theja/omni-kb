@@ -1,0 +1,68 @@
+{
+  "aggregation_rule": "aggregate at bank transaction/reference grain before cross-domain joins",
+  "banking_only": true,
+  "base_tables": [
+    "table.zs_observe.bank_statement"
+  ],
+  "canonical_id": "metric_implementation.bank_statement.icici_bank_global.latest_balance",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.direction_reference.001",
+    "ev.bank_statement.icici_bank_global.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.direction_reference.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 10525
+    },
+    {
+      "evidence_id": "ev.bank_statement.icici_bank_global.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 10525
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "formula": "MAX_BY(balance_inr, transaction_date)",
+  "grain": "bank transaction row aggregated to requested grain",
+  "implementation_caveats": [
+    "This table has **parallel columns**: `deposit_amt_inr` (Decimal) + `deposit_amount` (Text), `withdrawal_amt_inr` (Decimal) + `withdrawal_amount` (Text), `balance_inr` (Decimal) + `balance` (Text). Always use the `**_inr**` **suffixed Decimal columns** for calculations."
+  ],
+  "implementation_scope": "bank_statement",
+  "metric_id": "metric.bank_statement.latest_balance",
+  "name": "icici_bank_global latest_balance",
+  "platform_code": "bank",
+  "platform_context": "platform_context.icici_bank.global_inr",
+  "review_status": "accepted",
+  "sign_handling": "source-specific credit/debit semantics; do not flatten until direction is resolved",
+  "source_card_id": "metric_implementation.bank_statement.icici_bank_global.latest_balance",
+  "source_columns": [
+    "column.zs_ingest.icici_bank_global.balance_inr",
+    "column.zs_ingest.icici_bank_global.transaction_date"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10525,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "source_table": "table.zs_ingest.icici_bank_global",
+  "status": "active",
+  "time_basis": "transaction_date, value_date",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,47 @@
+{
+  "canonical_id": "formula.flipkart.volumetric_weight",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4606
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "length * breadth * height / 5000",
+  "formula_name": "volumetric_weight",
+  "inputs": [
+    "length",
+    "breadth",
+    "height"
+  ],
+  "name": "volumetric_weight",
+  "review_status": "accepted",
+  "semantic_constraints": [
+    "Use only when dimensions are present; settlement has vol_weight already."
+  ],
+  "sign_handling": "source-sign preserving unless stated otherwise",
+  "source_card_id": "formula.flipkart.volumetric_weight",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4606,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

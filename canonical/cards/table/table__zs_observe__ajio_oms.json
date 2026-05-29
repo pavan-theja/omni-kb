@@ -1,0 +1,104 @@
+{
+  "canonical_id": "table.zs_observe.ajio_oms",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.ajio_oms.brand",
+    "column.zs_observe.ajio_oms.cgst_amount",
+    "column.zs_observe.ajio_oms.cgst_percentage",
+    "column.zs_observe.ajio_oms.charged_amount",
+    "column.zs_observe.ajio_oms.charged_amount_excluding_tax",
+    "column.zs_observe.ajio_oms.courier_partner",
+    "column.zs_observe.ajio_oms.created_date",
+    "column.zs_observe.ajio_oms.currency_type",
+    "column.zs_observe.ajio_oms.description",
+    "column.zs_observe.ajio_oms.file_uuid",
+    "column.zs_observe.ajio_oms.forward_awb_number",
+    "column.zs_observe.ajio_oms.fulfillment_channel",
+    "column.zs_observe.ajio_oms.group_id",
+    "column.zs_observe.ajio_oms.group_level_id",
+    "column.zs_observe.ajio_oms.hsn",
+    "column.zs_observe.ajio_oms.igst_amount",
+    "column.zs_observe.ajio_oms.igst_percentage",
+    "column.zs_observe.ajio_oms.invoice_number",
+    "column.zs_observe.ajio_oms.is_active",
+    "column.zs_observe.ajio_oms.mp_sin",
+    "column.zs_observe.ajio_oms.mrp",
+    "column.zs_observe.ajio_oms.order_id",
+    "column.zs_observe.ajio_oms.order_status",
+    "column.zs_observe.ajio_oms.purchase_po_no",
+    "column.zs_observe.ajio_oms.quantity",
+    "column.zs_observe.ajio_oms.seller_sku",
+    "column.zs_observe.ajio_oms.sgst_amount",
+    "column.zs_observe.ajio_oms.sgst_percentage",
+    "column.zs_observe.ajio_oms.sla_status",
+    "column.zs_observe.ajio_oms.total_tax",
+    "column.zs_observe.ajio_oms.total_tax_perc",
+    "column.zs_observe.ajio_oms.total_value",
+    "column.zs_observe.ajio_oms.txn_uuid",
+    "column.zs_observe.ajio_oms.unique_id",
+    "column.zs_observe.ajio_oms.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "Nov 30, 2025 – Dec 31, 2025",
+  "description": "Order Management System — records every forward order placed on AJIO, capturing invoice details, product info, pricing, tax breakdown, logistics, and fulfillment data",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": 221
+  },
+  "evidence_ids": [
+    "evidence.ajio.044_ajio_oms_table_level_knowledge_base",
+    "evidence.ajio.059_important_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.044_ajio_oms_table_level_knowledge_base",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1510
+    },
+    {
+      "evidence_id": "evidence.ajio.059_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1510
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_caveats": [
+    "charged_amount is customer selling price, not MRP; cancelled orders have charged_amount = 0 and should be excluded from revenue."
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 221 when runtime scope requires AJIO-specific filtering"
+  ],
+  "name": "zs_observe.ajio_oms",
+  "purpose": "Order Management System — records every forward order placed on AJIO, capturing invoice details, product info, pricing, tax breakdown, logistics, and fulfillment data",
+  "review_status": "ready",
+  "row_count": "5,719 active records",
+  "schema_name": "zs_observe",
+  "scope_columns": [
+    "group_level_id/group_id only as columns/caveats if present"
+  ],
+  "source_card_id": "table.zs_observe.ajio_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.044_ajio_oms_table_level_knowledge_base",
+    "evidence.ajio.059_important_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1510,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_section": "AJIO OMS — Table-Level Knowledge Base",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_name": "ajio_oms",
+  "table_role": "orders",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,45 @@
+{
+  "business_meaning": "Posting date string from source; do not assume native date operations without parsing",
+  "candidate_notes": "DOCX lists posted_date as varchar; use settlement_date for native timestamp filtering when possible.",
+  "canonical_id": "column.zs_observe.amazon_disbursment.posted_date",
+  "card_type": "column",
+  "column_name": "posted_date",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Posting date string from source; do not assume native date operations without parsing",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_disbursment.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_disbursment.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3154
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "amazon_disbursment.posted_date",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "date_string",
+  "source_card_id": "column.zs_observe.amazon_disbursment.posted_date",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3154,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.amazon_disbursment",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

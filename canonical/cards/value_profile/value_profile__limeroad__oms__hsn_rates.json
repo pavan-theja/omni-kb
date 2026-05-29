@@ -1,0 +1,57 @@
+{
+  "canonical_id": "value_profile.limeroad.oms.hsn_rates",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.limeroad_oms.hsn",
+  "column_name": "hsn",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "distribution_summary": "HSN codes support GST-rate validation.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "documented_values": {
+    "62044390": "12% dresses",
+    "62063000/62064000": "5% clothing items",
+    "62114290/62114990": "5% or 12% garments",
+    "71179010": "3% fashion jewellery",
+    "998599": "18% marketplace services"
+  },
+  "evidence_ids": [
+    "ev.limeroad.tax.001",
+    "ev.limeroad.oms.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.tax.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4255
+    },
+    {
+      "evidence_id": "ev.limeroad.oms.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4255
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "LimeRoad HSN/GST rate profile",
+  "profile_kind": "documented_value_profile",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.limeroad.oms.hsn_rates",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4255,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.limeroad_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

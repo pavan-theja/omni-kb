@@ -1,0 +1,45 @@
+{
+  "actual_side": "meesho_settlement order_status in ('Return','RTO') total ABS(return_logistic_charge_excluding_tax)",
+  "canonical_id": "reconciliation_profile.meesho.return_reverse_logistics_reconciliation",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Reverse logistics reconciliation compares other_charges reverse shipping total with settlement return-logistics total; DOCX expected ₹39,614 vs ₹54,389 due to timing.",
+  "display_name": "Meesho Return ↔ Reverse Logistics Reconciliation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_3_return_reverse_logistics_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_3_return_reverse_logistics_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15248
+    }
+  ],
+  "expected_side": "meesho_other_charges_expenses type = 'Reverse_shipping' total taxable_value",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.meesho.return_reverse_logistics_reconciliation",
+  "name": "Meesho Return ↔ Reverse Logistics Reconciliation",
+  "process_id": "business_process.meesho.marketplace_internal_reconciliation",
+  "reconciliation_family": "marketplace_internal_reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_profile.meesho.return_reverse_logistics_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15248,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timing_window": "timing gap: some returns may not yet be invoiced in other_charges",
+  "tolerance": "review_required: source documents expected gap but not numeric tolerance",
+  "unit_id": "reconciliation_unit.meesho.return_reverse_logistics_reconciliation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,47 @@
+{
+  "canonical_id": "rule.myntra.group_level_id_column_only",
+  "canonical_name": "group_level_id_column_only",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.filters",
+    "evidence.myntra.data_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.filters",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11908
+    },
+    {
+      "evidence_id": "evidence.myntra.data_types",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11908
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "group_level_id_column_only",
+  "review_status": "unreviewed",
+  "rule_scope": "myntra_marketplace_semantics",
+  "source_card_id": "rule.myntra.group_level_id_column_only",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11908,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Treat group_level_id/group_id/tenant_id as columns/filter caveats only.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

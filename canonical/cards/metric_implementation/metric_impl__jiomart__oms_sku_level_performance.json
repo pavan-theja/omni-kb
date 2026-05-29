@@ -1,0 +1,56 @@
+{
+  "aggregation_order": "Pre-aggregate multi-row settlement/return tables by order_id or source SQL grain before joining.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.jiomart.oms_sku_level_performance",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart implementation — OMS SKU-Level Performance",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.oms.7_4_sku_level_performance"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.oms.7_4_sku_level_performance",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 11317
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use filters exactly as shown in source SQL and mandatory filter rules.",
+  "formula_sql": "SELECT sku_id, mp_sin,\n  COUNT(*) AS orders,\n  SUM(charged_amount) AS gmv,\n  AVG(charged_amount) AS avg_price,\n  ROUND(100.0 * COUNT_IF(transaction_type = 'forward' AND order_status = 'shipment_returned')\n    / NULLIF(COUNT_IF(transaction_type = 'forward'), 0), 2) AS rto_rate_pct\nFROM zs_observe.jiomart_oms\nWHERE is_active = true AND hsn IS NOT NULL\nGROUP BY sku_id, mp_sin\nORDER BY gmv DESC;",
+  "formula_sql_ref": "sql.jiomart.oms.7_4_sku_level_performance",
+  "formula_text": "Executable source SQL pattern retained verbatim.",
+  "implementation_scope": "jiomart",
+  "metric_id": "metric.jiomart.oms_sku_performance",
+  "name": "JioMart implementation — OMS SKU-Level Performance",
+  "platform_code": "jiomart",
+  "platform_context_id": "platform_context.jiomart.in",
+  "review_status": "ready",
+  "sign_semantics": "Respect source transaction_type/accountable_type sign semantics before summing amounts.",
+  "source_card_id": "metric_impl.jiomart.oms_sku_level_performance",
+  "source_columns": [
+    "sku_id",
+    "mp_sin",
+    "charged_amount"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11317,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.increff.9_3_return_rate_by_channel_mensa_brands_only",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "9.3 Return Rate by Channel (Mensa Brands Only)",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.023.9_3_return_rate_by_channel_mensa_brands_only"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.023.9_3_return_rate_by_channel_mensa_brands_only",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 9397
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "9.3 Return Rate by Channel (Mensa Brands Only)",
+  "natural_language_patterns": [
+    "9.3 Return Rate by Channel (Mensa Brands Only)"
+  ],
+  "output_contract_id": "output_contract.increff.operational_reconciliation_output",
+  "primary_metrics": [],
+  "required_rules": [
+    "rule.increff.active_filter",
+    "rule.increff.mensa_brand_filter_returns"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.increff.9_3_return_rate_by_channel_mensa_brands_only",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9397,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.increff_sales",
+    "table.zs_observe.increff_returns"
+  ],
+  "sql_ref": "sql_pattern.increff.9_3_return_rate_by_channel_mensa_brands_only",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

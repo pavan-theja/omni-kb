@@ -1,0 +1,50 @@
+{
+  "aliases": [
+    "tax on shipping diff"
+  ],
+  "business_definition": "metric card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "canonical_id": "metric.shipping_adjustment_tax",
+  "canonical_name": "Shipping Adjustment Tax",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 14411
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.nykaa_addition_charge.shipping_adjustment_tax"
+  ],
+  "marketplace_only": true,
+  "metric_family": "marketplace_metric",
+  "name": "Shipping Adjustment Tax",
+  "platform_agnostic_name": "Shipping Adjustment Tax",
+  "review_status": "unreviewed",
+  "source_card_id": "metric.shipping_adjustment_tax",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14411,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "GST/tax applied to shipping adjustment delta.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

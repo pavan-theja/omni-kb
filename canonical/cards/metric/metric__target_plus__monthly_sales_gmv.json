@@ -1,0 +1,53 @@
+{
+  "business_definition": "Month/brand sales, orders, units, GMV, discount, and AOV.",
+  "canonical_id": "metric.target_plus.monthly_sales_gmv",
+  "card_type": "metric",
+  "colloquial_names": [
+    "orders",
+    "units",
+    "gmv",
+    "discount",
+    "aov"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "USD",
+  "description": "Month/brand sales, orders, units, GMV, discount, and AOV.",
+  "display_name": "Target Plus Monthly Sales GMV",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.target_plus.orders",
+  "evidence_ids": [
+    "ev.target_plus.sales.7_1_monthly_sales_gmv_by_brand"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.sales.7_1_monthly_sales_gmv_by_brand",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9243
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.target_plus.monthly_sales_gmv"
+  ],
+  "metric_family": "gmv_trend",
+  "name": "Target Plus Monthly Sales GMV",
+  "review_status": "ready",
+  "source_card_id": "metric.target_plus.monthly_sales_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9243,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

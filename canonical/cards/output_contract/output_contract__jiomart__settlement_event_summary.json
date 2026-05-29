@@ -1,0 +1,47 @@
+{
+  "canonical_id": "output_contract.jiomart.settlement_event_summary",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "parser_output_contract",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "Settlement event summary output",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_key_business_metrics_with_sql"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_key_business_metrics_with_sql",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13883
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "event/accountable_type",
+  "name": "Settlement event summary output",
+  "required_columns": [
+    "transaction_type",
+    "event",
+    "accountable_type",
+    "rows",
+    "total_settled"
+  ],
+  "review_status": "ready",
+  "sort_order": "Use source SQL ORDER BY where provided.",
+  "source_card_id": "output_contract.jiomart.settlement_event_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13883,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

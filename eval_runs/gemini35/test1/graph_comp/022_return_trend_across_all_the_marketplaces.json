@@ -1,0 +1,91 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "GRAPH_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = 22",
+          "sales_channel IS NOT NULL",
+          "sales_channel != 'SHOPIFY'"
+        ],
+        "joins": "No joins are needed as the returns, channel identifiers, and dates reside in the single consolidated table zs_observe.increff_returns.",
+        "metric_logic": {
+          "aggregation_grain": "sales_channel, DATE_TRUNC('month', CAST(return_date AS TIMESTAMP))",
+          "deduplication_rule": "GROUP BY sales_channel, DATE_TRUNC('month', CAST(return_date AS TIMESTAMP))",
+          "denominator": null,
+          "formula": "COUNT(DISTINCT channel_return_id)",
+          "numerator": "COUNT(DISTINCT channel_return_id)"
+        },
+        "missing_or_ambiguous": "None",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "zs_observe.increff_sales",
+          "zs_observe.shopify_returns",
+          "zs_observe.meesho_returns",
+          "zs_observe.healthkart_returns"
+        ],
+        "required_fields": [
+          {
+            "field": "sales_channel",
+            "reason": "Identifies the specific marketplace channel (excluding Shopify/D2C) to trend returns across marketplaces.",
+            "role": "Marketplace Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "return_date",
+            "reason": "Inferred date field used to construct the timeline/trend (daily/monthly).",
+            "role": "Date/Time field",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Restricts records to the Mensa tenant (group_level_id = 22).",
+            "role": "Tenant Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "channel_return_id",
+            "reason": "Used to calculate the count of returns over time.",
+            "role": "Return Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          }
+        ],
+        "required_tables": [
+          {
+            "field": "zs_observe.increff_returns",
+            "reason": "Contains multi-channel return transaction records across marketplaces, which is essential to analyze the return trend.",
+            "role": "Consolidated returns table",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": "zs_observe.increff_returns",
+        "sql_skeleton": "SELECT sales_channel AS marketplace, DATE_TRUNC('month', CAST(return_date AS TIMESTAMP)) AS return_month, COUNT(DISTINCT channel_return_id) AS return_count FROM zs_observe.increff_returns WHERE group_level_id = 22 AND sales_channel IS NOT NULL AND sales_channel != 'SHOPIFY' GROUP BY 1, 2 ORDER BY return_month ASC, return_count DESC;"
+      }
+    ]
+  },
+  "question": "Return trend across all the marketplaces.",
+  "question_index": 22,
+  "results": {
+    "GRAPH_COMPLETION": [
+      "{\n  \"selected_source\": \"zs_observe.increff_returns\",\n  \"rejected_sources\": [\n    \"zs_observe.increff_sales\",\n    \"zs_observe.shopify_returns\",\n    \"zs_observe.meesho_returns\",\n    \"zs_observe.healthkart_returns\"\n  ],\n  \"required_tables\": [\n    {\n      \"field\": \"zs_observe.increff_returns\",\n      \"role\": \"Consolidated returns table\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Contains multi-channel return transaction records across marketplaces, which is essential to analyze the return trend.\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"sales_channel\",\n      \"role\": \"Marketplace Identifier\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Identifies the specific marketplace channel (excluding Shopify/D2C) to trend returns across marketplaces.\",\n      \"table\": \"zs_observe.increff_returns\"\n    },\n    {\n      \"field\": \"return_date\",\n      \"role\": \"Date/Time field\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Inferred date field used to construct the timeline/trend (daily/monthly).\",\n      \"table\": \"zs_observe.increff_returns\"\n    },\n    {\n      \"field\": \"group_level_id\",\n      \"role\": \"Tenant Filter Column\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Restricts records to the Mensa tenant (group_level_id = 22).\",\n      \"table\": \"zs_observe.increff_returns\"\n    },\n    {\n      \"field\": \"channel_return_id\",\n      \"role\": \"Return Identifier\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Used to calculate the count of returns over time.\",\n      \"table\": \"zs_observe.increff_returns\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [],\n  \"metric_logic\": {\n    \"formula\": \"COUNT(DISTINCT channel_return_id)\",\n    \"numerator\": \"COUNT(DISTINCT channel_return_id)\",\n    \"denominator\": null,\n    \"aggregation_grain\": \"sales_channel, DATE_TRUNC('month', CAST(return_date AS TIMESTAMP))\",\n    \"deduplication_rule\": \"GROUP BY sales_channel, DATE_TRUNC('month', CAST(return_date AS TIMESTAMP))\"\n  },\n  \"filters\": [\n    \"group_level_id = 22\",\n    \"sales_channel IS NOT NULL\",\n    \"sales_channel != 'SHOPIFY'\"\n  ],\n  \"joins\": \"No joins are needed as the returns, channel identifiers, and dates reside in the single consolidated table zs_observe.increff_returns.\",\n  \"missing_or_ambiguous\": \"None\",\n  \"sql_skeleton\": \"SELECT sales_channel AS marketplace, DATE_TRUNC('month', CAST(return_date AS TIMESTAMP)) AS return_month, COUNT(DISTINCT channel_return_id) AS return_count FROM zs_observe.increff_returns WHERE group_level_id = 22 AND sales_channel IS NOT NULL AND sales_channel != 'SHOPIFY' GROUP BY 1, 2 ORDER BY return_month ASC, return_count DESC;\"\n}"
+    ]
+  },
+  "scoped_query": "Return trend across all the marketplaces.\n\nScope:\n- tenant: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Default to a single source table or single relationship path.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nResponse Format:\nReturn a single answer string containing one valid JSON object.\nDo not wrap it in Markdown or code fences.\nThe JSON object must be emitted as plain text, not as a nested object under a content key.\n\nThe JSON object must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"required_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "GRAPH_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 21.538,
+    "search_seconds": {
+      "GRAPH_COMPLETION": 21.537
+    },
+    "started_at": "2026-05-28T11:22:21+00:00"
+  }
+}

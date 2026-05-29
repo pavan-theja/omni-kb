@@ -1,0 +1,66 @@
+{
+  "account_name": "Fraternitas PayU Settlement Account",
+  "account_role": "payment_source_requires_context",
+  "account_type": "payment_gateway_merchant_account",
+  "active": true,
+  "canonical_id": "platform_account.fraternitas.payu_in.primary",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "configured_data_types": [
+    "payu_settlement"
+  ],
+  "country_or_region": "India",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "INR"
+  ],
+  "description": "platform_account card from raw/cleaned_v2/clients/fraternitas_ventures.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.fraternitas_ventures.legendtoys",
+  "name": "Fraternitas PayU Settlement Account",
+  "notes": [
+    "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+  ],
+  "package_id": "fraternitas_ventures_runtime_card_pack_v1_0",
+  "platform_context_id": "platform_context.payu.in",
+  "platform_id": "platform.payu",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_confidence": null,
+  "source_config_text": "PayU | payu_settlement",
+  "source_documents": [
+    "Fraternitas Ventures Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "unicommerce_d2c_oms.md",
+    "unicommerce_operations.md",
+    "delhivery_logistics.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+  "source_scope_identifiers": {
+    "group_id": 118,
+    "group_level_id": 337,
+    "group_name": "LegendToys"
+  },
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.fraternitas_ventures",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

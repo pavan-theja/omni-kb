@@ -1,0 +1,62 @@
+{
+  "aggregation_grain": "as defined by SQL/group-by or source table grain",
+  "base_tables": [],
+  "canonical_id": "metric_implementation.healthkart.rto_rate.02",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5720
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true when applicable and documented"
+  ],
+  "formula_sql": "SELECT\n  ROUND(100.0 * SUM(CASE WHEN order_status = 'RTO' THEN 1 ELSE 0 END) / COUNT(*), 1) AS rto_rate\nFROM zs_observe.healthkart_settlement WHERE is_active = true",
+  "implementation_scope": "healthkart",
+  "metric_id": "metric.rto_rate",
+  "metric_pattern": "platform_specific_implementation_of_generic_metric",
+  "name": "HealthKart implementation — RTO Rate",
+  "platform_code": "healthkart",
+  "platform_specific_name": "RTO Rate",
+  "review_status": "ready",
+  "source_card_id": "metric_implementation.healthkart.rto_rate.02",
+  "source_columns": [
+    "healthkart_settlement",
+    "order_status",
+    "rto_rate",
+    "zs_observe",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5720,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "zs_observe.healthkart_settlement"
+  ],
+  "sql_ref": "sql.healthkart.rto_rate.02",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

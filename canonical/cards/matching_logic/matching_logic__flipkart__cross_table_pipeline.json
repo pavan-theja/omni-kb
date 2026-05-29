@@ -1,0 +1,58 @@
+{
+  "canonical_id": "matching_logic.flipkart.cross_table_pipeline",
+  "card_type": "matching_logic",
+  "comparison_formula": "compare expected marketplace financial stack to settlement actual",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window": "review required",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.relationships",
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6007
+    },
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6007
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "missing key",
+    "duplicate many-side rows",
+    "sign mismatch",
+    "OD normalization failure"
+  ],
+  "join_keys": [
+    "normalized order_id",
+    "item_id"
+  ],
+  "name": "Flipkart cross_table_pipeline",
+  "normalization": "OD normalization plus pre-aggregation",
+  "pre_aggregation": "aggregate commission/cashback details before joining",
+  "profile_id": "reconciliation_profile.flipkart.cross_table_pipeline",
+  "review_status": "review_required",
+  "source_card_id": "matching_logic.flipkart.cross_table_pipeline",
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6007,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "review_required",
+  "status": "draft",
+  "tolerance": "review_required",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

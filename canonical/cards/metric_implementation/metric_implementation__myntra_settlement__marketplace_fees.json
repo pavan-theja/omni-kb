@@ -1,0 +1,69 @@
+{
+  "base_tables": [
+    "table.zs_observe.myntra_settlement"
+  ],
+  "canonical_id": "metric_implementation.myntra_settlement.marketplace_fees",
+  "canonical_name": "marketplace_fees",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9023
+    },
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9023
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true"
+  ],
+  "formula_expression": "SUM(COALESCE(mp_fees, 0))",
+  "formula_template_id": "formula_template.sum_numeric_column",
+  "grain": "settlement_line",
+  "implementation_scope": "myntra_settlement",
+  "marketplace_only": true,
+  "metric_id": "metric.marketplace_fees",
+  "metric_pattern": "myntra_specific_executable_implementation",
+  "name": "marketplace_fees",
+  "platform_code": "myntra",
+  "platform_context_id": "platform_context.myntra.in",
+  "required_filters": [
+    "is_active = true",
+    "group_level_id = <client_id>"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "metric_implementation.myntra_settlement.marketplace_fees",
+  "source_columns": [
+    "mp_fees",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9023,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_settlement",
+  "status": "draft",
+  "summary": "SUM(mp_fees) WHERE is_active=true",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

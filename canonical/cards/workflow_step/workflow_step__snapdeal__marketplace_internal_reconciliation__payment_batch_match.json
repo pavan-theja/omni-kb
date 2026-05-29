@@ -1,0 +1,46 @@
+{
+  "canonical_id": "workflow_step.snapdeal.marketplace_internal_reconciliation.payment_batch_match",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Compare snapdeal_payments.utr_no_ and gross_amount to grouped snapdeal_settlement.settlement_id and SUM(settled_amount); rows with NULL UTR/settlement_id require separate investigation.",
+  "display_name": "Payment-to-settlement batch match",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.join_map_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17086
+    },
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17086
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Payment-to-settlement batch match",
+  "process_id": "business_process.snapdeal.marketplace_internal_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.snapdeal.marketplace_internal_reconciliation.payment_batch_match",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17086,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,48 @@
+{
+  "business_meaning": "Reverse sub-order has not yet appeared in settlement or is outside settlement window.",
+  "canonical_id": "mismatch_category.meesho.join_reverse_settlement_reconciliation.missing_reverse_settlement",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Reverse sub-order has not yet appeared in settlement or is outside settlement window.",
+  "detection_logic": "Left join meesho_reverse.sub_order_num to settlement.order_id and flag NULL settlement rows.",
+  "display_name": "join reverse settlement reconciliation — missing reverse settlement",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.037.8_reconciliation_use_cases",
+    "evidence.meesho.043.9_data_quality_observations_and_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.037.8_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18570
+    },
+    {
+      "evidence_id": "evidence.meesho.043.9_data_quality_observations_and_known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18570
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "missing_reverse_settlement",
+  "name": "join reverse settlement reconciliation — missing reverse settlement",
+  "profile_id": "reconciliation_profile.meesho.join_reverse_settlement_reconciliation",
+  "review_priority": "high",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.meesho.join_reverse_settlement_reconciliation.missing_reverse_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18570,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

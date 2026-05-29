@@ -1,0 +1,42 @@
+{
+  "aggregation_rule": "aggregate by documented grain before status classification",
+  "canonical_id": "matching_logic.walmart.oms_to_settlement.primary",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4918
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_keys": "order_id + SKU line-item; amount check on charged_amount",
+  "matching_rule": "OMS delivered sale should have corresponding settlement forward row; known coverage 89.6% due timing/cancellations/historical rows",
+  "name": "Walmart OMS to settlement reconciliation matching logic",
+  "notes": "Walmart OMS to settlement reconciliation matching logic",
+  "profile": "reconciliation_profile.walmart.oms_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.walmart.oms_to_settlement.primary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4918,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "sql_ref": "sql.walmart.reconciliation.oms_settlement",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

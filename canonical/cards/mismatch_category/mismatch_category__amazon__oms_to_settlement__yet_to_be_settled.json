@@ -1,0 +1,47 @@
+{
+  "candidate_notes": "OMS revenue in period not yet appearing in settlement; legitimate timing gap.",
+  "canonical_id": "mismatch_category.amazon.oms_to_settlement.yet_to_be_settled",
+  "card_type": "mismatch_category",
+  "category_key": "yet_to_be_settled",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "OMS revenue in period not yet appearing in settlement; legitimate timing gap.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.oms_settlement.001",
+    "ev.amazon.join_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.oms_settlement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7206
+    },
+    {
+      "evidence_id": "ev.amazon.join_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7206
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon OMS to Settlement Reconciliation: yet to be settled",
+  "profile": "reconciliation_profile.amazon.oms_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.amazon.oms_to_settlement.yet_to_be_settled",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7206,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

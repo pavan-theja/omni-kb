@@ -1,0 +1,61 @@
+{
+  "business_process_id": "business_process.unicommerce.osr_status_tracking",
+  "canonical_id": "workflow_step.unicommerce.osr.02_awb_status",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/oms/unicommerce_d2c_oms.md.",
+  "display_name": "osr awb and status",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.osr.schema.001",
+    "ev.unicommerce.lifecycle.forward_sale.001",
+    "ev.unicommerce.lifecycle.rto.001",
+    "ev.unicommerce.lifecycle.cancellation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.osr.schema.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 4097
+    },
+    {
+      "evidence_id": "ev.unicommerce.lifecycle.forward_sale.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 4097
+    },
+    {
+      "evidence_id": "ev.unicommerce.lifecycle.rto.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 4097
+    },
+    {
+      "evidence_id": "ev.unicommerce.lifecycle.cancellation.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 4097
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "materiality": "source_specific_oms_semantic_step",
+  "name": "osr awb and status",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.unicommerce.osr.02_awb_status",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4097,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "OSR other_id stores AWB/tracking number and order_status stores MANIFESTED, DISPATCHED, DELIVERED, RESHIPPED and CANCELLED status values.",
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

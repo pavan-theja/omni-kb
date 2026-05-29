@@ -1,0 +1,167 @@
+{
+  "amount_columns": [
+    "charge_id",
+    "sales",
+    "refunds",
+    "fees",
+    "txn_fees",
+    "total_settled",
+    "settled_amount",
+    "charged_amount"
+  ],
+  "avoid_columns": [
+    "charge_id",
+    "settled_amount",
+    "charged_amount"
+  ],
+  "business_purpose": "Affirm is a US-based BNPL provider. `affirm_settlement` captures charge-level settlement data with deposit batching.",
+  "canonical_id": "table.zs_observe.affirm_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.affirm_settlement.charge_created_date",
+    "column.zs_observe.affirm_settlement.charge_id",
+    "column.zs_observe.affirm_settlement.charged_amount",
+    "column.zs_observe.affirm_settlement.created_date",
+    "column.zs_observe.affirm_settlement.currency_type",
+    "column.zs_observe.affirm_settlement.date",
+    "column.zs_observe.affirm_settlement.deposit_id",
+    "column.zs_observe.affirm_settlement.event_type",
+    "column.zs_observe.affirm_settlement.fees",
+    "column.zs_observe.affirm_settlement.order_id",
+    "column.zs_observe.affirm_settlement.refunds",
+    "column.zs_observe.affirm_settlement.sales",
+    "column.zs_observe.affirm_settlement.settled_amount",
+    "column.zs_observe.affirm_settlement.settlement_date",
+    "column.zs_observe.affirm_settlement.total_settled",
+    "column.zs_observe.affirm_settlement.transaction_id",
+    "column.zs_observe.affirm_settlement.transaction_type",
+    "column.zs_observe.affirm_settlement.txn_fees",
+    "column.zs_observe.affirm_settlement.txn_uuid"
+  ],
+  "columns": [
+    "column.zs_observe.affirm_settlement.charge_id",
+    "column.zs_observe.affirm_settlement.transaction_id",
+    "column.zs_observe.affirm_settlement.order_id",
+    "column.zs_observe.affirm_settlement.txn_uuid",
+    "column.zs_observe.affirm_settlement.deposit_id",
+    "column.zs_observe.affirm_settlement.event_type",
+    "column.zs_observe.affirm_settlement.date",
+    "column.zs_observe.affirm_settlement.charge_created_date",
+    "column.zs_observe.affirm_settlement.settlement_date",
+    "column.zs_observe.affirm_settlement.created_date",
+    "column.zs_observe.affirm_settlement.transaction_type",
+    "column.zs_observe.affirm_settlement.sales",
+    "column.zs_observe.affirm_settlement.refunds",
+    "column.zs_observe.affirm_settlement.fees",
+    "column.zs_observe.affirm_settlement.txn_fees",
+    "column.zs_observe.affirm_settlement.total_settled",
+    "column.zs_observe.affirm_settlement.settled_amount",
+    "column.zs_observe.affirm_settlement.charged_amount",
+    "column.zs_observe.affirm_settlement.currency_type"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "date",
+    "charge_created_date",
+    "settlement_date",
+    "created_date"
+  ],
+  "description": "Affirm is a US-based BNPL provider. `affirm_settlement` captures charge-level settlement data with deposit batching.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.affirm"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.affirm",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 5824
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.affirm_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "charge_id",
+    "transaction_id",
+    "order_id",
+    "txn_uuid",
+    "deposit_id",
+    "refunds"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.bnpl.affirm.total_settled"
+  ],
+  "name": "zs_observe.affirm_settlement",
+  "recommended_date_columns": [
+    "settlement_date",
+    "created_date"
+  ],
+  "reconciliation_key_columns": [
+    "charge_id",
+    "transaction_id",
+    "deposit_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.affirm_settlement",
+  "source_caveats": [
+    "`deposit_id` is the settlement batch — one deposit_id corresponds to one bank credit.",
+    "`event_type` = `disbursement` is the settlement event; `charge` = sale; `refund` = refund.",
+    "`total_settled` (Decimal) is the authoritative settlement amount — prefer over `settled_amount` (Text).",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5824,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.affirm"
+  ],
+  "source_platform_types": [
+    "bnpl_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "event_type",
+    "transaction_type",
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.affirm.us"
+    ],
+    "platform_ids": [
+      "platform.affirm"
+    ]
+  },
+  "table_name": "affirm_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

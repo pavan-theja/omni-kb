@@ -1,0 +1,54 @@
+{
+  "amount_columns": [
+    "charged_amount"
+  ],
+  "canonical_id": "reconciliation_side.ajio.oms_settlement_matching_unsettled_orders.actual.ajio_settlement",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5857
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "key_columns": [
+    "order_id",
+    "purchase_po_no",
+    "other_id",
+    "credit_note_no",
+    "unique_id",
+    "unique_value",
+    "txn_uuid"
+  ],
+  "name": "OMS → Settlement Matching (Unsettled Orders) — actual side",
+  "review_status": "ready",
+  "side_role": "actual",
+  "source_card_id": "reconciliation_side.ajio.oms_settlement_matching_unsettled_orders.actual.ajio_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5857,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "source_table": "ajio_settlement",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

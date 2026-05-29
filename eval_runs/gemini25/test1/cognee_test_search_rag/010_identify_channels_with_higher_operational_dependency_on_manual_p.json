@@ -1,0 +1,17 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "question": "Identify channels with higher operational dependency on manual processes.",
+  "question_index": 10,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\n  \"relevant_canonical_ids\": [],\n  \"entity_names\": {\n    \"tenant\": \"Mensa Brands\"\n  },\n  \"source_tables\": [],\n  \"required_columns\": [],\n  \"relationships_join_paths\": \"The provided context describes database schemas, tables, columns, and query constraints for various platforms (Snapdeal, Increff, JioMart) and logistics. It does not contain information about the 'operational dependency on manual processes' for any channel.\",\n  \"metrics_formulas\": \"Not applicable.\",\n  \"tenant_group_platform_account_filters\": [],\n  \"assumptions_missing_information_ambiguity\": \"Identifying channels with higher operational dependency on manual processes requires information about operational workflows, process automation levels, or manual effort metrics, which are not present in the provided database schema and constraint details. This information would typically come from operational process documentation or direct business knowledge, not directly from transaction or settlement data.\",\n  \"sql_skeleton\": \"Cannot generate SQL as the required information (manual process dependency) is not available in the provided data models.\"\n}"
+    ]
+  },
+  "scoped_query": "Identify channels with higher operational dependency on manual processes.\n\nScope:\n- tenant: Mensa\n\nAnswer for SQL query construction. Return concise, source-grounded details:\n- relevant canonical ids and entity names\n- source tables with schema/table names\n- required columns, including join keys, filter columns, date columns, and amount columns\n- relationships or join paths between tables/accounts/platforms/workflows\n- metrics or formulas needed, including aggregation grain and deduplication rules\n- tenant/group/platform/account filters that must appear in SQL\n- assumptions, missing information, and any ambiguity\nIf useful, include a SQL skeleton, but do not invent columns or tables that are not in context.",
+  "search_types": [
+    "RAG_COMPLETION"
+  ]
+}

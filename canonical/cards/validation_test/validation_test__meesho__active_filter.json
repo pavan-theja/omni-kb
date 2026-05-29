@@ -1,0 +1,41 @@
+{
+  "assertion": "Use active-row filters exactly as documented; if is_active is varchar, cast/compare as documented.",
+  "canonical_id": "validation_test.meesho.active_filter",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Use active-row filters exactly as documented; if is_active is varchar, cast/compare as documented.",
+  "display_name": "Meesho validation — active filter",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 17566
+    }
+  ],
+  "expected_result": "Parser emits marketplace-only cards and preserves source filters/sign/join semantics.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential out-of-scope card leakage or deterministic parsing ambiguity.",
+  "name": "Meesho validation — active filter",
+  "review_status": "ready",
+  "source_card_id": "validation_test.meesho.active_filter",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17566,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "semantic_guardrail",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

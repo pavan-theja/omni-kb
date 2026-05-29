@@ -1,0 +1,108 @@
+{
+  "canonical_id": "table.zs_observe.healthkart_oms",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.healthkart_oms.charged_amount",
+    "column.zs_observe.healthkart_oms.charged_amount_excluding_tax",
+    "column.zs_observe.healthkart_oms.cod_charge",
+    "column.zs_observe.healthkart_oms.courier_partner",
+    "column.zs_observe.healthkart_oms.created_at",
+    "column.zs_observe.healthkart_oms.created_date",
+    "column.zs_observe.healthkart_oms.currency_type",
+    "column.zs_observe.healthkart_oms.description",
+    "column.zs_observe.healthkart_oms.destination_city",
+    "column.zs_observe.healthkart_oms.destination_country",
+    "column.zs_observe.healthkart_oms.destination_state",
+    "column.zs_observe.healthkart_oms.destination_zipcode",
+    "column.zs_observe.healthkart_oms.discount",
+    "column.zs_observe.healthkart_oms.entity",
+    "column.zs_observe.healthkart_oms.file_uuid",
+    "column.zs_observe.healthkart_oms.group_id",
+    "column.zs_observe.healthkart_oms.group_level_id",
+    "column.zs_observe.healthkart_oms.hsn",
+    "column.zs_observe.healthkart_oms.invoice_number",
+    "column.zs_observe.healthkart_oms.is_active",
+    "column.zs_observe.healthkart_oms.is_active_false_reason",
+    "column.zs_observe.healthkart_oms.is_duplicated",
+    "column.zs_observe.healthkart_oms.item_amount_excluding_tax",
+    "column.zs_observe.healthkart_oms.order_id",
+    "column.zs_observe.healthkart_oms.parent_id",
+    "column.zs_observe.healthkart_oms.payment_mode",
+    "column.zs_observe.healthkart_oms.product_name",
+    "column.zs_observe.healthkart_oms.quantity",
+    "column.zs_observe.healthkart_oms.shipping_amount",
+    "column.zs_observe.healthkart_oms.sku_id",
+    "column.zs_observe.healthkart_oms.source_gst_id",
+    "column.zs_observe.healthkart_oms.source_state",
+    "column.zs_observe.healthkart_oms.tax_cgst_amount",
+    "column.zs_observe.healthkart_oms.tax_cgst_rate",
+    "column.zs_observe.healthkart_oms.tax_igst_amount",
+    "column.zs_observe.healthkart_oms.tax_igst_rate",
+    "column.zs_observe.healthkart_oms.tax_sgst_amount",
+    "column.zs_observe.healthkart_oms.tax_sgst_rate",
+    "column.zs_observe.healthkart_oms.tcs_amount",
+    "column.zs_observe.healthkart_oms.tenant_id",
+    "column.zs_observe.healthkart_oms.total_tax",
+    "column.zs_observe.healthkart_oms.transaction_type",
+    "column.zs_observe.healthkart_oms.txn_uuid",
+    "column.zs_observe.healthkart_oms.unique_value",
+    "column.zs_observe.healthkart_oms.updated_at",
+    "column.zs_observe.healthkart_oms.voucher_type_name",
+    "column.zs_observe.healthkart_oms.zen_status",
+    "column.zs_observe.healthkart_oms.zen_status_false_reason"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "Jan 2025 – Aug 2025",
+  "description": "Order Management System — records every forward (sales) order placed on the HealthKart marketplace",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "scope_policy": "Use schema-appropriate value; do not create tenant/group/account-binding cards.",
+    "zs_observe_group_level_id": 26,
+    "zs_recon_processor_group_level_id": 22
+  },
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 942
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mandatory_filters": [
+    "is_active = true if column exists or source instructions require it"
+  ],
+  "name": "zs_observe.healthkart_oms",
+  "purpose": "Order Management System — records every forward (sales) order placed on the HealthKart marketplace",
+  "review_status": "accepted",
+  "row_count": "\\~11,503 active records",
+  "schema_name": "zs_observe",
+  "scope_columns": [
+    "group_level_id/group_id only as columns/caveats if present"
+  ],
+  "source_card_id": "table.zs_observe.healthkart_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 942,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_section": "Table:healthkart_oms — Order Management System",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_name": "healthkart_oms",
+  "table_role": "orders",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

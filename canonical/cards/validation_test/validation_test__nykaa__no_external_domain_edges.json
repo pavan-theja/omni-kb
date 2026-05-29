@@ -1,0 +1,47 @@
+{
+  "canonical_id": "validation_test.nykaa.no_external_domain_edges",
+  "canonical_name": "No External Domain Edges",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.query_rules",
+    "evidence.nykaa.data_quality"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 19298
+    },
+    {
+      "evidence_id": "evidence.nykaa.data_quality",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 19298
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "No External Domain Edges",
+  "review_status": "unreviewed",
+  "source_card_id": "validation_test.nykaa.no_external_domain_edges",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 19298,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "AWB/courier/bank/tax identifiers should not generate external-domain edges/cards.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validation_type": "parser_quality_gate"
+}

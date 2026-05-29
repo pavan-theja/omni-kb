@@ -1,0 +1,72 @@
+{
+  "benchmarks": {
+    "delivered_avg_charged_context": "~₹488 average charged amount for delivered settlement rows",
+    "oms_aov_context": "₹519 AOV in OMS summary",
+    "source": "docx sections 8 and 9"
+  },
+  "business_definition": "Average tax-inclusive charged_amount per HealthKart OMS order.",
+  "canonical_formula_pattern": "See vendor-specific metric_implementation and formula_template cards; this business metric uses colloquial aliases for user query matching.",
+  "canonical_id": "metric.average_order_value_aov",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Average Order Value (AOV)",
+    "average order value aov",
+    "AOV",
+    "average order value",
+    "average basket value",
+    "avg order value",
+    "average selling price per order"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order",
+  "description": "Average tax-inclusive charged_amount per HealthKart OMS order.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.healthkart.average_order_value_aov.03"
+  ],
+  "metric_family": "orders",
+  "metric_key": "average_order_value",
+  "metric_pattern": "avg_charged_amount",
+  "name": "Average Order Value (AOV)",
+  "review_status": "accepted",
+  "source_card_id": "metric.average_order_value_aov",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5428,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "HealthKart",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

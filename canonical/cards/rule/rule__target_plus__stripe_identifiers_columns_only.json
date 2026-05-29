@@ -1,0 +1,45 @@
+{
+  "applies_to_cards": [
+    "value_profile.target_plus.settlement.stripe_id_formats",
+    "domain.target_plus.payment"
+  ],
+  "canonical_id": "rule.target_plus.stripe_identifiers_columns_only",
+  "card_type": "rule",
+  "condition": "Settlement payout analysis",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus Stripe identifier scope rule",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.settlement.stripe_id_formats_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.settlement.stripe_id_formats_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11682
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus Stripe identifier scope rule",
+  "review_status": "ready",
+  "rule_type": "scope_guardrail",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.stripe_identifiers_columns_only",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11682,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "transfer_id, payout_id, and payment_id are Stripe identifiers in settlement; preserve as columns/value profiles, not payment gateway account cards.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

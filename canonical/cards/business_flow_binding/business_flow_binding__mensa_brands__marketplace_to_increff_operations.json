@@ -1,0 +1,143 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.mensa.increff_wms.primary.increff_sales",
+    "account_data_binding.mensa.increff_wms.primary.increff_returns"
+  ],
+  "active": true,
+  "binding_name": "Mensa Brands Marketplace to Increff Operations Flow",
+  "binding_type": "operational_flow",
+  "business_process_ids": [
+    "business_process.order_to_shipment_flow",
+    "business_process.warehouse_to_courier_handoff",
+    "business_process.delivery_rto_return_resolution"
+  ],
+  "business_scope_set_id": "business_scope_set.mensa_brands.operations_wms",
+  "canonical_id": "business_flow_binding.mensa_brands.marketplace_to_increff_operations",
+  "card_type": "business_flow_binding",
+  "conditions": [
+    {
+      "concept": "sales_channel",
+      "operator": "IN",
+      "value": [
+        "MYNTRAV4",
+        "FLIPKARTV3",
+        "AMAZON_SC",
+        "NYKAA_FASHION",
+        "NYKAA",
+        "TATACLIQ",
+        "SNAPDEAL",
+        "LIMEROAD_MENSA_GURGAON",
+        "LIMEROAD_MENSA_BLR",
+        "LIMEROAD_MENSA_BHIWANDI",
+        "MENSA_MEESHO_BLR",
+        "MENSA_MEESHO_GGN",
+        "MENSA_MEESHO_MUM"
+      ]
+    }
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/mensa_business.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mensa_business.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.increff_returns",
+    "table.zs_observe.increff_sales"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fulfilment_ownership_model": null,
+  "group_id": "group.mensa_brands",
+  "money_flow_paths": [
+    "marketplace_to_operations_wms",
+    "order_to_shipment",
+    "return_to_wms"
+  ],
+  "name": "Marketplace To Increff Operations",
+  "notes": [
+    "Use this flow for operational fulfillment/returns evidence, not for marketplace financial settlement. Marketplace settlement remains on marketplace-specific accounts/tables."
+  ],
+  "package_id": "mensa_business_hierarchy_runtime_cards_v0_1",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.mensa.amazon_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.flipkart_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.myntra_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.meesho_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.nykaa_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.jiomart_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.snapdeal_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.tatacliq_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.limeroad_in.primary",
+      "required": false,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.mensa.increff_wms.primary",
+      "required": true,
+      "role": "operations_wms_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.order_to_shipment"
+  ],
+  "relationship_ids": [],
+  "review_status": "unreviewed",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Mensa Brand Technologies Private Limited.docx",
+    "increff_operations.md",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "myntra_marketplace.md",
+    "payment_gateway.md",
+    "logistics_reconciliation_patterns.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mensa_business.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.mensa_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,58 @@
+{
+  "base_tables": [],
+  "candidate_notes": "Forward orders only.",
+  "canonical_id": "metric_implementation.amazon.amazon_oms.average_order_value",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.kpi.revenue.001",
+    "ev.amazon_oms.kpis.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.kpi.revenue.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5531
+    },
+    {
+      "evidence_id": "ev.amazon_oms.kpis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5531
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "SUM(charged_amount) / COUNT(DISTINCT order_id)",
+  "grain": "order",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.average_order_value",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "sum_amount_over_distinct_orders",
+  "name": "Amazon implementation: average_order_value on amazon_oms",
+  "notes": "Forward orders only.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true AND transaction_type = 'forward'",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_oms.average_order_value",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5531,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_oms",
+  "sql_ref": "sql.amazon.oms.average_order_value",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

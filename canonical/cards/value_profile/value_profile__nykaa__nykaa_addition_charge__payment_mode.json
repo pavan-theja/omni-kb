@@ -1,0 +1,47 @@
+{
+  "canonical_id": "value_profile.nykaa.nykaa_addition_charge.payment_mode",
+  "canonical_name": "zs_observe.nykaa_addition_charge.payment_mode value profile",
+  "card_type": "value_profile",
+  "column_name": "payment_mode",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [],
+  "description": "value_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.payment_logistics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.payment_logistics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13431
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_addition_charge.payment_mode value profile",
+  "observed_values": [
+    "Prepaid",
+    "COD"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "value_profile.nykaa.nykaa_addition_charge.payment_mode",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13431,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Addition-charge payment_mode is Prepaid/COD with ~60/40 split.",
+  "table_id": "table.zs_observe.nykaa_addition_charge",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

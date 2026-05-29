@@ -1,0 +1,116 @@
+{
+  "avoid_columns": [
+    "see amount semantics caveats"
+  ],
+  "business_purpose": "One row per Delhivery COD remittance record.",
+  "canonical_id": "table.zs_observe.delhivery_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.delhivery_settlement.charged_amount",
+    "column.zs_observe.delhivery_settlement.cod_amount",
+    "column.zs_observe.delhivery_settlement.created_date",
+    "column.zs_observe.delhivery_settlement.destination_city",
+    "column.zs_observe.delhivery_settlement.destination_pin",
+    "column.zs_observe.delhivery_settlement.group_level_id",
+    "column.zs_observe.delhivery_settlement.is_active",
+    "column.zs_observe.delhivery_settlement.order_id",
+    "column.zs_observe.delhivery_settlement.order_status",
+    "column.zs_observe.delhivery_settlement.payable",
+    "column.zs_observe.delhivery_settlement.payment_mode",
+    "column.zs_observe.delhivery_settlement.pincode",
+    "column.zs_observe.delhivery_settlement.remittance_number",
+    "column.zs_observe.delhivery_settlement.settlement_date",
+    "column.zs_observe.delhivery_settlement.source_city",
+    "column.zs_observe.delhivery_settlement.status",
+    "column.zs_observe.delhivery_settlement.txn_type",
+    "column.zs_observe.delhivery_settlement.utr_no",
+    "column.zs_observe.delhivery_settlement.waybill_num",
+    "column.zs_observe.delhivery_settlement.waybill_number"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "date_columns": [
+    "see date column cards"
+  ],
+  "description": "Delhivery Settlement: One row per Delhivery COD remittance record.",
+  "document_id": "delhivery_logistics_parser_ready_v6_role_split",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 884
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 884
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 884
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.delhivery_settlement",
+  "grain": "One row per Delhivery COD remittance record.",
+  "grain_keys": [
+    "awb/order/reference as specified by columns"
+  ],
+  "group_ids": "22;203",
+  "metric_implementation_ids": [
+    "metric_impl.delhivery_settlement.cod_collected_amount",
+    "metric_impl.delhivery_settlement.cod_gap_amount",
+    "metric_impl.delhivery_settlement.cod_remitted_amount",
+    "metric_impl.delhivery_settlement.payable_amount",
+    "metric_impl.delhivery_settlement.qr_cod_remitted_amount",
+    "metric_impl.delhivery_settlement.settlement_batch_count",
+    "metric_impl.delhivery_settlement.unique_awb_count"
+  ],
+  "name": "Delhivery Settlement",
+  "period": "Jan-Dec 2025",
+  "recommended_date_columns": [
+    "see metric implementations"
+  ],
+  "review_status": "unreviewed",
+  "row_count": "2641",
+  "schema": "zs_observe",
+  "schema_coverage": "curated_key_fields",
+  "scope_caveat": "Observed group/account values are source data observations only. Do not create tenant, group, platform_account, account_data_binding, business_scope_set, or business_flow_binding cards from this generic logistics document.",
+  "source_card_id": "table.zs_observe.delhivery_settlement",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 884,
+  "source_path": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+  "source_platform_ids": [
+    "platform.delhivery"
+  ],
+  "source_platform_types": [
+    "logistics"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "structural_applicability": "platform.delhivery; account filters are not defined here",
+  "table_name": "delhivery_settlement",
+  "table_type": "cod_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

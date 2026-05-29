@@ -1,0 +1,65 @@
+{
+  "business_definition": "Delivery rate grouped by shipping_method",
+  "canonical_id": "metric.unicommerce.courier_delivery_rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "shipping method delivery rate",
+    "courier success rate"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order / SKU line / shipment line depending implementation",
+  "description": "Delivery rate grouped by shipping_method",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.011.8_courier_network",
+    "ev.unicommerce.section.048.7_common_query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.011.8_courier_network",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9938
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.048.7_common_query_patterns",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9938
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.unicommerce.courier_delivery_rate.unicommerce_v10"
+  ],
+  "metric_name": "Courier delivery rate",
+  "name": "Courier Delivery Rate",
+  "optional_fields": [
+    "colloquial_names",
+    "metric_family",
+    "grain",
+    "default_filters",
+    "business_interpretation",
+    "benchmarks",
+    "exclusions",
+    "dependencies"
+  ],
+  "review_status": "ready",
+  "source_card_id": "metric.unicommerce.courier_delivery_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9938,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

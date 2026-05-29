@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.jiomart.marketplace.7_2_returns_oms_settlement_full_chain",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 7.2 Returns → OMS → Settlement Full Chain",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_2_returns_oms_settlement_full_chain"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_2_returns_oms_settlement_full_chain",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12730
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "reconciliation",
+  "name": "JioMart query — 7.2 Returns → OMS → Settlement Full Chain",
+  "natural_language_patterns": [
+    "7.2 Returns to OMS to Settlement Full Chain"
+  ],
+  "output_contract_id": "output_contract.jiomart.return_reconciliation",
+  "reconciliation_profile_id": "reconciliation_profile.jiomart.oms_settlement_3way",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.marketplace.7_2_returns_oms_settlement_full_chain",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12730,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms",
+    "table.zs_observe.jiomart_returns",
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "sql_ref": "sql.jiomart.marketplace.7_2_returns_oms_settlement_full_chain",
+  "sql_template": "SELECT\n  r.order_id,\n  r.return_type,\n  CAST(r.refund_amount AS DOUBLE) AS refund_issued,\n  o.charged_amount AS original_sale,\n  SUM(s.settled_amount) AS settlement_net\nFROM zs_observe.jiomart_returns r\nLEFT JOIN zs_observe.jiomart_oms o ON r.order_id = o.order_id AND o.is_active = true\nLEFT JOIN zs_observe.jiomart_settlement s ON r.order_id = s.order_id AND s.is_active = true\nWHERE r.is_active = true AND r.return_type IS NOT NULL\nGROUP BY r.order_id, r.return_type, r.refund_amount, o.charged_amount;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

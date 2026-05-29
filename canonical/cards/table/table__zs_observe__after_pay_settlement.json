@@ -1,0 +1,213 @@
+{
+  "amount_columns": [
+    "merchant_refund_id",
+    "order_amount",
+    "settlement_amount",
+    "net_settlement_amount",
+    "merchant_fee_excl_tax",
+    "merchant_fee_tax",
+    "merchant_fee_incl_tax",
+    "merchant_fee_local_tax",
+    "interchange_force_post_fee",
+    "merchant_fee_less_interchange_force_post_fee",
+    "network",
+    "sub_network",
+    "charged_amount"
+  ],
+  "avoid_columns": [
+    "merchant_refund_id",
+    "network",
+    "sub_network",
+    "charged_amount"
+  ],
+  "business_purpose": "Afterpay (rebranded to Block in some markets) is a BNPL provider. Settlement includes merchant fee breakdown, network fees, and interchange costs.",
+  "canonical_id": "table.zs_observe.after_pay_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.after_pay_settlement.acquirer_id",
+    "column.zs_observe.after_pay_settlement.acquirer_merchant_id",
+    "column.zs_observe.after_pay_settlement.acquirer_terminal_id",
+    "column.zs_observe.after_pay_settlement.afterpay_order_id",
+    "column.zs_observe.after_pay_settlement.auth_code",
+    "column.zs_observe.after_pay_settlement.channel",
+    "column.zs_observe.after_pay_settlement.charged_amount",
+    "column.zs_observe.after_pay_settlement.consumer_country",
+    "column.zs_observe.after_pay_settlement.currency_type",
+    "column.zs_observe.after_pay_settlement.device_id",
+    "column.zs_observe.after_pay_settlement.device_name",
+    "column.zs_observe.after_pay_settlement.interchange_force_post_fee",
+    "column.zs_observe.after_pay_settlement.iso_order_date_and_time",
+    "column.zs_observe.after_pay_settlement.iso_refund_date_and_time",
+    "column.zs_observe.after_pay_settlement.iso_settlement_date",
+    "column.zs_observe.after_pay_settlement.merchant_fee_excl_tax",
+    "column.zs_observe.after_pay_settlement.merchant_fee_incl_tax",
+    "column.zs_observe.after_pay_settlement.merchant_fee_less_interchange_force_post_fee",
+    "column.zs_observe.after_pay_settlement.merchant_fee_local_tax",
+    "column.zs_observe.after_pay_settlement.merchant_fee_tax",
+    "column.zs_observe.after_pay_settlement.merchant_order_id",
+    "column.zs_observe.after_pay_settlement.merchant_refund_id",
+    "column.zs_observe.after_pay_settlement.net_settlement_amount",
+    "column.zs_observe.after_pay_settlement.network",
+    "column.zs_observe.after_pay_settlement.order_amount",
+    "column.zs_observe.after_pay_settlement.order_date_and_time",
+    "column.zs_observe.after_pay_settlement.order_id",
+    "column.zs_observe.after_pay_settlement.payment_event_id",
+    "column.zs_observe.after_pay_settlement.refund_date_and_time",
+    "column.zs_observe.after_pay_settlement.rrn",
+    "column.zs_observe.after_pay_settlement.rrn_retrieval_reference_number",
+    "column.zs_observe.after_pay_settlement.settlement_amount",
+    "column.zs_observe.after_pay_settlement.settlement_date",
+    "column.zs_observe.after_pay_settlement.stan_system_trace_audit_number",
+    "column.zs_observe.after_pay_settlement.store_id",
+    "column.zs_observe.after_pay_settlement.store_name",
+    "column.zs_observe.after_pay_settlement.sub_network",
+    "column.zs_observe.after_pay_settlement.transaction_type",
+    "column.zs_observe.after_pay_settlement.type"
+  ],
+  "columns": [
+    "column.zs_observe.after_pay_settlement.afterpay_order_id",
+    "column.zs_observe.after_pay_settlement.merchant_order_id",
+    "column.zs_observe.after_pay_settlement.merchant_refund_id",
+    "column.zs_observe.after_pay_settlement.payment_event_id",
+    "column.zs_observe.after_pay_settlement.order_id",
+    "column.zs_observe.after_pay_settlement.rrn",
+    "column.zs_observe.after_pay_settlement.rrn_retrieval_reference_number",
+    "column.zs_observe.after_pay_settlement.auth_code",
+    "column.zs_observe.after_pay_settlement.stan_system_trace_audit_number",
+    "column.zs_observe.after_pay_settlement.type",
+    "column.zs_observe.after_pay_settlement.channel",
+    "column.zs_observe.after_pay_settlement.settlement_date",
+    "column.zs_observe.after_pay_settlement.iso_settlement_date",
+    "column.zs_observe.after_pay_settlement.order_date_and_time",
+    "column.zs_observe.after_pay_settlement.iso_order_date_and_time",
+    "column.zs_observe.after_pay_settlement.refund_date_and_time",
+    "column.zs_observe.after_pay_settlement.iso_refund_date_and_time",
+    "column.zs_observe.after_pay_settlement.order_amount",
+    "column.zs_observe.after_pay_settlement.settlement_amount",
+    "column.zs_observe.after_pay_settlement.net_settlement_amount",
+    "column.zs_observe.after_pay_settlement.merchant_fee_excl_tax",
+    "column.zs_observe.after_pay_settlement.merchant_fee_tax",
+    "column.zs_observe.after_pay_settlement.merchant_fee_incl_tax",
+    "column.zs_observe.after_pay_settlement.merchant_fee_local_tax",
+    "column.zs_observe.after_pay_settlement.interchange_force_post_fee",
+    "column.zs_observe.after_pay_settlement.merchant_fee_less_interchange_force_post_fee",
+    "column.zs_observe.after_pay_settlement.consumer_country",
+    "column.zs_observe.after_pay_settlement.network",
+    "column.zs_observe.after_pay_settlement.sub_network",
+    "column.zs_observe.after_pay_settlement.store_name",
+    "column.zs_observe.after_pay_settlement.store_id",
+    "column.zs_observe.after_pay_settlement.device_name",
+    "column.zs_observe.after_pay_settlement.device_id",
+    "column.zs_observe.after_pay_settlement.acquirer_id",
+    "column.zs_observe.after_pay_settlement.acquirer_merchant_id",
+    "column.zs_observe.after_pay_settlement.acquirer_terminal_id",
+    "column.zs_observe.after_pay_settlement.transaction_type",
+    "column.zs_observe.after_pay_settlement.charged_amount",
+    "column.zs_observe.after_pay_settlement.currency_type"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "settlement_date",
+    "iso_settlement_date",
+    "order_date_and_time",
+    "iso_order_date_and_time",
+    "refund_date_and_time",
+    "iso_refund_date_and_time"
+  ],
+  "description": "Afterpay (rebranded to Block in some markets) is a BNPL provider. Settlement includes merchant fee breakdown, network fees, and interchange costs.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.afterpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.afterpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 5933
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.after_pay_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "afterpay_order_id",
+    "merchant_order_id",
+    "merchant_refund_id",
+    "payment_event_id",
+    "order_id",
+    "rrn"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.after_pay_settlement",
+  "recommended_date_columns": [
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "rrn",
+    "rrn_retrieval_reference_number",
+    "stan_system_trace_audit_number"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.after_pay_settlement",
+  "source_caveats": [
+    "`iso_settlement_date` / `iso_order_date_and_time` use ISO format — prefer these for consistent date handling.",
+    "`rrn` is the primary bank reconciliation reference for Afterpay.",
+    "`interchange_force_post_fee` applies when card interchange rates are passed through.",
+    "`net_settlement_amount` = `settlement_amount` - `merchant_fee_incl_tax` - `interchange_force_post_fee`.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5933,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.afterpay"
+  ],
+  "source_platform_types": [
+    "bnpl_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "type",
+    "channel",
+    "transaction_type",
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.afterpay.global"
+    ],
+    "platform_ids": [
+      "platform.afterpay"
+    ]
+  },
+  "table_name": "after_pay_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

@@ -1,0 +1,106 @@
+{
+  "allowed_dimensions": [
+    "date",
+    "currency",
+    "payment_mode",
+    "status",
+    "gateway",
+    "settlement_id",
+    "payout_id"
+  ],
+  "allowed_grains": [
+    "transaction",
+    "batch",
+    "day",
+    "month",
+    "currency",
+    "payment_mode"
+  ],
+  "applicability": {
+    "notes": [
+      "Runtime account filters come from Account Data Binding."
+    ],
+    "platform_types": [
+      "payment_gateway",
+      "bnpl_gateway",
+      "app_store_platform"
+    ],
+    "scope_level": "table_or_platform_type"
+  },
+  "base_tables": [
+    "table.zs_observe.cashfree_payin"
+  ],
+  "canonical_id": "metric_implementation.cashfree.payin.batch_settlement",
+  "card_type": "metric_implementation",
+  "caveats": [
+    "Preserve source sign conventions and cast Text amount fields before arithmetic."
+  ],
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependent_metrics": [],
+  "description": "Cashfree payin batch settlement",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay",
+    "evidence.pg.stripe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 49921
+    },
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 49921
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_description": "SUM(net_settlement_amount) GROUP BY settlement_id, settlement_date",
+  "formula_executable": true,
+  "formula_sql": "SUM(net_settlement_amount) GROUP BY settlement_id, settlement_date",
+  "formula_template_id": null,
+  "implementation_name": "Cashfree payin batch settlement",
+  "implementation_scope": "cashfree",
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_id": "metric.net_settlement_amount",
+  "name": "Cashfree payin batch settlement",
+  "platform_code": "cashfree",
+  "precision": "2_decimal_places",
+  "recommended_date_columns": [
+    "settlement_date"
+  ],
+  "required_columns": [
+    "column.zs_observe.cashfree_payin.net_settlement_amount",
+    "column.zs_observe.cashfree_payin.settlement_id",
+    "column.zs_observe.cashfree_payin.settlement_date"
+  ],
+  "review_status": "accepted",
+  "semantic_filters": [
+    "is_active = true",
+    "is_duplicated = false"
+  ],
+  "source_card_id": "metric_implementation.cashfree.payin.batch_settlement",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 49921,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "sql_pattern_ref": "sql.pg.gateway_settlement_batch_summary",
+  "status": "active",
+  "unit": "currency_or_percentage_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

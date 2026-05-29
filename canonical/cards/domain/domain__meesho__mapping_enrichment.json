@@ -1,0 +1,55 @@
+{
+  "canonical_id": "domain.meesho.mapping_enrichment",
+  "card_type": "domain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho Marketplace SKU, brand, entity, GSTIN, TCIN, slave/warehouse, or enrichment references",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_family": "mapping_enrichment",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 2119
+    }
+  ],
+  "excluded_modules": [
+    "tenant",
+    "group",
+    "platform_account",
+    "account_data_binding",
+    "business_scope_set",
+    "business_flow_binding",
+    "logistics_account",
+    "bank_account",
+    "payment_gateway_account",
+    "erp_accounting_mapping",
+    "statutory_tax_filing"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "included_modules": [
+    "mapping_enrichment"
+  ],
+  "name": "Meesho Marketplace SKU, brand, entity, GSTIN, TCIN, slave/warehouse, or enrichment references",
+  "review_status": "ready",
+  "scope_note": "Marketplace-vendor semantics only; external-domain card creation is forbidden in this markdown.",
+  "source_card_id": "domain.meesho.mapping_enrichment",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2119,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

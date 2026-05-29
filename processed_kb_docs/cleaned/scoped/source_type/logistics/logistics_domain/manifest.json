@@ -1,0 +1,49 @@
+{
+  "card_types": {
+    "business_process": 9,
+    "column": 4,
+    "domain": 1,
+    "formula_template": 7,
+    "metric": 32,
+    "metric_dependency": 5,
+    "process_variant": 10,
+    "relationship": 1,
+    "state_transition": 30,
+    "table": 1,
+    "workflow_step": 39
+  },
+  "counts": {
+    "cards": 139,
+    "documents": 1,
+    "edges": 350,
+    "review_items": 1
+  },
+  "edge_types": {
+    "BELONGS_TO_DOMAIN": 41,
+    "BELONGS_TO_PROCESS": 69,
+    "BELONGS_TO_TABLE": 4,
+    "DEPENDS_ON_METRIC": 9,
+    "EXTENDS_PROCESS": 26,
+    "HAS_BUSINESS_PROCESS": 9,
+    "HAS_COLUMN": 4,
+    "HAS_PROCESS_VARIANT": 26,
+    "HAS_RECONCILIATION_PROFILE": 6,
+    "HAS_RELATIONSHIP": 2,
+    "HAS_STATE_TRANSITION": 30,
+    "HAS_WORKFLOW_STEP": 39,
+    "PARENT_METRIC": 5,
+    "SOURCE_TABLE": 1,
+    "SUPPORTS_PROCESS": 6,
+    "TARGET_TABLE": 1,
+    "TRIGGERED_BY_STEP": 30,
+    "USES_DEPENDENT_METRIC": 9,
+    "USES_FORMULA_TEMPLATE": 5,
+    "USES_METRIC": 26,
+    "USES_SOURCE_COLUMN": 1,
+    "USES_TARGET_COLUMN": 1
+  },
+  "scope": [
+    "logistics",
+    "logistics_domain"
+  ]
+}

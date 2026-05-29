@@ -1,0 +1,49 @@
+{
+  "banking_only": true,
+  "canonical_id": "reconciliation_variant.bank_statement.multi_currency_no_fx",
+  "card_type": "reconciliation_variant",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_variant card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.amount_quality.001",
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.amount_quality.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 14644
+    },
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 14644
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Multi-currency no-FX variant",
+  "profile": "reconciliation_profile.bank_credit_to_payment_gateway_payout",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_variant.bank_statement.multi_currency_no_fx",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14644,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "variant_key": "multi_currency_no_fx",
+  "variant_matching_change": "group by currency and block cross-currency summation without FX",
+  "variant_reason": "HSBC/Citi/international bank rows",
+  "variant_tolerance": "inherits base tolerance unless overridden by tenant/account config"
+}

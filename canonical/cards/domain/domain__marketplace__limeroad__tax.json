@@ -1,0 +1,42 @@
+{
+  "canonical_id": "domain.marketplace.limeroad.tax",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Marketplace GST, TCS, and TDS deduction evidence as table columns/metrics only",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "domain_family": "tax",
+  "domain_key": "tax",
+  "evidence_ids": [
+    "ev.limeroad.tax.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.tax.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 554
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "LimeRoad Tax",
+  "platform_context_id": "platform_context.limeroad.in",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.limeroad.tax",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 554,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

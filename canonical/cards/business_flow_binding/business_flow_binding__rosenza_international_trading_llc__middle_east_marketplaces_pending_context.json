@@ -1,0 +1,54 @@
+{
+  "active": false,
+  "business_scope_set_ids": [
+    "business_scope_set.rosenza_international_trading_llc.middle_east_pending_context"
+  ],
+  "canonical_id": "business_flow_binding.rosenza_international_trading_llc.middle_east_marketplaces_pending_context",
+  "card_type": "business_flow_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Middle East marketplaces are configured but not query-routable until canonical context exists.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "flow_name": "Rosenza Noon/Namshi Middle East flow pending platform context",
+  "flow_type": "marketplace_oms_settlement",
+  "group_id": "group.rosenza_international_trading_llc.mensa_brands",
+  "name": "Middle East Marketplaces Pending Context",
+  "notes": [],
+  "package_id": "client_runtime_binding_pack.rosenza_international_trading_llc.v0_1",
+  "participant_platform_account_ids": [
+    "platform_account.rosenza_international_trading_llc.noon_me.primary",
+    "platform_account.rosenza_international_trading_llc.namshi_me.primary"
+  ],
+  "required_runtime_resolution": [
+    "noon platform markdown",
+    "namshi platform markdown",
+    "Noon/Namshi table IDs and schemas"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Rosenza International Trading L.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": null,
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.rosenza_international_trading_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

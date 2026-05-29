@@ -1,0 +1,80 @@
+{
+  "active": true,
+  "canonical_id": "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement",
+  "card_type": "account_data_binding",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type_semantics": [
+    "delhivery_settlement"
+  ],
+  "description": "account_data_binding card from raw/cleaned_v2/clients/fraternitas_ventures.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Delhivery Settlement",
+  "notes": [
+    "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+  ],
+  "package_id": "fraternitas_ventures_runtime_card_pack_v1_0",
+  "platform_account_id": "platform_account.fraternitas.delhivery_in.primary",
+  "review_status": "unreviewed",
+  "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+  "scope_keys": [
+    {
+      "business_key": "group_id",
+      "column": "group_id",
+      "data_type": "integer",
+      "operator": "=",
+      "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope.",
+      "value": 118
+    },
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "operator": "=",
+      "scope_note": "Primary runtime scope key from the client document.",
+      "value": 337
+    },
+    {
+      "business_key": "currency_type",
+      "column": "currency_type",
+      "data_type": "string",
+      "operator": "=",
+      "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type.",
+      "value": "INR"
+    }
+  ],
+  "source_confidence": "curated",
+  "source_config_text": "Delhivery | Settlement only",
+  "source_documents": [
+    "Fraternitas Ventures Private Limited.docx",
+    "delhivery_logistics.md",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "unicommerce_d2c_oms.md",
+    "unicommerce_operations.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.delhivery_settlement",
+  "table_support_level": "canonical_platform_context",
+  "unresolved_scope_keys": [],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

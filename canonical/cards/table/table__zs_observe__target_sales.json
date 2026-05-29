@@ -1,0 +1,121 @@
+{
+  "business_purpose": "Forward OMS/order-line table for Target Plus sales; source for GMV, sales velocity, settlement and returns joins.",
+  "canonical_id": "table.zs_observe.target_sales",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.target_sales.brand",
+    "column.zs_observe.target_sales.charged_amount",
+    "column.zs_observe.target_sales.created_at",
+    "column.zs_observe.target_sales.created_date",
+    "column.zs_observe.target_sales.currency_type",
+    "column.zs_observe.target_sales.deleted_at",
+    "column.zs_observe.target_sales.description",
+    "column.zs_observe.target_sales.discount_amount",
+    "column.zs_observe.target_sales.file_uuid",
+    "column.zs_observe.target_sales.group_id",
+    "column.zs_observe.target_sales.group_level_id",
+    "column.zs_observe.target_sales.internal_txn_type",
+    "column.zs_observe.target_sales.is_active",
+    "column.zs_observe.target_sales.is_duplicated",
+    "column.zs_observe.target_sales.item_id",
+    "column.zs_observe.target_sales.order_id",
+    "column.zs_observe.target_sales.order_status",
+    "column.zs_observe.target_sales.other_id",
+    "column.zs_observe.target_sales.quantity",
+    "column.zs_observe.target_sales.sku_id",
+    "column.zs_observe.target_sales.tcin",
+    "column.zs_observe.target_sales.transaction_type",
+    "column.zs_observe.target_sales.txn_uuid",
+    "column.zs_observe.target_sales.unique_id",
+    "column.zs_observe.target_sales.unique_value",
+    "column.zs_observe.target_sales.updated_at",
+    "column.zs_observe.target_sales.zen_sheet_name",
+    "column.zs_observe.target_sales.zen_status"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "2025-04-22 to 2025-12-31",
+  "description": "table card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "zs_observe.target_sales",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "documented_scope_values": {
+    "brands": [
+      "folkculture",
+      "katchon"
+    ],
+    "entity": "Mensa brand group",
+    "group_level_id": 123
+  },
+  "evidence_ids": [
+    "ev.target_plus.sales.1_table_overview",
+    "ev.target_plus.sales.2_key_statistics",
+    "ev.target_plus.sales.3_schema_details_29_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.sales.1_table_overview",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5901
+    },
+    {
+      "evidence_id": "ev.target_plus.sales.2_key_statistics",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5901
+    },
+    {
+      "evidence_id": "ev.target_plus.sales.3_schema_details_29_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5901
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "forward_order_line_item",
+  "join_caveat": "Use item_id for sales-settlement reconciliation, order_id for sales-returns, and tcin for mapping enrichment.",
+  "join_key_candidates": [
+    "item_id",
+    "tcin",
+    "order_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 123",
+    "order_status = SHIPPED for shipped-sales metrics"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.target_plus.aov",
+    "metric_impl.target_plus.brand_return_rate",
+    "metric_impl.target_plus.cancellation_rate",
+    "metric_impl.target_plus.mapping_sales_coverage",
+    "metric_impl.target_plus.monthly_sales_gmv",
+    "metric_impl.target_plus.return_rate",
+    "metric_impl.target_plus.top_selling_skus",
+    "metric_impl.target_plus.total_gmv"
+  ],
+  "name": "zs_observe.target_sales",
+  "primary_key_candidates": [
+    "item_id",
+    "unique_id"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": "9,063 total / 7,291 active",
+  "schema": "zs_observe",
+  "scope_caveats": "group_level_id/seller/entity/brand/Stripe/carrier values are columns, filters, identifiers, caveats, or source evidence only; no account/bank/logistics/payment-gateway cards emitted.",
+  "semantic_domain_id": "domain.target_plus.orders",
+  "source_card_id": "table.zs_observe.target_sales",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5901,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "target_sales",
+  "table_role": "orders_sales",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

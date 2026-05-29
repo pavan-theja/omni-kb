@@ -1,0 +1,68 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.caelum_arpit.shopify_us.primary.shopify_oms"
+  ],
+  "active": true,
+  "binding_name": "Caelum Shopify US OMS Only",
+  "binding_type": "d2c_order_flow",
+  "business_process_ids": [
+    "business_process.d2c_order_lifecycle"
+  ],
+  "business_scope_set_id": "business_scope_set.caelum_arpit_brand_technologies.shopify_us_d2c",
+  "canonical_id": "business_flow_binding.caelum_arpit_brand_technologies.shopify_us_oms_only",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.shopify_oms"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.caelum_arpit_brand_technologies.mensa_brands",
+  "money_flow_paths": [
+    "d2c_order_analytics"
+  ],
+  "name": "Shopify Us Oms Only",
+  "notes": [
+    "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+  ],
+  "package_id": "caelum_arpit_brand_technologies_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.caelum_arpit.shopify_us.primary",
+      "required": true,
+      "role": "d2c_order_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.shopify_order_analytics"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "high",
+  "source_documents": [
+    "Caelum Arpit Brand Technologies Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/caelum_arpit_brand_technologies.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.caelum_arpit_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,51 @@
+{
+  "business_meaning": "SKU primary key for fee preview; joins to OMS sku_id and disbursement sku_id",
+  "candidate_notes": "SKU primary key for fee preview; joins to OMS sku_id and disbursement sku_id",
+  "canonical_id": "column.zs_observe.amazon_fee_preview.sku",
+  "card_type": "column",
+  "column_name": "sku",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "SKU primary key for fee preview; joins to OMS sku_id and disbursement sku_id",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_fee_preview.columns.001",
+    "ev.amazon_fee_preview.recon.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_fee_preview.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3398
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.recon.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3398
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "amazon_fee_preview.sku",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "identifier",
+  "source_card_id": "column.zs_observe.amazon_fee_preview.sku",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3398,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.amazon_fee_preview",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

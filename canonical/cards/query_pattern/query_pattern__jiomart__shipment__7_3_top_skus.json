@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.shipment.7_3_top_skus",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 7.3 Top SKUs",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.shipment.7_3_top_skus"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.shipment.7_3_top_skus",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12923
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 7.3 Top SKUs",
+  "natural_language_patterns": [
+    "7.3 Top SKUs"
+  ],
+  "output_contract_id": "output_contract.jiomart.sku_summary",
+  "primary_metric_id": "metric.jiomart.top_shipment_skus",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.shipment.7_3_top_skus",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12923,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_shipment"
+  ],
+  "sql_ref": "sql.jiomart.shipment.7_3_top_skus",
+  "sql_template": "SELECT sku_id,\n  COUNT(*) AS orders,\n  SUM(charged_amount) AS gmv,\n  AVG(charged_amount) AS avg_price,\n  AVG(item_promo_discount) AS avg_discount\nFROM zs_observe.jiomart_shipment\nWHERE is_active = true AND qty > 0\nGROUP BY sku_id\nORDER BY gmv DESC\nLIMIT 20;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

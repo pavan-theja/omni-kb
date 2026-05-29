@@ -1,0 +1,70 @@
+{
+  "canonical_id": "query_pattern.unicommerce.full_enriched_fulfilment_view",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/wms/unicommerce_operations.md.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.021.11_reconciliation_use_cases"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.021.11_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12909
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Full Enriched Fulfilment View",
+  "natural_language_patterns": [
+    "enriched order view",
+    "order to AWB delivery status"
+  ],
+  "optional_fields": [
+    "natural_language_patterns",
+    "source_tables",
+    "required_rules",
+    "metrics",
+    "reconciliation_profiles",
+    "output_contract",
+    "sql_refs",
+    "safe_filters"
+  ],
+  "primary_metrics": [
+    "metric.unicommerce.osr_join_coverage"
+  ],
+  "query_name": "Full enriched warehouse fulfilment view",
+  "reconciliation_profiles": [
+    "reconciliation_profile.unicommerce.invoice_to_osr_fulfilment_alignment"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.unicommerce.full_enriched_fulfilment_view",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12909,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "table.zs_observe.unicommerce",
+    "table.zs_observe.unicommerce_order_sales_report"
+  ],
+  "sql_refs": [
+    "sql.unicommerce.v10.source_query_01.the_critical_join",
+    "sql.unicommerce.v10.source_query_03.11_2_full_enriched_view_sales_awb_delivery_status",
+    "sql.unicommerce.v10.source_query_10.7_3_full_enriched_view_join_sales_osr",
+    "sql.unicommerce.v10.source_query_17.7_5_full_enriched_order_view",
+    "sql.unicommerce.v10.source_query_23.7_4_join_to_osr_for_awb_and_delivery_status"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

@@ -1,0 +1,45 @@
+{
+  "actual_side": "meesho_settlement ABS(total_tcs_amount) for delivered orders",
+  "canonical_id": "reconciliation_profile.meesho.tcs_reconciliation",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "TCS reconciliation compares sales tcs_taxable_amount base to total_tcs_amount deducted in settlement for delivered orders.",
+  "display_name": "Meesho TCS Reconciliation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_5_tcs_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_5_tcs_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15290
+    }
+  ],
+  "expected_side": "meesho_sales monthly tcs_taxable_amount base",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.meesho.tcs_reconciliation",
+  "name": "Meesho TCS Reconciliation",
+  "process_id": "business_process.meesho.marketplace_internal_reconciliation",
+  "reconciliation_family": "marketplace_internal_reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_profile.meesho.tcs_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15290,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timing_window": "monthly by settlement_date; settlement rows for delivered orders",
+  "tolerance": "review_required: statutory/accounting tolerance not in DOCX",
+  "unit_id": "reconciliation_unit.meesho.tcs_reconciliation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,47 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.target_sales",
+    "table.zs_observe.target_returns",
+    "table.zs_observe.target_settlement",
+    "table.zs_observe.target_tcin_mapping"
+  ],
+  "canonical_id": "rule.target_plus.active_filter",
+  "card_type": "rule",
+  "condition": "All Target tables",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus active row filter",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.8_mandatory_query_filters"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.8_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11425
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus active row filter",
+  "review_status": "ready",
+  "rule_type": "query_filter",
+  "severity": "critical",
+  "source_card_id": "rule.target_plus.active_filter",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11425,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "Apply is_active = true to all Target Plus source tables before analytics or reconciliation.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

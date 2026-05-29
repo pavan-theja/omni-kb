@@ -1,0 +1,78 @@
+{
+  "aggregation_grain": "DATE_FORMAT(settlement_date, %Y-%m) or requested settlement grain",
+  "base_tables": [],
+  "canonical_id": "metric_implementation.healthkart.seller_realization_rate",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.011_4_fee_structure_and_financial_waterfall",
+    "evidence.healthkart.032_10_key_business_observations",
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.011_4_fee_structure_and_financial_waterfall",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5720
+    },
+    {
+      "evidence_id": "evidence.healthkart.032_10_key_business_observations",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5720
+    },
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5720
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true",
+    "transaction_type = 'forward'",
+    "order_status = 'Delivered'"
+  ],
+  "formula_sql": "SELECT\n  DATE_FORMAT(settlement_date, '%Y-%m') AS month,\n  SUM(settled_amount) AS net_settled,\n  SUM(charged_amount) AS gross_charged,\n  ROUND(100.0 * SUM(settled_amount) / NULLIF(SUM(charged_amount), 0), 2) AS seller_realization_rate_pct\nFROM zs_observe.healthkart_settlement\nWHERE is_active = true\n  AND transaction_type = 'forward'\n  AND order_status = 'Delivered'\nGROUP BY DATE_FORMAT(settlement_date, '%Y-%m')\nORDER BY month",
+  "implementation_scope": "healthkart",
+  "metric_id": "metric.healthkart.seller_realization_rate",
+  "name": "HealthKart implementation — Seller realization rate",
+  "platform_code": "healthkart",
+  "platform_specific_name": "Seller realization rate",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.healthkart.seller_realization_rate",
+  "source_columns": [
+    "settlement_date",
+    "settled_amount",
+    "charged_amount",
+    "transaction_type",
+    "order_status",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.011_4_fee_structure_and_financial_waterfall",
+    "evidence.healthkart.032_10_key_business_observations",
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5720,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "zs_observe.healthkart_settlement"
+  ],
+  "sql_ref": "sql.healthkart.seller_realization_rate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

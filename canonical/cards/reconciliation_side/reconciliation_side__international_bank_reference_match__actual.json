@@ -1,0 +1,61 @@
+{
+  "amount_columns": "source-specific authoritative decimal amount columns",
+  "banking_only": true,
+  "business_role": "bank statement credit/debit",
+  "canonical_id": "reconciliation_side.international_bank_reference_match.actual",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_columns": "source-specific recommended date columns",
+  "description": "reconciliation_side card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 13138
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "standard bank filter for actual bank side"
+  ],
+  "grain": "reference/date/currency/amount grain",
+  "key_columns": "source-specific reference columns",
+  "name": "International bank reference match actual side",
+  "profile": "reconciliation_profile.international_bank_reference_match",
+  "review_status": "accepted",
+  "side_role": "actual",
+  "sign_handling": "resolve credit/debit direction before comparison",
+  "source_card_id": "reconciliation_side.international_bank_reference_match.actual",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13138,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "source_table": [
+    "table.zs_ingest.yesbank_oms_payout",
+    "table.zs_ingest.idfc_bank",
+    "table.zs_ingest.idfc_bank_inr",
+    "table.zs_ingest.icici_bank_global",
+    "table.zs_ingest.icici_bank",
+    "table.zs_ingest.hsbc_bank",
+    "table.zs_ingest.citi_bank",
+    "table.zs_ingest.nbf_bank",
+    "table.zs_ingest.hdfc_bank_settlement",
+    "table.zs_ingest.axis_bank_settlement"
+  ],
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

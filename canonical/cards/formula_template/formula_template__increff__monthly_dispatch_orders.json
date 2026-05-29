@@ -1,0 +1,39 @@
+{
+  "canonical_id": "formula_template.increff.monthly_dispatch_orders",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff monthly dispatch trend formula",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.026.9_6_monthly_dispatch_trend"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.026.9_6_monthly_dispatch_trend",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 8157
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "COUNT(*) by DATE_TRUNC(month, CAST(created_date AS DATE))",
+  "formula_language": "sql_like",
+  "name": "Increff monthly dispatch trend formula",
+  "review_status": "ready",
+  "source_card_id": "formula_template.increff.monthly_dispatch_orders",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8157,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

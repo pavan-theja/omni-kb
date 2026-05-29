@@ -1,0 +1,47 @@
+{
+  "business_definition": "RTO rate and return reversal percentage from jiomart_oms.",
+  "canonical_id": "metric.jiomart.return_rate",
+  "card_type": "metric",
+  "colloquial_names": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "INR",
+  "description": "RTO rate and return reversal percentage from jiomart_oms.",
+  "display_name": "Return Rate",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.jiomart.returns",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_2_return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_2_return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10369
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.jiomart.return_rate"
+  ],
+  "metric_family": "returns",
+  "name": "Return Rate",
+  "review_status": "ready",
+  "source_card_id": "metric.jiomart.return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10369,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

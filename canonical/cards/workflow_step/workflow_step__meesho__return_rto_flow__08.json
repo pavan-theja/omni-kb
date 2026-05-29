@@ -1,0 +1,49 @@
+{
+  "canonical_id": "workflow_step.meesho.return_rto_flow.08",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "meesho_other_charges_expenses rows with type = 'Reverse_shipping' provide reverse shipping cost evidence.",
+  "display_name": "Other charges reverse shipping invoice",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.008.2_2_return_rto_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.008.2_2_return_rto_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 14552
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "zs_observe.meesho_other_charges_expenses"
+  ],
+  "name": "Other charges reverse shipping invoice",
+  "output_tables": [
+    "zs_observe.meesho_other_charges_expenses"
+  ],
+  "process_id": "business_process.meesho.return_rto_flow",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.meesho.return_rto_flow.08",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14552,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "status_conditions": [
+    "meesho_other_charges_expenses.type",
+    "meesho_other_charges_expenses.taxable_value"
+  ],
+  "step_order": 8,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

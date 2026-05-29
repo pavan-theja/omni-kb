@@ -1,0 +1,25 @@
+{
+  "card_types": {
+    "account_data_binding": 2,
+    "platform_account": 2
+  },
+  "counts": {
+    "cards": 4,
+    "edges": 21,
+    "semantic_mappings": 8
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 2,
+    "HAS_ACCOUNT_DATA_BINDING": 2,
+    "HAS_PLATFORM_ACCOUNT": 2,
+    "INCLUDES_PLATFORM_ACCOUNT": 2,
+    "PARTICIPATES_WITH_ACCOUNT": 5,
+    "USES_ACCOUNT_DATA_BINDING": 4,
+    "USES_PLATFORM": 2,
+    "USES_PLATFORM_CONTEXT": 2
+  },
+  "scope": [
+    "oms",
+    "shopify_d2c"
+  ]
+}

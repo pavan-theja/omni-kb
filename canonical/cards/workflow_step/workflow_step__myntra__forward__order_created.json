@@ -1,0 +1,51 @@
+{
+  "canonical_id": "workflow_step.myntra.forward.order_created",
+  "canonical_name": "order_created",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "documented_business_event": "Order Created",
+  "evidence_ids": [
+    "evidence.myntra.lifecycle",
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10095
+    },
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10095
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "order_created",
+  "process_id": "business_process.myntra.forward_transaction_lifecycle",
+  "review_status": "unreviewed",
+  "sequence": 1,
+  "source_card_id": "workflow_step.myntra.forward.order_created",
+  "source_column": "order_created_date",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10095,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_oms",
+  "status": "draft",
+  "summary": "Customer order is created in Myntra OMS using myntra_oms.order_created_date as the source timestamp.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

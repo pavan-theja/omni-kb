@@ -1,0 +1,63 @@
+{
+  "canonical_id": "relationship.unicommerce.to_osr.order_id_hash_prefix",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "coverage_note": "91.1% coverage / 1,337,542 matched orders; direct join only 4.9%",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/wms/unicommerce_operations.md.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.004.the_critical_join",
+    "ev.unicommerce.section.063.6_entity_relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.004.the_critical_join",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9414
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.063.6_entity_relationships",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9414
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_logic": "'#' || unicommerce.order_id = unicommerce_order_sales_report.order_id",
+  "name": "Order Id Hash Prefix",
+  "optional_fields": [
+    "relationship_type",
+    "cardinality",
+    "join_keys",
+    "normalization_rule",
+    "coverage",
+    "known_gaps",
+    "safe_join_usage"
+  ],
+  "relationship_name": "order_id_hash_prefix",
+  "review_status": "ready",
+  "source_card_id": "relationship.unicommerce.to_osr.order_id_hash_prefix",
+  "source_columns": [
+    "order_id"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9414,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.unicommerce",
+  "status": "draft",
+  "target_columns": [
+    "order_id"
+  ],
+  "target_table_id": "table.zs_observe.unicommerce_order_sales_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

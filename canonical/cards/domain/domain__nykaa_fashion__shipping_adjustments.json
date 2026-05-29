@@ -1,0 +1,42 @@
+{
+  "canonical_id": "domain.nykaa_fashion.shipping_adjustments",
+  "canonical_name": "Nykaa Fashion Shipping Charge Adjustments",
+  "card_type": "domain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 415
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_domain": true,
+  "marketplace_only": true,
+  "name": "Nykaa Fashion Shipping Charge Adjustments",
+  "platform_context_id": "platform_context.nykaa_fashion.in",
+  "review_status": "unreviewed",
+  "source_card_id": "domain.nykaa_fashion.shipping_adjustments",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 415,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Marketplace-side shipping true-up and freight revision semantics in nykaa_addition_charge.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

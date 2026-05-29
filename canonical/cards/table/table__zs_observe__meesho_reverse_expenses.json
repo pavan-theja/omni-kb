@@ -1,0 +1,76 @@
+{
+  "business_purpose": "Shipping/fee invoices (reverse)",
+  "canonical_id": "table.zs_observe.meesho_reverse_expenses",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.meesho_reverse_expenses.cancel_return_date",
+    "column.zs_observe.meesho_reverse_expenses.commission_gst",
+    "column.zs_observe.meesho_reverse_expenses.currency_type",
+    "column.zs_observe.meesho_reverse_expenses.financial_year",
+    "column.zs_observe.meesho_reverse_expenses.fixed_fee",
+    "column.zs_observe.meesho_reverse_expenses.fixed_fee_gst",
+    "column.zs_observe.meesho_reverse_expenses.group_level_id",
+    "column.zs_observe.meesho_reverse_expenses.identifier",
+    "column.zs_observe.meesho_reverse_expenses.is_active",
+    "column.zs_observe.meesho_reverse_expenses.meesho_mall_platformfee",
+    "column.zs_observe.meesho_reverse_expenses.meesho_mall_platformfee_gst",
+    "column.zs_observe.meesho_reverse_expenses.month_number",
+    "column.zs_observe.meesho_reverse_expenses.net_commission",
+    "column.zs_observe.meesho_reverse_expenses.order_date",
+    "column.zs_observe.meesho_reverse_expenses.other_logistics_charges",
+    "column.zs_observe.meesho_reverse_expenses.quantity",
+    "column.zs_observe.meesho_reverse_expenses.shipping_gst_18_percent",
+    "column.zs_observe.meesho_reverse_expenses.sub_order_num",
+    "column.zs_observe.meesho_reverse_expenses.sup_name",
+    "column.zs_observe.meesho_reverse_expenses.supplier_id",
+    "column.zs_observe.meesho_reverse_expenses.taxable_shipping",
+    "column.zs_observe.meesho_reverse_expenses.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "table card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "zs_observe.meesho_reverse_expenses",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 2438
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fully_qualified_name": "zs_observe.meesho_reverse_expenses",
+  "grain": "fee_or_charge_line",
+  "join_key_candidates": [
+    "sub_order_num"
+  ],
+  "name": "zs_observe.meesho_reverse_expenses",
+  "primary_key_candidates": [
+    "sub_order_num"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": "**0 (empty)**",
+  "schema": "zs_observe",
+  "scope_caveats": "Scope-like fields such as group_level_id/group_id/seller/supplier identifiers are columns or filters only, not account-binding cards.",
+  "semantic_module": "fees_and_charges",
+  "source_card_id": "table.zs_observe.meesho_reverse_expenses",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2438,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_section": "Table: Meesho Reverse Expenses — Table Knowledge Base",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "meesho_reverse_expenses",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

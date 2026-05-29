@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.meesho.050.7_4_effective_cost_per_delivered_order",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — 7.4 Effective Cost Per Delivered Order",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_4_effective_cost_per_delivered_order"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_4_effective_cost_per_delivered_order",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 17168
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Meesho query pattern — 7.4 Effective Cost Per Delivered Order",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.050.7_4_effective_cost_per_delivered_order",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17168,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_forward_expenses"
+  ],
+  "sql_template": "SELECT\n  supplier_id,\n  COUNT(*) AS orders,\n  SUM(taxable_shipping + shipping_gst_18_percent\n      + meesho_mall_platformfee + meesho_mall_platformfee_gst\n      + fixed_fee) AS total_platform_cost,\n  AVG(taxable_shipping + shipping_gst_18_percent\n      + meesho_mall_platformfee + meesho_mall_platformfee_gst) AS avg_cost_per_order\nFROM zs_observe.meesho_forward_expenses\nWHERE CAST(is_active AS VARCHAR) = 'true'\nGROUP BY supplier_id;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

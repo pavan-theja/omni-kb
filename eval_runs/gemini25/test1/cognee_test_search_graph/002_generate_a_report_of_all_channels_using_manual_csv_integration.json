@@ -1,0 +1,17 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "question": "Generate a report of all channels using Manual CSV integration.",
+  "question_index": 2,
+  "results": {
+    "GRAPH_COMPLETION": [
+      "The provided context does not contain information about 'Manual CSV integration' or any column that indicates the integration method for channels. Therefore, it is not possible to generate this report from the given data."
+    ]
+  },
+  "scoped_query": "Generate a report of all channels using Manual CSV integration.\n\nScope:\n- tenant: Mensa\n\nAnswer for SQL query construction. Return concise, source-grounded details:\n- relevant canonical ids and entity names\n- source tables with schema/table names\n- required columns, including join keys, filter columns, date columns, and amount columns\n- relationships or join paths between tables/accounts/platforms/workflows\n- metrics or formulas needed, including aggregation grain and deduplication rules\n- tenant/group/platform/account filters that must appear in SQL\n- assumptions, missing information, and any ambiguity\nIf useful, include a SQL skeleton, but do not invent columns or tables that are not in context.",
+  "search_types": [
+    "GRAPH_COMPLETION"
+  ]
+}

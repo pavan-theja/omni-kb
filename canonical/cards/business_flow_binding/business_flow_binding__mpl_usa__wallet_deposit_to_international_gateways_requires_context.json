@@ -1,0 +1,81 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_deposit",
+    "account_data_binding.mpl_usa.wallet_ledger.primary.mpl_oms_withdrawal",
+    "account_data_binding.mpl_usa.braintree.primary.braintree",
+    "account_data_binding.mpl_usa.skrill.primary.skrill"
+  ],
+  "active": false,
+  "binding_name": "MPL USA Wallet Deposit to International Gateways Requires Context",
+  "binding_type": "wallet_deposit_reconciliation_flow",
+  "business_process_ids": [
+    "business_process.wallet_deposit_capture"
+  ],
+  "business_scope_set_id": "business_scope_set.mpl_usa.international_gateways_requiring_context",
+  "canonical_id": "business_flow_binding.mpl_usa.wallet_deposit_to_international_gateways_requires_context",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/mpl_usa.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mpl_usa.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.braintree",
+    "table.zs_observe.mpl_oms_deposit",
+    "table.zs_observe.skrill"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.mpl_usa.mpl",
+  "money_flow_paths": [
+    "wallet_deposit_to_payin_gateway"
+  ],
+  "name": "Wallet Deposit To International Gateways Requires Context",
+  "notes": [
+    "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+  ],
+  "package_id": "mpl_usa_runtime_card_pack_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.mpl_usa.wallet_ledger.primary",
+      "required": true,
+      "role": "wallet_deposit_ledger"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_usa.braintree.primary",
+      "required": false,
+      "role": "payin_source_requires_context"
+    },
+    {
+      "platform_account_id": "platform_account.mpl_usa.skrill.primary",
+      "required": false,
+      "role": "payin_source_requires_context"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.wallet_deposit_to_payin"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "medium",
+  "source_documents": [
+    "MPL USA.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mpl_usa.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.mpl_usa",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

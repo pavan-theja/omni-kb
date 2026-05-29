@@ -1,0 +1,70 @@
+{
+  "account_data_binding_ids": [],
+  "active": false,
+  "binding_name": "Bear House Courier Reconciliation Requires Logistics Table Context",
+  "binding_type": "reconciliation_flow",
+  "business_process_ids": [],
+  "business_scope_set_id": "business_scope_set.bear_house_clothing.logistics_future_context",
+  "canonical_id": "business_flow_binding.bear_house_clothing.logistics_courier_reconciliation_future_context",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/bear_house_clothing.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bear_house_clothing.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.bear_house_clothing.bear_house",
+  "money_flow_paths": [
+    "shipment_to_freight_invoice",
+    "cod_delivery_to_courier_remittance"
+  ],
+  "name": "Logistics Courier Reconciliation Future Context",
+  "notes": [
+    "BlueDart and GoSwift files are configured but no current canonical table cards are available for active Account Data Binding."
+  ],
+  "package_id": "bear_house_clothing_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.bluedart_in.primary",
+      "required": true,
+      "role": "courier_invoice_or_settlement_source"
+    },
+    {
+      "platform_account_id": "platform_account.bear_house_clothing.goswift_in.primary",
+      "required": true,
+      "role": "courier_invoice_or_settlement_source"
+    }
+  ],
+  "reconciliation_profile_ids": [],
+  "review_status": "unreviewed",
+  "source_confidence": "source_confirmed_context_missing",
+  "source_documents": [
+    "Bear House Clothing Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "ajio_marketplace.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bear_house_clothing.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.bear_house_clothing",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

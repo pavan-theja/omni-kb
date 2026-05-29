@@ -1,0 +1,64 @@
+{
+  "base_tables": [],
+  "canonical_id": "metric_implementation.myntra_receivables.pending_receivables",
+  "canonical_name": "pending_receivables",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 8625
+    },
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 8625
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [],
+  "formula_expression": "SUM(COALESCE(pending_amount, 0)) GROUP BY dpd",
+  "formula_template_id": "formula_template.aging_bucket_sum",
+  "grain": "receivable_aging_bucket",
+  "implementation_scope": "myntra_receivables",
+  "marketplace_only": true,
+  "metric_id": "metric.pending_receivables",
+  "metric_pattern": "myntra_specific_executable_implementation",
+  "name": "pending_receivables",
+  "platform_code": "myntra",
+  "platform_context_id": "platform_context.myntra.in",
+  "required_filters": [
+    "group_level_id = <client_id>"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "metric_implementation.myntra_receivables.pending_receivables",
+  "source_columns": [
+    "pending_amount",
+    "dpd"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8625,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_ingest.myntra_receivables",
+  "status": "draft",
+  "summary": "SUM(pending_amount) GROUP BY dpd",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

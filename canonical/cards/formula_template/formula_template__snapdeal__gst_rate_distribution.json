@@ -1,0 +1,63 @@
+{
+  "canonical_id": "formula_template.snapdeal.gst_rate_distribution",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal formula pattern — GST Rate Distribution",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.7_5_gst_rate_distribution",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.7_5_gst_rate_distribution",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13337
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13337
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13337
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_sql": "SELECT\n  CAST(tax_igst_rate AS VARCHAR) AS igst_rate,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS gmv,\n  SUM(total_tax) AS tax_collected\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true\nGROUP BY tax_igst_rate\nORDER BY cnt DESC;",
+  "formula_text": "SELECT\n  CAST(tax_igst_rate AS VARCHAR) AS igst_rate,\n  COUNT(*) AS cnt,\n  SUM(charged_amount) AS gmv,\n  SUM(total_tax) AS tax_collected\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true\nGROUP BY tax_igst_rate\nORDER BY cnt DESC;",
+  "name": "Snapdeal formula pattern — GST Rate Distribution",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter",
+    "is_active_filter",
+    "transaction_type_scope",
+    "group_level_id_scope_column"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.snapdeal.gst_rate_distribution",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13337,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "sql_pattern_id": "sql.snapdeal.7_5_gst_rate_distribution",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

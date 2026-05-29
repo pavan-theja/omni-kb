@@ -1,0 +1,49 @@
+{
+  "business_effect": "cancelled cashback/offer impact is recorded as a negative debit-note amount",
+  "canonical_id": "state_transition.flipkart.cashback.forward_to_cancel",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_column": "cashback.transaction_type + cashback.document_type + cashback.document_sub_type",
+  "evidence_ids": [
+    "evidence.flipkart.cashback_schema"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.cashback_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5342
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "forward cashback credit",
+  "name": "Flipkart cashback.forward_to_cancel",
+  "process_id": "business_process.flipkart.cashback_credit_debit_note",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.flipkart.cashback.forward_to_cancel",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5342,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_state": "forward cancel + Debit Note + Cancellation",
+  "trigger": "order cancelled before delivery reverses cashback/offer credit",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_mapping": {
+    "to": {
+      "document_sub_type": "Cancellation",
+      "document_type": "Debit Note",
+      "transaction_type": "forward cancel"
+    }
+  }
+}

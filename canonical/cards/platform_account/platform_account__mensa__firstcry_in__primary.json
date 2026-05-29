@@ -1,0 +1,49 @@
+{
+  "account_name": "Mensa FirstCry Seller Account",
+  "account_type": "seller_account",
+  "active": true,
+  "canonical_id": "platform_account.mensa.firstcry_in.primary",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "platform_account card from raw/cleaned_v2/clients/mensa_business.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/mensa_business.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.mensa_brands",
+  "name": "Mensa FirstCry Seller Account",
+  "notes": [
+    "Client document confirms channel is configured, but no canonical vendor table/context markdown was provided in this package."
+  ],
+  "package_id": "mensa_business_hierarchy_runtime_cards_v0_1",
+  "platform_context_id": "platform_context.firstcry.in",
+  "platform_id": "platform.firstcry",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_confidence": null,
+  "source_documents": [
+    "Mensa Brand Technologies Private Limited.docx",
+    "Client Tables - Shopify.md",
+    "Cognee KB Design v4.md",
+    "myntra_marketplace.md",
+    "increff_operations.md",
+    "payment_gateway.md",
+    "logistics_reconciliation_patterns.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/mensa_business.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.mensa_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

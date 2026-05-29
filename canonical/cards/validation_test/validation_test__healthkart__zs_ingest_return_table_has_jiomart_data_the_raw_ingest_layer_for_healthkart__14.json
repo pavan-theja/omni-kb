@@ -1,0 +1,44 @@
+{
+  "assertion": "`zs_ingest` return table has JioMart data: The raw ingest layer for `healthkart_return` contains rows with `zen_sheet_name = 'jiomart oms'` — this is a pipeline mapping error. Do not query `zs_ingest.healthkart_return` for HealthKart analytics.",
+  "canonical_id": "validation_test.healthkart.zs_ingest_return_table_has_jiomart_data_the_raw_ingest_layer_for_healthkart.14",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "`zs_ingest` return table has JioMart data: The raw ingest layer for `healthkart_return` contains rows with `zen_sheet_name = 'jiomart oms'` — this is a pipeline mapping error. Do not query `zs_ingest.healthkart_return` for HealthKart analytics.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 8148
+    }
+  ],
+  "expected_result": "Parser output preserves or enforces this rule.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential incorrect card creation, missing evidence capture, or query misuse.",
+  "name": "Validate: `zs_ingest` return table has JioMart data: The raw ingest layer for `healthkart_",
+  "review_status": "ready",
+  "source_card_id": "validation_test.healthkart.zs_ingest_return_table_has_jiomart_data_the_raw_ingest_layer_for_healthkart.14",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8148,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "test_type": "semantic_guard",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

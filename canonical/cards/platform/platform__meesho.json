@@ -1,0 +1,43 @@
+{
+  "aliases": [
+    "Meesho"
+  ],
+  "canonical_id": "platform.meesho",
+  "canonical_name": "Meesho",
+  "card_type": "platform",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "platform card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 2054
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_category": "ecommerce_marketplace_or_marketplace_adjacent_vendor_doc",
+  "name": "Meesho",
+  "review_status": "ready",
+  "source_card_id": "platform.meesho",
+  "source_confidence": "high",
+  "source_documents": [
+    "Meesho Recon Doc.docx",
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2054,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

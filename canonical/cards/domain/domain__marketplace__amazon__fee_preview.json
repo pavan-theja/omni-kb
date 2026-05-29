@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "SKU-level fee estimates and expected-vs-actual fee comparison",
+  "canonical_id": "domain.marketplace.amazon.fee_preview",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain_key": "fee_preview",
+  "domain_scope": "SKU-level fee estimates and expected-vs-actual fee comparison",
+  "evidence_ids": [
+    "ev.amazon_fee_preview.purpose.001",
+    "ev.amazon_fee_preview.recon.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_fee_preview.purpose.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1189
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.recon.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1189
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon expected-fee preview",
+  "out_of_scope_guardrail": "no tenant/account/logistics/bank/ERP/statutory filing card creation",
+  "platform_context": "platform_context.amazon.in",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.amazon.fee_preview",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1189,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

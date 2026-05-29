@@ -1,0 +1,57 @@
+{
+  "account_name": "Rosenza Amazon Canada Seller Account",
+  "account_type": "marketplace_seller_account",
+  "active": true,
+  "canonical_id": "platform_account.rosenza_international_trading_llc.amazon_ca.primary",
+  "canonical_platform_status": "canonical",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "CAD"
+  ],
+  "default_currency": "CAD",
+  "description": "platform_account card from raw/cleaned_v2/clients/rosenza_international_trading_llc.json.",
+  "evidence_ids": [
+    "Amazon Canada configured: Settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "Amazon Canada configured: Settlement",
+      "source_doc": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.rosenza_international_trading_llc.mensa_brands",
+  "name": "Rosenza Amazon Canada Seller Account",
+  "notes": [
+    "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+  ],
+  "package_id": "client_runtime_binding_pack.rosenza_international_trading_llc.v0_1",
+  "platform_context_id": "platform_context.amazon.international",
+  "platform_id": "platform.amazon",
+  "region_or_market": "Canada",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_account_identifier_status": "not_provided_in_client_doc",
+  "source_confidence": null,
+  "source_documents": [
+    "Rosenza International Trading L.docx",
+    "amazon_marketplace.md",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": "Amazon Canada configured: Settlement",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.rosenza_international_trading_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

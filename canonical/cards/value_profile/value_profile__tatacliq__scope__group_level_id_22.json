@@ -1,0 +1,50 @@
+{
+  "canonical_id": "value_profile.tatacliq.scope.group_level_id_22",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.tatacliq_settlement.group_level_id",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq documented scope identifier profile",
+  "distribution_summary": "Documented source filter/scope value only; runtime account binding is external.",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.filters.mandatory",
+    "ev.tatacliq.tables.summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.filters.mandatory",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6010
+    },
+    {
+      "evidence_id": "ev.tatacliq.tables.summary",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6010
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq documented scope identifier profile",
+  "observed_values": [
+    "group_level_id = 22"
+  ],
+  "profile_kind": "scope_identifier_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.tatacliq.scope.group_level_id_22",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6010,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

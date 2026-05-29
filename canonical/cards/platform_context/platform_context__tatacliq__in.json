@@ -1,0 +1,59 @@
+{
+  "canonical_id": "platform_context.tatacliq.in",
+  "card_type": "platform_context",
+  "confidence": "curated",
+  "country_code": "IN",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency": "INR",
+  "description": "platform_context card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq India marketplace context",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.overview.background",
+    "ev.tatacliq.fulfilment.tship",
+    "ev.tatacliq.filters.mandatory"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.overview.background",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2605
+    },
+    {
+      "evidence_id": "ev.tatacliq.fulfilment.tship",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2605
+    },
+    {
+      "evidence_id": "ev.tatacliq.filters.mandatory",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2605
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fulfilment_models": [
+    "TSHIP"
+  ],
+  "marketplace_model": "curated_invite_only_phygital_marketplace",
+  "name": "TataCliq India marketplace context",
+  "platform_id": "platform.tatacliq",
+  "review_status": "ready",
+  "runtime_scope_policy": "group_level_id=22 is source-documented as a filter/value; actual user/account scope binding remains external.",
+  "source_card_id": "platform_context.tatacliq.in",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2605,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "tax_model": "India GST with e-commerce operator GSTIN/TCS context; marketplace-side tax amounts only",
+  "timezone": "Asia/Kolkata",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

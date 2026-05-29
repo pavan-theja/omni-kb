@@ -1,0 +1,92 @@
+{
+  "business_purpose": "Reverse OMS (returns/RTO/cancel)",
+  "canonical_id": "table.zs_observe.meesho_reverse",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.meesho_reverse.brand",
+    "column.zs_observe.meesho_reverse.cancel_date",
+    "column.zs_observe.meesho_reverse.cancel_return_date",
+    "column.zs_observe.meesho_reverse.charged_amount",
+    "column.zs_observe.meesho_reverse.charged_amount_excluding_tax",
+    "column.zs_observe.meesho_reverse.created_date",
+    "column.zs_observe.meesho_reverse.destination_state",
+    "column.zs_observe.meesho_reverse.end_customer_state_new",
+    "column.zs_observe.meesho_reverse.freight_charge",
+    "column.zs_observe.meesho_reverse.group_level_id",
+    "column.zs_observe.meesho_reverse.hsn",
+    "column.zs_observe.meesho_reverse.is_active",
+    "column.zs_observe.meesho_reverse.order_date",
+    "column.zs_observe.meesho_reverse.order_id",
+    "column.zs_observe.meesho_reverse.order_status",
+    "column.zs_observe.meesho_reverse.penalty_charges",
+    "column.zs_observe.meesho_reverse.sku_id",
+    "column.zs_observe.meesho_reverse.source_state",
+    "column.zs_observe.meesho_reverse.sub_order_num",
+    "column.zs_observe.meesho_reverse.tax_cgst_amount",
+    "column.zs_observe.meesho_reverse.tax_igst_amount",
+    "column.zs_observe.meesho_reverse.tax_sgst_amount",
+    "column.zs_observe.meesho_reverse.tcs_taxable_amount",
+    "column.zs_observe.meesho_reverse.total_tax",
+    "column.zs_observe.meesho_reverse.transaction_type"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "table card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "zs_observe.meesho_reverse",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 2410
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fully_qualified_name": "zs_observe.meesho_reverse",
+  "grain": "return_or_reverse_order_line",
+  "join_key_candidates": [
+    "sub_order_num",
+    "order_id"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.meesho.brand_level_return_rate",
+    "metric_impl.meesho.forward_vs_reverse_net_gmv",
+    "metric_impl.meesho.hsn_level_return_analysis",
+    "metric_impl.meesho.intra_state_vs_inter_state_returns",
+    "metric_impl.meesho.net_revenue_gmv_minus_returns",
+    "metric_impl.meesho.return_rate",
+    "metric_impl.meesho.return_rate_calculation",
+    "metric_impl.meesho.return_rto_financial_summary",
+    "metric_impl.meesho.sku_level_return_rate"
+  ],
+  "name": "zs_observe.meesho_reverse",
+  "primary_key_candidates": [
+    "sub_order_num"
+  ],
+  "review_status": "accepted",
+  "row_count_evidence": "938",
+  "schema": "zs_observe",
+  "schema_note": "V9 materializes key shared columns from the DOCX note that meesho_reverse has shared columns identical to meesho_sales, plus additional reverse columns.",
+  "scope_caveats": "Scope-like fields such as group_level_id/group_id/seller/supplier identifiers are columns or filters only, not account-binding cards.",
+  "semantic_module": "returns_reverse",
+  "source_card_id": "table.zs_observe.meesho_reverse",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2410,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_section": "Table: Meesho Reverse — Table Knowledge Base",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "meesho_reverse",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

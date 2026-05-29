@@ -1,0 +1,74 @@
+{
+  "aggregation_grain": "as defined by SQL/group-by or source table grain",
+  "base_tables": [],
+  "canonical_id": "metric_implementation.ajio.settlement_value_b2b_po_value.01",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4879
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4879
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true when applicable and documented"
+  ],
+  "formula_sql": "SELECT SUM(charged_amount) AS total_settlement\nFROM zs_observe.ajio_settlement\nWHERE is_active = true AND payment_status = 'PAID'",
+  "implementation_scope": "ajio",
+  "metric_id": "metric.settlement_value_b2b_po_value",
+  "metric_pattern": "platform_specific_implementation_of_generic_metric",
+  "name": "AJIO implementation — Settlement Value (B2B PO Value)",
+  "platform_code": "ajio",
+  "platform_specific_name": "Settlement Value (B2B PO Value)",
+  "required_filters": [
+    "is_active = true"
+  ],
+  "review_status": "ready",
+  "scope_note": "payment_status = 'PAID' gives realized paid settlement; omit that filter only for total settlement/liability reporting.",
+  "source_card_id": "metric_implementation.ajio.settlement_value_b2b_po_value.01",
+  "source_columns": [
+    "ajio_settlement",
+    "charged_amount",
+    "total_settlement",
+    "zs_observe",
+    "is_active",
+    "payment_status"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4879,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "zs_observe.ajio_settlement"
+  ],
+  "sql_ref": "sql.ajio.settlement_value_b2b_po_value",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

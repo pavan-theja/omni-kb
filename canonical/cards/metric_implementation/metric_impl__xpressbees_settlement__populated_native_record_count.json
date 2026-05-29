@@ -1,0 +1,92 @@
+{
+  "allowed_dimensions": [
+    "courier_partner",
+    "date",
+    "awb"
+  ],
+  "allowed_grains": [
+    "awb",
+    "order",
+    "day",
+    "month",
+    "courier_partner",
+    "batch where safe"
+  ],
+  "applicability": "platform=xpressbees; table=zs_observe.xpressbees_settlement; account filters via Account Data Binding only",
+  "base_tables": [
+    "table.zs_observe.xpressbees_settlement"
+  ],
+  "canonical_id": "metric_impl.xpressbees_settlement.populated_native_record_count",
+  "card_type": "metric_implementation",
+  "caveats": "Native XpressBees table is sparse; fallback to Shiprocket settlement for Xpressbees Air when answering courier-level COD.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "dependent_metrics": [],
+  "description": "Populated Native Record Count implementation for XpressBees using xpressbees_settlement.",
+  "document_id": "xpressbees_logistics_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/xpressbees_logistics.md",
+      "source_line": 1732
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/xpressbees_logistics.md",
+      "source_line": 1732
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/xpressbees_logistics.md",
+      "source_line": 1732
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_description": "COUNT_IF(service_type IS NOT NULL OR shipment_status IS NOT NULL OR net_payment IS NOT NULL)",
+  "formula_sql": "COUNT_IF(service_type IS NOT NULL OR shipment_status IS NOT NULL OR net_payment IS NOT NULL)",
+  "formula_template_id": "formula_template.logistics.filtered_sum_amount",
+  "implementation_name": "XpressBees Populated Native Record Count",
+  "implementation_scope": "xpressbees_settlement",
+  "metric_id": "metric.populated_native_record_count",
+  "metric_pattern": "low_confidence_filtered_sum",
+  "name": "XpressBees Populated Native Record Count Implementation",
+  "platform_code": "xpressbees",
+  "precision": "2_decimal_places",
+  "recommended_date_columns": [
+    "transaction_date",
+    "delivery_date"
+  ],
+  "required_columns": [
+    "column.zs_observe.xpressbees_settlement.service_type",
+    "column.zs_observe.xpressbees_settlement.shipment_status",
+    "column.zs_observe.xpressbees_settlement.net_payment"
+  ],
+  "review_status": "unreviewed",
+  "semantic_filters": [],
+  "source_card_id": "metric_impl.xpressbees_settlement.populated_native_record_count",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1732,
+  "source_path": "raw/cleaned_v2/logistics/xpressbees_logistics.md",
+  "source_status": "active",
+  "status": "active",
+  "unit": "currency/count/percentage/days_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

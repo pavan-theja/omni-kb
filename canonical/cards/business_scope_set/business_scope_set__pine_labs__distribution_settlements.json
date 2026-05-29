@@ -1,0 +1,87 @@
+{
+  "active": true,
+  "canonical_id": "business_scope_set.pine_labs.distribution_settlements",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Gift-card distributor and fintech settlement accounts.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.pine_labs.pine_labs_private_limited",
+  "name": "Distribution Settlements",
+  "notes": [],
+  "package_id": "pine_labs_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_ids": [
+    "platform_account.pine_labs.amazon_gc.primary",
+    "platform_account.pine_labs.flipkart_distribution.primary",
+    "platform_account.pine_labs.paytm_giftcard.primary",
+    "platform_account.pine_labs.phonepe_giftcard.primary",
+    "platform_account.pine_labs.nearby.primary",
+    "platform_account.pine_labs.navi.primary",
+    "platform_account.pine_labs.tata_digital.primary",
+    "platform_account.pine_labs.amica_technologies.primary",
+    "platform_account.pine_labs.first_pay.primary",
+    "platform_account.pine_labs.red_giraffe.primary",
+    "platform_account.pine_labs.gullak.primary",
+    "platform_account.pine_labs.maximize_pay.primary",
+    "platform_account.pine_labs.dreamplug.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.amazon.in.giftcard_distribution",
+    "platform_context.flipkart.in",
+    "platform_context.paytm.in.giftcard_distribution",
+    "platform_context.phonepe.in.giftcard_distribution",
+    "platform_context.nearby_marketplace.in",
+    "platform_context.navi.in",
+    "platform_context.tata_digital.in",
+    "platform_context.amica_technologies.in",
+    "platform_context.first_pay.in",
+    "platform_context.red_giraffe.in",
+    "platform_context.gullak_technologies.in",
+    "platform_context.maximize_pay.in",
+    "platform_context.dreamplug.in"
+  ],
+  "platform_ids": [
+    "platform.amazon",
+    "platform.flipkart",
+    "platform.paytm",
+    "platform.phonepe",
+    "platform.nearby_marketplace",
+    "platform.navi",
+    "platform.tata_digital",
+    "platform.amica_technologies",
+    "platform.first_pay",
+    "platform.red_giraffe",
+    "platform.gullak_technologies",
+    "platform.maximize_pay",
+    "platform.dreamplug"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Pine distribution partner settlements",
+  "scope_type": "giftcard_distribution_settlements",
+  "source_confidence": null,
+  "source_documents": [
+    "Pine Labs.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "flipkart_marketplace.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.pine_labs",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

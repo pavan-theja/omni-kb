@@ -1,0 +1,109 @@
+{
+  "banking_only": true,
+  "canonical_id": "business_process.bank_statement.payment_gateway_to_bank_reconciliation",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "domain": "domain.banking.bank_statement.settlement_reconciliation",
+  "end_state": "bank credit confirmed or mismatch identified",
+  "evidence_ids": [
+    "ev.bank_statement.overview.001",
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.overview.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11390
+    },
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11390
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "bank_reference",
+    "bic",
+    "cheque__no__ref__no_",
+    "cheque_no_ref_no",
+    "chq__ref_no_",
+    "chqno",
+    "created_date",
+    "credit_amount",
+    "current_ledger_as_at",
+    "customer_reference",
+    "date",
+    "debit_amount",
+    "deposit_amt_inr",
+    "description",
+    "dr_cr",
+    "iban",
+    "invoice_id",
+    "journal",
+    "narration",
+    "narrative",
+    "payment_details",
+    "post_date",
+    "postdate",
+    "posted_date",
+    "reference_number",
+    "settlement_date",
+    "settlement_id",
+    "tran_id",
+    "trancode",
+    "trandate",
+    "transaction_amount",
+    "transaction_date",
+    "transaction_id",
+    "transaction_particulars",
+    "transaction_posted_date_and_time",
+    "transaction_remarks",
+    "transaction_type",
+    "trn_type",
+    "user_narration",
+    "value_date",
+    "withdrawal_amt_inr"
+  ],
+  "name": "Payment gateway settlement to bank credit reconciliation",
+  "out_of_scope_external_steps": [
+    "tenant/account selection",
+    "payment gateway table creation",
+    "ERP ledger posting",
+    "runtime SQL execution"
+  ],
+  "participating_tables": [
+    "table.zs_ingest.hdfc_bank_settlement",
+    "table.zs_ingest.axis_bank_settlement",
+    "table.zs_ingest.icici_bank_global",
+    "table.zs_ingest.idfc_bank",
+    "table.zs_ingest.citi_bank",
+    "table.zs_ingest.hsbc_bank",
+    "table.zs_ingest.nbf_bank"
+  ],
+  "platform_context": "bank_statement_multi_platform",
+  "process_description": "Payment gateway settlement to bank credit reconciliation: gateway settlement created -> bank credit confirmed or mismatch identified",
+  "process_key": "payment_gateway_to_bank_reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "business_process.bank_statement.payment_gateway_to_bank_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11390,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "start_state": "gateway settlement created",
+  "status": "active",
+  "trigger_event": "gateway settlement created",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

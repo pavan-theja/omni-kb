@@ -1,0 +1,59 @@
+{
+  "canonical_id": "workflow_step.ajio.forward_flow_order_delivery_settlement.delivered_order_revenue_scope",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_columns": [
+    "column.zs_observe.ajio_oms.order_status",
+    "column.zs_observe.ajio_oms.charged_amount"
+  ],
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.059_important_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5464
+    },
+    {
+      "evidence_id": "evidence.ajio.059_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5464
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Delivered order becomes revenue scope",
+  "process_id": "business_process.ajio.forward_flow_order_delivery_settlement",
+  "required_filter": "order_status = 'Delivered'",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.ajio.forward_flow_order_delivery_settlement.delivered_order_revenue_scope",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.059_important_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5464,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "source_table_ids": [
+    "table.zs_observe.ajio_oms"
+  ],
+  "status": "draft",
+  "step_description": "Delivered OMS orders use ajio_oms.charged_amount as customer selling-price revenue; Cancelled rows have charged_amount = 0 and are excluded from revenue.",
+  "step_key": "delivered_order_revenue_scope",
+  "step_order": 3,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

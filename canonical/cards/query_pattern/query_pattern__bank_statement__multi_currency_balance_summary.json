@@ -1,0 +1,68 @@
+{
+  "banking_only": true,
+  "canonical_id": "query_pattern.bank_statement.multi_currency_balance_summary",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.analysis_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.analysis_patterns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 14896
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_by_options": [
+    "date",
+    "settlement_date",
+    "currency",
+    "reference",
+    "bank_table",
+    "transaction_type",
+    "payment_mode"
+  ],
+  "join_requirements": "pre-aggregate external settlement/payout rows before joining to bank references",
+  "name": "Multi-currency balance summary",
+  "natural_language_patterns": [
+    "HSBC balance by currency",
+    "Citi credit debit by currency",
+    "foreign currency bank summary"
+  ],
+  "primary_metric": "metric.bank_statement.latest_balance",
+  "query_intent": "Multi-currency balance summary",
+  "query_logic": "resolve table-specific direction and amount columns, apply standard filter, aggregate to requested grain, optionally reconcile by reference/amount/date/currency",
+  "required_filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "review_status": "accepted",
+  "scope_policy": "generic bank semantics only; account filters are supplied by runtime AccountDataBinding",
+  "source_card_id": "query_pattern.bank_statement.multi_currency_balance_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14896,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "table.zs_ingest.hsbc_bank",
+    "table.zs_ingest.citi_bank"
+  ],
+  "sql_ref": "sql.bank_statement.multi_currency_summary",
+  "status": "active",
+  "time_basis": "use source-specific recommended date columns; avoid raw text dates unless cast/validated",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "uses_reconciliation_profile": "reconciliation_profile.international_bank_reference_match"
+}

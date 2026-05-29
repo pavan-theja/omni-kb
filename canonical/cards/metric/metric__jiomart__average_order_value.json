@@ -1,0 +1,47 @@
+{
+  "business_definition": "Average charged_amount for delivered forward OMS rows.",
+  "canonical_id": "metric.jiomart.average_order_value",
+  "card_type": "metric",
+  "colloquial_names": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "INR",
+  "description": "Average charged_amount for delivered forward OMS rows.",
+  "display_name": "Average Order Value",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.jiomart.orders",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_3_average_order_value_aov"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_3_average_order_value_aov",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10387
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.jiomart.average_order_value"
+  ],
+  "metric_family": "revenue",
+  "name": "Average Order Value",
+  "review_status": "ready",
+  "source_card_id": "metric.jiomart.average_order_value",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10387,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

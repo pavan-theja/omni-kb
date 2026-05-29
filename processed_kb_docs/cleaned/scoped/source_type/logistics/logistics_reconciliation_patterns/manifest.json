@@ -1,0 +1,53 @@
+{
+  "card_types": {
+    "column": 5,
+    "execution_constraint_set": 10,
+    "matching_logic": 15,
+    "mismatch_category": 49,
+    "output_contract": 5,
+    "query_pattern": 31,
+    "reconciliation_profile": 7,
+    "reconciliation_side": 14,
+    "reconciliation_unit": 26,
+    "reconciliation_variant": 7,
+    "relationship": 5,
+    "rule": 44,
+    "table": 1,
+    "validation_test": 44
+  },
+  "counts": {
+    "cards": 263,
+    "documents": 1,
+    "edges": 684,
+    "review_items": 1
+  },
+  "edge_types": {
+    "APPLIES_TO_QUERY_PATTERN": 29,
+    "BELONGS_TO_RECONCILIATION_PROFILE": 14,
+    "BELONGS_TO_TABLE": 5,
+    "HAS_COLUMN": 5,
+    "HAS_MISMATCH_CATEGORY": 28,
+    "HAS_RECONCILIATION_PROFILE": 7,
+    "HAS_RECONCILIATION_SIDE": 14,
+    "HAS_RELATIONSHIP": 10,
+    "HAS_VALIDATION_TEST": 62,
+    "INCLUDES_RULE": 120,
+    "INCLUDES_VALIDATION_TEST": 120,
+    "PRODUCES_METRIC": 53,
+    "REQUIRES_RULE": 61,
+    "SOURCE_TABLE": 5,
+    "SUPPORTS_PROCESS": 7,
+    "SUPPORTS_RECONCILIATION_PROFILE": 7,
+    "TARGET_TABLE": 5,
+    "USES_MATCHING_LOGIC": 7,
+    "USES_OUTPUT_CONTRACT": 31,
+    "USES_RECONCILIATION_PROFILE": 29,
+    "USES_SOURCE_COLUMN": 5,
+    "USES_TABLE": 55,
+    "USES_TARGET_COLUMN": 5
+  },
+  "scope": [
+    "logistics",
+    "logistics_reconciliation_patterns"
+  ]
+}

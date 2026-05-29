@@ -1,0 +1,65 @@
+{
+  "business_definition": "Coverage of OSR AWB/tracking other_id after prefixed order join",
+  "canonical_id": "metric.unicommerce.awb_enrichment_coverage",
+  "card_type": "metric",
+  "colloquial_names": [
+    "shipment tracking coverage",
+    "AWB availability"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order / SKU line / shipment line depending implementation",
+  "description": "Coverage of OSR AWB/tracking other_id after prefixed order join",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.044.other_id_awb_format_examples",
+    "ev.unicommerce.section.027.12_data_quality_observations_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.044.other_id_awb_format_examples",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9878
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.027.12_data_quality_observations_known_issues",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9878
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.unicommerce.awb_enrichment_coverage.unicommerce_v10"
+  ],
+  "metric_name": "AWB enrichment coverage",
+  "name": "Awb Enrichment Coverage",
+  "optional_fields": [
+    "colloquial_names",
+    "metric_family",
+    "grain",
+    "default_filters",
+    "business_interpretation",
+    "benchmarks",
+    "exclusions",
+    "dependencies"
+  ],
+  "review_status": "ready",
+  "source_card_id": "metric.unicommerce.awb_enrichment_coverage",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9878,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

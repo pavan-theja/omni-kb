@@ -1,0 +1,59 @@
+{
+  "base_tables": [],
+  "canonical_id": "metric_impl.increff.warehouse_dispatch_count",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff warehouse throughput",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.087.7_4_warehouse_dispatch_distribution"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.087.7_4_warehouse_dispatch_distribution",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7840
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "COUNT(*) by source_gst_id/source_city",
+  "formula_template_id": "formula_template.increff.warehouse_dispatch_count",
+  "implementation_scope": "increff",
+  "implementation_status": "executable_against_documented_columns",
+  "metric_id": "metric.operations.warehouse_dispatch_count",
+  "name": "Increff warehouse throughput",
+  "platform_code": "increff",
+  "required_filters": "is_active = true; order_status = COMPLETED",
+  "review_status": "ready",
+  "source_card_id": "metric_impl.increff.warehouse_dispatch_count",
+  "source_columns": [
+    "column.zs_observe.increff_sales.source_gst_id",
+    "column.zs_observe.increff_sales.source_city",
+    "column.zs_observe.increff_sales.order_status",
+    "column.zs_observe.increff_sales.charged_amount",
+    "column.zs_observe.increff_sales.sku_id",
+    "column.zs_observe.increff_sales.brand",
+    "column.zs_observe.increff_sales.sales_channel",
+    "column.zs_observe.increff_sales.is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7840,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.increff_sales"
+  ],
+  "sql_ref": "sql_pattern.increff.7_4_warehouse_dispatch_distribution",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

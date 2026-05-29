@@ -1,0 +1,65 @@
+{
+  "business_definition": "Sales, returns, cancels grouped by source_gst_id/source_gst_name",
+  "canonical_id": "metric.unicommerce.warehouse_throughput",
+  "card_type": "metric",
+  "colloquial_names": [
+    "warehouse volume",
+    "warehouse order movement"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order / SKU line / shipment line depending implementation",
+  "description": "Sales, returns, cancels grouped by source_gst_id/source_gst_name",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.008.6_warehouse_and_fulfilment_network",
+    "ev.unicommerce.section.072.7_6_warehouse_throughput"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.008.6_warehouse_and_fulfilment_network",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 10382
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.072.7_6_warehouse_throughput",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 10382
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.unicommerce.warehouse_throughput.unicommerce_v10"
+  ],
+  "metric_name": "Warehouse throughput",
+  "name": "Warehouse Throughput",
+  "optional_fields": [
+    "colloquial_names",
+    "metric_family",
+    "grain",
+    "default_filters",
+    "business_interpretation",
+    "benchmarks",
+    "exclusions",
+    "dependencies"
+  ],
+  "review_status": "ready",
+  "source_card_id": "metric.unicommerce.warehouse_throughput",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10382,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

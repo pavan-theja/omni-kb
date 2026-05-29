@@ -1,0 +1,83 @@
+{
+  "aliases": [
+    "BNPL fees",
+    "provider fee",
+    "merchant fee"
+  ],
+  "business_concepts": [
+    "bnpl",
+    "fee",
+    "settlement"
+  ],
+  "business_definition": "Fees deducted by BNPL/deferred payment providers from settlement proceeds.",
+  "canonical_id": "metric.bnpl_fee_amount",
+  "card_type": "metric",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_aggregation": "sum",
+  "default_grain": "provider_batch_or_transaction",
+  "description": "Provider fee amount deducted from BNPL/deferred payment settlements where fee columns are documented.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "domain_ids": [
+    "domain.payment_gateway.bnpl"
+  ],
+  "evidence_ids": [
+    "evidence.pg.affirm",
+    "evidence.pg.afterpay",
+    "evidence.pg.klarna",
+    "evidence.pg.simpl"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.affirm",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 49762
+    },
+    {
+      "evidence_id": "evidence.pg.afterpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 49762
+    },
+    {
+      "evidence_id": "evidence.pg.klarna",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 49762
+    },
+    {
+      "evidence_id": "evidence.pg.simpl",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 49762
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementations": [],
+  "manifest_checks": [
+    "domain_common_metric_reference_repaired",
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_name": "BNPL Fee Amount",
+  "metric_type": "amount",
+  "name": "BNPL Fee Amount",
+  "polarity": "lower_is_better",
+  "review_status": "accepted",
+  "source_card_id": "metric.bnpl_fee_amount",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 49762,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "unit": "source_currency",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,60 @@
+{
+  "banking_only": true,
+  "canonical_id": "formula.bank_statement.gateway_to_bank_discrepancy",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.standard_filter.001",
+    "ev.bank_statement.amount_quality.001",
+    "ev.bank_statement.direction_reference.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.standard_filter.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11197
+    },
+    {
+      "evidence_id": "ev.bank_statement.amount_quality.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11197
+    },
+    {
+      "evidence_id": "ev.bank_statement.direction_reference.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 11197
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "bank_amount - gateway_amount",
+  "formula_name": "gateway_to_bank_discrepancy",
+  "inputs": [
+    "bank_amount",
+    "gateway_amount"
+  ],
+  "name": "gateway_to_bank_discrepancy",
+  "review_status": "accepted",
+  "semantic_constraints": [
+    "Compares bank credited amount to external settlement amount after pre-aggregation."
+  ],
+  "sign_handling": "source-sign preserving until direction formula is explicitly applied",
+  "source_card_id": "formula.bank_statement.gateway_to_bank_discrepancy",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11197,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

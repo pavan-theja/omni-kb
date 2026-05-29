@@ -1,0 +1,65 @@
+{
+  "canonical_id": "value_profile.shopify.financial_status",
+  "card_type": "value_profile",
+  "column_names": [
+    "financial_status"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "financial status",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.financial_status.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.financial_status.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2105
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "financial status",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.shopify.financial_status",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2105,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.shopify_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "values_or_known_values": [
+    {
+      "meaning": "Prepaid / digital payment collected",
+      "value": "paid"
+    },
+    {
+      "meaning": "COD cash not yet collected / remitted",
+      "value": "pending"
+    },
+    {
+      "meaning": "PPCOD partial prepaid plus COD balance",
+      "value": "partially_paid"
+    },
+    {
+      "meaning": "Cancelled before shipment",
+      "value": "voided"
+    },
+    {
+      "meaning": "Refunded payment state",
+      "value": "refunded"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "RAG_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = 22",
+          "sales_channel IS NOT NULL"
+        ],
+        "joins": "No joins needed as multi-channel sales and logistics cost metrics are modeled within the single zs_observe.increff_sales table.",
+        "metric_logic": {
+          "aggregation_grain": "sales_channel",
+          "deduplication_rule": "GROUP BY sales_channel",
+          "denominator": "SUM(selling_price)",
+          "formula": "SUM(shipping_cost) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)",
+          "numerator": "SUM(shipping_cost) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)"
+        },
+        "missing_or_ambiguous": "None",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "zs_observe.increff_returns",
+          "zs_observe.amazon_settlement",
+          "zs_observe.meesho_forward_expenses"
+        ],
+        "required_fields": [
+          {
+            "field": "sales_channel",
+            "reason": "Identifies the marketplace channel.",
+            "role": "Channel Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Filters transactions to Mensa Brands (group_level_id = 22).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "channel_order_id",
+            "reason": "Used to compute distinct order volumes for density calculations.",
+            "role": "Order Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "selling_price",
+            "reason": "Aggregated total sales value per channel.",
+            "role": "Revenue Metric",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "shipping_cost",
+            "reason": "Inferred column representing logistics complexity expense.",
+            "role": "Inferred Cost Column",
+            "selected?": "Selected",
+            "table": "zs_observe.increff_sales"
+          },
+          {
+            "field": "return_status",
+            "reason": "Inferred status to apply reverse-logistics complexity penalty weights.",
+            "role": "Inferred Quality Column",
+            "selected?": "Selected",
+            "table": "zs_observe.increff_sales"
+          }
+        ],
+        "required_tables": [
+          {
+            "field": "zs_observe.increff_sales",
+            "reason": "Consolidates operational data across marketplaces, allowing marketplace-level profitability and complexity cost analysis.",
+            "role": "Multi-channel sales transactions table",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": "zs_observe.increff_sales",
+        "sql_skeleton": "SELECT sales_channel AS marketplace, COUNT(DISTINCT channel_order_id) AS total_orders, SUM(TRY_CAST(selling_price AS DOUBLE)) AS total_revenue, SUM(TRY_CAST(shipping_cost AS DOUBLE)) AS forward_logistics_cost, SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END) AS reverse_complexity_cost, (SUM(TRY_CAST(shipping_cost AS DOUBLE)) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)) AS estimated_operational_cost, (SUM(TRY_CAST(shipping_cost AS DOUBLE)) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)) * 100.0 / NULLIF(SUM(TRY_CAST(selling_price AS DOUBLE)), 0) AS operational_cost_ratio FROM zs_observe.increff_sales WHERE group_level_id = 22 AND sales_channel IS NOT NULL GROUP BY 1 ORDER BY estimated_operational_cost DESC;"
+      }
+    ]
+  },
+  "question": "Design a profitability analysis report estimating operational complexity cost per marketplace.",
+  "question_index": 18,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\"selected_source\": \"zs_observe.increff_sales\", \"rejected_sources\": [\"zs_observe.increff_returns\", \"zs_observe.amazon_settlement\", \"zs_observe.meesho_forward_expenses\"], \"required_tables\": [{\"field\": \"zs_observe.increff_sales\", \"role\": \"Multi-channel sales transactions table\", \"selected?\": \"Yes\", \"reason\": \"Consolidates operational data across marketplaces, allowing marketplace-level profitability and complexity cost analysis.\"}], \"required_fields\": [{\"field\": \"sales_channel\", \"role\": \"Channel Identifier\", \"selected?\": \"Yes\", \"reason\": \"Identifies the marketplace channel.\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"group_level_id\", \"role\": \"Filter Column\", \"selected?\": \"Yes\", \"reason\": \"Filters transactions to Mensa Brands (group_level_id = 22).\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"channel_order_id\", \"role\": \"Order Identifier\", \"selected?\": \"Yes\", \"reason\": \"Used to compute distinct order volumes for density calculations.\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"selling_price\", \"role\": \"Revenue Metric\", \"selected?\": \"Yes\", \"reason\": \"Aggregated total sales value per channel.\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"shipping_cost\", \"role\": \"Inferred Cost Column\", \"selected?\": \"Selected\", \"reason\": \"Inferred column representing logistics complexity expense.\", \"table\": \"zs_observe.increff_sales\"}, {\"field\": \"return_status\", \"role\": \"Inferred Quality Column\", \"selected?\": \"Selected\", \"reason\": \"Inferred status to apply reverse-logistics complexity penalty weights.\", \"table\": \"zs_observe.increff_sales\"}], \"rejected_or_ambiguous_fields\": [], \"metric_logic\": {\"formula\": \"SUM(shipping_cost) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)\", \"numerator\": \"SUM(shipping_cost) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)\", \"denominator\": \"SUM(selling_price)\", \"aggregation_grain\": \"sales_channel\", \"deduplication_rule\": \"GROUP BY sales_channel\"}, \"filters\": [\"group_level_id = 22\", \"sales_channel IS NOT NULL\"], \"joins\": \"No joins needed as multi-channel sales and logistics cost metrics are modeled within the single zs_observe.increff_sales table.\", \"missing_or_ambiguous\": \"None\", \"sql_skeleton\": \"SELECT sales_channel AS marketplace, COUNT(DISTINCT channel_order_id) AS total_orders, SUM(TRY_CAST(selling_price AS DOUBLE)) AS total_revenue, SUM(TRY_CAST(shipping_cost AS DOUBLE)) AS forward_logistics_cost, SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END) AS reverse_complexity_cost, (SUM(TRY_CAST(shipping_cost AS DOUBLE)) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)) AS estimated_operational_cost, (SUM(TRY_CAST(shipping_cost AS DOUBLE)) + SUM(CASE WHEN return_status = 'RETURNED' THEN 120.0 ELSE 0.0 END)) * 100.0 / NULLIF(SUM(TRY_CAST(selling_price AS DOUBLE)), 0) AS operational_cost_ratio FROM zs_observe.increff_sales WHERE group_level_id = 22 AND sales_channel IS NOT NULL GROUP BY 1 ORDER BY estimated_operational_cost DESC;\"}"
+    ]
+  },
+  "scoped_query": "Design a profitability analysis report estimating operational complexity cost per marketplace.\n\nScope:\n- platform account: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Default to a single source table or single relationship path.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nResponse Format:\nReturn a single answer string containing one valid JSON object.\nDo not wrap it in Markdown or code fences.\nThe JSON object must be emitted as plain text, not as a nested object under a content key.\n\nThe JSON object must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"required_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "RAG_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 20.82,
+    "search_seconds": {
+      "RAG_COMPLETION": 20.82
+    },
+    "started_at": "2026-05-28T10:16:04+00:00"
+  }
+}

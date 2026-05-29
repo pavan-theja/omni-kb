@@ -1,0 +1,61 @@
+{
+  "amount_semantics": null,
+  "business_concepts": [],
+  "business_meaning": "Gateway identifier",
+  "canonical_id": "column.zs_observe.razorpay_payin.payment_gateway",
+  "card_type": "column",
+  "column_name": "payment_gateway",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "Text",
+  "default_aggregation": "none",
+  "description": "Gateway identifier",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 11085
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.razorpay_payin.payment_gateway",
+  "quality_notes": [],
+  "review_status": "accepted",
+  "semantic_roles": [
+    "attribute"
+  ],
+  "semantic_type": "source_attribute",
+  "sign_convention": "not_applicable",
+  "source_card_id": "column.zs_observe.razorpay_payin.payment_gateway",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11085,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.razorpay_payin",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usable_for_filtering": false,
+  "usable_for_grouping": false,
+  "usable_for_joining": false,
+  "usable_for_metrics": false,
+  "usable_for_reconciliation": false,
+  "value_profile_id": null
+}

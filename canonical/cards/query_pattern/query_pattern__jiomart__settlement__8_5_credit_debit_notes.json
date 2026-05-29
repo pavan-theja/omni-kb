@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.settlement.8_5_credit_debit_notes",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 8.5 Credit / Debit Notes",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.8_5_credit_debit_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.8_5_credit_debit_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13093
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 8.5 Credit / Debit Notes",
+  "natural_language_patterns": [
+    "8.5 Credit / Debit Notes"
+  ],
+  "output_contract_id": "output_contract.jiomart.settlement_event_summary",
+  "primary_metric_id": "metric.jiomart.credit_debit_note_impact",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.settlement.8_5_credit_debit_notes",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13093,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "sql_ref": "sql.jiomart.settlement.8_5_credit_debit_notes",
+  "sql_template": "SELECT\n  transaction_type, event, accountable_type,\n  COUNT(*) AS cnt,\n  SUM(settled_amount) AS total\nFROM zs_observe.jiomart_settlement\nWHERE is_active = true\n  AND transaction_type IN ('Credit Note', 'Debit Note', 'Service Invoice', 'Bill Tds Refund')\nGROUP BY 1, 2, 3;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

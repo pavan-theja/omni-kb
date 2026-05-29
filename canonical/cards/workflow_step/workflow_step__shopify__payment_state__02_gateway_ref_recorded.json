@@ -1,0 +1,49 @@
+{
+  "business_process_id": "business_process.shopify.payment_state_classification",
+  "canonical_id": "workflow_step.shopify.payment_state.02_gateway_ref_recorded",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "02_gateway_ref_recorded",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.order_grain.001",
+    "ev.shopify.shiprocket_join.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.order_grain.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2968
+    },
+    {
+      "evidence_id": "ev.shopify.shiprocket_join.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2968
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "materiality": "source_specific_oms_semantic_step",
+  "name": "02_gateway_ref_recorded",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.shopify.payment_state.02_gateway_ref_recorded",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2968,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "payment_id/payment_references/payment_mode note payment references and gateway labels without creating PG account cards.",
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

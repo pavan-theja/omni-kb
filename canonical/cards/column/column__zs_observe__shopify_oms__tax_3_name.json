@@ -1,0 +1,55 @@
+{
+  "canonical_id": "column.zs_observe.shopify_oms.tax_3_name",
+  "card_type": "column",
+  "column_name": "tax_3_name",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Third tax component name.",
+  "display_name": "tax_3_name",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.schema.oms.001",
+    "ev.shopify.schema.extended.001",
+    "ev.shopify.data_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.schema.oms.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 1530
+    },
+    {
+      "evidence_id": "ev.shopify.schema.extended.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 1530
+    },
+    {
+      "evidence_id": "ev.shopify.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 1530
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "tax_3_name",
+  "review_status": "accepted",
+  "semantic_role": "tax_component",
+  "source_card_id": "column.zs_observe.shopify_oms.tax_3_name",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1530,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.shopify_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

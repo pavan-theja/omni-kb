@@ -1,0 +1,41 @@
+{
+  "assertion": "Do not create tenant, group, platform account, account data binding, business scope/flow, logistics, bank, payment gateway, ERP/accounting, or statutory filing cards from this document.",
+  "canonical_id": "validation_test.meesho.marketplace_only_boundary",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Do not create tenant, group, platform account, account data binding, business scope/flow, logistics, bank, payment gateway, ERP/accounting, or statutory filing cards from this document.",
+  "display_name": "Meesho validation — marketplace only boundary",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 17581
+    }
+  ],
+  "expected_result": "Parser emits marketplace-only cards and preserves source filters/sign/join semantics.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential out-of-scope card leakage or deterministic parsing ambiguity.",
+  "name": "Meesho validation — marketplace only boundary",
+  "review_status": "ready",
+  "source_card_id": "validation_test.meesho.marketplace_only_boundary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17581,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "semantic_guardrail",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

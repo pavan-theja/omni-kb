@@ -1,0 +1,41 @@
+{
+  "canonical_id": "workflow_step.walmart.forward.net_payout_computed",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.business_model.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.business_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4356
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Computed payout from settlement fields",
+  "notes": "Computed payout from settlement fields",
+  "process": "business_process.walmart.forward_wfs_sale_to_payout",
+  "related_canonical_id": "formula_template.walmart.net_seller_payout",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.walmart.forward.net_payout_computed",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4356,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "Because settled_amount = 0, compute net seller payout as charged_amount_excluding_tax + gross_commission and use metadata_3 as payout date.",
+  "step_order": 5,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

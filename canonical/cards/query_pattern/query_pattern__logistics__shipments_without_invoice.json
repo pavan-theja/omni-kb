@@ -1,0 +1,110 @@
+{
+  "aggregation_rules": "avoid fanout; aggregate AWB to batch before bank matching",
+  "allowed_dimensions": [
+    "courier_partner",
+    "status",
+    "payment_mode",
+    "zone",
+    "date",
+    "awb when safe"
+  ],
+  "allowed_grains": [
+    "awb",
+    "order",
+    "day",
+    "month",
+    "batch"
+  ],
+  "applicability_scope": "logistics domain; account scope injected at runtime",
+  "canonical_id": "query_pattern.logistics.shipments_without_invoice",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Approved logistics query pattern for shipments_without_invoice.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "edge_enrichment_note": "v4 adds PRODUCES_METRIC / USES_RECONCILIATION_PROFILE / REQUIRES_RULE / USES_OUTPUT_CONTRACT / USES_TABLE edges where targets exist.",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 5198
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 5198
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 5198
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_constraints": "use relationship cards; pre-aggregate before joins",
+  "linked_rules": "rule.logistics.required_scope_context; rule.logistics.amount_semantics_not_by_name; rule.logistics.grain_safe_reconciliation",
+  "name": "Shipments Without Invoice",
+  "optional_tables": "bank_statement; fallback aggregator tables",
+  "output_contract_id": "output_contract.logistics_reconciliation_summary",
+  "output_contracts": [
+    "output_contract.logistics_diagnostic_summary"
+  ],
+  "pattern_name": "shipments_without_invoice",
+  "pattern_type": "analytical; reconciliation; diagnostic",
+  "produces_metric": [
+    "metric.shipment_missing_invoice_count"
+  ],
+  "query_pattern_boundary": "Account filters and Business Flow Binding are resolved outside this generic query pattern.",
+  "query_shape": "pseudo_sql_pattern_available_from card fields and vendor implementations",
+  "recommended_date_columns": [
+    "source-specific recommended date columns"
+  ],
+  "required_metrics": "profile-specific metrics",
+  "required_tables": [
+    "profile/vendor specific",
+    "table.zs_observe.shiprocket_oms",
+    "table.zs_observe.shiprocket_invoice"
+  ],
+  "review_status": "unreviewed",
+  "rules": [
+    "rule.logistics.awb_primary_reconciliation_unit",
+    "rule.logistics.empty_tables_schema_only"
+  ],
+  "semantic_filters": [
+    "is_active=true when present",
+    "status/value filters by profile"
+  ],
+  "source_card_id": "query_pattern.logistics.shipments_without_invoice",
+  "source_confidence": "high",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5198,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_status": "active",
+  "status": "active",
+  "supported_intents": "shipments without invoice",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "uses_reconciliation_profile": [
+    "reconciliation_profile.shipment_to_freight_invoice"
+  ],
+  "validation_tests": [
+    "validation_test.logistics.required_scope_context",
+    "validation_test.logistics.amount_semantics_not_by_name"
+  ],
+  "version": "5.0-manifest-aligned"
+}

@@ -1,0 +1,124 @@
+{
+  "amount_columns": [
+    "charged_amount",
+    "settled_amount",
+    "amount_due"
+  ],
+  "avoid_columns": [],
+  "business_purpose": "Simplified, order-level settlement summary. Lighter than `razorpay_payin`.",
+  "canonical_id": "table.zs_observe.razorpay_transactions",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.razorpay_transactions.amount_due",
+    "column.zs_observe.razorpay_transactions.charged_amount",
+    "column.zs_observe.razorpay_transactions.currency_type",
+    "column.zs_observe.razorpay_transactions.invoice_date",
+    "column.zs_observe.razorpay_transactions.invoice_number",
+    "column.zs_observe.razorpay_transactions.order_id",
+    "column.zs_observe.razorpay_transactions.order_status",
+    "column.zs_observe.razorpay_transactions.other_id",
+    "column.zs_observe.razorpay_transactions.settled_amount"
+  ],
+  "columns": [
+    "column.zs_observe.razorpay_transactions.order_id",
+    "column.zs_observe.razorpay_transactions.order_status",
+    "column.zs_observe.razorpay_transactions.invoice_date",
+    "column.zs_observe.razorpay_transactions.invoice_number",
+    "column.zs_observe.razorpay_transactions.charged_amount",
+    "column.zs_observe.razorpay_transactions.settled_amount",
+    "column.zs_observe.razorpay_transactions.amount_due",
+    "column.zs_observe.razorpay_transactions.other_id",
+    "column.zs_observe.razorpay_transactions.currency_type"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "invoice_date"
+  ],
+  "description": "Simplified, order-level settlement summary. Lighter than `razorpay_payin`.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.razorpay"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 3771
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.razorpay_transactions",
+  "grain": "one row per order/invoice summary",
+  "grain_keys": [
+    "order_id",
+    "order_status",
+    "invoice_date",
+    "invoice_number",
+    "other_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.razorpay_transactions",
+  "recommended_date_columns": [
+    "invoice_date"
+  ],
+  "reconciliation_key_columns": [],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.razorpay_transactions",
+  "source_caveats": [
+    "This table has only 24 columns — use it for quick order-level lookups.",
+    "For transaction-level detail, prefer `razorpay_payin`.",
+    "No `txn_type` or `payment_mode` column — purely an order view."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3771,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.razorpay"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "order_status",
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.razorpay.in"
+    ],
+    "platform_ids": [
+      "platform.razorpay"
+    ]
+  },
+  "table_name": "razorpay_transactions",
+  "table_type": "summary_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

@@ -1,0 +1,43 @@
+{
+  "applies_to": "all cards",
+  "canonical_id": "validation_test.flipkart.no_external_logistics",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7440
+    }
+  ],
+  "expected_result": "Pass when logistics domain cards absent",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "parser output is not deterministic or violates marketplace-only boundary",
+  "name": "Flipkart no_external_logistics",
+  "review_status": "accepted",
+  "severity": "high",
+  "source_card_id": "validation_test.flipkart.no_external_logistics",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7440,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "test_logic": "no courier/AWB lifecycle or logistics COD cards created",
+  "test_name": "no_external_logistics",
+  "test_type": "domain_boundary_validation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

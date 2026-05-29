@@ -1,0 +1,71 @@
+{
+  "canonical_id": "query_pattern.snapdeal.013.9_8_monthly_settlement_summary",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal query pattern — 9.8 Monthly Settlement Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.9_8_monthly_settlement_summary",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.9_8_monthly_settlement_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 19330
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 19330
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Snapdeal query pattern — 9.8 Monthly Settlement Summary",
+  "output_fields": [
+    "settlement_date",
+    "settlement_id",
+    "gross_gmv",
+    "net_settled",
+    "commission",
+    "invoices"
+  ],
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "required_rule_ids": [
+    "rule.snapdeal.active_filter",
+    "rule.snapdeal.scope_fields_are_columns",
+    "rule.snapdeal.settlement_date_filter_policy",
+    "rule.snapdeal.revenue_vs_cashflow_scope",
+    "rule.snapdeal.commission_is_marketplace_fee_total"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.snapdeal.013.9_8_monthly_settlement_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 19330,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.snapdeal_settlement"
+  ],
+  "sql_pattern_id": "sql.snapdeal.9_8_monthly_settlement_summary",
+  "sql_template": "SELECT\n  settlement_date,\n  settlement_id,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(settled_amount) AS net_settled,\n  SUM(commission) AS commission,\n  COUNT(DISTINCT invoice_number) AS invoices\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\n  AND transaction_type IN ('forward', 'reverse')\nGROUP BY settlement_date, settlement_id\nORDER BY settlement_date;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

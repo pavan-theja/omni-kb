@@ -1,0 +1,192 @@
+{
+  "amount_columns": [
+    "amount",
+    "service_charge",
+    "service_tax",
+    "pg_fee",
+    "pg_tax",
+    "charge_amount"
+  ],
+  "avoid_columns": [
+    "pg_fee",
+    "pg_tax",
+    "charge_amount"
+  ],
+  "business_purpose": "Tracks all outbound payouts made via Cashfree's payout product — vendor payments, salary disbursals, refunds.",
+  "canonical_id": "table.zs_observe.cashfree_expense_report",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.cashfree_expense_report.added_by",
+    "column.zs_observe.cashfree_expense_report.added_on",
+    "column.zs_observe.cashfree_expense_report.added_on_1",
+    "column.zs_observe.cashfree_expense_report.amount",
+    "column.zs_observe.cashfree_expense_report.bank_account",
+    "column.zs_observe.cashfree_expense_report.bank_name",
+    "column.zs_observe.cashfree_expense_report.bank_ref_no",
+    "column.zs_observe.cashfree_expense_report.beneficiary_id",
+    "column.zs_observe.cashfree_expense_report.beneficiary_name",
+    "column.zs_observe.cashfree_expense_report.charge_amount",
+    "column.zs_observe.cashfree_expense_report.description",
+    "column.zs_observe.cashfree_expense_report.extended_utr",
+    "column.zs_observe.cashfree_expense_report.failure_reason",
+    "column.zs_observe.cashfree_expense_report.ifsc",
+    "column.zs_observe.cashfree_expense_report.last_checked_at",
+    "column.zs_observe.cashfree_expense_report.mode",
+    "column.zs_observe.cashfree_expense_report.order_id",
+    "column.zs_observe.cashfree_expense_report.order_status",
+    "column.zs_observe.cashfree_expense_report.other_id",
+    "column.zs_observe.cashfree_expense_report.payment_instrument_id",
+    "column.zs_observe.cashfree_expense_report.payment_mode",
+    "column.zs_observe.cashfree_expense_report.pg_fee",
+    "column.zs_observe.cashfree_expense_report.pg_tax",
+    "column.zs_observe.cashfree_expense_report.reference_id",
+    "column.zs_observe.cashfree_expense_report.remarks",
+    "column.zs_observe.cashfree_expense_report.service_charge",
+    "column.zs_observe.cashfree_expense_report.service_tax",
+    "column.zs_observe.cashfree_expense_report.status",
+    "column.zs_observe.cashfree_expense_report.status_code",
+    "column.zs_observe.cashfree_expense_report.status_description",
+    "column.zs_observe.cashfree_expense_report.transfer_id",
+    "column.zs_observe.cashfree_expense_report.vlookup",
+    "column.zs_observe.cashfree_expense_report.vpa"
+  ],
+  "columns": [
+    "column.zs_observe.cashfree_expense_report.transfer_id",
+    "column.zs_observe.cashfree_expense_report.reference_id",
+    "column.zs_observe.cashfree_expense_report.added_on",
+    "column.zs_observe.cashfree_expense_report.added_on_1",
+    "column.zs_observe.cashfree_expense_report.amount",
+    "column.zs_observe.cashfree_expense_report.status",
+    "column.zs_observe.cashfree_expense_report.status_description",
+    "column.zs_observe.cashfree_expense_report.status_code",
+    "column.zs_observe.cashfree_expense_report.failure_reason",
+    "column.zs_observe.cashfree_expense_report.beneficiary_name",
+    "column.zs_observe.cashfree_expense_report.beneficiary_id",
+    "column.zs_observe.cashfree_expense_report.bank_account",
+    "column.zs_observe.cashfree_expense_report.bank_name",
+    "column.zs_observe.cashfree_expense_report.bank_ref_no",
+    "column.zs_observe.cashfree_expense_report.extended_utr",
+    "column.zs_observe.cashfree_expense_report.ifsc",
+    "column.zs_observe.cashfree_expense_report.vpa",
+    "column.zs_observe.cashfree_expense_report.mode",
+    "column.zs_observe.cashfree_expense_report.payment_mode",
+    "column.zs_observe.cashfree_expense_report.service_charge",
+    "column.zs_observe.cashfree_expense_report.service_tax",
+    "column.zs_observe.cashfree_expense_report.remarks",
+    "column.zs_observe.cashfree_expense_report.payment_instrument_id",
+    "column.zs_observe.cashfree_expense_report.last_checked_at",
+    "column.zs_observe.cashfree_expense_report.added_by",
+    "column.zs_observe.cashfree_expense_report.order_id",
+    "column.zs_observe.cashfree_expense_report.other_id",
+    "column.zs_observe.cashfree_expense_report.pg_fee",
+    "column.zs_observe.cashfree_expense_report.pg_tax",
+    "column.zs_observe.cashfree_expense_report.charge_amount",
+    "column.zs_observe.cashfree_expense_report.order_status",
+    "column.zs_observe.cashfree_expense_report.description",
+    "column.zs_observe.cashfree_expense_report.vlookup"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "added_on",
+    "added_on_1"
+  ],
+  "description": "Tracks all outbound payouts made via Cashfree's payout product — vendor payments, salary disbursals, refunds.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.cashfree"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.cashfree",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 3404
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.cashfree_expense_report",
+  "grain": "one row per payout/transfer event",
+  "grain_keys": [
+    "transfer_id",
+    "reference_id",
+    "beneficiary_id",
+    "bank_ref_no",
+    "extended_utr",
+    "payment_instrument_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.cashfree_expense_report",
+  "recommended_date_columns": [
+    "added_on",
+    "added_on_1"
+  ],
+  "reconciliation_key_columns": [
+    "reference_id",
+    "bank_ref_no",
+    "extended_utr"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.cashfree_expense_report",
+  "source_caveats": [
+    "`bank_ref_no` and `extended_utr` are both forms of UTR — check which is populated.",
+    "UPI payouts populate `vpa` instead of `bank_account` and `ifsc`.",
+    "`vlookup` is a derived column used in reconciliation lookups.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3404,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.cashfree"
+  ],
+  "source_platform_types": [
+    "payment_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "status",
+    "status_description",
+    "status_code",
+    "failure_reason",
+    "mode",
+    "payment_mode",
+    "order_status"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.cashfree.in"
+    ],
+    "platform_ids": [
+      "platform.cashfree"
+    ]
+  },
+  "table_name": "cashfree_expense_report",
+  "table_type": "payout_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

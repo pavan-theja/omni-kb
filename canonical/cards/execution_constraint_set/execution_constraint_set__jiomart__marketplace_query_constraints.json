@@ -1,0 +1,63 @@
+{
+  "aggregation_constraints": [
+    "Pre-aggregate jiomart_settlement event rows by order_id/accountable_type before comparison joins."
+  ],
+  "canonical_id": "execution_constraint_set.jiomart.marketplace_query_constraints",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_family": "global_marketplace_query_generation",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart marketplace query constraints",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.9_mandatory_query_filters",
+    "ev.jiomart.marketplace.4_2_primary_join_keys"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.9_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13926
+    },
+    {
+      "evidence_id": "ev.jiomart.marketplace.4_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13926
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_constraints": [
+    "Use order_id for OMS↔settlement/returns joins.",
+    "Never cross-join jiomart_shipment to group 26 tables without external mapping."
+  ],
+  "name": "JioMart marketplace query constraints",
+  "required_filters": [
+    "is_active = true",
+    "group_level_id = 26 for jiomart_oms/returns/settlement",
+    "group_level_id = 221 and qty > 0 for jiomart_shipment active-shipment analytics"
+  ],
+  "review_status": "ready",
+  "scope_boundaries": [
+    "No tenant/group/platform-account/bank/payment-gateway/logistics/statutory-filing cards."
+  ],
+  "sign_constraints": [
+    "Interpret settlement settled_amount in transaction_type/event/accountable_type context.",
+    "Use source SQL ABS only where source SQL uses ABS."
+  ],
+  "source_card_id": "execution_constraint_set.jiomart.marketplace_query_constraints",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13926,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

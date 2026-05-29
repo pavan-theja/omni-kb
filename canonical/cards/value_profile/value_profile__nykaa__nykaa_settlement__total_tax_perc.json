@@ -1,0 +1,59 @@
+{
+  "canonical_id": "value_profile.nykaa.nykaa_settlement.total_tax_perc",
+  "canonical_name": "zs_observe.nykaa_settlement.total_tax_perc value profile",
+  "card_type": "value_profile",
+  "column_name": "total_tax_perc",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [],
+  "description": "value_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.tax",
+    "evidence.nykaa.data_quality"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.tax",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13922
+    },
+    {
+      "evidence_id": "evidence.nykaa.data_quality",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13922
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "zs_observe.nykaa_settlement.total_tax_perc value profile",
+  "observed_values": [
+    "5%",
+    "12%",
+    "18%",
+    "0%",
+    "57.571%",
+    "80.905%",
+    "95.238%",
+    "116.619%"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "value_profile.nykaa.nykaa_settlement.total_tax_perc",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13922,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Settlement tax rate values include clean slabs and anomalous >50% values caused by near-zero bases on reverse/adjustment rows.",
+  "table_id": "table.zs_observe.nykaa_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

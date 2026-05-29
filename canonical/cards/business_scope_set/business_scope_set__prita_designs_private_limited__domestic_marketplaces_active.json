@@ -1,0 +1,80 @@
+{
+  "active": true,
+  "canonical_id": "business_scope_set.prita_designs_private_limited.domestic_marketplaces_active",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Canonical-mapped active domestic marketplaces for Prita. JioMart and newer/fintech marketplaces are handled separately where context is incomplete.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/prita_designs_private_limited_runtime_cards_v1_0.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.prita_designs_private_limited.mensa_brands",
+  "name": "Domestic Marketplaces Active",
+  "notes": [],
+  "package_id": "prita_designs_private_limited_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_ids": [
+    "platform_account.prita_designs_private_limited.amazon_in.primary",
+    "platform_account.prita_designs_private_limited.flipkart_in.primary",
+    "platform_account.prita_designs_private_limited.myntra_in.primary",
+    "platform_account.prita_designs_private_limited.meesho_in.primary",
+    "platform_account.prita_designs_private_limited.nykaa_in.primary",
+    "platform_account.prita_designs_private_limited.snapdeal_in.primary",
+    "platform_account.prita_designs_private_limited.tatacliq_in.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.amazon.in",
+    "platform_context.flipkart.in",
+    "platform_context.myntra.in",
+    "platform_context.meesho.in",
+    "platform_context.nykaa.in",
+    "platform_context.snapdeal.in",
+    "platform_context.tatacliq.in"
+  ],
+  "platform_ids": [
+    "platform.amazon",
+    "platform.flipkart",
+    "platform.myntra",
+    "platform.meesho",
+    "platform.nykaa",
+    "platform.snapdeal",
+    "platform.tatacliq"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Prita active canonical domestic marketplaces",
+  "scope_type": "marketplace_seller_scope",
+  "source_confidence": null,
+  "source_documents": [
+    "Prita Designs Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Prita Designs Private Limited.docx / Tanvi Fitness.docx",
+    "amazon_marketplace.md",
+    "delhivery_logistics.md",
+    "flipkart_marketplace.md",
+    "increff_operations.md",
+    "jiomart_marketplace.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "payment_gateway.md",
+    "shopify_d2c_oms.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "xpressbees_logistics.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/prita_designs_private_limited_runtime_cards_v1_0.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.prita_designs_private_limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

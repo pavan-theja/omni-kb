@@ -1,0 +1,58 @@
+{
+  "banking_only": true,
+  "business_meaning": "Alternate withdrawal field (Text)",
+  "candidate_notes": "Alternate withdrawal field (Text)",
+  "canonical_id": "column.zs_ingest.icici_bank_global.withdrawal_amt",
+  "card_type": "column",
+  "column_name": "withdrawal_amt",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Alternate withdrawal field (Text)",
+  "direction_role": "",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.icici_bank_global.columns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.icici_bank_global.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 5319
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "metric_amount",
+  "name": "icici_bank_global.withdrawal_amt",
+  "numeric_quality": "requires_cast_before_math",
+  "review_status": "accepted",
+  "scope_guardrail": "banking_semantic_column",
+  "semantic_roles": [
+    "financial_amount",
+    "measure"
+  ],
+  "semantic_type": "financial_amount",
+  "source_card_id": "column.zs_ingest.icici_bank_global.withdrawal_amt",
+  "source_caveats": [
+    "This table has **parallel columns**: `deposit_amt_inr` (Decimal) + `deposit_amount` (Text), `withdrawal_amt_inr` (Decimal) + `withdrawal_amount` (Text), `balance_inr` (Decimal) + `balance` (Text). Always use the `**_inr**` **suffixed Decimal columns** for calculations."
+  ],
+  "source_confidence": "high",
+  "source_data_type": "Text",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5319,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_ingest.icici_bank_global",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

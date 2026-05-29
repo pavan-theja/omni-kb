@@ -1,0 +1,120 @@
+{
+  "aliases": [
+    "return to origin rate"
+  ],
+  "benchmarks": {
+    "driver_context": "~70 percent COD/HKPayCod share contributes to high RTO risk",
+    "loss_context": "monthly RTO loss noted as ₹40,000–80,000 at ~14 percent RTO and avg negative settlement ~₹245 per RTO",
+    "observed_context": "~14 percent RTO rate in HealthKart settlement data",
+    "source": "docx sections 6 and 10"
+  },
+  "business_concepts": [
+    "logistics",
+    "rto_rate"
+  ],
+  "business_definition": "Share of settlement rows with order_status = RTO, usually representing undelivered/refused orders with negative seller settlement.",
+  "canonical_formula_pattern": "See vendor-specific metric_implementation and formula_template cards; this business metric uses colloquial aliases for user query matching.",
+  "canonical_id": "metric.rto_rate",
+  "canonical_name": "RTO Rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "RTO Rate",
+    "return-to-origin rate",
+    "failed delivery rate"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "default_aggregation": "SUM or COUNT or ratio by metric",
+  "default_grain": "shipment_awb_or_settlement_batch",
+  "description": "RTO shipments divided by forward shipments.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "domain_ids": [
+    "domain.logistics_reconciliation"
+  ],
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope",
+    "evidence.healthkart.overview",
+    "evidence.nykaa.metrics"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 927
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 927
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 927
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.nykaa_oms.rto_rate",
+    "metric_impl.shiprocket_oms.rto_rate",
+    "metric_implementation.healthkart.rto_rate.02",
+    "metric_implementation.healthkart.rto_rate_by_month.15"
+  ],
+  "implementations": [
+    "see metric_impl blocks in shiprocket_logistics_partner_parser_ready_v6_role_split.md and shiprocket_services_aggregator_parser_ready_v6_role_split.md"
+  ],
+  "marketplace_only": true,
+  "metric_family": "returns",
+  "metric_key": "rto_rate",
+  "metric_name": "RTO Rate",
+  "metric_pattern": "count_rto_over_total_settlement_orders",
+  "metric_type": "amount/count/rate/days_by_metric",
+  "name": "RTO Rate",
+  "platform_agnostic_name": "RTO Rate",
+  "polarity": "context_dependent",
+  "review_status": "accepted",
+  "source_card_id": "metric.rto_rate",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx",
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md",
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 927,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_paths": [
+    "raw/cleaned_v2/logistics/logistics_domain.md",
+    "raw/cleaned_v2/marketplace/nykaa_marketplace.md"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "summary": "Ratio of RTO orders/shipments to total eligible orders/shipments.",
+  "unit": "currency/count/percentage/days_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "valid_contexts": [
+    "HealthKart",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ],
+  "version": "5.0-manifest-aligned"
+}

@@ -1,0 +1,49 @@
+{
+  "base_tables": [],
+  "canonical_id": "metric_implementation.walmart.walmart_oms.average_order_value",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.metrics.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.metrics.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 3921
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "AVG(charged_amount) for delivered sales rows",
+  "grain": "order",
+  "implementation_scope": "walmart",
+  "implements_metric": "metric.marketplace.average_order_value",
+  "metric_id": "",
+  "metric_pattern": "avg_charged_amount_delivered_sales",
+  "name": "Walmart OMS implementation: average_order_value",
+  "notes": "Walmart-specific executable implementation; runtime scope can be supplied externally but documented group_level_id=22 is preserved as source scope metadata.",
+  "platform_code": "walmart",
+  "platform_context": "platform_context.walmart.us",
+  "required_filters": "is_active = true AND group_level_id = 22 AND order_status = 'DELIVERED' AND internal_txn_type = 'sales'",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.walmart.walmart_oms.average_order_value",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3921,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.walmart_oms",
+  "sql_ref": "sql.walmart.oms.aov",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

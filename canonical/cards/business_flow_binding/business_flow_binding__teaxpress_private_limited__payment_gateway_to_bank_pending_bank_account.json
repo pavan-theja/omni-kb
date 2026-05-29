@@ -1,0 +1,55 @@
+{
+  "active": false,
+  "business_scope_set_ids": [
+    "business_scope_set.teaxpress_private_limited.payment_settlement_sources"
+  ],
+  "canonical_id": "business_flow_binding.teaxpress_private_limited.payment_gateway_to_bank_pending_bank_account",
+  "card_type": "business_flow_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Payment/bank settlement source tables are configured, but final bank-account cards/bank-statement bindings are not provided in the client doc.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "flow_name": "Teaxpress payment gateway to bank pending bank-account binding",
+  "flow_type": "payment_gateway_to_bank",
+  "group_id": "group.teaxpress_private_limited.teabox",
+  "name": "Payment Gateway To Bank Pending Bank Account",
+  "notes": [],
+  "package_id": "client_runtime_binding_pack.teaxpress_private_limited.v0_1",
+  "participant_platform_account_ids": [
+    "platform_account.teaxpress_private_limited.razorpay.shared",
+    "platform_account.teaxpress_private_limited.payu.shared",
+    "platform_account.teaxpress_private_limited.axis_bank.shared",
+    "platform_account.teaxpress_private_limited.hdfc_bank.shared"
+  ],
+  "required_runtime_resolution": [
+    "actual bank account identifiers",
+    "bank_statement Account Data Binding for deposit matching"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Teaxpress Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": null,
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.teaxpress_private_limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

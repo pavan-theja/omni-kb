@@ -1,0 +1,60 @@
+{
+  "business_definition": "Sign-sensitive LimeRoad-funded discount/surplus relative to vendor NSP and buyer price.",
+  "candidate_notes": "Sign-sensitive LimeRoad-funded discount/surplus relative to vendor NSP and buyer price.",
+  "canonical_id": "metric.marketplace.limeroad_discount_absorption",
+  "card_type": "metric",
+  "colloquial_names": [
+    "LR discount",
+    "discount absorption"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "settlement_period_or_brand",
+  "description": "Sign-sensitive LimeRoad-funded discount/surplus relative to vendor NSP and buyer price.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "domain": "domain.marketplace.limeroad.promotions; domain.marketplace.limeroad.nsp_pricing",
+  "evidence_ids": [
+    "ev.limeroad.nsp_model.001",
+    "ev.limeroad.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.nsp_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4684
+    },
+    {
+      "evidence_id": "ev.limeroad.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4684
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.limeroad.discount_absorption"
+  ],
+  "marketplace_only": true,
+  "metric_key": "limeroad_discount_absorption",
+  "metric_pattern": "sum_total_limeroad_discount_item_sale",
+  "name": "LimeRoad discount absorption",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by LimeRoad-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.limeroad_discount_absorption",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4684,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

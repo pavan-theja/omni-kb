@@ -1,0 +1,44 @@
+{
+  "assertion": "No commission/fee breakdown columns — unlike Amazon or HealthKart settlement tables, AJIO's settlement report doesn't show the commission, shipping, or fee waterfall. Fees are deducted before this report is generated.",
+  "canonical_id": "validation_test.ajio.no_commission_fee_breakdown_columns_unlike_amazon_or_healthkart_settlement_tab.32",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "No commission/fee breakdown columns — unlike Amazon or HealthKart settlement tables, AJIO's settlement report doesn't show the commission, shipping, or fee waterfall. Fees are deducted before this report is generated.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7998
+    }
+  ],
+  "expected_result": "Parser output preserves or enforces this rule.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential incorrect card creation, missing evidence capture, or query misuse.",
+  "name": "Validate: No commission/fee breakdown columns — unlike Amazon or HealthKart settlement tab",
+  "review_status": "ready",
+  "source_card_id": "validation_test.ajio.no_commission_fee_breakdown_columns_unlike_amazon_or_healthkart_settlement_tab.32",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7998,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "test_type": "semantic_guard",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

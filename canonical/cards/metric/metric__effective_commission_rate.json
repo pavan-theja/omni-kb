@@ -1,0 +1,99 @@
+{
+  "aliases": [
+    "take rate",
+    "commission rate",
+    "effective commission"
+  ],
+  "benchmarks": {
+    "promotional_commission": "0 percent currently active",
+    "source": "docx section 4 and healthkart_settlement commission structure",
+    "standard_commission": "5 percent flat standard commission"
+  },
+  "business_definition": "Gross commission as a percentage of delivered charged_amount.",
+  "canonical_formula_pattern": "See vendor-specific metric_implementation and formula_template cards; this business metric uses colloquial aliases for user query matching.",
+  "canonical_id": "metric.effective_commission_rate",
+  "canonical_name": "Effective Commission Rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Effective Commission Rate",
+    "commission rate",
+    "effective commission",
+    "fee rate",
+    "platform take rate"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "settlement_period",
+  "description": "Gross commission as a percentage of delivered charged_amount.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview",
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.benchmark_context",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    },
+    {
+      "evidence_id": "evidence.nykaa.benchmark_context",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5428
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.nykaa_settlement.effective_commission_rate",
+    "metric_implementation.healthkart.effective_commission_rate.04"
+  ],
+  "marketplace_only": true,
+  "metric_family": "fees",
+  "metric_key": "effective_commission_rate",
+  "metric_pattern": "sum_gross_commission_over_sum_charged_amount",
+  "name": "Effective Commission Rate",
+  "platform_agnostic_name": "Effective Commission Rate",
+  "review_status": "accepted",
+  "source_card_id": "metric.effective_commission_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md",
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5428,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+    "raw/cleaned_v2/marketplace/nykaa_marketplace.md"
+  ],
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Commission as a percentage of charged_amount, with public 15-30% context and observed 39.4% Nykaa settlement context retained as guidance only.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "HealthKart",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

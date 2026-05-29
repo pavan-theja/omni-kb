@@ -1,0 +1,45 @@
+{
+  "business_meaning": "Active-row quality flag",
+  "candidate_notes": "Mandatory filter.",
+  "canonical_id": "column.zs_observe.amazon_oms.is_active",
+  "card_type": "column",
+  "column_name": "is_active",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "boolean",
+  "description": "Active-row quality flag",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_oms.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_oms.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 2209
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "amazon_oms.is_active",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "quality",
+  "source_card_id": "column.zs_observe.amazon_oms.is_active",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2209,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.amazon_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

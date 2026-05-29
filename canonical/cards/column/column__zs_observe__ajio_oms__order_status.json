@@ -1,0 +1,49 @@
+{
+  "business_meaning": "`Delivered` (87.9%), `Shipped` (7.3%), `Cancelled` (4.6%), `Ready to ship` (0.2%)",
+  "canonical_id": "column.zs_observe.ajio_oms.order_status",
+  "card_type": "column",
+  "column_group": "Order Status & Fulfillment",
+  "column_name": "order_status",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "`Delivered` (87.9%), `Shipped` (7.3%), `Cancelled` (4.6%), `Ready to ship` (0.2%)",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1629
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "ajio_oms.order_status",
+  "review_status": "ready",
+  "schema_name": "zs_observe",
+  "scope_boundary_note": null,
+  "semantic_role": "classification_status_or_type",
+  "source_card_id": "column.zs_observe.ajio_oms.order_status",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1629,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.ajio_oms",
+  "table_name": "ajio_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

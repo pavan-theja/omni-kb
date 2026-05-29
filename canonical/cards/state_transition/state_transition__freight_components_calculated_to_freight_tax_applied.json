@@ -1,0 +1,67 @@
+{
+  "business_object": "gst_on_freight",
+  "business_process_id": "business_process.shipment_to_freight_invoice",
+  "canonical_id": "state_transition.freight_components_calculated_to_freight_tax_applied",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "confirmation_evidence": [
+    "column.zs_observe.shiprocket_invoice.total_tax",
+    "delhivery tax fields"
+  ],
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Expected state movement in Shipment to Freight Invoice: freight_components_calculated → freight_tax_applied.",
+  "deterministic_rule": "If evidence for freight_components_calculated exists but confirmation evidence for freight_tax_applied is missing after the applicable lag window, classify as tax_missing_or_mismatched.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5597
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5597
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 5597
+    }
+  ],
+  "expected_lag": "source_specific_or_bfb_override",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_if_missing": "tax_missing_or_mismatched",
+  "from_state": "freight_components_calculated",
+  "lag_type": "configurable",
+  "name": "freight_components_calculated to freight_tax_applied",
+  "review_status": "unreviewed",
+  "severity_if_breached": "high",
+  "source_card_id": "state_transition.freight_components_calculated_to_freight_tax_applied",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5597,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "to_state": "freight_tax_applied",
+  "triggering_step_id": "workflow_step.freight_tax_applied",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

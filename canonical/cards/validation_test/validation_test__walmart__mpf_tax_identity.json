@@ -1,0 +1,41 @@
+{
+  "canonical_id": "validation_test.walmart.mpf_tax_identity",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.business_model.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.business_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5777
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Validate MPF tax identity",
+  "notes": "Validate MPF tax identity",
+  "related_canonical_id": "reconciliation_profile.walmart.mpf_tax_identity",
+  "review_status": "accepted",
+  "source_card_id": "validation_test.walmart.mpf_tax_identity",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5777,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "sql_ref": "sql.walmart.validation.mpf_tax_identity",
+  "status": "active",
+  "test_description": "Forward settlement rows should reconcile charged_amount to charged_amount_excluding_tax plus total_tax; withheld tax is not seller revenue.",
+  "test_type": "financial_validation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

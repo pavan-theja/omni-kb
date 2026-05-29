@@ -1,0 +1,51 @@
+{
+  "actual_side": "healthkart_settlement reverse rows where is_active = true and transaction_type='reverse'",
+  "canonical_id": "reconciliation_profile.healthkart.return_settlement_reconciliation",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "documented_sql_ref": "sql.healthkart.return_settlement_reconciliation",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6716
+    }
+  ],
+  "expected_side": "healthkart_return reverse/Courier Return rows where is_active = true",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Return → Settlement Reconciliation",
+  "participating_tables": [
+    "zs_observe.healthkart_return",
+    "zs_observe.healthkart_settlement"
+  ],
+  "profile_family": "return_record_to_reverse_settlement",
+  "review_status": "accepted",
+  "scope_boundary": "Use settlement table for full RTO analysis because return table is sparse/single-batch.",
+  "source_card_id": "reconciliation_profile.healthkart.return_settlement_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6716,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "tolerance_policy": "Match on order_id; amount tolerance not specified for return_value vs settled_amount because amounts have different meanings.",
+  "unit_grain": "order_id",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

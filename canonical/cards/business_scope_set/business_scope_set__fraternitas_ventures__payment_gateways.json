@@ -1,0 +1,59 @@
+{
+  "active": false,
+  "canonical_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Razorpay active and PayU context-required payment scope.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.fraternitas_ventures.legendtoys",
+  "name": "Payment Gateways",
+  "notes": [],
+  "package_id": "fraternitas_ventures_runtime_card_pack_v1_0",
+  "platform_account_ids": [
+    "platform_account.fraternitas.razorpay_in.primary",
+    "platform_account.fraternitas.payu_in.primary"
+  ],
+  "platform_context_ids": [
+    "platform_context.razorpay.in",
+    "platform_context.payu.in"
+  ],
+  "platform_ids": [
+    "platform.razorpay",
+    "platform.payu"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Fraternitas Payment Gateways",
+  "scope_type": "payment_gateway_scope",
+  "source_confidence": null,
+  "source_documents": [
+    "Fraternitas Ventures Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "unicommerce_d2c_oms.md",
+    "unicommerce_operations.md",
+    "delhivery_logistics.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.fraternitas_ventures",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

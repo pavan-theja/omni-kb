@@ -1,0 +1,63 @@
+{
+  "canonical_id": "formula_template.snapdeal.monthly_settlement_summary",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal formula pattern — Monthly Settlement Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.9_8_monthly_settlement_summary",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.9_8_monthly_settlement_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13597
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13597
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 13597
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_sql": "SELECT\n  settlement_date,\n  settlement_id,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(settled_amount) AS net_settled,\n  SUM(commission) AS commission,\n  COUNT(DISTINCT invoice_number) AS invoices\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\n  AND transaction_type IN ('forward', 'reverse')\nGROUP BY settlement_date, settlement_id\nORDER BY settlement_date;",
+  "formula_text": "SELECT\n  settlement_date,\n  settlement_id,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(settled_amount) AS net_settled,\n  SUM(commission) AS commission,\n  COUNT(DISTINCT invoice_number) AS invoices\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\n  AND transaction_type IN ('forward', 'reverse')\nGROUP BY settlement_date, settlement_id\nORDER BY settlement_date;",
+  "name": "Snapdeal formula pattern — Monthly Settlement Summary",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter",
+    "is_active_filter",
+    "transaction_type_scope",
+    "group_level_id_scope_column"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.snapdeal.monthly_settlement_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13597,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "sql_pattern_id": "sql.snapdeal.9_8_monthly_settlement_summary",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

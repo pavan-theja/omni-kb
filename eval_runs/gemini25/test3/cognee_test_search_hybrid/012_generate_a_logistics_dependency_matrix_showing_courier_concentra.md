@@ -1,0 +1,185 @@
+## 012. Generate a logistics dependency matrix showing courier concentration across marketplaces.
+
+### Timing
+
+- started_at: `2026-05-27T04:10:47+00:00`
+- duration_seconds: `59.9`
+- RAG_COMPLETION_seconds: `31.402`
+- GRAPH_COMPLETION_seconds: `28.498`
+
+### Query
+
+```text
+Generate a logistics dependency matrix showing courier concentration across marketplaces.
+
+Scope:
+- tenant: Mensa Brands
+
+Answer for downstream SQL/query construction using only the provided context and explicit user input.
+
+This is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. 
+
+Hard rules:
+- Do not default to a single source table. First identify all grounded candidate sources or relationship paths that could answer the request. Then mark each candidate as direct, supporting, risky, or irrelevant based on whether it contains the required grain, dimensions, measures, filters, and joins. If no candidate is fully grounded, return a partial recommended path with usable fields, risks, and blocking gaps.
+- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.
+- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.
+- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.
+- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.
+- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.
+
+For dimensional mapping, grouping, or listing queries (No numeric metric):
+- Set `metric_logic.formula` to describe the unique pairings or rows.
+- Set `metric_logic.numerator` and `denominator` to null.
+- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.
+
+Inference & Fallback Rule:
+- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. 
+- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as "Selected", and explain the reasoning within the JSON.
+
+Return up to 3 recommended SQL packages:
+- include only packages grounded in the provided context
+- rank packages by directness, completeness, and SQL safety
+- mark each package as complete, partial, or risky
+- explain what each package can answer and what it cannot answer
+- do not merge packages unless the context provides grounded join keys and deduplication rules
+
+Response Format:
+Cognee validates completion answers with a wrapper schema where `content` must be a string. To avoid parser failures, the top-level response MUST be a JSON object with exactly one key named `content`, and the value of `content` MUST be a string.
+
+The `content` string must contain one valid JSON object serialized as text. Do not put a JSON object or array directly inside `content`.
+
+Correct top-level shape:
+{
+  "content": "{\"selected_source\":\"table.example\",\"rejected_sources\":[],\"require_tables\":[],\"required_fields\":[],\"rejected_or_ambiguous_fields\":[],\"metric_logic\":{\"formula\":null,\"numerator\":null,\"denominator\":null,\"aggregation_grain\":null,\"deduplication_rule\":null},\"filters\":[],\"joins\":\"No joins needed\",\"missing_or_ambiguous\":\"None\",\"sql_skeleton\":\"SELECT 1\"}"
+}
+
+Incorrect top-level shape:
+{
+  "content": {
+    "selected_source": "table.example"
+  }
+}
+
+The JSON object inside the `content` string must strictly match this structural schema:
+{
+  "selected_source": "string or null",
+  "rejected_sources": ["array of strings"],
+  "require_tables":[
+        {
+      "field": "string (table name)",
+      "role": "string (e.g., Channel Identifier, Filter Column, Metric)",
+      "selected?": "Yes/No",
+      "reason": "string explaining why this field belongs in the query"
+    }
+  ]
+  "required_fields": [
+    {
+      "field": "string (column name)",
+      "role": "string (e.g., Channel Identifier, Filter Column, Metric)",
+      "selected?": "Yes/No",
+      "reason": "string explaining why this field belongs in the query"
+    }
+  ],
+  "rejected_or_ambiguous_fields": ["array of objects or strings"],
+  "metric_logic": {
+    "formula": "string or null",
+    "numerator": "string or null",
+    "denominator": "string or null",
+    "aggregation_grain": "string or null",
+    "deduplication_rule": "string or null"
+  },
+  "filters": ["array of strings showing exact WHERE clause conditions"],
+  "joins": "string explaining join logic or stating why no joins are needed",
+  "missing_or_ambiguous": "string ('None' if fallback inference was used successfully)",
+  "sql_skeleton": "string containing a valid SQL query template utilizing the selected fields and filters"
+}
+```
+
+### RAG_COMPLETION
+
+{"selected_source": "table.zs_observe.increff_sales", "rejected_sources": ["query_pattern.limeroad.total_forward_gmv", "query_pattern.logistics.amount_semantics_audit", "query_pattern.logistics.awb_duplicate_detection", "query_pattern.logistics.bank_credit_unmatched_courier_reference", "query_pattern.logistics.cod_expected_vs_remitted", "execution_constraint_set.increff.operations_manifest_refactored_constraints", "execution_constraint_set.jiomart.marketplace_query_constraints", "execution_constraint_set.logistics_batch_to_bank"], "require_tables": [{"field": "zs_observe.increff_sales", "role": "Primary Data Source Table", "selected?": "Yes", "reason": "This table is inferred to contain transactional sales data for Mensa Brands, including both `sales_channel` and `courier_partner`, which are essential for mapping logistics dependencies across marketplaces. The context mentions `rule.increff.courier_normalization` and `query_pattern.increff.7_6_courier_partner_distribution_normalized`, strongly suggesting courier data exists and is analyzed within Increff data in relation to channels for Mensa Brands (group_level_id = 22)."}], "required_fields": [{"field": "sales_channel", "role": "Dimension (Marketplace/Channel Identifier)", "selected?": "Yes", "reason": "Required to group or segment courier dependencies by marketplace. This column is commonly found in sales/order tables and has been used in previous interactions for channel identification within Mensa's Increff data."}, {"field": "courier_partner", "role": "Dimension (Courier Identifier)", "selected?": "Yes", "reason": "Required to identify the logistics partners. Explicitly mentioned as an 'allowed dimension' in various logistics query patterns and implied by `rule.increff.courier_normalization` in Increff constraints, suggesting its presence in relevant operational tables like `increff_sales`."}, {"field": "order_id", "role": "Metric (Count Basis)", "selected?": "Yes", "reason": "Used to count the number of orders/shipments handled by each courier for each channel, providing a measure of 'concentration'."}, {"field": "group_level_id", "role": "Filter Column (Tenant Scope)", "selected?": "Yes", "reason": "Required for scoping the report to 'Mensa Brands', as `group_level_id = 22` is the documented identifier for Mensa within operational tables (inferred from prior interactions)."}, {"field": "is_active", "role": "Filter Column (Status)", "selected?": "Yes", "reason": "Inferred as a mandatory filter (`is_active = true`) for data validity in Increff operations (consistent with prior interactions)."}, {"field": "order_status", "role": "Filter Column (Order Status)", "selected?": "Yes", "reason": "Inferred as a mandatory filter (`order_status = 'COMPLETED'`) to include only successful/completed orders for meaningful logistics analysis."}, {"field": "transaction_type", "role": "Filter Column (Transaction Type)", "selected?": "Yes", "reason": "Inferred as a mandatory filter (`transaction_type = 'SALES'`) to ensure only sales transactions (which involve logistics) are considered."}]}], "rejected_or_ambiguous_fields": [], "metric_logic": {"formula": "COUNT(order_id) grouped by sales_channel and courier_partner", "numerator": "order_id", "denominator": null, "aggregation_grain": "sales_channel, courier_partner", "deduplication_rule": "Count of orders for each unique (sales_channel, courier_partner) pair."}, "filters": ["group_level_id = '22'", "is_active = true", "order_status = 'COMPLETED'", "transaction_type = 'SALES'"], "joins": "No joins are required as all necessary information (sales channel, courier partner, order count, and tenant filters) is inferred to exist within the single selected table `zs_observe.increff_sales`.", "missing_or_ambiguous": "The explicit presence and exact column names for `sales_channel` and `courier_partner` within `table.zs_observe.increff_sales` are inferred. However, the presence of `courier_normalization` rule and a `courier_partner_distribution_normalized` query pattern related to Increff operations strongly suggests that such data exists and is processed. Standard mandatory filters (`group_level_id`, `is_active`, `order_status`, `transaction_type`) are inferred based on consistent usage patterns for Mensa's operational sales data. The metric `order_id` is inferred as a suitable field to count for concentration.", "sql_skeleton": "SELECT\n    sales_channel,\n    courier_partner,\n    COUNT(order_id) AS order_count\nFROM\n    zs_observe.increff_sales\nWHERE\n    group_level_id = '22'\n    AND is_active = true\n    AND order_status = 'COMPLETED'\n    AND transaction_type = 'SALES'\nGROUP BY\n    sales_channel,\n    courier_partner\nORDER BY\n    sales_channel, order_count DESC"}
+
+### GRAPH_COMPLETION
+
+{
+  "filters": [
+    "group_level_id = '22'",
+    "is_active = true",
+    "order_status = 'COMPLETED'",
+    "transaction_type = 'SALES'"
+  ],
+  "joins": "No joins are required as all necessary information (sales channel, courier partner, order count, and tenant filters) is inferred to exist within the single selected table `zs_observe.increff_sales`.",
+  "metric_logic": {
+    "aggregation_grain": "sales_channel, fulfilment_channel",
+    "deduplication_rule": "Count of orders for each unique (sales_channel, fulfilment_channel) pair.",
+    "denominator": null,
+    "formula": "COUNT(order_id) grouped by sales_channel and fulfilment_channel",
+    "numerator": "order_id"
+  },
+  "missing_or_ambiguous": "The explicit presence and exact column names for `sales_channel` and `order_id` within `table.zs_observe.increff_sales` are inferred based on the typical structure of sales data tables and successful use in previous interactions. The filter for `fulfilment_channel` not being NULL or empty might also be a useful addition if data quality issues exist, but is not explicitly inferred as mandatory. The specific values for `is_active`, `order_status`, and `transaction_type` are inferred as standard best practices for sales reporting, based on prior interactions and common data patterns.",
+  "rejected_or_ambiguous_fields": [],
+  "rejected_sources": [
+    "query_pattern.limeroad.total_forward_gmv",
+    "query_pattern.logistics.amount_semantics_audit",
+    "query_pattern.logistics.awb_duplicate_detection",
+    "query_pattern.logistics.bank_credit_unmatched_courier_reference",
+    "query_pattern.logistics.cod_expected_vs_remitted",
+    "execution_constraint_set.increff.operations_manifest_refactored_constraints",
+    "execution_constraint_set.jiomart.marketplace_query_constraints",
+    "execution_constraint_set.logistics_batch_to_bank"
+  ],
+  "require_tables": [
+    {
+      "field": "zs_observe.increff_sales",
+      "reason": "This table is inferred to contain transactional sales data for Mensa Brands, including both `sales_channel` and `fulfilment_channel`, which are essential for mapping logistics dependencies across marketplaces. The context mentions `rule.increff.courier_normalization` and `query_pattern.increff.7_6_courier_partner_distribution_normalized`, strongly suggesting courier data exists and is analyzed within Increff data in relation to channels for Mensa Brands (group_level_id = 22).",
+      "role": "Primary Data Source Table",
+      "selected?": "Yes"
+    }
+  ],
+  "required_fields": [
+    {
+      "field": "sales_channel",
+      "reason": "Required to group or segment courier dependencies by marketplace. This column is commonly found in sales/order tables and has been used in previous interactions for channel identification within Mensa's Increff data.",
+      "role": "Dimension (Marketplace/Channel Identifier)",
+      "selected?": "Yes"
+    },
+    {
+      "field": "fulfilment_channel",
+      "reason": "Explicitly described as 'Courier/logistics partner used (80+ variants)' in `column.zs_observe.increff_sales.fulfilment_channel` and is crucial for identifying logistics partners. Its usage is also suggested by `metric_impl.increff.courier_shipment_count`.",
+      "role": "Dimension (Courier Identifier)",
+      "selected?": "Yes"
+    },
+    {
+      "field": "order_id",
+      "reason": "Used to count the number of orders/shipments handled by each courier for each channel, providing a measure of 'concentration'. This is a common identifier in sales tables to count discrete transactions.",
+      "role": "Metric (Count Basis)",
+      "selected?": "Yes"
+    },
+    {
+      "field": "group_level_id",
+      "reason": "Required for scoping the report to 'Mensa Brands', as `group_level_id = 22` is the documented identifier for Mensa within operational tables (inferred from prior interactions).",
+      "role": "Filter Column (Tenant Scope)",
+      "selected?": "Yes"
+    },
+    {
+      "field": "is_active",
+      "reason": "Inferred as a mandatory filter (`is_active = true`) for data validity in Increff operations (consistent with prior interactions).",
+      "role": "Filter Column (Status)",
+      "selected?": "Yes"
+    },
+    {
+      "field": "order_status",
+      "reason": "Inferred as a mandatory filter (`order_status = 'COMPLETED'`) to include only successful/completed orders for meaningful logistics analysis.",
+      "role": "Filter Column (Order Status)",
+      "selected?": "Yes"
+    },
+    {
+      "field": "transaction_type",
+      "reason": "Inferred as a mandatory filter (`transaction_type = 'SALES'`) to ensure only sales transactions (which involve logistics) are considered.",
+      "role": "Filter Column (Transaction Type)",
+      "selected?": "Yes"
+    }
+  ],
+  "selected_source": "table.zs_observe.increff_sales",
+  "sql_skeleton": "SELECT\n    sales_channel,\n    fulfilment_channel AS courier_partner,\n    COUNT(order_id) AS order_count\nFROM\n    zs_observe.increff_sales\nWHERE\n    group_level_id = '22'\n    AND is_active = true\n    AND order_status = 'COMPLETED'\n    AND transaction_type = 'SALES'\nGROUP BY\n    sales_channel,\n    fulfilment_channel\nORDER BY\n    sales_channel, order_count DESC"
+}

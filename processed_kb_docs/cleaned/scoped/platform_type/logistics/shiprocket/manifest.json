@@ -1,0 +1,56 @@
+{
+  "card_types": {
+    "account_data_binding": 4,
+    "column": 81,
+    "metric": 26,
+    "metric_implementation": 37,
+    "platform": 1,
+    "platform_account": 3,
+    "platform_context": 1,
+    "relationship": 14,
+    "table": 4,
+    "value_profile": 10
+  },
+  "counts": {
+    "cards": 181,
+    "documents": 2,
+    "edges": 539,
+    "evidence": 1,
+    "review_items": 4,
+    "semantic_mappings": 2
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM": 4,
+    "BELONGS_TO_DOMAIN": 28,
+    "BELONGS_TO_PLATFORM": 1,
+    "BELONGS_TO_TABLE": 81,
+    "BINDS_TO_TABLE": 4,
+    "HAS_ACCOUNT_DATA_BINDING": 4,
+    "HAS_COLUMN": 81,
+    "HAS_IMPLEMENTATION": 37,
+    "HAS_PLATFORM_ACCOUNT": 2,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "HAS_RELATIONSHIP": 28,
+    "HAS_VALUE_PROFILE": 20,
+    "IMPLEMENTS_METRIC": 37,
+    "INCLUDES_PLATFORM_ACCOUNT": 2,
+    "PARTICIPATES_WITH_ACCOUNT": 4,
+    "PROFILES_COLUMN": 10,
+    "PROFILES_TABLE": 10,
+    "SOURCED_FROM_PLATFORM": 4,
+    "SOURCE_TABLE": 14,
+    "TARGET_TABLE": 14,
+    "USES_ACCOUNT_DATA_BINDING": 4,
+    "USES_COLUMN": 47,
+    "USES_FORMULA_TEMPLATE": 31,
+    "USES_PLATFORM": 3,
+    "USES_PLATFORM_CONTEXT": 3,
+    "USES_SOURCE_COLUMN": 14,
+    "USES_TABLE": 37,
+    "USES_TARGET_COLUMN": 14
+  },
+  "scope": [
+    "logistics",
+    "shiprocket"
+  ]
+}

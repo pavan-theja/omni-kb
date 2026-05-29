@@ -1,0 +1,52 @@
+{
+  "canonical_id": "relationship.snapdeal.sales_return_to_settlement.invoice_number",
+  "card_type": "relationship",
+  "cardinality": "many_to_many_or_many_to_one_depending_on_settlement_line_grain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal Sales Return → Settlement credit note",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.join_map_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.join_map_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 10639
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 10639
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "snapdeal_sales_return.invoice_number = snapdeal_settlement.invoice_number",
+  "left_column_id": "column.zs_observe.snapdeal_sales_return.invoice_number",
+  "left_table_id": "table.zs_observe.snapdeal_sales_return",
+  "marketplace_only": true,
+  "name": "Snapdeal Sales Return → Settlement credit note",
+  "relationship_type": "join_key",
+  "review_status": "ready",
+  "right_column_id": "column.zs_observe.snapdeal_settlement.invoice_number",
+  "right_table_id": "table.zs_observe.snapdeal_settlement",
+  "source_card_id": "relationship.snapdeal.sales_return_to_settlement.invoice_number",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10639,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Future-ready credit-note to settlement reversal join."
+}

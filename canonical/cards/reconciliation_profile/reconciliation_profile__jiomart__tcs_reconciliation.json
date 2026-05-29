@@ -1,0 +1,49 @@
+{
+  "actual_side": "reconciliation_side.jiomart.tcs.actual_settlement",
+  "canonical_id": "reconciliation_profile.jiomart.tcs_reconciliation",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart TCS reconciliation across OMS and settlement BaseTcs rows",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_4_tcs_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_4_tcs_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12018
+    }
+  ],
+  "expected_side": "reconciliation_side.jiomart.tcs.expected_oms",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.jiomart.tcs_reconciliation",
+  "mismatch_categories": [
+    "mismatch_category.jiomart.tcs_variance",
+    "mismatch_category.jiomart.tcs_rate_anomaly"
+  ],
+  "name": "JioMart TCS reconciliation across OMS and settlement BaseTcs rows",
+  "process_id": "business_process.jiomart.settlement_event_model",
+  "reconciliation_family": "tax_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.jiomart.tcs_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12018,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_window": "Use date filters in source SQL and mandatory filters; settlement/OMS date range gaps are caveats.",
+  "tolerance": "numeric tolerance not documented unless source SQL provides threshold; keep variance outputs diagnostic.",
+  "unit_id": "reconciliation_unit.jiomart.period_or_order",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

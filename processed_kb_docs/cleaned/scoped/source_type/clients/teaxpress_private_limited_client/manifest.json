@@ -1,0 +1,12 @@
+{
+  "card_types": {},
+  "counts": {
+    "future_context_gaps": 13,
+    "semantic_mappings": 24
+  },
+  "edge_types": {},
+  "scope": [
+    "clients",
+    "teaxpress_private_limited_client"
+  ]
+}

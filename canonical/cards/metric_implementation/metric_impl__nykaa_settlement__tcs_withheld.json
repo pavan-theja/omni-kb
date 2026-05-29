@@ -1,0 +1,72 @@
+{
+  "base_tables": [
+    "table.zs_observe.nykaa_settlement"
+  ],
+  "canonical_id": "metric_impl.nykaa_settlement.tcs_withheld",
+  "canonical_name": "Tcs Withheld",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.query_rules",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15653
+    },
+    {
+      "evidence_id": "evidence.nykaa.query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15653
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15653
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true AND transaction_type = 'forward' AND group_level_id = 22"
+  ],
+  "formula_sql": "SUM(total_tcs_amount)",
+  "formula_template_id": "formula_template.tcs_rate_observed",
+  "grain": "month",
+  "implementation_scope": "nykaa_settlement",
+  "marketplace_only": true,
+  "metric_id": "metric.tcs_withheld",
+  "name": "Tcs Withheld",
+  "platform_code": "nykaa",
+  "platform_context_id": "platform_context.nykaa_fashion.in",
+  "review_status": "unreviewed",
+  "source_card_id": "metric_impl.nykaa_settlement.tcs_withheld",
+  "source_columns": [
+    "total_tcs_amount",
+    "charged_amount"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15653,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.nykaa_settlement",
+  "sql_dialect": "Athena / Trino",
+  "sql_pattern_id": "sql.nykaa.tcs_summary",
+  "status": "draft",
+  "summary": "TCS amount withheld by Nykaa; executable formula and filters normalized in V9.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

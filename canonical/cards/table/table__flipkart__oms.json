@@ -1,0 +1,99 @@
+{
+  "amount_columns": [
+    "charged_amount"
+  ],
+  "business_keys": [
+    "order_id",
+    "item_id"
+  ],
+  "canonical_id": "table.flipkart.oms",
+  "card_type": "table",
+  "column_ids": [
+    "column.oms.charged_amount",
+    "column.oms.created_date",
+    "column.oms.currency_type",
+    "column.oms.fulfilment_type",
+    "column.oms.group_level_id",
+    "column.oms.is_active",
+    "column.oms.is_shopsy_order_",
+    "column.oms.item_id",
+    "column.oms.order_id",
+    "column.oms.quantity",
+    "column.oms.transaction_type"
+  ],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_columns": [
+    "created_date"
+  ],
+  "description": "table card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.oms",
+    "evidence.flipkart.reconciliation_framework",
+    "evidence.flipkart.pipeline_architecture"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.oms",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 601
+    },
+    {
+      "evidence_id": "evidence.flipkart.reconciliation_framework",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 601
+    },
+    {
+      "evidence_id": "evidence.flipkart.pipeline_architecture",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 601
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "order item / transaction row; schema review required because DOCX table body repeats cashback semantics",
+  "known_filters": [
+    "is_active = true",
+    "group_level_id values vary by OMS deployment; do not cross-table match group_level_id"
+  ],
+  "marketplace_module": "orders",
+  "name": "zs_recon_processor.flipkart_oms",
+  "primary_keys": [
+    "order_id",
+    "item_id"
+  ],
+  "review_status": "review_required",
+  "schema_name": "zs_recon_processor",
+  "scope_columns_as_columns_only": [
+    "group_level_id"
+  ],
+  "source_aliases": [
+    "DOCX table header also says zs_observe; pipeline section says flipkart_oms lives in zs_recon_processor"
+  ],
+  "source_card_id": "table.flipkart.oms",
+  "source_caveats": [
+    "DOCX reconciliation framework uses flipkart_oms for order verification, but the detailed table section labelled flipkart_oms repeats cashback-like descriptions.",
+    "Use OMS cards only where query examples or reconciliation framework explicitly support order semantics."
+  ],
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 601,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "review_required",
+  "status": "draft",
+  "status_columns": [
+    "transaction_type",
+    "fulfilment_type",
+    "is_shopsy_order_",
+    "is_active"
+  ],
+  "table_name": "flipkart_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

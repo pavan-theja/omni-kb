@@ -1,0 +1,56 @@
+{
+  "card_types": {
+    "account_data_binding": 2,
+    "column": 53,
+    "metric": 24,
+    "metric_implementation": 25,
+    "platform": 1,
+    "platform_account": 1,
+    "platform_context": 1,
+    "relationship": 2,
+    "table": 2,
+    "value_profile": 6
+  },
+  "counts": {
+    "cards": 117,
+    "documents": 1,
+    "edges": 321,
+    "evidence": 6,
+    "review_items": 5,
+    "semantic_mappings": 5
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM": 2,
+    "BELONGS_TO_DOMAIN": 24,
+    "BELONGS_TO_PLATFORM": 1,
+    "BELONGS_TO_TABLE": 53,
+    "BINDS_TO_TABLE": 2,
+    "HAS_ACCOUNT_DATA_BINDING": 2,
+    "HAS_COLUMN": 53,
+    "HAS_IMPLEMENTATION": 25,
+    "HAS_PLATFORM_ACCOUNT": 1,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "HAS_RELATIONSHIP": 4,
+    "HAS_VALUE_PROFILE": 12,
+    "IMPLEMENTS_METRIC": 25,
+    "INCLUDES_PLATFORM_ACCOUNT": 1,
+    "PARTICIPATES_WITH_ACCOUNT": 2,
+    "PROFILES_COLUMN": 6,
+    "PROFILES_TABLE": 6,
+    "SOURCED_FROM_PLATFORM": 2,
+    "SOURCE_TABLE": 2,
+    "TARGET_TABLE": 2,
+    "USES_ACCOUNT_DATA_BINDING": 2,
+    "USES_COLUMN": 37,
+    "USES_FORMULA_TEMPLATE": 25,
+    "USES_PLATFORM": 1,
+    "USES_PLATFORM_CONTEXT": 1,
+    "USES_SOURCE_COLUMN": 2,
+    "USES_TABLE": 25,
+    "USES_TARGET_COLUMN": 2
+  },
+  "scope": [
+    "logistics",
+    "delhivery"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "amount_concept": "profile_specific_amount_metric",
+  "business_object": "order/shipment/awb/settlement/bank_credit",
+  "canonical_id": "reconciliation_side.freight_charge_validation.expected",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "date_concept": "profile_specific_date",
+  "description": "Expected side of Freight Charge Validation.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 1560
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 1560
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 1560
+    }
+  ],
+  "expected_state": "profile_specific",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "identifier_concepts": "order_id; awb; settlement_id; remittance_number; utr; bank_reference",
+  "name": "Freight Charge Validation Expected Side",
+  "platform_type": "marketplace/logistics/courier/banking_by_profile",
+  "recommended_metrics": "metric.shipment_count; metric.freight_billed_amount; metric.cod_remitted_amount; metric.bank_credit_matched_amount",
+  "review_status": "unreviewed",
+  "side_name": "Freight Charge Validation expected",
+  "side_operational_purpose": "Defines one evidence side of a reconciliation profile; account filters are not encoded here.",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.freight_charge_validation.expected",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1560,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_status": "active",
+  "status": "active",
+  "typical_tables": "see query patterns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

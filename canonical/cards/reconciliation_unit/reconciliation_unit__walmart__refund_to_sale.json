@@ -1,0 +1,41 @@
+{
+  "canonical_id": "reconciliation_unit.walmart.refund_to_sale",
+  "card_type": "reconciliation_unit",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_unit card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4865
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "order_id + sku_id",
+  "join_keys": "order_id; sku_id where available; special logic per profile",
+  "name": "Walmart refund to original sale match unit",
+  "notes": "Walmart refund to original sale match unit",
+  "profile": "reconciliation_profile.walmart.refund_to_sale",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_unit.walmart.refund_to_sale",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4865,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit_key": "order_id + sku_id",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

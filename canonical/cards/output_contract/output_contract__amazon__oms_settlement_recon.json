@@ -1,0 +1,50 @@
+{
+  "candidate_notes": "Output shape explicitly supported by DOCX query or reconciliation pattern.",
+  "canonical_id": "output_contract.amazon.oms_settlement_recon",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "marketplace_analysis_output",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.join_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.join_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 8165
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "OMS to settlement reconciliation output",
+  "output_columns": [
+    "order_id",
+    "created_date",
+    "oms_revenue",
+    "settled_sales",
+    "net_settled",
+    "settlement_id",
+    "variance_status"
+  ],
+  "related_canonical_id": "reconciliation_profile.amazon.oms_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "output_contract.amazon.oms_settlement_recon",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8165,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,51 @@
+{
+  "canonical_id": "column.zs_observe.tatacliq_settlement.referral_fees",
+  "card_type": "column",
+  "column_name": "referral_fees",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_quality_notes": [
+    "NULL for reverse rows; use gross_commission for commission analysis across both directions."
+  ],
+  "data_type": "decimal",
+  "description": "Commission excl. GST (= referral fee net)",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.schema.settlement.financial"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.schema.settlement.financial",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 5206
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": true,
+  "is_date": false,
+  "is_key": false,
+  "is_scope_field": false,
+  "is_status": false,
+  "name": "tatacliq_settlement",
+  "review_status": "ready_with_caveat",
+  "schema": "zs_observe",
+  "semantic_role": "amount",
+  "sign_convention": "forward POSITIVE net referral fee; reverse NULL/0 in source.",
+  "source_card_id": "column.zs_observe.tatacliq_settlement.referral_fees",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5206,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready_with_caveat",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_settlement",
+  "table_name": "tatacliq_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

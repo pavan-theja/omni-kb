@@ -1,0 +1,85 @@
+{
+  "business_warning": "B2B premium is an AJIO B2B2C pricing difference, not a standard commission/fee waterfall.",
+  "canonical_id": "query_pattern.ajio.oms_vs_settlement_amount_comparison.11",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.036_10_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "OMS vs Settlement Amount Comparison",
+  "name": "OMS vs Settlement Amount Comparison",
+  "natural_language_patterns": [
+    "OMS vs Settlement Amount Comparison",
+    "oms vs settlement amount comparison"
+  ],
+  "parser_note": "Preserve SQL exactly; parser may normalize schema aliases separately.",
+  "reconciliation_profile_id": "reconciliation_profile.ajio.oms_vs_settlement_amount_comparison",
+  "required_columns": [
+    "order_id",
+    "charged_amount",
+    "ajio_oms",
+    "ajio_settlement",
+    "is_active",
+    "order_status",
+    "customer_price",
+    "settlement_price",
+    "b2b_premium",
+    "zs_observe"
+  ],
+  "required_rules": [
+    "rule.ajio.always_filter_is_active_true_without_this_queries_include_invalid_deleted.05",
+    "rule.ajio.use_zs_observe_schema_exclusively_for_analytics_queries.06"
+  ],
+  "required_tables": [
+    "zs_observe.ajio_oms",
+    "zs_observe.ajio_settlement"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.ajio.oms_vs_settlement_amount_comparison.11",
+  "source_confidence": "high",
+  "source_context": "Unmatched Credit Notes (No Return Record)",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6428,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "sql_pattern": "SELECT o.order_id, o.purchase_po_no,\n  o.charged_amount AS customer_price,\n  s.charged_amount AS settlement_price,\n  s.charged_amount - o.charged_amount AS b2b_premium\nFROM zs_observe.ajio_oms o\nJOIN zs_observe.ajio_settlement s\n  ON o.purchase_po_no = s.purchase_po_no\nWHERE o.is_active = true\n  AND s.is_active = true\n  AND o.order_status = 'Delivered'\nLIMIT 20",
+  "sql_ref": "sql.ajio.oms_vs_settlement_amount_comparison",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,42 @@
+{
+  "canonical_id": "state_transition.walmart.oms_to_cancelled",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.lifecycle.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.lifecycle.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4518
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "ACKNOWLEDGED/SHIPPED",
+  "name": "OMS order to cancelled",
+  "notes": "OMS order to cancelled",
+  "process": "business_process.walmart.cancellation_without_settlement",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.walmart.oms_to_cancelled",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4518,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "state_column": "column.zs_observe.walmart_oms.order_status",
+  "status": "active",
+  "to_state": "CANCELLED",
+  "transition_semantics": "Cancelled orders appear in OMS and are not expected in settlement.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

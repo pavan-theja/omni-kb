@@ -1,0 +1,54 @@
+{
+  "canonical_id": "column.zs_observe.snapdeal_sales_return.is_active_false_reason",
+  "card_type": "column",
+  "column_name": "is_active_false_reason",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Deactivation reason",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.overview",
+    "evidence.snapdeal.sales_return_empty_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 7575
+    },
+    {
+      "evidence_id": "evidence.snapdeal.sales_return_empty_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 7575
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "is_amount": false,
+  "is_date": false,
+  "is_key": false,
+  "is_scope_field": false,
+  "is_status": true,
+  "name": "snapdeal_sales_return",
+  "population_caveat": "Table is currently empty/schema-provisioned; only use once data is populated or for future-ready query templates.",
+  "review_status": "ready",
+  "schema": "zs_observe",
+  "semantic_role": "status_or_classification",
+  "source_card_id": "column.zs_observe.snapdeal_sales_return.is_active_false_reason",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7575,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.snapdeal_sales_return",
+  "table_name": "snapdeal_sales_return",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

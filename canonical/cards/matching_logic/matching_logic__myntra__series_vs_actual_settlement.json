@@ -1,0 +1,47 @@
+{
+  "canonical_id": "matching_logic.myntra.series_vs_actual_settlement",
+  "canonical_name": "series_vs_actual_settlement",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.reconciliation",
+    "evidence.myntra.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11232
+    },
+    {
+      "evidence_id": "evidence.myntra.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 11232
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "logic_type": "marketplace_internal_matching",
+  "marketplace_only": true,
+  "name": "series_vs_actual_settlement",
+  "review_status": "unreviewed",
+  "source_card_id": "matching_logic.myntra.series_vs_actual_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11232,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Settlement cycle check compares series_settled_value to total_actual_settlement and difference_in_settled.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

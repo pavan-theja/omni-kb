@@ -1,0 +1,47 @@
+{
+  "canonical_id": "rule.shopify.cod_pending_semantics",
+  "card_type": "rule",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "cod pending semantics",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.financial_status.001",
+    "ev.shopify.data_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.financial_status.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2762
+    },
+    {
+      "evidence_id": "ev.shopify.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2762
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "cod pending semantics",
+  "review_status": "accepted",
+  "rule_scope": "shopify_d2c_oms_execution_and_semantics",
+  "rule_text": "COD orders may remain financial_status=pending even after delivery/remittance; do not treat pending as failed payment.",
+  "source_card_id": "rule.shopify.cod_pending_semantics",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2762,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

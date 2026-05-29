@@ -1,0 +1,42 @@
+{
+  "business_meaning": "Return exists but corresponding settlement refund is not yet posted or outside settlement date range.",
+  "canonical_id": "mismatch_category.target_plus.returns_settlement.refund_pending",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Return exists but corresponding settlement refund is not yet posted or outside settlement date range.",
+  "detection_logic": "settlement.item_id IS NULL",
+  "display_name": "Refund Pending",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_2_returns_settlement_refund_match"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_2_returns_settlement_refund_match",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10566
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "timing_gap",
+  "name": "Refund Pending",
+  "profile_id": "reconciliation_profile.target_plus.returns_settlement",
+  "review_priority": "medium",
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.target_plus.returns_settlement.refund_pending",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10566,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

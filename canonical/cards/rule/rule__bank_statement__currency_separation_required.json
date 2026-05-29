@@ -1,0 +1,57 @@
+{
+  "applies_to": "bank_statement_tables_and_query_patterns",
+  "banking_only": true,
+  "canonical_id": "rule.bank_statement.currency_separation_required",
+  "card_type": "rule",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Do not sum balances or amounts across currencies without explicit FX conversion; group multi-currency sources by currency.",
+  "deterministic_action": "enforce_or_emit_warning",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.standard_filter.001",
+    "ev.bank_statement.amount_quality.001",
+    "ev.bank_statement.direction_reference.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.standard_filter.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15193
+    },
+    {
+      "evidence_id": "ev.bank_statement.amount_quality.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15193
+    },
+    {
+      "evidence_id": "ev.bank_statement.direction_reference.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15193
+    }
+  ],
+  "exceptions": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "currency_separation_required",
+  "review_status": "accepted",
+  "rule_name": "currency_separation_required",
+  "rule_statement": "Do not sum balances or amounts across currencies without explicit FX conversion; group multi-currency sources by currency.",
+  "rule_type": "currency_rule",
+  "severity": "high",
+  "source_card_id": "rule.bank_statement.currency_separation_required",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15193,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

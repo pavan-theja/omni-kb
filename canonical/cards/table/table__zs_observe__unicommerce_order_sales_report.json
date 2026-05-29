@@ -1,0 +1,130 @@
+{
+  "active_row_context": "3,017,728 rows for Apr-Dec 2025 in source document.",
+  "active_rows": "3,017,728 active rows",
+  "canonical_id": "table.zs_observe.unicommerce_order_sales_report",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.unicommerce_order_sales_report.billing_address_city",
+    "column.zs_observe.unicommerce_order_sales_report.billing_address_state",
+    "column.zs_observe.unicommerce_order_sales_report.category",
+    "column.zs_observe.unicommerce_order_sales_report.channel_name",
+    "column.zs_observe.unicommerce_order_sales_report.created_date",
+    "column.zs_observe.unicommerce_order_sales_report.currency_type",
+    "column.zs_observe.unicommerce_order_sales_report.description",
+    "column.zs_observe.unicommerce_order_sales_report.discount",
+    "column.zs_observe.unicommerce_order_sales_report.facility",
+    "column.zs_observe.unicommerce_order_sales_report.gross_weight",
+    "column.zs_observe.unicommerce_order_sales_report.gross_weight_g",
+    "column.zs_observe.unicommerce_order_sales_report.gross_weight_kg",
+    "column.zs_observe.unicommerce_order_sales_report.group_level_id",
+    "column.zs_observe.unicommerce_order_sales_report.is_active",
+    "column.zs_observe.unicommerce_order_sales_report.item_type_brand",
+    "column.zs_observe.unicommerce_order_sales_report.item_type_size",
+    "column.zs_observe.unicommerce_order_sales_report.logistics_height",
+    "column.zs_observe.unicommerce_order_sales_report.logistics_height_mm",
+    "column.zs_observe.unicommerce_order_sales_report.logistics_length",
+    "column.zs_observe.unicommerce_order_sales_report.logistics_length_mm",
+    "column.zs_observe.unicommerce_order_sales_report.logistics_width",
+    "column.zs_observe.unicommerce_order_sales_report.logistics_width_mm",
+    "column.zs_observe.unicommerce_order_sales_report.mrp",
+    "column.zs_observe.unicommerce_order_sales_report.order_date",
+    "column.zs_observe.unicommerce_order_sales_report.order_id",
+    "column.zs_observe.unicommerce_order_sales_report.order_status",
+    "column.zs_observe.unicommerce_order_sales_report.other_id",
+    "column.zs_observe.unicommerce_order_sales_report.sale_order_status",
+    "column.zs_observe.unicommerce_order_sales_report.seller_sku_code",
+    "column.zs_observe.unicommerce_order_sales_report.shipping_method",
+    "column.zs_observe.unicommerce_order_sales_report.sku_id",
+    "column.zs_observe.unicommerce_order_sales_report.sku_name",
+    "column.zs_observe.unicommerce_order_sales_report.tags",
+    "column.zs_observe.unicommerce_order_sales_report.total_price",
+    "column.zs_observe.unicommerce_order_sales_report.txn_uuid",
+    "column.zs_observe.unicommerce_order_sales_report.unique_id",
+    "column.zs_observe.unicommerce_order_sales_report.unique_value",
+    "column.zs_observe.unicommerce_order_sales_report.volumetric_weight",
+    "column.zs_observe.unicommerce_order_sales_report.volumetric_weight_kg",
+    "column.zs_observe.unicommerce_order_sales_report.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "2025-04-01 to 2025-12-31",
+  "description": "table card from raw/cleaned_v2/oms/unicommerce_d2c_oms.md.",
+  "display_name": "zs_observe.unicommerce_order_sales_report",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.tables.001",
+    "ev.unicommerce.osr.schema.001",
+    "ev.unicommerce.filters.001",
+    "ev.unicommerce.section.003.2_table_overview_two_table_structure",
+    "ev.unicommerce.section.029.14_table_summary_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.tables.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 601
+    },
+    {
+      "evidence_id": "ev.unicommerce.osr.schema.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 601
+    },
+    {
+      "evidence_id": "ev.unicommerce.filters.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 601
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "shipment_or_order_line_status",
+  "join_key_notes": "order_id with # prefix to # || unicommerce.order_id",
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 211"
+  ],
+  "name": "zs_observe.unicommerce_order_sales_report",
+  "optional_fields": [
+    "schema",
+    "row_grain",
+    "primary_keys",
+    "join_keys",
+    "mandatory_filters",
+    "nullability_notes",
+    "data_quality_notes",
+    "source_lineage"
+  ],
+  "owned_scope": "warehouse_inventory_primary_view",
+  "platform_context_id": "platform_context.unicommerce.in",
+  "primary_key_notes": "order_id with # prefix / row-level shipment line",
+  "primary_key_policy": "order_id with # prefix + sku_id/other_id for tracking context.",
+  "purpose": "Shipment-level fulfilment and delivery tracking table containing order status, AWB/tracking number, shipping method, package dimensions, MRP, and dispatch/delivery evidence.",
+  "review_status": "accepted",
+  "row_scope": "Shipment-level fulfillment and delivery tracking with AWB, order_status, shipping_method and MRP.",
+  "schema_name": "zs_observe",
+  "source_card_id": "table.zs_observe.unicommerce_order_sales_report",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx",
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 601,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_paths": [
+    "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+    "raw/cleaned_v2/wms/unicommerce_operations.md"
+  ],
+  "source_status": "accepted",
+  "source_system": "Unicommerce OMS/OSR",
+  "status": "active",
+  "table_name": "unicommerce_order_sales_report",
+  "table_role": "oms_shipment_status_tracking_complement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

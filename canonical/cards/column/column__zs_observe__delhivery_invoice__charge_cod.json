@@ -1,0 +1,68 @@
+{
+  "amount_semantics": "table_specific_financial_amount; do not generalize by column name",
+  "business_concepts": [
+    "COD collection fee."
+  ],
+  "canonical_id": "column.zs_observe.delhivery_invoice.charge_cod",
+  "card_type": "column",
+  "column_name": "charge_cod",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "data_type": "unknown",
+  "default_aggregation": "SUM if financial measure else none",
+  "description": "COD collection fee.",
+  "document_id": "delhivery_logistics_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 1431
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 1431
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+      "source_line": 1431
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "delhivery_invoice.charge_cod",
+  "review_status": "unreviewed",
+  "semantic_roles": "measure",
+  "sign_convention": "positive_or_source_specific",
+  "source_card_id": "column.zs_observe.delhivery_invoice.charge_cod",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1431,
+  "source_path": "raw/cleaned_v2/logistics/delhivery_logistics.md",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.delhivery_invoice",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "usable_for_filtering": false,
+  "usable_for_grouping": false,
+  "usable_for_joining": false,
+  "usable_for_metrics": true,
+  "usable_for_reconciliation": true,
+  "version": "5.0-manifest-aligned"
+}

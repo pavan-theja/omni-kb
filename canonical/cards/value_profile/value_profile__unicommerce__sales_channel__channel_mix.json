@@ -1,0 +1,56 @@
+{
+  "canonical_id": "value_profile.unicommerce.sales_channel.channel_mix",
+  "card_type": "value_profile",
+  "column_names": [
+    "sales_channel"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Sales channel values from Astrotalk Store, marketplace, Shopify, quick commerce, and custom channels; channel labels do not create marketplace cards here",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "documented_values": {
+    "Amazon_Astrotalk": "marketplace channel label",
+    "Astrotalk_Store": "primary D2C channel",
+    "BLINKIT": "quick-commerce label",
+    "FLIPKART_Astrotalk1": "marketplace channel label"
+  },
+  "evidence_ids": [
+    "ev.unicommerce.section.007.5_sales_channel_architecture"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.007.5_sales_channel_architecture",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 9630
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Channel Mix",
+  "optional_fields": [
+    "documented_values",
+    "value_meanings",
+    "normalization_rules",
+    "quality_caveats",
+    "examples",
+    "excluded_interpretations"
+  ],
+  "profile_name": "channel_mix",
+  "review_status": "ready",
+  "source_card_id": "value_profile.unicommerce.sales_channel.channel_mix",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9630,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.unicommerce",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "supporting_or_handoff"
+}

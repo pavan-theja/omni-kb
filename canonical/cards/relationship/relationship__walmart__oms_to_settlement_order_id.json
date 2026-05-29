@@ -1,0 +1,46 @@
+{
+  "business_semantics": "order-level reconciliation / settlement coverage",
+  "canonical_id": "relationship.walmart.oms_to_settlement_order_id",
+  "card_type": "relationship",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.relationships.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.relationships.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 3175
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_table": "table.zs_observe.walmart_oms",
+  "join_keys": {
+    "left_key": "order_id",
+    "right_key": "order_id"
+  },
+  "join_safety_rule": "89.6% coverage (822/917); gaps expected due settlement timing/cancellations/historical settlement rows",
+  "name": "Walmart OMS to settlement order join",
+  "notes": "Walmart OMS to settlement order join",
+  "relationship_grain": "order/SKU line item where keys are populated",
+  "review_status": "accepted",
+  "source_card_id": "relationship.walmart.oms_to_settlement_order_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3175,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_table": "table.zs_observe.walmart_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

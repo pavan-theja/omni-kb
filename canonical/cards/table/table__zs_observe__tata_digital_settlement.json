@@ -1,0 +1,198 @@
+{
+  "amount_columns": [
+    "settlement_id",
+    "charged_amount",
+    "settled_amount",
+    "pre_discount",
+    "pre_discountamount",
+    "payable_amount",
+    "amount_paid",
+    "discount",
+    "discount_amount"
+  ],
+  "avoid_columns": [
+    "settlement_id",
+    "charged_amount",
+    "pre_discount",
+    "pre_discountamount",
+    "payable_amount",
+    "amount_paid",
+    "discount_amount"
+  ],
+  "business_purpose": "Tata Digital is the digital commerce arm of Tata Group, operating the Tata Neu super-app. This table captures settlement data for merchants selling through Tata Digital's marketplace or through Tata Neu's BNPL/payment features. Tata Neu allows customers to pay with NeuCoins (Tata's loyalty currency) and through its BNPL product (NeuCash).",
+  "canonical_id": "table.zs_observe.tata_digital_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.tata_digital_settlement.amount_paid",
+    "column.zs_observe.tata_digital_settlement.brand",
+    "column.zs_observe.tata_digital_settlement.brand_name",
+    "column.zs_observe.tata_digital_settlement.brandorderid",
+    "column.zs_observe.tata_digital_settlement.charged_amount",
+    "column.zs_observe.tata_digital_settlement.created_date",
+    "column.zs_observe.tata_digital_settlement.creation_date",
+    "column.zs_observe.tata_digital_settlement.currency_type",
+    "column.zs_observe.tata_digital_settlement.date_of_payment",
+    "column.zs_observe.tata_digital_settlement.discount",
+    "column.zs_observe.tata_digital_settlement.discount_amount",
+    "column.zs_observe.tata_digital_settlement.item_id",
+    "column.zs_observe.tata_digital_settlement.order_id",
+    "column.zs_observe.tata_digital_settlement.payable_amount",
+    "column.zs_observe.tata_digital_settlement.pre_discount",
+    "column.zs_observe.tata_digital_settlement.pre_discountamount",
+    "column.zs_observe.tata_digital_settlement.product_sku",
+    "column.zs_observe.tata_digital_settlement.quantity",
+    "column.zs_observe.tata_digital_settlement.reference_number",
+    "column.zs_observe.tata_digital_settlement.remarks",
+    "column.zs_observe.tata_digital_settlement.settled_amount",
+    "column.zs_observe.tata_digital_settlement.settlement_date",
+    "column.zs_observe.tata_digital_settlement.settlement_id",
+    "column.zs_observe.tata_digital_settlement.sku_id",
+    "column.zs_observe.tata_digital_settlement.sr_no",
+    "column.zs_observe.tata_digital_settlement.sr_no_",
+    "column.zs_observe.tata_digital_settlement.td_order_no",
+    "column.zs_observe.tata_digital_settlement.temp1_0",
+    "column.zs_observe.tata_digital_settlement.temp1_0_1",
+    "column.zs_observe.tata_digital_settlement.utr"
+  ],
+  "columns": [
+    "column.zs_observe.tata_digital_settlement.order_id",
+    "column.zs_observe.tata_digital_settlement.item_id",
+    "column.zs_observe.tata_digital_settlement.brandorderid",
+    "column.zs_observe.tata_digital_settlement.td_order_no",
+    "column.zs_observe.tata_digital_settlement.reference_number",
+    "column.zs_observe.tata_digital_settlement.settlement_id",
+    "column.zs_observe.tata_digital_settlement.sku_id",
+    "column.zs_observe.tata_digital_settlement.product_sku",
+    "column.zs_observe.tata_digital_settlement.brand",
+    "column.zs_observe.tata_digital_settlement.brand_name",
+    "column.zs_observe.tata_digital_settlement.sr_no_",
+    "column.zs_observe.tata_digital_settlement.sr_no",
+    "column.zs_observe.tata_digital_settlement.utr",
+    "column.zs_observe.tata_digital_settlement.created_date",
+    "column.zs_observe.tata_digital_settlement.settlement_date",
+    "column.zs_observe.tata_digital_settlement.creation_date",
+    "column.zs_observe.tata_digital_settlement.date_of_payment",
+    "column.zs_observe.tata_digital_settlement.quantity",
+    "column.zs_observe.tata_digital_settlement.charged_amount",
+    "column.zs_observe.tata_digital_settlement.settled_amount",
+    "column.zs_observe.tata_digital_settlement.pre_discount",
+    "column.zs_observe.tata_digital_settlement.pre_discountamount",
+    "column.zs_observe.tata_digital_settlement.payable_amount",
+    "column.zs_observe.tata_digital_settlement.amount_paid",
+    "column.zs_observe.tata_digital_settlement.discount",
+    "column.zs_observe.tata_digital_settlement.discount_amount",
+    "column.zs_observe.tata_digital_settlement.remarks",
+    "column.zs_observe.tata_digital_settlement.currency_type",
+    "column.zs_observe.tata_digital_settlement.temp1_0",
+    "column.zs_observe.tata_digital_settlement.temp1_0_1"
+  ],
+  "confidence": "low_confidence",
+  "coverage_status": "source_described_but_missing_from_zs_observe_at_kb_creation",
+  "create_action": "create_draft_do_not_use_for_active_queries_until_warehouse_presence_confirmed",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date",
+    "settlement_date",
+    "creation_date",
+    "date_of_payment"
+  ],
+  "description": "Tata Digital is the digital commerce arm of Tata Group, operating the Tata Neu super-app. This table captures settlement data for merchants selling through Tata Digital's marketplace or through Tata Neu's BNPL/payment features. Tata Neu allows customers to pay with NeuCoins (Tata's loyalty currency) and through its BNPL product (NeuCash).",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.tata_digital"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.tata_digital",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 5690
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.tata_digital_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "order_id",
+    "item_id",
+    "brandorderid",
+    "td_order_no",
+    "reference_number",
+    "settlement_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "schema_type_manifest_review_required_missing_warehouse_table"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.tata_digital_settlement",
+  "recommended_date_columns": [
+    "created_date",
+    "settlement_date"
+  ],
+  "reconciliation_key_columns": [
+    "reference_number",
+    "settlement_id",
+    "utr"
+  ],
+  "relationships": [],
+  "review_status": "review_required",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.tata_digital_settlement",
+  "source_caveats": [
+    "`charged_amount` is stored as **Text** — use `settled_amount` (Decimal) for financial calculations.",
+    "`brandorderid` is the brand-specific order reference — use for cross-referencing with brand's own OMS.",
+    "`td_order_no` is Tata Digital's internal order number.",
+    "`sku_id` and `product_sku` are both present — check which is populated for the specific data set.",
+    "`discount` (Decimal) and `discount_amount` (Text) track NeuCoins or promotional discounts.",
+    "`pre_discountamount` = original price before Tata discount/NeuCoin redemption.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "low_confidence",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5690,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.tata_digital"
+  ],
+  "source_platform_types": [
+    "ecommerce_payment_platform"
+  ],
+  "source_status": "draft",
+  "status": "draft",
+  "status_columns": [
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.tata_digital.in"
+    ],
+    "platform_ids": [
+      "platform.tata_digital"
+    ]
+  },
+  "table_name": "tata_digital_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": [],
+  "warehouse_availability_review": {
+    "issue": "The source also documents this table, but later says it was not found in zs_observe at KB creation.",
+    "resolution": "Keep card as draft source-described knowledge; do not route production queries until table existence is confirmed.",
+    "source_section": "Payment Gateway KB.docx > Missing Tables (Not in zs_observe)"
+  }
+}

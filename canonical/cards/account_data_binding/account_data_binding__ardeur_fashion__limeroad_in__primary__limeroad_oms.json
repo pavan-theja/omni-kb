@@ -1,0 +1,68 @@
+{
+  "active": true,
+  "canonical_id": "account_data_binding.ardeur_fashion.limeroad_in.primary.limeroad_oms",
+  "card_type": "account_data_binding",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "account_data_binding card from raw/cleaned_v2/clients/ardeur_fashion.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/ardeur_fashion.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Limeroad Oms",
+  "notes": [
+    "Bind platform_account.ardeur_fashion.limeroad_in.primary to table.zs_observe.limeroad_oms using client-level group_id and group_level_id scope filters.",
+    "Runtime filters are held in Account Data Binding scope_keys. group_id and group_level_id are not stored as universal table, metric, process, or reconciliation-card properties."
+  ],
+  "package_id": "ardeur_fashion_business_hierarchy_runtime_cards_v1_0",
+  "platform_account_id": "platform_account.ardeur_fashion.limeroad_in.primary",
+  "review_status": "unreviewed",
+  "scope_keys": [
+    {
+      "business_key": "group_id",
+      "column": "group_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 65
+    },
+    {
+      "business_key": "group_level_id",
+      "column": "group_level_id",
+      "data_type": "integer",
+      "operator": "=",
+      "value": 221
+    }
+  ],
+  "source_confidence": "curated",
+  "source_config_text": "Limeroad: OMS, Settlement multi-sheet, Adjustment/Adhoc",
+  "source_documents": [
+    "Ardeur Fashion Limited.docx",
+    "limeroad_marketplace.md",
+    "Cognee KB Design v4.md",
+    "ajio_marketplace.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "jiomart_marketplace.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/ardeur_fashion.json",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.limeroad_oms",
+  "table_support_level": "canonical_platform_context",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

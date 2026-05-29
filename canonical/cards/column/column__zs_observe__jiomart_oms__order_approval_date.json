@@ -1,0 +1,46 @@
+{
+  "business_meaning": "Order approval",
+  "canonical_id": "column.zs_observe.jiomart_oms.order_approval_date",
+  "card_type": "column",
+  "column_group": "3.2 Date Columns",
+  "column_name": "order_approval_date",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "timestamp",
+  "description": "Order approval",
+  "display_name": "jiomart_oms.order_approval_date",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.oms.3_schema_details_115_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.oms.3_schema_details_115_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 8288
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "jiomart_oms.order_approval_date",
+  "review_status": "ready",
+  "schema": "zs_observe",
+  "semantic_role": "date_time",
+  "source_card_id": "column.zs_observe.jiomart_oms.order_approval_date",
+  "source_confidence": "high",
+  "source_declared_type": "timestamp",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8288,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.jiomart_oms",
+  "table_name": "jiomart_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

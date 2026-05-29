@@ -1,0 +1,83 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.snapdeal.monthly_settlement_summary",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal implementation — Monthly Settlement Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.9_8_monthly_settlement_summary",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.9_8_monthly_settlement_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 15680
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 15680
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 15680
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use exactly the filters in formula_sql / linked sql_pattern, especially is_active=true, transaction_type/type scope, and group_level_id column scope where runtime supplies it.",
+  "formula_sql": "SELECT\n  settlement_date,\n  settlement_id,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(settled_amount) AS net_settled,\n  SUM(commission) AS commission,\n  COUNT(DISTINCT invoice_number) AS invoices\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\n  AND transaction_type IN ('forward', 'reverse')\nGROUP BY settlement_date, settlement_id\nORDER BY settlement_date;",
+  "formula_text": "Executable SQL-like implementation normalized in V9; see formula_sql and sql_pattern_id.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "snapdeal",
+  "metric_id": "metric.monthly_settlement_summary",
+  "metric_pattern": "snapdeal_specific_implementation_of_monthly_settlement_summary",
+  "name": "Snapdeal implementation — Monthly Settlement Summary",
+  "platform_code": "snapdeal",
+  "platform_context_id": "platform_context.snapdeal.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.snapdeal.monthly_settlement_summary",
+  "source_columns": [
+    "snapdeal_settlement",
+    "settlement_date",
+    "settlement_id",
+    "charged_amount",
+    "gross_gmv",
+    "settled_amount",
+    "net_settled",
+    "commission",
+    "invoice_number",
+    "invoices",
+    "is_active",
+    "transaction_type"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15680,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_table_ids": [
+    "table.zs_observe.snapdeal_settlement"
+  ],
+  "source_tables": [
+    "zs_observe.snapdeal_settlement"
+  ],
+  "sql_pattern": "SELECT\n  settlement_date,\n  settlement_id,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(settled_amount) AS net_settled,\n  SUM(commission) AS commission,\n  COUNT(DISTINCT invoice_number) AS invoices\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\n  AND transaction_type IN ('forward', 'reverse')\nGROUP BY settlement_date, settlement_id\nORDER BY settlement_date;",
+  "sql_pattern_id": "sql.snapdeal.9_8_monthly_settlement_summary",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

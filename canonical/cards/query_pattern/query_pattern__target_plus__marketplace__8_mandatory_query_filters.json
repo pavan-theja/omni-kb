@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.target_plus.marketplace.8_mandatory_query_filters",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus query pattern — 8. Mandatory Query Filters",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.8_mandatory_query_filters"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.8_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10927
+    }
+  ],
+  "execution_constraints": [
+    "execution_constraint_set.target_plus.marketplace_parser_constraints"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "8. Mandatory Query Filters",
+  "name": "Target Plus query pattern — 8. Mandatory Query Filters",
+  "natural_language_patterns": [
+    "8. Mandatory Query Filters",
+    "Target Plus 8. Mandatory Query Filters"
+  ],
+  "output_contract_id": "output_contract.target_plus.metric_timeseries",
+  "primary_metric_id": null,
+  "reconciliation_profile_ids": [],
+  "required_filters": [],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.target_plus.marketplace.8_mandatory_query_filters",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10927,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [],
+  "sql_ref": "sql.target_plus.marketplace.8_mandatory_query_filters",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

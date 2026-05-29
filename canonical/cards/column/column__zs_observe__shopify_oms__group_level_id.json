@@ -1,0 +1,80 @@
+{
+  "amount_semantics": "not_applicable_or_source_specific",
+  "business_concepts": [
+    "Observed group/account scope candidate",
+    "must be applied through Account Data Binding."
+  ],
+  "canonical_id": "column.zs_observe.shopify_oms.group_level_id",
+  "card_type": "column",
+  "column_name": "group_level_id",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "data_type": "unknown",
+  "default_aggregation": "none",
+  "description": "Observed group/account scope candidate; must be applied through Account Data Binding.",
+  "display_name": "group_level_id",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope",
+    "ev.shopify.schema.oms.001",
+    "ev.shopify.schema.extended.001",
+    "ev.shopify.data_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 435
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 435
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 435
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "shopify_oms.group_level_id",
+  "review_status": "accepted",
+  "semantic_role": "scope_identifier",
+  "semantic_roles": "scope_filter",
+  "sign_convention": "not_applicable",
+  "source_card_id": "column.zs_observe.shopify_oms.group_level_id",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx",
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 435,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_paths": [
+    "raw/cleaned_v2/logistics/logistics_domain.md",
+    "raw/cleaned_v2/oms/shopify_d2c_oms.md"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "table_id": "table.zs_observe.shopify_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "usable_for_filtering": true,
+  "usable_for_grouping": true,
+  "usable_for_joining": true,
+  "usable_for_metrics": false,
+  "version": "5.0-manifest-aligned"
+}

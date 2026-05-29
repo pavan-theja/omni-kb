@@ -1,0 +1,50 @@
+{
+  "canonical_id": "mismatch_category.unicommerce.missing_osr_match",
+  "card_type": "mismatch_category",
+  "category_name": "Missing OSR match",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Unicommerce transaction has no OSR shipment match; expected for returns/cancels and some incomplete OSR records.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.063.6_entity_relationships",
+    "ev.unicommerce.section.027.12_data_quality_observations_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.063.6_entity_relationships",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12662
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.027.12_data_quality_observations_known_issues",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12662
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Missing Osr Match",
+  "optional_fields": [
+    "root_causes",
+    "severity",
+    "recommended_action",
+    "safe_query_filter"
+  ],
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.unicommerce.missing_osr_match",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12662,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary_or_supporting"
+}

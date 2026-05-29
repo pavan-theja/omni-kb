@@ -1,0 +1,55 @@
+{
+  "business_process_id": "business_process.unicommerce.9_2_return_to_origin_courier_return",
+  "canonical_id": "workflow_step.unicommerce.9_2_rto.04_returned_to_warehouse_resolution",
+  "card_type": "workflow_step",
+  "column_ids": [
+    "column.zs_observe.unicommerce_order_sales_report.order_status"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/oms/unicommerce_d2c_oms.md.",
+  "display_name": "9.2.4 returned to warehouse resolution",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.lifecycle.rto.001",
+    "ev.unicommerce.osr.schema.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.lifecycle.rto.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 3931
+    },
+    {
+      "evidence_id": "ev.unicommerce.osr.schema.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 3931
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "materiality": "source_specific_oms_semantic_step",
+  "name": "9.2.4 returned to warehouse resolution",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.unicommerce.9_2_rto.04_returned_to_warehouse_resolution",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3931,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_status": "accepted",
+  "source_table_ids": [
+    "table.zs_observe.unicommerce_order_sales_report"
+  ],
+  "status": "active",
+  "step_description": "Item returns to warehouse; OSR order_status becomes RESHIPPED if redispatched or CANCELLED if abandoned.",
+  "step_order": 4,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

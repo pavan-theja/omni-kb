@@ -1,0 +1,53 @@
+{
+  "applies_to": [
+    "Flipkart marketplace clean markdown and downstream parser"
+  ],
+  "canonical_id": "rule.flipkart.group_scope_as_column",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "group_level_id/group_id are columns/caveats only; do not create account or hierarchy cards.",
+  "deterministic_action": "enforce or emit review item",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns",
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6921
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6921
+    }
+  ],
+  "exceptions": [
+    "only if source DOCX explicitly overrides with stronger evidence"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Flipkart group_scope_as_column",
+  "review_status": "accepted",
+  "rule_name": "group_scope_as_column",
+  "rule_statement": "group_level_id/group_id are columns/caveats only; do not create account or hierarchy cards.",
+  "rule_type": "scope_column_only",
+  "severity": "high",
+  "source_card_id": "rule.flipkart.group_scope_as_column",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6921,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

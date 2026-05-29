@@ -1,0 +1,43 @@
+{
+  "canonical_id": "rule.ajio.mrp_is_inflated_avg_2_324_vs_selling_price_314_this_is_standard_ajio_pract.25",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "MRP is inflated (avg ₹2,324 vs selling price ₹314) — this is standard AJIO practice; do not use MRP for revenue analysis",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "MRP is inflated (avg ₹2,324 vs selling price ₹314) — this is standard AJIO practice; do not use MRP for revenue analysis",
+  "review_status": "ready",
+  "rule_statement": "MRP is inflated (avg ₹2,324 vs selling price ₹314) — this is standard AJIO practice; do not use MRP for revenue analysis",
+  "rule_type": "source_instruction_or_parser_guard",
+  "severity": "high",
+  "source_card_id": "rule.ajio.mrp_is_inflated_avg_2_324_vs_selling_price_314_this_is_standard_ajio_pract.25",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7316,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,53 @@
+{
+  "amount_columns": [
+    "charged_amount"
+  ],
+  "canonical_id": "reconciliation_side.meesho.oms_settlement_match.expected",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "OMS expected side: active meesho_sales sub_order_num and charged_amount",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_3_oms_settlement_match"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_3_oms_settlement_match",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15476
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "meesho_sales.is_active = true",
+  "grain": "source query grain; pre-aggregate only if duplicate keys appear",
+  "key_columns": [
+    "sub_order_num"
+  ],
+  "name": "OMS expected side: active meesho_sales sub_order_num and charged_amount",
+  "profile_id": "reconciliation_profile.meesho.oms_settlement_match",
+  "review_status": "accepted",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.meesho.oms_settlement_match.expected",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15476,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "source_table_candidates": [
+    "zs_observe.meesho_sales"
+  ],
+  "status": "active",
+  "status_columns": [
+    "order_status"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

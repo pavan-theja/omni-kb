@@ -1,0 +1,45 @@
+{
+  "canonical_id": "value_profile.target_plus.returns.carrier_tracking",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.target_returns.other_id",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Returns carrier tracking profile",
+  "distribution_summary": "UPS 1Z-format tracking when internal_txn_type=reverse and physical return shipment occurs.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.returns.other_id_carrier_tracking_numbers"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.returns.other_id_carrier_tracking_numbers",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8869
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Returns carrier tracking profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "1ZE3656H0317269433",
+    "1Z19R3A49025382586"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.returns.carrier_tracking",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8869,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

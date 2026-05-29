@@ -1,0 +1,95 @@
+{
+  "card_types": {
+    "account_data_binding": 469,
+    "business_flow_binding": 82,
+    "business_process": 99,
+    "business_scope_set": 82,
+    "column": 4489,
+    "domain": 154,
+    "execution_constraint_set": 56,
+    "formula_template": 206,
+    "group": 18,
+    "matching_logic": 102,
+    "metric": 339,
+    "metric_dependency": 84,
+    "metric_implementation": 469,
+    "mismatch_category": 244,
+    "output_contract": 81,
+    "platform": 51,
+    "platform_account": 254,
+    "platform_context": 53,
+    "process_variant": 14,
+    "query_pattern": 398,
+    "reconciliation_profile": 98,
+    "reconciliation_side": 171,
+    "reconciliation_unit": 107,
+    "reconciliation_variant": 44,
+    "relationship": 131,
+    "review_item": 4,
+    "rule": 350,
+    "state_transition": 166,
+    "table": 113,
+    "tenant": 18,
+    "validation_test": 272,
+    "value_profile": 537,
+    "workflow_step": 330
+  },
+  "counts": {
+    "blocked_cards": 0,
+    "blocked_edges": 414,
+    "candidate_cards": 10085,
+    "candidate_edges": 30611,
+    "normalization_added_cards": 0,
+    "normalization_added_edges": 102,
+    "promoted_cards": 10085,
+    "promoted_edges": 30299,
+    "review_items": 214,
+    "validation_issues": 0
+  },
+  "generated_at": "2026-05-24T18:32:39+00:00",
+  "generator": "zenkb.promoter",
+  "promotion_policy": {
+    "blocking_review_severities": [
+      "blocking",
+      "critical",
+      "error",
+      "high"
+    ],
+    "promote_non_blocking_review_items": true,
+    "requires_canonical_validation": true
+  },
+  "review_items": {
+    "by_severity": {
+      "high": 54,
+      "low": 30,
+      "medium": 116,
+      "unknown": 14
+    },
+    "by_type": {
+      "benchmark_context": 1,
+      "data_quality_or_scope_caveat": 32,
+      "external_runtime_scope_binding": 2,
+      "external_source_required": 2,
+      "future_rate_card_variation": 1,
+      "inactive_source": 1,
+      "missing_column_confirmation": 1,
+      "missing_source_table_detail": 3,
+      "missing_tolerance": 1,
+      "resolved_source_tolerance": 1,
+      "runtime_scope_binding_required": 1,
+      "runtime_threshold_gap": 1,
+      "scope_layer_required": 1,
+      "source_availability_future_state": 1,
+      "unknown": 165
+    }
+  },
+  "source_artifacts": {
+    "candidate_cards": "build/intermediate/candidate_cards.jsonl",
+    "candidate_edges": "build/intermediate/candidate_edges.jsonl",
+    "review_items": "build/intermediate/review_items.jsonl"
+  },
+  "validation": {
+    "issues": [],
+    "ok": true
+  }
+}

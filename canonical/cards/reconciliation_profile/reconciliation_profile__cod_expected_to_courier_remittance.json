@@ -1,0 +1,76 @@
+{
+  "applicability_scope": "platform_type=logistics; tenant/group participation via Business Flow Binding",
+  "business_object": "order/shipment/awb/settlement/bank_credit",
+  "business_process_id": "business_process.cod_delivery_to_courier_remittance",
+  "canonical_id": "reconciliation_profile.cod_expected_to_courier_remittance",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Reusable reconciliation profile for COD Expected to Courier Remittance Reconciliation.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 1240
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 1240
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 1240
+    }
+  ],
+  "expected_alignment_type": "one_to_one or aggregated by profile",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.cod_expected_to_courier_remittance",
+  "mismatch_categories": [
+    "mismatch_category.cod_expected_to_courier_remittance.missing_expected",
+    "mismatch_category.cod_expected_to_courier_remittance.missing_actual",
+    "mismatch_category.cod_expected_to_courier_remittance.amount_mismatch",
+    "mismatch_category.cod_expected_to_courier_remittance.timing_mismatch"
+  ],
+  "name": "COD Expected to Courier Remittance Reconciliation",
+  "participating_platform_types": [
+    "marketplace",
+    "logistics",
+    "courier",
+    "banking by profile"
+  ],
+  "primary_reconciliation_unit_id": "reconciliation_unit.cod_expected_to_courier_remittance.primary",
+  "profile_name": "COD Expected to Courier Remittance Reconciliation",
+  "reconciliation_sides": "reconciliation_side.cod_expected_to_courier_remittance.expected; reconciliation_side.cod_expected_to_courier_remittance.actual",
+  "reconciliation_type": "cod_reconciliation",
+  "review_status": "unreviewed",
+  "secondary_reconciliation_unit_ids": "reconciliation_unit.cod_expected_to_courier_remittance.fallback",
+  "source_card_id": "reconciliation_profile.cod_expected_to_courier_remittance",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1240,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_status": "active",
+  "status": "active",
+  "supports_process_note": "Profile is reusable; tenant/group-specific account participation is supplied by Business Flow Binding.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

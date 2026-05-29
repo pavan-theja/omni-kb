@@ -1,0 +1,45 @@
+{
+  "canonical_id": "column.zs_observe.myntra_settlement.invoice_number",
+  "canonical_name": "invoice_number",
+  "card_type": "column",
+  "column_name": "invoice_number",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "column card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 5575
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "invoice_number",
+  "review_status": "unreviewed",
+  "semantic_role": "identifier",
+  "source_card_id": "column.zs_observe.myntra_settlement.invoice_number",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5575,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_preserved_name": true,
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Tax invoice number.",
+  "table_id": "table.zs_observe.myntra_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

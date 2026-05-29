@@ -1,0 +1,61 @@
+{
+  "affected_side": "expected_side/actual_side/both_by_case",
+  "business_interpretation": "Investigate missing_expected for Freight Charge Validation.",
+  "canonical_id": "mismatch_category.freight_charge_validation.missing_expected",
+  "card_type": "mismatch_category",
+  "category_name": "Freight Charge Validation missing_expected",
+  "category_type": "missing_expected",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Missing Expected mismatch for Freight Charge Validation.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 3579
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 3579
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 3579
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Freight Charge Validation Missing Expected",
+  "recommended_next_actions": "check evidence tables, source statuses, references, date window, and fallback source",
+  "review_status": "unreviewed",
+  "severity": "medium",
+  "source_card_id": "mismatch_category.freight_charge_validation.missing_expected",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3579,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_status": "active",
+  "status": "active",
+  "temporary_or_final": "depends_on_window",
+  "typical_root_causes": "missing load; delayed remittance; wrong key; sparse native data; amount semantics error",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

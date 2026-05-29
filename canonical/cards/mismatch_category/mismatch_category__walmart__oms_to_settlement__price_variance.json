@@ -1,0 +1,39 @@
+{
+  "canonical_id": "mismatch_category.walmart.oms_to_settlement.price_variance",
+  "card_type": "mismatch_category",
+  "category_key": "price_variance",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "OMS charged_amount and settlement charged_amount differ by more than source query threshold 0.10.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 5028
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Price variance",
+  "notes": "Price variance",
+  "profile": "reconciliation_profile.walmart.oms_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "mismatch_category.walmart.oms_to_settlement.price_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5028,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

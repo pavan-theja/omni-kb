@@ -1,0 +1,56 @@
+{
+  "canonical_id": "workflow_step.target_plus.product_mapping_enrichment.02",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "target_tcin_mapping provides title-case brand, clean seller SKU, ASIN, and barcode; normalize LOWER(brand) where needed and reformat scientific-notation barcodes for product matching.",
+  "display_name": "Apply brand/cross-channel enrichment",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.mapping.1_table_overview",
+    "ev.target_plus.mapping.4_distinct_value_analysis"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.mapping.1_table_overview",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10012
+    },
+    {
+      "evidence_id": "ev.target_plus.mapping.4_distinct_value_analysis",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10012
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "input_tables": [
+    "table.zs_observe.target_tcin_mapping"
+  ],
+  "name": "Apply brand/cross-channel enrichment",
+  "output_tables": [
+    "table.zs_observe.target_tcin_mapping"
+  ],
+  "process_id": "business_process.target_plus.product_mapping_enrichment",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.target_plus.product_mapping_enrichment.02",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10012,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "status_conditions": [
+    "LOWER(brand)",
+    "ASIN present 100%",
+    "barcode formatting caveat"
+  ],
+  "step_order": 2,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,41 @@
+{
+  "business_meaning": "Return refund and OMS original sale differ; source does not define hard pass/fail threshold.",
+  "canonical_id": "mismatch_category.jiomart.return_value_variance",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Return refund and OMS original sale differ; source does not define hard pass/fail threshold.",
+  "detection_logic": "ABS(CAST(r.refund_amount AS DOUBLE) - ABS(o.charged_amount)) requires runtime tolerance",
+  "display_name": "Return value variance",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_2_returns_oms_settlement_full_chain"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_2_returns_oms_settlement_full_chain",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12463
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "return_value_variance",
+  "name": "Return value variance",
+  "review_priority": "medium",
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.jiomart.return_value_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12463,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

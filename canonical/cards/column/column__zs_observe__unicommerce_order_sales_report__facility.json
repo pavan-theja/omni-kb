@@ -1,0 +1,65 @@
+{
+  "canonical_id": "column.zs_observe.unicommerce_order_sales_report.facility",
+  "card_type": "column",
+  "column_name": "facility",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Fulfilment facility, mostly null.",
+  "display_name": "facility",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.osr.schema.001",
+    "ev.unicommerce.data_quality.001",
+    "ev.unicommerce.section.038.3_5_classification_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.osr.schema.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 2514
+    },
+    {
+      "evidence_id": "ev.unicommerce.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 2514
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "facility",
+  "optional_fields": [
+    "nullable",
+    "value_examples",
+    "data_type_cast_required",
+    "mandatory_filter_role",
+    "join_key_role",
+    "source_lineage",
+    "quality_notes"
+  ],
+  "review_status": "accepted",
+  "semantic_role": "facility_label",
+  "source_card_id": "column.zs_observe.unicommerce_order_sales_report.facility",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx",
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2514,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_paths": [
+    "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+    "raw/cleaned_v2/wms/unicommerce_operations.md"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.unicommerce_order_sales_report",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "supporting"
+}

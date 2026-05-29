@@ -1,0 +1,77 @@
+{
+  "aggregation_grain": "as defined by SQL/group-by or source table grain",
+  "base_tables": [],
+  "canonical_id": "metric_implementation.ajio.return_rate.02",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4879
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4879
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true when applicable and documented"
+  ],
+  "formula_sql": "SELECT\n  ROUND(100.0 * COUNT(DISTINCT r.parent_id) / COUNT(DISTINCT o.order_id), 1) AS return_rate_pct\nFROM zs_observe.ajio_oms o\nLEFT JOIN zs_observe.ajio_reverse r\n  ON o.order_id = r.parent_id AND r.is_active = true\nWHERE o.is_active = true\n  AND o.order_status = 'Delivered'",
+  "implementation_scope": "ajio",
+  "join_rule": "Reverse parent_id links to original OMS order_id; purchase_po_no may be used as supporting PO-level key.",
+  "metric_id": "metric.return_rate",
+  "metric_pattern": "platform_specific_implementation_of_generic_metric",
+  "name": "AJIO implementation — Return Rate",
+  "platform_code": "ajio",
+  "platform_specific_name": "Return Rate",
+  "required_filters": [
+    "is_active = true"
+  ],
+  "review_status": "ready",
+  "source_card_id": "metric_implementation.ajio.return_rate.02",
+  "source_columns": [
+    "parent_id",
+    "order_id",
+    "ajio_oms",
+    "ajio_reverse",
+    "is_active",
+    "order_status",
+    "return_rate_pct",
+    "zs_observe"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4879,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "zs_observe.ajio_oms",
+    "zs_observe.ajio_reverse"
+  ],
+  "sql_ref": "sql.ajio.return_rate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

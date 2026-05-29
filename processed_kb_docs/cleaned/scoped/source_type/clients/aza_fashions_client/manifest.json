@@ -1,0 +1,36 @@
+{
+  "card_types": {
+    "account_data_binding": 13,
+    "business_flow_binding": 4,
+    "business_scope_set": 3,
+    "group": 1,
+    "platform_account": 12,
+    "tenant": 1
+  },
+  "counts": {
+    "cards": 34,
+    "edges": 130,
+    "future_context_gaps": 5,
+    "review_items": 1,
+    "semantic_mappings": 12
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 13,
+    "HAS_ACCOUNT_DATA_BINDING": 13,
+    "HAS_BUSINESS_FLOW_BINDING": 4,
+    "HAS_BUSINESS_SCOPE_SET": 3,
+    "HAS_GROUP": 1,
+    "HAS_PLATFORM_ACCOUNT": 12,
+    "INCLUDES_PLATFORM_ACCOUNT": 12,
+    "PARTICIPATES_WITH_ACCOUNT": 21,
+    "USES_ACCOUNT_DATA_BINDING": 19,
+    "USES_BUSINESS_SCOPE_SET": 4,
+    "USES_EVIDENCE_TABLE": 14,
+    "USES_PLATFORM": 7,
+    "USES_PLATFORM_CONTEXT": 7
+  },
+  "scope": [
+    "clients",
+    "aza_fashions_client"
+  ]
+}

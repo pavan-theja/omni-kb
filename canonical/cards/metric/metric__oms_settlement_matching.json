@@ -1,0 +1,66 @@
+{
+  "benchmarks": {
+    "observed_match_rate": "92 percent (3,218 of 3,494 OMS invoices matched) in DOCX section 10.1",
+    "validation_policy": "context only; timing gaps and settlement cycle cutoffs matter"
+  },
+  "business_definition": "Delivered OMS invoices expected in settlement; match by invoice_number to active forward settlement lines and classify Not in Settlement vs Matched.",
+  "canonical_id": "metric.oms_settlement_matching",
+  "card_type": "metric",
+  "colloquial_names": [
+    "OMS ↔ Settlement Matching"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "Delivered OMS invoices expected in settlement; match by invoice_number to active forward settlement lines and classify Not in Settlement vs Matched.",
+  "display_name": "OMS settlement match status / match rate",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.snapdeal.orders",
+  "evidence_ids": [
+    "evidence.snapdeal.10_1_oms_settlement_matching",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.10_1_oms_settlement_matching",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12552
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12552
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12552
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.snapdeal.oms_settlement_matching"
+  ],
+  "metric_family": "marketplace_metric",
+  "metric_pattern": "delivered_oms_invoices_matched_to_forward_settlement",
+  "name": "OMS settlement match status / match rate",
+  "review_status": "ready",
+  "source_card_id": "metric.oms_settlement_matching",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12552,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

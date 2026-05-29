@@ -1,0 +1,92 @@
+{
+  "canonical_id": "table.zs_observe.ajio_reverse",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.ajio_reverse.charged_amount",
+    "column.zs_observe.ajio_reverse.courier_partner",
+    "column.zs_observe.ajio_reverse.created_at",
+    "column.zs_observe.ajio_reverse.created_date",
+    "column.zs_observe.ajio_reverse.currency_type",
+    "column.zs_observe.ajio_reverse.deleted_at",
+    "column.zs_observe.ajio_reverse.file_uuid",
+    "column.zs_observe.ajio_reverse.group_level_id",
+    "column.zs_observe.ajio_reverse.hsn",
+    "column.zs_observe.ajio_reverse.is_active",
+    "column.zs_observe.ajio_reverse.order_id",
+    "column.zs_observe.ajio_reverse.order_status",
+    "column.zs_observe.ajio_reverse.parent_id",
+    "column.zs_observe.ajio_reverse.purchase_po_no",
+    "column.zs_observe.ajio_reverse.quantity",
+    "column.zs_observe.ajio_reverse.return_awb_number",
+    "column.zs_observe.ajio_reverse.return_value",
+    "column.zs_observe.ajio_reverse.sku_id",
+    "column.zs_observe.ajio_reverse.transaction_type",
+    "column.zs_observe.ajio_reverse.txn_uuid",
+    "column.zs_observe.ajio_reverse.unique_id",
+    "column.zs_observe.ajio_reverse.updated_at",
+    "column.zs_observe.ajio_reverse.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "Dec 5, 2025 – Dec 31, 2025",
+  "description": "Tracks reverse logistics — all returned orders including customer returns (RVP), return-to-origin (RTO), and replacements (REPL)",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": 221
+  },
+  "evidence_ids": [
+    "evidence.ajio.078_ajio_reverse_table_level_knowledge_base",
+    "evidence.ajio.094_important_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.078_ajio_reverse_table_level_knowledge_base",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1510
+    },
+    {
+      "evidence_id": "evidence.ajio.094_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 1510
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_caveats": [
+    "parent_id links to original forward order; order_id is return-specific RT id.",
+    "return_value is higher than charged_amount and appears B2B/wholesale-level."
+  ],
+  "mandatory_filters": [
+    "is_active = true"
+  ],
+  "name": "zs_observe.ajio_reverse",
+  "purpose": "Tracks reverse logistics — all returned orders including customer returns (RVP), return-to-origin (RTO), and replacements (REPL)",
+  "review_status": "ready",
+  "row_count": "864 active records",
+  "schema_name": "zs_observe",
+  "scope_columns": [
+    "group_level_id/group_id only as columns/caveats if present"
+  ],
+  "source_card_id": "table.zs_observe.ajio_reverse",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.078_ajio_reverse_table_level_knowledge_base",
+    "evidence.ajio.094_important_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1510,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_section": "AJIO Reverse — Table-Level Knowledge Base",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_name": "ajio_reverse",
+  "table_role": "returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

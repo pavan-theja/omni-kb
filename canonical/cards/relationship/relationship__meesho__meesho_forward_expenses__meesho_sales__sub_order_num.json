@@ -1,0 +1,54 @@
+{
+  "canonical_id": "relationship.meesho.meesho_forward_expenses.meesho_sales.sub_order_num",
+  "card_type": "relationship",
+  "cardinality": "documented_sub_order_join_partial_coverage",
+  "confidence": "curated",
+  "coverage_evidence": "Forward expenses matched to sales for 1,063 / 1,253 rows in DOCX section 3.3.",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho documented relationship: Sales → Forward Expenses on sub_order_num",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.010.3_entity_relationships_across_tables",
+    "evidence.meesho.128.table_meesho_forward_expenses_table_knowledge_base"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.010.3_entity_relationships_across_tables",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 9683
+    },
+    {
+      "evidence_id": "evidence.meesho.128.table_meesho_forward_expenses_table_knowledge_base",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 9683
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain_warning": "Forward expense rows validate shipping and Meesho Mall fee deductions; apply varchar is_active filter on forward_expenses.",
+  "join_condition": "meesho_sales.sub_order_num = meesho_forward_expenses.sub_order_num",
+  "join_keys": [
+    "sub_order_num"
+  ],
+  "name": "Meesho documented relationship: Sales → Forward Expenses on sub_order_num",
+  "preaggregation_required": "preaggregate_fee_side_if_multiple_invoice_rows_exist",
+  "relationship_type": "documented_marketplace_internal_join",
+  "review_status": "accepted",
+  "source_card_id": "relationship.meesho.meesho_forward_expenses.meesho_sales.sub_order_num",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9683,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "source_table_id": "table.zs_observe.meesho_sales",
+  "status": "active",
+  "target_table_id": "table.zs_observe.meesho_forward_expenses",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

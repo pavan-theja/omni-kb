@@ -1,0 +1,47 @@
+{
+  "canonical_id": "rule.unicommerce.freebie_exclusion",
+  "card_type": "rule",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/oms/unicommerce_d2c_oms.md.",
+  "display_name": "freebie_exclusion",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.data_quality.001",
+    "ev.unicommerce.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 3555
+    },
+    {
+      "evidence_id": "ev.unicommerce.filters.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 3555
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "freebie_exclusion",
+  "review_status": "accepted",
+  "rule_scope": "unicommerce_d2c_oms_execution_and_semantics",
+  "rule_text": "Exclude charged_amount <= 1 or SKU RD_0325_05 from revenue/AOV/SKU revenue unless freebie analysis is requested.",
+  "source_card_id": "rule.unicommerce.freebie_exclusion",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3555,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

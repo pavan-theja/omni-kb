@@ -1,0 +1,55 @@
+{
+  "amount_columns": [
+    "column.zs_observe.target_sales.charged_amount"
+  ],
+  "canonical_id": "reconciliation_side.target_plus.tcin_mapping.transaction_tcins",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_columns": [
+    "column.zs_observe.target_sales.created_date"
+  ],
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.mapping.7_1_full_catalogue_with_sales_coverage"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.mapping.7_1_full_catalogue_with_sales_coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10337
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true"
+  ],
+  "grain": "sales TCIN values",
+  "key_columns": [
+    "column.zs_observe.target_sales.tcin"
+  ],
+  "name": "Transaction Tcins",
+  "profile_id": "reconciliation_profile.target_plus.tcin_mapping",
+  "review_status": "ready",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.target_plus.tcin_mapping.transaction_tcins",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10337,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_table_id": "table.zs_observe.target_sales",
+  "status": "draft",
+  "status_columns": [
+    "column.zs_observe.target_sales.order_status"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

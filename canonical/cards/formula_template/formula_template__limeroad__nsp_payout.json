@@ -1,0 +1,49 @@
+{
+  "canonical_id": "formula_template.limeroad.nsp_payout",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.nsp_model.001",
+    "ev.limeroad.settlement.nsp_formula.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.nsp_model.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4741
+    },
+    {
+      "evidence_id": "ev.limeroad.settlement.nsp_formula.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4741
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_expression": "settled_amount = ROUND(vendor_nsp * (1 - gross_commission_perc / 100), 2); current data uses gross_commission_perc = 41.3 so payout = vendor_nsp * 0.587",
+  "formula_key": "limeroad_nsp_payout",
+  "marketplace_only": true,
+  "name": "LimeRoad NSP payout formula",
+  "notes": "Executable SQL references are provided in sql_pattern blocks.",
+  "platform_context": "platform_context.limeroad.in",
+  "review_status": "accepted",
+  "source_card_id": "formula_template.limeroad.nsp_payout",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4741,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

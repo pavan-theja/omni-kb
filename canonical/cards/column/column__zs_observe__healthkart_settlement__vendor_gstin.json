@@ -1,0 +1,50 @@
+{
+  "business_meaning": "Vendor GSTIN (4 registrations — see below)",
+  "canonical_id": "column.zs_observe.healthkart_settlement.vendor_gstin",
+  "card_type": "column",
+  "column_group": "Vendor/Seller Details",
+  "column_name": "vendor_gstin",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "varchar",
+  "description": "Vendor GSTIN (4 registrations — see below)",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "documented_values_note": "Settlement includes 06AAHCT1518N1Z4, 27AAHCT1518N1Z0, 29AAHCT1518N1ZW and 27AAOCM5326J1Z2; the AAOCM PAN appears only in settlement and should remain GSTIN/entity context, not an account card.",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 1021
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "healthkart_settlement.vendor_gstin",
+  "review_status": "ready",
+  "schema_name": "zs_observe",
+  "scope_boundary_note": null,
+  "semantic_role": "tax_or_geographic_context",
+  "source_card_id": "column.zs_observe.healthkart_settlement.vendor_gstin",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1021,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.healthkart_settlement",
+  "table_name": "healthkart_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

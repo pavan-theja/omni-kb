@@ -1,0 +1,74 @@
+{
+  "business_usage": "Classification for metrics, query routing, and reconciliation side selection.",
+  "canonical_id": "value_profile.pg.balance_impact",
+  "card_type": "value_profile",
+  "column_id": null,
+  "column_name": "balance_impact",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "PayPal balance impact",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.cashfree",
+    "evidence.pg.razorpay",
+    "evidence.pg.stripe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.cashfree",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48755
+    },
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48755
+    },
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48755
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "PayPal balance impact",
+  "null_handling": "Do not infer a value when null; preserve source nulls.",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.pg.balance_impact",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 48755,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "multiple",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_type": "enum_or_source_enum",
+  "values": [
+    {
+      "business_meaning": "Credit to merchant balance",
+      "category": "credit",
+      "metric_usage": "Sales/positive movement",
+      "value": "CREDIT"
+    },
+    {
+      "business_meaning": "Debit from merchant balance",
+      "category": "debit",
+      "metric_usage": "Fees/refunds/negative movement",
+      "value": "DEBIT"
+    }
+  ]
+}

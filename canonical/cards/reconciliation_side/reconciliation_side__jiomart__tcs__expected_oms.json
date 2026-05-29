@@ -1,0 +1,51 @@
+{
+  "amount_columns": [
+    "total_tcs_amount"
+  ],
+  "canonical_id": "reconciliation_side.jiomart.tcs.expected_oms",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "expected oms",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_4_tcs_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_4_tcs_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12208
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true",
+    "transaction_type = forward"
+  ],
+  "grain": "order_id unless SQL specifies aggregate period",
+  "key_columns": [
+    "order_id"
+  ],
+  "name": "expected oms",
+  "profile_id": "reconciliation_profile.jiomart.tcs_reconciliation",
+  "review_status": "ready",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.jiomart.tcs.expected_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12208,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_table_id": "table.zs_observe.jiomart_oms",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,97 @@
+{
+  "canonical_id": "value_profile.increff_returns.sales_channel.reference",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.increff_returns.sales_channel",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff returns sales_channel reference mapping",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.overview",
+    "evidence.increff.049.sales_channel_distribution_in_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.overview",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 6985
+    },
+    {
+      "evidence_id": "evidence.increff.049.sales_channel_distribution_in_returns",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 6985
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Increff returns sales_channel reference mapping",
+  "profile_notes": [
+    "Return rows may have NULL sales_channel; use source_gst_id/source_city as proxy only when explicitly needed."
+  ],
+  "profile_type": "documented_distinct_values_or_mapping",
+  "review_status": "ready",
+  "source_card_id": "value_profile.increff_returns.sales_channel.reference",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6985,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.increff_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_meanings": {
+    "AMAZON_SC": "Amazon (India); brand focus: All brands",
+    "CRED_BH": "CRED App (Botanic Hearth listing); brand focus: Botanic Hearth",
+    "FLIPKARTV3": "Flipkart; brand focus: Dennis Lingo, High Star, BeyBee, Anubhutee, Botanic Hearth",
+    "LIMEROAD_MENSA_BHIWANDI": "LimeRoad (Bhiwandi); brand focus: Ishin, Anubhutee",
+    "LIMEROAD_MENSA_BLR": "LimeRoad (Bangalore); brand focus: Ishin, Anubhutee",
+    "LIMEROAD_MENSA_GURGAON": "LimeRoad (dispatching from Gurugram); brand focus: Ishin, Anubhutee",
+    "MENSA_MEESHO_BLR": "Meesho (Bangalore); brand focus: Multiple",
+    "MENSA_MEESHO_GGN": "Meesho (Gurugram); brand focus: Multiple",
+    "MENSA_MEESHO_MUM": "Meesho (Mumbai); brand focus: Multiple",
+    "MYNTRAV4": "Myntra; brand focus: All Mensa apparel brands",
+    "NYKAA": "Nykaa (beauty/D2C); brand focus: Botanic Hearth",
+    "NYKAA_FASHION": "Nykaa Fashion; brand focus: Ishin, High Star, Hubberholme, Anubhutee",
+    "SHOPIFY / FOLKULTURE_SHOPIFY": "Generic / Folkulture Shopify; brand focus: Folkulture",
+    "SHOPIFY_BH": "Botanic Hearth D2C site; brand focus: Botanic Hearth",
+    "SHOPIFY_DL": "Dennis Lingo D2C site; brand focus: Dennis Lingo",
+    "SHOPIFY_HIGHSTAR": "High Star D2C site; brand focus: High Star",
+    "SHOPIFY_ISHIN": "Ishin D2C site; brand focus: Ishin",
+    "SHOPIFY_ISHIN_INTL": "Ishin International D2C; brand focus: Ishin (International orders)",
+    "SNAPDEAL": "Snapdeal; brand focus: Multiple brands",
+    "SNAPDEAL_BLR": "Snapdeal (Bangalore warehouse); brand focus: Warehouse-specific split",
+    "SNAPDEAL_MUM": "Snapdeal (Mumbai warehouse); brand focus: Warehouse-specific split",
+    "TATACLIQ": "TataCliq; brand focus: Dennis Lingo, High Star, Ishin, Lilpicks, Anubhutee"
+  },
+  "values": [
+    "MYNTRAV4",
+    "FLIPKARTV3",
+    "AMAZON_SC",
+    "NYKAA_FASHION",
+    "NYKAA",
+    "TATACLIQ",
+    "SHOPIFY_DL",
+    "SHOPIFY_HIGHSTAR",
+    "SHOPIFY_ISHIN",
+    "SHOPIFY_ISHIN_INTL",
+    "SHOPIFY_BH",
+    "SHOPIFY / FOLKULTURE_SHOPIFY",
+    "CRED_BH",
+    "SNAPDEAL",
+    "SNAPDEAL_BLR",
+    "SNAPDEAL_MUM",
+    "LIMEROAD_MENSA_GURGAON",
+    "LIMEROAD_MENSA_BLR",
+    "LIMEROAD_MENSA_BHIWANDI",
+    "MENSA_MEESHO_BLR",
+    "MENSA_MEESHO_GGN",
+    "MENSA_MEESHO_MUM"
+  ]
+}

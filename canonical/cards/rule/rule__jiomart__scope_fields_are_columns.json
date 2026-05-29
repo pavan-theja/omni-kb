@@ -1,0 +1,46 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.jiomart_oms",
+    "table.zs_observe.jiomart_settlement",
+    "table.zs_observe.jiomart_returns",
+    "table.zs_observe.jiomart_shipment"
+  ],
+  "canonical_id": "rule.jiomart.scope_fields_are_columns",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "Scope identifiers stay columns",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.1_3_seller_entities_in_dataset"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.1_3_seller_entities_in_dataset",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13449
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Scope identifiers stay columns",
+  "review_status": "ready",
+  "rule_type": "scope_guardrail",
+  "severity": "medium",
+  "source_card_id": "rule.jiomart.scope_fields_are_columns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13449,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "statement": "group_level_id, seller/entity/GSTIN, seller code, GSTIN, warehouse, and courier values remain source columns, filters, caveats, or value profiles only; never emit tenant/group/account/logistics/statutory filing cards.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

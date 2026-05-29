@@ -1,0 +1,54 @@
+{
+  "canonical_id": "value_profile.shopify.return_statuses",
+  "card_type": "value_profile",
+  "column_names": [
+    "transaction_status",
+    "order_payment_status"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "return statuses",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.returns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.returns.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 2216
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "return statuses",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.shopify.return_statuses",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2216,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.shopify_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "values_or_known_values": [
+    {
+      "meaning": "Refund transaction status",
+      "value": "success/pending/failure"
+    },
+    {
+      "meaning": "Order payment status after return/refund",
+      "value": "paid/refunded/partially_refunded"
+    }
+  ]
+}

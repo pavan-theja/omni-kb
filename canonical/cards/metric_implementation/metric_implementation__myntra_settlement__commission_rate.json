@@ -1,0 +1,70 @@
+{
+  "base_tables": [
+    "table.zs_observe.myntra_settlement"
+  ],
+  "canonical_id": "metric_implementation.myntra_settlement.commission_rate",
+  "canonical_name": "commission_rate",
+  "card_type": "metric_implementation",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 8751
+    },
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 8751
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true"
+  ],
+  "formula_expression": "AVG(commission_percentage)",
+  "formula_template_id": "formula_template.average_percentage_rate",
+  "grain": "settlement_line",
+  "implementation_caveat": "Unweighted AVG is executable; weighted commission rate requires a documented denominator and remains runtime/reporting-context dependent.",
+  "implementation_scope": "myntra_settlement",
+  "marketplace_only": true,
+  "metric_id": "metric.commission_rate",
+  "metric_pattern": "myntra_specific_executable_implementation",
+  "name": "commission_rate",
+  "platform_code": "myntra",
+  "platform_context_id": "platform_context.myntra.in",
+  "required_filters": [
+    "is_active = true",
+    "group_level_id = <client_id>"
+  ],
+  "review_status": "accepted_with_caveat",
+  "source_card_id": "metric_implementation.myntra_settlement.commission_rate",
+  "source_columns": [
+    "commission_percentage",
+    "is_active"
+  ],
+  "source_confidence": "medium",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8751,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_settlement",
+  "status": "draft",
+  "summary": "Weighted/average commission_percentage by chosen grain",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,53 @@
+{
+  "applies_to": "rule.bank_statement.standard_filter_required",
+  "banking_only": true,
+  "canonical_id": "validation_test.bank_statement.standard_filter_present",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.standard_filter.001",
+    "ev.bank_statement.amount_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.standard_filter.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15320
+    },
+    {
+      "evidence_id": "ev.bank_statement.amount_quality.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15320
+    }
+  ],
+  "expected_result": "pass",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "generated query or parsed graph violates bank statement semantic guardrail",
+  "name": "standard_filter_present",
+  "related_canonical_id": "rule.bank_statement.standard_filter_required",
+  "review_status": "accepted",
+  "severity": "high",
+  "source_card_id": "validation_test.bank_statement.standard_filter_present",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15320,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "test_description": "SQL or query plan includes active and duplicate filters.",
+  "test_logic": "SQL or query plan includes active and duplicate filters.",
+  "test_name": "standard_filter_present",
+  "test_type": "semantic_sql_guardrail",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

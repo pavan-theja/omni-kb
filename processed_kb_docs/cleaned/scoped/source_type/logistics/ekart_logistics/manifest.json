@@ -1,0 +1,39 @@
+{
+  "card_types": {
+    "column": 26,
+    "metric": 2,
+    "metric_implementation": 12,
+    "platform": 1,
+    "platform_context": 1,
+    "table": 2,
+    "value_profile": 4
+  },
+  "counts": {
+    "cards": 48,
+    "documents": 1,
+    "edges": 133,
+    "evidence": 1,
+    "review_items": 2
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM": 2,
+    "BELONGS_TO_DOMAIN": 2,
+    "BELONGS_TO_PLATFORM": 1,
+    "BELONGS_TO_TABLE": 26,
+    "HAS_COLUMN": 26,
+    "HAS_IMPLEMENTATION": 12,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "HAS_VALUE_PROFILE": 8,
+    "IMPLEMENTS_METRIC": 12,
+    "PROFILES_COLUMN": 4,
+    "PROFILES_TABLE": 4,
+    "SOURCED_FROM_PLATFORM": 2,
+    "USES_COLUMN": 13,
+    "USES_FORMULA_TEMPLATE": 8,
+    "USES_TABLE": 12
+  },
+  "scope": [
+    "logistics",
+    "ekart_logistics"
+  ]
+}

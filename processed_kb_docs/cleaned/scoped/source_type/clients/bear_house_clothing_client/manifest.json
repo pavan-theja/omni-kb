@@ -1,0 +1,36 @@
+{
+  "card_types": {
+    "account_data_binding": 25,
+    "business_flow_binding": 3,
+    "business_scope_set": 3,
+    "group": 1,
+    "platform_account": 9,
+    "tenant": 1
+  },
+  "counts": {
+    "cards": 42,
+    "edges": 134,
+    "future_context_gaps": 5,
+    "review_items": 1,
+    "semantic_mappings": 9
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 25,
+    "HAS_ACCOUNT_DATA_BINDING": 25,
+    "HAS_BUSINESS_FLOW_BINDING": 3,
+    "HAS_BUSINESS_SCOPE_SET": 3,
+    "HAS_GROUP": 1,
+    "HAS_PLATFORM_ACCOUNT": 9,
+    "INCLUDES_PLATFORM_ACCOUNT": 9,
+    "PARTICIPATES_WITH_ACCOUNT": 15,
+    "USES_ACCOUNT_DATA_BINDING": 25,
+    "USES_BUSINESS_SCOPE_SET": 3,
+    "USES_EVIDENCE_TABLE": 2,
+    "USES_PLATFORM": 7,
+    "USES_PLATFORM_CONTEXT": 7
+  },
+  "scope": [
+    "clients",
+    "bear_house_clothing_client"
+  ]
+}

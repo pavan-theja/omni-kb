@@ -1,0 +1,64 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "RAG_COMPLETION": [
+      {
+        "filters": [],
+        "joins": "No joins possible as Unicommerce is not integrated for Mensa.",
+        "metric_logic": {
+          "aggregation_grain": null,
+          "deduplication_rule": null,
+          "denominator": null,
+          "formula": null,
+          "numerator": null
+        },
+        "missing_or_ambiguous": "Mensa's operations are routed through Increff (increff_wms) and Shopify/Shiprocket. There are no physical table bindings or schema representations for Unicommerce under the Mensa tenant (group_level_id = 22) in the retrieved context.",
+        "rejected_or_ambiguous_fields": [
+          "unicommerce tables for Mensa"
+        ],
+        "rejected_sources": [
+          "zs_observe.unicommerce",
+          "zs_observe.unicommerce_order_sales_report"
+        ],
+        "require_tables": [
+          {
+            "field": "zs_observe.unicommerce",
+            "reason": "Unicommerce tables in the context are associated with Fraternitas Ventures and Bear House, not Mensa.",
+            "role": "Risky Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "zs_observe.increff_sales",
+            "reason": "Mensa's operational WMS data resides in Increff, indicating Increff is the primary OMS/WMS rather than Unicommerce.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          }
+        ],
+        "required_fields": [],
+        "selected_source": null,
+        "sql_skeleton": "-- Unicommerce is not bound to tenant Mensa (group_level_id = 22) in the retrieved context.\n-- Mensa's operations flow through Increff WMS (increff_sales, increff_returns) and Shopify/Shiprocket OMS.\n-- Therefore, we cannot identify potential operational bottlenecks for Unicommerce under Mensa.\nSELECT 'Unicommerce is not integrated for tenant Mensa' AS error_message;"
+      }
+    ]
+  },
+  "question": "Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.",
+  "question_index": 15,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\"selected_source\":null,\"rejected_sources\":[\"zs_observe.unicommerce\",\"zs_observe.unicommerce_order_sales_report\"],\"require_tables\":[{\"field\":\"zs_observe.unicommerce\",\"role\":\"Risky Candidate\",\"selected?\":\"No\",\"reason\":\"Unicommerce tables in the context are associated with Fraternitas Ventures and Bear House, not Mensa.\"},{\"field\":\"zs_observe.increff_sales\",\"role\":\"Supporting Metadata\",\"selected?\":\"No\",\"reason\":\"Mensa's operational WMS data resides in Increff, indicating Increff is the primary OMS/WMS rather than Unicommerce.\"}],\"required_fields\":[],\"rejected_or_ambiguous_fields\":[\"unicommerce tables for Mensa\"],\"metric_logic\":{\"formula\":null,\"numerator\":null,\"denominator\":null,\"aggregation_grain\":null,\"deduplication_rule\":null},\"filters\":[],\"joins\":\"No joins possible as Unicommerce is not integrated for Mensa.\",\"missing_or_ambiguous\":\"Mensa's operations are routed through Increff (increff_wms) and Shopify/Shiprocket. There are no physical table bindings or schema representations for Unicommerce under the Mensa tenant (group_level_id = 22) in the retrieved context.\",\"sql_skeleton\":\"-- Unicommerce is not bound to tenant Mensa (group_level_id = 22) in the retrieved context.\\n-- Mensa's operations flow through Increff WMS (increff_sales, increff_returns) and Shopify/Shiprocket OMS.\\n-- Therefore, we cannot identify potential operational bottlenecks for Unicommerce under Mensa.\\nSELECT 'Unicommerce is not integrated for tenant Mensa' AS error_message;\"}"
+    ]
+  },
+  "scoped_query": "Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.\n\nScope:\n- tenant: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nYou are a SQL-resolution handoff agent. Do not answer the business question directly. Produce the safest SQL-building plan that the retrieved context can support.\n\nResolution flow:\n1. Identify the requested grain, metric/status logic, dimensions, filters, joins, and tenant/account scope.\n2. Resolve sources in this order:\n   - tenant/account scope from user input\n   - account_data_binding/platform_account only to identify candidate platforms and source bindings\n   - physical table cards for those bindings\n   - column cards for selected physical tables\n   - relationship cards for join keys between selected physical tables\n   - query_pattern cards only to reuse grounded SQL logic\n   - business_flow_binding/business_process only for process context if table/relationship context is insufficient\n3. Stop once when enough physical tables are identified to answer the query safely.\n4. Classify candidates as direct, supporting, risky, or irrelevant.\n5. Select the smallest safe SQL package. If no safe package exists, return a partial/risky handoff with blocking gaps.\n\nCore rules:\n- Prefer physical SQL tables and columns explicitly grounded in context.\n- Prefer the smallest complete physical table set; avoid expanding into every retrieved artifact.\n- Do not default to the most detailed retrieved source if the user asks about channels, marketplaces, settlements, reconciliation, risk, bottlenecks, dependency, concentration, courier mapping, OMS dependency, or marketplace-wide reporting.\n- For channel/marketplace questions, enumerate candidate platforms/sources first, then select only the physical tables needed per package.\n- Do not treat one marketplace such as Myntra, Amazon, Flipkart, Ajio, Nykaa, Meesho, Snapdeal, TataCliq, JioMart, HealthKart, or LimeRoad as representative of all marketplaces unless the user explicitly asks for that marketplace or the context proves it is the only applicable source.\n- Do not UNION or numerically consolidate multiple source tables unless the user asks for cross-source/all-source/platform-wide consolidation and the context provides deduplication keys plus source precedence.\n- Do not create SQL rows from retrieved metadata using literal SELECT statements such as `SELECT 'Meesho' AS channel_name`.\n- `sql_skeleton` must query physical runtime tables only.\n- If no physical table path is grounded, set `selected_source = null` and make `sql_skeleton` a SQL comment explaining missing physical tables, columns, joins, or deduplication rules.\n- Do not generate qualitative metadata reports as executable SQL.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feed names as business dimension values when a proper dimension column exists.\n- If fields, tenant IDs, or join keys must be inferred from grounded patterns, select them only with explicit inferred reasoning.\n- Do not invent deduplication rules, source precedence, or join keys. State the gap instead.\n\nCanonical metadata rules:\n- Canonical objects are metadata guides, not runtime SQL tables, unless they resolve to a concrete physical table or column.\n- Never generate SQL against `account_data_binding`, `business_flow_binding`, `workflow_step`, `business_process`, `metric`, `query_pattern`, `relationship`, `state_transition`, `evidence`, `platform_account`, `metadata.account_data_bindings`, `account_data_bindings`, or `canonical.cards` unless the user explicitly asks to query the canonical metadata store itself.\n- `account_data_binding` helps infer tenant/platform/account scope, source role, and candidate physical tables. Do not query it directly.\n- `table` can be selected only when it names a physical table, for example `zs_observe.unicommerce`.\n- `column` grounds fields, filters, joins, metrics, and grouping dimensions for its parent physical table.\n- `relationship` justifies joins only when both sides resolve to physical tables/columns.\n- `query_pattern` provides SQL logic only when it names physical tables, fields, filters, joins, or deduplication rules.\n- `business_flow_binding`, `business_process`, `workflow_step`, and `state_transition` explain process/status semantics only.\n- `metric` and `metric_dependency` help infer formula, numerator, denominator, and grain only when grounded by physical fields.\n- `platform_account` helps identify marketplace/channel/account scope only.\n- `evidence` is provenance/confidence only.\n\nCandidate classification:\n- direct: contains the requested grain and required metric/status fields.\n- supporting: helps identify scope, channel, platform, process, or join path but cannot answer the metric alone.\n- risky: appears relevant but lacks required join keys, filters, status fields, grain, or deduplication rules.\n- irrelevant: retrieved but not useful for the request.\n\nSelected table rule:\n- In `require_tables`, mark `selected? = Yes` only for physical SQL tables used in `sql_skeleton`.\n- Canonical metadata, query patterns, rules, value profiles, relationships, and business flows must be `selected? = No` unless they resolve to a physical table used in the SQL.\n- Supporting metadata can appear in `require_tables`, but only with `selected? = No`.\n- If a source is useful only as evidence for table/field selection, keep it out of `selected_source`.\n\nOutput rules:\n- Return one best SQL package in the schema below.\n- Use `require_tables` to show selected physical tables and important rejected/risky/supporting candidates.\n- Use `rejected_or_ambiguous_fields` for alternate fields, missing fields, unsafe joins, and rejected candidate notes.\n- For listing/mapping queries with no numeric metric, set numerator and denominator to null and describe the unique rows in `metric_logic.formula`.\n- If the best answer is a candidate inventory rather than executable SQL, set `selected_source` to null and make `sql_skeleton` a commented template explaining what is missing.\n\nCognee response wrapper:\n- Return a top-level JSON object with exactly one key: `content`.\n- `content` must be a string.\n- The string inside `content` must be a JSON-serialized object matching the payload schema.\n- Do not put an object or array directly inside `content`.\n\nCorrect wrapper shape:\n{\n  \"content\": \"{\\\"selected_source\\\":null,\\\"rejected_sources\\\":[],\\\"require_tables\\\":[],\\\"required_fields\\\":[],\\\"rejected_or_ambiguous_fields\\\":[],\\\"metric_logic\\\":{\\\"formula\\\":null,\\\"numerator\\\":null,\\\"denominator\\\":null,\\\"aggregation_grain\\\":null,\\\"deduplication_rule\\\":null},\\\"filters\\\":[],\\\"joins\\\":\\\"No joins needed\\\",\\\"missing_or_ambiguous\\\":\\\"None\\\",\\\"sql_skeleton\\\":\\\"SELECT 1\\\"}\"\n}\n\nPayload schema inside the `content` string:\n{\n  \"selected_source\": \"string physical SQL table name, or null\",\n  \"rejected_sources\": [\"array of rejected source ids or names\"],\n  \"require_tables\": [\n    {\n      \"field\": \"physical SQL table name when selected; canonical metadata id only when rejected/supporting/risky\",\n      \"role\": \"Primary Source | Supporting Metadata | Risky Candidate | Irrelevant Candidate | Filter Source | Metric Source\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"candidate classification and SQL relevance\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"physical column name or logical field name\",\n      \"table\": \"which physical table or tables this field comes from\",\n      \"role\": \"Channel Identifier | Filter Column | Metric | Join Key | Status Field | Date Field\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"why the field is needed; mark inferred reasoning when applicable\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of exact WHERE conditions or logical filters\"],\n  \"joins\": \"join logic, or why no join is needed\",\n  \"missing_or_ambiguous\": \"None only when complete; otherwise list blocking gaps/inferences\",\n}",
+  "search_types": [
+    "RAG_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 13.735,
+    "search_seconds": {
+      "RAG_COMPLETION": 13.734
+    },
+    "started_at": "2026-05-28T11:47:01+00:00"
+  }
+}

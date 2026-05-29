@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "canonical_id": "rule.tatacliq.tship_fees_bundled",
+  "card_type": "rule",
+  "condition": "Fee analysis and reconciliation generation.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq rule — fee structure rule",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.fee.structure",
+    "ev.tatacliq.fulfilment.tship"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.fee.structure",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8415
+    },
+    {
+      "evidence_id": "ev.tatacliq.fulfilment.tship",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8415
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq rule — fee structure rule",
+  "review_status": "ready",
+  "rule_type": "fee_structure_rule",
+  "severity": "high",
+  "source_card_id": "rule.tatacliq.tship_fees_bundled",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8415,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "statement": "Shipping, COD, PG, and fulfilment costs are bundled into gross commission; do not create separate shipping/COD/PG fee reconciliation from settlement zero columns.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

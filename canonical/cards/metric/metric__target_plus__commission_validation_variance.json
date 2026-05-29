@@ -1,0 +1,50 @@
+{
+  "business_definition": "Difference between actual gross_commission and expected 15% commission.",
+  "canonical_id": "metric.target_plus.commission_validation_variance",
+  "card_type": "metric",
+  "colloquial_names": [
+    "expected_commission",
+    "variance"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "USD",
+  "description": "Difference between actual gross_commission and expected 15% commission.",
+  "display_name": "Target Plus Commission Validation Variance",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.target_plus.fees",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_3_commission_validation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_3_commission_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9168
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.target_plus.commission_validation"
+  ],
+  "metric_family": "fee_validation",
+  "name": "Target Plus Commission Validation Variance",
+  "review_status": "ready",
+  "source_card_id": "metric.target_plus.commission_validation_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9168,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

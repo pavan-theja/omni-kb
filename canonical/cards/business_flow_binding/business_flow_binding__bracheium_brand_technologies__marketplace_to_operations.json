@@ -1,0 +1,167 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.bracheium_brand_technologies.amazon_in.primary.amazon_oms",
+    "account_data_binding.bracheium_brand_technologies.amazon_in.primary.amazon_settlement",
+    "account_data_binding.bracheium_brand_technologies.amazon_in.primary.amazon_disbursment",
+    "account_data_binding.bracheium_brand_technologies.amazon_in.primary.amazon_fee_preview",
+    "account_data_binding.bracheium_brand_technologies.flipkart_in.primary.oms",
+    "account_data_binding.bracheium_brand_technologies.flipkart_in.primary.cashback",
+    "account_data_binding.bracheium_brand_technologies.flipkart_in.primary.settlement",
+    "account_data_binding.bracheium_brand_technologies.flipkart_in.primary.commission",
+    "account_data_binding.bracheium_brand_technologies.myntra_in.primary.myntra_oms",
+    "account_data_binding.bracheium_brand_technologies.myntra_in.primary.myntra_settlement",
+    "account_data_binding.bracheium_brand_technologies.myntra_in.primary.myntra_reverse",
+    "account_data_binding.bracheium_brand_technologies.myntra_in.primary.myntra_non_order_settlement",
+    "account_data_binding.bracheium_brand_technologies.myntra_in.primary.myntra_oms_settlement",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_sales",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_settlement",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_returns",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_reverse",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_forward_expenses",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_reverse_expenses",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_other_charges_expenses",
+    "account_data_binding.bracheium_brand_technologies.meesho_in.primary.meesho_brand_mapping",
+    "account_data_binding.bracheium_brand_technologies.nykaa_in.primary.nykaa_oms",
+    "account_data_binding.bracheium_brand_technologies.nykaa_in.primary.nykaa_settlement",
+    "account_data_binding.bracheium_brand_technologies.nykaa_in.primary.nykaa_addition_charge",
+    "account_data_binding.bracheium_brand_technologies.nykaa_in.primary.nykaa_mapper_gst",
+    "account_data_binding.bracheium_brand_technologies.nykaa_in.primary.nykaa_mapping",
+    "account_data_binding.bracheium_brand_technologies.jiomart_in.primary.jiomart_oms",
+    "account_data_binding.bracheium_brand_technologies.jiomart_in.primary.jiomart_settlement",
+    "account_data_binding.bracheium_brand_technologies.jiomart_in.primary.jiomart_returns",
+    "account_data_binding.bracheium_brand_technologies.snapdeal_in.primary.snapdeal_oms",
+    "account_data_binding.bracheium_brand_technologies.snapdeal_in.primary.snapdeal_settlement",
+    "account_data_binding.bracheium_brand_technologies.snapdeal_in.primary.snapdeal_commission",
+    "account_data_binding.bracheium_brand_technologies.tatacliq_in.primary.tatacliq_oms",
+    "account_data_binding.bracheium_brand_technologies.tatacliq_in.primary.tatacliq_settlement",
+    "account_data_binding.bracheium_brand_technologies.increff_wms.primary.increff_sales",
+    "account_data_binding.bracheium_brand_technologies.increff_wms.primary.increff_returns",
+    "account_data_binding.bracheium_brand_technologies.unicommerce_oms.primary.unicommerce",
+    "account_data_binding.bracheium_brand_technologies.unicommerce_oms.primary.unicommerce_order_sales_report"
+  ],
+  "active": true,
+  "binding_name": "Bracheium Marketplace to Increff/Unicommerce Operations",
+  "binding_type": "operational_flow",
+  "business_process_ids": [
+    "business_process.order_to_shipment_flow",
+    "business_process.delivery_rto_return_resolution"
+  ],
+  "business_scope_set_id": "business_scope_set.bracheium_brand_technologies.operations_wms_oms",
+  "canonical_id": "business_flow_binding.bracheium_brand_technologies.marketplace_to_operations",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/bracheium_brand_technologies.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.increff_returns",
+    "table.zs_observe.increff_sales",
+    "table.zs_observe.unicommerce",
+    "table.zs_observe.unicommerce_order_sales_report"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.bracheium_brand_technologies.mensa_brands",
+  "money_flow_paths": [
+    "marketplace_to_operations_wms",
+    "order_to_shipment",
+    "return_to_wms"
+  ],
+  "name": "Marketplace To Operations",
+  "notes": [
+    "Client-specific flow binding. Account and table filters are resolved through Account Data Binding."
+  ],
+  "package_id": "bracheium_brand_technologies_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.amazon_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.flipkart_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.myntra_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.meesho_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.nykaa_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.jiomart_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.snapdeal_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.tatacliq_in.primary",
+      "required": true,
+      "role": "marketplace_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.increff_wms.primary",
+      "required": true,
+      "role": "wms_operations_source"
+    },
+    {
+      "platform_account_id": "platform_account.bracheium_brand_technologies.unicommerce_oms.primary",
+      "required": false,
+      "role": "oms_operations_source"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.order_to_shipment"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Bracheium Brand Technologies Pvt Ltd.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "increff_operations.md",
+    "jiomart_marketplace.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "nykaa_marketplace.md",
+    "payment_gateway.md",
+    "shiprocket_logistics.md",
+    "shopify_d2c_oms.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md",
+    "xpressbees_logistics.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/bracheium_brand_technologies.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.bracheium_brand_technologies",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

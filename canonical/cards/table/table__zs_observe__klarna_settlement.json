@@ -1,0 +1,183 @@
+{
+  "amount_columns": [
+    "settlement_type",
+    "sale_amount",
+    "transaction_amount",
+    "fee_amount",
+    "settlement_amount"
+  ],
+  "avoid_columns": [
+    "settlement_type"
+  ],
+  "business_purpose": "Klarna is Europe's largest BNPL provider offering Pay Later, Pay in 3, and Financing. Settlement is at capture level.",
+  "canonical_id": "table.zs_observe.klarna_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.klarna_settlement.capture_date",
+    "column.zs_observe.klarna_settlement.capture_id",
+    "column.zs_observe.klarna_settlement.created_date",
+    "column.zs_observe.klarna_settlement.currency",
+    "column.zs_observe.klarna_settlement.detailed_type",
+    "column.zs_observe.klarna_settlement.fee_amount",
+    "column.zs_observe.klarna_settlement.initial_payment_method_installments",
+    "column.zs_observe.klarna_settlement.initial_payment_method_type",
+    "column.zs_observe.klarna_settlement.merchant_id",
+    "column.zs_observe.klarna_settlement.merchant_reference1",
+    "column.zs_observe.klarna_settlement.merchant_reference2",
+    "column.zs_observe.klarna_settlement.merchant_reference_1",
+    "column.zs_observe.klarna_settlement.merchant_reference_2",
+    "column.zs_observe.klarna_settlement.order_id",
+    "column.zs_observe.klarna_settlement.payment_method",
+    "column.zs_observe.klarna_settlement.payment_reference",
+    "column.zs_observe.klarna_settlement.payout_date",
+    "column.zs_observe.klarna_settlement.purchase_country",
+    "column.zs_observe.klarna_settlement.sale_amount",
+    "column.zs_observe.klarna_settlement.sale_date",
+    "column.zs_observe.klarna_settlement.settlement_amount",
+    "column.zs_observe.klarna_settlement.settlement_type",
+    "column.zs_observe.klarna_settlement.short_order_id",
+    "column.zs_observe.klarna_settlement.transaction_amount",
+    "column.zs_observe.klarna_settlement.transaction_currency",
+    "column.zs_observe.klarna_settlement.transaction_type",
+    "column.zs_observe.klarna_settlement.type"
+  ],
+  "columns": [
+    "column.zs_observe.klarna_settlement.order_id",
+    "column.zs_observe.klarna_settlement.short_order_id",
+    "column.zs_observe.klarna_settlement.capture_id",
+    "column.zs_observe.klarna_settlement.merchant_reference1",
+    "column.zs_observe.klarna_settlement.merchant_reference_1",
+    "column.zs_observe.klarna_settlement.merchant_reference2",
+    "column.zs_observe.klarna_settlement.merchant_reference_2",
+    "column.zs_observe.klarna_settlement.payment_reference",
+    "column.zs_observe.klarna_settlement.merchant_id",
+    "column.zs_observe.klarna_settlement.payout_date",
+    "column.zs_observe.klarna_settlement.sale_date",
+    "column.zs_observe.klarna_settlement.capture_date",
+    "column.zs_observe.klarna_settlement.created_date",
+    "column.zs_observe.klarna_settlement.settlement_type",
+    "column.zs_observe.klarna_settlement.transaction_type",
+    "column.zs_observe.klarna_settlement.type",
+    "column.zs_observe.klarna_settlement.detailed_type",
+    "column.zs_observe.klarna_settlement.currency",
+    "column.zs_observe.klarna_settlement.transaction_currency",
+    "column.zs_observe.klarna_settlement.sale_amount",
+    "column.zs_observe.klarna_settlement.transaction_amount",
+    "column.zs_observe.klarna_settlement.fee_amount",
+    "column.zs_observe.klarna_settlement.settlement_amount",
+    "column.zs_observe.klarna_settlement.purchase_country",
+    "column.zs_observe.klarna_settlement.initial_payment_method_type",
+    "column.zs_observe.klarna_settlement.initial_payment_method_installments",
+    "column.zs_observe.klarna_settlement.payment_method"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "payout_date",
+    "sale_date",
+    "capture_date",
+    "created_date"
+  ],
+  "description": "Klarna is Europe's largest BNPL provider offering Pay Later, Pay in 3, and Financing. Settlement is at capture level.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.klarna"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.klarna",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 6071
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.klarna_settlement",
+  "grain": "one row per settlement/balance event or settlement line",
+  "grain_keys": [
+    "order_id",
+    "short_order_id",
+    "capture_id",
+    "merchant_reference1",
+    "merchant_reference_1",
+    "merchant_reference2"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.klarna_settlement",
+  "recommended_date_columns": [
+    "payout_date",
+    "created_date"
+  ],
+  "reconciliation_key_columns": [
+    "capture_id",
+    "merchant_reference1",
+    "merchant_reference_1",
+    "merchant_reference2",
+    "merchant_reference_2",
+    "payment_reference"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.klarna_settlement",
+  "source_caveats": [
+    "Klarna separates `sale_date` (when customer ordered) from `capture_date` (when merchant fulfilled).",
+    "`initial_payment_method_type` identifies the Klarna product: `PAY_LATER`, `PAY_NOW`, `SLICE_IT` (installments), `FINANCING`.",
+    "`settlement_type = 'PAYOUT'` = funds credited to merchant; `'REVERSAL'` = chargeback or refund reversal.",
+    "`merchant_reference1` and `merchant_reference_1` are duplicate columns from different report versions — check which is populated.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6071,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.klarna"
+  ],
+  "source_platform_types": [
+    "bnpl_gateway"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "settlement_type",
+    "transaction_type",
+    "type",
+    "detailed_type",
+    "currency",
+    "transaction_currency",
+    "initial_payment_method_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.klarna.eu_us_uk"
+    ],
+    "platform_ids": [
+      "platform.klarna"
+    ]
+  },
+  "table_name": "klarna_settlement",
+  "table_type": "settlement_or_payin_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

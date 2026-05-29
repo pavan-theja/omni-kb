@@ -1,0 +1,54 @@
+{
+  "business_definition": "Volumetric weight excess over gross weight.",
+  "candidate_notes": "Volumetric weight excess over gross weight.",
+  "canonical_id": "metric.marketplace.volumetric_excess_percent",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Volumetric gap",
+    "packaging inefficiency",
+    "billable weight gap"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "sku",
+  "description": "Volumetric weight excess over gross weight.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain": "domain.marketplace.amazon.orders; domain.marketplace.amazon.settlement; domain.marketplace.amazon.fees; domain.marketplace.amazon.returns",
+  "evidence_ids": [
+    "ev.amazon.packaging_weight.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.packaging_weight.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5313
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.amazon.amazon_fee_preview.volumetric_excess_percent"
+  ],
+  "marketplace_only": true,
+  "metric_key": "volumetric_excess_percent",
+  "metric_pattern": "volumetric_weight_over_gross_weight_minus_one",
+  "name": "Volumetric excess percent",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by Amazon-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.volumetric_excess_percent",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5313,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

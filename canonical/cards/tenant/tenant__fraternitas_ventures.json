@@ -1,0 +1,44 @@
+{
+  "active": true,
+  "canonical_id": "tenant.fraternitas_ventures",
+  "card_type": "tenant",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Focused India commerce client using ZenStatement for marketplace settlement, Shopify D2C OMS, Unicommerce OMS, Delhivery settlement, and payment gateway reconciliation.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Fraternitas Ventures Private Limited",
+  "package_id": "fraternitas_ventures_runtime_card_pack_v1_0",
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Fraternitas Ventures Private Limited.docx",
+    "Cognee KB Design v4.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "unicommerce_d2c_oms.md",
+    "unicommerce_operations.md",
+    "delhivery_logistics.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/fraternitas_ventures.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_code": "FRATERNITAS",
+  "tenant_name": "Fraternitas Ventures Private Limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

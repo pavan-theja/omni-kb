@@ -1,0 +1,280 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "error": null,
+  "question": "Which channels use marketplace-managed returns?",
+  "question_index": 7,
+  "result": {
+    "datasets": [
+      "zenstatement_canonical"
+    ],
+    "discovery": {
+      "GRAPH_COMPLETION": [
+        "Physical Tables: `zs_observe.increff_returns` (contains `fulfilment_channel`, `sales_channel`, `group_level_id`, `is_active`, `transaction_type`, `order_status`), `table.zs_observe.amazon_returns`. Physical Columns: `zs_observe.increff_returns.fulfilment_channel` (Channel Identifier), `zs_observe.increff_returns.sales_channel` (Channel Identifier), `zs_observe.increff_returns.group_level_id` (tenant filter), `zs_observe.increff_returns.is_active` (general filter), `zs_observe.increff_returns.transaction_type` (for identifying returns), `zs_observe.increff_returns.order_status` (for return status). `table.zs_observe.amazon_returns.group_level_id` (tenant filter inferred from binding). Tenant Filters: `group_level_id = 22` for 'Mensa Brands', `is_active = true`, `transaction_type = 'RETURN'` (inferred), `order_status = 'RETURNED'` (inferred). Join Keys: None identified. Source Table Relationships: `platform_context.increff.in` applies to `zs_observe.increff_returns`; `account_data_binding.mensa.amazon_in.primary.amazon_returns` binds to `table.zs_observe.amazon_returns`. Query Patterns: `query_pattern.increff.8_1_return_volume_by_channel_and_type`, `query_pattern.increff.9_3_return_rate_by_channel_mensa_brands_only`. Missing Context: A distinct physical column, value, or logical rule to identify whether a return is 'marketplace-managed' across all channels. While `amazon_returns` explicitly covers Amazon (a marketplace), there is no general mechanism to filter other channels by this attribute or to combine different marketplace-specific return tables."
+      ],
+      "RAG_COMPLETION": [
+        "Physical Tables: `zs_observe.increff_returns` (contains `fulfilment_channel`, `group_level_id`, `is_active`, `transaction_type`, `order_status`, `sales_channel`). Physical Columns: `zs_observe.increff_returns.fulfilment_channel` (described as 'Fulfilment partner' or 'Channel Identifier'), `zs_observe.increff_returns.group_level_id` (tenant filter for Mensa Brands, value 22), `zs_observe.increff_returns.is_active` (general operational filter), `zs_observe.increff_returns.transaction_type` (for identifying returns), `zs_observe.increff_returns.order_status` (for return status), `zs_observe.increff_returns.sales_channel` (another potential channel identifier). Tenant Filters: `group_level_id = 22` for 'Mensa Brands', `is_active = true`, `transaction_type = 'RETURN'`, `order_status = 'RETURNED'` (inferred as common return status). Source Table Relationships: `platform_context.increff.in` applies to columns in `zs_observe.increff_returns`. Query Patterns: `query_pattern.increff.8_1_return_volume_by_channel_and_type` and `query_pattern.increff.9_3_return_rate_by_channel_mensa_brands_only` indicate the availability of channel-specific return data in Increff. Missing Context: A distinct physical column, value, or logical rule to identify whether a return is 'marketplace-managed'. The existing `fulfilment_channel` or `sales_channel` identify the channel, but not the 'marketplace-managed' characteristic of the return process for that channel."
+      ]
+    },
+    "generated_at": "2026-05-27T07:47:35+00:00",
+    "query": "Which channels use marketplace-managed returns?",
+    "scope": {
+      "tenant": "Mensa Brands"
+    },
+    "search_types": [
+      "RAG_COMPLETION",
+      "GRAPH_COMPLETION"
+    ],
+    "stages": {
+      "field_join_resolution": {
+        "deduplication": "DISTINCT fulfilment_channel",
+        "fields": [
+          {
+            "field": "fulfilment_channel",
+            "reason": "Identified as the channel dimension in `zs_observe.increff_returns`.",
+            "role": "Channel Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Tenant filter for Mensa Brands (value 22).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "is_active",
+            "reason": "Standard operational filter ('is_active = true').",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "transaction_type",
+            "reason": "Inferred filter for return records (e.g., 'RETURN').",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "order_status",
+            "reason": "Inferred filter for completed/returned status (e.g., 'RETURNED').",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          }
+        ],
+        "filters": [
+          "zs_observe.increff_returns.group_level_id = 22",
+          "zs_observe.increff_returns.is_active = true",
+          "zs_observe.increff_returns.transaction_type = 'RETURN'",
+          "zs_observe.increff_returns.order_status = 'RETURNED'"
+        ],
+        "joins": "No joins are needed as the required channel and return data are within `zs_observe.increff_returns`.",
+        "metric_logic": {
+          "aggregation_grain": "fulfilment_channel",
+          "deduplication_rule": "DISTINCT fulfilment_channel",
+          "denominator": null,
+          "formula": "List distinct fulfilment_channel values associated with returns",
+          "numerator": null
+        },
+        "missing_or_ambiguous": "The critical blocking gap is the explicit absence of a physical column, value, or logical rule to identify 'marketplace-managed returns' versus other types of returns. The provided context allows listing channels with returns, but cannot differentiate based on the 'marketplace-managed' characteristic.",
+        "reason": "`zs_observe.increff_returns` is the primary source as it holds relevant channel and return data for Mensa Brands. However, the key missing piece is an explicit field to define 'marketplace-managed' returns. All necessary dimensions and operational filters for general returns are present within this single table.",
+        "tables": [
+          {
+            "field": "zs_observe.increff_returns",
+            "reason": "Contains channel and return information relevant to Mensa Brands, supporting the core dimensions and filters. ",
+            "role": "Primary Source",
+            "selected?": "Yes"
+          }
+        ]
+      },
+      "intent": {
+        "dimensions": [
+          "fulfilment_channel"
+        ],
+        "filters": [
+          {
+            "column": "group_level_id",
+            "operator": "=",
+            "reason": "Tenant filter for Mensa Brands.",
+            "value": 22
+          },
+          {
+            "column": "is_active",
+            "operator": "=",
+            "reason": "Standard operational filter from Increff constraints.",
+            "value": true
+          },
+          {
+            "column": "transaction_type",
+            "operator": "=",
+            "reason": "Inferred filter for return records.",
+            "value": "RETURN"
+          },
+          {
+            "column": "order_status",
+            "operator": "=",
+            "reason": "Inferred filter for completed return status.",
+            "value": "RETURNED"
+          },
+          {
+            "column": "marketplace_managed_flag",
+            "operator": "=",
+            "reason": "Blocking gap: No physical column or logical rule to identify 'marketplace-managed' returns.",
+            "value": true
+          }
+        ],
+        "grain": "return_channels",
+        "metric_or_status_logic": "list distinct channels with return records, unable to filter for 'marketplace-managed' without further context",
+        "must_enumerate_sources": true,
+        "reason": "The core challenge is the explicit lack of a distinct physical column, value, or logical rule to identify whether a return is 'marketplace-managed' across all channels. While `zs_observe.increff_returns` provides channel information and `table.zs_observe.amazon_returns` suggests a marketplace-specific return table, there's no general mechanism to filter other channels by the 'marketplace-managed' attribute or to combine different marketplace-specific return tables under a unified 'marketplace-managed' definition. Therefore, the query can list channels with returns, but cannot specifically identify those channels using 'marketplace-managed' returns.",
+        "scope": {
+          "tenant": "Mensa Brands"
+        },
+        "source_mode": "multi_source",
+        "table_limit": 2
+      },
+      "source_resolution": {
+        "candidates": [
+          {
+            "field": "table.zs_observe.amazon_returns",
+            "reason": "This table specifically covers Amazon returns, which is a marketplace. However, without a general mechanism to filter other channels by the 'marketplace-managed' attribute or to combine different marketplace-specific return tables, it cannot fully answer the broad question of \"Which channels\" in a generalized way.",
+            "role": "Risky Candidate",
+            "selected?": "No"
+          }
+        ],
+        "missing_or_risky": "The critical blocking gap is the absence of a distinct physical column, value, or logical rule to identify whether a return is 'marketplace-managed' across all channels. While zs_observe.increff_returns provides channel information and zs_observe.amazon_returns covers a specific marketplace, there is no general definition or field to apply the 'marketplace-managed' filter broadly.",
+        "reason": "zs_observe.increff_returns is selected as the primary source because it contains general return information by channel for Mensa Brands, supporting the core dimension and filter criteria. However, it explicitly lacks a clear data point or rule to filter specifically for 'marketplace-managed' returns, which is noted as a blocking gap. Other identified sources are either too specific (like Amazon returns without a generalization mechanism) or are supporting metadata without direct queryable data for the specific ask.",
+        "rejected_sources": [],
+        "selected_sources": [
+          "zs_observe.increff_returns"
+        ],
+        "supporting_metadata": [
+          {
+            "field": "execution_constraint_set.increff.operations_manifest_refactored_constraints",
+            "reason": "Provides general operational filters (group_level_id = 22, is_active = true) and confirms relevance for Increff return metrics, aligning with the intent's filters.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "platform_context.increff.in",
+            "reason": "Provides platform context for Increff as a WMS/cross-channel operations layer, reinforcing the relevance of Increff tables for operational data.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "query_pattern.increff.8_1_return_volume_by_channel_and_type",
+            "reason": "Indicates the availability of return volume data by channel and type within Increff, supporting the use of zs_observe.increff_returns for channel-level return analysis.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "query_pattern.increff.9_3_return_rate_by_channel_mensa_brands_only",
+            "reason": "Further confirms the availability of channel-specific return rate metrics for Mensa Brands within Increff data.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          }
+        ]
+      },
+      "sql_handoff": {
+        "filters": [
+          "zs_observe.increff_returns.group_level_id = 22",
+          "zs_observe.increff_returns.is_active = true",
+          "zs_observe.increff_returns.transaction_type = 'RETURN'",
+          "zs_observe.increff_returns.order_status = 'RETURNED'"
+        ],
+        "joins": "No joins are needed as the required channel and return data are within `zs_observe.increff_returns`.",
+        "metric_logic": {
+          "aggregation_grain": "fulfilment_channel",
+          "deduplication_rule": "DISTINCT fulfilment_channel",
+          "denominator": null,
+          "formula": "List distinct fulfilment_channel values associated with returns",
+          "numerator": null
+        },
+        "missing_or_ambiguous": "The critical blocking gap is the explicit absence of a physical column, value, or logical rule to identify 'marketplace-managed returns' versus other types of returns. The provided context allows listing channels with returns, but cannot differentiate based on the 'marketplace-managed' characteristic.",
+        "rejected_or_ambiguous_fields": [
+          {
+            "field": "marketplace_managed_flag",
+            "reason": "No explicit physical column or logical rule exists to identify 'marketplace-managed' returns. This is a blocking gap for the core request."
+          }
+        ],
+        "rejected_sources": [],
+        "require_tables": [
+          {
+            "field": "zs_observe.increff_returns",
+            "reason": "Contains channel and return information relevant to Mensa Brands, supporting the core dimensions and filters. ",
+            "role": "Primary Source",
+            "selected?": "Yes"
+          },
+          {
+            "field": "table.zs_observe.amazon_returns",
+            "reason": "This table specifically covers Amazon returns, which is a marketplace. However, without a general mechanism to filter other channels by the 'marketplace-managed' attribute or to combine different marketplace-specific return tables, it cannot fully answer the broad question of \"Which channels\" in a generalized way.",
+            "role": "Risky Candidate",
+            "selected?": "No"
+          }
+        ],
+        "required_fields": [
+          {
+            "field": "fulfilment_channel",
+            "reason": "Identified as the channel dimension in `zs_observe.increff_returns`.",
+            "role": "Channel Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Tenant filter for Mensa Brands (value 22).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "is_active",
+            "reason": "Standard operational filter ('is_active = true').",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "transaction_type",
+            "reason": "Inferred filter for return records (e.g., 'RETURN').",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          },
+          {
+            "field": "order_status",
+            "reason": "Inferred filter for completed/returned status (e.g., 'RETURNED').",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.increff_returns"
+          }
+        ],
+        "selected_source": null,
+        "sql_skeleton": "-- The request to identify channels using 'marketplace-managed' returns cannot be fully fulfilled with the current context.\n-- The selected physical table `zs_observe.increff_returns` contains information about returns and the `fulfilment_channel` for Mensa Brands (group_level_id = 22).\n-- It can be filtered for active ('is_active = true'), return transactions ('transaction_type = 'RETURN''), and completed returns ('order_status = 'RETURNED').\n-- However, there is no explicit physical column or logical rule available to distinguish whether a return is 'marketplace-managed'.\n-- Therefore, the SQL can only list distinct channels that have return records, without the 'marketplace-managed' specific filter.\n\n-- SELECT DISTINCT fulfilment_channel\n-- FROM zs_observe.increff_returns\n-- WHERE group_level_id = 22\n--   AND is_active = true\n--   AND transaction_type = 'RETURN'\n--   AND order_status = 'RETURNED';\n\n-- To fully address the question, additional context is needed to identify 'marketplace-managed' returns, either through a specific column in `zs_observe.increff_returns` or a related table/rule."
+      }
+    },
+    "timing": {
+      "duration_seconds": 98.639
+    },
+    "validation": {
+      "errors": [],
+      "ok": true,
+      "warnings": []
+    }
+  },
+  "scope": {
+    "tenant": "Mensa Brands"
+  },
+  "search_types": [
+    "RAG_COMPLETION",
+    "GRAPH_COMPLETION"
+  ],
+  "started_at": "2026-05-27T07:45:56+00:00",
+  "timing": {
+    "duration_seconds": 98.639
+  }
+}

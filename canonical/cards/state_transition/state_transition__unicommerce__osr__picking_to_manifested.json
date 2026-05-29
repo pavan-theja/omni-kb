@@ -1,0 +1,54 @@
+{
+  "canonical_id": "state_transition.unicommerce.osr.picking_to_manifested",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "OSR order_status progresses from pick/pack evidence to courier manifest.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.013.9_1_forward_sale",
+    "ev.unicommerce.section.042.order_status_distribution"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.013.9_1_forward_sale",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12122
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.042.order_status_distribution",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12122
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "PICKING_FOR_INVOICING",
+  "name": "Picking To Manifested",
+  "optional_fields": [
+    "state_column",
+    "from_state",
+    "to_state",
+    "trigger",
+    "business_meaning",
+    "valid_process_binding_tests"
+  ],
+  "process_id": "business_process.unicommerce.warehouse_fulfilment_lifecycle",
+  "review_status": "ready",
+  "source_card_id": "state_transition.unicommerce.osr.picking_to_manifested",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12122,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "state_column": "order_status or metadata depending transition",
+  "status": "draft",
+  "to_state": "MANIFESTED",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,186 @@
+{
+  "datasets": [
+    "zenstatement_canonical"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "GRAPH_COMPLETION": [
+      {
+        "filters": [],
+        "joins": "No joins are applicable as no relevant physical tables for Mensa Brands are identified.",
+        "metric_logic": {
+          "aggregation_grain": "courier_partner, remittance_type",
+          "deduplication_rule": null,
+          "denominator": "Total number of COD transactions",
+          "formula": "Count of COD remittance types by courier",
+          "numerator": "Number of COD transactions with a specific remittance type"
+        },
+        "missing_or_ambiguous": "The current context explicitly refers to 'Prita Designs Private Limited' with `group_level_id = 24` and related Meesho/Klip tables. It lacks any physical table or associated column definitions for 'Mensa Brands' (expected `group_level_id = 22`) that would contain 'courier' information and 'COD remittance type/status'. Without these, the request for Mensa Brands cannot be fulfilled. The necessary query patterns or constraints for COD remittance by courier, which might have inferred these fields and filters, are also absent from the provided context.",
+        "rejected_or_ambiguous_fields": [
+          "courier_partner",
+          "remittance_type/status",
+          "payment_mode",
+          "group_level_id"
+        ],
+        "rejected_sources": [],
+        "require_tables": [
+          {
+            "field": "table.zs_observe.klip_settlement",
+            "reason": "This table is associated with Prita Designs Private Limited (group_level_id = 24), not Mensa Brands (group_level_id = 22). It also does not explicitly provide courier or COD remittance type fields for Mensa Brands within the current context.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "table.zs_observe.marketplace_transactions",
+            "reason": "This table is associated with Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It's a generic marketplace transactions table and does not explicitly provide courier or COD remittance type fields for Mensa Brands within the current context.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "table.zs_observe.meesho_brand_mapping",
+            "reason": "This table is for brand mapping for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "table.zs_observe.meesho_forward_expenses",
+            "reason": "This table is for forward expenses for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "table.zs_observe.meesho_other_charges_expenses",
+            "reason": "This table is for other charges expenses for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "table.zs_observe.meesho_returns",
+            "reason": "This table is for returns for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          },
+          {
+            "field": "table.zs_observe.meesho_reverse",
+            "reason": "This table is for reverse logistics for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.",
+            "role": "Irrelevant Candidate",
+            "selected?": "No"
+          }
+        ],
+        "required_fields": [],
+        "selected_source": null,
+        "sql_skeleton": "-- The request to generate a COD remittance type by courier report for Mensa Brands cannot be fulfilled with the current context.\n-- The provided context is specific to 'Prita Designs Private Limited' and does not contain physical tables or column definitions for 'Mensa Brands' with courier and COD remittance information.\n-- To resolve this, physical table(s) containing courier and COD remittance type/status for Mensa Brands, along with the correct tenant identifier (group_level_id = 22), must be provided."
+      }
+    ],
+    "RAG_COMPLETION": [
+      {
+        "filters": [
+          "zs_observe.shiprocket_settlement.group_level_id = 22",
+          "zs_observe.shiprocket_settlement.is_active = true",
+          "zs_observe.shiprocket_settlement.payment_mode = 'COD'"
+        ],
+        "joins": "No joins are needed as the required dimensions and filters are inferred to be available within the `zs_observe.shiprocket_settlement` table.",
+        "metric_logic": {
+          "aggregation_grain": "courier_partner, remittance_status",
+          "deduplication_rule": "DISTINCT courier_partner, status",
+          "denominator": null,
+          "formula": "List distinct pairs of (courier_partner, status for COD remittance)",
+          "numerator": null
+        },
+        "missing_or_ambiguous": "The specific column names for 'courier_partner' and 'status' (as 'remittance_type') within `zs_observe.shiprocket_settlement` are inferred based on relevant query patterns and their allowed dimensions, as explicit column cards were not provided. The exact values for 'status' representing remittance types (e.g., 'Remitted', 'Pending', 'Failed') are also inferred.",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "table.zs_observe.limeroad_settlement"
+        ],
+        "require_tables": [
+          {
+            "field": "table.zs_observe.shiprocket_settlement",
+            "reason": "This table is explicitly identified as a required table in `query_pattern.logistics.cod_expected_vs_remitted`, which aligns perfectly with the request for COD remittance information. It is expected to contain both courier and settlement status data.",
+            "role": "Primary Source",
+            "selected?": "Yes"
+          },
+          {
+            "field": "query_pattern.logistics.cod_expected_vs_remitted",
+            "reason": "This query pattern directly addresses 'COD Expected Vs Remitted' and lists 'courier_partner', 'status', and 'payment_mode' as allowed dimensions, strongly indicating the presence of relevant data in associated tables like `zs_observe.shiprocket_settlement`.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "execution_constraint_set.increff.operations_manifest_refactored_constraints",
+            "reason": "Provides general operational filters including `group_level_id = 22` for Mensa Brands and `is_active = true`, which are applicable across platforms. Also contains a rule 'Do not create courier-settlement [...] from Increff alone', which guides towards logistics settlement tables.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          },
+          {
+            "field": "query_pattern.logistics.bank_credit_unmatched_courier_reference",
+            "reason": "Mentions courier_partner and payment_mode, but 'cod_expected_vs_remitted' is more specific to the user's request.",
+            "role": "Supporting Metadata",
+            "selected?": "No"
+          }
+        ],
+        "required_fields": [
+          {
+            "field": "courier_partner",
+            "reason": "Required dimension for the report, inferred from `query_pattern.logistics.cod_expected_vs_remitted` allowed dimensions.",
+            "role": "Dimension",
+            "selected?": "Yes",
+            "table": "zs_observe.shiprocket_settlement"
+          },
+          {
+            "field": "status",
+            "reason": "Represents the 'remittance type' as requested, inferred from `query_pattern.logistics.cod_expected_vs_remitted` allowed dimensions which include 'status' for logistics. This column would indicate the state of COD remittance (e.g., 'Remitted', 'Pending').",
+            "role": "Dimension",
+            "selected?": "Yes",
+            "table": "zs_observe.shiprocket_settlement"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Tenant filter for Mensa Brands, with value 22, inferred from `execution_constraint_set.increff.operations_manifest_refactored_constraints` as a general Mensa Brands scope identifier.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.shiprocket_settlement"
+          },
+          {
+            "field": "is_active",
+            "reason": "Standard operational filter ('is_active = true') mentioned in logistics query patterns and general constraints.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.shiprocket_settlement"
+          },
+          {
+            "field": "payment_mode",
+            "reason": "Filter for COD transactions, inferred from 'COD remittance type' in the question and 'payment_mode' in `query_pattern.logistics.cod_expected_vs_remitted`.",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.shiprocket_settlement"
+          }
+        ],
+        "selected_source": "zs_observe.shiprocket_settlement",
+        "sql_skeleton": "SELECT DISTINCT\n    courier_partner,\n    status AS remittance_type\nFROM\n    zs_observe.shiprocket_settlement\nWHERE\n    group_level_id = 22 AND\n    is_active = true AND\n    payment_mode = 'COD'\nORDER BY\n    courier_partner, remittance_type;"
+      }
+    ]
+  },
+  "question": "Generate a report showing COD remittance type by courier.",
+  "question_index": 6,
+  "results": {
+    "GRAPH_COMPLETION": [
+      "{\"selected_source\":null,\"rejected_sources\":[],\"require_tables\":[{\"field\":\"table.zs_observe.klip_settlement\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is associated with Prita Designs Private Limited (group_level_id = 24), not Mensa Brands (group_level_id = 22). It also does not explicitly provide courier or COD remittance type fields for Mensa Brands within the current context.\"},{\"field\":\"table.zs_observe.marketplace_transactions\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is associated with Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It's a generic marketplace transactions table and does not explicitly provide courier or COD remittance type fields for Mensa Brands within the current context.\"},{\"field\":\"table.zs_observe.meesho_brand_mapping\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is for brand mapping for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.\"},{\"field\":\"table.zs_observe.meesho_forward_expenses\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is for forward expenses for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.\"},{\"field\":\"table.zs_observe.meesho_other_charges_expenses\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is for other charges expenses for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.\"},{\"field\":\"table.zs_observe.meesho_returns\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is for returns for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.\"},{\"field\":\"table.zs_observe.meesho_reverse\",\"role\":\"Irrelevant Candidate\",\"selected?\":\"No\",\"reason\":\"This table is for reverse logistics for Prita Designs Private Limited (group_level_id = 24), not Mensa Brands. It does not contain courier or COD remittance type information.\"}],\"required_fields\":[],\"rejected_or_ambiguous_fields\":[\"courier_partner\",\"remittance_type/status\",\"payment_mode\",\"group_level_id\"],\"metric_logic\":{\"formula\":\"Count of COD remittance types by courier\",\"numerator\":\"Number of COD transactions with a specific remittance type\",\"denominator\":\"Total number of COD transactions\",\"aggregation_grain\":\"courier_partner, remittance_type\",\"deduplication_rule\":null},\"filters\":[],\"joins\":\"No joins are applicable as no relevant physical tables for Mensa Brands are identified.\",\"missing_or_ambiguous\":\"The current context explicitly refers to 'Prita Designs Private Limited' with `group_level_id = 24` and related Meesho/Klip tables. It lacks any physical table or associated column definitions for 'Mensa Brands' (expected `group_level_id = 22`) that would contain 'courier' information and 'COD remittance type/status'. Without these, the request for Mensa Brands cannot be fulfilled. The necessary query patterns or constraints for COD remittance by courier, which might have inferred these fields and filters, are also absent from the provided context.\",\"sql_skeleton\":\"-- The request to generate a COD remittance type by courier report for Mensa Brands cannot be fulfilled with the current context.\\n-- The provided context is specific to 'Prita Designs Private Limited' and does not contain physical tables or column definitions for 'Mensa Brands' with courier and COD remittance information.\\n-- To resolve this, physical table(s) containing courier and COD remittance type/status for Mensa Brands, along with the correct tenant identifier (group_level_id = 22), must be provided.\"}"
+    ],
+    "RAG_COMPLETION": [
+      "{\n  \"selected_source\": \"zs_observe.shiprocket_settlement\",\n  \"rejected_sources\": [\n    \"table.zs_observe.limeroad_settlement\"\n  ],\n  \"require_tables\": [\n    {\n      \"field\": \"table.zs_observe.shiprocket_settlement\",\n      \"role\": \"Primary Source\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"This table is explicitly identified as a required table in `query_pattern.logistics.cod_expected_vs_remitted`, which aligns perfectly with the request for COD remittance information. It is expected to contain both courier and settlement status data.\"\n    },\n    {\n      \"field\": \"query_pattern.logistics.cod_expected_vs_remitted\",\n      \"role\": \"Supporting Metadata\",\n      \"selected?\": \"No\",\n      \"reason\": \"This query pattern directly addresses 'COD Expected Vs Remitted' and lists 'courier_partner', 'status', and 'payment_mode' as allowed dimensions, strongly indicating the presence of relevant data in associated tables like `zs_observe.shiprocket_settlement`.\"\n    },\n    {\n      \"field\": \"execution_constraint_set.increff.operations_manifest_refactored_constraints\",\n      \"role\": \"Supporting Metadata\",\n      \"selected?\": \"No\",\n      \"reason\": \"Provides general operational filters including `group_level_id = 22` for Mensa Brands and `is_active = true`, which are applicable across platforms. Also contains a rule 'Do not create courier-settlement [...] from Increff alone', which guides towards logistics settlement tables.\"\n    },\n    {\n      \"field\": \"query_pattern.logistics.bank_credit_unmatched_courier_reference\",\n      \"role\": \"Supporting Metadata\",\n      \"selected?\": \"No\",\n      \"reason\": \"Mentions courier_partner and payment_mode, but 'cod_expected_vs_remitted' is more specific to the user's request.\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"courier_partner\",\n      \"table\": \"zs_observe.shiprocket_settlement\",\n      \"role\": \"Dimension\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Required dimension for the report, inferred from `query_pattern.logistics.cod_expected_vs_remitted` allowed dimensions.\"\n    },\n    {\n      \"field\": \"status\",\n      \"table\": \"zs_observe.shiprocket_settlement\",\n      \"role\": \"Dimension\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Represents the 'remittance type' as requested, inferred from `query_pattern.logistics.cod_expected_vs_remitted` allowed dimensions which include 'status' for logistics. This column would indicate the state of COD remittance (e.g., 'Remitted', 'Pending').\"\n    },\n    {\n      \"field\": \"group_level_id\",\n      \"table\": \"zs_observe.shiprocket_settlement\",\n      \"role\": \"Filter Column\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Tenant filter for Mensa Brands, with value 22, inferred from `execution_constraint_set.increff.operations_manifest_refactored_constraints` as a general Mensa Brands scope identifier.\"\n    },\n    {\n      \"field\": \"is_active\",\n      \"table\": \"zs_observe.shiprocket_settlement\",\n      \"role\": \"Filter Column\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Standard operational filter ('is_active = true') mentioned in logistics query patterns and general constraints.\"\n    },\n    {\n      \"field\": \"payment_mode\",\n      \"table\": \"zs_observe.shiprocket_settlement\",\n      \"role\": \"Filter Column\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Filter for COD transactions, inferred from 'COD remittance type' in the question and 'payment_mode' in `query_pattern.logistics.cod_expected_vs_remitted`.\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [],\n  \"metric_logic\": {\n    \"formula\": \"List distinct pairs of (courier_partner, status for COD remittance)\",\n    \"numerator\": null,\n    \"denominator\": null,\n    \"aggregation_grain\": \"courier_partner, remittance_status\",\n    \"deduplication_rule\": \"DISTINCT courier_partner, status\"\n  },\n  \"filters\": [\n    \"zs_observe.shiprocket_settlement.group_level_id = 22\",\n    \"zs_observe.shiprocket_settlement.is_active = true\",\n    \"zs_observe.shiprocket_settlement.payment_mode = 'COD'\"\n  ],\n  \"joins\": \"No joins are needed as the required dimensions and filters are inferred to be available within the `zs_observe.shiprocket_settlement` table.\",\n  \"missing_or_ambiguous\": \"The specific column names for 'courier_partner' and 'status' (as 'remittance_type') within `zs_observe.shiprocket_settlement` are inferred based on relevant query patterns and their allowed dimensions, as explicit column cards were not provided. The exact values for 'status' representing remittance types (e.g., 'Remitted', 'Pending', 'Failed') are also inferred.\",\n  \"sql_skeleton\": \"SELECT DISTINCT\\n    courier_partner,\\n    status AS remittance_type\\nFROM\\n    zs_observe.shiprocket_settlement\\nWHERE\\n    group_level_id = 22 AND\\n    is_active = true AND\\n    payment_mode = 'COD'\\nORDER BY\\n    courier_partner, remittance_type;\"\n}"
+    ]
+  },
+  "scoped_query": "Generate a report showing COD remittance type by courier.\n\nScope:\n- tenant: Mensa Brands\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nYou are a SQL-resolution handoff agent. Do not answer the business question directly. Produce the safest SQL-building plan that the retrieved context can support.\n\nResolution flow:\n1. Identify the requested grain, metric/status logic, dimensions, filters, joins, and tenant/account scope.\n2. Resolve sources in this order:\n   - tenant/account scope from user input\n   - account_data_binding/platform_account only to identify candidate platforms and source bindings\n   - physical table cards for those bindings\n   - column cards for selected physical tables\n   - relationship cards for join keys between selected physical tables\n   - query_pattern cards only to reuse grounded SQL logic\n   - business_flow_binding/business_process only for process context if table/relationship context is insufficient\n3. Stop once when enough physical tables are identified to answer the query safely.\n4. Classify candidates as direct, supporting, risky, or irrelevant.\n5. Select the smallest safe SQL package. If no safe package exists, return a partial/risky handoff with blocking gaps.\n\nCore rules:\n- Prefer physical SQL tables and columns explicitly grounded in context.\n- Prefer the smallest complete physical table set; avoid expanding into every retrieved artifact.\n- Do not default to the most detailed retrieved source if the user asks about channels, marketplaces, settlements, reconciliation, risk, bottlenecks, dependency, concentration, courier mapping, OMS dependency, or marketplace-wide reporting.\n- For channel/marketplace questions, enumerate candidate platforms/sources first, then select only the physical tables needed per package.\n- Do not treat one marketplace such as Myntra, Amazon, Flipkart, Ajio, Nykaa, Meesho, Snapdeal, TataCliq, JioMart, HealthKart, or LimeRoad as representative of all marketplaces unless the user explicitly asks for that marketplace or the context proves it is the only applicable source.\n- Do not UNION or numerically consolidate multiple source tables unless the user asks for cross-source/all-source/platform-wide consolidation and the context provides deduplication keys plus source precedence.\n- Do not create SQL rows from retrieved metadata using literal SELECT statements such as `SELECT 'Meesho' AS channel_name`.\n- `sql_skeleton` must query physical runtime tables only.\n- If no physical table path is grounded, set `selected_source = null` and make `sql_skeleton` a SQL comment explaining missing physical tables, columns, joins, or deduplication rules.\n- Do not generate qualitative metadata reports as executable SQL.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feed names as business dimension values when a proper dimension column exists.\n- If fields, tenant IDs, or join keys must be inferred from grounded patterns, select them only with explicit inferred reasoning.\n- Do not invent deduplication rules, source precedence, or join keys. State the gap instead.\n\nCanonical metadata rules:\n- Canonical objects are metadata guides, not runtime SQL tables, unless they resolve to a concrete physical table or column.\n- Never generate SQL against `account_data_binding`, `business_flow_binding`, `workflow_step`, `business_process`, `metric`, `query_pattern`, `relationship`, `state_transition`, `evidence`, `platform_account`, `metadata.account_data_bindings`, `account_data_bindings`, or `canonical.cards` unless the user explicitly asks to query the canonical metadata store itself.\n- `account_data_binding` helps infer tenant/platform/account scope, source role, and candidate physical tables. Do not query it directly.\n- `table` can be selected only when it names a physical table, for example `zs_observe.unicommerce`.\n- `column` grounds fields, filters, joins, metrics, and grouping dimensions for its parent physical table.\n- `relationship` justifies joins only when both sides resolve to physical tables/columns.\n- `query_pattern` provides SQL logic only when it names physical tables, fields, filters, joins, or deduplication rules.\n- `business_flow_binding`, `business_process`, `workflow_step`, and `state_transition` explain process/status semantics only.\n- `metric` and `metric_dependency` help infer formula, numerator, denominator, and grain only when grounded by physical fields.\n- `platform_account` helps identify marketplace/channel/account scope only.\n- `evidence` is provenance/confidence only.\n\nCandidate classification:\n- direct: contains the requested grain and required metric/status fields.\n- supporting: helps identify scope, channel, platform, process, or join path but cannot answer the metric alone.\n- risky: appears relevant but lacks required join keys, filters, status fields, grain, or deduplication rules.\n- irrelevant: retrieved but not useful for the request.\n\nSelected table rule:\n- In `require_tables`, mark `selected? = Yes` only for physical SQL tables used in `sql_skeleton`.\n- Canonical metadata, query patterns, rules, value profiles, relationships, and business flows must be `selected? = No` unless they resolve to a physical table used in the SQL.\n- Supporting metadata can appear in `require_tables`, but only with `selected? = No`.\n- If a source is useful only as evidence for table/field selection, keep it out of `selected_source`.\n\nOutput rules:\n- Return one best SQL package in the schema below.\n- Use `require_tables` to show selected physical tables and important rejected/risky/supporting candidates.\n- Use `rejected_or_ambiguous_fields` for alternate fields, missing fields, unsafe joins, and rejected candidate notes.\n- For listing/mapping queries with no numeric metric, set numerator and denominator to null and describe the unique rows in `metric_logic.formula`.\n- If the best answer is a candidate inventory rather than executable SQL, set `selected_source` to null and make `sql_skeleton` a commented template explaining what is missing.\n\nCognee response wrapper:\n- Return a top-level JSON object with exactly one key: `content`.\n- `content` must be a string.\n- The string inside `content` must be a JSON-serialized object matching the payload schema.\n- Do not put an object or array directly inside `content`.\n\nCorrect wrapper shape:\n{\n  \"content\": \"{\\\"selected_source\\\":null,\\\"rejected_sources\\\":[],\\\"require_tables\\\":[],\\\"required_fields\\\":[],\\\"rejected_or_ambiguous_fields\\\":[],\\\"metric_logic\\\":{\\\"formula\\\":null,\\\"numerator\\\":null,\\\"denominator\\\":null,\\\"aggregation_grain\\\":null,\\\"deduplication_rule\\\":null},\\\"filters\\\":[],\\\"joins\\\":\\\"No joins needed\\\",\\\"missing_or_ambiguous\\\":\\\"None\\\",\\\"sql_skeleton\\\":\\\"SELECT 1\\\"}\"\n}\n\nPayload schema inside the `content` string:\n{\n  \"selected_source\": \"string physical SQL table name, or null\",\n  \"rejected_sources\": [\"array of rejected source ids or names\"],\n  \"require_tables\": [\n    {\n      \"field\": \"physical SQL table name when selected; canonical metadata id only when rejected/supporting/risky\",\n      \"role\": \"Primary Source | Supporting Metadata | Risky Candidate | Irrelevant Candidate | Filter Source | Metric Source\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"candidate classification and SQL relevance\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"physical column name or logical field name\",\n      \"table\": \"which physical table or tables this field comes from\",\n      \"role\": \"Channel Identifier | Filter Column | Metric | Join Key | Status Field | Date Field\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"why the field is needed; mark inferred reasoning when applicable\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of exact WHERE conditions or logical filters\"],\n  \"joins\": \"join logic, or why no join is needed\",\n  \"missing_or_ambiguous\": \"None only when complete; otherwise list blocking gaps/inferences\",\n}",
+  "search_types": [
+    "RAG_COMPLETION",
+    "GRAPH_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 45.245,
+    "search_seconds": {
+      "GRAPH_COMPLETION": 14.374,
+      "RAG_COMPLETION": 30.871
+    },
+    "started_at": "2026-05-27T07:43:35+00:00"
+  }
+}

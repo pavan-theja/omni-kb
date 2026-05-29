@@ -1,0 +1,47 @@
+{
+  "canonical_id": "rule.meesho.reverse_expenses_empty_fallback",
+  "card_type": "rule",
+  "condition": "Apply to Meesho marketplace query generation and semantic parsing only.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho reverse expenses empty fallback",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.048.2_current_status",
+    "evidence.meesho.040.8_3_return_reverse_logistics_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.048.2_current_status",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18435
+    },
+    {
+      "evidence_id": "evidence.meesho.040.8_3_return_reverse_logistics_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 18435
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Meesho reverse expenses empty fallback",
+  "review_status": "accepted",
+  "rule_type": "source_availability_rule",
+  "severity": "high",
+  "source_card_id": "rule.meesho.reverse_expenses_empty_fallback",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 18435,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "statement": "meesho_reverse_expenses is provisioned but currently has 0 rows; use meesho_other_charges_expenses type = Reverse_shipping and/or meesho_settlement.return_logistic_charge_excluding_tax for current reverse logistics cost analysis.",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

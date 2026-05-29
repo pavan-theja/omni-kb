@@ -1,0 +1,111 @@
+{
+  "aggregation_rules": "avoid fanout; aggregate AWB to batch before bank matching",
+  "allowed_dimensions": [
+    "courier_partner",
+    "status",
+    "payment_mode",
+    "zone",
+    "date",
+    "awb when safe"
+  ],
+  "allowed_grains": [
+    "awb",
+    "order",
+    "day",
+    "month",
+    "batch"
+  ],
+  "applicability_scope": "logistics domain; account scope injected at runtime",
+  "canonical_id": "query_pattern.logistics.bank_credit_unmatched_courier_reference",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Approved logistics query pattern for bank_credit_unmatched_courier_reference.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "edge_enrichment_note": "v4 adds PRODUCES_METRIC / USES_RECONCILIATION_PROFILE / REQUIRES_RULE / USES_OUTPUT_CONTRACT / USES_TABLE edges where targets exist.",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 7155
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 7155
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 7155
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_constraints": "use relationship cards; pre-aggregate before joins",
+  "linked_rules": "rule.logistics.required_scope_context; rule.logistics.amount_semantics_not_by_name; rule.logistics.grain_safe_reconciliation",
+  "name": "Bank Credit Unmatched Courier Reference",
+  "optional_tables": "bank_statement; fallback aggregator tables",
+  "output_contract_id": "output_contract.logistics_reconciliation_summary",
+  "output_contracts": [
+    "output_contract.logistics_reconciliation_summary"
+  ],
+  "pattern_name": "bank_credit_unmatched_courier_reference",
+  "pattern_type": "analytical; reconciliation; diagnostic",
+  "produces_metric": [
+    "metric.unmatched_bank_credit_amount"
+  ],
+  "query_pattern_boundary": "Account filters and Business Flow Binding are resolved outside this generic query pattern.",
+  "query_shape": "pseudo_sql_pattern_available_from card fields and vendor implementations",
+  "recommended_date_columns": [
+    "source-specific recommended date columns"
+  ],
+  "required_metrics": "profile-specific metrics",
+  "required_tables": [
+    "profile/vendor specific",
+    "table.zs_observe.delhivery_settlement",
+    "table.zs_observe.dtdc_settlement",
+    "table.zs_observe.ekart_settlement"
+  ],
+  "review_status": "unreviewed",
+  "rules": [
+    "rule.logistics.bank_reference_required_for_bank_match",
+    "rule.logistics.utr_preferred_for_bank_bridge"
+  ],
+  "semantic_filters": [
+    "is_active=true when present",
+    "status/value filters by profile"
+  ],
+  "source_card_id": "query_pattern.logistics.bank_credit_unmatched_courier_reference",
+  "source_confidence": "high",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7155,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_status": "active",
+  "status": "active",
+  "supported_intents": "bank credit unmatched courier reference",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "uses_reconciliation_profile": [
+    "reconciliation_profile.courier_batch_to_bank_credit"
+  ],
+  "validation_tests": [
+    "validation_test.logistics.required_scope_context",
+    "validation_test.logistics.amount_semantics_not_by_name"
+  ],
+  "version": "5.0-manifest-aligned"
+}

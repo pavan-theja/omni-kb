@@ -1,0 +1,49 @@
+{
+  "business_meaning": "Duplicate of above",
+  "canonical_id": "column.zs_observe.healthkart_settlement.orders_processing_fee",
+  "card_type": "column",
+  "column_group": "Commission & Fee Structure",
+  "column_name": "orders_processing_fee",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "Duplicate of above",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 1021
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "healthkart_settlement.orders_processing_fee",
+  "review_status": "ready",
+  "schema_name": "zs_observe",
+  "scope_boundary_note": null,
+  "semantic_role": "financial_amount_or_rate",
+  "source_card_id": "column.zs_observe.healthkart_settlement.orders_processing_fee",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1021,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "table_id": "table.zs_observe.healthkart_settlement",
+  "table_name": "healthkart_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

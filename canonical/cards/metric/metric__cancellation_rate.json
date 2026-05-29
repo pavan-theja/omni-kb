@@ -1,0 +1,89 @@
+{
+  "benchmarks": {
+    "observed_cancelled_share": "4.6%",
+    "source": "docx Order Status Lifecycle table"
+  },
+  "business_definition": "Share of active OMS rows where order_status = Cancelled.",
+  "business_question": "cancelled orders divided by forward orders",
+  "canonical_formula_pattern": "cancelled_orders_over_active_oms_orders",
+  "canonical_id": "metric.cancellation_rate",
+  "canonical_name": "cancellation_rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Cancellation Rate",
+    "cancel rate",
+    "cancelled order percentage"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "period",
+  "default_time_basis": "settlement_date for settlement metrics; created/order date for order metrics",
+  "description": "Share of active OMS rows where order_status = Cancelled.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations",
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4586
+    }
+  ],
+  "evidence_table_ids": [],
+  "excluded_components": [
+    "COGS",
+    "bank deposits",
+    "external logistics charges",
+    "ERP/accounting adjustments"
+  ],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.ajio.cancellation_rate.05",
+    "metric_implementation.flipkart.cancellation_rate"
+  ],
+  "included_components": [
+    "marketplace-owned Flipkart fields only"
+  ],
+  "metric_family": "operations",
+  "metric_key": "cancellation_rate",
+  "metric_pattern": "cancelled_orders_over_active_oms_orders",
+  "name": "Cancellation Rate",
+  "positive_direction": "higher_is_better except fees/taxes/returns/cancellations",
+  "review_status": "ready",
+  "source_card_id": "metric.cancellation_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md",
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4586,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+    "raw/cleaned_v2/marketplace/flipkart_marketplace.md"
+  ],
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "AJIO",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "canonical_id": "value_profile.limeroad.oms.transaction_type",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.limeroad_oms.transaction_type",
+  "column_name": "transaction_type",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "distribution_summary": "Revenue queries must isolate forward; reverse rows include older NULL eventtype cases.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "documented_values": {
+    "forward": "Sale invoice line",
+    "reverse": "Return/credit-note invoice line"
+  },
+  "evidence_ids": [
+    "ev.limeroad.oms.schema.001",
+    "ev.limeroad.oms.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.oms.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4158
+    },
+    {
+      "evidence_id": "ev.limeroad.oms.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 4158
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "LimeRoad OMS transaction_type values",
+  "profile_kind": "documented_value_profile",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.limeroad.oms.transaction_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4158,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.zs_observe.limeroad_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

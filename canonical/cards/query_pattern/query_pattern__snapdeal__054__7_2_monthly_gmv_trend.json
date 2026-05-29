@@ -1,0 +1,68 @@
+{
+  "canonical_id": "query_pattern.snapdeal.054.7_2_monthly_gmv_trend",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal query pattern — 7.2 Monthly GMV Trend",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.7_2_monthly_gmv_trend",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.7_2_monthly_gmv_trend",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 20403
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 20403
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Snapdeal query pattern — 7.2 Monthly GMV Trend",
+  "output_fields": [
+    "CASTDATE_TRUNCmonth",
+    "month",
+    "orders",
+    "forward_orders",
+    "return_orders",
+    "gmv"
+  ],
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "required_rule_ids": [
+    "rule.snapdeal.active_filter",
+    "rule.snapdeal.scope_fields_are_columns"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.snapdeal.054.7_2_monthly_gmv_trend",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 20403,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.snapdeal_oms"
+  ],
+  "sql_pattern_id": "sql.snapdeal.7_2_monthly_gmv_trend",
+  "sql_template": "SELECT\n  CAST(DATE_TRUNC('month', CAST(order_date AS TIMESTAMP)) AS DATE) AS month,\n  COUNT(*) AS orders,\n  COUNT_IF(transaction_type = 'forward') AS forward_orders,\n  COUNT_IF(transaction_type = 'reverse') AS return_orders,\n  SUM(charged_amount) AS gmv\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true\nGROUP BY 1\nORDER BY 1;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

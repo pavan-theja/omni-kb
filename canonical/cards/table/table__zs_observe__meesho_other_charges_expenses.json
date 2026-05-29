@@ -1,0 +1,81 @@
+{
+  "business_purpose": "Reverse shipping + WaaS fees",
+  "canonical_id": "table.zs_observe.meesho_other_charges_expenses",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.meesho_other_charges_expenses.created_at",
+    "column.zs_observe.meesho_other_charges_expenses.currency_type",
+    "column.zs_observe.meesho_other_charges_expenses.deleted_at",
+    "column.zs_observe.meesho_other_charges_expenses.financial_year",
+    "column.zs_observe.meesho_other_charges_expenses.group_level_id",
+    "column.zs_observe.meesho_other_charges_expenses.invoice_section",
+    "column.zs_observe.meesho_other_charges_expenses.is_active",
+    "column.zs_observe.meesho_other_charges_expenses.is_duplicated",
+    "column.zs_observe.meesho_other_charges_expenses.month_number",
+    "column.zs_observe.meesho_other_charges_expenses.order_date",
+    "column.zs_observe.meesho_other_charges_expenses.order_date_temp_old",
+    "column.zs_observe.meesho_other_charges_expenses.remarks",
+    "column.zs_observe.meesho_other_charges_expenses.sub_order_num",
+    "column.zs_observe.meesho_other_charges_expenses.supplier_id",
+    "column.zs_observe.meesho_other_charges_expenses.taxable_value",
+    "column.zs_observe.meesho_other_charges_expenses.txn_uuid",
+    "column.zs_observe.meesho_other_charges_expenses.type",
+    "column.zs_observe.meesho_other_charges_expenses.unique_id",
+    "column.zs_observe.meesho_other_charges_expenses.unique_value",
+    "column.zs_observe.meesho_other_charges_expenses.updated_at",
+    "column.zs_observe.meesho_other_charges_expenses.zen_sheet_name",
+    "column.zs_observe.meesho_other_charges_expenses.zen_status"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "table card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "zs_observe.meesho_other_charges_expenses",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 2360
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fully_qualified_name": "zs_observe.meesho_other_charges_expenses",
+  "grain": "fee_or_charge_line",
+  "join_key_candidates": [
+    "sub_order_num"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.meesho.monthly_reverse_shipping_cost",
+    "metric_impl.meesho.reconcile_with_settlement_return_logistics",
+    "metric_impl.meesho.return_reverse_logistics_reconciliation"
+  ],
+  "name": "zs_observe.meesho_other_charges_expenses",
+  "primary_key_candidates": [
+    "sub_order_num"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": "290",
+  "schema": "zs_observe",
+  "scope_caveats": "Scope-like fields such as group_level_id/group_id/seller/supplier identifiers are columns or filters only, not account-binding cards.",
+  "semantic_module": "fees_and_charges",
+  "source_card_id": "table.zs_observe.meesho_other_charges_expenses",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2360,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_section": "Meesho Other Charges Expenses — Table Knowledge Base",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "meesho_other_charges_expenses",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

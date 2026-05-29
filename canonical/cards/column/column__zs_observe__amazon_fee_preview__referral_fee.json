@@ -1,0 +1,51 @@
+{
+  "business_meaning": "Referral fee amount in rupees",
+  "candidate_notes": "Referral fee amount in rupees",
+  "canonical_id": "column.zs_observe.amazon_fee_preview.referral_fee",
+  "card_type": "column",
+  "column_name": "referral_fee",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "decimal",
+  "description": "Referral fee amount in rupees",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_fee_preview.columns.001",
+    "ev.amazon_fee_preview.quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_fee_preview.columns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3619
+    },
+    {
+      "evidence_id": "ev.amazon_fee_preview.quality.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 3619
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "amazon_fee_preview.referral_fee",
+  "review_status": "accepted",
+  "scope_guardrail": "marketplace_semantic_column",
+  "semantic_category": "amount",
+  "source_card_id": "column.zs_observe.amazon_fee_preview.referral_fee",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3619,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table": "table.zs_observe.amazon_fee_preview",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

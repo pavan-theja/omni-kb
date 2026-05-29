@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.limeroad.total_forward_gmv",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.metrics.sql.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.metrics.sql.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 6331
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Total forward GMV",
+  "natural_language_patterns": [
+    "What is LimeRoad GMV?",
+    "Total forward GMV",
+    "Forward sales and commission"
+  ],
+  "primary_metric": "metric.marketplace.gross_gmv",
+  "query_logic": "Use SQL pattern sql.limeroad.settlement.forward_gmv",
+  "review_status": "accepted",
+  "scope_policy": "Documented LimeRoad group_level_id=22 is included in source-backed SQL; runtime may layer external scope resolution.",
+  "source_card_id": "query_pattern.limeroad.total_forward_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6331,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "table.zs_observe.limeroad_settlement"
+  ],
+  "sql_ref": "sql.limeroad.settlement.forward_gmv",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

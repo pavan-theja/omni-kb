@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "AFN/FBA, MFN/Easyship, shipping fees, weight and volumetric billing",
+  "canonical_id": "domain.marketplace.amazon.fulfilment_shipping",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain_key": "fulfilment_shipping",
+  "domain_scope": "AFN/FBA, MFN/Easyship, shipping fees, weight and volumetric billing",
+  "evidence_ids": [
+    "ev.amazon.segmentation.001",
+    "ev.amazon.packaging_weight.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.segmentation.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1246
+    },
+    {
+      "evidence_id": "ev.amazon.packaging_weight.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 1246
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon fulfilment and marketplace shipping-charge semantics",
+  "out_of_scope_guardrail": "no tenant/account/logistics/bank/ERP/statutory filing card creation",
+  "platform_context": "platform_context.amazon.in",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.amazon.fulfilment_shipping",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1246,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

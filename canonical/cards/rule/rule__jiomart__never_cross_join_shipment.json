@@ -1,0 +1,44 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.jiomart_shipment",
+    "table.zs_observe.jiomart_oms"
+  ],
+  "canonical_id": "rule.jiomart.never_cross_join_shipment",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "Never cross-join shipment to MYFITNESS tables",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.4_2_primary_join_keys"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.4_2_primary_join_keys",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13507
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Never cross-join shipment to MYFITNESS tables",
+  "review_status": "ready",
+  "rule_type": "join_rule",
+  "severity": "high",
+  "source_card_id": "rule.jiomart.never_cross_join_shipment",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13507,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "statement": "jiomart_shipment is a separate ARDEUR FASHIONS entity with 0% order_id match to jiomart_oms; do not join it to OMS/returns/settlement without explicit external entity mapping.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

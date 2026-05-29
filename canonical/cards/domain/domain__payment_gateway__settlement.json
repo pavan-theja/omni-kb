@@ -1,0 +1,57 @@
+{
+  "business_processes": [],
+  "canonical_id": "domain.payment_gateway.settlement",
+  "card_type": "domain",
+  "common_metrics": [
+    "metric.net_settlement_amount",
+    "metric.gateway_fee_amount",
+    "metric.settlement_cycle_days"
+  ],
+  "common_questions": [],
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Settlement batches, payout IDs, balance transactions, net settlement, fees, tax, settlement dates, trace IDs, and bank-reconciliation references.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "domain_name": "Payment Gateway Settlement",
+  "domain_type": "analytics_reconciliation_diagnostics",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 3000
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Payment Gateway Settlement",
+  "platform_types": [
+    "payment_gateway",
+    "bnpl_gateway",
+    "app_store_platform"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "domain.payment_gateway.settlement",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3000,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

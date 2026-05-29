@@ -1,0 +1,51 @@
+{
+  "amount_columns": [
+    "charged_amount"
+  ],
+  "canonical_id": "reconciliation_side.tatacliq.oms_settlement_forward.expected",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.recon_oms_settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.recon_oms_settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 7386
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "transaction_type=forward",
+    "seller_name IS NOT NULL",
+    "is_active=true"
+  ],
+  "grain": "order_id line/order comparison as defined by source SQL",
+  "key_columns": [
+    "order_id"
+  ],
+  "name": "Expected",
+  "profile_id": "reconciliation_profile.tatacliq.oms_settlement_forward",
+  "review_status": "ready",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.tatacliq.oms_settlement_forward.expected",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7386,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "source_table_id": "table.zs_observe.tatacliq_oms",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

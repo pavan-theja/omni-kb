@@ -1,0 +1,70 @@
+{
+  "canonical_id": "query_pattern.snapdeal.016.10_3_commission_validation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal query pattern — 10.3 Commission Validation",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.10_3_commission_validation",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.10_3_commission_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 19437
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 19437
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Snapdeal query pattern — 10.3 Commission Validation",
+  "output_fields": [
+    "invoice_number",
+    "commission_invoice",
+    "settlement_commission",
+    "variance"
+  ],
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "required_rule_ids": [
+    "rule.snapdeal.active_filter",
+    "rule.snapdeal.scope_fields_are_columns",
+    "rule.snapdeal.settlement_date_filter_policy",
+    "rule.snapdeal.revenue_vs_cashflow_scope",
+    "rule.snapdeal.commission_is_marketplace_fee_total"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.snapdeal.016.10_3_commission_validation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 19437,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.snapdeal_commission",
+    "zs_observe.snapdeal_settlement"
+  ],
+  "sql_pattern_id": "sql.snapdeal.10_3_commission_validation",
+  "sql_template": "SELECT\n  c.invoice_number,\n  c.total_commission_amount AS commission_invoice,\n  s.commission AS settlement_commission,\n  ABS(c.total_commission_amount - s.commission) AS variance\nFROM zs_observe.snapdeal_commission c\nLEFT JOIN zs_observe.snapdeal_settlement s\n  ON c.invoice_number = s.invoice_number\n  AND s.is_active = true\nWHERE c.is_active = true;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

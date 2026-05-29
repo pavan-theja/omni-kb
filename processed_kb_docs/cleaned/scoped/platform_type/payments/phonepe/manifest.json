@@ -1,0 +1,31 @@
+{
+  "card_types": {
+    "account_data_binding": 1,
+    "platform": 1,
+    "platform_account": 1,
+    "platform_context": 1
+  },
+  "counts": {
+    "cards": 4,
+    "edges": 13,
+    "semantic_mappings": 3
+  },
+  "edge_types": {
+    "BELONGS_TO_PLATFORM": 1,
+    "BINDS_TO_TABLE": 1,
+    "HAS_ACCOUNT_DATA_BINDING": 1,
+    "HAS_PLATFORM_ACCOUNT": 1,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "INCLUDES_PLATFORM_ACCOUNT": 1,
+    "PARTICIPATES_WITH_ACCOUNT": 2,
+    "SOURCED_FROM_PLATFORM": 1,
+    "SOURCED_FROM_PLATFORM_CONTEXT": 1,
+    "USES_ACCOUNT_DATA_BINDING": 1,
+    "USES_PLATFORM": 1,
+    "USES_PLATFORM_CONTEXT": 1
+  },
+  "scope": [
+    "payments",
+    "phonepe"
+  ]
+}

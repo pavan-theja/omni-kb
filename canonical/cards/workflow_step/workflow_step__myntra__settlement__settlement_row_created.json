@@ -1,0 +1,54 @@
+{
+  "canonical_id": "workflow_step.myntra.settlement.settlement_row_created",
+  "canonical_name": "settlement_transaction_classified",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "documented_business_event": "Settlement transaction classified",
+  "evidence_ids": [
+    "evidence.myntra.lifecycle",
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10402
+    },
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10402
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "settlement_transaction_classified",
+  "process_id": "business_process.myntra.marketplace_settlement_lifecycle",
+  "review_status": "unreviewed",
+  "secondary_source_columns": [
+    "internal_txn_type"
+  ],
+  "sequence": 1,
+  "source_card_id": "workflow_step.myntra.settlement.settlement_row_created",
+  "source_column": "transaction_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10402,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_settlement",
+  "status": "draft",
+  "summary": "Settlement row is classified by transaction_type and internal_txn_type; forward/sales and reverse/refund rows carry different financial meaning.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

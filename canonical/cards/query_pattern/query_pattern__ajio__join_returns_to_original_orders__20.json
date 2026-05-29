@@ -1,0 +1,87 @@
+{
+  "canonical_id": "query_pattern.ajio.join_returns_to_original_orders.20",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.036_10_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "Join Returns to Original Orders",
+  "name": "Join Returns to Original Orders",
+  "natural_language_patterns": [
+    "Join Returns to Original Orders",
+    "join returns to original orders"
+  ],
+  "parser_note": "Preserve SQL exactly; parser may normalize schema aliases separately.",
+  "required_columns": [
+    "order_id",
+    "parent_id",
+    "transaction_type",
+    "charged_amount",
+    "description",
+    "brand",
+    "ajio_reverse",
+    "ajio_oms",
+    "is_active",
+    "return_id",
+    "original_order",
+    "return_charged",
+    "original_charged",
+    "zs_observe"
+  ],
+  "required_rules": [
+    "rule.ajio.always_filter_is_active_true_without_this_queries_include_invalid_deleted.05",
+    "rule.ajio.use_zs_observe_schema_exclusively_for_analytics_queries.06"
+  ],
+  "required_tables": [
+    "zs_observe.ajio_reverse",
+    "zs_observe.ajio_oms"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.ajio.join_returns_to_original_orders.20",
+  "source_confidence": "high",
+  "source_context": "Return Value by Type",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6428,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "sql_pattern": "SELECT r.order_id AS return_id, r.parent_id AS original_order,\n  r.transaction_type, r.charged_amount AS return_charged,\n  o.charged_amount AS original_charged, o.description, o.brand\nFROM zs_observe.ajio_reverse r\nJOIN zs_observe.ajio_oms o ON r.parent_id = o.order_id\nWHERE r.is_active = true AND o.is_active = true",
+  "sql_ref": "sql.ajio.join_returns_to_original_orders",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

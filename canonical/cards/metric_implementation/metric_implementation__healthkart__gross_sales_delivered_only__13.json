@@ -1,0 +1,65 @@
+{
+  "aggregation_grain": "as defined by SQL/group-by or source table grain",
+  "base_tables": [],
+  "canonical_id": "metric_implementation.healthkart.gross_sales_delivered_only.13",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 5720
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true when applicable and documented"
+  ],
+  "formula_sql": "SELECT SUM(charged_amount) AS gross_sales\nFROM zs_observe.healthkart_settlement\nWHERE is_active = true\n  AND transaction_type = 'forward'\n  AND order_status = 'Delivered'",
+  "implementation_scope": "healthkart",
+  "metric_id": "metric.gross_sales",
+  "metric_pattern": "platform_specific_implementation_of_generic_metric",
+  "name": "HealthKart implementation — Gross Sales (Delivered Only)",
+  "platform_code": "healthkart",
+  "platform_specific_name": "Gross Sales (Delivered Only)",
+  "recast_note": "V9 recast from query-heading metric to implementation of durable metric.",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.healthkart.gross_sales_delivered_only.13",
+  "source_columns": [
+    "healthkart_settlement",
+    "charged_amount",
+    "gross_sales",
+    "zs_observe",
+    "is_active",
+    "transaction_type",
+    "order_status"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5720,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "zs_observe.healthkart_settlement"
+  ],
+  "sql_ref": "sql.healthkart.gross_sales_delivered_only.13",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

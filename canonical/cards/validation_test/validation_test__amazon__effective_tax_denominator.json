@@ -1,0 +1,43 @@
+{
+  "candidate_notes": "Validate tax rate using charged_amount_excluding_tax denominator.",
+  "canonical_id": "validation_test.amazon.effective_tax_denominator",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "validation_test card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.gst.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.gst.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 8109
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Effective tax denominator check",
+  "related_canonical_id": "metric.marketplace.effective_tax_rate",
+  "review_status": "accepted",
+  "source_card_id": "validation_test.amazon.effective_tax_denominator",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8109,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "sql_ref": "sql.amazon.validation.effective_tax_denominator",
+  "status": "active",
+  "test_description": "Validate tax rate using charged_amount_excluding_tax denominator.",
+  "test_type": "marketplace_semantic_validation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

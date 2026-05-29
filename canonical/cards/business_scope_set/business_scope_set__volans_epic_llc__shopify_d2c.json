@@ -1,0 +1,44 @@
+{
+  "account_data_binding_ids": [],
+  "active": true,
+  "canonical_id": "business_scope_set.volans_epic_llc.shopify_d2c",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Shopify OMS scope for US D2C store.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/volans_epic_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.volans_epic_llc.mensa_brands",
+  "name": "Shopify D2C",
+  "notes": [],
+  "package_id": "client_runtime_binding_pack.volans_epic_llc.v0_1",
+  "platform_account_ids": [
+    "platform_account.volans_epic_llc.shopify_d2c.primary"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Volans Epic LLC Shopify D2C",
+  "scope_type": "d2c_oms_scope",
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Epic LLC.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_epic_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.volans_epic_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

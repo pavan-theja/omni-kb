@@ -1,0 +1,64 @@
+{
+  "active": false,
+  "business_scope_set_ids": [
+    "business_scope_set.rosenza_international_trading_llc.fx_rollup"
+  ],
+  "canonical_id": "business_flow_binding.rosenza_international_trading_llc.marketplace_settlement_to_bank_pending_bank",
+  "card_type": "business_flow_binding",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Client states settlements are via marketplace payouts, but no bank account/bank-statement binding is provided.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "flow_name": "Rosenza marketplace settlement to bank pending bank binding",
+  "flow_type": "marketplace_to_bank",
+  "group_id": "group.rosenza_international_trading_llc.mensa_brands",
+  "name": "Marketplace Settlement To Bank Pending Bank",
+  "notes": [],
+  "package_id": "client_runtime_binding_pack.rosenza_international_trading_llc.v0_1",
+  "participant_platform_account_ids": [
+    "platform_account.rosenza_international_trading_llc.amazon_us.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_ca.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_mx.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_uk.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_de.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_fr.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_es.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_se.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_ae.primary",
+    "platform_account.rosenza_international_trading_llc.amazon_ksa.primary",
+    "platform_account.rosenza_international_trading_llc.noon_me.primary",
+    "platform_account.rosenza_international_trading_llc.namshi_me.primary"
+  ],
+  "required_runtime_resolution": [
+    "bank_platform_account",
+    "bank_statement_account_data_binding",
+    "per-region settlement currency/account mapping"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": null,
+  "source_documents": [
+    "Rosenza International Trading L.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": null,
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.rosenza_international_trading_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,47 @@
+{
+  "canonical_id": "formula_template.target_plus.return_refund_netting",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus return refund netting",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.2_2_return_flow",
+    "ev.target_plus.settlement.5_financial_waterfall_forward_sales_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.2_2_return_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9634
+    },
+    {
+      "evidence_id": "ev.target_plus.settlement.5_financial_waterfall_forward_sales_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9634
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "reverse settled impact = return refund amount minus/plus commission reversal per settlement sign; source shows net return settlement -9,185.",
+  "name": "Target Plus return refund netting",
+  "review_status": "ready",
+  "sign_convention": "Use transaction_type/internal_txn_type context; do not mix forward, reverse, and reverse charge unless netting is intended.",
+  "source_card_id": "formula_template.target_plus.return_refund_netting",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9634,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "USD",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Reverse rows only; gross_commission may reverse as a credit to seller."
+}

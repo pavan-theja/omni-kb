@@ -1,0 +1,49 @@
+{
+  "canonical_id": "state_transition.healthkart.reverse_flow_rto_customer_return.reverse_record_created_to_credit_or_refund_recorded",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_columns": [
+    "healthkart_return.invoice_number",
+    "healthkart_return.charged_amount",
+    "healthkart_return.total_tax"
+  ],
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6586
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "courier_return_recorded",
+  "name": "courier_return_recorded → return_invoice_value_captured",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.healthkart.reverse_flow_rto_customer_return.reverse_record_created_to_credit_or_refund_recorded",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6586,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "state_column": "healthkart_return.invoice_number",
+  "status": "draft",
+  "to_state": "return_invoice_value_captured",
+  "trigger": "HKRI return invoice captures returned goods value and tax",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,45 @@
+{
+  "canonical_id": "column.zs_observe.myntra_reverse.sku_id",
+  "canonical_name": "sku_id",
+  "card_type": "column",
+  "column_name": "sku_id",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "column card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.tables"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.tables",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 3700
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "sku_id",
+  "review_status": "unreviewed",
+  "semantic_role": "unknown",
+  "source_card_id": "column.zs_observe.myntra_reverse.sku_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3700,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_preserved_name": true,
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "SKU ID.",
+  "table_id": "table.zs_observe.myntra_reverse",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

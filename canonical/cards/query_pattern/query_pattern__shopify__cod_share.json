@@ -1,0 +1,60 @@
+{
+  "canonical_id": "query_pattern.shopify.cod_share",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "cod_share",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.data_quality.001",
+    "ev.shopify.shiprocket_join.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.data_quality.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 3163
+    },
+    {
+      "evidence_id": "ev.shopify.shiprocket_join.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 3163
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "cod_share",
+  "natural_language_patterns": [
+    "COD share",
+    "How many Shopify orders are COD?"
+  ],
+  "output_contract_id": "output_contract.shopify.standard_metric_result",
+  "primary_metric": "metric.shopify.cod_order_count",
+  "required_rules": [
+    "rule.shopify.is_active_filter",
+    "rule.shopify.varchar_amount_cast",
+    "rule.shopify.multi_line_order_grain"
+  ],
+  "review_status": "accepted",
+  "source_card_id": "query_pattern.shopify.cod_share",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3163,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "source_table_ids": [
+    "table.zs_observe.shopify_oms"
+  ],
+  "sql_reference_id": "sql.shopify.query.cod_share",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

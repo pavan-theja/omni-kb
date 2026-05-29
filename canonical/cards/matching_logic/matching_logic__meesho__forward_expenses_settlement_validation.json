@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "Pre-aggregate invoice and settlement sides by sub_order/order_id if duplicates appear.",
+  "amount_comparison": "taxable_shipping vs ABS(freight_charge); meesho_mall_platformfee vs ABS(mp_fees).",
+  "canonical_id": "matching_logic.meesho.forward_expenses_settlement_validation",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho matching logic — Forward Expenses ↔ Settlement Validation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_2_forward_expenses_settlement_validation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_2_forward_expenses_settlement_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15833
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "meesho_forward_expenses.sub_order_num = meesho_settlement.order_id",
+  "key_normalization": "Use CAST(f.is_active AS VARCHAR) = 'true' for forward_expenses; settlement uses boolean is_active.",
+  "match_type": "fee_component_validation",
+  "name": "Meesho matching logic — Forward Expenses ↔ Settlement Validation",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.meesho.forward_expenses_settlement_validation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15833,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timing_rule": "Forward expense invoice must be available before validating settlement deductions.",
+  "tolerance_rule": "Source SQL computes variance; hard tolerance not documented.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

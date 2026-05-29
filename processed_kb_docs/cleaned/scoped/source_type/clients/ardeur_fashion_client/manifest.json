@@ -1,0 +1,36 @@
+{
+  "card_types": {
+    "account_data_binding": 36,
+    "business_flow_binding": 2,
+    "business_scope_set": 3,
+    "group": 1,
+    "platform_account": 11,
+    "tenant": 1
+  },
+  "counts": {
+    "cards": 54,
+    "edges": 179,
+    "future_context_gaps": 5,
+    "review_items": 1,
+    "semantic_mappings": 11
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 36,
+    "HAS_ACCOUNT_DATA_BINDING": 36,
+    "HAS_BUSINESS_FLOW_BINDING": 2,
+    "HAS_BUSINESS_SCOPE_SET": 3,
+    "HAS_GROUP": 1,
+    "HAS_PLATFORM_ACCOUNT": 11,
+    "INCLUDES_PLATFORM_ACCOUNT": 11,
+    "PARTICIPATES_WITH_ACCOUNT": 19,
+    "USES_ACCOUNT_DATA_BINDING": 36,
+    "USES_BUSINESS_SCOPE_SET": 2,
+    "USES_EVIDENCE_TABLE": 2,
+    "USES_PLATFORM": 10,
+    "USES_PLATFORM_CONTEXT": 10
+  },
+  "scope": [
+    "clients",
+    "ardeur_fashion_client"
+  ]
+}

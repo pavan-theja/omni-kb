@@ -1,0 +1,51 @@
+{
+  "applies_to_cards": [
+    "domain.target_plus.fulfillment",
+    "business_process.target_plus.return_flow"
+  ],
+  "canonical_id": "rule.target_plus.external_logistics_boundary",
+  "card_type": "rule",
+  "condition": "Fulfillment and returns",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus external logistics boundary",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.1_2_seller_eligibility",
+    "ev.target_plus.returns.other_id_carrier_tracking_numbers"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.1_2_seller_eligibility",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11700
+    },
+    {
+      "evidence_id": "ev.target_plus.returns.other_id_carrier_tracking_numbers",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11700
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus external logistics boundary",
+  "review_status": "ready",
+  "rule_type": "scope_guardrail",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.external_logistics_boundary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11700,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "UPS/USPS/FedEx/return logistics references are marketplace fulfillment caveats and columns only; do not emit logistics account or carrier-operation cards.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,83 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "RAG_COMPLETION": [
+      {
+        "filters": [
+          "a.group_level_id = 22",
+          "b.group_level_id = 22",
+          "a.oms_system IS NOT NULL"
+        ],
+        "joins": "Self-join on zs_observe.channel_integrations on oms_system to find co-dependencies.",
+        "metric_logic": {
+          "aggregation_grain": "oms_system, channel_name",
+          "deduplication_rule": "a.channel_name < b.channel_name to avoid duplicate/symmetric pairs",
+          "denominator": null,
+          "formula": "Self-join pairing of channels sharing the same oms_system",
+          "numerator": null
+        },
+        "missing_or_ambiguous": "None",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "zs_observe.unicommerce_order_sales_report",
+          "zs_observe.increff_sales",
+          "zs_observe.shopify_oms"
+        ],
+        "required_fields": [
+          {
+            "field": "channel_name",
+            "reason": "Identifies the marketplace or channel.",
+            "role": "Channel Identifier",
+            "selected?": "Yes",
+            "table": "zs_observe.channel_integrations"
+          },
+          {
+            "field": "oms_system",
+            "reason": "Inferred column representing the OMS provider (e.g., Unicommerce, Increff, Shopify) used by the channel.",
+            "role": "OMS Identifier",
+            "selected?": "Selected",
+            "table": "zs_observe.channel_integrations"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Filters records to Mensa Brands (group_level_id = 22).",
+            "role": "Filter Column",
+            "selected?": "Yes",
+            "table": "zs_observe.channel_integrations"
+          }
+        ],
+        "required_tables": [
+          {
+            "field": "zs_observe.channel_integrations",
+            "reason": "Contains mapping of channels to their respective OMS systems for Mensa Brands.",
+            "role": "Channel Integration Metadata Table",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": "zs_observe.channel_integrations",
+        "sql_skeleton": "SELECT a.oms_system, a.channel_name AS channel_a, b.channel_name AS channel_b FROM zs_observe.channel_integrations a INNER JOIN zs_observe.channel_integrations b ON a.oms_system = b.oms_system AND a.channel_name < b.channel_name WHERE a.group_level_id = 22 AND b.group_level_id = 22 ORDER BY a.oms_system, a.channel_name;"
+      }
+    ]
+  },
+  "question": "Create a marketplace risk report showing which channels depend on the same OMS.",
+  "question_index": 11,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\n  \"selected_source\": \"zs_observe.channel_integrations\",\n  \"rejected_sources\": [\n    \"zs_observe.unicommerce_order_sales_report\",\n    \"zs_observe.increff_sales\",\n    \"zs_observe.shopify_oms\"\n  ],\n  \"required_tables\": [\n    {\n      \"field\": \"zs_observe.channel_integrations\",\n      \"role\": \"Channel Integration Metadata Table\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Contains mapping of channels to their respective OMS systems for Mensa Brands.\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"channel_name\",\n      \"role\": \"Channel Identifier\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Identifies the marketplace or channel.\",\n      \"table\": \"zs_observe.channel_integrations\"\n    },\n    {\n      \"field\": \"oms_system\",\n      \"role\": \"OMS Identifier\",\n      \"selected?\": \"Selected\",\n      \"reason\": \"Inferred column representing the OMS provider (e.g., Unicommerce, Increff, Shopify) used by the channel.\",\n      \"table\": \"zs_observe.channel_integrations\"\n    },\n    {\n      \"field\": \"group_level_id\",\n      \"role\": \"Filter Column\",\n      \"selected?\": \"Yes\",\n      \"reason\": \"Filters records to Mensa Brands (group_level_id = 22).\",\n      \"table\": \"zs_observe.channel_integrations\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [],\n  \"metric_logic\": {\n    \"formula\": \"Self-join pairing of channels sharing the same oms_system\",\n    \"numerator\": null,\n    \"denominator\": null,\n    \"aggregation_grain\": \"oms_system, channel_name\",\n    \"deduplication_rule\": \"a.channel_name < b.channel_name to avoid duplicate/symmetric pairs\"\n  },\n  \"filters\": [\n    \"a.group_level_id = 22\",\n    \"b.group_level_id = 22\",\n    \"a.oms_system IS NOT NULL\"\n  ],\n  \"joins\": \"Self-join on zs_observe.channel_integrations on oms_system to find co-dependencies.\",\n  \"missing_or_ambiguous\": \"None\",\n  \"sql_skeleton\": \"SELECT a.oms_system, a.channel_name AS channel_a, b.channel_name AS channel_b FROM zs_observe.channel_integrations a INNER JOIN zs_observe.channel_integrations b ON a.oms_system = b.oms_system AND a.channel_name < b.channel_name WHERE a.group_level_id = 22 AND b.group_level_id = 22 ORDER BY a.oms_system, a.channel_name;\"\n}"
+    ]
+  },
+  "scoped_query": "Create a marketplace risk report showing which channels depend on the same OMS.\n\nScope:\n- platform account: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Default to a single source table or single relationship path.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nResponse Format:\nReturn a single answer string containing one valid JSON object.\nDo not wrap it in Markdown or code fences.\nThe JSON object must be emitted as plain text, not as a nested object under a content key.\n\nThe JSON object must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"required_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "RAG_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 21.538,
+    "search_seconds": {
+      "RAG_COMPLETION": 21.538
+    },
+    "started_at": "2026-05-28T10:12:24+00:00"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "canonical_id": "value_profile.increff_returns.reason_for_return.shopify",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.increff_returns.reason_for_return",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff Shopify D2C reason_for_return values",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.048.reason_for_return_values_shopify_d2c_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.048.reason_for_return_values_shopify_d2c_returns",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7356
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Increff Shopify D2C reason_for_return values",
+  "profile_notes": [
+    "Only ~8,400 rows have reason_for_return populated; Shopify D2C only."
+  ],
+  "profile_type": "documented_distinct_values_or_mapping",
+  "review_status": "ready",
+  "source_card_id": "value_profile.increff_returns.reason_for_return.shopify",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7356,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.increff_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_meanings": {},
+  "values": [
+    "Size is too Large",
+    "Size is too Small",
+    "Quality of the product not as expected",
+    "Product image is better than the actual product",
+    "Size issues",
+    "Others"
+  ]
+}

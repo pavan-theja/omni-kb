@@ -1,0 +1,64 @@
+{
+  "business_trigger": "RVP/RTO/REPL return requires reverse record and credit note against original PO.",
+  "canonical_id": "business_process.ajio.reverse_flow_return_credit_note_settlement_adjustment",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.010_4_transaction_lifecycle",
+    "evidence.ajio.094_important_notes",
+    "evidence.ajio.108_important_notes"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.010_4_transaction_lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5397
+    },
+    {
+      "evidence_id": "evidence.ajio.094_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5397
+    },
+    {
+      "evidence_id": "evidence.ajio.108_important_notes",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5397
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Reverse Flow (Return → Credit Note → Settlement Adjustment)",
+  "participating_tables": [
+    "ajio_reverse",
+    "ajio_credit_note",
+    "ajio_oms",
+    "ajio_settlement"
+  ],
+  "process_family": "ajio_b2b2c_reverse_to_credit_note",
+  "process_notes": "Source-backed reverse flow: ajio_reverse captures RT return id, parent FN order, transaction_type, charged_amount and return_value; ajio_credit_note records AFAJIO invoice_number, purchase_po_no and POSTING_COMPLETED status. Settlement transaction_type is FORWARD in current data, so reverse financial impact should not be forced into a settlement reversal lifecycle.",
+  "review_status": "ready",
+  "settlement_reporting_caveat": "Reverse settlement may be netted off or reported separately; credit_note_no in settlement is mostly null.",
+  "source_card_id": "business_process.ajio.reverse_flow_return_credit_note_settlement_adjustment",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.010_4_transaction_lifecycle",
+    "evidence.ajio.094_important_notes",
+    "evidence.ajio.108_important_notes"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5397,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

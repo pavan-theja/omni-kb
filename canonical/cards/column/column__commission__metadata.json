@@ -1,0 +1,45 @@
+{
+  "business_meaning": "Metadata value documented as 'commission invoice' for active fee invoice rows.",
+  "canonical_id": "column.commission.metadata",
+  "card_type": "column",
+  "column_name": "metadata",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "Metadata value documented as 'commission invoice' for active fee invoice rows.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.commission_schema"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.commission_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 2703
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "filter/status",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.commission.metadata",
+  "review_status": "accepted",
+  "semantic_type": "commission_invoice_metadata",
+  "source_card_id": "column.commission.metadata",
+  "source_caveats": [],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2703,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.commission",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

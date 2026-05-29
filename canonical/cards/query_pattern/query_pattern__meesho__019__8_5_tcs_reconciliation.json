@@ -1,0 +1,50 @@
+{
+  "canonical_id": "query_pattern.meesho.019.8_5_tcs_reconciliation",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — 8.5 TCS Reconciliation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_5_tcs_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_5_tcs_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 16433
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Meesho query pattern — 8.5 TCS Reconciliation",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.019.8_5_tcs_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16433,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_sales",
+    "zs_observe.meesho_settlement"
+  ],
+  "sql_template": "SELECT\n  DATE_TRUNC('month', settlement_date) AS month,\n  SUM(tcs_taxable_amount) AS tcs_base_from_sales,\n  (SELECT SUM(ABS(total_tcs_amount)) FROM zs_observe.meesho_settlement\n   WHERE is_active = true AND order_status = 'Delivered') AS tcs_deducted_in_settlement\nFROM zs_observe.meesho_sales WHERE is_active = true\nGROUP BY 1 ORDER BY 1;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

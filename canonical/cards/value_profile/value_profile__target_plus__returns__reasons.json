@@ -1,0 +1,54 @@
+{
+  "canonical_id": "value_profile.target_plus.returns.reasons",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.target_returns.description",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Returns reason profile",
+  "distribution_summary": "Changed Mind accounts for ~65% of returns.",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.returns.return_reasons_description_field_top_17_values"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.returns.return_reasons_description_field_top_17_values",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8843
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Returns reason profile",
+  "normalization_rule": "Preserve source spelling/case/code values; normalize only where source explicitly instructs or SQL uses LOWER/casts.",
+  "observed_values": [
+    "Changed Mind 765 / refunded 15,428 / avg 20.17",
+    "Doesnt Fit 132 / refunded 2,694 / avg 20.41",
+    "Poor Quality 75 / refunded 1,496 / avg 19.94",
+    "Arrived Late 44 / refunded 719 / avg 16.34",
+    "Missing Package 28 / refunded 568 / avg 20.29",
+    "Sent Wrong Item ~17",
+    "Missing Item or Shipment ~12",
+    "Defective few",
+    "Damaged During Shipping few",
+    "Not as Described few",
+    "Duplicate Order few"
+  ],
+  "profile_kind": "observed_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.target_plus.returns.reasons",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8843,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

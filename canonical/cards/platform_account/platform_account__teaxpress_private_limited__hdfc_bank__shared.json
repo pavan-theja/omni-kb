@@ -1,0 +1,57 @@
+{
+  "account_name": "Teaxpress HDFC Bank Settlement Source",
+  "account_type": "bank_settlement_source_account",
+  "active": true,
+  "canonical_id": "platform_account.teaxpress_private_limited.hdfc_bank.shared",
+  "canonical_platform_status": "canonical",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "INR"
+  ],
+  "default_currency": "INR",
+  "description": "platform_account card from raw/cleaned_v2/clients/teaxpress_private_limited.json.",
+  "evidence_ids": [
+    "HDFC Bank configured as shared payment/bank settlement target hdfc_bank_settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "HDFC Bank configured as shared payment/bank settlement target hdfc_bank_settlement",
+      "source_doc": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.teaxpress_private_limited.teabox",
+  "name": "Teaxpress HDFC Bank Settlement Source",
+  "notes": [
+    "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+  ],
+  "package_id": "client_runtime_binding_pack.teaxpress_private_limited.v0_1",
+  "platform_context_id": "platform_context.hdfc_bank.in",
+  "platform_id": "platform.hdfc_bank",
+  "region_or_market": "India",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_account_identifier_status": "not_provided_in_client_doc",
+  "source_confidence": null,
+  "source_documents": [
+    "Teaxpress Private Limited.docx",
+    "bank_statement.md",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_evidence": "HDFC Bank configured as shared payment/bank settlement target hdfc_bank_settlement",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/teaxpress_private_limited.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.teaxpress_private_limited",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

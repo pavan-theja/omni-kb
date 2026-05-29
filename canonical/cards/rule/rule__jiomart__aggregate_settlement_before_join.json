@@ -1,0 +1,43 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "canonical_id": "rule.jiomart.aggregate_settlement_before_join",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "Aggregate settlement rows before comparison",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.4_settlement_structure_event_based_multi_row_model"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.4_settlement_structure_event_based_multi_row_model",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 13544
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Aggregate settlement rows before comparison",
+  "review_status": "ready",
+  "rule_type": "aggregation_rule",
+  "severity": "medium",
+  "source_card_id": "rule.jiomart.aggregate_settlement_before_join",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13544,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "statement": "JioMart settlement is event-based and multi-row; group by order_id and accountable_type/event before comparing to OMS or returns.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,287 @@
+## 019. Build a SKU profitability report.
+
+### Timing
+
+- started_at: `2026-05-27T07:55:41+00:00`
+- duration_seconds: `46.769`
+- RAG_COMPLETION_seconds: `33.135`
+- GRAPH_COMPLETION_seconds: `13.633`
+
+### Query
+
+```text
+Build a SKU profitability report.
+
+Scope:
+- tenant: Mensa Brands
+
+Answer for downstream SQL/query construction using only the provided context and explicit user input.
+
+You are a SQL-resolution handoff agent. Do not answer the business question directly. Produce the safest SQL-building plan that the retrieved context can support.
+
+Resolution flow:
+1. Identify the requested grain, metric/status logic, dimensions, filters, joins, and tenant/account scope.
+2. Resolve sources in this order:
+   - tenant/account scope from user input
+   - account_data_binding/platform_account only to identify candidate platforms and source bindings
+   - physical table cards for those bindings
+   - column cards for selected physical tables
+   - relationship cards for join keys between selected physical tables
+   - query_pattern cards only to reuse grounded SQL logic
+   - business_flow_binding/business_process only for process context if table/relationship context is insufficient
+3. Stop once when enough physical tables are identified to answer the query safely.
+4. Classify candidates as direct, supporting, risky, or irrelevant.
+5. Select the smallest safe SQL package. If no safe package exists, return a partial/risky handoff with blocking gaps.
+
+Core rules:
+- Prefer physical SQL tables and columns explicitly grounded in context.
+- Prefer the smallest complete physical table set; avoid expanding into every retrieved artifact.
+- Do not default to the most detailed retrieved source if the user asks about channels, marketplaces, settlements, reconciliation, risk, bottlenecks, dependency, concentration, courier mapping, OMS dependency, or marketplace-wide reporting.
+- For channel/marketplace questions, enumerate candidate platforms/sources first, then select only the physical tables needed per package.
+- Do not treat one marketplace such as Myntra, Amazon, Flipkart, Ajio, Nykaa, Meesho, Snapdeal, TataCliq, JioMart, HealthKart, or LimeRoad as representative of all marketplaces unless the user explicitly asks for that marketplace or the context proves it is the only applicable source.
+- Do not UNION or numerically consolidate multiple source tables unless the user asks for cross-source/all-source/platform-wide consolidation and the context provides deduplication keys plus source precedence.
+- Do not create SQL rows from retrieved metadata using literal SELECT statements such as `SELECT 'Meesho' AS channel_name`.
+- `sql_skeleton` must query physical runtime tables only.
+- If no physical table path is grounded, set `selected_source = null` and make `sql_skeleton` a SQL comment explaining missing physical tables, columns, joins, or deduplication rules.
+- Do not generate qualitative metadata reports as executable SQL.
+- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feed names as business dimension values when a proper dimension column exists.
+- If fields, tenant IDs, or join keys must be inferred from grounded patterns, select them only with explicit inferred reasoning.
+- Do not invent deduplication rules, source precedence, or join keys. State the gap instead.
+
+Canonical metadata rules:
+- Canonical objects are metadata guides, not runtime SQL tables, unless they resolve to a concrete physical table or column.
+- Never generate SQL against `account_data_binding`, `business_flow_binding`, `workflow_step`, `business_process`, `metric`, `query_pattern`, `relationship`, `state_transition`, `evidence`, `platform_account`, `metadata.account_data_bindings`, `account_data_bindings`, or `canonical.cards` unless the user explicitly asks to query the canonical metadata store itself.
+- `account_data_binding` helps infer tenant/platform/account scope, source role, and candidate physical tables. Do not query it directly.
+- `table` can be selected only when it names a physical table, for example `zs_observe.unicommerce`.
+- `column` grounds fields, filters, joins, metrics, and grouping dimensions for its parent physical table.
+- `relationship` justifies joins only when both sides resolve to physical tables/columns.
+- `query_pattern` provides SQL logic only when it names physical tables, fields, filters, joins, or deduplication rules.
+- `business_flow_binding`, `business_process`, `workflow_step`, and `state_transition` explain process/status semantics only.
+- `metric` and `metric_dependency` help infer formula, numerator, denominator, and grain only when grounded by physical fields.
+- `platform_account` helps identify marketplace/channel/account scope only.
+- `evidence` is provenance/confidence only.
+
+Candidate classification:
+- direct: contains the requested grain and required metric/status fields.
+- supporting: helps identify scope, channel, platform, process, or join path but cannot answer the metric alone.
+- risky: appears relevant but lacks required join keys, filters, status fields, grain, or deduplication rules.
+- irrelevant: retrieved but not useful for the request.
+
+Selected table rule:
+- In `require_tables`, mark `selected? = Yes` only for physical SQL tables used in `sql_skeleton`.
+- Canonical metadata, query patterns, rules, value profiles, relationships, and business flows must be `selected? = No` unless they resolve to a physical table used in the SQL.
+- Supporting metadata can appear in `require_tables`, but only with `selected? = No`.
+- If a source is useful only as evidence for table/field selection, keep it out of `selected_source`.
+
+Output rules:
+- Return one best SQL package in the schema below.
+- Use `require_tables` to show selected physical tables and important rejected/risky/supporting candidates.
+- Use `rejected_or_ambiguous_fields` for alternate fields, missing fields, unsafe joins, and rejected candidate notes.
+- For listing/mapping queries with no numeric metric, set numerator and denominator to null and describe the unique rows in `metric_logic.formula`.
+- If the best answer is a candidate inventory rather than executable SQL, set `selected_source` to null and make `sql_skeleton` a commented template explaining what is missing.
+
+Cognee response wrapper:
+- Return a top-level JSON object with exactly one key: `content`.
+- `content` must be a string.
+- The string inside `content` must be a JSON-serialized object matching the payload schema.
+- Do not put an object or array directly inside `content`.
+
+Correct wrapper shape:
+{
+  "content": "{\"selected_source\":null,\"rejected_sources\":[],\"require_tables\":[],\"required_fields\":[],\"rejected_or_ambiguous_fields\":[],\"metric_logic\":{\"formula\":null,\"numerator\":null,\"denominator\":null,\"aggregation_grain\":null,\"deduplication_rule\":null},\"filters\":[],\"joins\":\"No joins needed\",\"missing_or_ambiguous\":\"None\",\"sql_skeleton\":\"SELECT 1\"}"
+}
+
+Payload schema inside the `content` string:
+{
+  "selected_source": "string physical SQL table name, or null",
+  "rejected_sources": ["array of rejected source ids or names"],
+  "require_tables": [
+    {
+      "field": "physical SQL table name when selected; canonical metadata id only when rejected/supporting/risky",
+      "role": "Primary Source | Supporting Metadata | Risky Candidate | Irrelevant Candidate | Filter Source | Metric Source",
+      "selected?": "Yes/No",
+      "reason": "candidate classification and SQL relevance"
+    }
+  ],
+  "required_fields": [
+    {
+      "field": "physical column name or logical field name",
+      "table": "which physical table or tables this field comes from",
+      "role": "Channel Identifier | Filter Column | Metric | Join Key | Status Field | Date Field",
+      "selected?": "Yes/No",
+      "reason": "why the field is needed; mark inferred reasoning when applicable"
+    }
+  ],
+  "rejected_or_ambiguous_fields": ["array of objects or strings"],
+  "metric_logic": {
+    "formula": "string or null",
+    "numerator": "string or null",
+    "denominator": "string or null",
+    "aggregation_grain": "string or null",
+    "deduplication_rule": "string or null"
+  },
+  "filters": ["array of exact WHERE conditions or logical filters"],
+  "joins": "join logic, or why no join is needed",
+  "missing_or_ambiguous": "None only when complete; otherwise list blocking gaps/inferences",
+}
+```
+
+### RAG_COMPLETION
+
+{
+  "filters": [
+    "group_level_id = 22 (for Mensa Brands in Increff and LimeRoad contexts)",
+    "group_level_id = 26 (for Mensa Brands in JioMart context)",
+    "order_status = COMPLETED and transaction_type = SALES (for revenue, where applicable)",
+    "is_active = true (where applicable)"
+  ],
+  "joins": "No joins can be established for a complete SKU profitability report due to the absence of explicit, joinable SKU-level cost data and a unified SKU identifier across disparate systems.",
+  "metric_logic": {
+    "aggregation_grain": "sku",
+    "deduplication_rule": null,
+    "denominator": null,
+    "formula": "Cannot calculate; SKU profitability requires both SKU-level revenue and SKU-level cost data. Revenue data can be partially inferred for some platforms, but explicit, joinable SKU-level cost data is entirely missing from the context.",
+    "numerator": null
+  },
+  "missing_or_ambiguous": "The primary blocking gap is the complete absence of any physical columns or derivable metrics for SKU-level costs (e.g., Cost of Goods Sold, fulfillment costs, marketplace commissions, operational overhead per SKU) within the provided context. While SKU-level sales data can be partially identified for certain platforms, without corresponding cost data, 'profitability' cannot be calculated. Additionally, there is no unified SKU identifier across all sales platforms to aggregate data for a comprehensive report, nor are there explicit consolidation rules for disparate sales sources.",
+  "rejected_or_ambiguous_fields": [
+    {
+      "field": "sku_profit",
+      "reason": "The concept of 'SKU profit' or 'profitability' requires both revenue and cost data at the SKU level. While SKU-level revenue can be inferred from some sales data sources (e.g., Increff, JioMart, LimeRoad), there is no explicit physical column or derivable metric for SKU-level costs (e.g., COGS, fulfillment cost, marketplace fees) in the provided context."
+    },
+    {
+      "field": "cost_per_sku",
+      "reason": "No physical column exists in the provided context that quantifies costs per SKU, which is essential for a profitability report."
+    },
+    {
+      "field": "unified_sku_identifier",
+      "reason": "While various platforms may have SKU IDs, there is no explicit unified SKU identifier or a mechanism (e.g., deduplication rules, source precedence) to combine sales and cost data for a single SKU across disparate systems (WMS, different marketplaces)."
+    }
+  ],
+  "rejected_sources": [],
+  "require_tables": [
+    {
+      "field": "table.zs_observe.limeroad_settlement",
+      "reason": "This table likely contains sales (GMV) data for LimeRoad. While it can provide revenue per SKU for LimeRoad, it cannot be combined with other marketplace/WMS data without explicit consolidation rules for cross-source SKU profitability. Crucially, it lacks cost data for profitability calculation.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.jiomart_oms",
+      "reason": "Inferred to contain sales data for JioMart, potentially at SKU level. However, it only covers one marketplace and, critically, lacks cost data to determine profitability.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.increff_orders",
+      "reason": "Inferred to contain sales data for Increff-managed channels (like Shopify D2C), including SKU information. Like other sales sources, it provides revenue but no cost data for profitability.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "query_pattern.limeroad.total_forward_gmv",
+      "reason": "Indicates a sales metric (GMV) and its source table for LimeRoad, but does not provide cost information required for profitability.",
+      "role": "Supporting Metadata",
+      "selected?": "No"
+    },
+    {
+      "field": "execution_constraint_set.increff.operations_manifest_refactored_constraints",
+      "reason": "Provides constraints for Increff operations data, indicating the presence of SKU-level sales data. However, it explicitly states 'Do not create marketplace settlement, bank, payment-gateway, courier-settlement, ERP/accounting, or statutory-filing domain instances from Increff alone,' and lacks cost components for profitability.",
+      "role": "Supporting Metadata",
+      "selected?": "No"
+    },
+    {
+      "field": "execution_constraint_set.jiomart.marketplace_query_constraints",
+      "reason": "Provides constraints for JioMart data, indicating the presence of SKU-level sales data. However, it lacks cost components for profitability.",
+      "role": "Supporting Metadata",
+      "selected?": "No"
+    }
+  ],
+  "required_fields": [],
+  "selected_source": null,
+  "sql_skeleton": "-- The request to build a SKU profitability report for Mensa Brands cannot be fulfilled with the current context.\n-- Blocking gaps:\n-- 1. No physical data or explicit metrics are available for SKU-level costs (e.g., COGS, fulfillment costs, operational expenses).\n-- 2. While sales data exists for individual platforms (Increff, JioMart, LimeRoad), there is no unified SKU identifier or clear consolidation rules (deduplication, source precedence) to combine these disparate sources into a single view for all SKUs.\n-- 3. The concept of 'profitability' inherently requires both revenue and cost, and the cost component is entirely missing.\n\n-- To enable this report, a data source or mechanism would be required that provides:\n--    a) SKU-level cost data, or components from which it can be derived.\n--    b) A unified SKU identifier across all sales channels.\n--    c) Clear rules for consolidating sales and cost data across different platforms, if they reside in separate tables."
+}
+
+### GRAPH_COMPLETION
+
+{
+  "filters": [
+    {
+      "column": "group_id",
+      "operator": "=",
+      "reason": "Tenant filter (Prita Designs Private Limited, assuming Mensa Brands mapping for context relevance)",
+      "value": 9
+    },
+    {
+      "column": "group_level_id",
+      "operator": "=",
+      "reason": "Tenant filter (Prita Designs Private Limited, assuming Mensa Brands mapping for context relevance)",
+      "value": 24
+    }
+  ],
+  "joins": "No joins can be established for a complete SKU profitability report due to the absence of explicit, joinable SKU-level cost data and a unified SKU identifier across disparate systems.",
+  "metric_logic": {
+    "aggregation_grain": "sku",
+    "deduplication_rule": null,
+    "denominator": null,
+    "formula": "Cannot calculate; SKU profitability requires both SKU-level revenue and SKU-level cost data. Revenue data can be partially inferred for some platforms, but explicit, joinable SKU-level cost data is entirely missing from the context.",
+    "numerator": null
+  },
+  "missing_or_ambiguous": "The primary blocking gap is the complete absence of any physical columns or derivable metrics for SKU-level costs (e.g., Cost of Goods Sold, fulfillment costs, marketplace commissions, operational overhead per SKU) within the provided context. While SKU-level sales data can be partially identified for certain platforms, without corresponding cost data, 'profitability' cannot be calculated. Additionally, there is no unified SKU identifier across all sales platforms to aggregate data for a comprehensive report, nor are there explicit consolidation rules for disparate sales sources.",
+  "rejected_or_ambiguous_fields": [
+    {
+      "field": "sku_profit",
+      "reason": "The concept of 'SKU profit' requires both SKU-level revenue and SKU-level cost data. While revenue data can be inferred from some sales/settlement tables, explicit physical columns or derivable metrics for SKU-level costs (e.g., COGS, fulfillment costs, marketplace fees per SKU) are entirely missing."
+    },
+    {
+      "field": "cost_per_sku",
+      "reason": "No physical column exists in the provided context that quantifies costs per SKU, which is essential for determining SKU profitability."
+    },
+    {
+      "field": "unified_sku_identifier",
+      "reason": "While various platforms may have SKU identifiers, there is no explicit unified SKU identifier or a mechanism (deduplication rules, source precedence) to combine sales and cost data for a single SKU across disparate systems (e.g., different marketplaces, WMS)."
+    }
+  ],
+  "rejected_sources": [],
+  "require_tables": [
+    {
+      "field": "table.zs_observe.klip_settlement",
+      "reason": "This table contains settlement data for Klip, implying revenue. While it might contain SKU information, it lacks explicit cost data required for profitability calculation and cannot be unified with other sources without clear consolidation rules.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.marketplace_transactions",
+      "reason": "This table likely contains marketplace transaction data, potentially including SKU-level sales/revenue. However, it lacks any explicit cost data required for profitability calculation and cannot be unified across different marketplaces without specific deduplication rules.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.meesho_forward_expenses",
+      "reason": "This table contains forward expenses for Meesho, a cost component. However, the context does not specify if these expenses are granular enough to be directly attributed to individual SKUs for a profitability report.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.meesho_other_charges_expenses",
+      "reason": "This table contains other charges/expenses for Meesho, another cost component. Similar to forward expenses, it's not clear if these are attributable at the SKU level.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.meesho_returns",
+      "reason": "Contains return data for Meesho, which impacts profitability, but does not provide direct SKU-level cost or revenue for a profitability calculation.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    },
+    {
+      "field": "table.zs_observe.meesho_reverse",
+      "reason": "Contains reverse logistics data for Meesho, impacting costs, but not directly providing SKU-level profit information.",
+      "role": "Risky Candidate",
+      "selected?": "No"
+    }
+  ],
+  "required_fields": [],
+  "selected_source": null,
+  "sql_skeleton": "-- The request to build a SKU profitability report for Mensa Brands cannot be fulfilled with the current context.\n-- Blocking gaps:\n-- 1. No physical data or explicit metrics are available for SKU-level costs (e.g., COGS, fulfillment costs, operational expenses).\n-- 2. While sales data exists for individual platforms (e.g., Klip, Meesho), there is no unified SKU identifier or clear consolidation rules (deduplication, source precedence) to combine these disparate sources into a single view for all SKUs.\n-- 3. The concept of 'profitability' inherently requires both revenue and cost, and the cost component is entirely missing.\n\n-- To enable this report, a data source or mechanism would be required that provides:\n--    a) SKU-level cost data, or components from which it can be derived.\n--    b) A unified SKU identifier across all sales channels.\n--    c) Clear rules for consolidating sales and cost data across different platforms, if they reside in separate tables."
+}

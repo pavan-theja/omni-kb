@@ -1,0 +1,48 @@
+{
+  "amount_columns": [
+    "series_settled_value"
+  ],
+  "canonical_id": "reconciliation_side.myntra.series_settled_expected",
+  "canonical_name": "Series settled expected",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10979
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "key_columns": [
+    "order_id"
+  ],
+  "marketplace_only": true,
+  "name": "Series settled expected",
+  "review_status": "unreviewed",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.myntra.series_settled_expected",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10979,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_settlement",
+  "status": "draft",
+  "summary": "Series settled expected side for Myntra marketplace-internal reconciliation.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

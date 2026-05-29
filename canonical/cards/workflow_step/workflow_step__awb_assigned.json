@@ -1,0 +1,70 @@
+{
+  "business_object": "awb",
+  "business_process_id": "business_process.order_to_shipment_flow",
+  "canonical_id": "workflow_step.awb_assigned",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Evidence-bearing checkpoint in Order to Shipment Flow: AWB Assigned.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3626
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3626
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3626
+    }
+  ],
+  "expected_input": "shipment_created",
+  "expected_output": "awb_assigned",
+  "expected_state": "awb_assigned",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "awb_missing"
+  ],
+  "name": "AWB Assigned",
+  "parser_use": "Retrieve this step when the user asks whether this checkpoint occurred, what evidence confirms it, or why the next state is missing.",
+  "platform_role": "source_or_evidence_provider",
+  "platform_type": "marketplace; ecommerce_store; logistics; courier_aggregator; courier",
+  "required_evidence": [
+    "column.zs_observe.shiprocket_oms.awb_code",
+    "column.zs_observe.shiprocket_oms.awb_assigned_date"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "workflow_step.awb_assigned",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3626,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "step_name": "AWB Assigned",
+  "step_order": 3,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

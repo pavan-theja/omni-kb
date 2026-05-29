@@ -1,0 +1,66 @@
+{
+  "canonical_id": "business_process.flipkart.cashback_credit_debit_note",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_process card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "end_state": "signed net cashback compared to settlement offer fields",
+  "evidence_ids": [
+    "evidence.flipkart.cashback_schema",
+    "evidence.flipkart.reconciliation_framework"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.cashback_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4858
+    },
+    {
+      "evidence_id": "evidence.flipkart.reconciliation_framework",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 4858
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "important_columns": [
+    "order_id",
+    "item_id",
+    "transaction_type",
+    "document_type",
+    "document_sub_type",
+    "charged_amount",
+    "offer_settled_amount",
+    "offer_adjustment_settled_amount"
+  ],
+  "marketplace_module": "Flipkart marketplace",
+  "name": "Cashback credit/debit note",
+  "out_of_scope_external_steps": [
+    "external logistics lifecycle",
+    "bank deposit matching",
+    "account binding"
+  ],
+  "participating_tables": [
+    "table.flipkart.cashback",
+    "table.flipkart.settlement"
+  ],
+  "process_name": "Cashback credit/debit note reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "business_process.flipkart.cashback_credit_debit_note",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4858,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "start_state": "cashback credit/debit note line",
+  "status": "active",
+  "trigger_event": "cashback credit note, debit note, return, or cancellation row appears",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

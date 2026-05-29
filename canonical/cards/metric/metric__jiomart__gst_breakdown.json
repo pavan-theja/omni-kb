@@ -1,0 +1,47 @@
+{
+  "business_definition": "GST type counts and amounts based on IGST vs CGST+SGST rates.",
+  "canonical_id": "metric.jiomart.gst_breakdown",
+  "card_type": "metric",
+  "colloquial_names": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "INR",
+  "description": "GST type counts and amounts based on IGST vs CGST+SGST rates.",
+  "display_name": "Intra-State vs Inter-State GST",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.jiomart.tax",
+  "evidence_ids": [
+    "ev.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.oms.7_3_intra_state_vs_inter_state_gst_analysis",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10639
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.jiomart.intra_state_vs_inter_state_gst"
+  ],
+  "metric_family": "tax",
+  "name": "Intra-State vs Inter-State GST",
+  "review_status": "ready",
+  "source_card_id": "metric.jiomart.gst_breakdown",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10639,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,58 @@
+{
+  "aggregation_order": "Apply filters before aggregation; aggregate many-side tables before joining where applicable.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.target_plus.return_reason_value",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus return value by reason",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.returns.7_1_return_volume_and_value_by_reason"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.returns.7_1_return_volume_and_value_by_reason",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9510
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true",
+    "internal_txn_type = reverse"
+  ],
+  "formula_sql_ref": "sql.target_plus.returns.7_1_return_volume_and_value_by_reason",
+  "formula_text": "COUNT(*), SUM(charged_amount), AVG(charged_amount) grouped by description",
+  "grain": "source SQL grain",
+  "implementation_scope": "target_plus",
+  "metric_id": "metric.target_plus.return_reason_value",
+  "name": "Target Plus return value by reason",
+  "platform_code": "target",
+  "platform_context_id": "platform_context.target_plus.us",
+  "review_status": "ready",
+  "sign_convention": "Use source SQL and documented transaction_type context.",
+  "source_card_id": "metric_impl.target_plus.return_reason_value",
+  "source_columns": [
+    "column.zs_observe.target_returns.description",
+    "column.zs_observe.target_returns.charged_amount"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9510,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.target_returns"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

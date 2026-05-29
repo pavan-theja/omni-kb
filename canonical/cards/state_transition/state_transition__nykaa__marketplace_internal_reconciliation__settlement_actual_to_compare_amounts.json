@@ -1,0 +1,43 @@
+{
+  "canonical_id": "state_transition.nykaa.marketplace_internal_reconciliation.settlement_actual_to_compare_amounts",
+  "canonical_name": "settlement_actual to compare_amounts",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.lifecycle"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 16825
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_step_id": "workflow_step.nykaa.marketplace_internal_reconciliation.settlement_actual",
+  "marketplace_only": true,
+  "name": "settlement_actual to compare_amounts",
+  "process_id": "business_process.nykaa.marketplace_internal_reconciliation",
+  "review_status": "unreviewed",
+  "source_card_id": "state_transition.nykaa.marketplace_internal_reconciliation.settlement_actual_to_compare_amounts",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16825,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Transition in Nykaa marketplace_internal_reconciliation process: Compare summed charged amount or settled/actual settlement fields.",
+  "to_step_id": "workflow_step.nykaa.marketplace_internal_reconciliation.compare_amounts",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

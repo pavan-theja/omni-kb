@@ -1,0 +1,63 @@
+{
+  "canonical_id": "formula_template.snapdeal.average_order_value_aov",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal formula pattern — Average Order Value (AOV)",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.9_4_average_order_value_aov",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.9_4_average_order_value_aov",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12857
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12857
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12857
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_sql": "SELECT AVG(charged_amount) AS aov\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true AND transaction_type = 'forward';",
+  "formula_text": "SELECT AVG(charged_amount) AS aov\nFROM zs_observe.snapdeal_oms\nWHERE is_active = true AND transaction_type = 'forward';",
+  "name": "Snapdeal formula pattern — Average Order Value (AOV)",
+  "parameters": [
+    "date_range",
+    "marketplace_filters",
+    "grain_dimensions",
+    "active_row_filter",
+    "is_active_filter",
+    "transaction_type_scope",
+    "group_level_id_scope_column"
+  ],
+  "review_status": "ready",
+  "source_card_id": "formula_template.snapdeal.average_order_value_aov",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12857,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "sql_pattern_id": "sql.snapdeal.9_4_average_order_value_aov",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "usage_notes": "Platform-specific implementation pattern extracted from the DOCX; preserve SQL sign/filter semantics."
+}

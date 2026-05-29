@@ -1,0 +1,47 @@
+{
+  "canonical_id": "domain.shopify.d2c_order_capture",
+  "card_type": "domain",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "D2C Shopify order capture",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "domain_family": "d2c_oms_orders",
+  "evidence_ids": [
+    "ev.shopify.scope.001",
+    "ev.shopify.tax_recon.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.scope.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 434
+    },
+    {
+      "evidence_id": "ev.shopify.tax_recon.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 434
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "D2C Shopify order capture",
+  "review_status": "accepted",
+  "semantic_scope": "Orders placed by customers on brand-owned Shopify storefronts, including line-item grain and customer payment state.",
+  "source_card_id": "domain.shopify.d2c_order_capture",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 434,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

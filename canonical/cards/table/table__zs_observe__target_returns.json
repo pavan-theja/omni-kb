@@ -1,0 +1,112 @@
+{
+  "business_purpose": "Return tracking table for Target Plus buyer returns, refund events, return reasons, carrier tracking, and reverse transaction context.",
+  "canonical_id": "table.zs_observe.target_returns",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.target_returns.brand",
+    "column.zs_observe.target_returns.charged_amount",
+    "column.zs_observe.target_returns.created_at",
+    "column.zs_observe.target_returns.created_date",
+    "column.zs_observe.target_returns.currency_type",
+    "column.zs_observe.target_returns.deleted_at",
+    "column.zs_observe.target_returns.description",
+    "column.zs_observe.target_returns.group_level_id",
+    "column.zs_observe.target_returns.internal_txn_type",
+    "column.zs_observe.target_returns.is_active",
+    "column.zs_observe.target_returns.item_id",
+    "column.zs_observe.target_returns.order_id",
+    "column.zs_observe.target_returns.order_status",
+    "column.zs_observe.target_returns.other_id",
+    "column.zs_observe.target_returns.quantity",
+    "column.zs_observe.target_returns.returned_date",
+    "column.zs_observe.target_returns.sku_id",
+    "column.zs_observe.target_returns.tcin",
+    "column.zs_observe.target_returns.transaction_type",
+    "column.zs_observe.target_returns.txn_uuid",
+    "column.zs_observe.target_returns.unique_id",
+    "column.zs_observe.target_returns.unique_value",
+    "column.zs_observe.target_returns.updated_at",
+    "column.zs_observe.target_returns.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "created_date 2025-05-05 to 2025-12-31; returned_date 2025-05-15 to 2026-02-16",
+  "description": "table card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "zs_observe.target_returns",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "documented_scope_values": {
+    "brands": [
+      "folkculture",
+      "katchon"
+    ],
+    "entity": "Mensa brand group",
+    "group_level_id": 123
+  },
+  "evidence_ids": [
+    "ev.target_plus.returns.1_table_overview",
+    "ev.target_plus.returns.2_key_statistics",
+    "ev.target_plus.returns.3_schema_details_30_columns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.returns.1_table_overview",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5941
+    },
+    {
+      "evidence_id": "ev.target_plus.returns.2_key_statistics",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5941
+    },
+    {
+      "evidence_id": "ev.target_plus.returns.3_schema_details_30_columns",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5941
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "return_or_refund_order_line_event",
+  "join_caveat": "Use order_id for sales-return analysis; use item_id for returns-settlement refund match; use tcin for mapping enrichment.",
+  "join_key_candidates": [
+    "order_id",
+    "item_id",
+    "tcin"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 123",
+    "internal_txn_type = reverse for confirmed return events"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.target_plus.brand_return_rate",
+    "metric_impl.target_plus.return_rate",
+    "metric_impl.target_plus.return_reason_value"
+  ],
+  "name": "zs_observe.target_returns",
+  "primary_key_candidates": [
+    "item_id",
+    "unique_id"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": "1,247 total / 1,179 active",
+  "schema": "zs_observe",
+  "scope_caveats": "group_level_id/seller/entity/brand/Stripe/carrier values are columns, filters, identifiers, caveats, or source evidence only; no account/bank/logistics/payment-gateway cards emitted.",
+  "semantic_domain_id": "domain.target_plus.returns",
+  "source_card_id": "table.zs_observe.target_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5941,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "target_returns",
+  "table_role": "returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

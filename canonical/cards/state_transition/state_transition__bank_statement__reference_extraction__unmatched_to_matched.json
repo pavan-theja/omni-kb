@@ -1,0 +1,44 @@
+{
+  "banking_only": true,
+  "canonical_id": "state_transition.bank_statement.reference_extraction.unmatched_to_matched",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 12705
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "bank_reference_unmatched",
+  "name": "Bank reference and narration extraction unmatched to matched",
+  "process": "business_process.bank_statement.reference_extraction",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.bank_statement.reference_extraction.unmatched_to_matched",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12705,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "state_column": "derived_reconciliation_status",
+  "status": "active",
+  "to_state": "bank_reference_matched",
+  "transition_meaning": "A bank statement row has been matched to the relevant external settlement/payout/reference evidence.",
+  "trigger": "reference match and amount/date tolerance satisfied",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

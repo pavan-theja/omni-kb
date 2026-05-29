@@ -1,0 +1,55 @@
+{
+  "canonical_id": "value_profile.myntra.awb_tracking",
+  "canonical_name": "AWB/tracking references",
+  "card_type": "value_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.transaction_types",
+    "evidence.myntra.data_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.transaction_types",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 7504
+    },
+    {
+      "evidence_id": "evidence.myntra.data_types",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 7504
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "AWB/tracking references",
+  "profile_scope_tables": [
+    "table.zs_observe.myntra_oms",
+    "table.zs_observe.myntra_reverse"
+  ],
+  "profiled_columns": [
+    "tracking_no",
+    "return_awb_number",
+    "forward_awb_number"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "value_profile.myntra.awb_tracking",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7504,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "AWB/tracking columns are marketplace identifiers only; do not create logistics lifecycle cards.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

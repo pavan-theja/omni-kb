@@ -1,0 +1,53 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.meesho.brand_gmv_from_sales",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho implementation — Brand GMV from Sales",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_1_brand_gmv_from_sales"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_1_brand_gmv_from_sales",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11780
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use active-row and source-specified marketplace filters; scope fields remain columns/caveats only.",
+  "formula_text": "SELECT\n  COALESCE(b.brand, 'Unknown') AS brand,\n  COUNT(DISTINCT s.sub_order_num) AS orders,\n  SUM(s.charged_amount) AS gmv,\n  AVG(s.charged_amount) AS aov\nFROM zs_observe.meesho_sales s\nLEFT JOIN zs_observe.meesho_brand_mapping b\n  ON s.order_id = b.order_id\n  AND b.is_active = true\nWHERE s.is_active = true\nGROUP BY 1\nORDER BY gmv DESC;",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "meesho",
+  "metric_id": "metric.gross_sales",
+  "metric_pattern": "meesho_specific_implementation_of_gross_sales",
+  "name": "Meesho implementation — Brand GMV from Sales",
+  "platform_code": "meesho",
+  "platform_context_id": "platform_context.meesho.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.meesho.brand_gmv_from_sales",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11780,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_brand_mapping",
+    "zs_observe.meesho_sales"
+  ],
+  "sql_pattern": "SELECT\n  COALESCE(b.brand, 'Unknown') AS brand,\n  COUNT(DISTINCT s.sub_order_num) AS orders,\n  SUM(s.charged_amount) AS gmv,\n  AVG(s.charged_amount) AS aov\nFROM zs_observe.meesho_sales s\nLEFT JOIN zs_observe.meesho_brand_mapping b\n  ON s.order_id = b.order_id\n  AND b.is_active = true\nWHERE s.is_active = true\nGROUP BY 1\nORDER BY gmv DESC;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

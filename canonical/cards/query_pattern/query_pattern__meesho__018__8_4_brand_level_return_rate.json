@@ -1,0 +1,51 @@
+{
+  "canonical_id": "query_pattern.meesho.018.8_4_brand_level_return_rate",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho query pattern — 8.4 Brand-Level Return Rate",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_4_brand_level_return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_4_brand_level_return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 16399
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "marketplace_analysis_or_reconciliation_query",
+  "name": "Meesho query pattern — 8.4 Brand-Level Return Rate",
+  "parameters": [
+    "date_range",
+    "active_filter",
+    "source_schema",
+    "marketplace_scope_filter_if_present_as_column"
+  ],
+  "required_filters": "Preserve filters exactly as shown in source SQL; active/scope-like filters are columns/caveats only, not account-binding cards.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.meesho.018.8_4_brand_level_return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 16399,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_brand_mapping",
+    "zs_observe.meesho_reverse",
+    "zs_observe.meesho_sales"
+  ],
+  "sql_template": "SELECT\n  b.brand,\n  COUNT(DISTINCT s.order_id) AS sales,\n  COUNT(DISTINCT rv.order_id) AS returns,\n  ROUND(100.0 * COUNT(DISTINCT rv.order_id) / NULLIF(COUNT(DISTINCT s.order_id), 0), 2) AS return_rate_pct\nFROM zs_observe.meesho_brand_mapping b\nLEFT JOIN zs_observe.meesho_sales s ON b.order_id = s.order_id AND s.is_active = true\nLEFT JOIN zs_observe.meesho_reverse rv ON b.order_id = rv.order_id AND rv.is_active = true\nWHERE b.is_active = true\nGROUP BY b.brand;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

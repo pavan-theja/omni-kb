@@ -1,0 +1,84 @@
+{
+  "datasets": [
+    "zenstatement_ca"
+  ],
+  "errors": {},
+  "parsed_results": {
+    "RAG_COMPLETION": [
+      {
+        "filters": [
+          "group_level_id = 22",
+          "order_status NOT IN ('CANCELLED', 'DELIVERED')"
+        ],
+        "joins": "No joins are needed; all active operational stages and channels routed through Unicommerce are consolidated in this single table.",
+        "metric_logic": {
+          "aggregation_grain": "channel_name, order_status",
+          "deduplication_rule": "GROUP BY",
+          "denominator": null,
+          "formula": "COUNT(DISTINCT display_order_number) aggregated by channel_name and order_status",
+          "numerator": "COUNT(DISTINCT display_order_number)"
+        },
+        "missing_or_ambiguous": "None",
+        "rejected_or_ambiguous_fields": [],
+        "rejected_sources": [
+          "zs_observe.increff_sales",
+          "zs_observe.shopify_oms"
+        ],
+        "required_fields": [
+          {
+            "field": "channel_name",
+            "reason": "Identifies the specific marketplace or sales channel at risk of bottlenecking.",
+            "role": "Channel Identifier",
+            "selected?": "Yes"
+          },
+          {
+            "field": "order_status",
+            "reason": "Allows segmenting orders by their operational state (e.g., Packed, Manifested) to pinpoint exact bottleneck stages.",
+            "role": "Status Column",
+            "selected?": "Yes"
+          },
+          {
+            "field": "display_order_number",
+            "reason": "Inferred column representing the unique order identifier in Unicommerce.",
+            "role": "Order Identifier",
+            "selected?": "Selected"
+          },
+          {
+            "field": "group_level_id",
+            "reason": "Filters the dataset to Mensa Brands (group_level_id = 22).",
+            "role": "Filter Column",
+            "selected?": "Yes"
+          }
+        ],
+        "required_tables": [
+          {
+            "field": "zs_observe.unicommerce_order_sales_report",
+            "reason": "Provides order volumes and routing statuses for all channels depending on Unicommerce.",
+            "role": "Core OMS order sales report representing Unicommerce integrated channels",
+            "selected?": "Yes"
+          }
+        ],
+        "selected_source": "zs_observe.unicommerce_order_sales_report",
+        "sql_skeleton": "SELECT channel_name, order_status, COUNT(DISTINCT display_order_number) AS pending_orders_count FROM zs_observe.unicommerce_order_sales_report WHERE group_level_id = 22 AND order_status NOT IN ('CANCELLED', 'DELIVERED') GROUP BY 1, 2 ORDER BY pending_orders_count DESC;"
+      }
+    ]
+  },
+  "question": "Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.",
+  "question_index": 15,
+  "results": {
+    "RAG_COMPLETION": [
+      "{\"selected_source\":\"zs_observe.unicommerce_order_sales_report\",\"rejected_sources\":[\"zs_observe.increff_sales\",\"zs_observe.shopify_oms\"],\"required_tables\":[{\"field\":\"zs_observe.unicommerce_order_sales_report\",\"role\":\"Core OMS order sales report representing Unicommerce integrated channels\",\"selected?\":\"Yes\",\"reason\":\"Provides order volumes and routing statuses for all channels depending on Unicommerce.\"}],\"required_fields\":[{\"field\":\"channel_name\",\"role\":\"Channel Identifier\",\"selected?\":\"Yes\",\"reason\":\"Identifies the specific marketplace or sales channel at risk of bottlenecking.\"},{\"field\":\"order_status\",\"role\":\"Status Column\",\"selected?\":\"Yes\",\"reason\":\"Allows segmenting orders by their operational state (e.g., Packed, Manifested) to pinpoint exact bottleneck stages.\"},{\"field\":\"display_order_number\",\"role\":\"Order Identifier\",\"selected?\":\"Selected\",\"reason\":\"Inferred column representing the unique order identifier in Unicommerce.\"},{\"field\":\"group_level_id\",\"role\":\"Filter Column\",\"selected?\":\"Yes\",\"reason\":\"Filters the dataset to Mensa Brands (group_level_id = 22).\"}],\"rejected_or_ambiguous_fields\":[],\"metric_logic\":{\"formula\":\"COUNT(DISTINCT display_order_number) aggregated by channel_name and order_status\",\"numerator\":\"COUNT(DISTINCT display_order_number)\",\"denominator\":null,\"aggregation_grain\":\"channel_name, order_status\",\"deduplication_rule\":\"GROUP BY\"},\"filters\":[\"group_level_id = 22\",\"order_status NOT IN ('CANCELLED', 'DELIVERED')\"],\"joins\":\"No joins are needed; all active operational stages and channels routed through Unicommerce are consolidated in this single table.\",\"missing_or_ambiguous\":\"None\",\"sql_skeleton\":\"SELECT channel_name, order_status, COUNT(DISTINCT display_order_number) AS pending_orders_count FROM zs_observe.unicommerce_order_sales_report WHERE group_level_id = 22 AND order_status NOT IN ('CANCELLED', 'DELIVERED') GROUP BY 1, 2 ORDER BY pending_orders_count DESC;\"}"
+    ]
+  },
+  "scoped_query": "Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.\n\nScope:\n- platform account: Mensa\n\nAnswer for downstream SQL/query construction using only the provided context and explicit user input.\n\nThis is a one-pass handoff. Your task is to provide the strongest useful SQL-building context available from the retrieved context. \n\nHard rules:\n- Default to a single source table or single relationship path.\n- Prefer the source that directly contains both the requested metric grain and requested grouping/filter dimensions.\n- Do not consolidate multiple source tables unless the user explicitly asks for cross-source, all-source, or platform-wide consolidation.\n- Do not treat table names, source systems, workflows, ingestion feeds, or platform-specific feeds as business dimension values.\n- If a requested business dimension exists as a column in one source, prefer that column over inferring dimension values from multiple table names.\n- If multiple tables may represent the same business event, do not UNION them unless the context provides a deduplication key and source precedence rule.\n\nFor dimensional mapping, grouping, or listing queries (No numeric metric):\n- Set `metric_logic.formula` to describe the unique pairings or rows.\n- Set `metric_logic.numerator` and `denominator` to null.\n- Define `metric_logic.aggregation_grain` and `deduplication_rule` clearly.\n\nInference & Fallback Rule:\n- If physical table names, column names, or tenant IDs are not explicitly stated in the context, you MUST NOT leave fields null or emit an empty payload. \n- You must infer the most logical parameters based on domain knowledge or historical context patterns. Treat your inferences as definitive selections, list them as \"Selected\", and explain the reasoning within the JSON.\n\nResponse Format:\nReturn a single answer string containing one valid JSON object.\nDo not wrap it in Markdown or code fences.\nThe JSON object must be emitted as plain text, not as a nested object under a content key.\n\nThe JSON object must strictly match this structural schema:\n{\n  \"selected_source\": \"string or null\",\n  \"rejected_sources\": [\"array of strings\"],\n  \"required_tables\":[\n        {\n      \"field\": \"string (table name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"required_fields\": [\n    {\n      \"field\": \"string (column name)\",\n      \"role\": \"string (e.g., Channel Identifier, Filter Column, Metric)\",\n      \"selected?\": \"Yes/No\",\n      \"reason\": \"string explaining why this field belongs in the query\"\n    }\n  ],\n  \"rejected_or_ambiguous_fields\": [\"array of objects or strings\"],\n  \"metric_logic\": {\n    \"formula\": \"string or null\",\n    \"numerator\": \"string or null\",\n    \"denominator\": \"string or null\",\n    \"aggregation_grain\": \"string or null\",\n    \"deduplication_rule\": \"string or null\"\n  },\n  \"filters\": [\"array of strings showing exact WHERE clause conditions\"],\n  \"joins\": \"string explaining join logic or stating why no joins are needed\",\n  \"missing_or_ambiguous\": \"string ('None' if fallback inference was used successfully)\",\n  \"sql_skeleton\": \"string containing a valid SQL query template utilizing the selected fields and filters\"\n}",
+  "search_types": [
+    "RAG_COMPLETION"
+  ],
+  "timing": {
+    "duration_seconds": 67.14,
+    "search_seconds": {
+      "RAG_COMPLETION": 67.14
+    },
+    "started_at": "2026-05-28T10:13:58+00:00"
+  }
+}

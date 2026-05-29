@@ -1,0 +1,52 @@
+{
+  "business_definition": "Sales GMV grouped by sales_channel.",
+  "canonical_id": "metric.unicommerce.channel_gmv",
+  "card_type": "metric",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "channel",
+  "description": "Sales GMV grouped by sales_channel.",
+  "display_name": "Channel Gmv",
+  "document_id": "unicommerce_d2c_oms_gold_standard_v2_process_corrected",
+  "evidence_ids": [
+    "ev.unicommerce.metrics.001",
+    "ev.unicommerce.filters.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.metrics.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 2996
+    },
+    {
+      "evidence_id": "ev.unicommerce.filters.001",
+      "source_doc": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+      "source_line": 2996
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.unicommerce.channel_gmv"
+  ],
+  "metric_key": "channel_gmv",
+  "name": "Channel Gmv",
+  "review_status": "accepted",
+  "source_card_id": "metric.unicommerce.channel_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Unicommerce Recon KB.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2996,
+  "source_path": "raw/cleaned_v2/oms/unicommerce_d2c_oms.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

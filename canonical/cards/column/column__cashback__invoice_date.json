@@ -1,0 +1,47 @@
+{
+  "business_meaning": "Invoice date stored as string format; parse before native date operations.",
+  "canonical_id": "column.cashback.invoice_date",
+  "card_type": "column",
+  "column_name": "invoice_date",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_type": "string",
+  "description": "Invoice date stored as string format; parse before native date operations.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.cashback_schema"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.cashback_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 2463
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_role": "",
+  "join_role": "",
+  "metric_role": "",
+  "name": "table.flipkart.cashback.invoice_date",
+  "review_status": "accepted",
+  "semantic_type": "invoice_date_string",
+  "source_card_id": "column.cashback.invoice_date",
+  "source_caveats": [
+    "DOCX Date Columns declares invoice_date as string."
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2463,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_id": "table.flipkart.cashback",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

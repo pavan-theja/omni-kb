@@ -1,0 +1,57 @@
+{
+  "banking_only": true,
+  "business_definition": "Count of bank credit rows that do not match an expected external settlement/payout reference.",
+  "canonical_id": "metric.bank_statement.unreconciled_bank_credit_count",
+  "card_type": "metric",
+  "colloquial_names": [
+    "unmatched credits",
+    "credits without UTR match"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "bank transaction row or reconciliation reference after aggregation",
+  "default_time_basis": "source-specific recommended date column",
+  "description": "Count of bank credit rows that do not match an expected external settlement/payout reference.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "domain": "domain.banking.bank_statement.cashflow; domain.banking.bank_statement.settlement_reconciliation",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001",
+    "ev.bank_statement.direction_reference.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 10069
+    },
+    {
+      "evidence_id": "ev.bank_statement.direction_reference.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 10069
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "metric_family": "reconciliation",
+  "metric_key": "unreconciled_bank_credit_count",
+  "name": "Unreconciled bank credit count",
+  "positive_direction": "source_specific; higher credits may be good, higher debits/discrepancies require context",
+  "review_status": "accepted",
+  "scope": "generic bank statement metric implemented by table-specific metric implementations",
+  "source_card_id": "metric.bank_statement.unreconciled_bank_credit_count",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10069,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

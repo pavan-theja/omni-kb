@@ -1,0 +1,43 @@
+{
+  "canonical_id": "rule.ajio.this_is_a_reference_status_table_not_a_financial_amounts_table_it_confirms_th.43",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "This is a reference/status table, not a financial amounts table — it confirms that a credit note was issued and posted, but does not contain amounts. Use `ajio_reverse` or `ajio_settlement` for financial data.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 7316
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "This is a reference/status table, not a financial amounts table — it confirms that a credit note was issued and posted,",
+  "review_status": "ready",
+  "rule_statement": "This is a reference/status table, not a financial amounts table — it confirms that a credit note was issued and posted, but does not contain amounts. Use `ajio_reverse` or `ajio_settlement` for financial data.",
+  "rule_type": "source_instruction_or_parser_guard",
+  "severity": "medium",
+  "source_card_id": "rule.ajio.this_is_a_reference_status_table_not_a_financial_amounts_table_it_confirms_th.43",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7316,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

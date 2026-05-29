@@ -1,0 +1,76 @@
+{
+  "account_data_binding_ids": [],
+  "active": false,
+  "binding_name": "AstroTalk Shopify GoKwik/Snapmint Context Required",
+  "binding_type": "reconciliation_flow",
+  "business_process_ids": [],
+  "business_scope_set_id": "business_scope_set.astrotalk.payment_gateways",
+  "canonical_id": "business_flow_binding.astrotalk.shopify_cod_bnpl_future_context",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/astrotalk.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/astrotalk.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.astrotalk.astrotalk",
+  "money_flow_paths": [
+    "d2c_cod_remittance",
+    "bnpl_disbursal_reconciliation"
+  ],
+  "name": "Shopify Cod Bnpl Future Context",
+  "notes": [
+    "GoKwik and Snapmint are configured, but canonical table cards are not available in the current platform registry."
+  ],
+  "package_id": "astrotalk_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.astrotalk.shopify_d2c.primary",
+      "required": true,
+      "role": "store_order_source"
+    },
+    {
+      "platform_account_id": "platform_account.astrotalk.gokwik_in.primary",
+      "required": true,
+      "role": "cod_checkout_or_remittance_source"
+    },
+    {
+      "platform_account_id": "platform_account.astrotalk.snapmint_in.primary",
+      "required": false,
+      "role": "bnpl_settlement_source"
+    }
+  ],
+  "reconciliation_profile_ids": [],
+  "review_status": "unreviewed",
+  "source_confidence": "source_confirmed_context_missing",
+  "source_documents": [
+    "AstroTalk.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "myntra_marketplace.md",
+    "payment_gateway.md",
+    "shiprocket_logistics_aggregator.md",
+    "shopify_d2c_oms.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/astrotalk.json",
+  "source_status": "draft",
+  "status": "draft",
+  "tenant_id": "tenant.astrotalk",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

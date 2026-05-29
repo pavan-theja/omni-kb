@@ -1,0 +1,51 @@
+{
+  "canonical_id": "workflow_step.healthkart.reverse_flow_rto_customer_return.return_or_rto_initiated",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6409
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Delivery failure or customer return triggers reverse flow",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.healthkart.reverse_flow_rto_customer_return.return_or_rto_initiated",
+  "source_columns": [
+    "order_status",
+    "transaction_type",
+    "rto_date",
+    "rto_reason",
+    "return_type"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6409,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "source_table": "healthkart_settlement",
+  "specific_semantics": "Reverse statuses include RTO, REVERSE_PICKUP, and LOST; COD dominance is a documented RTO driver.",
+  "status": "draft",
+  "step_order": 1,
+  "step_trigger": "delivery_failed_or_customer_returned",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

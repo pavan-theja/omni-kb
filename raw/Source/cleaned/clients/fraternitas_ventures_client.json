@@ -1,0 +1,4327 @@
+{
+  "document_metadata": {
+    "package_id": "fraternitas_ventures_client_runtime_cards_v2_1_refactored",
+    "created_for": "Fraternitas Ventures Private Limited",
+    "created_on": "2026-05-24",
+    "version": "v2_1_refactored",
+    "status": "parser_ready_with_explicit_registry_gaps",
+    "source_documents": [
+      "Cognee KB Design v4.md",
+      "Fraternitas Ventures Private Limited.docx",
+      "amazon_marketplace.md",
+      "delhivery_logistics.md",
+      "flipkart_marketplace.md",
+      "logistics_domain.md",
+      "payment_gateway.md",
+      "shopify_d2c_oms_v2.md",
+      "unicommerce_d2c_oms.md",
+      "unicommerce_operations.md"
+    ],
+    "source_client_profile": {
+      "business": "India-focused multi-channel seller with Amazon India, Flipkart, Shopify D2C, Unicommerce, Delhivery, Razorpay, and PayU.",
+      "geography": "India",
+      "source_group_id": 118,
+      "source_group_level_id": 337,
+      "source_group_name": "LegendToys",
+      "default_currency": "INR",
+      "currencies_in_scope": [
+        "INR"
+      ]
+    },
+    "build_policy": [
+      "Create active bindings only for current canonical platform tables or explicit client-observed table evidence.",
+      "Represent source-confirmed artifacts without table context as review-required bindings or future context gaps, not active mappings.",
+      "Keep group_id and group_level_id in Account Data Binding scope_keys rather than generic platform/domain cards.",
+      "Create Business Flow Bindings only for reusable client/group-level cross-account flows."
+    ],
+    "negative_scope_constraints": [
+      "Only Amazon India, Flipkart, and Shopify are listed as active sales channels",
+      "Delhivery is settlement-only in the client reference"
+    ],
+    "generated_date": "2026-05-24",
+    "client_slug": "fraternitas_ventures",
+    "source_json_bad_state": "fraternitas_ventures.json",
+    "source_docx": "Fraternitas Ventures Private Limited.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "canonical_markdowns_loaded": [
+      "ajio_marketplace.md",
+      "amazon_marketplace.md",
+      "bank_statement.md",
+      "delhivery_logistics.md",
+      "dtdc_logistics.md",
+      "ecom_express.md",
+      "ekart_logistics.md",
+      "flipkart_marketplace.md",
+      "healthkart_marketplace.md",
+      "increff_operations.md",
+      "jiomart_marketplace.md",
+      "limeroad_marketplace.md",
+      "logistics_domain.md",
+      "logistics_reconciliation_patterns.md",
+      "meesho_marketplace.md",
+      "myntra_marketplace.md",
+      "nykaa_marketplace.md",
+      "payment_gateway.md",
+      "shadowfax_logistics.md",
+      "shiprocket_logistics.md",
+      "shiprocket_logistics_aggregator.md",
+      "shopify_d2c_oms_v2.md",
+      "snapdeal_marketplace.md",
+      "target_plus.md",
+      "tatacliq_marketplace.md",
+      "unicommerce_d2c_oms.md",
+      "unicommerce_operations.md",
+      "walmart_marketplace.md",
+      "xpressbees_logistics.md"
+    ],
+    "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+    "client_runtime_layer": true,
+    "allowed_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "forbidden_in_this_client_layer": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "boundary_policy": {
+      "client_runtime_cards_allowed": [
+        "tenant",
+        "group",
+        "platform_account",
+        "account_data_binding",
+        "business_scope_set",
+        "business_flow_binding"
+      ],
+      "do_not_create_in_client_runtime_pack": [
+        "platform",
+        "platform_context",
+        "domain",
+        "table",
+        "column",
+        "metric",
+        "business_process",
+        "workflow_step",
+        "reconciliation_profile",
+        "matching_logic",
+        "bank_account",
+        "payment_gateway_account",
+        "logistics_account",
+        "erp_accounting_mapping",
+        "statutory_tax_filing",
+        "connector"
+      ],
+      "dangling_reference_policy": "No candidate_edge is emitted unless both source and target resolve to a client card in this file or an uploaded canonical card.",
+      "scope_key_policy": "group_id/group_level_id/currency/country filters stay in account_data_binding.scope_keys, not in reusable platform/domain/table cards.",
+      "missing_account_identifier_policy": "A missing seller/merchant/store/account identifier is not by itself a blocker when the client DOCX confirms the account and table-level scope keys are present."
+    }
+  },
+  "parser_instructions": {
+    "create_only_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "do_not_create_from_this_file": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "edge_reference_policy": [
+      "Emit client runtime edges only when source_id and target_id resolve either to a client runtime card in this file or to an uploaded canonical card.",
+      "Do not emit USES_PLATFORM / USES_PLATFORM_CONTEXT / BINDS_TO_TABLE if the canonical target card is absent.",
+      "Runtime filters belong in account_data_binding.scope_keys; do not push group_id/group_level_id into platform/table/metric/process cards."
+    ],
+    "source_correction_policy": {
+      "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+      "superseded_shopify_canonical": "shopify_d2c_oms.md",
+      "replacement_ids": {
+        "platform_context.shopify.in.d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.us_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.amazon.us": "platform_context.amazon.international",
+        "platform_context.amazon.ca": "platform_context.amazon.international",
+        "platform_context.amazon.uk": "platform_context.amazon.international",
+        "platform_context.amazon.mx": "platform_context.amazon.international",
+        "platform_context.nykaa.in": "platform_context.nykaa_fashion.in",
+        "platform_context.rbl_bank.in_payin": "platform_context.rbl_bank.in",
+        "platform.idfc_bank": "platform.idfc_first_bank",
+        "platform_context.idfc_bank.in": "platform_context.idfc_first_bank.in",
+        "platform_context.paypal.in": "platform_context.paypal.global",
+        "platform_context.paypal.us": "platform_context.paypal.global",
+        "table.zs_observe.idfc_bank": "table.zs_ingest.idfc_bank",
+        "table.zs_observe.idfc_bank_inr": "table.zs_ingest.idfc_bank_inr",
+        "table.zs_observe.yesbank_oms_payout": "table.zs_ingest.yesbank_oms_payout"
+      },
+      "replacement_documents": {
+        "shopify_d2c_oms.md": "shopify_d2c_oms_v2.md",
+        "Client Tables - Shopify.md": "shopify_d2c_oms_v2.md"
+      }
+    },
+    "status_policy": {
+      "active": "source-confirmed and routable against at least the available canonical/client table context",
+      "review_required": "source-confirmed but missing a required canonical platform/context/table card for production routing",
+      "draft": "intentionally inactive pending bank binding, external account binding, or future platform-context authoring"
+    }
+  },
+  "clean_refactor_manifest": {
+    "source_json": "fraternitas_ventures.json",
+    "source_docx": "Fraternitas Ventures Private Limited.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "corrections_applied": [
+      "Replaced old Shopify references with shopify_d2c_oms_v2 canonical context.",
+      "Collapsed Amazon US/CA/UK/MX aliases to uploaded platform_context.amazon.international while preserving country/currency guards on account bindings.",
+      "Remapped Nykaa India alias to Nykaa Fashion canonical context.",
+      "Remapped IDFC Bank alias to IDFC First Bank canonical bank-statement context where present.",
+      "Blocked unresolved platform/context/table edges rather than emitting dangling references.",
+      "Normalized status/active conflicts from the bad-state JSON.",
+      "Added DOCX section and row-level evidence references for configured sources."
+    ],
+    "id_replacement_hits": [
+      {
+        "card_id": "platform_account.fraternitas.shopify_d2c.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.in_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      },
+      {
+        "card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "business_scope_set.fraternitas_ventures.d2c",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.in_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      }
+    ],
+    "status_changes": [
+      {
+        "card_id": "platform_account.fraternitas.payu_in.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      },
+      {
+        "card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+        "card_type": "business_scope_set",
+        "from_status": "draft",
+        "from_active": false,
+        "to_status": "active",
+        "to_active": true,
+        "reason": "scope_is_source_confirmed_and_can_hold_partial_resolved_members_with_gaps_explicitly_declared"
+      }
+    ],
+    "blocked_edge_count": 4,
+    "canonical_resolution_gap_count": 14,
+    "resolved_prior_review_count": 1
+  },
+  "source_evidence": [
+    {
+      "id": "ev.fraternitas_ventures.docx.section.01_identity",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Identity",
+      "evidence_type": "docx_section",
+      "source_lines": "L2-L11",
+      "summary": "* Business: Focused multi-channel seller — two marketplaces + D2C, lean configuration\n* Geography: India only\n* OMS/WMS: Unicommerce (marketplace sync), Shopify (D2C)\n* Logistics: Delhivery (settlement only)\n* Payment gateways: Razorpay, PayU\n* GROUP LEVEL ID : 337\n* GROUP ID :  118\n* CLIENT NAME : **Fraternitas Ventures Private Limited**\n* GROUP NAME :  LegendToys",
+      "raw_lines": [
+        "* Business: Focused multi-channel seller — two marketplaces + D2C, lean configuration",
+        "* Geography: India only",
+        "* OMS/WMS: Unicommerce (marketplace sync), Shopify (D2C)",
+        "* Logistics: Delhivery (settlement only)",
+        "* Payment gateways: Razorpay, PayU",
+        "* GROUP LEVEL ID : 337",
+        "* GROUP ID :  118",
+        "* CLIENT NAME : **Fraternitas Ventures Private Limited**",
+        "* GROUP NAME :  LegendToys"
+      ],
+      "row_count": 0,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "docx_section",
+      "source_lines": "L12-L17",
+      "summary": "| Channel | Data types configured |\n|---------|-----------------------|\n| Amazon India | OMS (B2C + B2B), Settlement |\n| Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads) |\n| Shopify | D2C OMS               |",
+      "raw_lines": [
+        "| Channel | Data types configured |",
+        "|---------|-----------------------|",
+        "| Amazon India | OMS (B2C + B2B), Settlement |",
+        "| Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads) |",
+        "| Shopify | D2C OMS               |"
+      ],
+      "row_count": 3,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L15",
+      "row_key": "Amazon India",
+      "columns": {
+        "channel": "Amazon India",
+        "data_types_configured": "OMS (B2C + B2B), Settlement"
+      },
+      "raw_text": "| Amazon India | OMS (B2C + B2B), Settlement |",
+      "summary": "Amazon India: channel=Amazon India; data_types_configured=OMS (B2C + B2B), Settlement",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L16",
+      "row_key": "Flipkart",
+      "columns": {
+        "channel": "Flipkart",
+        "data_types_configured": "OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)"
+      },
+      "raw_text": "| Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads) |",
+      "summary": "Flipkart: channel=Flipkart; data_types_configured=OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L17",
+      "row_key": "Shopify",
+      "columns": {
+        "channel": "Shopify",
+        "data_types_configured": "D2C OMS"
+      },
+      "raw_text": "| Shopify | D2C OMS               |",
+      "summary": "Shopify: channel=Shopify; data_types_configured=D2C OMS",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.section.03_oms_layer",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "OMS layer",
+      "evidence_type": "docx_section",
+      "source_lines": "L18-L21",
+      "summary": "| System | Files configured |\n|--------|------------------|\n| Unicommerce | Sales, Returns, Cancellations, Sales order report |",
+      "raw_lines": [
+        "| System | Files configured |",
+        "|--------|------------------|",
+        "| Unicommerce | Sales, Returns, Cancellations, Sales order report |"
+      ],
+      "row_count": 1,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "OMS layer",
+      "evidence_type": "configured_source_row",
+      "source_line": "L21",
+      "row_key": "Unicommerce",
+      "columns": {
+        "system": "Unicommerce",
+        "files_configured": "Sales, Returns, Cancellations, Sales order report"
+      },
+      "raw_text": "| Unicommerce | Sales, Returns, Cancellations, Sales order report |",
+      "summary": "Unicommerce: system=Unicommerce; files_configured=Sales, Returns, Cancellations, Sales order report",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.section.04_logistics_courier_reconciliation",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Logistics — courier reconciliation",
+      "evidence_type": "docx_section",
+      "source_lines": "L22-L25",
+      "summary": "| Courier | Files configured |\n|---------|------------------|\n| Delhivery | Settlement only  |",
+      "raw_lines": [
+        "| Courier | Files configured |",
+        "|---------|------------------|",
+        "| Delhivery | Settlement only  |"
+      ],
+      "row_count": 1,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Logistics — courier reconciliation",
+      "evidence_type": "configured_source_row",
+      "source_line": "L25",
+      "row_key": "Delhivery",
+      "columns": {
+        "courier": "Delhivery",
+        "files_configured": "Settlement only"
+      },
+      "raw_text": "| Delhivery | Settlement only  |",
+      "summary": "Delhivery: courier=Delhivery; files_configured=Settlement only",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Payment gateway reconciliation",
+      "evidence_type": "docx_section",
+      "source_lines": "L26-L31",
+      "summary": "| Gateway | Pipeline target |\n|---------|-----------------|\n| Razorpay | razorpay_payin  |\n| PayU    | payu_settlement |\n##",
+      "raw_lines": [
+        "| Gateway | Pipeline target |",
+        "|---------|-----------------|",
+        "| Razorpay | razorpay_payin  |",
+        "| PayU    | payu_settlement |",
+        "##"
+      ],
+      "row_count": 2,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.01_razorpay",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Payment gateway reconciliation",
+      "evidence_type": "configured_source_row",
+      "source_line": "L29",
+      "row_key": "Razorpay",
+      "columns": {
+        "gateway": "Razorpay",
+        "pipeline_target": "razorpay_payin"
+      },
+      "raw_text": "| Razorpay | razorpay_payin  |",
+      "summary": "Razorpay: gateway=Razorpay; pipeline_target=razorpay_payin",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu",
+      "source_document": "Fraternitas Ventures Private Limited.docx",
+      "source_section": "Payment gateway reconciliation",
+      "evidence_type": "configured_source_row",
+      "source_line": "L30",
+      "row_key": "PayU",
+      "columns": {
+        "gateway": "PayU",
+        "pipeline_target": "payu_settlement"
+      },
+      "raw_text": "| PayU    | payu_settlement |",
+      "summary": "PayU: gateway=PayU; pipeline_target=payu_settlement",
+      "confidence": "high"
+    }
+  ],
+  "candidate_cards": [
+    {
+      "card_type": "tenant",
+      "card_id": "tenant.fraternitas_ventures",
+      "canonical_id": "tenant.fraternitas_ventures",
+      "name": "Fraternitas Ventures Private Limited",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.01_identity",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.04_logistics_courier_reconciliation",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify",
+        "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery"
+      ],
+      "description": "Focused India commerce client using ZenStatement for marketplace settlement, Shopify D2C OMS, Unicommerce OMS, Delhivery settlement, and payment gateway reconciliation.",
+      "fields": {
+        "tenant_name": "Fraternitas Ventures Private Limited",
+        "tenant_code": "FRATERNITAS",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "group",
+      "card_id": "group.fraternitas_ventures.legendtoys",
+      "canonical_id": "group.fraternitas_ventures.legendtoys",
+      "name": "LegendToys",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.01_identity"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_name": "LegendToys",
+        "group_code": "LEGENDTOYS",
+        "group_type": "brand",
+        "business_meaning": "LegendToys brand/group scope for Fraternitas Ventures Private Limited India marketplace and D2C commerce operations.",
+        "country_or_region": "India",
+        "default_currency": "INR",
+        "currency_scope": [
+          "INR"
+        ],
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "runtime_scope_policy": "group_id and group_level_id are represented in Account Data Binding scope_keys; generic platform/domain cards remain reusable.",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.amazon_in.primary",
+      "canonical_id": "platform_account.fraternitas.amazon_in.primary",
+      "name": "Fraternitas Amazon India Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "platform_id": "platform.amazon",
+        "platform_context_id": "platform_context.amazon.in",
+        "account_name": "Fraternitas Amazon India Seller Account",
+        "account_type": "marketplace_seller_account",
+        "account_role": "marketplace_seller",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "OMS B2C+B2B",
+          "Settlement"
+        ],
+        "source_config_text": "Amazon India | OMS (B2C + B2B), Settlement",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.amazon",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.amazon.in",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_oms",
+      "canonical_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_oms",
+      "name": "account data binding / fraternitas / amazon in / primary / amazon oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.amazon_in.primary",
+        "table_id": "table.zs_observe.amazon_oms",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "INR",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_oms_b2c_b2b"
+        ],
+        "source_config_text": "Amazon India | OMS (B2C + B2B), Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_oms",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_settlement",
+      "canonical_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_settlement",
+      "name": "account data binding / fraternitas / amazon in / primary / amazon settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.amazon_in.primary",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "INR",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "amazon_settlement"
+        ],
+        "source_config_text": "Amazon India | OMS (B2C + B2B), Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_settlement",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "canonical_id": "platform_account.fraternitas.flipkart_in.primary",
+      "name": "Fraternitas Flipkart Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "flipkart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "platform_id": "platform.flipkart",
+        "platform_context_id": "platform_context.flipkart.in",
+        "account_name": "Fraternitas Flipkart Seller Account",
+        "account_type": "marketplace_seller_account",
+        "account_role": "marketplace_seller",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "OMS + Cashback",
+          "Settlement",
+          "Commission",
+          "Adhoc Ads/TDS/Rebates/VAS/Google Ads"
+        ],
+        "source_config_text": "Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.flipkart",
+            "source_documents": [
+              "flipkart_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.flipkart.in",
+            "source_documents": [
+              "flipkart_marketplace.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.flipkart_in.primary.oms",
+      "canonical_id": "account_data_binding.fraternitas.flipkart_in.primary.oms",
+      "name": "account data binding / fraternitas / flipkart in / primary / oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "flipkart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.flipkart_in.primary",
+        "table_id": "table.flipkart.oms",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "flipkart_oms"
+        ],
+        "source_config_text": "Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.flipkart.oms",
+          "source_documents": [
+            "flipkart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.flipkart_in.primary.cashback",
+      "canonical_id": "account_data_binding.fraternitas.flipkart_in.primary.cashback",
+      "name": "account data binding / fraternitas / flipkart in / primary / cashback",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "flipkart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.flipkart_in.primary",
+        "table_id": "table.flipkart.cashback",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "flipkart_cashback"
+        ],
+        "source_config_text": "Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.flipkart.cashback",
+          "source_documents": [
+            "flipkart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.flipkart_in.primary.settlement",
+      "canonical_id": "account_data_binding.fraternitas.flipkart_in.primary.settlement",
+      "name": "account data binding / fraternitas / flipkart in / primary / settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "flipkart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.flipkart_in.primary",
+        "table_id": "table.flipkart.settlement",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "flipkart_settlement"
+        ],
+        "source_config_text": "Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.flipkart.settlement",
+          "source_documents": [
+            "flipkart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.flipkart_in.primary.commission",
+      "canonical_id": "account_data_binding.fraternitas.flipkart_in.primary.commission",
+      "name": "account data binding / fraternitas / flipkart in / primary / commission",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "flipkart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.flipkart_in.primary",
+        "table_id": "table.flipkart.commission",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "flipkart_commission"
+        ],
+        "source_config_text": "Flipkart | OMS + Cashback, Settlement, Commission, Adhoc (Ads/TDS/Rebates/VAS/Google Ads)",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.flipkart.commission",
+          "source_documents": [
+            "flipkart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "canonical_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "name": "Fraternitas Shopify D2C Store",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "platform_id": "platform.shopify",
+        "platform_context_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "account_name": "Fraternitas Shopify D2C Store",
+        "account_type": "d2c_store_account",
+        "account_role": "d2c_order_source",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "D2C OMS"
+        ],
+        "source_config_text": "Shopify | D2C OMS",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.shopify",
+            "source_documents": [
+              "shopify_d2c_oms_v2.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+            "source_documents": [
+              "shopify_d2c_oms_v2.md"
+            ]
+          }
+        },
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.shopify.in_d2c",
+            "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+          }
+        ],
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+      "canonical_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+      "name": "account data binding / fraternitas / shopify d2c / primary / shopify oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "logistics_domain.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.shopify_d2c.primary",
+        "table_id": "table.zs_observe.shopify_oms",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "INR",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "shopify_d2c_oms"
+        ],
+        "source_config_text": "Shopify | D2C OMS",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.shopify_oms",
+          "source_documents": [
+            "logistics_domain.md",
+            "shopify_d2c_oms_v2.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "shopify_d2c_oms.md",
+            "to": "shopify_d2c_oms_v2.md"
+          },
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "canonical_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "name": "Fraternitas Unicommerce OMS Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "unicommerce_d2c_oms.md",
+        "unicommerce_operations.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "platform_id": "platform.unicommerce",
+        "platform_context_id": "platform_context.unicommerce.in",
+        "account_name": "Fraternitas Unicommerce OMS Account",
+        "account_type": "oms_account",
+        "account_role": "oms_order_source",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "Sales",
+          "Returns",
+          "Cancellations",
+          "Sales order report"
+        ],
+        "source_config_text": "Unicommerce | Sales, Returns, Cancellations, Sales order report",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.unicommerce",
+            "source_documents": [
+              "unicommerce_d2c_oms.md",
+              "unicommerce_operations.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.unicommerce.in",
+            "source_documents": [
+              "unicommerce_operations.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce",
+      "canonical_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce",
+      "name": "account data binding / fraternitas / unicommerce oms / primary / unicommerce",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "unicommerce_d2c_oms.md",
+        "unicommerce_operations.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.unicommerce_oms.primary",
+        "table_id": "table.zs_observe.unicommerce",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "sales_returns_cancellations"
+        ],
+        "source_config_text": "Unicommerce | Sales, Returns, Cancellations, Sales order report",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.unicommerce",
+          "source_documents": [
+            "unicommerce_d2c_oms.md",
+            "unicommerce_operations.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce_order_sales_report",
+      "canonical_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce_order_sales_report",
+      "name": "account data binding / fraternitas / unicommerce oms / primary / unicommerce order sales report",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "unicommerce_d2c_oms.md",
+        "unicommerce_operations.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.unicommerce_oms.primary",
+        "table_id": "table.zs_observe.unicommerce_order_sales_report",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "sales_order_report"
+        ],
+        "source_config_text": "Unicommerce | Sales, Returns, Cancellations, Sales order report",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.unicommerce_order_sales_report",
+          "source_documents": [
+            "unicommerce_d2c_oms.md",
+            "unicommerce_operations.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "canonical_id": "platform_account.fraternitas.delhivery_in.primary",
+      "name": "Fraternitas Delhivery Settlement Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "delhivery_logistics.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.04_logistics_courier_reconciliation",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "platform_id": "platform.delhivery",
+        "platform_context_id": "platform_context.delhivery.in",
+        "account_name": "Fraternitas Delhivery Settlement Account",
+        "account_type": "logistics_account",
+        "account_role": "logistics_settlement_source",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "Settlement only"
+        ],
+        "source_config_text": "Delhivery | Settlement only",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.delhivery",
+            "source_documents": [
+              "delhivery_logistics.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.delhivery.in",
+            "source_documents": [
+              "delhivery_logistics.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement",
+      "canonical_id": "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement",
+      "name": "account data binding / fraternitas / delhivery in / primary / delhivery settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "delhivery_logistics.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.04_logistics_courier_reconciliation",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.delhivery_in.primary",
+        "table_id": "table.zs_observe.delhivery_settlement",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "INR",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "delhivery_settlement"
+        ],
+        "source_config_text": "Delhivery | Settlement only",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.delhivery_settlement",
+          "source_documents": [
+            "delhivery_logistics.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "canonical_id": "platform_account.fraternitas.razorpay_in.primary",
+      "name": "Fraternitas Razorpay Pay-in Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "payment_gateway.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.01_razorpay"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "platform_id": "platform.razorpay",
+        "platform_context_id": "platform_context.razorpay.in",
+        "account_name": "Fraternitas Razorpay Pay-in Account",
+        "account_type": "payment_gateway_merchant_account",
+        "account_role": "payment_source",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "razorpay_payin"
+        ],
+        "source_config_text": "Razorpay | razorpay_payin",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.razorpay",
+            "source_documents": [
+              "payment_gateway.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.razorpay.in",
+            "source_documents": [
+              "payment_gateway.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.razorpay_in.primary.razorpay_payin",
+      "canonical_id": "account_data_binding.fraternitas.razorpay_in.primary.razorpay_payin",
+      "name": "account data binding / fraternitas / razorpay in / primary / razorpay payin",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx",
+        "payment_gateway.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.01_razorpay"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.razorpay_in.primary",
+        "table_id": "table.zs_observe.razorpay_payin",
+        "table_support_level": "canonical_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          },
+          {
+            "business_key": "currency_type",
+            "column": "currency_type",
+            "operator": "=",
+            "value": "INR",
+            "data_type": "string",
+            "scope_note": "Currency guard added from client geography/currency scope; apply where the table exposes currency_type."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "razorpay_payin"
+        ],
+        "source_config_text": "Razorpay | razorpay_payin",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.razorpay_payin",
+          "source_documents": [
+            "payment_gateway.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific table binding. Account filters are held here; no generic platform card is made tenant-specific."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.fraternitas.payu_in.primary",
+      "canonical_id": "platform_account.fraternitas.payu_in.primary",
+      "name": "Fraternitas PayU Settlement Account",
+      "status": "review_required",
+      "active": false,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "account_name": "Fraternitas PayU Settlement Account",
+        "account_type": "payment_gateway_merchant_account",
+        "account_role": "payment_source_requires_context",
+        "source_account_identifier": null,
+        "source_scope_identifiers": {
+          "group_id": 118,
+          "group_level_id": 337,
+          "group_name": "LegendToys"
+        },
+        "country_or_region": "India",
+        "currency_scope": [
+          "INR"
+        ],
+        "configured_data_types": [
+          "payu_settlement"
+        ],
+        "source_config_text": "PayU | payu_settlement",
+        "declared_platform_id": "platform.payu",
+        "declared_platform_label": "PayU payment gateway",
+        "declared_platform_context_id": "platform_context.payu.in",
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform.payu"
+          },
+          "platform_context_id": {
+            "status": "missing_from_uploaded_canonical_markdowns",
+            "declared_id": "platform_context.payu.in"
+          }
+        },
+        "notes": [
+          "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": true
+        },
+        "status_correction_reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.fraternitas.payu_in.primary.payu_settlement",
+      "canonical_id": "account_data_binding.fraternitas.payu_in.primary.payu_settlement",
+      "name": "account data binding / fraternitas / payu in / primary / payu settlement",
+      "status": "review_required",
+      "active": false,
+      "confidence": "source_confirmed",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.fraternitas.payu_in.primary",
+        "table_support_level": "source_described_requires_platform_context",
+        "scope_keys": [
+          {
+            "business_key": "group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 118,
+            "data_type": "integer",
+            "scope_note": "Apply when the physical table exposes group_id; group_level_id remains mandatory client scope."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 337,
+            "data_type": "integer",
+            "scope_note": "Primary runtime scope key from the client document."
+          }
+        ],
+        "runtime_scope_precision": "group_id_and_group_level_id_plus_source_specific_guards",
+        "unresolved_scope_keys": [],
+        "data_type_semantics": [
+          "payu_settlement"
+        ],
+        "source_config_text": "PayU | payu_settlement",
+        "declared_table_id": "table.zs_observe.payu_settlement",
+        "canonical_table_resolution": {
+          "status": "missing_from_uploaded_canonical_markdowns",
+          "declared_id": "table.zs_observe.payu_settlement"
+        },
+        "routing_status": "blocked_until_table_card_exists",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Source confirms PayU settlement target; no PayU settlement table card exists in the current uploaded payment-gateway KB."
+        ],
+        "original_bad_state_status": {
+          "status": "review_required",
+          "active": false
+        },
+        "status_correction_reason": "table_binding_missing_canonical_table_card"
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.fraternitas_ventures.marketplaces",
+      "canonical_id": "business_scope_set.fraternitas_ventures.marketplaces",
+      "name": "Fraternitas Marketplace Channels",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "amazon_marketplace.md",
+        "flipkart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.01_amazon_india",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.02_flipkart"
+      ],
+      "description": "Amazon India and Flipkart marketplace scope.",
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "scope_name": "Fraternitas Marketplace Channels",
+        "scope_type": "marketplace_account_group",
+        "platform_account_ids": [
+          "platform_account.fraternitas.amazon_in.primary",
+          "platform_account.fraternitas.flipkart_in.primary"
+        ],
+        "platform_ids": [
+          "platform.amazon",
+          "platform.flipkart"
+        ],
+        "platform_context_ids": [
+          "platform_context.amazon.in",
+          "platform_context.flipkart.in"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.fraternitas_ventures.d2c",
+      "canonical_id": "business_scope_set.fraternitas_ventures.d2c",
+      "name": "Fraternitas Shopify D2C",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify"
+      ],
+      "description": "Shopify D2C OMS scope.",
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "scope_name": "Fraternitas Shopify D2C",
+        "scope_type": "d2c_order_scope",
+        "platform_account_ids": [
+          "platform_account.fraternitas.shopify_d2c.primary"
+        ],
+        "platform_ids": [
+          "platform.shopify"
+        ],
+        "platform_context_ids": [
+          "platform_context.shopify.in_and_global.d2c_oms_client_config"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.shopify.in_d2c",
+            "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+          }
+        ],
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.fraternitas_ventures.unicommerce",
+      "canonical_id": "business_scope_set.fraternitas_ventures.unicommerce",
+      "name": "Fraternitas Unicommerce OMS",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "unicommerce_d2c_oms.md",
+        "unicommerce_operations.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce"
+      ],
+      "description": "Unicommerce sales, returns, cancellations, and sales order report scope.",
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "scope_name": "Fraternitas Unicommerce OMS",
+        "scope_type": "oms_scope",
+        "platform_account_ids": [
+          "platform_account.fraternitas.unicommerce_oms.primary"
+        ],
+        "platform_ids": [
+          "platform.unicommerce"
+        ],
+        "platform_context_ids": [
+          "platform_context.unicommerce.in"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.fraternitas_ventures.logistics",
+      "canonical_id": "business_scope_set.fraternitas_ventures.logistics",
+      "name": "Fraternitas Delhivery Settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "delhivery_logistics.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.04_logistics_courier_reconciliation",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery"
+      ],
+      "description": "Delhivery settlement-only scope.",
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "scope_name": "Fraternitas Delhivery Settlement",
+        "scope_type": "logistics_settlement_scope",
+        "platform_account_ids": [
+          "platform_account.fraternitas.delhivery_in.primary"
+        ],
+        "platform_ids": [
+          "platform.delhivery"
+        ],
+        "platform_context_ids": [
+          "platform_context.delhivery.in"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+      "canonical_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+      "name": "Fraternitas Payment Gateways",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "payment_gateway.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.01_razorpay",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "description": "Razorpay active and PayU context-required payment scope.",
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "scope_name": "Fraternitas Payment Gateways",
+        "scope_type": "payment_gateway_scope",
+        "platform_account_ids": [
+          "platform_account.fraternitas.razorpay_in.primary",
+          "platform_account.fraternitas.payu_in.primary"
+        ],
+        "platform_ids": [
+          "platform.razorpay"
+        ],
+        "platform_context_ids": [
+          "platform_context.razorpay.in"
+        ],
+        "declared_unresolved_platform_ids": [
+          "platform.payu"
+        ],
+        "declared_unresolved_platform_context_ids": [
+          "platform_context.payu.in"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        },
+        "status_correction_reason": "scope_is_source_confirmed_and_can_hold_partial_resolved_members_with_gaps_explicitly_declared"
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "canonical_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "name": "Fraternitas Marketplace to Unicommerce OMS",
+      "status": "active",
+      "active": true,
+      "confidence": "high",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "amazon_marketplace.md",
+        "flipkart_marketplace.md",
+        "unicommerce_d2c_oms.md",
+        "unicommerce_operations.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.row.03_oms_layer.01_unicommerce"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "binding_name": "Fraternitas Marketplace to Unicommerce OMS",
+        "binding_type": "operational_flow",
+        "business_scope_set_id": "business_scope_set.fraternitas_ventures.unicommerce",
+        "money_flow_paths": [
+          "marketplace_order_to_oms",
+          "order_to_shipment"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.fraternitas.amazon_in.primary",
+            "role": "marketplace_order_source",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.fraternitas.flipkart_in.primary",
+            "role": "marketplace_order_source",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.fraternitas.unicommerce_oms.primary",
+            "role": "oms_order_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.amazon_oms",
+          "table.flipkart.oms",
+          "table.zs_observe.unicommerce",
+          "table.zs_observe.unicommerce_order_sales_report"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.fraternitas.amazon_in.primary.amazon_oms",
+          "account_data_binding.fraternitas.amazon_in.primary.amazon_settlement",
+          "account_data_binding.fraternitas.flipkart_in.primary.oms",
+          "account_data_binding.fraternitas.flipkart_in.primary.cashback",
+          "account_data_binding.fraternitas.flipkart_in.primary.settlement",
+          "account_data_binding.fraternitas.flipkart_in.primary.commission",
+          "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce",
+          "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce_order_sales_report"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.marketplace_order_to_oms"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.marketplace_oms_order_reconciliation"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "canonical_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "name": "Fraternitas Shopify D2C to Razorpay Pay-in",
+      "status": "active",
+      "active": true,
+      "confidence": "high",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "logistics_domain.md",
+        "payment_gateway.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.01_razorpay"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "binding_name": "Fraternitas Shopify D2C to Razorpay Pay-in",
+        "binding_type": "payment_reconciliation_flow",
+        "business_scope_set_id": "business_scope_set.fraternitas_ventures.d2c",
+        "money_flow_paths": [
+          "d2c_order_to_payment_gateway"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.fraternitas.shopify_d2c.primary",
+            "role": "d2c_order_source",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.fraternitas.razorpay_in.primary",
+            "role": "payment_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.shopify_oms",
+          "table.zs_observe.razorpay_payin"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+          "account_data_binding.fraternitas.razorpay_in.primary.razorpay_payin"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.payment_capture_to_gateway_settlement"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.oms_payment_to_gateway_settlement"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "canonical_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "name": "Fraternitas Shopify D2C to PayU Requires Context",
+      "status": "draft",
+      "active": false,
+      "confidence": "medium",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "logistics_domain.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.03_oms_layer",
+        "ev.fraternitas_ventures.docx.section.02_active_sales_channels",
+        "ev.fraternitas_ventures.docx.section.05_payment_gateway_reconciliation",
+        "ev.fraternitas_ventures.docx.row.02_active_sales_channels.03_shopify",
+        "ev.fraternitas_ventures.docx.row.05_payment_gateway_reconciliation.02_payu"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "binding_name": "Fraternitas Shopify D2C to PayU Requires Context",
+        "binding_type": "payment_reconciliation_flow",
+        "business_scope_set_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+        "money_flow_paths": [
+          "d2c_order_to_payment_gateway"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.fraternitas.shopify_d2c.primary",
+            "role": "d2c_order_source",
+            "required": true
+          },
+          {
+            "platform_account_id": "platform_account.fraternitas.payu_in.primary",
+            "role": "payment_source_requires_context",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.shopify_oms"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+          "account_data_binding.fraternitas.payu_in.primary.payu_settlement"
+        ],
+        "conditions": [],
+        "declared_unresolved_evidence_table_ids": [
+          "table.zs_observe.payu_settlement"
+        ],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.payment_capture_to_gateway_settlement"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.oms_payment_to_gateway_settlement"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Client-specific reusable flow binding. Matching logic remains in generic reconciliation/query cards; account filters remain in Account Data Binding."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "canonical_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "name": "Fraternitas Delhivery Settlement to Bank Requires Bank Binding",
+      "status": "draft",
+      "active": false,
+      "confidence": "medium",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Fraternitas Ventures Private Limited.docx",
+        "delhivery_logistics.md"
+      ],
+      "evidence_refs": [
+        "ev.fraternitas_ventures.docx.section.04_logistics_courier_reconciliation",
+        "ev.fraternitas_ventures.docx.row.04_logistics_courier_reconciliation.01_delhivery"
+      ],
+      "fields": {
+        "tenant_id": "tenant.fraternitas_ventures",
+        "group_id": "group.fraternitas_ventures.legendtoys",
+        "binding_name": "Fraternitas Delhivery Settlement to Bank Requires Bank Binding",
+        "binding_type": "money_flow",
+        "business_scope_set_id": "business_scope_set.fraternitas_ventures.logistics",
+        "money_flow_paths": [
+          "logistics_cod_to_bank"
+        ],
+        "participating_accounts": [
+          {
+            "platform_account_id": "platform_account.fraternitas.delhivery_in.primary",
+            "role": "logistics_settlement_source",
+            "required": true
+          }
+        ],
+        "evidence_table_ids": [
+          "table.zs_observe.delhivery_settlement"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement"
+        ],
+        "conditions": [],
+        "resolved_business_process_ids": [],
+        "declared_unresolved_business_process_ids": [
+          "business_process.logistics_settlement_to_bank"
+        ],
+        "resolved_reconciliation_profile_ids": [],
+        "declared_unresolved_reconciliation_profile_ids": [
+          "reconciliation_profile.logistics_cod_to_bank"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Delhivery settlement evidence exists, but no bank destination account/binding was supplied."
+        ],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    }
+  ],
+  "semantic_mappings": [
+    {
+      "platform_account_id": "platform_account.fraternitas.amazon_in.primary",
+      "client_config_text": "Amazon India OMS B2C+B2B and Settlement",
+      "source_confirmed_requires_context": [],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_oms",
+        "table.zs_observe.amazon_settlement"
+      ],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.fraternitas.flipkart_in.primary",
+      "client_config_text": "Flipkart OMS + Cashback, Settlement, Commission, Adhoc",
+      "source_confirmed_requires_context": [
+        "Flipkart Adhoc Ads/TDS/Rebates/VAS/Google Ads"
+      ],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [
+        "table.flipkart.oms",
+        "table.flipkart.cashback",
+        "table.flipkart.settlement",
+        "table.flipkart.commission"
+      ],
+      "unresolved_canonical_requested": []
+    },
+    {
+      "platform_account_id": "platform_account.fraternitas.payu_in.primary",
+      "client_config_text": "PayU settlement",
+      "source_confirmed_requires_context": [
+        "payu_settlement"
+      ],
+      "mapping_policy": "Map source wording to current canonical or client-observed table coverage only. Source-confirmed artifacts without table context are recorded separately for future authoring, not emitted as active bindings.",
+      "notes": [],
+      "resolved_canonical_mapped_now": [],
+      "unresolved_canonical_requested": []
+    }
+  ],
+  "candidate_edges": [
+    {
+      "edge_id": "edge.fraternitas_ventures.hasgroup.acea6ed1304d",
+      "edge_type": "HAS_GROUP",
+      "canonical_edge_type": "HAS_GROUP",
+      "source_card_id": "tenant.fraternitas_ventures",
+      "target_card_id": "group.fraternitas_ventures.legendtoys",
+      "source_type": "tenant",
+      "target_type": "group",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_GROUP"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.786bb50daa0a",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatform.87381a7ff9ea",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "target_card_id": "platform.amazon",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatformcontext.c3eb1c77cf47",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "target_card_id": "platform_context.amazon.in",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.d8c2214f2d8f",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.25da988d4076",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_oms",
+      "target_card_id": "table.zs_observe.amazon_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.b5e0ae99b2d2",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.24e58ecbfa12",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_settlement",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.f6111233b8f0",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatform.4295eb375b04",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "target_card_id": "platform.flipkart",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatformcontext.df3b47e766a0",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "target_card_id": "platform_context.flipkart.in",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.9ec034018585",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.c8083f23b5c7",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.flipkart_in.primary.oms",
+      "target_card_id": "table.flipkart.oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.a3c4f26643a0",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.cashback",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.aa7a69b433de",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.flipkart_in.primary.cashback",
+      "target_card_id": "table.flipkart.cashback",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.f7599d75359b",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.8c2e5f622dbd",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.flipkart_in.primary.settlement",
+      "target_card_id": "table.flipkart.settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.7c6d1717ccd4",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.commission",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.1debddb9941c",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.flipkart_in.primary.commission",
+      "target_card_id": "table.flipkart.commission",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.42dfb55f519e",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatform.06abd1b97554",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "target_card_id": "platform.shopify",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatformcontext.0d3814052c73",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "target_card_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.12acd8a874e1",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "target_card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.979dea8e135f",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+      "target_card_id": "table.zs_observe.shopify_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.18b9fdc83dd1",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatform.c4e67089350b",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "target_card_id": "platform.unicommerce",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatformcontext.abe86025e9d3",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "target_card_id": "platform_context.unicommerce.in",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.43bc6de8fb1f",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "target_card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.9638636896f8",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce",
+      "target_card_id": "table.zs_observe.unicommerce",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.4d4e545ea9dd",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "target_card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce_order_sales_report",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.71ee2fc582dd",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce_order_sales_report",
+      "target_card_id": "table.zs_observe.unicommerce_order_sales_report",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.996df304e767",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatform.79c4a81f973f",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "target_card_id": "platform.delhivery",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatformcontext.796ffdbc96db",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "target_card_id": "platform_context.delhivery.in",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.3d2bbd4ce499",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.5f5b22c3b74e",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement",
+      "target_card_id": "table.zs_observe.delhivery_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.7b843af7426b",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatform.6c6266414a10",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "target_card_id": "platform.razorpay",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesplatformcontext.dd0b5cbd19f2",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "target_card_id": "platform_context.razorpay.in",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.32f18c1110f7",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.razorpay_in.primary.razorpay_payin",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.bindstotable.99109eee8830",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.fraternitas.razorpay_in.primary.razorpay_payin",
+      "target_card_id": "table.zs_observe.razorpay_payin",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasplatformaccount.7891953d6f2a",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "platform_account.fraternitas.payu_in.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasaccountdatabinding.018be30fa845",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.fraternitas.payu_in.primary",
+      "target_card_id": "account_data_binding.fraternitas.payu_in.primary.payu_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessscopeset.58b69a690988",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_scope_set.fraternitas_ventures.marketplaces",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.f614b7050a8d",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.marketplaces",
+      "target_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.590fabfa65c5",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.marketplaces",
+      "target_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessscopeset.46ff6842a66a",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_scope_set.fraternitas_ventures.d2c",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.1b918b9c8d2d",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.d2c",
+      "target_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessscopeset.1e417545a4c2",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_scope_set.fraternitas_ventures.unicommerce",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.1c1af8445cd7",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.unicommerce",
+      "target_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessscopeset.73667c8504a4",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_scope_set.fraternitas_ventures.logistics",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.36ffd752cb3b",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.logistics",
+      "target_card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessscopeset.be817ccbbfff",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.d68e1d8614ae",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+      "target_card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.includesplatformaccount.827c795dc10f",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+      "target_card_id": "platform_account.fraternitas.payu_in.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessflowbinding.21375f7ff620",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesbusinessscopeset.fbf104f37e91",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "business_scope_set.fraternitas_ventures.unicommerce",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.b919a134692c",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "platform_account.fraternitas.amazon_in.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.9e88e0a2be10",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "platform_account.fraternitas.flipkart_in.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.7cdd373b635c",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "platform_account.fraternitas.unicommerce_oms.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.8e7e60ed830e",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.510be71e67cf",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.amazon_in.primary.amazon_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.1a08d133f056",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.0265fcb3e025",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.cashback",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.cb002c312757",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.579080ea27f7",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.flipkart_in.primary.commission",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.b364d17927d1",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.00105d728b56",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "account_data_binding.fraternitas.unicommerce_oms.primary.unicommerce_order_sales_report",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.aecd214df54d",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "table.zs_observe.amazon_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.1ea7a6f55b5d",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "table.flipkart.oms",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.afbde52256e1",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "table.zs_observe.unicommerce",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.b4829f766c91",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce",
+      "target_card_id": "table.zs_observe.unicommerce_order_sales_report",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessflowbinding.4827b49b8eed",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesbusinessscopeset.fe8ce7c4fd80",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "business_scope_set.fraternitas_ventures.d2c",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.2b75a666ded1",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.150ecc792031",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "platform_account.fraternitas.razorpay_in.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.9a65978579b9",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.b7c40c5c253a",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "account_data_binding.fraternitas.razorpay_in.primary.razorpay_payin",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.fd961d794f73",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "table.zs_observe.shopify_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.a31dc570d246",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin",
+      "target_card_id": "table.zs_observe.razorpay_payin",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessflowbinding.e02d464c6934",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesbusinessscopeset.fb9fe575199b",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "target_card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.11047282cd9e",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "target_card_id": "platform_account.fraternitas.shopify_d2c.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.34b24f9eb4df",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "target_card_id": "platform_account.fraternitas.payu_in.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.71c6c5c99988",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "target_card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.ca4f526b5afa",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "target_card_id": "account_data_binding.fraternitas.payu_in.primary.payu_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.3c7ec76f31eb",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "target_card_id": "table.zs_observe.shopify_oms",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.hasbusinessflowbinding.f248f3d46c8c",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.fraternitas_ventures.legendtoys",
+      "target_card_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesbusinessscopeset.71388892d4e8",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "business_scope_set.fraternitas_ventures.logistics",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.participateswithaccount.228eeb7a52d1",
+      "edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "canonical_edge_type": "PARTICIPATES_WITH_ACCOUNT",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "platform_account.fraternitas.delhivery_in.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "PARTICIPATES_WITH_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesaccountdatabinding.3d000c2e4650",
+      "edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "USES_ACCOUNT_DATA_BINDING",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "account_data_binding.fraternitas.delhivery_in.primary.delhivery_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.fraternitas_ventures.usesevidencetable.8c41964d9c61",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "canonical_edge_type": "USES_EVIDENCE_TABLE",
+      "source_card_id": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "target_card_id": "table.zs_observe.delhivery_settlement",
+      "source_type": "business_flow_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch2",
+        "source_json_edge_type": "USES_EVIDENCE_TABLE"
+      }
+    }
+  ],
+  "blocked_edges": [
+    {
+      "source_card_id": "platform_account.fraternitas.payu_in.primary",
+      "edge_type": "USES_PLATFORM",
+      "target_card_id": "platform.payu",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform.payu"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.fraternitas.payu_in.primary",
+        "edge": "USES_PLATFORM",
+        "target": "platform.payu",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "platform_account.fraternitas.payu_in.primary",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "target_card_id": "platform_context.payu.in",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "platform_context.payu.in"
+        }
+      ],
+      "original_edge": {
+        "source": "platform_account.fraternitas.payu_in.primary",
+        "edge": "USES_PLATFORM_CONTEXT",
+        "target": "platform_context.payu.in",
+        "reference_status": "external"
+      }
+    },
+    {
+      "source_card_id": "account_data_binding.fraternitas.payu_in.primary.payu_settlement",
+      "edge_type": "BINDS_TO_TABLE",
+      "target_card_id": "table.zs_observe.payu_settlement",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.payu_settlement"
+        }
+      ],
+      "original_edge": {
+        "source": "account_data_binding.fraternitas.payu_in.primary.payu_settlement",
+        "edge": "BINDS_TO_TABLE",
+        "target": "table.zs_observe.payu_settlement",
+        "reference_status": "source_described_requires_platform_context"
+      }
+    },
+    {
+      "source_card_id": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+      "edge_type": "USES_EVIDENCE_TABLE",
+      "target_card_id": "table.zs_observe.payu_settlement",
+      "blocked_reason": "unresolved_source_or_target_after_refactor",
+      "missing_refs": [
+        {
+          "position": "target",
+          "id": "table.zs_observe.payu_settlement"
+        }
+      ],
+      "original_edge": {
+        "source": "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+        "edge": "USES_EVIDENCE_TABLE",
+        "target": "table.zs_observe.payu_settlement",
+        "reference_status": "external"
+      }
+    }
+  ],
+  "future_context_gaps": [
+    {
+      "platform_or_area": "Flipkart Adhoc",
+      "source_confirmed_artifacts": [
+        "Ads",
+        "TDS",
+        "Rebates",
+        "VAS",
+        "Google Ads"
+      ],
+      "source_evidence_text": "Client lists Flipkart Adhoc (Ads/TDS/Rebates/VAS/Google Ads).",
+      "impact": "Adhoc deductions cannot be routed until canonical Flipkart adhoc table context exists.",
+      "required_action": "author_platform_context_or_confirm_table_schema_then_add_account_data_binding",
+      "severity": "medium",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx"
+      ]
+    },
+    {
+      "platform_or_area": "PayU",
+      "source_confirmed_artifacts": [
+        "payu_settlement"
+      ],
+      "source_evidence_text": "Payment gateway section maps PayU to payu_settlement.",
+      "impact": "PayU cannot participate as an active table binding until payment-gateway context is authored.",
+      "required_action": "author_platform_context_or_confirm_table_schema_then_add_account_data_binding",
+      "severity": "high",
+      "source_documents": [
+        "Fraternitas Ventures Private Limited.docx"
+      ]
+    },
+    {
+      "platform_or_area": "table.zs_observe.payu_settlement",
+      "missing_artifacts": [
+        "table.zs_observe.payu_settlement"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "medium",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform_context.payu.in",
+      "missing_artifacts": [
+        "platform_context.payu.in"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.fraternitas.payu_in.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "platform_or_area": "platform.payu",
+      "missing_artifacts": [
+        "platform.payu"
+      ],
+      "impact": "Client source confirms usage, but a matching uploaded canonical card is unavailable after alias/remap normalization; production routing edges are blocked for this artifact only.",
+      "required_action": "author_or_map_canonical_platform_context_or_table_card_then_rebuild_client_runtime_pack",
+      "severity": "high",
+      "affected_client_cards": [
+        "platform_account.fraternitas.payu_in.primary"
+      ],
+      "generated_by_refactor": true
+    }
+  ],
+  "resolved_context_gaps": [],
+  "open_review_items": [
+    {
+      "item": "platform_account.fraternitas.payu_in.primary",
+      "issue": "PayU is configured by source, but canonical PayU settlement context is not present in the current uploaded payment gateway KB.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "review_resolution_status": "open"
+    },
+    {
+      "item": "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding",
+      "issue": "Delhivery settlement is available, but no Fraternitas bank account/bank statement binding was supplied.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "review_resolution_status": "open"
+    },
+    {
+      "item": "table.zs_observe.payu_settlement",
+      "issue": "Referenced as evidence_table_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.payu.in",
+      "issue": "Referenced as platform_context_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.fraternitas.payu_in.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform_context.payu.in",
+      "issue": "Referenced as platform_context_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.fraternitas_ventures.payment_gateways"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.payu",
+      "issue": "Referenced as platform_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "platform_account.fraternitas.payu_in.primary"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "platform.payu",
+      "issue": "Referenced as platform_ids by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "medium",
+      "blocking_for_active_ingestion": false,
+      "affected_client_cards": [
+        "business_scope_set.fraternitas_ventures.payment_gateways"
+      ],
+      "generated_by_refactor": true
+    },
+    {
+      "item": "table.zs_observe.payu_settlement",
+      "issue": "Referenced as table_id by 1 client card(s), but no matching uploaded canonical card exists after current remaps. It is retained as declared source context and no dangling edge is emitted.",
+      "severity": "high",
+      "blocking_for_active_ingestion": true,
+      "affected_client_cards": [
+        "account_data_binding.fraternitas.payu_in.primary.payu_settlement"
+      ],
+      "generated_by_refactor": true
+    }
+  ],
+  "resolved_review_items": [
+    {
+      "item": "platform_account.fraternitas.flipkart_in.primary",
+      "resolution": "source_confirmed_requires_context now maps to uploaded canonical table card(s)",
+      "resolved_table_ids": [
+        "table.flipkart.oms",
+        "table.flipkart.cashback",
+        "table.flipkart.settlement",
+        "table.flipkart.commission"
+      ],
+      "previous_requires_context": [
+        "Flipkart Adhoc Ads/TDS/Rebates/VAS/Google Ads"
+      ]
+    }
+  ],
+  "non_blocking_declared_semantic_reference_gaps": [
+    {
+      "reference_id": "business_process.logistics_settlement_to_bank",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.marketplace_order_to_oms",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "business_process.payment_capture_to_gateway_settlement",
+      "reference_type": "business_process_ids",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+        "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.logistics_cod_to_bank",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.delhivery_settlement_to_bank_requires_bank_binding"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.marketplace_oms_order_reconciliation",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.marketplace_to_unicommerce"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    },
+    {
+      "reference_id": "reconciliation_profile.oms_payment_to_gateway_settlement",
+      "reference_type": "reconciliation_profile_ids",
+      "affected_client_cards": [
+        "business_flow_binding.fraternitas_ventures.shopify_to_payu_requires_context",
+        "business_flow_binding.fraternitas_ventures.shopify_to_razorpay_payin"
+      ],
+      "handling": "retained in declared_unresolved_* field; no edge emitted; not treated as production routing blocker",
+      "severity": "advisory"
+    }
+  ],
+  "validation_summary": {
+    "result": "pass",
+    "original_card_count": 30,
+    "refactored_card_count": 30,
+    "original_edge_count": 96,
+    "refactored_edge_count": 92,
+    "blocked_edge_count": 4,
+    "source_evidence_count": 12,
+    "source_row_evidence_count": 7,
+    "card_type_counts": {
+      "tenant": 1,
+      "group": 1,
+      "platform_account": 7,
+      "account_data_binding": 12,
+      "business_scope_set": 5,
+      "business_flow_binding": 4
+    },
+    "status_counts": {
+      "active": 26,
+      "review_required": 2,
+      "draft": 2
+    },
+    "review_status_counts": {
+      "accepted": 26,
+      "review_required": 4
+    },
+    "active_bindings_to_missing_tables": [],
+    "edge_reference_error_count": 0,
+    "edge_reference_errors": [],
+    "status_active_conflicts": [],
+    "forbidden_candidate_cards": [],
+    "duplicate_card_id_count": 0,
+    "old_shopify_source_docs_in_candidate_cards": [],
+    "canonical_resolution_gap_count": 14,
+    "canonical_resolution_gap_type_counts": {
+      "platform_id": 1,
+      "platform_context_id": 1,
+      "table_id": 1,
+      "platform_ids": 1,
+      "platform_context_ids": 1,
+      "business_process_ids": 4,
+      "reconciliation_profile_ids": 4,
+      "evidence_table_ids": 1
+    },
+    "status_correction_count": 2,
+    "status_changes": [
+      {
+        "card_id": "platform_account.fraternitas.payu_in.primary",
+        "card_type": "platform_account",
+        "from_status": "draft",
+        "from_active": true,
+        "to_status": "review_required",
+        "to_active": false,
+        "reason": "platform_or_context_missing_and_no_resolved_account_data_binding"
+      },
+      {
+        "card_id": "business_scope_set.fraternitas_ventures.payment_gateways",
+        "card_type": "business_scope_set",
+        "from_status": "draft",
+        "from_active": false,
+        "to_status": "active",
+        "to_active": true,
+        "reason": "scope_is_source_confirmed_and_can_hold_partial_resolved_members_with_gaps_explicitly_declared"
+      }
+    ],
+    "id_or_source_replacement_count": 4,
+    "id_or_source_replacements": [
+      {
+        "card_id": "platform_account.fraternitas.shopify_d2c.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.in_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      },
+      {
+        "card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.fraternitas.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "business_scope_set.fraternitas_ventures.d2c",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.in_d2c",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      }
+    ],
+    "resolved_prior_review_count": 1,
+    "open_review_count": 8,
+    "future_context_gap_count": 5,
+    "resolved_context_gap_count": 0,
+    "non_blocking_declared_semantic_reference_gap_count": 6,
+    "non_blocking_declared_semantic_reference_gap_type_counts": {
+      "business_process_ids": 3,
+      "reconciliation_profile_ids": 3
+    },
+    "edge_status_counts": {
+      "emitted": 92,
+      "blocked_unresolved": 4
+    }
+  }
+}

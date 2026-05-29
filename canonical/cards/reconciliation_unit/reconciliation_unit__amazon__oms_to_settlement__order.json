@@ -1,0 +1,49 @@
+{
+  "candidate_notes": "order-level or order-period grain",
+  "canonical_id": "reconciliation_unit.amazon.oms_to_settlement.order",
+  "card_type": "reconciliation_unit",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_unit card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.oms_settlement.001",
+    "ev.amazon.join_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.oms_settlement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7044
+    },
+    {
+      "evidence_id": "ev.amazon.join_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7044
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "order-level or order-period grain",
+  "join_keys": "order_id",
+  "marketplace_only": true,
+  "name": "Amazon OMS to Settlement Reconciliation unit: order",
+  "profile": "reconciliation_profile.amazon.oms_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_unit.amazon.oms_to_settlement.order",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7044,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit_key": "order",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

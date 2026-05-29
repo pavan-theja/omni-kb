@@ -1,0 +1,77 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.snapdeal.commission_structure",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal implementation — Commission Structure",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.4_1_commission_structure",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.4_1_commission_structure",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14866
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14866
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 14866
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use exactly the filters in formula_sql / linked sql_pattern, especially is_active=true, transaction_type/type scope, and group_level_id column scope where runtime supplies it.",
+  "formula_sql": "SELECT transaction_type, SUM(total_commission_amount) AS total_commission, SUM(courier_fee) AS courier_fee, SUM(payment_collection_fee) AS payment_collection_fee, SUM(marketing_fee) AS marketing_fee, SUM(tax_amount) AS gst_on_fees FROM zs_observe.snapdeal_commission WHERE is_active = true GROUP BY transaction_type",
+  "formula_text": "Executable SQL-like implementation normalized in V9; see formula_sql and sql_pattern_id.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "snapdeal",
+  "metric_id": "metric.commission_or_take_rate",
+  "metric_pattern": "snapdeal_specific_implementation_of_commission_or_take_rate",
+  "name": "Snapdeal implementation — Commission Structure",
+  "platform_code": "snapdeal",
+  "platform_context_id": "platform_context.snapdeal.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.snapdeal.commission_structure",
+  "source_columns": [
+    "snapdeal_commission",
+    "transaction_type",
+    "total_commission_amount",
+    "total_commission",
+    "courier_fee",
+    "payment_collection_fee",
+    "marketing_fee",
+    "tax_amount",
+    "gst_on_fees",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 14866,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_table_ids": [
+    "table.zs_observe.snapdeal_commission"
+  ],
+  "sql_pattern_id": "sql.snapdeal.commission_structure",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

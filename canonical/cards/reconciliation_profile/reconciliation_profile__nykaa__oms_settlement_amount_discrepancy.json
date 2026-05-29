@@ -1,0 +1,66 @@
+{
+  "canonical_id": "reconciliation_profile.nykaa.oms_settlement_amount_discrepancy",
+  "canonical_name": "Oms Settlement Amount Discrepancy",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "documented_threshold_example": "ABS(diff) > 1",
+  "evidence_ids": [
+    "evidence.nykaa.reconciliation",
+    "evidence.nykaa.relationships",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17109
+    },
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17109
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 17109
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_internal_only": true,
+  "marketplace_only": true,
+  "matching_logic_id": "matching_logic.nykaa.charged_amount_diff_threshold",
+  "mismatch_category_ids": [
+    "mismatch_category.nykaa.amount_mismatch",
+    "mismatch_category.nykaa.case_inconsistent_status"
+  ],
+  "name": "Oms Settlement Amount Discrepancy",
+  "primary_unit_id": "reconciliation_unit.nykaa.order",
+  "process_id": "business_process.nykaa.marketplace_internal_reconciliation",
+  "review_status": "unreviewed",
+  "side_ids": [
+    "reconciliation_side.nykaa.oms_amount_expected",
+    "reconciliation_side.nykaa.settlement_amount_actual"
+  ],
+  "source_card_id": "reconciliation_profile.nykaa.oms_settlement_amount_discrepancy",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17109,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Amount discrepancy check comparing aggregated OMS charged_amount and settlement charged_amount by order_id/invoice_number, using the DOCX example threshold of ABS(diff) > 1.",
+  "threshold_policy": "documented for this amount-discrepancy query; not a universal settlement-waterfall tolerance",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

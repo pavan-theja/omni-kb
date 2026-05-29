@@ -1,0 +1,115 @@
+{
+  "applicability_scope": {
+    "notes": [
+      "Tenant/group-specific account participation is resolved through Business Flow Binding."
+    ],
+    "platform_types": [
+      "marketplace_fulfilment",
+      "logistics",
+      "banking"
+    ],
+    "scope_level": "platform_type"
+  },
+  "business_objects": [
+    "shipment",
+    "pos_settlement",
+    "settlement_batch",
+    "bank_reference"
+  ],
+  "canonical_id": "business_process.prepaid_pos_logistics_settlement",
+  "card_type": "business_process",
+  "common_failure_modes": [
+    "pos_settlement_missing",
+    "batch_reference_missing",
+    "bank_reference_missing"
+  ],
+  "common_metrics": [
+    "metric.pos_settled_amount",
+    "metric.batch_settlement_amount",
+    "metric.bank_reference_amount"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Reusable lifecycle for prepaid/POS logistics or marketplace-fulfilment settlement rows, especially Ekart POS rows.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "domain_id": "domain.logistics_reconciliation",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3396
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3396
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 3396
+    }
+  ],
+  "expected_end_state": "pos_settlement_reference_recorded",
+  "expected_start_state": "prepaid_or_pos_shipment",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Prepaid or POS Logistics Settlement",
+  "operational_test": "A downstream system should be able to decide whether an object moved from prepaid_or_pos_shipment to pos_settlement_reference_recorded using evidence cards and relationships, not prose alone.",
+  "participating_platform_types": [
+    "marketplace_fulfilment",
+    "logistics",
+    "banking"
+  ],
+  "process_name": "Prepaid or POS Logistics Settlement",
+  "process_type": "reconciliation_and_cash_flow",
+  "process_variants": [
+    "process_variant.platform_fulfilled_ekart"
+  ],
+  "reconciliation_profiles": [
+    "reconciliation_profile.prepaid_pos_settlement"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "business_process.prepaid_pos_logistics_settlement",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3396,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "state_transitions": [
+    "state_transition.prepaid_or_pos_shipment_to_pos_settlement_created",
+    "state_transition.pos_settlement_created_to_pos_batch_created",
+    "state_transition.pos_batch_created_to_pos_settlement_reference_recorded"
+  ],
+  "status": "active",
+  "typical_platform_roles": [
+    "order_source",
+    "operational_evidence",
+    "logistics_source",
+    "settlement_source",
+    "bank_destination_when_cross_domain"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges",
+  "workflow_steps": [
+    "workflow_step.prepaid_pos_shipment_identified",
+    "workflow_step.pos_settlement_created",
+    "workflow_step.pos_batch_created",
+    "workflow_step.pos_bank_reference_assigned"
+  ]
+}

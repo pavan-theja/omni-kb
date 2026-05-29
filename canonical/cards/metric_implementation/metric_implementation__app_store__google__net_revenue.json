@@ -1,0 +1,109 @@
+{
+  "allowed_dimensions": [
+    "date",
+    "currency",
+    "payment_mode",
+    "status",
+    "gateway",
+    "settlement_id",
+    "payout_id"
+  ],
+  "allowed_grains": [
+    "transaction",
+    "batch",
+    "day",
+    "month",
+    "currency",
+    "payment_mode"
+  ],
+  "applicability": {
+    "notes": [
+      "Runtime account filters come from Account Data Binding."
+    ],
+    "platform_types": [
+      "payment_gateway",
+      "bnpl_gateway",
+      "app_store_platform"
+    ],
+    "scope_level": "table_or_platform_type"
+  },
+  "base_tables": [
+    "table.zs_observe.google_play"
+  ],
+  "canonical_id": "metric_implementation.app_store.google.net_revenue",
+  "card_type": "metric_implementation",
+  "caveats": [
+    "Preserve source sign conventions and cast Text amount fields before arithmetic."
+  ],
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "dependent_metrics": [],
+  "description": "Google Play net revenue",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.razorpay",
+    "evidence.pg.stripe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50345
+    },
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 50345
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_description": "Google Play net revenue equals charged_amount minus gross_commission at the selected reporting grain.",
+  "formula_executable": true,
+  "formula_sql": "SUM(COALESCE(charged_amount, 0) - COALESCE(gross_commission, 0))",
+  "formula_template_id": null,
+  "implementation_caveats": [
+    "FX handling is not hardcoded; use currency_conversion_rate only when the runtime question asks for converted reporting currency."
+  ],
+  "implementation_name": "Google Play net revenue",
+  "implementation_scope": "app_store",
+  "manifest_checks": [
+    "evidence_anchor_present",
+    "metric_implementation_manifest_formula_repaired"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_id": "metric.app_store_net_revenue",
+  "name": "Google Play net revenue",
+  "platform_code": "app",
+  "precision": "2_decimal_places",
+  "recommended_date_columns": [
+    "transaction_date or settlement_date"
+  ],
+  "required_columns": [
+    "column.zs_observe.google_play.charged_amount",
+    "column.zs_observe.google_play.gross_commission",
+    "column.zs_observe.google_play.currency_conversion_rate"
+  ],
+  "review_status": "accepted",
+  "semantic_filters": [
+    "is_active = true when available"
+  ],
+  "source_card_id": "metric_implementation.app_store.google.net_revenue",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 50345,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "sql_pattern_ref": "sql.pg.app_store_commission",
+  "status": "active",
+  "unit": "currency_or_percentage_by_metric",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

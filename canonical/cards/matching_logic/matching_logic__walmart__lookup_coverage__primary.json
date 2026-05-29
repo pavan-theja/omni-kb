@@ -1,0 +1,42 @@
+{
+  "aggregation_rule": "aggregate by documented grain before status classification",
+  "canonical_id": "matching_logic.walmart.lookup_coverage.primary",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/walmart_marketplace.md.",
+  "document_id": "walmart_marketplace_clean_md_v3_gold_standard_formatted",
+  "evidence_ids": [
+    "ev.walmart.relationships.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.walmart.relationships.001",
+      "source_doc": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+      "source_line": 4992
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_keys": "sku_id = sku",
+  "matching_rule": "Validate product-name enrichment coverage and exclude sku-null content rows",
+  "name": "Walmart lookup enrichment coverage matching logic",
+  "notes": "Walmart lookup enrichment coverage matching logic",
+  "profile": "reconciliation_profile.walmart.lookup_coverage",
+  "review_status": "accepted",
+  "source_card_id": "matching_logic.walmart.lookup_coverage.primary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4992,
+  "source_path": "raw/cleaned_v2/marketplace/walmart_marketplace.md",
+  "source_status": "accepted",
+  "sql_ref": "sql.walmart.validation.lookup_sku_null_monitor",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

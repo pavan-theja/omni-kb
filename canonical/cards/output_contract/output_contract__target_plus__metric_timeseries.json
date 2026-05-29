@@ -1,0 +1,53 @@
+{
+  "canonical_id": "output_contract.target_plus.metric_timeseries",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "metric_output",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus metric time-series output",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.5_key_business_metrics_with_sql"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.5_key_business_metrics_with_sql",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11915
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "month or requested grain",
+  "name": "Target Plus metric time-series output",
+  "optional_columns": [
+    "comparison_period",
+    "caveat"
+  ],
+  "required_columns": [
+    "month",
+    "metric_value",
+    "brand_or_scope_optional",
+    "source_table",
+    "filters_applied"
+  ],
+  "review_status": "ready",
+  "sort_order": [
+    "month ASC"
+  ],
+  "source_card_id": "output_contract.target_plus.metric_timeseries",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11915,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

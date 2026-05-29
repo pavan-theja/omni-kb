@@ -1,0 +1,46 @@
+{
+  "canonical_id": "query_pattern.jiomart.marketplace.9_mandatory_query_filters",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 9. Mandatory Query Filters",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.9_mandatory_query_filters"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.9_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12832
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 9. Mandatory Query Filters",
+  "natural_language_patterns": [
+    "9. Mandatory Query Filters"
+  ],
+  "output_contract_id": "output_contract.jiomart.metric_summary",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.marketplace.9_mandatory_query_filters",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12832,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [],
+  "sql_ref": "sql.jiomart.marketplace.9_mandatory_query_filters",
+  "sql_template": "-- jiomart_oms, jiomart_returns, jiomart_settlement (group 26 — MYFITNESS)\nWHERE is_active = true\n  AND group_level_id = 26\n-- jiomart_oms — additional filter for clean rows\n  AND hsn IS NOT NULL   -- removes column-shifted older rows\n-- jiomart_shipment (group 221 — ARDEUR FASHIONS)\nWHERE is_active = true\n  AND group_level_id = 221\n  AND qty > 0   -- removes cancelled orders",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

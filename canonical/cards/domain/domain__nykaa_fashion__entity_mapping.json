@@ -1,0 +1,42 @@
+{
+  "canonical_id": "domain.nykaa_fashion.entity_mapping",
+  "canonical_name": "Nykaa Fashion Seller Entity Mapping",
+  "card_type": "domain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "domain card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 296
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_domain": true,
+  "marketplace_only": true,
+  "name": "Nykaa Fashion Seller Entity Mapping",
+  "platform_context_id": "platform_context.nykaa_fashion.in",
+  "review_status": "unreviewed",
+  "source_card_id": "domain.nykaa_fashion.entity_mapping",
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 296,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Mapping of source_gst_name aliases to canonical entity/GSTIN values via nykaa_mapping.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

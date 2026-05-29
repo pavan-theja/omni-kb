@@ -1,0 +1,97 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.snapdeal.full_settlement_financial_summary",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Snapdeal implementation — Full Settlement Financial Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.8_1_full_settlement_financial_summary",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.8_1_full_settlement_financial_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 15157
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 15157
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 15157
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use exactly the filters in formula_sql / linked sql_pattern, especially is_active=true, transaction_type/type scope, and group_level_id column scope where runtime supplies it.",
+  "formula_sql": "SELECT\n  type,\n  COUNT(*) AS records,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(commission) AS total_commission,\n  SUM(courier_fee) AS courier_fees,\n  SUM(closing_fee) AS closing_fees,\n  SUM(marketing_fee) AS marketing_fees,\n  SUM(payment_collection_fee) AS payment_fees,\n  SUM(discount) AS discounts,\n  SUM(cash_discount_adjustment) AS cashback_adj,\n  SUM(tax_igst_amount + tax_cgst_amount + tax_sgst_amount) AS gst_on_fees,\n  SUM(settled_amount) AS net_settled\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\nGROUP BY type\nORDER BY records DESC;",
+  "formula_text": "Executable SQL-like implementation normalized in V9; see formula_sql and sql_pattern_id.",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "snapdeal",
+  "metric_id": "metric.full_settlement_financial_summary",
+  "metric_pattern": "snapdeal_specific_implementation_of_full_settlement_financial_summary",
+  "name": "Snapdeal implementation — Full Settlement Financial Summary",
+  "platform_code": "snapdeal",
+  "platform_context_id": "platform_context.snapdeal.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.snapdeal.full_settlement_financial_summary",
+  "source_columns": [
+    "snapdeal_settlement",
+    "type",
+    "records",
+    "charged_amount",
+    "gross_gmv",
+    "commission",
+    "total_commission",
+    "courier_fee",
+    "courier_fees",
+    "closing_fee",
+    "closing_fees",
+    "marketing_fee",
+    "marketing_fees",
+    "payment_collection_fee",
+    "payment_fees",
+    "discount",
+    "discounts",
+    "cash_discount_adjustment",
+    "cashback_adj",
+    "tax_igst_amount",
+    "tax_cgst_amount",
+    "tax_sgst_amount",
+    "gst_on_fees",
+    "settled_amount",
+    "net_settled",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15157,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "source_table_ids": [
+    "table.zs_observe.snapdeal_settlement"
+  ],
+  "source_tables": [
+    "zs_observe.snapdeal_settlement"
+  ],
+  "sql_pattern": "SELECT\n  type,\n  COUNT(*) AS records,\n  SUM(charged_amount) AS gross_gmv,\n  SUM(commission) AS total_commission,\n  SUM(courier_fee) AS courier_fees,\n  SUM(closing_fee) AS closing_fees,\n  SUM(marketing_fee) AS marketing_fees,\n  SUM(payment_collection_fee) AS payment_fees,\n  SUM(discount) AS discounts,\n  SUM(cash_discount_adjustment) AS cashback_adj,\n  SUM(tax_igst_amount + tax_cgst_amount + tax_sgst_amount) AS gst_on_fees,\n  SUM(settled_amount) AS net_settled\nFROM zs_observe.snapdeal_settlement\nWHERE is_active = true\nGROUP BY type\nORDER BY records DESC;",
+  "sql_pattern_id": "sql.snapdeal.8_1_full_settlement_financial_summary",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

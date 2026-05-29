@@ -1,0 +1,44 @@
+{
+  "account_data_binding_ids": [],
+  "active": true,
+  "canonical_id": "business_scope_set.rosenza_international_trading_llc.shopify_d2c",
+  "card_type": "business_scope_set",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Shopify OMS scope for Rosenza D2C store.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.rosenza_international_trading_llc.mensa_brands",
+  "name": "Shopify D2C",
+  "notes": [],
+  "package_id": "client_runtime_binding_pack.rosenza_international_trading_llc.v0_1",
+  "platform_account_ids": [
+    "platform_account.rosenza_international_trading_llc.shopify_d2c.primary"
+  ],
+  "review_status": "unreviewed",
+  "scope_name": "Rosenza Shopify D2C",
+  "scope_type": "d2c_oms_scope",
+  "source_confidence": null,
+  "source_documents": [
+    "Rosenza International Trading L.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/rosenza_international_trading_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.rosenza_international_trading_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

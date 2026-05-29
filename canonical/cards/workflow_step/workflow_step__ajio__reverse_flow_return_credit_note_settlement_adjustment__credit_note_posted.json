@@ -1,0 +1,60 @@
+{
+  "canonical_id": "workflow_step.ajio.reverse_flow_return_credit_note_settlement_adjustment.credit_note_posted",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_columns": [
+    "column.zs_observe.ajio_credit_note.invoice_number",
+    "column.zs_observe.ajio_credit_note.purchase_po_no",
+    "column.zs_observe.ajio_credit_note.order_status",
+    "column.zs_observe.ajio_credit_note.payment_status"
+  ],
+  "evidence_ids": [
+    "evidence.ajio.010_4_transaction_lifecycle",
+    "evidence.ajio.098_key_column_reference"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.010_4_transaction_lifecycle",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5464
+    },
+    {
+      "evidence_id": "evidence.ajio.098_key_column_reference",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 5464
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Credit note posted against original PO",
+  "process_id": "business_process.ajio.reverse_flow_return_credit_note_settlement_adjustment",
+  "review_status": "ready",
+  "source_card_id": "workflow_step.ajio.reverse_flow_return_credit_note_settlement_adjustment.credit_note_posted",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.010_4_transaction_lifecycle",
+    "evidence.ajio.098_key_column_reference"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5464,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "source_table_ids": [
+    "table.zs_observe.ajio_credit_note"
+  ],
+  "status": "draft",
+  "step_description": "ajio_credit_note records AFAJIO invoice_number, original purchase_po_no, order_status Y, and payment_status POSTING_COMPLETED.",
+  "step_key": "credit_note_posted",
+  "step_order": 3,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

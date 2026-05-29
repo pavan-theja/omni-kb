@@ -1,0 +1,23 @@
+{
+  "card_types": {
+    "account_data_binding": 1,
+    "platform_account": 1
+  },
+  "counts": {
+    "cards": 2,
+    "edges": 6,
+    "semantic_mappings": 1
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 1,
+    "HAS_ACCOUNT_DATA_BINDING": 1,
+    "HAS_PLATFORM_ACCOUNT": 1,
+    "INCLUDES_PLATFORM_ACCOUNT": 1,
+    "PARTICIPATES_WITH_ACCOUNT": 1,
+    "USES_ACCOUNT_DATA_BINDING": 1
+  },
+  "scope": [
+    "logistics",
+    "astrotalk_oda"
+  ]
+}

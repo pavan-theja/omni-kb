@@ -1,0 +1,41 @@
+{
+  "card_types": {
+    "business_process": 6,
+    "column": 118,
+    "domain": 6,
+    "metric": 18,
+    "metric_implementation": 18,
+    "output_contract": 2,
+    "platform": 1,
+    "platform_context": 1,
+    "query_pattern": 5,
+    "reconciliation_profile": 3,
+    "relationship": 1,
+    "review_item": 2,
+    "rule": 10,
+    "state_transition": 4,
+    "table": 2,
+    "validation_test": 7,
+    "value_profile": 7,
+    "workflow_step": 20
+  },
+  "counts": {
+    "cards": 231,
+    "documents": 1,
+    "edges": 163,
+    "evidence": 15,
+    "sql_patterns": 23
+  },
+  "edge_types": {
+    "ANSWERS_METRIC": 5,
+    "FROM_TABLE": 1,
+    "HAS_COLUMN": 118,
+    "HAS_WORKFLOW_STEP": 20,
+    "IMPLEMENTS_METRIC": 18,
+    "TO_TABLE": 1
+  },
+  "scope": [
+    "oms",
+    "unicommerce_d2c_oms"
+  ]
+}

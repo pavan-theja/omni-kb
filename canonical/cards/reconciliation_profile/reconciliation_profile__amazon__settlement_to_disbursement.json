@@ -1,0 +1,45 @@
+{
+  "actual_side": "reconciliation_side.amazon.settlement_to_disbursement.actual",
+  "candidate_notes": "Reconciles settlement order-level total with line-level disbursement charged_amount sums.",
+  "canonical_id": "reconciliation_profile.amazon.settlement_to_disbursement",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Reconciles settlement order-level total with line-level disbursement charged_amount sums.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.settlement_disbursement.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.settlement_disbursement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6822
+    }
+  ],
+  "expected_side": "reconciliation_side.amazon.settlement_to_disbursement.expected",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "matching_logic": "matching_logic.amazon.settlement_to_disbursement.primary",
+  "name": "Amazon Settlement to Disbursement Reconciliation",
+  "profile_key": "settlement_to_disbursement",
+  "reconciliation_scope": "marketplace_internal_only",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_profile.amazon.settlement_to_disbursement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6822,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit": "reconciliation_unit.amazon.settlement_to_disbursement.order_settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,98 @@
+{
+  "business_usage": "Classification for metrics, query routing, and reconciliation side selection.",
+  "canonical_id": "value_profile.pg.reporting_category",
+  "card_type": "value_profile",
+  "column_id": null,
+  "column_name": "reporting_category",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Stripe-like reporting category",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.pg.cashfree",
+    "evidence.pg.razorpay",
+    "evidence.pg.stripe"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.cashfree",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48698
+    },
+    {
+      "evidence_id": "evidence.pg.razorpay",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48698
+    },
+    {
+      "evidence_id": "evidence.pg.stripe",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 48698
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Stripe-like reporting category",
+  "null_handling": "Do not infer a value when null; preserve source nulls.",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.pg.reporting_category",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 48698,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "table_id": "multiple",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_type": "enum_or_source_enum",
+  "values": [
+    {
+      "business_meaning": "Successful payment/balance credit",
+      "category": "sale",
+      "metric_usage": "Gross charges",
+      "value": "charge"
+    },
+    {
+      "business_meaning": "Refund/balance debit",
+      "category": "refund",
+      "metric_usage": "Refund amount",
+      "value": "refund"
+    },
+    {
+      "business_meaning": "Bank payout event",
+      "category": "payout",
+      "metric_usage": "Bank settlement batch",
+      "value": "payout"
+    },
+    {
+      "business_meaning": "Gateway fee row",
+      "category": "fee",
+      "metric_usage": "Processing fee",
+      "value": "stripe_fee"
+    },
+    {
+      "business_meaning": "Chargeback/dispute row",
+      "category": "dispute",
+      "metric_usage": "Chargeback tracking",
+      "value": "dispute"
+    },
+    {
+      "business_meaning": "Manual/platform adjustment",
+      "category": "adjustment",
+      "metric_usage": "Adjustments",
+      "value": "adjustment"
+    }
+  ]
+}

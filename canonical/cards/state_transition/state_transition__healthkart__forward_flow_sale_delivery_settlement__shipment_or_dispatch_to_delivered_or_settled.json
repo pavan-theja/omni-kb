@@ -1,0 +1,49 @@
+{
+  "canonical_id": "state_transition.healthkart.forward_flow_sale_delivery_settlement.shipment_or_dispatch_to_delivered_or_settled",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/healthkart_marketplace.md.",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_columns": [
+    "healthkart_settlement.order_status",
+    "healthkart_settlement.transaction_type",
+    "healthkart_settlement.delivery_date"
+  ],
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 6586
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "shipment_dispatched",
+  "name": "shipment_dispatched → delivered_in_settlement",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.healthkart.forward_flow_sale_delivery_settlement.shipment_or_dispatch_to_delivered_or_settled",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6586,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "state_column": "healthkart_settlement.order_status",
+  "status": "draft",
+  "to_state": "delivered_in_settlement",
+  "trigger": "settlement row records order_status='Delivered' and transaction_type='forward'",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

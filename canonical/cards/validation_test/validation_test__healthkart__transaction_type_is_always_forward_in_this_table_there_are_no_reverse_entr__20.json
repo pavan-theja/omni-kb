@@ -1,0 +1,44 @@
+{
+  "assertion": "`transaction_type` is always `forward` in this table — there are no reverse entries here",
+  "canonical_id": "validation_test.healthkart.transaction_type_is_always_forward_in_this_table_there_are_no_reverse_entr.20",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "`transaction_type` is always `forward` in this table — there are no reverse entries here",
+  "document_id": "healthkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.healthkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.healthkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+      "source_line": 8148
+    }
+  ],
+  "expected_result": "Parser output preserves or enforces this rule.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Potential incorrect card creation, missing evidence capture, or query misuse.",
+  "name": "Validate: `transaction_type` is always `forward` in this table — there are no reverse entr",
+  "review_status": "ready",
+  "source_card_id": "validation_test.healthkart.transaction_type_is_always_forward_in_this_table_there_are_no_reverse_entr.20",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/HealthKart Recon Doc.docx",
+    "/mnt/data/healthkart_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.healthkart.overview"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8148,
+  "source_path": "raw/cleaned_v2/marketplace/healthkart_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "test_type": "semantic_guard",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

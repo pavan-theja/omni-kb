@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "assertion": "No process_variant cards are created from fulfilment/order/geography labels; return is modeled as its own business_process.",
+  "canonical_id": "validation_test.tatacliq.no_process_variants_from_segments",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "No process_variant cards are created from fulfilment/order/geography labels; return is modeled as its own business_process.",
+  "display_name": "TataCliq validation — process variant guardrail",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.join.coverage",
+    "ev.tatacliq.filters.mandatory"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.join.coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8602
+    },
+    {
+      "evidence_id": "ev.tatacliq.filters.mandatory",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8602
+    }
+  ],
+  "expected_result": "process_variants_review_required = 0",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_meaning": "Segment labels incorrectly modeled as process variants.",
+  "name": "TataCliq validation — process variant guardrail",
+  "review_status": "ready",
+  "source_card_id": "validation_test.tatacliq.no_process_variants_from_segments",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8602,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "test_type": "process_variant_guardrail",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

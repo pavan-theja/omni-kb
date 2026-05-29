@@ -1,0 +1,102 @@
+{
+  "business_purpose": "Actual bank credit evidence for courier remittance reconciliation",
+  "canonical_id": "table.zs_observe.bank_statement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.bank_statement.bank_account_id",
+    "column.zs_observe.bank_statement.bank_reference_no",
+    "column.zs_observe.bank_statement.credit_amount",
+    "column.zs_observe.bank_statement.transaction_date",
+    "column.zs_observe.bank_statement.utr_no"
+  ],
+  "confidence": "curated",
+  "coverage_status": "external_to_logistics_kb",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Generic bank statement evidence table placeholder for logistics-to-bank bridge patterns; actual banking KB owns detailed semantics.",
+  "document_id": "logistics_reconciliation_patterns_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 706
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 706
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+      "source_line": 706
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.bank_statement",
+  "grain": "one bank transaction row",
+  "grain_keys": [
+    "bank_transaction_id",
+    "utr_no",
+    "bank_reference_no"
+  ],
+  "metric_implementation_ids": [
+    "metric_implementation.bank_statement.axis_bank_settlement.bank_credit_amount",
+    "metric_implementation.bank_statement.axis_bank_settlement.bank_debit_amount",
+    "metric_implementation.bank_statement.citi_bank.bank_credit_amount",
+    "metric_implementation.bank_statement.citi_bank.bank_debit_amount",
+    "metric_implementation.bank_statement.hdfc_bank_settlement.bank_credit_amount",
+    "metric_implementation.bank_statement.hdfc_bank_settlement.bank_debit_amount",
+    "metric_implementation.bank_statement.hsbc_bank.bank_credit_amount",
+    "metric_implementation.bank_statement.hsbc_bank.bank_debit_amount",
+    "metric_implementation.bank_statement.hsbc_bank.latest_balance",
+    "metric_implementation.bank_statement.icici_bank.bank_credit_amount",
+    "metric_implementation.bank_statement.icici_bank.bank_debit_amount",
+    "metric_implementation.bank_statement.icici_bank.latest_balance",
+    "metric_implementation.bank_statement.icici_bank_global.bank_credit_amount",
+    "metric_implementation.bank_statement.icici_bank_global.bank_debit_amount",
+    "metric_implementation.bank_statement.icici_bank_global.latest_balance",
+    "metric_implementation.bank_statement.idfc_bank.bank_credit_amount",
+    "metric_implementation.bank_statement.idfc_bank.bank_debit_amount",
+    "metric_implementation.bank_statement.idfc_bank.latest_balance",
+    "metric_implementation.bank_statement.idfc_bank_inr.bank_credit_amount",
+    "metric_implementation.bank_statement.idfc_bank_inr.bank_debit_amount",
+    "metric_implementation.bank_statement.nbf_bank.bank_credit_amount",
+    "metric_implementation.bank_statement.nbf_bank.bank_debit_amount",
+    "metric_implementation.bank_statement.nbf_bank.latest_balance",
+    "metric_implementation.bank_statement.yesbank_oms_payout.bank_credit_amount",
+    "metric_implementation.bank_statement.yesbank_oms_payout.bank_debit_amount"
+  ],
+  "name": "Bank Statement Placeholder",
+  "review_status": "unreviewed",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.bank_statement",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 706,
+  "source_path": "raw/cleaned_v2/logistics/logistics_reconciliation_patterns.md",
+  "source_platform_types": [
+    "banking"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "table_name": "bank_statement",
+  "table_type": "bank_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "5.0-manifest-aligned"
+}

@@ -1,0 +1,19 @@
+{
+  "card_types": {
+    "platform_account": 1
+  },
+  "counts": {
+    "cards": 1,
+    "edges": 3,
+    "semantic_mappings": 1
+  },
+  "edge_types": {
+    "HAS_PLATFORM_ACCOUNT": 1,
+    "INCLUDES_PLATFORM_ACCOUNT": 1,
+    "PARTICIPATES_WITH_ACCOUNT": 1
+  },
+  "scope": [
+    "logistics",
+    "kwikship"
+  ]
+}

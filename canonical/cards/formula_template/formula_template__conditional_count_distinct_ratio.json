@@ -1,0 +1,48 @@
+{
+  "canonical_id": "formula_template.conditional_count_distinct_ratio",
+  "canonical_name": "conditional_count_distinct_ratio",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "dialect": "Trino/Athena v3",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.fees",
+    "evidence.myntra.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9624
+    },
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9624
+    }
+  ],
+  "expression_family": "conditional_count_distinct_ratio",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "conditional_count_distinct_ratio",
+  "review_status": "unreviewed",
+  "source_card_id": "formula_template.conditional_count_distinct_ratio",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9624,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "Conditional distinct-count numerator divided by guarded denominator.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,46 @@
+{
+  "canonical_id": "workflow_step.limeroad.cancel.item_cancel_settlement",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/limeroad_marketplace.md.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "ev.limeroad.lifecycle.rto_cancel.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.lifecycle.rto_cancel.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 5615
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "ITEM_CANCEL settlement reversal",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.limeroad.cancel.item_cancel_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5615,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_specific_fields": [
+    "limeroad_settlement.entry_type",
+    "'ITEM_CANCEL'",
+    "'ORDER_CANCELLED'"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "limeroad_settlement.entry_type='ITEM_CANCEL' and order_status='ORDER_CANCELLED' records negative settlement reversal.",
+  "step_order": 1,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

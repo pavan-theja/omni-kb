@@ -1,0 +1,63 @@
+{
+  "business_definition": "Total forward sales value including tax.",
+  "candidate_notes": "Total forward sales value including tax.",
+  "canonical_id": "metric.marketplace.gross_revenue",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Gross revenue",
+    "GMV",
+    "gross sales",
+    "topline",
+    "sales"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order",
+  "description": "Total forward sales value including tax.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain": "domain.marketplace.amazon.orders; domain.marketplace.amazon.settlement; domain.marketplace.amazon.fees; domain.marketplace.amazon.returns",
+  "evidence_ids": [
+    "ev.amazon.kpi.revenue.001",
+    "ev.walmart.metrics.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.kpi.revenue.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4765
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.amazon.amazon_oms.gross_revenue"
+  ],
+  "marketplace_only": true,
+  "metric_key": "gross_revenue",
+  "metric_pattern": "sum_amount_filtered_positive_sale",
+  "name": "Gross revenue",
+  "notes": "Total forward sales value including tax from Walmart settlement or delivered OMS rows.",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by Amazon-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.gross_revenue",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx",
+    "/mnt/data/Walmart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4765,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_paths": [
+    "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+    "raw/cleaned_v2/marketplace/walmart_marketplace.md"
+  ],
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,215 @@
+{
+  "amount_columns": [
+    "charged_amount",
+    "amount",
+    "amount_1",
+    "gross_commission",
+    "total_tax",
+    "settled_amount",
+    "refund_type",
+    "tax_type",
+    "fee_description",
+    "service_fee__"
+  ],
+  "avoid_columns": [
+    "total_tax",
+    "refund_type",
+    "tax_type",
+    "fee_description",
+    "service_fee__"
+  ],
+  "business_purpose": "Google Play Store revenue settlement data. Records app purchases, subscriptions, and in-app purchases settled by Google.",
+  "canonical_id": "table.zs_observe.google_play",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.google_play.amount",
+    "column.zs_observe.google_play.amount_1",
+    "column.zs_observe.google_play.base_plan_id",
+    "column.zs_observe.google_play.buyer_country",
+    "column.zs_observe.google_play.buyer_currency",
+    "column.zs_observe.google_play.buyer_postal_code",
+    "column.zs_observe.google_play.buyer_state",
+    "column.zs_observe.google_play.charged_amount",
+    "column.zs_observe.google_play.conversion_rate",
+    "column.zs_observe.google_play.created_date",
+    "column.zs_observe.google_play.currency",
+    "column.zs_observe.google_play.currency_conversion_rate",
+    "column.zs_observe.google_play.description",
+    "column.zs_observe.google_play.destination_country",
+    "column.zs_observe.google_play.destination_state",
+    "column.zs_observe.google_play.destination_zipcode",
+    "column.zs_observe.google_play.fee_description",
+    "column.zs_observe.google_play.first_usd_1m_eligible",
+    "column.zs_observe.google_play.gross_commission",
+    "column.zs_observe.google_play.group_id",
+    "column.zs_observe.google_play.hardware",
+    "column.zs_observe.google_play.merchant_currency",
+    "column.zs_observe.google_play.mp_sin",
+    "column.zs_observe.google_play.offer_id",
+    "column.zs_observe.google_play.order_id",
+    "column.zs_observe.google_play.product_id",
+    "column.zs_observe.google_play.product_title",
+    "column.zs_observe.google_play.product_type",
+    "column.zs_observe.google_play.promotion_id",
+    "column.zs_observe.google_play.refund_type",
+    "column.zs_observe.google_play.service_fee__",
+    "column.zs_observe.google_play.settled_amount",
+    "column.zs_observe.google_play.sku_id",
+    "column.zs_observe.google_play.tax_type",
+    "column.zs_observe.google_play.total_tax",
+    "column.zs_observe.google_play.transaction_date",
+    "column.zs_observe.google_play.transaction_time",
+    "column.zs_observe.google_play.transaction_type",
+    "column.zs_observe.google_play.txn_type"
+  ],
+  "columns": [
+    "column.zs_observe.google_play.order_id",
+    "column.zs_observe.google_play.product_id",
+    "column.zs_observe.google_play.product_title",
+    "column.zs_observe.google_play.product_type",
+    "column.zs_observe.google_play.sku_id",
+    "column.zs_observe.google_play.mp_sin",
+    "column.zs_observe.google_play.base_plan_id",
+    "column.zs_observe.google_play.offer_id",
+    "column.zs_observe.google_play.promotion_id",
+    "column.zs_observe.google_play.hardware",
+    "column.zs_observe.google_play.created_date",
+    "column.zs_observe.google_play.transaction_date",
+    "column.zs_observe.google_play.transaction_time",
+    "column.zs_observe.google_play.transaction_type",
+    "column.zs_observe.google_play.txn_type",
+    "column.zs_observe.google_play.charged_amount",
+    "column.zs_observe.google_play.amount",
+    "column.zs_observe.google_play.amount_1",
+    "column.zs_observe.google_play.gross_commission",
+    "column.zs_observe.google_play.total_tax",
+    "column.zs_observe.google_play.settled_amount",
+    "column.zs_observe.google_play.currency",
+    "column.zs_observe.google_play.buyer_currency",
+    "column.zs_observe.google_play.merchant_currency",
+    "column.zs_observe.google_play.currency_conversion_rate",
+    "column.zs_observe.google_play.conversion_rate",
+    "column.zs_observe.google_play.buyer_country",
+    "column.zs_observe.google_play.buyer_state",
+    "column.zs_observe.google_play.buyer_postal_code",
+    "column.zs_observe.google_play.destination_country",
+    "column.zs_observe.google_play.destination_state",
+    "column.zs_observe.google_play.destination_zipcode",
+    "column.zs_observe.google_play.refund_type",
+    "column.zs_observe.google_play.tax_type",
+    "column.zs_observe.google_play.fee_description",
+    "column.zs_observe.google_play.description",
+    "column.zs_observe.google_play.offer_id",
+    "column.zs_observe.google_play.service_fee__",
+    "column.zs_observe.google_play.first_usd_1m_eligible",
+    "column.zs_observe.google_play.group_id"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "created_date",
+    "transaction_date",
+    "transaction_time"
+  ],
+  "description": "Google Play Store revenue settlement data. Records app purchases, subscriptions, and in-app purchases settled by Google.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.google_play"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.google_play",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 6550
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.google_play",
+  "grain": "one row per app-store financial transaction/settlement line",
+  "grain_keys": [
+    "order_id",
+    "product_id",
+    "sku_id",
+    "base_plan_id",
+    "offer_id",
+    "promotion_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "metric_implementation_ids": [
+    "metric_implementation.app_store.google.net_revenue"
+  ],
+  "name": "zs_observe.google_play",
+  "recommended_date_columns": [
+    "created_date",
+    "transaction_date"
+  ],
+  "reconciliation_key_columns": [],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.google_play",
+  "source_caveats": [
+    "Google takes 15-30% commission — `gross_commission` is Google's take.",
+    "Net to developer = `charged_amount` - `gross_commission`.",
+    "`currency_conversion_rate` applies when buyer and merchant currencies differ.",
+    "`base_plan_id` is for subscription base plans (new Google Play subscription model).",
+    "`first_usd_1m_eligible` relates to Google's reduced 15% commission for first USD 1M revenue.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6550,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.google_play"
+  ],
+  "source_platform_types": [
+    "app_store_platform"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "product_type",
+    "transaction_type",
+    "txn_type",
+    "currency",
+    "buyer_currency",
+    "merchant_currency",
+    "currency_conversion_rate",
+    "refund_type",
+    "tax_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.google_play.global"
+    ],
+    "platform_ids": [
+      "platform.google_play"
+    ]
+  },
+  "table_name": "google_play",
+  "table_type": "ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

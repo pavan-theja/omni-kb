@@ -1,0 +1,42 @@
+{
+  "business_meaning": "Payout grouping cannot be produced for rows without payout_id.",
+  "canonical_id": "mismatch_category.target_plus.payout_batch.empty_batch",
+  "card_type": "mismatch_category",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Payout grouping cannot be produced for rows without payout_id.",
+  "detection_logic": "payout_id IS NULL or no rows after active filter",
+  "display_name": "Empty or missing payout batch",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.settlement.payout_batch_structure_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.settlement.payout_batch_structure_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10611
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "mismatch_type": "missing_key",
+  "name": "Empty or missing payout batch",
+  "profile_id": "reconciliation_profile.target_plus.payout_batch",
+  "review_priority": "medium",
+  "review_status": "ready",
+  "source_card_id": "mismatch_category.target_plus.payout_batch.empty_batch",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10611,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

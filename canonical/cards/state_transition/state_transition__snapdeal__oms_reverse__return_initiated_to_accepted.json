@@ -1,0 +1,49 @@
+{
+  "canonical_id": "state_transition.snapdeal.oms_reverse.return_initiated_to_accepted",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "Return Initiated → Return Accepted",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.snapdeal.lifecycle_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.lifecycle_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17249
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 17249
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "Return Initiated",
+  "marketplace_only": true,
+  "name": "Return Initiated → Return Accepted",
+  "process_id": "business_process.snapdeal.reverse_return_flow",
+  "review_status": "ready",
+  "source_card_id": "state_transition.snapdeal.oms_reverse.return_initiated_to_accepted",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17249,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "state_column_id": "column.zs_observe.snapdeal_oms.current_order_state",
+  "status": "draft",
+  "to_state": "Return Accepted",
+  "trigger": "Buyer return request moves to courier pickup / accepted return state.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

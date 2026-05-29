@@ -1,0 +1,38 @@
+{
+  "canonical_id": "business_process.meesho.marketplace_internal_reconciliation",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Reconciliation process composed from the DOCX Reconciliation Use Cases section; external bank/logistics/PG/ERP cards are not created here.",
+  "display_name": "Meesho marketplace-internal reconciliation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 13973
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Meesho marketplace-internal reconciliation",
+  "process_family": "marketplace_internal_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "business_process.meesho.marketplace_internal_reconciliation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13973,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,120 @@
+{
+  "amount_columns": [
+    "credit",
+    "debit",
+    "balance"
+  ],
+  "authoritative_decimal_amount_columns": null,
+  "avoid_text_amount_columns": [
+    "credit",
+    "debit",
+    "balance"
+  ],
+  "bank": "IDFC First Bank",
+  "banking_only": true,
+  "business_purpose": "A lean, simplified version of IDFC Bank statement data in Credit/Debit column format (similar to a traditional bank passbook). Unlike `idfc_bank` (which uses a single signed amount), this table separates inflows and outflows into `credit` and `debit` columns. Likely sourced from a different report format or account type.",
+  "candidate_notes": "Generic bank statement table card; account-level filtering comes from AccountDataBinding in tenant-specific docs, not this markdown.",
+  "canonical_id": "table.zs_ingest.idfc_bank_inr",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_ingest.idfc_bank_inr.balance",
+    "column.zs_ingest.idfc_bank_inr.credit",
+    "column.zs_ingest.idfc_bank_inr.debit",
+    "column.zs_ingest.idfc_bank_inr.ref_cheque_no",
+    "column.zs_ingest.idfc_bank_inr.trans_date_and_time",
+    "column.zs_ingest.idfc_bank_inr.transaction_details",
+    "column.zs_ingest.idfc_bank_inr.unique_id",
+    "column.zs_ingest.idfc_bank_inr.value_date",
+    "column.zs_ingest.idfc_bank_inr.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active_schema_reference_partial_columns",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "INR",
+  "declared_column_count": "14",
+  "description": "table card from raw/cleaned_v2/bank/bank_statement.md.",
+  "direction_columns": [
+    "credit",
+    "debit"
+  ],
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "documented_business_column_count": 9,
+  "domain": "domain.banking.bank_statement.core",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.bank_statement.idfc_bank_inr.purpose.001",
+    "ev.bank_statement.idfc_bank_inr.columns.001",
+    "ev.bank_statement.idfc_bank_inr.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.idfc_bank_inr.purpose.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2534
+    },
+    {
+      "evidence_id": "ev.bank_statement.idfc_bank_inr.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2534
+    },
+    {
+      "evidence_id": "ev.bank_statement.idfc_bank_inr.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2534
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_ingest.idfc_bank_inr",
+  "geography": "India",
+  "grain": "raw bank statement transaction row; source-specific grain and reference fields",
+  "key_reconciliation_columns": [
+    "`ref_cheque_no` — contains UTR numbers for NEFT/RTGS; primary reconciliation key",
+    "`transaction_details` — full narration; parse to extract UTR, counterparty names, and payment types",
+    "`credit` / `debit` — **both stored as Text** — cast to Decimal for arithmetic"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "name": "zs_ingest.idfc_bank_inr",
+  "platform_context": "platform_context.idfc_first_bank.in",
+  "quality_notes": [
+    "All monetary columns (`credit`, `debit`, `balance`) are stored as **Text**. Before any calculation:",
+    "This is a simpler, passbook-style format — only 14 columns vs 35 in `idfc_bank`",
+    "`unique_id` is stored as Text (not Integer) — cannot be used for numeric ordering",
+    "When joining with `idfc_bank`, use `ref_cheque_no` ↔ `transaction_id` or UTR embedded in `transaction_details`"
+  ],
+  "recommended_date_columns": [
+    "trans_date_and_time",
+    "value_date"
+  ],
+  "reference_columns": [
+    "ref_cheque_no",
+    "transaction_details"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_ingest",
+  "scope_columns_as_columns_only": [],
+  "source_card_id": "table.zs_ingest.idfc_bank_inr",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2534,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_platform_ids": [
+    "platform.idfc_first_bank"
+  ],
+  "source_status": "accepted",
+  "statement_type": "INR Statement (Credit/Debit format)",
+  "status": "active",
+  "table_name": "idfc_bank_inr",
+  "table_type": "raw_bank_statement_feed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

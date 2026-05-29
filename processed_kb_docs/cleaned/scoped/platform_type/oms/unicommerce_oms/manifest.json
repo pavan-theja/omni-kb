@@ -1,0 +1,25 @@
+{
+  "card_types": {
+    "account_data_binding": 8,
+    "platform_account": 4
+  },
+  "counts": {
+    "cards": 12,
+    "edges": 44,
+    "semantic_mappings": 4
+  },
+  "edge_types": {
+    "BINDS_TO_TABLE": 8,
+    "HAS_ACCOUNT_DATA_BINDING": 8,
+    "HAS_PLATFORM_ACCOUNT": 4,
+    "INCLUDES_PLATFORM_ACCOUNT": 4,
+    "PARTICIPATES_WITH_ACCOUNT": 4,
+    "USES_ACCOUNT_DATA_BINDING": 8,
+    "USES_PLATFORM": 4,
+    "USES_PLATFORM_CONTEXT": 4
+  },
+  "scope": [
+    "oms",
+    "unicommerce_oms"
+  ]
+}

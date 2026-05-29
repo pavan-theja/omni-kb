@@ -1,0 +1,46 @@
+{
+  "aggregation_required": true,
+  "banking_only": true,
+  "canonical_id": "reconciliation_unit.axis_bank_credit_to_gateway_settlement.reference_amount_date_currency",
+  "card_type": "reconciliation_unit",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_unit card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 13246
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "reference + amount + currency + date window",
+  "join_keys": [
+    "bank reference / UTR / customer reference / settlement_id as available"
+  ],
+  "name": "Axis bank settlement credit to gateway settlement reference amount date currency unit",
+  "normalization": "trim, upper, remove whitespace and source-specific punctuation for references; never strip meaningful prefixes unless source rule says so",
+  "profile": "reconciliation_profile.axis_bank_credit_to_gateway_settlement",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_unit.axis_bank_credit_to_gateway_settlement.reference_amount_date_currency",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13246,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unit_key": "reference_amount_date_currency",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

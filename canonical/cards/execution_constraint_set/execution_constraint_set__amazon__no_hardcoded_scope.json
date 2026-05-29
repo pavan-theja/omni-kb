@@ -1,0 +1,42 @@
+{
+  "candidate_notes": "Canonical cards may document group_level_id values; runtime or separate scope layer supplies the selected scope.",
+  "canonical_id": "execution_constraint_set.amazon.no_hardcoded_scope",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_key": "no_hardcoded_scope",
+  "constraint_scope": "marketplace_semantic_execution",
+  "constraint_text": "Do not hardcode group_level_id as runtime scope in generated SQL unless supplied by user/context; documented group_level_id values may appear as canonical scope specs or benchmark qualifiers.",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "execution_constraint_set card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.tenant_scope_mention.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.tenant_scope_mention.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 8320
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "No hardcoded account-scope execution constraint",
+  "review_status": "accepted",
+  "source_card_id": "execution_constraint_set.amazon.no_hardcoded_scope",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8320,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

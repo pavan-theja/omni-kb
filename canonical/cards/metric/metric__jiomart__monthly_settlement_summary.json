@@ -1,0 +1,47 @@
+{
+  "business_definition": "Monthly settlement rows and settled_amount by transaction_type/accountable_type.",
+  "canonical_id": "metric.jiomart.monthly_settlement_summary",
+  "card_type": "metric",
+  "colloquial_names": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "INR",
+  "description": "Monthly settlement rows and settled_amount by transaction_type/accountable_type.",
+  "display_name": "Monthly Settlement Summary",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.jiomart.settlement",
+  "evidence_ids": [
+    "ev.jiomart.settlement.8_2_monthly_settlement_summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.8_2_monthly_settlement_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10531
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.jiomart.monthly_settlement_summary"
+  ],
+  "metric_family": "settlement",
+  "name": "Monthly Settlement Summary",
+  "review_status": "ready",
+  "source_card_id": "metric.jiomart.monthly_settlement_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10531,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

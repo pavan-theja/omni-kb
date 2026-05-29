@@ -1,0 +1,57 @@
+{
+  "applies_to": [
+    "card_type.query_pattern",
+    "card_type.metric_implementation",
+    "card_type.reconciliation_profile"
+  ],
+  "auto_fix_hint": "Add is_active = true to relevant CTEs.",
+  "canonical_id": "rule.pg.active_filter",
+  "card_type": "rule",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Apply is_active = true on payment gateway source tables when present.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 53729
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_mode": "Inactive rows may distort financial reporting.",
+  "forbidden_pattern": null,
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "Active filter",
+  "required_pattern": "query contains active filter for every table with is_active",
+  "review_status": "accepted",
+  "rule_name": "Active filter",
+  "rule_statement": "Apply is_active = true on payment gateway source tables when present.",
+  "rule_type": "status_filter",
+  "severity": "high",
+  "source_card_id": "rule.pg.active_filter",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 53729,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "validator_type": "semantic_check"
+}

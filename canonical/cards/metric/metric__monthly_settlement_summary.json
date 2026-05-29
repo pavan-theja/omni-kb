@@ -1,0 +1,63 @@
+{
+  "business_definition": "Monthly/settlement-date summary of settlement charged_amount, settled_amount, commission, and invoice counts for forward/reverse rows.",
+  "canonical_id": "metric.monthly_settlement_summary",
+  "card_type": "metric",
+  "colloquial_names": [
+    "monthly settlement trend",
+    "payout summary by month"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "Monthly/settlement-date summary of settlement charged_amount, settled_amount, commission, and invoice counts for forward/reverse rows.",
+  "display_name": "Monthly Settlement Summary",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.snapdeal.settlement",
+  "evidence_ids": [
+    "evidence.snapdeal.9_8_monthly_settlement_summary",
+    "evidence.snapdeal.metrics_benchmarks_v9",
+    "evidence.snapdeal.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.9_8_monthly_settlement_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12508
+    },
+    {
+      "evidence_id": "evidence.snapdeal.metrics_benchmarks_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12508
+    },
+    {
+      "evidence_id": "evidence.snapdeal.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 12508
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.snapdeal.monthly_settlement_summary"
+  ],
+  "metric_family": "settlement",
+  "metric_pattern": "settlement_period_gmv_net_settled_commission",
+  "name": "Monthly Settlement Summary",
+  "review_status": "ready",
+  "source_card_id": "metric.monthly_settlement_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12508,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

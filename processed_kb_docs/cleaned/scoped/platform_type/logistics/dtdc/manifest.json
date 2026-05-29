@@ -1,0 +1,49 @@
+{
+  "card_types": {
+    "account_data_binding": 2,
+    "column": 33,
+    "metric": 3,
+    "metric_implementation": 11,
+    "platform": 1,
+    "platform_account": 1,
+    "platform_context": 1,
+    "table": 2,
+    "value_profile": 2
+  },
+  "counts": {
+    "cards": 56,
+    "documents": 1,
+    "edges": 141,
+    "evidence": 1,
+    "review_items": 2,
+    "semantic_mappings": 3
+  },
+  "edge_types": {
+    "APPLIES_TO_PLATFORM": 2,
+    "BELONGS_TO_DOMAIN": 3,
+    "BELONGS_TO_PLATFORM": 1,
+    "BELONGS_TO_TABLE": 33,
+    "BINDS_TO_TABLE": 2,
+    "HAS_ACCOUNT_DATA_BINDING": 2,
+    "HAS_COLUMN": 33,
+    "HAS_IMPLEMENTATION": 11,
+    "HAS_PLATFORM_ACCOUNT": 1,
+    "HAS_PLATFORM_CONTEXT": 1,
+    "HAS_VALUE_PROFILE": 4,
+    "IMPLEMENTS_METRIC": 11,
+    "INCLUDES_PLATFORM_ACCOUNT": 1,
+    "PARTICIPATES_WITH_ACCOUNT": 2,
+    "PROFILES_COLUMN": 2,
+    "PROFILES_TABLE": 2,
+    "SOURCED_FROM_PLATFORM": 2,
+    "USES_ACCOUNT_DATA_BINDING": 2,
+    "USES_COLUMN": 13,
+    "USES_PLATFORM": 1,
+    "USES_PLATFORM_CONTEXT": 1,
+    "USES_TABLE": 11
+  },
+  "scope": [
+    "logistics",
+    "dtdc"
+  ]
+}

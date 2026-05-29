@@ -1,0 +1,50 @@
+{
+  "canonical_id": "domain.marketplace.flipkart.fees",
+  "card_type": "domain",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Commission, fixed, shipping, reverse shipping, collection, franchise, pick-and-pack, GST on fees, rebates.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 449
+    }
+  ],
+  "excluded_topics": [
+    "tenant/account scoping",
+    "bank reconciliation",
+    "external logistics",
+    "ERP/accounting"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "included_tables": [
+    "table.flipkart.oms",
+    "table.flipkart.settlement",
+    "table.flipkart.commission",
+    "table.flipkart.cashback"
+  ],
+  "marketplace_module": "fees and commission",
+  "name": "Flipkart marketplace fees and commission",
+  "parent_domain": "marketplace",
+  "review_status": "accepted",
+  "source_card_id": "domain.marketplace.flipkart.fees",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 449,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

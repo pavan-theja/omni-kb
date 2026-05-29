@@ -1,0 +1,63 @@
+# OS/editor noise
+.DS_Store
+.vscode/
+.idea/
+
+# Python runtime and package artifacts
+.venv/
+**/.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local env/secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/cognee.env
+**/current_runtime.env
+**/*credentials*.json
+**/*service-account*.json
+*.pem
+*.key
+
+# Local Cognee runtime state
+cognee/runtime/*
+!cognee/runtime/README.md
+.chromadb_data/
+
+# Generated Cognee exports
+cognee/export/*
+!cognee/export/README.md
+cognee/shaped_export/*
+!cognee/shaped_export/README.md
+cognee/custom_shaped_export/*
+!cognee/custom_shaped_export/README.md
+cognee/bundled_export/*
+!cognee/bundled_export/README.md
+
+# Generated Cognee query/debug outputs
+cognee/query_outputs/*
+!cognee/query_outputs/README.md
+
+# Generated pipeline intermediates
+build/chunks/*
+!build/chunks/README.md
+build/intermediate/*
+!build/intermediate/README.md
+
+# Saved runtime stages
+raw/saved_stage/*
+!raw/saved_stage/README.md
+
+# Build outputs are intentionally not ignored yet.
+# Decide whether build/gemini* benchmark/report outputs are source artifacts
+# before adding an ignore rule here.

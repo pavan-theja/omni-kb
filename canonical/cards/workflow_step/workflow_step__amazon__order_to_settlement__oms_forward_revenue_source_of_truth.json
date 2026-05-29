@@ -1,0 +1,43 @@
+{
+  "candidate_notes": "Replaces lazy order_recorded lifecycle step with DOCX reconciliation side: OMS Revenue (forward orders) = Gross Sales source of truth.",
+  "canonical_id": "workflow_step.amazon.order_to_settlement.oms_forward_revenue_source_of_truth",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.recon.oms_settlement.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.recon.oms_settlement.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6442
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon OMS to settlement reconciliation: OMS forward revenue source of truth",
+  "process": "business_process.amazon.order_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.amazon.order_to_settlement.oms_forward_revenue_source_of_truth",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6442,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "OMS Revenue on forward orders is the gross-sales source of truth for the reconciliation.",
+  "step_key": "oms_forward_revenue_source_of_truth",
+  "step_order": "1",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

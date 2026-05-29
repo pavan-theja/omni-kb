@@ -1,0 +1,49 @@
+{
+  "business_definition": "Distinct returned orders divided by distinct shipped sales orders.",
+  "canonical_id": "metric.target_plus.return_rate",
+  "card_type": "metric",
+  "colloquial_names": [
+    "return_rate_pct"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "as specified by source SQL or query pattern",
+  "default_unit": "USD",
+  "description": "Distinct returned orders divided by distinct shipped sales orders.",
+  "display_name": "Target Plus Return Rate",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.target_plus.returns",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.5_3_return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.5_3_return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 9082
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.target_plus.return_rate"
+  ],
+  "metric_family": "returns",
+  "name": "Target Plus Return Rate",
+  "review_status": "ready",
+  "source_card_id": "metric.target_plus.return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9082,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

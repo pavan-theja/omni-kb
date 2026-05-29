@@ -1,0 +1,49 @@
+{
+  "benchmark_policy": "guidance_only_not_hard_validation",
+  "business_definition": "Gross merchandise value of forward settlement rows using ABS(charged_amount).",
+  "canonical_id": "metric.tatacliq.forward_gmv",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "source_query_defined_grain",
+  "default_unit": "INR",
+  "description": "Gross merchandise value of forward settlement rows using ABS(charged_amount).",
+  "display_name": "Total Forward GMV",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.tatacliq.orders",
+  "evidence_ids": [
+    "ev.tatacliq.sql.total_forward_gmv"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.total_forward_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6032
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_ids": [
+    "metric_impl.tatacliq.total_forward_gmv"
+  ],
+  "metric_family": "revenue",
+  "name": "Total Forward GMV",
+  "observed_source_value": "₹1.70 Cr forward GMV; guidance only",
+  "review_status": "ready",
+  "source_card_id": "metric.tatacliq.forward_gmv",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6032,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

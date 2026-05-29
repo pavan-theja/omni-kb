@@ -1,0 +1,48 @@
+{
+  "candidate_notes": "Use OMS forward/reverse net revenue plus disbursement return-loss components: refunded principal and non-recovered shipping, tech, pickup, commission, closing-fee, and TCS timing loss.",
+  "canonical_id": "query_pattern.amazon.return_margin_impact",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.analytical_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.analytical_patterns.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 7582
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "What is the true margin impact of our return rate?",
+  "natural_language_patterns": "What is the true margin impact of our return rate?",
+  "primary_metric": "metric.marketplace.return_loss",
+  "query_logic": "Use OMS forward/reverse net revenue plus disbursement return-loss components: refunded principal and non-recovered shipping, tech, pickup, commission, closing-fee, and TCS timing loss.",
+  "review_status": "accepted",
+  "scope_policy": "runtime filters may be applied externally; do not hardcode group_level_id in canonical pattern",
+  "source_card_id": "query_pattern.amazon.return_margin_impact",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7582,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": [
+    "table.zs_observe.amazon_disbursment",
+    "table.zs_observe.amazon_oms"
+  ],
+  "sql_ref": "sql.amazon.disbursement.return_loss",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

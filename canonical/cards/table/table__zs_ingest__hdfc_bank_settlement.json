@@ -1,0 +1,137 @@
+{
+  "amount_columns": [
+    "settled_amount",
+    "deposit_amt_",
+    "withdrawal_amt_",
+    "closing_balance"
+  ],
+  "authoritative_decimal_amount_columns": [
+    "settled_amount"
+  ],
+  "avoid_text_amount_columns": [
+    "deposit_amt_",
+    "withdrawal_amt_",
+    "closing_balance"
+  ],
+  "bank": "HDFC Bank",
+  "banking_only": true,
+  "business_purpose": "HDFC Bank settlement account statement — specifically the merchant settlement account where payment gateway credits (Razorpay, Paytm, PhonePe, Cashfree, etc.) are received. The `settlement_id` and `settled_amount` columns make this the most directly payment-gateway-aware of all bank tables, designed for automated reconciliation with gateway settlement batches.",
+  "candidate_notes": "Generic bank statement table card; account-level filtering comes from AccountDataBinding in tenant-specific docs, not this markdown.",
+  "canonical_id": "table.zs_ingest.hdfc_bank_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_ingest.hdfc_bank_settlement.account_no",
+    "column.zs_ingest.hdfc_bank_settlement.chq_double_ref_no",
+    "column.zs_ingest.hdfc_bank_settlement.closing_balance",
+    "column.zs_ingest.hdfc_bank_settlement.created_date",
+    "column.zs_ingest.hdfc_bank_settlement.date",
+    "column.zs_ingest.hdfc_bank_settlement.deposit_amt",
+    "column.zs_ingest.hdfc_bank_settlement.description",
+    "column.zs_ingest.hdfc_bank_settlement.metadata",
+    "column.zs_ingest.hdfc_bank_settlement.metadata_2",
+    "column.zs_ingest.hdfc_bank_settlement.narration",
+    "column.zs_ingest.hdfc_bank_settlement.settled_amount",
+    "column.zs_ingest.hdfc_bank_settlement.settlement_date",
+    "column.zs_ingest.hdfc_bank_settlement.settlement_id",
+    "column.zs_ingest.hdfc_bank_settlement.transaction_type",
+    "column.zs_ingest.hdfc_bank_settlement.value_dt",
+    "column.zs_ingest.hdfc_bank_settlement.withdrawal_amt"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active_schema_reference_partial_columns",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "INR",
+  "declared_column_count": "35",
+  "description": "table card from raw/cleaned_v2/bank/bank_statement.md.",
+  "direction_columns": [
+    "transaction_type"
+  ],
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "documented_business_column_count": 16,
+  "domain": "domain.banking.bank_statement.core",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.bank_statement.hdfc_bank_settlement.purpose.001",
+    "ev.bank_statement.hdfc_bank_settlement.columns.001",
+    "ev.bank_statement.hdfc_bank_settlement.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.hdfc_bank_settlement.purpose.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 3061
+    },
+    {
+      "evidence_id": "ev.bank_statement.hdfc_bank_settlement.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 3061
+    },
+    {
+      "evidence_id": "ev.bank_statement.hdfc_bank_settlement.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 3061
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_ingest.hdfc_bank_settlement",
+  "geography": "India",
+  "grain": "raw bank statement transaction row; source-specific grain and reference fields",
+  "key_reconciliation_columns": [
+    "`chq__ref_no_` — UTR number; **primary join key** to gateway tables' `settlement_utr` / `utr_no` / `bankreferenceno`",
+    "`settlement_id` — gateway settlement batch ID — directly links to `razorpay_payin.settlement_id`, `paytm_payin.settlement_id`, etc.",
+    "`narration` — full HDFC narration with embedded UTR and gateway identifier",
+    "`settled_amount` (Decimal) — net amount credited; matches `settled_amount` in gateway tables",
+    "`transaction_type` — filter `CR` or `NEFT` for incoming gateway credits",
+    "`settlement_date` — links to `settlement_date` in gateway tables"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "name": "zs_ingest.hdfc_bank_settlement",
+  "platform_context": "platform_context.hdfc_bank.in",
+  "quality_notes": [
+    "This is a **settlement account** (not a current/operating account) — all credits are PG settlements; debits are refunds/chargebacks",
+    "`settled_amount` (Decimal) is the mapped/normalized column; `deposit_amt_` (Text) is the raw HDFC format — always use `settled_amount`",
+    "`date` (Text) and `created_date` (Date) are parallel — use `created_date` for date filtering and ordering",
+    "`value_dt_temp_old` and `account_no_temp_old` are migration artifacts",
+    "`settlement_id` is enriched by the reconciliation platform by matching narration patterns against gateway settlement IDs — not directly from HDFC"
+  ],
+  "recommended_date_columns": [
+    "created_date",
+    "settlement_date"
+  ],
+  "reference_columns": [
+    "chq__ref_no_",
+    "settlement_id",
+    "narration",
+    "description"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_ingest",
+  "scope_columns_as_columns_only": [
+    "account_no"
+  ],
+  "source_card_id": "table.zs_ingest.hdfc_bank_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3061,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_platform_ids": [
+    "platform.hdfc_bank"
+  ],
+  "source_status": "accepted",
+  "statement_type": "Settlement Account Statement",
+  "status": "active",
+  "table_name": "hdfc_bank_settlement",
+  "table_type": "raw_bank_statement_feed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

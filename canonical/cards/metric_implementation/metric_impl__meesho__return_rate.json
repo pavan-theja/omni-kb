@@ -1,0 +1,53 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.meesho.return_rate",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho implementation — Return Rate",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_3_return_rate"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_3_return_rate",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 12585
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use active-row and source-specified marketplace filters; scope fields remain columns/caveats only.",
+  "formula_text": "SELECT\n  ROUND(100.0 * (SELECT COUNT(*) FROM zs_observe.meesho_reverse WHERE is_active = true)\n    / NULLIF((SELECT COUNT(*) FROM zs_observe.meesho_sales WHERE is_active = true), 0), 2)\n  AS return_rate_pct;\n-- Observed: ~44% (938/2131) — includes bulk NULL transaction_type rows",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "meesho",
+  "metric_id": "metric.return_rate",
+  "metric_pattern": "meesho_specific_implementation_of_return_rate",
+  "name": "Meesho implementation — Return Rate",
+  "platform_code": "meesho",
+  "platform_context_id": "platform_context.meesho.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.meesho.return_rate",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12585,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_reverse",
+    "zs_observe.meesho_sales"
+  ],
+  "sql_pattern": "SELECT\n  ROUND(100.0 * (SELECT COUNT(*) FROM zs_observe.meesho_reverse WHERE is_active = true)\n    / NULLIF((SELECT COUNT(*) FROM zs_observe.meesho_sales WHERE is_active = true), 0), 2)\n  AS return_rate_pct;\n-- Observed: ~44% (938/2131) — includes bulk NULL transaction_type rows",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

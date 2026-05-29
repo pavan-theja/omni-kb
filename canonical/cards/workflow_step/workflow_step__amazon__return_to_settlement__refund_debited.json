@@ -1,0 +1,55 @@
+{
+  "candidate_notes": "DOCX settlement-cycle behavior: original forward order may already be paid; refund appears as later debit.",
+  "canonical_id": "workflow_step.amazon.return_to_settlement.refund_debited",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "workflow_step card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.return_analysis.001",
+    "ev.amazon.settlement_cycle.001",
+    "ev.amazon_disbursment.transaction_types.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.return_analysis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6523
+    },
+    {
+      "evidence_id": "ev.amazon.settlement_cycle.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6523
+    },
+    {
+      "evidence_id": "ev.amazon_disbursment.transaction_types.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 6523
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Amazon return to settlement lifecycle: refund debited",
+  "process": "business_process.amazon.return_to_settlement",
+  "review_status": "accepted",
+  "source_card_id": "workflow_step.amazon.return_to_settlement.refund_debited",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6523,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "step_description": "When a return occurs after the original settlement period closes, the refund is debited in a later settlement period.",
+  "step_key": "refund_debited_in_settlement",
+  "step_order": "2",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

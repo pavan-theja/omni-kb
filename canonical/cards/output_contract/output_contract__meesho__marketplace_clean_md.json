@@ -1,0 +1,56 @@
+{
+  "canonical_id": "output_contract.meesho.marketplace_clean_md",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_type": "canonical_card_population_ready_markdown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho marketplace clean markdown output contract",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 17646
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "one markdown document per vendor/platform source DOCX",
+  "name": "Meesho marketplace clean markdown output contract",
+  "optional_columns": [
+    "confidence",
+    "review_status",
+    "legacy_edge_aliases",
+    "inverse_edge_type",
+    "materialize_inverse",
+    "edge_properties"
+  ],
+  "required_columns": [
+    "candidate_card.card_id",
+    "candidate_card.card_type",
+    "candidate_edge.canonical_edge_type",
+    "candidate_edge.source_card_id",
+    "candidate_edge.target_card_id",
+    "source_evidence.id",
+    "review_item.id"
+  ],
+  "review_status": "ready",
+  "source_card_id": "output_contract.meesho.marketplace_clean_md",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 17646,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

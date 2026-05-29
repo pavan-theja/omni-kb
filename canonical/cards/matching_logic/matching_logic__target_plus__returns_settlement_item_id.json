@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "Filter returns internal_txn_type=reverse and settlement transaction_type=reverse.",
+  "amount_comparison": "Compare target_returns.charged_amount to ABS/negative refund settlement impact based on source SQL output.",
+  "canonical_id": "matching_logic.target_plus.returns_settlement_item_id",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Returns to settlement refund matching",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_2_returns_settlement_refund_match"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_2_returns_settlement_refund_match",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10465
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "target_returns.item_id = target_settlement.item_id AND target_settlement.transaction_type = reverse",
+  "key_normalization": "Use exact key match unless brand case normalization or date casting is explicitly documented.",
+  "match_type": "left_join",
+  "name": "Returns to settlement refund matching",
+  "review_status": "ready",
+  "source_card_id": "matching_logic.target_plus.returns_settlement_item_id",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10465,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_rule": "Date-align periods because settlement ends before sales/returns source range.",
+  "tolerance_rule": "0.01 where source SQL states; otherwise documented as review-required before hard failure.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

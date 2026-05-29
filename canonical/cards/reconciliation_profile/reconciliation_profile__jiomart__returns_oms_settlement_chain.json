@@ -1,0 +1,49 @@
+{
+  "actual_side": "reconciliation_side.jiomart.returns_chain.actual_oms_settlement",
+  "canonical_id": "reconciliation_profile.jiomart.returns_oms_settlement_chain",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart Returns → OMS → Settlement full-chain reconciliation",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_2_returns_oms_settlement_full_chain"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_2_returns_oms_settlement_full_chain",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 11973
+    }
+  ],
+  "expected_side": "reconciliation_side.jiomart.returns_chain.expected_returns",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.jiomart.returns_chain",
+  "mismatch_categories": [
+    "mismatch_category.jiomart.return_value_variance",
+    "mismatch_category.jiomart.return_missing_oms_or_settlement"
+  ],
+  "name": "JioMart Returns → OMS → Settlement full-chain reconciliation",
+  "process_id": "business_process.jiomart.rto_flow",
+  "reconciliation_family": "returns_to_oms_to_settlement",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.jiomart.returns_oms_settlement_chain",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11973,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_window": "Use date filters in source SQL and mandatory filters; settlement/OMS date range gaps are caveats.",
+  "tolerance": "numeric tolerance not documented unless source SQL provides threshold; keep variance outputs diagnostic.",
+  "unit_id": "reconciliation_unit.jiomart.order_id",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

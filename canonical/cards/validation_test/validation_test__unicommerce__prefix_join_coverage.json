@@ -1,0 +1,55 @@
+{
+  "canonical_id": "validation_test.unicommerce.prefix_join_coverage",
+  "card_type": "validation_test",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Validate # prefixed join achieves expected coverage guidance around 91.1%; do not hard-fail without current period baseline.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.004.the_critical_join"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.004.the_critical_join",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13462
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Prefix Join Coverage",
+  "optional_fields": [
+    "test_sql",
+    "expected_result",
+    "severity",
+    "blocked_card_types",
+    "runtime_scope_dependency"
+  ],
+  "review_status": "ready",
+  "rule_ids": [
+    "rule.unicommerce.use_prefixed_order_join"
+  ],
+  "severity": "high",
+  "source_card_id": "validation_test.unicommerce.prefix_join_coverage",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13462,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "sql_refs": [
+    "sql.unicommerce.v10.source_query_01.the_critical_join",
+    "sql.unicommerce.v10.source_query_03.11_2_full_enriched_view_sales_awb_delivery_status",
+    "sql.unicommerce.v10.source_query_10.7_3_full_enriched_view_join_sales_osr",
+    "sql.unicommerce.v10.source_query_17.7_5_full_enriched_order_view",
+    "sql.unicommerce.v10.source_query_23.7_4_join_to_osr_for_awb_and_delivery_status"
+  ],
+  "status": "draft",
+  "test_name": "Prefix join coverage check",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

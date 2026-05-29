@@ -1,0 +1,48 @@
+{
+  "benchmark_policy": "guidance_only_not_hard_validation",
+  "business_definition": "Monthly forward GMV, forward commission/GST/TDS, forward net, return net, and total net.",
+  "canonical_id": "metric.tatacliq.monthly_financial_waterfall",
+  "card_type": "metric",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "source_query_defined_grain",
+  "default_unit": "INR",
+  "description": "Monthly forward GMV, forward commission/GST/TDS, forward net, return net, and total net.",
+  "display_name": "Monthly Financial Waterfall",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "domain_id": "domain.tatacliq.settlement",
+  "evidence_ids": [
+    "ev.tatacliq.sql.monthly_financial_waterfall"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.monthly_financial_waterfall",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6269
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "higher_is_better": null,
+  "implementation_ids": [
+    "metric_impl.tatacliq.monthly_financial_waterfall"
+  ],
+  "metric_family": "settlement",
+  "name": "Monthly Financial Waterfall",
+  "review_status": "ready",
+  "source_card_id": "metric.tatacliq.monthly_financial_waterfall",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6269,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,99 @@
+{
+  "base_tables": [
+    "table.zs_observe.myntra_settlement"
+  ],
+  "canonical_id": "metric_implementation.myntra_settlement.settlement_velocity",
+  "canonical_name": "settlement_velocity",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.query_patterns",
+    "evidence.myntra.fees"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9421
+    },
+    {
+      "evidence_id": "evidence.myntra.fees",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 9421
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true"
+  ],
+  "formula_expression": "UNPIVOT/SUM day_1 through day_31 by day_number",
+  "formula_template_id": "formula_template.day_wise_settlement_velocity",
+  "grain": "settlement_cycle",
+  "implementation_scope": "myntra_settlement",
+  "marketplace_only": true,
+  "metric_id": "metric.settlement_velocity",
+  "metric_pattern": "myntra_specific_executable_implementation",
+  "name": "settlement_velocity",
+  "platform_code": "myntra",
+  "platform_context_id": "platform_context.myntra.in",
+  "required_filters": [
+    "is_active = true",
+    "group_level_id = <client_id>"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "metric_implementation.myntra_settlement.settlement_velocity",
+  "source_columns": [
+    "day_1",
+    "day_2",
+    "day_3",
+    "day_4",
+    "day_5",
+    "day_6",
+    "day_7",
+    "day_8",
+    "day_9",
+    "day_10",
+    "day_11",
+    "day_12",
+    "day_13",
+    "day_14",
+    "day_15",
+    "day_16",
+    "day_17",
+    "day_18",
+    "day_19",
+    "day_20",
+    "day_21",
+    "day_22",
+    "day_23",
+    "day_24",
+    "day_25",
+    "day_26",
+    "day_27",
+    "day_28",
+    "day_29",
+    "day_30",
+    "day_31",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 9421,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_settlement",
+  "status": "draft",
+  "summary": "Aggregate day_1..day_31 to analyze settlement velocity",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

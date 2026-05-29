@@ -1,0 +1,54 @@
+{
+  "business_definition": "Marketplace fee burden as percentage of gross revenue or SKU charged amount.",
+  "candidate_notes": "Marketplace fee burden as percentage of gross revenue or SKU charged amount.",
+  "canonical_id": "metric.marketplace.fee_burden",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Fee burden",
+    "fee load",
+    "fee pressure"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "sku",
+  "description": "Marketplace fee burden as percentage of gross revenue or SKU charged amount.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "domain": "domain.marketplace.amazon.orders; domain.marketplace.amazon.settlement; domain.marketplace.amazon.fees; domain.marketplace.amazon.returns",
+  "evidence_ids": [
+    "ev.amazon.kpi.fee_cost.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.kpi.fee_cost.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4983
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.amazon.amazon_fee_preview.fee_burden"
+  ],
+  "marketplace_only": true,
+  "metric_key": "fee_burden",
+  "metric_pattern": "gross_commission_over_revenue",
+  "name": "Fee burden",
+  "review_status": "accepted",
+  "scope": "generic marketplace metric implemented by Amazon-specific metric_implementation cards",
+  "source_card_id": "metric.marketplace.fee_burden",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4983,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

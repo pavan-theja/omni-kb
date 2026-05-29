@@ -1,0 +1,51 @@
+{
+  "applies_to_cards": [
+    "table.zs_observe.target_sales",
+    "metric.target_plus.total_gmv"
+  ],
+  "canonical_id": "rule.target_plus.sales_shipped_filter",
+  "card_type": "rule",
+  "condition": "Sales metrics",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus shipped-sales filter",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.8_mandatory_query_filters",
+    "ev.target_plus.sales.order_status_distribution"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.8_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11444
+    },
+    {
+      "evidence_id": "ev.target_plus.sales.order_status_distribution",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11444
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus shipped-sales filter",
+  "review_status": "ready",
+  "rule_type": "query_filter",
+  "severity": "high",
+  "source_card_id": "rule.target_plus.sales_shipped_filter",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11444,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "Use order_status = 'SHIPPED' for shipped sales and GMV metrics from target_sales.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

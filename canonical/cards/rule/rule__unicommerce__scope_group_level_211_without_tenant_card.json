@@ -1,0 +1,53 @@
+{
+  "canonical_id": "rule.unicommerce.scope_group_level_211_without_tenant_card",
+  "card_type": "rule",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "For Astrotalk analysis use group_level_id=211; group_level_id=22 remains a source caveat, not tenant/group/account card.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "domain_id": "domain.unicommerce_warehouse_inventory_fulfilment_operations",
+  "evidence_ids": [
+    "ev.unicommerce.section.028.13_mandatory_query_filters",
+    "ev.unicommerce.section.027.12_data_quality_observations_known_issues"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.028.13_mandatory_query_filters",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13184
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.027.12_data_quality_observations_known_issues",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 13184
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Scope Group Level 211 Without Tenant Card",
+  "optional_fields": [
+    "rule_type",
+    "applies_to_tables",
+    "applies_to_columns",
+    "safe_query_behavior",
+    "exceptions",
+    "handoff_context"
+  ],
+  "review_status": "ready",
+  "rule_name": "Use group_level_id as source filter only",
+  "source_card_id": "rule.unicommerce.scope_group_level_211_without_tenant_card",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13184,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "warehouse_inventory_scope": "primary"
+}

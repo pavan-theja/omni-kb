@@ -1,0 +1,52 @@
+{
+  "base_tables": [],
+  "candidate_notes": "Promotional margin impact.",
+  "canonical_id": "metric_implementation.amazon.amazon_oms.discount_depth",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_oms.kpis.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_oms.kpis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5876
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "SUM(item_promo_discount) / NULLIF(SUM(item_amount_excluding_tax), 0)",
+  "grain": "sku",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.discount_depth",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "promo_discount_over_item_amount_excluding_tax",
+  "name": "Amazon implementation: discount_depth on amazon_oms",
+  "notes": "Promotional margin impact.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true AND transaction_type = 'forward'",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_oms.discount_depth",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5876,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_oms",
+  "sql_ref": "sql.amazon.oms.discount_depth",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

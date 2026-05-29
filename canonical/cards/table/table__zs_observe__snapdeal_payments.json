@@ -1,0 +1,100 @@
+{
+  "business_purpose": "Bank remittances (UTR-level)",
+  "canonical_id": "table.zs_observe.snapdeal_payments",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.snapdeal_payments.ancestry",
+    "column.zs_observe.snapdeal_payments.check_date",
+    "column.zs_observe.snapdeal_payments.created_at",
+    "column.zs_observe.snapdeal_payments.currency_type",
+    "column.zs_observe.snapdeal_payments.file_uuid",
+    "column.zs_observe.snapdeal_payments.gross_amount",
+    "column.zs_observe.snapdeal_payments.group_id",
+    "column.zs_observe.snapdeal_payments.group_level_id",
+    "column.zs_observe.snapdeal_payments.is_active",
+    "column.zs_observe.snapdeal_payments.payment_date",
+    "column.zs_observe.snapdeal_payments.payment_details",
+    "column.zs_observe.snapdeal_payments.tenant_id",
+    "column.zs_observe.snapdeal_payments.transaction_date",
+    "column.zs_observe.snapdeal_payments.txn_uuid",
+    "column.zs_observe.snapdeal_payments.unique_id",
+    "column.zs_observe.snapdeal_payments.unique_value",
+    "column.zs_observe.snapdeal_payments.updated_at",
+    "column.zs_observe.snapdeal_payments.utr_no"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "data_availability_note": "DOCX notes zs_observe schema exists but current active data may reside in zs_ingest until promotion; runtime source selection remains external.",
+  "description": "table card from raw/cleaned_v2/marketplace/snapdeal_marketplace.md.",
+  "display_name": "zs_observe.snapdeal_payments",
+  "document_id": "snapdeal_marketplace_clean_md_v9_refactored",
+  "documented_scope_values": {
+    "group_level_id": [
+      "22"
+    ],
+    "marketplace_context": "Snapdeal India / DROPSHIP seller dataset"
+  },
+  "evidence_ids": [
+    "evidence.snapdeal.overview",
+    "evidence.snapdeal.scope_runtime_v9",
+    "evidence.snapdeal.data_quality_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.snapdeal.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1955
+    },
+    {
+      "evidence_id": "evidence.snapdeal.scope_runtime_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1955
+    },
+    {
+      "evidence_id": "evidence.snapdeal.data_quality_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+      "source_line": 1955
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fully_qualified_name": "zs_observe.snapdeal_payments",
+  "grain": "settlement_line_or_order_settlement_line",
+  "join_key_candidates": [
+    "utr_no_",
+    "settlement_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.snapdeal.payment_vs_settlement_reconciliation",
+    "metric_impl.snapdeal.payments_settlement_matching"
+  ],
+  "name": "zs_observe.snapdeal_payments",
+  "primary_key_candidates": [
+    "utr_no_"
+  ],
+  "recommended_scope_filter": "group_level_id = '22'",
+  "review_status": "ready",
+  "runtime_scope_binding_policy": "group_level_id='22' is a documented column/filter value, not a tenant/group/account-binding card.",
+  "schema": "zs_observe",
+  "scope_caveats": "Scope-like fields such as group_level_id/group_id/seller/supplier identifiers are columns or filters only, not account-binding cards.",
+  "semantic_module": "settlement",
+  "source_card_id": "table.zs_observe.snapdeal_payments",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Snapdeal Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 1955,
+  "source_path": "raw/cleaned_v2/marketplace/snapdeal_marketplace.md",
+  "source_section": "Table: Snapdeal Payments — Table Knowledge Base",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "snapdeal_payments",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

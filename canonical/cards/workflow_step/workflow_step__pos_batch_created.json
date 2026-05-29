@@ -1,0 +1,70 @@
+{
+  "business_object": "settlement_batch",
+  "business_process_id": "business_process.prepaid_pos_logistics_settlement",
+  "canonical_id": "workflow_step.pos_batch_created",
+  "card_type": "workflow_step",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_authoring_assistant",
+  "description": "Evidence-bearing checkpoint in Prepaid or POS Logistics Settlement: POS Batch Created.",
+  "document_id": "logistics_domain_overview_parser_ready_v6_role_split",
+  "evidence_ids": [
+    "evidence.logistics_kb_doc",
+    "evidence.cognee_design_v4",
+    "evidence.unified_edge_scope"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.logistics_kb_doc",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 4780
+    },
+    {
+      "evidence_id": "evidence.cognee_design_v4",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 4780
+    },
+    {
+      "evidence_id": "evidence.unified_edge_scope",
+      "source_doc": "raw/cleaned_v2/logistics/logistics_domain.md",
+      "source_line": 4780
+    }
+  ],
+  "expected_input": "pos_settlement_created",
+  "expected_output": "pos_batch_created",
+  "expected_state": "pos_batch_created",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_modes": [
+    "batch_missing"
+  ],
+  "name": "POS Batch Created",
+  "parser_use": "Retrieve this step when the user asks whether this checkpoint occurred, what evidence confirms it, or why the next state is missing.",
+  "platform_role": "source_or_evidence_provider",
+  "platform_type": "marketplace_fulfilment; logistics; banking",
+  "required_evidence": [
+    "column.zs_observe.ekart_settlement.total_amount_of_batch",
+    "column.zs_observe.ekart_settlement.settlement_id"
+  ],
+  "review_status": "unreviewed",
+  "source_card_id": "workflow_step.pos_batch_created",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Logistics KB Doc.docx",
+    "Cognee KB Design v4.md",
+    "logistics_gold_std_raw_md_frame_v3.md",
+    "logistics_gold_std_canonical_card_frame_v5.md",
+    "/mnt/data/Logistics KB Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4780,
+  "source_path": "raw/cleaned_v2/logistics/logistics_domain.md",
+  "source_status": "active",
+  "status": "active",
+  "step_name": "POS Batch Created",
+  "step_order": 3,
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_authoring_assistant",
+  "version": "6.0-role-split-manifest-aligned-unified-edges"
+}

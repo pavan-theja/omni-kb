@@ -1,0 +1,155 @@
+{
+  "active_rows": 2425,
+  "canonical_id": "table.zs_observe.limeroad_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.limeroad_settlement.awb",
+    "column.zs_observe.limeroad_settlement.brand",
+    "column.zs_observe.limeroad_settlement.brand_id",
+    "column.zs_observe.limeroad_settlement.brand_name",
+    "column.zs_observe.limeroad_settlement.charged_amount",
+    "column.zs_observe.limeroad_settlement.classification",
+    "column.zs_observe.limeroad_settlement.cod_charge_paid_by_customer",
+    "column.zs_observe.limeroad_settlement.collection_charges_recovered_from_vendor",
+    "column.zs_observe.limeroad_settlement.created_date",
+    "column.zs_observe.limeroad_settlement.currency_type",
+    "column.zs_observe.limeroad_settlement.customer_state",
+    "column.zs_observe.limeroad_settlement.cycle_date",
+    "column.zs_observe.limeroad_settlement.date_of_change_vnsp",
+    "column.zs_observe.limeroad_settlement.destination_state",
+    "column.zs_observe.limeroad_settlement.entry_type",
+    "column.zs_observe.limeroad_settlement.gross_commission",
+    "column.zs_observe.limeroad_settlement.gross_commission_perc",
+    "column.zs_observe.limeroad_settlement.group_level_id",
+    "column.zs_observe.limeroad_settlement.gst_adjustment_amount",
+    "column.zs_observe.limeroad_settlement.handling_charge_paid_by_customer",
+    "column.zs_observe.limeroad_settlement.invoice_date",
+    "column.zs_observe.limeroad_settlement.invoice_number",
+    "column.zs_observe.limeroad_settlement.is_active",
+    "column.zs_observe.limeroad_settlement.item_id",
+    "column.zs_observe.limeroad_settlement.lost",
+    "column.zs_observe.limeroad_settlement.lost_in_transit",
+    "column.zs_observe.limeroad_settlement.lr_commission_as_per_non_tp",
+    "column.zs_observe.limeroad_settlement.lr_commission_as_per_tp",
+    "column.zs_observe.limeroad_settlement.lr_margin",
+    "column.zs_observe.limeroad_settlement.lr_margin_amount_after_discount_borne_by_limeroad",
+    "column.zs_observe.limeroad_settlement.lr_margin_paid_acquisition",
+    "column.zs_observe.limeroad_settlement.margin_model",
+    "column.zs_observe.limeroad_settlement.mrp",
+    "column.zs_observe.limeroad_settlement.order_date",
+    "column.zs_observe.limeroad_settlement.order_id",
+    "column.zs_observe.limeroad_settlement.order_status",
+    "column.zs_observe.limeroad_settlement.payment_mode",
+    "column.zs_observe.limeroad_settlement.remarks_for_adjustment",
+    "column.zs_observe.limeroad_settlement.reversal_of_margin_on_return_cancellation",
+    "column.zs_observe.limeroad_settlement.sale_return_amount",
+    "column.zs_observe.limeroad_settlement.settled_amount",
+    "column.zs_observe.limeroad_settlement.settlement_date",
+    "column.zs_observe.limeroad_settlement.shipping_amount",
+    "column.zs_observe.limeroad_settlement.shipping_charge_paid_by_customer",
+    "column.zs_observe.limeroad_settlement.short_shipment",
+    "column.zs_observe.limeroad_settlement.sku_id",
+    "column.zs_observe.limeroad_settlement.style_code",
+    "column.zs_observe.limeroad_settlement.sub_order_state",
+    "column.zs_observe.limeroad_settlement.total_adjustment",
+    "column.zs_observe.limeroad_settlement.total_limeroad_discount",
+    "column.zs_observe.limeroad_settlement.total_payment_amount_made_to_the_vendor",
+    "column.zs_observe.limeroad_settlement.total_vendor_discount",
+    "column.zs_observe.limeroad_settlement.transaction_type",
+    "column.zs_observe.limeroad_settlement.transfer_price",
+    "column.zs_observe.limeroad_settlement.transporter",
+    "column.zs_observe.limeroad_settlement.transporter_cost_recovered_from_vendor",
+    "column.zs_observe.limeroad_settlement.transporter_cost_recovered_from_vendor_on_return",
+    "column.zs_observe.limeroad_settlement.txn_uuid",
+    "column.zs_observe.limeroad_settlement.ui_product_id",
+    "column.zs_observe.limeroad_settlement.unique_id",
+    "column.zs_observe.limeroad_settlement.unique_item_id",
+    "column.zs_observe.limeroad_settlement.unique_value",
+    "column.zs_observe.limeroad_settlement.variant_id",
+    "column.zs_observe.limeroad_settlement.vendor_invoice_number",
+    "column.zs_observe.limeroad_settlement.vendor_margin_approved_id",
+    "column.zs_observe.limeroad_settlement.vendor_nsp",
+    "column.zs_observe.limeroad_settlement.vendor_nsp_after_less_ctp_income",
+    "column.zs_observe.limeroad_settlement.weight_mapping_to_vendor_cost",
+    "column.zs_observe.limeroad_settlement.who_changes_vnsp",
+    "column.zs_observe.limeroad_settlement.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Financial settlement ledger for NSP-based payout, commission, returns/RTO/cancel reversal, courier, and product classification.",
+  "document_id": "limeroad_marketplace_clean_md_v9_refactored",
+  "documented_date_range": "created_date 2024-05-12 to 2025-12-06; settlement_date 2025-01-01 to 2025-12-23",
+  "documented_scope_values": {
+    "group_level_id": [
+      22
+    ]
+  },
+  "evidence_ids": [
+    "ev.limeroad.settlement.overview.001",
+    "ev.limeroad.settlement.schema.001",
+    "ev.limeroad.filters.001",
+    "ev.limeroad.table_summary.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.limeroad.settlement.overview.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 685
+    },
+    {
+      "evidence_id": "ev.limeroad.settlement.schema.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 685
+    },
+    {
+      "evidence_id": "ev.limeroad.filters.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 685
+    },
+    {
+      "evidence_id": "ev.limeroad.table_summary.001",
+      "source_doc": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+      "source_line": 685
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "one settlement/order item row",
+  "join_keys": [
+    "invoice_number",
+    "item_id",
+    "order_id"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 22 for documented LimeRoad/Mensa scope"
+  ],
+  "marketplace_only": true,
+  "name": "zs_observe.limeroad_settlement",
+  "primary_key": [
+    "invoice_number",
+    "item_id"
+  ],
+  "purpose": "Financial settlement ledger for NSP-based payout, commission, returns/RTO/cancel reversal, courier, and product classification.",
+  "review_status": "accepted",
+  "schema_name": "zs_observe",
+  "scope_policy": "Use as documented marketplace scope metadata; do not create group/account cards.",
+  "source_card_id": "table.zs_observe.limeroad_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/LimeRoad Recon KB.docx",
+    "/mnt/data/limeroad_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 685,
+  "source_path": "raw/cleaned_v2/marketplace/limeroad_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "table_name": "limeroad_settlement",
+  "table_role": "settlement_ledger",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

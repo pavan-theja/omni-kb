@@ -1,0 +1,56 @@
+{
+  "canonical_id": "reconciliation_profile.unicommerce.sku_inventory_movement_alignment",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "SKU inventory movement alignment",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.009.7_product_catalogue",
+    "ev.unicommerce.section.063.6_entity_relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.009.7_product_catalogue",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12230
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.063.6_entity_relationships",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 12230
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Sku Inventory Movement Alignment",
+  "optional_fields": [
+    "expected_side",
+    "actual_side",
+    "primary_unit",
+    "secondary_units",
+    "matching_logic",
+    "mismatch_categories",
+    "query_patterns",
+    "tolerance",
+    "known_gaps"
+  ],
+  "process_id": "business_process.unicommerce.inventory_product_catalogue_movement",
+  "profile_name": "SKU inventory movement alignment",
+  "profile_scope": "warehouse_inventory_operational_reconciliation",
+  "review_status": "ready",
+  "source_card_id": "reconciliation_profile.unicommerce.sku_inventory_movement_alignment",
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12230,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

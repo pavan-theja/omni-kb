@@ -1,0 +1,76 @@
+{
+  "benchmarks": {
+    "interpretation": "Operational monitoring guidance only; not a hard validation failure.",
+    "observed_delayed": "57%",
+    "observed_within_sla": "43%",
+    "source": "docx AJIO OMS Important Notes"
+  },
+  "business_definition": "Distribution of AJIO OMS sla_status, especially Within SLA versus Delayed.",
+  "canonical_formula_pattern": "count_by_sla_status_over_active_oms_orders",
+  "canonical_id": "metric.sla_compliance",
+  "card_type": "metric",
+  "colloquial_names": [
+    "SLA Compliance",
+    "dispatch SLA",
+    "on-time dispatch rate"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "period",
+  "description": "Distribution of AJIO OMS sla_status, especially Within SLA versus Delayed.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4586
+    },
+    {
+      "evidence_id": "evidence.ajio.041_11_key_business_observations",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 4586
+    }
+  ],
+  "evidence_table_ids": [],
+  "exclusions": [
+    "Do not use tenant/account filters from this card; scope resolution is external."
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.ajio.sla_compliance.06"
+  ],
+  "metric_family": "operations",
+  "metric_key": "sla_compliance",
+  "metric_pattern": "count_by_sla_status_over_active_oms_orders",
+  "name": "SLA Compliance",
+  "review_status": "ready",
+  "source_card_id": "metric.sla_compliance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.041_11_key_business_observations"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4586,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "valid_contexts": [
+    "AJIO",
+    "marketplace analytics",
+    "marketplace reconciliation"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "amount_columns": [
+    "transaction_amount",
+    "trnamount",
+    "balance"
+  ],
+  "authoritative_decimal_amount_columns": [
+    "transaction_amount",
+    "trnamount",
+    "balance"
+  ],
+  "avoid_text_amount_columns": null,
+  "bank": "IDFC First Bank",
+  "banking_only": true,
+  "business_purpose": "Raw IDFC First Bank account statement. Captures all debits and credits to the merchant's IDFC bank account, including payment gateway settlement credits and outbound transfers. Unique for its `journal`, `trancode`, `teller`, and `branch` fields — fields from IDFC's CBS that give operational detail not available in other bank feeds.",
+  "candidate_notes": "Generic bank statement table card; account-level filtering comes from AccountDataBinding in tenant-specific docs, not this markdown.",
+  "canonical_id": "table.zs_ingest.idfc_bank",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_ingest.idfc_bank.account",
+    "column.zs_ingest.idfc_bank.balance",
+    "column.zs_ingest.idfc_bank.branch",
+    "column.zs_ingest.idfc_bank.date",
+    "column.zs_ingest.idfc_bank.description",
+    "column.zs_ingest.idfc_bank.from_to",
+    "column.zs_ingest.idfc_bank.journal",
+    "column.zs_ingest.idfc_bank.metadata",
+    "column.zs_ingest.idfc_bank.metadata_3",
+    "column.zs_ingest.idfc_bank.postdate",
+    "column.zs_ingest.idfc_bank.posting_time",
+    "column.zs_ingest.idfc_bank.teller",
+    "column.zs_ingest.idfc_bank.trancode",
+    "column.zs_ingest.idfc_bank.trandate",
+    "column.zs_ingest.idfc_bank.transaction_amount",
+    "column.zs_ingest.idfc_bank.transaction_id",
+    "column.zs_ingest.idfc_bank.transfer_acct",
+    "column.zs_ingest.idfc_bank.trnamount",
+    "column.zs_ingest.idfc_bank.user_narration"
+  ],
+  "confidence": "curated",
+  "coverage_status": "active_schema_reference_partial_columns",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_context": "INR",
+  "declared_column_count": "35",
+  "description": "table card from raw/cleaned_v2/bank/bank_statement.md.",
+  "direction_columns": [
+    "transaction_amount"
+  ],
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "documented_business_column_count": 19,
+  "domain": "domain.banking.bank_statement.core",
+  "engine": "Athena v3 / Trino SQL",
+  "evidence_ids": [
+    "ev.bank_statement.idfc_bank.purpose.001",
+    "ev.bank_statement.idfc_bank.columns.001",
+    "ev.bank_statement.idfc_bank.reconciliation.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.idfc_bank.purpose.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2446
+    },
+    {
+      "evidence_id": "ev.bank_statement.idfc_bank.columns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2446
+    },
+    {
+      "evidence_id": "ev.bank_statement.idfc_bank.reconciliation.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 2446
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full": "zs_ingest.idfc_bank",
+  "geography": "India",
+  "grain": "raw bank statement transaction row; source-specific grain and reference fields",
+  "key_reconciliation_columns": [
+    "`transaction_id` — primary reference for bank-level reconciliation",
+    "`trancode` — IDFC-specific transaction type code; useful for filtering payment types (NEFT/RTGS/IMPS credits)",
+    "`journal` — internal audit trail reference",
+    "`description` + `user_narration` — contain UTR numbers embedded as text; parse for gateway UTR matching",
+    "`transaction_amount` (Decimal) — use for all calculations",
+    "`balance` (Decimal) — running balance for cash flow analysis"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "(is_duplicated = false OR is_duplicated IS NULL)"
+  ],
+  "name": "zs_ingest.idfc_bank",
+  "platform_context": "platform_context.idfc_first_bank.in",
+  "quality_notes": [
+    "`trancode` values follow IDFC's internal CBS classification (e.g., \"NEFT\", \"RTGS\", \"CHQ\", \"INT\" for interest)",
+    "`teller` and `branch` are populated only for branch-initiated transactions; null for digital/API transfers",
+    "`from_to` and `transfer_acct` identify counterparty — useful for fund flow tracing",
+    "`trnamount` may differ from `transaction_amount` if fees are included in gross; prefer `transaction_amount`"
+  ],
+  "recommended_date_columns": [
+    "date",
+    "postdate",
+    "trandate"
+  ],
+  "reference_columns": [
+    "transaction_id",
+    "description",
+    "user_narration",
+    "journal",
+    "trancode"
+  ],
+  "review_status": "accepted",
+  "schema_name": "zs_ingest",
+  "scope_columns_as_columns_only": [
+    "branch",
+    "account"
+  ],
+  "source_card_id": "table.zs_ingest.idfc_bank",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2446,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_platform_ids": [
+    "platform.idfc_first_bank"
+  ],
+  "source_status": "accepted",
+  "statement_type": "Current Account Statement",
+  "status": "active",
+  "table_name": "idfc_bank",
+  "table_type": "raw_bank_statement_feed",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

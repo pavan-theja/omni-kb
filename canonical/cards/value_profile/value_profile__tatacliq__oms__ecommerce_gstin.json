@@ -1,0 +1,51 @@
+{
+  "canonical_id": "value_profile.tatacliq.oms.ecommerce_gstin",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.tatacliq_oms.gstin_of_e_com",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq e-commerce GSTIN profile",
+  "distribution_summary": "Selected based on place_of_supply destination state code; retain as source identifier only.",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.ecom.gstin",
+    "ev.tatacliq.values.oms.ecom_gstin"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.ecom.gstin",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 5799
+    },
+    {
+      "evidence_id": "ev.tatacliq.values.oms.ecom_gstin",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 5799
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq e-commerce GSTIN profile",
+  "observed_values": [
+    "33 distinct Tata Unistore Limited GSTINs",
+    "format {state_code}AACCT7290E1C{check}"
+  ],
+  "profile_kind": "scope_identifier_value_profile",
+  "review_status": "ready",
+  "source_card_id": "value_profile.tatacliq.oms.ecommerce_gstin",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5799,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.tatacliq_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,58 @@
+{
+  "base_tables": [],
+  "candidate_notes": "Accounts for return loss at order level.",
+  "canonical_id": "metric_implementation.amazon.amazon_oms.net_revenue_per_forward_order",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.kpi.return_cancel.001",
+    "ev.amazon_oms.kpis.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.kpi.return_cancel.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5804
+    },
+    {
+      "evidence_id": "ev.amazon_oms.kpis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5804
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "SUM(CASE WHEN transaction_type IN ('forward', 'reverse') THEN charged_amount ELSE 0 END) / NULLIF(COUNT(DISTINCT CASE WHEN transaction_type='forward' THEN order_id END), 0)",
+  "grain": "order",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.net_revenue_per_forward_order",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "net_forward_reverse_revenue_over_forward_orders",
+  "name": "Amazon implementation: net_revenue_per_forward_order on amazon_oms",
+  "notes": "Accounts for return loss at order level.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_oms.net_revenue_per_forward_order",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5804,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_oms",
+  "sql_ref": "sql.amazon.oms.net_revenue_per_forward_order",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

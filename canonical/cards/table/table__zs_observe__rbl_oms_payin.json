@@ -1,0 +1,151 @@
+{
+  "amount_columns": [
+    "credit_debit",
+    "transaction_amount",
+    "balance"
+  ],
+  "avoid_columns": [
+    "credit_debit",
+    "balance"
+  ],
+  "business_purpose": "RBL Bank Order Management System (OMS) bank statement feed. Captures raw bank debits and credits from RBL Bank accounts used for payment reconciliation.",
+  "canonical_id": "table.zs_observe.rbl_oms_payin",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.rbl_oms_payin.balance",
+    "column.zs_observe.rbl_oms_payin.cheque_id",
+    "column.zs_observe.rbl_oms_payin.credit_debit",
+    "column.zs_observe.rbl_oms_payin.currency_type",
+    "column.zs_observe.rbl_oms_payin.date",
+    "column.zs_observe.rbl_oms_payin.deposit_amt",
+    "column.zs_observe.rbl_oms_payin.description",
+    "column.zs_observe.rbl_oms_payin.id",
+    "column.zs_observe.rbl_oms_payin.metadata_2",
+    "column.zs_observe.rbl_oms_payin.other_attributes",
+    "column.zs_observe.rbl_oms_payin.posted_date",
+    "column.zs_observe.rbl_oms_payin.transaction_amount",
+    "column.zs_observe.rbl_oms_payin.transaction_date",
+    "column.zs_observe.rbl_oms_payin.transaction_details",
+    "column.zs_observe.rbl_oms_payin.transaction_id",
+    "column.zs_observe.rbl_oms_payin.value_date",
+    "column.zs_observe.rbl_oms_payin.withdrawl_amt"
+  ],
+  "columns": [
+    "column.zs_observe.rbl_oms_payin.transaction_id",
+    "column.zs_observe.rbl_oms_payin.date",
+    "column.zs_observe.rbl_oms_payin.posted_date",
+    "column.zs_observe.rbl_oms_payin.value_date",
+    "column.zs_observe.rbl_oms_payin.transaction_date",
+    "column.zs_observe.rbl_oms_payin.description",
+    "column.zs_observe.rbl_oms_payin.transaction_details",
+    "column.zs_observe.rbl_oms_payin.credit_debit",
+    "column.zs_observe.rbl_oms_payin.transaction_amount",
+    "column.zs_observe.rbl_oms_payin.deposit_amt",
+    "column.zs_observe.rbl_oms_payin.withdrawl_amt",
+    "column.zs_observe.rbl_oms_payin.balance",
+    "column.zs_observe.rbl_oms_payin.cheque_id",
+    "column.zs_observe.rbl_oms_payin.other_attributes",
+    "column.zs_observe.rbl_oms_payin.id",
+    "column.zs_observe.rbl_oms_payin.currency_type",
+    "column.zs_observe.rbl_oms_payin.metadata_2"
+  ],
+  "confidence": "inferred",
+  "coverage_status": "active",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "database": null,
+  "date_columns": [
+    "date",
+    "posted_date",
+    "value_date",
+    "transaction_date"
+  ],
+  "description": "RBL Bank Order Management System (OMS) bank statement feed. Captures raw bank debits and credits from RBL Bank accounts used for payment reconciliation.",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "engine": "Athena/Trino-compatible warehouse assumed; verify deployment",
+  "evidence_ids": [
+    "evidence.pg.rbl_bank"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.pg.rbl_bank",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 6688
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "full_reference": "zs_observe.rbl_oms_payin",
+  "grain": "one row per payin/payment/refund/adjustment gateway event",
+  "grain_keys": [
+    "transaction_id",
+    "cheque_id",
+    "id"
+  ],
+  "mandatory_filters": [
+    "is_active = true when present"
+  ],
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "zs_observe.rbl_oms_payin",
+  "recommended_date_columns": [
+    "posted_date",
+    "transaction_date"
+  ],
+  "reconciliation_key_columns": [
+    "transaction_id"
+  ],
+  "relationships": [],
+  "review_status": "accepted",
+  "schema": "zs_observe",
+  "source_card_id": "table.zs_observe.rbl_oms_payin",
+  "source_caveats": [
+    "This is a bank statement feed — not a gateway table. Used for the final bank reconciliation layer.",
+    "`credit_debit` = 'CR' for incoming credits (settlement receipts from PGs), 'DR' for debits (refunds, fees).",
+    "`transaction_details` and `description` contain UTR numbers embedded in text — parse to extract UTRs.",
+    "`deposit_amt` / `withdrawl_amt` (note: typo is in source data — \"withdrawl\") and `transaction_amount` may overlap — use `transaction_amount` (Decimal) for calculations.",
+    "`other_attributes` may contain JSON with additional bank metadata.",
+    "Match `transaction_details` UTRs against settlement UTRs in gateway tables for 3-way reconciliation.",
+    "Bank-side evidence only; do not treat as payment gateway platform table or create bank-account cards.",
+    "Some financial amount fields are stored as Text; prefer mapped Decimal columns when available or cast explicitly."
+  ],
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Payment Gateway KB.docx",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6688,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_platform_ids": [
+    "platform.rbl_bank"
+  ],
+  "source_platform_types": [
+    "banking"
+  ],
+  "source_status": "active",
+  "status": "active",
+  "status_columns": [
+    "currency_type"
+  ],
+  "structural_applicability": {
+    "notes": [
+      "Account filters are resolved through Account Data Binding, not table cards."
+    ],
+    "platform_context_ids": [
+      "platform_context.rbl_bank.in"
+    ],
+    "platform_ids": [
+      "platform.rbl_bank"
+    ]
+  },
+  "table_name": "rbl_oms_payin",
+  "table_type": "bank_statement_evidence",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_profiles": []
+}

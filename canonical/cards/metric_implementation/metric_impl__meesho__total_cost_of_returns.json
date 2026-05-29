@@ -1,0 +1,52 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.meesho.total_cost_of_returns",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho implementation — Total Cost of Returns",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_7_total_cost_of_returns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_7_total_cost_of_returns",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 12935
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use active-row and source-specified marketplace filters; scope fields remain columns/caveats only.",
+  "formula_text": "SELECT\n  SUM(return_logistic_charge_excluding_tax) AS return_logistics_excl_gst,\n  SUM(return_logistic_charge_gst) AS return_logistics_gst,\n  SUM(ABS(settled_amount)) AS total_negative_settlement\nFROM zs_observe.meesho_settlement\nWHERE is_active = true AND order_status IN ('Return', 'RTO');",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "meesho",
+  "metric_id": "metric.total_cost_of_returns",
+  "metric_pattern": "meesho_specific_implementation_of_total_cost_of_returns",
+  "name": "Meesho implementation — Total Cost of Returns",
+  "platform_code": "meesho",
+  "platform_context_id": "platform_context.meesho.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.meesho.total_cost_of_returns",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12935,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_settlement"
+  ],
+  "sql_pattern": "SELECT\n  SUM(return_logistic_charge_excluding_tax) AS return_logistics_excl_gst,\n  SUM(return_logistic_charge_gst) AS return_logistics_gst,\n  SUM(ABS(settled_amount)) AS total_negative_settlement\nFROM zs_observe.meesho_settlement\nWHERE is_active = true AND order_status IN ('Return', 'RTO');",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

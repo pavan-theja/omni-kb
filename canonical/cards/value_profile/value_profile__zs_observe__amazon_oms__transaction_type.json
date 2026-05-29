@@ -1,0 +1,50 @@
+{
+  "candidate_notes": "forward=positive shipped sale; reverse=negative customer return; cancel=zero pre-ship cancellation; replacement=zero replacement; einvoicecancel=zero GST e-invoice cancellation; null=international rows",
+  "canonical_id": "value_profile.zs_observe.amazon_oms.transaction_type",
+  "card_type": "value_profile",
+  "column": "column.zs_observe.amazon_oms.transaction_type",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon_oms.transaction_types.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon_oms.transaction_types.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 4480
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "known_values": [
+    "forward",
+    "reverse",
+    "cancel",
+    "replacement",
+    "einvoicecancel",
+    "null"
+  ],
+  "marketplace_only": true,
+  "name": "Value profile for amazon_oms.transaction_type",
+  "review_status": "accepted",
+  "source_card_id": "value_profile.zs_observe.amazon_oms.transaction_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 4480,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "unknown_or_null_handling": "explicitly documented; do not drop NULL values unless rule says so",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_semantics": "forward=positive shipped sale; reverse=negative customer return; cancel=zero pre-ship cancellation; replacement=zero replacement; einvoicecancel=zero GST e-invoice cancellation; null=international rows"
+}

@@ -1,0 +1,72 @@
+{
+  "base_tables": [
+    "table.zs_observe.unicommerce"
+  ],
+  "canonical_id": "metric_implementation.unicommerce.sku_count.unicommerce_v10",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/wms/unicommerce_operations.md.",
+  "document_id": "unicommerce_warehouse_inventory_operations_clean_md_v10_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "ev.unicommerce.section.009.7_product_catalogue",
+    "ev.unicommerce.section.079.3_schema_details_168_columns_key_fields"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.unicommerce.section.009.7_product_catalogue",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 11029
+    },
+    {
+      "evidence_id": "ev.unicommerce.section.079.3_schema_details_168_columns_key_fields",
+      "source_doc": "raw/cleaned_v2/wms/unicommerce_operations.md",
+      "source_line": 11029
+    }
+  ],
+  "execution_status": "ready",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "COUNT(DISTINCT sku_id)",
+  "formula_template_id": "formula_template.unicommerce.count_distinct_orders",
+  "implementation_name": "Distinct SKU count — Unicommerce warehouse/inventory implementation",
+  "implementation_scope": "unicommerce",
+  "metric_id": "metric.unicommerce.sku_count",
+  "name": "Unicommerce V10",
+  "optional_fields": [
+    "source_tables",
+    "source_columns",
+    "filters",
+    "grain",
+    "sign_semantics",
+    "sql_refs",
+    "quality_caveats",
+    "implementation_notes"
+  ],
+  "platform_code": "unicommerce",
+  "required_filters": [
+    "is_active = true",
+    "group_level_id = 211 for Astrotalk-only analysis where applicable"
+  ],
+  "review_status": "ready",
+  "source_card_id": "metric_implementation.unicommerce.sku_count.unicommerce_v10",
+  "source_columns": [
+    "sku_id"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Unicommerce Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11029,
+  "source_path": "raw/cleaned_v2/wms/unicommerce_operations.md",
+  "source_status": "candidate",
+  "source_tables": [
+    "table.zs_observe.unicommerce"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

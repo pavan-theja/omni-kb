@@ -1,0 +1,53 @@
+{
+  "amount_columns": [
+    "taxable_value"
+  ],
+  "canonical_id": "reconciliation_side.meesho.return_reverse_logistics_reconciliation.expected",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Other-charges expected side: reverse shipping invoice totals",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_3_return_reverse_logistics_reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_3_return_reverse_logistics_reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15566
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "is_active = true AND LOWER(type) = 'reverse_shipping'",
+  "grain": "source query grain; pre-aggregate only if duplicate keys appear",
+  "key_columns": [
+    "sub_order_num"
+  ],
+  "name": "Other-charges expected side: reverse shipping invoice totals",
+  "profile_id": "reconciliation_profile.meesho.return_reverse_logistics_reconciliation",
+  "review_status": "accepted",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.meesho.return_reverse_logistics_reconciliation.expected",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15566,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "source_table_candidates": [
+    "zs_observe.meesho_other_charges_expenses"
+  ],
+  "status": "active",
+  "status_columns": [
+    "type"
+  ],
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

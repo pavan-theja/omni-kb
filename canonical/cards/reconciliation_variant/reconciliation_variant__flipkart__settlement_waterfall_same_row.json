@@ -1,0 +1,46 @@
+{
+  "base_profile": "reconciliation_profile.flipkart.settlement_waterfall",
+  "canonical_id": "reconciliation_variant.flipkart.settlement_waterfall_same_row",
+  "card_type": "reconciliation_variant",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_variant card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.shopsy",
+    "evidence.flipkart.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.shopsy",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6362
+    },
+    {
+      "evidence_id": "evidence.flipkart.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6362
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Flipkart settlement_waterfall_same_row",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_variant.flipkart.settlement_waterfall_same_row",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6362,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "variant_condition": "same-row settlement component check",
+  "variant_matching_change": "no external join; review sign formula",
+  "variant_tolerance": "same as base profile unless source says otherwise"
+}

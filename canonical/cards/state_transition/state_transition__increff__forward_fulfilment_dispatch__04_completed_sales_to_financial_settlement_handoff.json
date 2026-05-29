@@ -1,0 +1,41 @@
+{
+  "canonical_id": "state_transition.increff.forward_fulfilment_dispatch.04_completed_sales_to_financial_settlement_handoff",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "completed_sales → financial_settlement_handoff",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.011.6_1_forward_order_flow_via_increff"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.011.6_1_forward_order_flow_via_increff",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 8774
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "completed_sales",
+  "name": "completed_sales → financial_settlement_handoff",
+  "process_id": "business_process.increff.forward_fulfilment_dispatch",
+  "review_status": "ready",
+  "source_card_id": "state_transition.increff.forward_fulfilment_dispatch.04_completed_sales_to_financial_settlement_handoff",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8774,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "state_basis": "documented process sequence with table/column evidence",
+  "status": "draft",
+  "to_state": "financial_settlement_handoff",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

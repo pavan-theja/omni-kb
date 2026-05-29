@@ -1,0 +1,45 @@
+{
+  "card_types": {
+    "business_process": 5,
+    "column": 83,
+    "domain": 6,
+    "metric": 13,
+    "metric_implementation": 13,
+    "output_contract": 2,
+    "platform": 1,
+    "platform_account": 2,
+    "platform_context": 1,
+    "query_pattern": 5,
+    "reconciliation_profile": 3,
+    "relationship": 2,
+    "review_item": 2,
+    "rule": 9,
+    "state_transition": 3,
+    "table": 3,
+    "validation_test": 5,
+    "value_profile": 6,
+    "workflow_step": 7
+  },
+  "counts": {
+    "cards": 171,
+    "documents": 1,
+    "edges": 116,
+    "evidence": 12,
+    "semantic_mappings": 2,
+    "sql_patterns": 18
+  },
+  "edge_types": {
+    "ANSWERS_METRIC": 5,
+    "FROM_TABLE": 2,
+    "HAS_COLUMN": 83,
+    "HAS_WORKFLOW_STEP": 7,
+    "IMPLEMENTS_METRIC": 13,
+    "TO_TABLE": 2,
+    "USES_PLATFORM": 2,
+    "USES_PLATFORM_CONTEXT": 2
+  },
+  "scope": [
+    "oms",
+    "shopify"
+  ]
+}

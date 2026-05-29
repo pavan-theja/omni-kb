@@ -1,0 +1,50 @@
+{
+  "actual_side": "COD remittance/courier/aggregator settlement source external to this file",
+  "canonical_id": "reconciliation_profile.shopify.cod_remittance",
+  "card_type": "reconciliation_profile",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_profile card from raw/cleaned_v2/oms/shopify_d2c_oms.md.",
+  "display_name": "Shopify COD remittance expectation",
+  "document_id": "shopify_d2c_oms_gold_standard_v1_manifest_ready",
+  "evidence_ids": [
+    "ev.shopify.tax_recon.001",
+    "ev.shopify.returns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.shopify.tax_recon.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 3103
+    },
+    {
+      "evidence_id": "ev.shopify.returns.001",
+      "source_doc": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+      "source_line": 3103
+    }
+  ],
+  "expected_side": "COD/PPCOD orders from financial_status/payment_mode and outstanding_balance",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic": "order_id + COD amount + remittance period",
+  "name": "Shopify COD remittance expectation",
+  "reconciliation_scope": "documented as use case; external actual table binding remains runtime/review",
+  "review_status": "accepted_with_external_runtime_scope",
+  "source_card_id": "reconciliation_profile.shopify.cod_remittance",
+  "source_confidence": "medium",
+  "source_documents": [
+    "/mnt/data/Shopify OMS.docx",
+    "/mnt/data/OMS-Business Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3103,
+  "source_path": "raw/cleaned_v2/oms/shopify_d2c_oms.md",
+  "source_status": "accepted_with_external_runtime_scope",
+  "status": "draft",
+  "unit": "order_or_refund_event",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

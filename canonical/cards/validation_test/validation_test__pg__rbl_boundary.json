@@ -1,0 +1,55 @@
+{
+  "applies_to": [
+    "payment_gateway_gold_standard_clean_md_v2_unified_edges"
+  ],
+  "auto_fix_hint": "Apply linked rule guidance.",
+  "blocking": true,
+  "canonical_id": "validation_test.pg.rbl_boundary",
+  "card_type": "validation_test",
+  "confidence": "inferred",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "RBL table classified as bank-side evidence only",
+  "document_id": "payment_gateway_gold_standard_clean_md_v3_manifest_refactored",
+  "evidence_ids": [
+    "evidence.cognee.canonical_types"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.cognee.canonical_types",
+      "source_doc": "raw/cleaned_v2/payments/payment_gateway.md",
+      "source_line": 54280
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "failure_message": "RBL boundary failed",
+  "forbidden_pattern": null,
+  "linked_rule_id": "rule.pg.bank_feed_boundary",
+  "manifest_checks": [
+    "evidence_anchor_present"
+  ],
+  "manifest_version": "marketplace_cleanup_manifest_consolidated_v2__payment_gateway_adapted",
+  "name": "RBL boundary",
+  "required_pattern": "RBL table classified as bank-side evidence only",
+  "review_status": "accepted",
+  "semantic_condition": "RBL table classified as bank-side evidence only",
+  "severity": "high",
+  "source_card_id": "validation_test.pg.rbl_boundary",
+  "source_confidence": "inferred",
+  "source_documents": [
+    "Cognee KB Design v4.md",
+    "/mnt/data/Payment Gateway KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 54280,
+  "source_path": "raw/cleaned_v2/payments/payment_gateway.md",
+  "source_status": "active",
+  "status": "active",
+  "test_name": "RBL boundary",
+  "test_type": "semantic_check",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

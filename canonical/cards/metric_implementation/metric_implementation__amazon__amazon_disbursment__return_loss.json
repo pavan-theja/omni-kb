@@ -1,0 +1,58 @@
+{
+  "base_tables": [],
+  "candidate_notes": "SQL-like implementation of the DOCX true-return-cost framework; uses actual fee recovery rows when available and the documented 60% TCS timing-loss approximation.",
+  "canonical_id": "metric_implementation.amazon.amazon_disbursment.return_loss",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/amazon_marketplace.md.",
+  "document_id": "amazon_marketplace_clean_md_v11_benchmark_scope_corrected",
+  "evidence_ids": [
+    "ev.amazon.return_analysis.001",
+    "ev.amazon_disbursment.transaction_types.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.amazon.return_analysis.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5927
+    },
+    {
+      "evidence_id": "ev.amazon_disbursment.transaction_types.001",
+      "source_doc": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+      "source_line": 5927
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula": "ABS(SUM(CASE WHEN transaction_type = 'Refund' AND mp_fee_type = 'ItemPrice' AND charged_amount_type = 'principal' THEN charged_amount ELSE 0 END)) + GREATEST(0, ABS(SUM(CASE WHEN transaction_type = 'Order' AND charged_amount_type = 'shipping fee' THEN charged_amount ELSE 0 END)) - SUM(CASE WHEN transaction_type = 'Fulfillment Fee Refund' AND charged_amount_type = 'shipping fee' THEN charged_amount ELSE 0 END)) + GREATEST(0, ABS(SUM(CASE WHEN transaction_type = 'Order' AND charged_amount_type = 'tech fee' THEN charged_amount ELSE 0 END)) - SUM(CASE WHEN transaction_type = 'Fulfillment Fee Refund' AND charged_amount_type = 'tech fee' THEN charged_amount ELSE 0 END)) + ABS(SUM(CASE WHEN transaction_type = 'Order' AND charged_amount_type = 'pickup fee' THEN charged_amount ELSE 0 END)) + GREATEST(0, ABS(SUM(CASE WHEN transaction_type = 'Order' AND charged_amount_type = 'commission' THEN charged_amount ELSE 0 END)) - SUM(CASE WHEN transaction_type = 'Refund' AND charged_amount_type = 'refund commission' THEN charged_amount ELSE 0 END)) + GREATEST(0, ABS(SUM(CASE WHEN transaction_type = 'Order' AND charged_amount_type = 'closing fee' THEN charged_amount ELSE 0 END)) - SUM(CASE WHEN transaction_type = 'Refund' AND charged_amount_type = 'closing fee' THEN charged_amount ELSE 0 END)) + 0.60 * ABS(SUM(CASE WHEN transaction_type = 'Order' AND charged_amount_type = 'tcs gst' THEN charged_amount ELSE 0 END))",
+  "grain": "return",
+  "implementation_scope": "amazon",
+  "implements_metric": "metric.marketplace.return_loss",
+  "marketplace_only": true,
+  "metric_id": "",
+  "metric_pattern": "refunded_principal_plus_non_recovered_fees",
+  "name": "Amazon implementation: return_loss on amazon_disbursment",
+  "notes": "SQL-like implementation of the DOCX true-return-cost framework; uses actual fee recovery rows when available and the documented 60% TCS timing-loss approximation.",
+  "platform_code": "amazon",
+  "platform_context": "platform_context.amazon.in",
+  "required_filters": "is_active = true AND transaction_type IN ('Order', 'Refund', 'Fulfillment Fee Refund'); aggregate by returned order_id",
+  "review_status": "accepted",
+  "source_card_id": "metric_implementation.amazon.amazon_disbursment.return_loss",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Amazon Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5927,
+  "source_path": "raw/cleaned_v2/marketplace/amazon_marketplace.md",
+  "source_status": "accepted",
+  "source_tables": "table.zs_observe.amazon_disbursment",
+  "sql_ref": "sql.amazon.disbursement.return_loss",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

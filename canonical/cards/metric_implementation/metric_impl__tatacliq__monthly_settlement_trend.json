@@ -1,0 +1,60 @@
+{
+  "aggregation_order": "Aggregate at source SQL grain before joining or comparing amounts.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.tatacliq.monthly_settlement_trend",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq SQL implementation — monthly settlement summary",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.sql.monthly_settlement_trend"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.sql.monthly_settlement_trend",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6478
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use source SQL filters exactly; group_level_id scope filters remain column filters, not account bindings.",
+  "formula_text": "Executable SQL pattern referenced by sql_ref; see SQL Pattern Registry.",
+  "grain": "as specified in source SQL",
+  "implementation_scope": "tatacliq",
+  "metric_id": "metric.tatacliq.monthly_settlement_summary",
+  "name": "TataCliq SQL implementation — monthly settlement summary",
+  "platform_code": "tatacliq",
+  "platform_context_id": "platform_context.tatacliq.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve TataCliq settlement sign convention; use ABS only where source SQL does.",
+  "source_card_id": "metric_impl.tatacliq.monthly_settlement_trend",
+  "source_columns": [
+    "settlement_date",
+    "charged_amount",
+    "gross_commission",
+    "total_tds",
+    "settled_amount",
+    "transaction_type",
+    "is_active"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6478,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.tatacliq_settlement"
+  ],
+  "sql_ref": "sql.tatacliq.monthly_settlement_trend",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

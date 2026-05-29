@@ -1,0 +1,117 @@
+{
+  "business_purpose": "Financial settlement and payout ledger for Target Plus; one row per order line per event with Stripe transfer, payout, commission, shipping, refund and reverse-charge tax-adjustment fields.",
+  "canonical_id": "table.zs_observe.target_settlement",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.target_settlement.brand",
+    "column.zs_observe.target_settlement.charged_amount",
+    "column.zs_observe.target_settlement.charged_amount_excluding_tax",
+    "column.zs_observe.target_settlement.created_at",
+    "column.zs_observe.target_settlement.created_date",
+    "column.zs_observe.target_settlement.currency_type",
+    "column.zs_observe.target_settlement.deleted_at",
+    "column.zs_observe.target_settlement.description",
+    "column.zs_observe.target_settlement.gross_commission",
+    "column.zs_observe.target_settlement.gross_commission_percentage",
+    "column.zs_observe.target_settlement.group_level_id",
+    "column.zs_observe.target_settlement.internal_txn_type",
+    "column.zs_observe.target_settlement.is_active",
+    "column.zs_observe.target_settlement.item_id",
+    "column.zs_observe.target_settlement.order_id",
+    "column.zs_observe.target_settlement.payment_id",
+    "column.zs_observe.target_settlement.payout_id",
+    "column.zs_observe.target_settlement.quantity",
+    "column.zs_observe.target_settlement.returned_date",
+    "column.zs_observe.target_settlement.settled_amount",
+    "column.zs_observe.target_settlement.shipping_amount",
+    "column.zs_observe.target_settlement.sku_id",
+    "column.zs_observe.target_settlement.tcin",
+    "column.zs_observe.target_settlement.total_tax",
+    "column.zs_observe.target_settlement.transaction_type",
+    "column.zs_observe.target_settlement.transfer_id",
+    "column.zs_observe.target_settlement.txn_uuid",
+    "column.zs_observe.target_settlement.unique_id",
+    "column.zs_observe.target_settlement.unique_value",
+    "column.zs_observe.target_settlement.updated_at",
+    "column.zs_observe.target_settlement.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range": "created_date 2025-04-22 to 2025-11-27; returned_date 2025-05-19 to 2025-11-30",
+  "description": "table card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "zs_observe.target_settlement",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "documented_scope_values": {
+    "entity": "Mensa brand group",
+    "group_level_id": 123
+  },
+  "evidence_ids": [
+    "ev.target_plus.settlement.1_table_overview_2",
+    "ev.target_plus.settlement.2_key_statistics_2",
+    "ev.target_plus.settlement.3_schema_details_37_columns_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.settlement.1_table_overview_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5982
+    },
+    {
+      "evidence_id": "ev.target_plus.settlement.2_key_statistics_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5982
+    },
+    {
+      "evidence_id": "ev.target_plus.settlement.3_schema_details_37_columns_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 5982
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "settlement_order_line_event",
+  "join_caveat": "Settlement ends Nov 2025 while sales run through Dec 2025; date-align periods before coverage assertions.",
+  "join_key_candidates": [
+    "item_id",
+    "order_id",
+    "payout_id",
+    "tcin"
+  ],
+  "mandatory_filters": [
+    "is_active = true",
+    "group_level_id = 123",
+    "transaction_type = forward for forward-settlement metrics"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.target_plus.commission_validation",
+    "metric_impl.target_plus.effective_payout_rate",
+    "metric_impl.target_plus.net_settlement_revenue",
+    "metric_impl.target_plus.payout_batch_total"
+  ],
+  "name": "zs_observe.target_settlement",
+  "primary_key_candidates": [
+    "transfer_id",
+    "unique_id"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": "6,517 total / 6,517 active",
+  "schema": "zs_observe",
+  "scope_caveats": "group_level_id/seller/entity/brand/Stripe/carrier values are columns, filters, identifiers, caveats, or source evidence only; no account/bank/logistics/payment-gateway cards emitted.",
+  "semantic_domain_id": "domain.target_plus.settlement",
+  "source_card_id": "table.zs_observe.target_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5982,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "target_settlement",
+  "table_role": "settlement",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

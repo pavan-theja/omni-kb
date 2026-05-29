@@ -1,0 +1,55 @@
+{
+  "aggregation_order": "Pre-aggregate multi-row settlement/return tables by order_id or source SQL grain before joining.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.jiomart.monthly_forward_orders_and_gmv",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart implementation — Monthly Forward Orders and GMV",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.6_6_monthly_forward_orders_and_gmv"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.6_6_monthly_forward_orders_and_gmv",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 10883
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use filters exactly as shown in source SQL and mandatory filter rules.",
+  "formula_sql": "SELECT\n  CAST(DATE_TRUNC('month', CAST(created_date AS TIMESTAMP)) AS DATE) AS month,\n  COUNT(*) AS orders,\n  SUM(charged_amount) AS gmv,\n  AVG(charged_amount) AS aov\nFROM zs_observe.jiomart_oms\nWHERE is_active = true AND transaction_type = 'forward'\nGROUP BY 1 ORDER BY 1;",
+  "formula_sql_ref": "sql.jiomart.marketplace.6_6_monthly_forward_orders_and_gmv",
+  "formula_text": "Executable source SQL pattern retained verbatim.",
+  "implementation_scope": "jiomart",
+  "metric_id": "metric.jiomart.monthly_forward_orders_gmv",
+  "name": "JioMart implementation — Monthly Forward Orders and GMV",
+  "platform_code": "jiomart",
+  "platform_context_id": "platform_context.jiomart.in",
+  "review_status": "ready",
+  "sign_semantics": "Respect source transaction_type/accountable_type sign semantics before summing amounts.",
+  "source_card_id": "metric_impl.jiomart.monthly_forward_orders_and_gmv",
+  "source_columns": [
+    "created_date",
+    "charged_amount"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10883,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms"
+  ],
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

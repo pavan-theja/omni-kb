@@ -1,0 +1,66 @@
+{
+  "canonical_id": "output_contract.flipkart.cashback_recon",
+  "card_type": "output_contract",
+  "confidence": "curated",
+  "contract_name": "Cashback reconciliation exceptions",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "output_contract card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "diagnostic_columns": [
+    "order_id",
+    "item_id",
+    "variance_reason",
+    "source_table"
+  ],
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 7589
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain": "as required by use case",
+  "metric_columns": [
+    "cashback_amount",
+    "settlement_offer_amount",
+    "variance"
+  ],
+  "name": "Flipkart cashback_recon",
+  "recommended_fields": [
+    "document_type",
+    "document_sub_type",
+    "transaction_type"
+  ],
+  "required_fields": [
+    "order_id",
+    "item_id",
+    "cashback_amount",
+    "settlement_offer_amount",
+    "variance"
+  ],
+  "review_status": "accepted",
+  "sort_order": [
+    "largest variance first for exception outputs",
+    "date ascending for time series"
+  ],
+  "source_card_id": "output_contract.flipkart.cashback_recon",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7589,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "use_case": "Cashback reconciliation exceptions"
+}

@@ -1,0 +1,65 @@
+{
+  "aggregation_order": "filter -> normalize direction/amount -> extract reference -> aggregate -> join/compare -> validate",
+  "banking_only": true,
+  "canonical_id": "execution_constraint_set.bank_statement.text_amount_constraints",
+  "card_type": "execution_constraint_set",
+  "confidence": "curated",
+  "constraint_key": "text_amount_constraints",
+  "constraint_scope": "bank_statement_query_patterns_and_reconciliation_profiles",
+  "constraint_text": "Text amount casting constraints",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_window_rules": "use recommended date columns and explicit date range; raw text dates require parsing",
+  "description": "execution_constraint_set card from raw/cleaned_v2/bank/bank_statement.md.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.standard_filter.001",
+    "ev.bank_statement.amount_quality.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.standard_filter.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15833
+    },
+    {
+      "evidence_id": "ev.bank_statement.amount_quality.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 15833
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filter_rules": [
+    "standard active/non-duplicate filter required"
+  ],
+  "join_rules": [
+    "pre-aggregate before cross-domain reference joins"
+  ],
+  "name": "Text amount casting constraints",
+  "out_of_scope_runtime_constraints": [
+    "tenant/account filter values are runtime AccountDataBinding responsibilities"
+  ],
+  "review_status": "accepted",
+  "semantic_constraints": [
+    "rule.bank_statement.text_amount_cast_required",
+    "rule.bank_statement.quote_space_columns"
+  ],
+  "sign_rules": [
+    "resolve credit/debit before sum"
+  ],
+  "source_card_id": "execution_constraint_set.bank_statement.text_amount_constraints",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15833,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

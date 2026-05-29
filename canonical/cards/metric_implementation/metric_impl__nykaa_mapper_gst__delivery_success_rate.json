@@ -1,0 +1,72 @@
+{
+  "base_tables": [
+    "table.zs_observe.nykaa_mapper_gst"
+  ],
+  "canonical_id": "metric_impl.nykaa_mapper_gst.delivery_success_rate",
+  "canonical_name": "Delivery Success Rate",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.metrics",
+    "evidence.nykaa.query_rules",
+    "evidence.nykaa.manifest_cleanup_v9"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.metrics",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15066
+    },
+    {
+      "evidence_id": "evidence.nykaa.query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15066
+    },
+    {
+      "evidence_id": "evidence.nykaa.manifest_cleanup_v9",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 15066
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true AND group_level_id = 22 AND transname IS NOT NULL"
+  ],
+  "formula_sql": "100 * COUNT_IF(LOWER(status) LIKE '%delivered%') / NULLIF(COUNT(*),0)",
+  "formula_template_id": "formula_template.delivery_success_rate",
+  "grain": "courier",
+  "implementation_scope": "nykaa_mapper_gst",
+  "marketplace_only": true,
+  "metric_id": "metric.delivery_success_rate",
+  "name": "Delivery Success Rate",
+  "platform_code": "nykaa",
+  "platform_context_id": "platform_context.nykaa_fashion.in",
+  "review_status": "unreviewed",
+  "source_card_id": "metric_impl.nykaa_mapper_gst.delivery_success_rate",
+  "source_columns": [
+    "status",
+    "transname"
+  ],
+  "source_confidence": "high",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15066,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.nykaa_mapper_gst",
+  "sql_dialect": "Athena / Trino",
+  "sql_pattern_id": "sql.nykaa.delivery_success_by_courier",
+  "status": "draft",
+  "summary": "Delivered shipments over total by courier; executable formula and filters normalized in V9.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

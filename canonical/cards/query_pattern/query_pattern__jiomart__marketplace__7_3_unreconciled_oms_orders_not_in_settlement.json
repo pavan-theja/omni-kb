@@ -1,0 +1,50 @@
+{
+  "canonical_id": "query_pattern.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 7.3 Unreconciled OMS Orders (Not in Settlement)",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12765
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "reconciliation",
+  "name": "JioMart query — 7.3 Unreconciled OMS Orders (Not in Settlement)",
+  "natural_language_patterns": [
+    "7.3 Unreconciled OMS Orders (Not in Settlement)"
+  ],
+  "output_contract_id": "output_contract.jiomart.order_reconciliation",
+  "reconciliation_profile_id": "reconciliation_profile.jiomart.oms_settlement_3way",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12765,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_oms",
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "sql_ref": "sql.jiomart.marketplace.7_3_unreconciled_oms_orders_not_in_settlement",
+  "sql_template": "SELECT o.order_id, o.invoice_number, o.charged_amount, o.order_status\nFROM zs_observe.jiomart_oms o\nLEFT JOIN zs_observe.jiomart_settlement s\n  ON o.order_id = s.order_id AND s.is_active = true\nWHERE o.is_active = true\n  AND o.transaction_type = 'forward'\n  AND o.order_status = 'delivered'\n  AND o.hsn IS NOT NULL\n  AND s.order_id IS NULL;\n-- Coverage gap: ~944 orders (1.6%)",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

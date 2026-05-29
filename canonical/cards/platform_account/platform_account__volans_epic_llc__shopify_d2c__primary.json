@@ -1,0 +1,57 @@
+{
+  "account_name": "Volans Epic LLC Shopify D2C Store",
+  "account_type": "d2c_store_account",
+  "active": true,
+  "canonical_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+  "canonical_platform_status": "canonical",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "USD"
+  ],
+  "default_currency": "USD",
+  "description": "platform_account card from raw/cleaned_v2/clients/volans_epic_llc.json.",
+  "evidence_ids": [
+    "Shopify D2C configured: OMS"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "Shopify D2C configured: OMS",
+      "source_doc": "raw/cleaned_v2/clients/volans_epic_llc.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.volans_epic_llc.mensa_brands",
+  "name": "Volans Epic LLC Shopify D2C Store",
+  "notes": [
+    "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+  ],
+  "package_id": "client_runtime_binding_pack.volans_epic_llc.v0_1",
+  "platform_context_id": "platform_context.shopify.d2c_oms",
+  "platform_id": "platform.shopify",
+  "region_or_market": "US D2C",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_account_identifier_status": "not_provided_in_client_doc",
+  "source_confidence": null,
+  "source_documents": [
+    "Volans Epic LLC.docx",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "Cognee KB Design v4.md"
+  ],
+  "source_evidence": "Shopify D2C configured: OMS",
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/volans_epic_llc.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.volans_epic_llc",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

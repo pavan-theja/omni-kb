@@ -1,0 +1,53 @@
+{
+  "canonical_id": "value_profile.increff_returns.transaction_type",
+  "card_type": "value_profile",
+  "column_id": "column.zs_observe.increff_returns.transaction_type",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "value_profile card from raw/cleaned_v2/wms/increff_operations.md.",
+  "display_name": "Increff returns transaction_type values",
+  "document_id": "increff_operations_clean_md_v9_manifest_refactored_unified_edges",
+  "evidence_ids": [
+    "evidence.increff.044.transaction_type_distribution"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.increff.044.transaction_type_distribution",
+      "source_doc": "raw/cleaned_v2/wms/increff_operations.md",
+      "source_line": 7258
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Increff returns transaction_type values",
+  "profile_notes": [
+    "Use transaction_type to segment customer returns vs RTO vs Shopify direct returns."
+  ],
+  "profile_type": "documented_distinct_values_or_mapping",
+  "review_status": "ready",
+  "source_card_id": "value_profile.increff_returns.transaction_type",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Increff Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 7258,
+  "source_path": "raw/cleaned_v2/wms/increff_operations.md",
+  "source_status": "ready",
+  "status": "draft",
+  "table_id": "table.zs_observe.increff_returns",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_meanings": {
+    "customer_return": "Buyer-initiated return after delivery",
+    "return": "Shopify D2C return with QC data",
+    "return_to_origin": "Courier failed delivery and returned item to warehouse"
+  },
+  "values": [
+    "customer_return",
+    "return_to_origin",
+    "return"
+  ]
+}

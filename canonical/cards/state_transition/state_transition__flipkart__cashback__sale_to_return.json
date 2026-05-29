@@ -1,0 +1,54 @@
+{
+  "business_effect": "cashback credit is clawed back with negative charged_amount on return",
+  "canonical_id": "state_transition.flipkart.cashback.sale_to_return",
+  "card_type": "state_transition",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "state_transition card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_column": "cashback.transaction_type + cashback.document_type + cashback.document_sub_type",
+  "evidence_ids": [
+    "evidence.flipkart.cashback_schema"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.cashback_schema",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5315
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "from_state": "forward + Credit Note + Sale",
+  "name": "Flipkart cashback.sale_to_return",
+  "process_id": "business_process.flipkart.cashback_credit_debit_note",
+  "review_status": "accepted",
+  "source_card_id": "state_transition.flipkart.cashback.sale_to_return",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5315,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "to_state": "reverse + Debit Note + Return",
+  "trigger": "customer return reverses a prior cashback credit",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2",
+  "value_mapping": {
+    "from": {
+      "document_sub_type": "Sale",
+      "document_type": "Credit Note",
+      "transaction_type": "forward"
+    },
+    "to": {
+      "document_sub_type": "Return",
+      "document_type": "Debit Note",
+      "transaction_type": "reverse"
+    }
+  }
+}

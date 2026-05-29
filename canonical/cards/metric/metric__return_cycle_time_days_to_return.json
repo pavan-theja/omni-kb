@@ -1,0 +1,49 @@
+{
+  "business_definition": "7.2 Return Cycle Time (Days to Return)",
+  "canonical_id": "metric.return_cycle_time_days_to_return",
+  "card_type": "metric",
+  "colloquial_names": [
+    "Return Cycle Time (Days to Return)"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order_or_settlement_period_or_dimensioned_group_as_defined_by_query",
+  "default_unit": "INR",
+  "description": "7.2 Return Cycle Time (Days to Return)",
+  "display_name": "Return Cycle Time (Days to Return)",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "domain_id": "domain.meesho.orders",
+  "evidence_ids": [
+    "evidence.meesho.7_2_return_cycle_time_days_to_return"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_2_return_cycle_time_days_to_return",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 11487
+    }
+  ],
+  "evidence_table_ids": [],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_impl.meesho.return_cycle_time_days_to_return"
+  ],
+  "metric_family": "marketplace_metric",
+  "name": "Return Cycle Time (Days to Return)",
+  "review_status": "ready",
+  "source_card_id": "metric.return_cycle_time_days_to_return",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11487,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

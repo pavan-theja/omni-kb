@@ -1,0 +1,47 @@
+{
+  "canonical_id": "formula_template.tatacliq.payout_calculation",
+  "card_type": "formula_template",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "formula_template card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq payout calculation formula",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.payout.calculation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.payout.calculation",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 6869
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "formula_text": "Net Settled = |Charged Amount| - Gross Commission - TDS = |Charged Amount| - (Referral Fee + 18% GST on Referral Fee) - 0.1% TDS",
+  "name": "TataCliq payout calculation formula",
+  "parameters": [
+    "charged_amount",
+    "gross_commission",
+    "referral_fees",
+    "gross_commission_gst_amount",
+    "total_tds"
+  ],
+  "review_status": "ready",
+  "sign_convention": "For settlement rows, forward charged_amount/settled_amount are negative; source formula presents absolute seller payout.",
+  "source_card_id": "formula_template.tatacliq.payout_calculation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6869,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "status": "draft",
+  "unit": "INR",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

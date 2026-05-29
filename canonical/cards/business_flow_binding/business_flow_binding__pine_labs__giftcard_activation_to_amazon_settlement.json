@@ -1,0 +1,77 @@
+{
+  "account_data_binding_ids": [
+    "account_data_binding.pine_labs.woohoo.primary.woohoo_oms",
+    "account_data_binding.pine_labs.amazon_gc.primary.amazon_seller_flex",
+    "account_data_binding.pine_labs.amazon_gc.primary.amazon_gc_settlement"
+  ],
+  "active": true,
+  "binding_name": "Pine Woohoo activation to Amazon GC settlement",
+  "binding_type": "giftcard_oms_to_marketplace_settlement",
+  "business_process_ids": [
+    "business_process.giftcard_activation_to_settlement"
+  ],
+  "business_scope_set_id": "business_scope_set.pine_labs.giftcard_core",
+  "canonical_id": "business_flow_binding.pine_labs.giftcard_activation_to_amazon_settlement",
+  "card_type": "business_flow_binding",
+  "conditions": [],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "business_flow_binding card from raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+      "source_line": 1
+    }
+  ],
+  "evidence_table_ids": [
+    "table.zs_observe.amazon_gc_settlement",
+    "table.zs_observe.amazon_seller_flex",
+    "table.zs_observe.woohoo_oms"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.pine_labs.pine_labs_private_limited",
+  "money_flow_paths": [
+    "Woohoo gift-card order -> Amazon Seller Flex activation -> Amazon GC settlement"
+  ],
+  "name": "Giftcard Activation To Amazon Settlement",
+  "notes": [
+    "Use order_id for Woohoo/Amazon settlement activation matching where available."
+  ],
+  "package_id": "pine_labs_business_hierarchy_runtime_cards_v1_0",
+  "participating_accounts": [
+    {
+      "platform_account_id": "platform_account.pine_labs.woohoo.primary",
+      "required": true,
+      "role": "giftcard_oms"
+    },
+    {
+      "platform_account_id": "platform_account.pine_labs.amazon_gc.primary",
+      "required": true,
+      "role": "activation_and_settlement_evidence"
+    }
+  ],
+  "reconciliation_profile_ids": [
+    "reconciliation_profile.giftcard_activation_to_settlement"
+  ],
+  "review_status": "unreviewed",
+  "source_confidence": "curated",
+  "source_documents": [
+    "Pine Labs.docx",
+    "Cognee KB Design v4.md",
+    "Client Tables - Shopify.md",
+    "flipkart_marketplace.md",
+    "payment_gateway.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/pine_labs_runtime_cards_v1_0.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.pine_labs",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

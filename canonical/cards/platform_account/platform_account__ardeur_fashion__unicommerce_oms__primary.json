@@ -1,0 +1,57 @@
+{
+  "account_name": "Ardeur Unicommerce OMS Account",
+  "account_role": "oms_source",
+  "account_type": "oms_account",
+  "active": true,
+  "canonical_id": "platform_account.ardeur_fashion.unicommerce_oms.primary",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "country_or_region": "India",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "platform_account card from raw/cleaned_v2/clients/ardeur_fashion.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/ardeur_fashion.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.ardeur_fashion.zeal_bizfashion_ventures",
+  "name": "Ardeur Unicommerce OMS Account",
+  "notes": [
+    "The client document confirms this platform/system is configured. Exact seller/merchant/store account identifier was not supplied."
+  ],
+  "package_id": "ardeur_fashion_business_hierarchy_runtime_cards_v1_0",
+  "platform_context_id": "platform_context.unicommerce.in.d2c_oms",
+  "platform_id": "platform.unicommerce",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_confidence": null,
+  "source_config_text": "Unicommerce: Sales, Returns, Cancellations, Sales order report",
+  "source_documents": [
+    "Ardeur Fashion Limited.docx",
+    "Cognee KB Design v4.md",
+    "ajio_marketplace.md",
+    "amazon_marketplace.md",
+    "flipkart_marketplace.md",
+    "jiomart_marketplace.md",
+    "limeroad_marketplace.md",
+    "meesho_marketplace.md",
+    "myntra_marketplace.md",
+    "snapdeal_marketplace.md",
+    "tatacliq_marketplace.md",
+    "unicommerce_d2c_oms.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/ardeur_fashion.json",
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.ardeur_fashion",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

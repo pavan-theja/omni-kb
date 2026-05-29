@@ -1,0 +1,52 @@
+{
+  "actual_side": "bank statement credit/debit",
+  "banking_only": true,
+  "canonical_id": "reconciliation_profile.international_bank_reference_match",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "create_action": "create",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "International bank reference match: compare SWIFT/payment reference against bank statement credit/debit.",
+  "document_id": "bank_statement_gold_standard_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.bank_statement.cross_utr_map.001",
+    "ev.bank_statement.analysis_patterns.001"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.bank_statement.cross_utr_map.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 12849
+    },
+    {
+      "evidence_id": "ev.bank_statement.analysis_patterns.001",
+      "source_doc": "raw/cleaned_v2/bank/bank_statement.md",
+      "source_line": 12849
+    }
+  ],
+  "expected_side": "SWIFT/payment reference",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic": "bank_reference/customer_reference/narrative with currency and amount",
+  "name": "International bank reference match",
+  "out_of_scope_cross_domain": "Actual payment-gateway/ERP/marketplace table cards come from their own KBs; this profile only describes bank-side semantics.",
+  "profile_key": "international_bank_reference_match",
+  "reconciliation_scope": "banking_domain_reusable_profile_not_tenant_specific",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_profile.international_bank_reference_match",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Bank Statement — Knowledge Base.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12849,
+  "source_path": "raw/cleaned_v2/bank/bank_statement.md",
+  "source_status": "accepted",
+  "status": "active",
+  "tolerance": "exact amount by currency unless profile variant overrides; date window source-specific",
+  "unit": "bank_reference_or_settlement_reference",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

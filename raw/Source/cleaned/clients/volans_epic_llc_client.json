@@ -1,0 +1,4344 @@
+{
+  "document_metadata": {
+    "package_id": "volans_epic_llc_client_runtime_cards_v2_1_refactored",
+    "created_for": "Volans Epic LLC",
+    "generated_on": "2026-05-24",
+    "status": "parser_ready_with_explicit_registry_gaps",
+    "source_documents": [
+      "Cognee KB Design v4.md",
+      "Volans Epic LLC.docx",
+      "amazon_marketplace.md",
+      "logistics_domain.md",
+      "shopify_d2c_oms_v2.md",
+      "target_plus.md",
+      "walmart_marketplace.md"
+    ],
+    "design_rule": "Tenant/Group identity is separated from table/runtime scope. group_id and group_level_id filters live only in Account Data Binding cards. Cross-domain logic is represented as Business Scope Set and Business Flow Binding cards.",
+    "scope_key_policy": {
+      "primary_runtime_scope_columns": [
+        "group_id",
+        "group_level_id"
+      ],
+      "tenant_id_handling": "tenant_id is treated as a possible alias of group_id when a source table uses tenant_id instead of group_id; it is not duplicated in the binding unless verified per table.",
+      "region_currency_handling": "Region/currency values are represented as platform-account logical scope unless a concrete table column is confirmed."
+    },
+    "card_count": 30,
+    "edge_count": 81,
+    "version": "v2_1_refactored",
+    "generated_date": "2026-05-24",
+    "client_slug": "volans_epic_llc",
+    "source_json_bad_state": "volans_epic_llc.json",
+    "source_docx": "Volans Epic LLC.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "canonical_markdowns_loaded": [
+      "ajio_marketplace.md",
+      "amazon_marketplace.md",
+      "bank_statement.md",
+      "delhivery_logistics.md",
+      "dtdc_logistics.md",
+      "ecom_express.md",
+      "ekart_logistics.md",
+      "flipkart_marketplace.md",
+      "healthkart_marketplace.md",
+      "increff_operations.md",
+      "jiomart_marketplace.md",
+      "limeroad_marketplace.md",
+      "logistics_domain.md",
+      "logistics_reconciliation_patterns.md",
+      "meesho_marketplace.md",
+      "myntra_marketplace.md",
+      "nykaa_marketplace.md",
+      "payment_gateway.md",
+      "shadowfax_logistics.md",
+      "shiprocket_logistics.md",
+      "shiprocket_logistics_aggregator.md",
+      "shopify_d2c_oms_v2.md",
+      "snapdeal_marketplace.md",
+      "target_plus.md",
+      "tatacliq_marketplace.md",
+      "unicommerce_d2c_oms.md",
+      "unicommerce_operations.md",
+      "walmart_marketplace.md",
+      "xpressbees_logistics.md"
+    ],
+    "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+    "client_runtime_layer": true,
+    "allowed_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "forbidden_in_this_client_layer": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "boundary_policy": {
+      "client_runtime_cards_allowed": [
+        "tenant",
+        "group",
+        "platform_account",
+        "account_data_binding",
+        "business_scope_set",
+        "business_flow_binding"
+      ],
+      "do_not_create_in_client_runtime_pack": [
+        "platform",
+        "platform_context",
+        "domain",
+        "table",
+        "column",
+        "metric",
+        "business_process",
+        "workflow_step",
+        "reconciliation_profile",
+        "matching_logic",
+        "bank_account",
+        "payment_gateway_account",
+        "logistics_account",
+        "erp_accounting_mapping",
+        "statutory_tax_filing",
+        "connector"
+      ],
+      "dangling_reference_policy": "No candidate_edge is emitted unless both source and target resolve to a client card in this file or an uploaded canonical card.",
+      "scope_key_policy": "group_id/group_level_id/currency/country filters stay in account_data_binding.scope_keys, not in reusable platform/domain/table cards.",
+      "missing_account_identifier_policy": "A missing seller/merchant/store/account identifier is not by itself a blocker when the client DOCX confirms the account and table-level scope keys are present."
+    }
+  },
+  "parser_instructions": {
+    "create_only_card_types": [
+      "tenant",
+      "group",
+      "platform_account",
+      "account_data_binding",
+      "business_scope_set",
+      "business_flow_binding"
+    ],
+    "do_not_create_from_this_file": [
+      "platform",
+      "platform_context",
+      "domain",
+      "table",
+      "column",
+      "metric",
+      "business_process",
+      "workflow_step",
+      "reconciliation_profile",
+      "matching_logic",
+      "bank_account",
+      "payment_gateway_account",
+      "logistics_account",
+      "erp_accounting_mapping",
+      "statutory_tax_filing",
+      "connector"
+    ],
+    "edge_reference_policy": [
+      "Emit client runtime edges only when source_id and target_id resolve either to a client runtime card in this file or to an uploaded canonical card.",
+      "Do not emit USES_PLATFORM / USES_PLATFORM_CONTEXT / BINDS_TO_TABLE if the canonical target card is absent.",
+      "Runtime filters belong in account_data_binding.scope_keys; do not push group_id/group_level_id into platform/table/metric/process cards."
+    ],
+    "source_correction_policy": {
+      "active_shopify_canonical": "shopify_d2c_oms_v2.md",
+      "superseded_shopify_canonical": "shopify_d2c_oms.md",
+      "replacement_ids": {
+        "platform_context.shopify.in.d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.in_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.global_d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.international_d2c_oms": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.shopify.us_d2c": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "platform_context.increff.in.wms_operations": "platform_context.increff.in",
+        "platform_context.shiprocket.in.oms_order_source": "platform_context.shiprocket.in",
+        "platform_context.amazon.us": "platform_context.amazon.international",
+        "platform_context.amazon.ca": "platform_context.amazon.international",
+        "platform_context.amazon.uk": "platform_context.amazon.international",
+        "platform_context.amazon.mx": "platform_context.amazon.international",
+        "platform_context.nykaa.in": "platform_context.nykaa_fashion.in",
+        "platform_context.rbl_bank.in_payin": "platform_context.rbl_bank.in",
+        "platform.idfc_bank": "platform.idfc_first_bank",
+        "platform_context.idfc_bank.in": "platform_context.idfc_first_bank.in",
+        "platform_context.paypal.in": "platform_context.paypal.global",
+        "platform_context.paypal.us": "platform_context.paypal.global",
+        "table.zs_observe.idfc_bank": "table.zs_ingest.idfc_bank",
+        "table.zs_observe.idfc_bank_inr": "table.zs_ingest.idfc_bank_inr",
+        "table.zs_observe.yesbank_oms_payout": "table.zs_ingest.yesbank_oms_payout",
+        "business_scope_set.volans_epic_llc.walmart_us_pending_context": "business_scope_set.volans_epic_llc.walmart_us",
+        "business_flow_binding.volans_epic_llc.walmart_pending_context": "business_flow_binding.volans_epic_llc.walmart_marketplace_reconciliation",
+        "business_scope_set.volans_uptown_llc.walmart_us_pending_context": "business_scope_set.volans_uptown_llc.walmart_us",
+        "business_flow_binding.volans_uptown_llc.walmart_pending_context": "business_flow_binding.volans_uptown_llc.walmart_marketplace_reconciliation"
+      },
+      "replacement_documents": {
+        "shopify_d2c_oms.md": "shopify_d2c_oms_v2.md",
+        "Client Tables - Shopify.md": "shopify_d2c_oms_v2.md"
+      }
+    },
+    "status_policy": {
+      "active": "source-confirmed and routable against at least the available canonical/client table context",
+      "review_required": "source-confirmed but missing a required canonical platform/context/table card for production routing",
+      "draft": "intentionally inactive pending bank binding, external account binding, or future platform-context authoring"
+    }
+  },
+  "clean_refactor_manifest": {
+    "source_json": "volans_epic_llc.json",
+    "source_docx": "Volans Epic LLC.docx",
+    "canonical_markdowns_loaded_count": 29,
+    "canonical_cards_loaded_count": 9918,
+    "corrections_applied": [
+      "Replaced old Shopify references with shopify_d2c_oms_v2 canonical context.",
+      "Collapsed Amazon US/CA/UK/MX aliases to uploaded platform_context.amazon.international while preserving country/currency guards on account bindings.",
+      "Remapped Nykaa India alias to Nykaa Fashion canonical context.",
+      "Remapped IDFC Bank alias to IDFC First Bank canonical bank-statement context where present.",
+      "Remapped role-specific Shopify/Increff/Shiprocket/Amazon/Paytm/PhonePe context aliases to uploaded broader canonical contexts while preserving the role in account fields.",
+      "Blocked unresolved platform/context/table edges rather than emitting dangling references.",
+      "Normalized status/active conflicts from the bad-state JSON.",
+      "Added DOCX section and row-level evidence references for configured sources."
+    ],
+    "id_replacement_hits": [
+      {
+        "card_id": "group.volans_epic_llc.mensa_brands",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_returns",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_fee_preview",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_ca.primary.amazon_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_br.primary.amazon_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_sales",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_returns",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_tcin_mapping",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.d2c_oms",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      },
+      {
+        "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      }
+    ],
+    "status_changes": [],
+    "blocked_edge_count": 0,
+    "canonical_resolution_gap_count": 0,
+    "resolved_prior_review_count": 1
+  },
+  "source_evidence": [
+    {
+      "id": "ev.volans_epic_llc.docx.section.01_identity",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Identity",
+      "evidence_type": "docx_section",
+      "source_lines": "L2-L12",
+      "summary": "* Business: Product brand selling across US mass-market retail + D2C — no international exposure beyond Americas\n* Geography: United States (primary), Canada, Brazil\n* OMS/WMS: Shopify (D2C), native marketplace OMS feeds (Amazon, Walmart)\n* Logistics: Not configured — courier reconciliation not in scope\n* Payment gateways: Not configured — settlements entirely via marketplace payouts\n* Currencies in scope: USD, CAD, BRL\n* GROUP LEVEL ID : 134\n* GROUP ID : 9\n* GROUP NAME :  Mensa Brands\n* CLIENT NAME :  **Volans Epic LLC**",
+      "raw_lines": [
+        "* Business: Product brand selling across US mass-market retail + D2C — no international exposure beyond Americas",
+        "* Geography: United States (primary), Canada, Brazil",
+        "* OMS/WMS: Shopify (D2C), native marketplace OMS feeds (Amazon, Walmart)",
+        "* Logistics: Not configured — courier reconciliation not in scope",
+        "* Payment gateways: Not configured — settlements entirely via marketplace payouts",
+        "* Currencies in scope: USD, CAD, BRL",
+        "* GROUP LEVEL ID : 134",
+        "* GROUP ID : 9",
+        "* GROUP NAME :  Mensa Brands",
+        "* CLIENT NAME :  **Volans Epic LLC**"
+      ],
+      "row_count": 0,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "docx_section",
+      "source_lines": "L13-L21",
+      "summary": "| Channel | Region | Data types configured |\n|---------|--------|-----------------------|\n| Amazon  | US     | OMS, Settlement, Returns, Fee preview |\n| Amazon  | Canada (CA) | Settlement            |\n| Amazon  | Brazil (BR) | Settlement            |\n| Walmart | US     | OMS, Settlement, ASIN–SKU lookup |\n| Target  | US     | Sales, Settlement, Returns, TCIN mapping |\n| Shopify | D2C (US) | OMS                   |",
+      "raw_lines": [
+        "| Channel | Region | Data types configured |",
+        "|---------|--------|-----------------------|",
+        "| Amazon  | US     | OMS, Settlement, Returns, Fee preview |",
+        "| Amazon  | Canada (CA) | Settlement            |",
+        "| Amazon  | Brazil (BR) | Settlement            |",
+        "| Walmart | US     | OMS, Settlement, ASIN–SKU lookup |",
+        "| Target  | US     | Sales, Settlement, Returns, TCIN mapping |",
+        "| Shopify | D2C (US) | OMS                   |"
+      ],
+      "row_count": 6,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L16",
+      "row_key": "Amazon",
+      "columns": {
+        "channel": "Amazon",
+        "region": "US",
+        "data_types_configured": "OMS, Settlement, Returns, Fee preview"
+      },
+      "raw_text": "| Amazon  | US     | OMS, Settlement, Returns, Fee preview |",
+      "summary": "Amazon: channel=Amazon; region=US; data_types_configured=OMS, Settlement, Returns, Fee preview",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L17",
+      "row_key": "Amazon",
+      "columns": {
+        "channel": "Amazon",
+        "region": "Canada (CA)",
+        "data_types_configured": "Settlement"
+      },
+      "raw_text": "| Amazon  | Canada (CA) | Settlement            |",
+      "summary": "Amazon: channel=Amazon; region=Canada (CA); data_types_configured=Settlement",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L18",
+      "row_key": "Amazon",
+      "columns": {
+        "channel": "Amazon",
+        "region": "Brazil (BR)",
+        "data_types_configured": "Settlement"
+      },
+      "raw_text": "| Amazon  | Brazil (BR) | Settlement            |",
+      "summary": "Amazon: channel=Amazon; region=Brazil (BR); data_types_configured=Settlement",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L19",
+      "row_key": "Walmart",
+      "columns": {
+        "channel": "Walmart",
+        "region": "US",
+        "data_types_configured": "OMS, Settlement, ASIN–SKU lookup"
+      },
+      "raw_text": "| Walmart | US     | OMS, Settlement, ASIN–SKU lookup |",
+      "summary": "Walmart: channel=Walmart; region=US; data_types_configured=OMS, Settlement, ASIN–SKU lookup",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L20",
+      "row_key": "Target",
+      "columns": {
+        "channel": "Target",
+        "region": "US",
+        "data_types_configured": "Sales, Settlement, Returns, TCIN mapping"
+      },
+      "raw_text": "| Target  | US     | Sales, Settlement, Returns, TCIN mapping |",
+      "summary": "Target: channel=Target; region=US; data_types_configured=Sales, Settlement, Returns, TCIN mapping",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.02_active_sales_channels.06_shopify",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Active sales channels",
+      "evidence_type": "configured_source_row",
+      "source_line": "L21",
+      "row_key": "Shopify",
+      "columns": {
+        "channel": "Shopify",
+        "region": "D2C (US)",
+        "data_types_configured": "OMS"
+      },
+      "raw_text": "| Shopify | D2C (US) | OMS                   |",
+      "summary": "Shopify: channel=Shopify; region=D2C (US); data_types_configured=OMS",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.section.03_reference_mapping_tables",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Reference / mapping tables",
+      "evidence_type": "docx_section",
+      "source_lines": "L22-L27",
+      "summary": "| File | Pipeline target | Purpose |\n|------|-----------------|---------|\n| Walmart ASIN–SKU | walmart_lookup  | Maps Walmart item IDs to brand SKUs |\n| Target TCIN mapping | target_tcin_mapping | Maps Target internal item numbers (TCIN) to brand SKUs |\n| Amazon fee preview | amazon_fee_preview | Projected fee estimates ahead of settlement close |",
+      "raw_lines": [
+        "| File | Pipeline target | Purpose |",
+        "|------|-----------------|---------|",
+        "| Walmart ASIN–SKU | walmart_lookup  | Maps Walmart item IDs to brand SKUs |",
+        "| Target TCIN mapping | target_tcin_mapping | Maps Target internal item numbers (TCIN) to brand SKUs |",
+        "| Amazon fee preview | amazon_fee_preview | Projected fee estimates ahead of settlement close |"
+      ],
+      "row_count": 3,
+      "confidence": "high",
+      "preservation": "source_docx_text_extracted_for_runtime_binding_refactor"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Reference / mapping tables",
+      "evidence_type": "configured_source_row",
+      "source_line": "L25",
+      "row_key": "Walmart ASIN–SKU",
+      "columns": {
+        "file": "Walmart ASIN–SKU",
+        "pipeline_target": "walmart_lookup",
+        "purpose": "Maps Walmart item IDs to brand SKUs"
+      },
+      "raw_text": "| Walmart ASIN–SKU | walmart_lookup  | Maps Walmart item IDs to brand SKUs |",
+      "summary": "Walmart ASIN–SKU: file=Walmart ASIN–SKU; pipeline_target=walmart_lookup; purpose=Maps Walmart item IDs to brand SKUs",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Reference / mapping tables",
+      "evidence_type": "configured_source_row",
+      "source_line": "L26",
+      "row_key": "Target TCIN mapping",
+      "columns": {
+        "file": "Target TCIN mapping",
+        "pipeline_target": "target_tcin_mapping",
+        "purpose": "Maps Target internal item numbers (TCIN) to brand SKUs"
+      },
+      "raw_text": "| Target TCIN mapping | target_tcin_mapping | Maps Target internal item numbers (TCIN) to brand SKUs |",
+      "summary": "Target TCIN mapping: file=Target TCIN mapping; pipeline_target=target_tcin_mapping; purpose=Maps Target internal item numbers (TCIN) to brand SKUs",
+      "confidence": "high"
+    },
+    {
+      "id": "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview",
+      "source_document": "Volans Epic LLC.docx",
+      "source_section": "Reference / mapping tables",
+      "evidence_type": "configured_source_row",
+      "source_line": "L27",
+      "row_key": "Amazon fee preview",
+      "columns": {
+        "file": "Amazon fee preview",
+        "pipeline_target": "amazon_fee_preview",
+        "purpose": "Projected fee estimates ahead of settlement close"
+      },
+      "raw_text": "| Amazon fee preview | amazon_fee_preview | Projected fee estimates ahead of settlement close |",
+      "summary": "Amazon fee preview: file=Amazon fee preview; pipeline_target=amazon_fee_preview; purpose=Projected fee estimates ahead of settlement close",
+      "confidence": "high"
+    }
+  ],
+  "candidate_cards": [
+    {
+      "card_type": "tenant",
+      "card_id": "tenant.volans_epic_llc",
+      "canonical_id": "tenant.volans_epic_llc",
+      "name": "Volans Epic LLC",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.01_identity",
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon"
+      ],
+      "description": "Volans Epic LLC uses ZenStatement for Americas-focused marketplace and Shopify D2C sales/settlement reasoning across Amazon, Walmart, Target, and Shopify. Logistics and payment gateways are explicitly out of scope in the client source.",
+      "fields": {
+        "tenant_name": "Volans Epic LLC",
+        "tenant_code": "VOLANS_EPIC",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "group",
+      "card_id": "group.volans_epic_llc.mensa_brands",
+      "canonical_id": "group.volans_epic_llc.mensa_brands",
+      "name": "Mensa Brands",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Cognee KB Design v4.md",
+        "Volans Epic LLC.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.01_identity"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_name": "Mensa Brands",
+        "group_code": "MENSA_BRANDS_VOLANS_EPIC",
+        "group_type": "operational_unit",
+        "business_meaning": "Operational group from the Volans Epic LLC client scope. Source identifies GROUP ID 9 and GROUP LEVEL ID 134; these are applied through Account Data Binding filters. No international exposure beyond Americas.",
+        "country_or_region": "United States primary, Canada, Brazil",
+        "default_currency": "USD",
+        "client_source_identifiers_note": "Source doc gives GROUP ID 9 and GROUP LEVEL ID 134; these are applied as Account Data Binding filters, not as universal Group properties.",
+        "currency_scope": [
+          "USD",
+          "CAD",
+          "BRL"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "canonical_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "name": "Volans Epic LLC Amazon US Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "platform_id": "platform.amazon",
+        "platform_context_id": "platform_context.amazon.international",
+        "account_name": "Volans Epic LLC Amazon US Seller Account",
+        "account_type": "marketplace_seller_account",
+        "source_account_identifier": null,
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "region_or_market": "US",
+        "default_currency": "USD",
+        "currency_scope": [
+          "USD"
+        ],
+        "canonical_platform_status": "canonical",
+        "source_evidence": "Amazon US configured: OMS, Settlement, Returns, Fee preview",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.amazon",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.amazon.international",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_oms",
+      "canonical_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_oms",
+      "name": "account data binding / volans epic llc / amazon us / primary / amazon oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_oms",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "OMS",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Amazon US | OMS",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_oms",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_settlement",
+      "canonical_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_settlement",
+      "name": "account data binding / volans epic llc / amazon us / primary / amazon settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Settlement",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Amazon US | Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_settlement",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_returns",
+      "canonical_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_returns",
+      "name": "account data binding / volans epic llc / amazon us / primary / amazon returns",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_returns",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Returns",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Amazon US | Returns",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_returns",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_fee_preview",
+      "canonical_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_fee_preview",
+      "name": "account data binding / volans epic llc / amazon us / primary / amazon fee preview",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+        "table_id": "table.zs_observe.amazon_fee_preview",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Fee preview",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Amazon US | Fee preview",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_fee_preview",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "canonical_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "name": "Volans Epic LLC Amazon Canada Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "platform_id": "platform.amazon",
+        "platform_context_id": "platform_context.amazon.international",
+        "account_name": "Volans Epic LLC Amazon Canada Seller Account",
+        "account_type": "marketplace_seller_account",
+        "source_account_identifier": null,
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "region_or_market": "Canada",
+        "default_currency": "CAD",
+        "currency_scope": [
+          "CAD"
+        ],
+        "canonical_platform_status": "canonical",
+        "source_evidence": "Amazon Canada configured: Settlement",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.amazon",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.amazon.international",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.amazon_ca.primary.amazon_settlement",
+      "canonical_id": "account_data_binding.volans_epic_llc.amazon_ca.primary.amazon_settlement",
+      "name": "account data binding / volans epic llc / amazon ca / primary / amazon settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Settlement",
+        "logical_scope": {
+          "region_or_market": "Canada",
+          "currency_scope": [
+            "CAD"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Amazon Canada | Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_settlement",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "canonical_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "name": "Volans Epic LLC Amazon Brazil Seller Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "platform_id": "platform.amazon",
+        "platform_context_id": "platform_context.amazon.international",
+        "account_name": "Volans Epic LLC Amazon Brazil Seller Account",
+        "account_type": "marketplace_seller_account",
+        "source_account_identifier": null,
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "region_or_market": "Brazil",
+        "default_currency": "BRL",
+        "currency_scope": [
+          "BRL"
+        ],
+        "canonical_platform_status": "canonical",
+        "source_evidence": "Amazon Brazil configured: Settlement",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.amazon",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.amazon.international",
+            "source_documents": [
+              "amazon_marketplace.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.amazon_br.primary.amazon_settlement",
+      "canonical_id": "account_data_binding.volans_epic_llc.amazon_br.primary.amazon_settlement",
+      "name": "account data binding / volans epic llc / amazon br / primary / amazon settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "amazon_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.amazon_br.primary",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Settlement",
+        "logical_scope": {
+          "region_or_market": "Brazil",
+          "currency_scope": [
+            "BRL"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Amazon Brazil | Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.amazon_settlement",
+          "source_documents": [
+            "amazon_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "canonical_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "name": "Volans Epic LLC Walmart US Marketplace Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "walmart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "platform_id": "platform.walmart",
+        "platform_context_id": "platform_context.walmart.us",
+        "account_name": "Volans Epic LLC Walmart US Marketplace Account",
+        "account_type": "marketplace_seller_account",
+        "source_account_identifier": null,
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "region_or_market": "US",
+        "default_currency": "USD",
+        "currency_scope": [
+          "USD"
+        ],
+        "canonical_platform_status": "canonical_resolved",
+        "source_evidence": "Walmart US configured: OMS, Settlement, ASIN-SKU lookup",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.walmart",
+            "source_documents": [
+              "walmart_marketplace.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.walmart.us",
+            "source_documents": [
+              "walmart_marketplace.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client DOCX confirms Walmart US coverage: OMS, Settlement, and ASIN-SKU lookup.",
+          "Previously marked pending only because Walmart canonical was unavailable; resolved by uploaded walmart_marketplace.md."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup",
+      "canonical_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup",
+      "name": "account data binding / volans epic llc / walmart us / primary / walmart lookup",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "walmart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.walmart_us.primary",
+        "table_id": "table.zs_observe.walmart_lookup",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "ASIN-SKU lookup",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "source_confirmed_resolved_by_uploaded_walmart_canonical",
+        "source_evidence": "Walmart ASIN-SKU | walmart_lookup",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.walmart_lookup",
+          "source_documents": [
+            "walmart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards.",
+          "Previously draft because Walmart canonical was unavailable; promoted because uploaded walmart_marketplace.md now provides the platform, context, and lookup table cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "canonical_id": "platform_account.volans_epic_llc.target_us.primary",
+      "name": "Volans Epic LLC Target/Target Plus US Account",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "target_plus.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "platform_id": "platform.target_plus",
+        "platform_context_id": "platform_context.target_plus.us",
+        "account_name": "Volans Epic LLC Target/Target Plus US Account",
+        "account_type": "marketplace_seller_account",
+        "source_account_identifier": null,
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "region_or_market": "US",
+        "default_currency": "USD",
+        "currency_scope": [
+          "USD"
+        ],
+        "canonical_platform_status": "canonical",
+        "source_evidence": "Target US configured: Sales, Settlement, Returns, TCIN mapping",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.target_plus",
+            "source_documents": [
+              "target_plus.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.target_plus.us",
+            "source_documents": [
+              "target_plus.md"
+            ]
+          }
+        },
+        "notes": [
+          "Client labels the channel Target. Current canonical context is Target Plus; this pack maps semantically to target_plus canonical cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_sales",
+      "canonical_id": "account_data_binding.volans_epic_llc.target_us.primary.target_sales",
+      "name": "account data binding / volans epic llc / target us / primary / target sales",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "target_plus.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+        "table_id": "table.zs_observe.target_sales",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Sales",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "semantic_exact",
+        "source_evidence": "Target | Sales",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.target_sales",
+          "source_documents": [
+            "target_plus.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_settlement",
+      "canonical_id": "account_data_binding.volans_epic_llc.target_us.primary.target_settlement",
+      "name": "account data binding / volans epic llc / target us / primary / target settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "target_plus.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+        "table_id": "table.zs_observe.target_settlement",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Settlement",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "semantic_exact",
+        "source_evidence": "Target | Settlement",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.target_settlement",
+          "source_documents": [
+            "target_plus.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_returns",
+      "canonical_id": "account_data_binding.volans_epic_llc.target_us.primary.target_returns",
+      "name": "account data binding / volans epic llc / target us / primary / target returns",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "target_plus.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+        "table_id": "table.zs_observe.target_returns",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Returns",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "semantic_exact",
+        "source_evidence": "Target | Returns",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.target_returns",
+          "source_documents": [
+            "target_plus.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_tcin_mapping",
+      "canonical_id": "account_data_binding.volans_epic_llc.target_us.primary.target_tcin_mapping",
+      "name": "account data binding / volans epic llc / target us / primary / target tcin mapping",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "target_plus.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+        "table_id": "table.zs_observe.target_tcin_mapping",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "TCIN mapping",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "semantic_exact",
+        "source_evidence": "Target | TCIN mapping",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.target_tcin_mapping",
+          "source_documents": [
+            "target_plus.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "platform_account",
+      "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "canonical_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "name": "Volans Epic LLC Shopify D2C Store",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.06_shopify"
+      ],
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "platform_id": "platform.shopify",
+        "platform_context_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+        "account_name": "Volans Epic LLC Shopify D2C Store",
+        "account_type": "d2c_store_account",
+        "source_account_identifier": null,
+        "source_account_identifier_status": "not_provided_in_client_docx_not_a_runtime_blocker_when_scope_keys_exist",
+        "region_or_market": "US D2C",
+        "default_currency": "USD",
+        "currency_scope": [
+          "USD"
+        ],
+        "canonical_platform_status": "canonical",
+        "source_evidence": "Shopify D2C configured: OMS",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "canonical_reference_resolution": {
+          "platform_id": {
+            "status": "resolved",
+            "resolved_id": "platform.shopify",
+            "source_documents": [
+              "shopify_d2c_oms_v2.md"
+            ]
+          },
+          "platform_context_id": {
+            "status": "resolved",
+            "resolved_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+            "source_documents": [
+              "shopify_d2c_oms_v2.md"
+            ]
+          }
+        },
+        "refactor_replacements_applied": [
+          {
+            "kind": "canonical_id",
+            "from": "platform_context.shopify.d2c_oms",
+            "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+          },
+          {
+            "kind": "source_document_text",
+            "from": "shopify_d2c_oms.md",
+            "to": "shopify_d2c_oms_v2.md"
+          },
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Client document confirms the platform/channel is configured; exact external account identifier was not provided."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+      "canonical_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+      "name": "account data binding / volans epic llc / shopify d2c / primary / shopify oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "logistics_domain.md",
+        "shopify_d2c_oms_v2.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.06_shopify"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "table_id": "table.zs_observe.shopify_oms",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "D2C OMS",
+        "logical_scope": {
+          "region_or_market": "US D2C",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "exact",
+        "source_evidence": "Shopify | D2C OMS",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.shopify_oms",
+          "source_documents": [
+            "logistics_domain.md",
+            "shopify_d2c_oms_v2.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          },
+          {
+            "kind": "source_document_text",
+            "from": "shopify_d2c_oms.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Runtime scope uses client group_id and group_level_id from the client identity document. Do not move these filters into generic platform/domain cards."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "canonical_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "name": "Volans Epic LLC Amazon Americas",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "description": "Amazon US/CA/BR scope. US has OMS/settlement/returns/fee-preview; CA and BR are settlement-only per client source.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "scope_name": "Volans Epic LLC Amazon Americas",
+        "scope_type": "marketplace_settlement_scope",
+        "platform_account_ids": [
+          "platform_account.volans_epic_llc.amazon_us.primary",
+          "platform_account.volans_epic_llc.amazon_ca.primary",
+          "platform_account.volans_epic_llc.amazon_br.primary"
+        ],
+        "account_data_binding_ids": [],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.volans_epic_llc.target_us",
+      "canonical_id": "business_scope_set.volans_epic_llc.target_us",
+      "name": "Volans Epic LLC Target US",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping"
+      ],
+      "description": "Target/Target Plus US sales, settlement, returns, and TCIN mapping scope.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "scope_name": "Volans Epic LLC Target US",
+        "scope_type": "marketplace_settlement_scope",
+        "platform_account_ids": [
+          "platform_account.volans_epic_llc.target_us.primary"
+        ],
+        "account_data_binding_ids": [],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.volans_epic_llc.walmart_us",
+      "canonical_id": "business_scope_set.volans_epic_llc.walmart_us",
+      "name": "Volans Epic LLC Walmart US",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "walmart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku"
+      ],
+      "description": "Walmart US marketplace account scope resolved against uploaded Walmart canonical markdown.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "scope_name": "Volans Epic LLC Walmart US",
+        "scope_type": "marketplace_settlement_scope",
+        "platform_account_ids": [
+          "platform_account.volans_epic_llc.walmart_us.primary"
+        ],
+        "account_data_binding_ids": [
+          "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+          "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+          "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup"
+        ],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Promoted from pending-context scope after Walmart canonical markdown was uploaded."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.volans_epic_llc.shopify_d2c",
+      "canonical_id": "business_scope_set.volans_epic_llc.shopify_d2c",
+      "name": "Volans Epic LLC Shopify D2C",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.06_shopify"
+      ],
+      "description": "Shopify OMS scope for US D2C store.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "scope_name": "Volans Epic LLC Shopify D2C",
+        "scope_type": "d2c_oms_scope",
+        "platform_account_ids": [
+          "platform_account.volans_epic_llc.shopify_d2c.primary"
+        ],
+        "account_data_binding_ids": [],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_scope_set",
+      "card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "canonical_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "name": "Volans Epic LLC Americas currency rollup",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.01_identity"
+      ],
+      "description": "Rollup scope across USD/CAD/BRL; requires FX handling for CAD and BRL settlements.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "scope_name": "Volans Epic LLC Americas currency rollup",
+        "scope_type": "reporting_scope",
+        "platform_account_ids": [
+          "platform_account.volans_epic_llc.amazon_us.primary",
+          "platform_account.volans_epic_llc.amazon_ca.primary",
+          "platform_account.volans_epic_llc.amazon_br.primary",
+          "platform_account.volans_epic_llc.walmart_us.primary",
+          "platform_account.volans_epic_llc.target_us.primary",
+          "platform_account.volans_epic_llc.shopify_d2c.primary"
+        ],
+        "account_data_binding_ids": [],
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "canonical_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "name": "Volans Epic LLC Amazon OMS/settlement/returns reconciliation",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.01_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.02_amazon",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.03_amazon",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.03_amazon_fee_preview"
+      ],
+      "description": "Amazon US full OMS/settlement/returns/fee-preview; CA/BR settlement-only as per source.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "flow_name": "Volans Epic LLC Amazon OMS/settlement/returns reconciliation",
+        "flow_type": "marketplace_oms_settlement_returns",
+        "participant_platform_account_ids": [
+          "platform_account.volans_epic_llc.amazon_us.primary",
+          "platform_account.volans_epic_llc.amazon_ca.primary",
+          "platform_account.volans_epic_llc.amazon_br.primary"
+        ],
+        "business_scope_set_ids": [
+          "business_scope_set.volans_epic_llc.amazon_americas"
+        ],
+        "required_runtime_resolution": [],
+        "source_evidence": null,
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.volans_epic_llc.target_plus_sales_settlement_returns",
+      "canonical_id": "business_flow_binding.volans_epic_llc.target_plus_sales_settlement_returns",
+      "name": "Volans Epic LLC Target sales/settlement/returns reconciliation",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.05_target",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.02_target_tcin_mapping"
+      ],
+      "description": "Target sales, settlement, returns, and TCIN mapping using canonical Target Plus cards.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "flow_name": "Volans Epic LLC Target sales/settlement/returns reconciliation",
+        "flow_type": "marketplace_sales_settlement_returns",
+        "participant_platform_account_ids": [
+          "platform_account.volans_epic_llc.target_us.primary"
+        ],
+        "business_scope_set_ids": [
+          "business_scope_set.volans_epic_llc.target_us"
+        ],
+        "required_runtime_resolution": [],
+        "source_evidence": null,
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.volans_epic_llc.shopify_d2c_oms",
+      "canonical_id": "business_flow_binding.volans_epic_llc.shopify_d2c_oms",
+      "name": "Volans Epic LLC Shopify D2C OMS flow",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.06_shopify"
+      ],
+      "description": "Shopify OMS-only flow. Client source states payment gateways are not configured, so no PG flow is created.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "flow_name": "Volans Epic LLC Shopify D2C OMS flow",
+        "flow_type": "d2c_oms",
+        "participant_platform_account_ids": [
+          "platform_account.volans_epic_llc.shopify_d2c.primary"
+        ],
+        "business_scope_set_ids": [
+          "business_scope_set.volans_epic_llc.shopify_d2c"
+        ],
+        "required_runtime_resolution": [],
+        "source_evidence": null,
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.volans_epic_llc.walmart_marketplace_reconciliation",
+      "canonical_id": "business_flow_binding.volans_epic_llc.walmart_marketplace_reconciliation",
+      "name": "Volans Epic LLC Walmart OMS/settlement/lookup reconciliation",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "walmart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku"
+      ],
+      "description": "Walmart US flow covering OMS, settlement, and ASIN-SKU lookup. This replaces the stale pending-context flow from the bad-state JSON.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "flow_name": "Volans Epic LLC Walmart OMS/settlement/lookup reconciliation",
+        "flow_type": "marketplace_oms_settlement",
+        "participant_platform_account_ids": [
+          "platform_account.volans_epic_llc.walmart_us.primary"
+        ],
+        "business_scope_set_ids": [
+          "business_scope_set.volans_epic_llc.walmart_us"
+        ],
+        "required_runtime_resolution": [],
+        "source_evidence": null,
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [
+          "Promoted from pending-context flow after Walmart canonical markdown was uploaded."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "business_flow_binding",
+      "card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "canonical_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "name": "Volans Epic LLC marketplace settlement to bank pending bank binding",
+      "status": "draft",
+      "active": false,
+      "confidence": "curated",
+      "review_status": "review_required",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.01_identity"
+      ],
+      "description": "Client states settlements via marketplace payouts, but no bank account/bank-statement binding is provided.",
+      "fields": {
+        "tenant_id": "tenant.volans_epic_llc",
+        "group_id": "group.volans_epic_llc.mensa_brands",
+        "flow_name": "Volans Epic LLC marketplace settlement to bank pending bank binding",
+        "flow_type": "marketplace_to_bank",
+        "participant_platform_account_ids": [
+          "platform_account.volans_epic_llc.amazon_us.primary",
+          "platform_account.volans_epic_llc.amazon_ca.primary",
+          "platform_account.volans_epic_llc.amazon_br.primary",
+          "platform_account.volans_epic_llc.target_us.primary",
+          "platform_account.volans_epic_llc.walmart_us.primary"
+        ],
+        "business_scope_set_ids": [
+          "business_scope_set.volans_epic_llc.americas_fx_rollup"
+        ],
+        "required_runtime_resolution": [
+          "bank_platform_account",
+          "bank_statement_account_data_binding",
+          "currency/account routing by USD/CAD/BRL"
+        ],
+        "source_evidence": null,
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "notes": [],
+        "original_bad_state_status": {
+          "status": "draft",
+          "active": false
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+      "canonical_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+      "name": "account data binding / volans epic llc / walmart us / primary / walmart oms",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "walmart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.walmart_us.primary",
+        "table_id": "table.zs_observe.walmart_oms",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "OMS",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "source_confirmed_resolved_by_uploaded_walmart_canonical",
+        "source_evidence": "Walmart US | OMS configured in client DOCX active-sales-channel row",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.walmart_oms",
+          "source_documents": [
+            "walmart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Added by refactor because the bad-state JSON was created before Walmart canonical cards existed.",
+          "Runtime scope uses the same client group_id/group_level_id filters as the Walmart lookup binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    },
+    {
+      "card_type": "account_data_binding",
+      "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+      "canonical_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+      "name": "account data binding / volans epic llc / walmart us / primary / walmart settlement",
+      "status": "active",
+      "active": true,
+      "confidence": "curated",
+      "review_status": "accepted",
+      "create_action": "upsert",
+      "source_documents": [
+        "Volans Epic LLC.docx",
+        "walmart_marketplace.md"
+      ],
+      "evidence_refs": [
+        "ev.volans_epic_llc.docx.section.02_active_sales_channels",
+        "ev.volans_epic_llc.docx.row.02_active_sales_channels.04_walmart",
+        "ev.volans_epic_llc.docx.row.03_reference_mapping_tables.01_walmart_asin_sku"
+      ],
+      "fields": {
+        "platform_account_id": "platform_account.volans_epic_llc.walmart_us.primary",
+        "table_id": "table.zs_observe.walmart_settlement",
+        "table_canonical_status": "canonical",
+        "scope_keys": [
+          {
+            "business_key": "client_group_id",
+            "column": "group_id",
+            "operator": "=",
+            "value": 9,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "shopify_d2c_oms_v2.md describes group_id as the tenant/client identifier column; keep it in Account Data Binding, not on generic table/metric cards."
+          },
+          {
+            "business_key": "group_level_id",
+            "column": "group_level_id",
+            "operator": "=",
+            "value": 134,
+            "data_type": "integer",
+            "source": "client_identity_doc",
+            "notes": "Client-specific sub-entity/file-scope filter. This belongs in Account Data Binding, not on Group/Table/Metric cards."
+          }
+        ],
+        "data_type_configured": "Settlement",
+        "logical_scope": {
+          "region_or_market": "US",
+          "currency_scope": [
+            "USD"
+          ]
+        },
+        "mapping_confidence": "source_confirmed_resolved_by_uploaded_walmart_canonical",
+        "source_evidence": "Walmart US | Settlement configured in client DOCX active-sales-channel row",
+        "canonical_table_resolution": {
+          "status": "resolved",
+          "resolved_id": "table.zs_observe.walmart_settlement",
+          "source_documents": [
+            "walmart_marketplace.md"
+          ]
+        },
+        "routing_status": "routable_when_scope_keys_are_available",
+        "runtime_layer_policy": "client_scope_and_account_binding_only_no_canonical_semantics_created_here",
+        "refactor_replacements_applied": [
+          {
+            "kind": "source_document_text",
+            "from": "Client Tables - Shopify.md",
+            "to": "shopify_d2c_oms_v2.md"
+          }
+        ],
+        "notes": [
+          "Added by refactor because the bad-state JSON was created before Walmart canonical cards existed.",
+          "Runtime scope uses the same client group_id/group_level_id filters as the Walmart lookup binding."
+        ],
+        "original_bad_state_status": {
+          "status": "active",
+          "active": true
+        }
+      }
+    }
+  ],
+  "semantic_mappings": [
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_data_type": "OMS",
+      "mapped_table_id": "table.zs_observe.amazon_oms",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Amazon US | OMS",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_oms",
+        "table.zs_observe.amazon_settlement",
+        "table.zs_observe.amazon_returns",
+        "table.zs_observe.amazon_fee_preview"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_data_type": "Settlement",
+      "mapped_table_id": "table.zs_observe.amazon_settlement",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Amazon US | Settlement",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_settlement",
+        "table.zs_observe.amazon_oms",
+        "table.zs_observe.amazon_returns",
+        "table.zs_observe.amazon_fee_preview"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_data_type": "Returns",
+      "mapped_table_id": "table.zs_observe.amazon_returns",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Amazon US | Returns",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_returns",
+        "table.zs_observe.amazon_oms",
+        "table.zs_observe.amazon_settlement",
+        "table.zs_observe.amazon_fee_preview"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_data_type": "Fee preview",
+      "mapped_table_id": "table.zs_observe.amazon_fee_preview",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Amazon US | Fee preview",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_fee_preview",
+        "table.zs_observe.amazon_oms",
+        "table.zs_observe.amazon_settlement",
+        "table.zs_observe.amazon_returns"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "source_data_type": "Settlement",
+      "mapped_table_id": "table.zs_observe.amazon_settlement",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Amazon Canada | Settlement",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_settlement"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "source_data_type": "Settlement",
+      "mapped_table_id": "table.zs_observe.amazon_settlement",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Amazon Brazil | Settlement",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.amazon_settlement"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_data_type": "ASIN-SKU lookup",
+      "mapped_table_id": "table.zs_observe.walmart_lookup",
+      "mapping_confidence": "source_described",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Walmart ASIN-SKU | walmart_lookup",
+      "refactor_resolution_note": "Walmart canonical marketplace markdown is now uploaded; mapping is query-routable with account scope keys.",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.walmart_lookup",
+        "table.zs_observe.walmart_oms",
+        "table.zs_observe.walmart_settlement"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_data_type": "Sales",
+      "mapped_table_id": "table.zs_observe.target_sales",
+      "mapping_confidence": "semantic_exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Target | Sales",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.target_sales",
+        "table.zs_observe.target_settlement",
+        "table.zs_observe.target_returns",
+        "table.zs_observe.target_tcin_mapping"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_data_type": "Settlement",
+      "mapped_table_id": "table.zs_observe.target_settlement",
+      "mapping_confidence": "semantic_exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Target | Settlement",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.target_settlement",
+        "table.zs_observe.target_sales",
+        "table.zs_observe.target_returns",
+        "table.zs_observe.target_tcin_mapping"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_data_type": "Returns",
+      "mapped_table_id": "table.zs_observe.target_returns",
+      "mapping_confidence": "semantic_exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Target | Returns",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.target_returns",
+        "table.zs_observe.target_sales",
+        "table.zs_observe.target_settlement",
+        "table.zs_observe.target_tcin_mapping"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_data_type": "TCIN mapping",
+      "mapped_table_id": "table.zs_observe.target_tcin_mapping",
+      "mapping_confidence": "semantic_exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Target | TCIN mapping",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.target_tcin_mapping",
+        "table.zs_observe.target_sales",
+        "table.zs_observe.target_settlement",
+        "table.zs_observe.target_returns"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "source_data_type": "D2C OMS",
+      "mapped_table_id": "table.zs_observe.shopify_oms",
+      "mapping_confidence": "exact",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Shopify | D2C OMS",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.shopify_oms"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "source_data_type": "OMS, Settlement, ASIN-SKU lookup",
+      "source_platform": "Walmart",
+      "mapped_table_id": null,
+      "mapping_confidence": "source_confirmed_resolved_by_uploaded_walmart_canonical",
+      "table_canonical_status": "canonical_resolved",
+      "status": "resolved_by_current_refactor",
+      "recommended_future_card_or_table": "platform.walmart, platform_context.walmart.us, table.zs_observe.walmart_oms, table.zs_observe.walmart_settlement, table.zs_observe.walmart_lookup",
+      "resolved_by_current_refactor": true,
+      "historical_reason_before_refactor": "No Walmart canonical marketplace/platform markdown or table cards in uploaded platform corpus. Only source-described walmart_lookup is represented as draft.",
+      "resolution_note": "Walmart marketplace canonical markdown is now uploaded; missing OMS/settlement bindings were generated from the client DOCX row.",
+      "resolved_canonical_mapped_now": [
+        "platform.walmart",
+        "platform_context.walmart.us",
+        "table.zs_observe.walmart_oms",
+        "table.zs_observe.walmart_settlement",
+        "table.zs_observe.walmart_lookup"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_data_type": "OMS",
+      "mapped_table_id": "table.zs_observe.walmart_oms",
+      "mapping_confidence": "source_confirmed_resolved_by_uploaded_walmart_canonical",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Walmart US | OMS",
+      "generated_by_refactor": true,
+      "refactor_resolution_note": "Walmart canonical marketplace markdown is now uploaded; mapping is query-routable with account scope keys.",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.walmart_oms",
+        "table.zs_observe.walmart_lookup",
+        "table.zs_observe.walmart_settlement"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    },
+    {
+      "client": "Volans Epic LLC",
+      "platform_account_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_data_type": "Settlement",
+      "mapped_table_id": "table.zs_observe.walmart_settlement",
+      "mapping_confidence": "source_confirmed_resolved_by_uploaded_walmart_canonical",
+      "table_canonical_status": "canonical",
+      "status": "active",
+      "source_evidence": "Walmart US | Settlement",
+      "generated_by_refactor": true,
+      "refactor_resolution_note": "Walmart canonical marketplace markdown is now uploaded; mapping is query-routable with account scope keys.",
+      "resolved_canonical_mapped_now": [
+        "table.zs_observe.walmart_settlement",
+        "table.zs_observe.walmart_lookup",
+        "table.zs_observe.walmart_oms"
+      ],
+      "unresolved_canonical_requested": [],
+      "source_confirmed_requires_context": []
+    }
+  ],
+  "candidate_edges": [
+    {
+      "edge_id": "edge.volans_epic_llc.has_group.e6e619ef6e60",
+      "edge_type": "HAS_GROUP",
+      "canonical_edge_type": "HAS_GROUP",
+      "source_card_id": "tenant.volans_epic_llc",
+      "target_card_id": "group.volans_epic_llc.mensa_brands",
+      "source_type": "tenant",
+      "target_type": "group",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_GROUP"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_platform_account.a89b4e7cd2bd",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform.4c8d3c350969",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "target_card_id": "platform.amazon",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform_context.a2a97444163a",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "target_card_id": "platform_context.amazon.international",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.5d37585a48b2",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.c546146cf7b5",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_oms",
+      "target_card_id": "table.zs_observe.amazon_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.af778315990b",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.abf6a639817a",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_settlement",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.0ff6d629ca8e",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_returns",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.c5da3b8a58e5",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_returns",
+      "target_card_id": "table.zs_observe.amazon_returns",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.2c057a0c9215",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_fee_preview",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.f9ac322c2b17",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_fee_preview",
+      "target_card_id": "table.zs_observe.amazon_fee_preview",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_platform_account.292809edab9a",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform.6113f1811e8e",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "target_card_id": "platform.amazon",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform_context.310ff476a2ae",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "target_card_id": "platform_context.amazon.international",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.4cd1287618fe",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.amazon_ca.primary.amazon_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.18412dc8d26a",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.amazon_ca.primary.amazon_settlement",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_platform_account.8e8127daf498",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform.2a63ab467996",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "target_card_id": "platform.amazon",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform_context.e802a54db0a6",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "target_card_id": "platform_context.amazon.international",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.c4212eca4608",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.amazon_br.primary.amazon_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.f163858c043c",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.amazon_br.primary.amazon_settlement",
+      "target_card_id": "table.zs_observe.amazon_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_platform_account.c56e33df3cfe",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform.f6c8b4fe9dd3",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "target_card_id": "platform.walmart",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform_context.cde8b162016c",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "target_card_id": "platform_context.walmart.us",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.d73147bc7602",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.0d3c35717c52",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup",
+      "target_card_id": "table.zs_observe.walmart_lookup",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_platform_account.3b0f8f738d80",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform.e4d5d05bae78",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "target_card_id": "platform.target_plus",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform_context.22b39b897259",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "target_card_id": "platform_context.target_plus.us",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.428d9a6495d9",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_sales",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.e2412c79135e",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_sales",
+      "target_card_id": "table.zs_observe.target_sales",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.77e7cccfde3b",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.70cf7ae56439",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_settlement",
+      "target_card_id": "table.zs_observe.target_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.79426d36630e",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_returns",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.f285e1208cd0",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_returns",
+      "target_card_id": "table.zs_observe.target_returns",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.e3bb194a89d7",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_tcin_mapping",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.087c59e8bf42",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_tcin_mapping",
+      "target_card_id": "table.zs_observe.target_tcin_mapping",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_platform_account.002603466df5",
+      "edge_type": "HAS_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "HAS_PLATFORM_ACCOUNT",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "source_type": "group",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform.a8a728f80356",
+      "edge_type": "USES_PLATFORM",
+      "canonical_edge_type": "USES_PLATFORM",
+      "source_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "target_card_id": "platform.shopify",
+      "source_type": "platform_account",
+      "target_type": "platform",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_platform_context.7d5f1c175a8e",
+      "edge_type": "USES_PLATFORM_CONTEXT",
+      "canonical_edge_type": "USES_PLATFORM_CONTEXT",
+      "source_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "target_card_id": "platform_context.shopify.in_and_global.d2c_oms_client_config",
+      "source_type": "platform_account",
+      "target_type": "platform_context",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_PLATFORM_CONTEXT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.5817822dfd13",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.de0a4a468d48",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+      "target_card_id": "table.zs_observe.shopify_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_scope_set.2b9595846e6e",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.96f1dcb24eb7",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.3e40b0207e54",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.821a1cee744b",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_scope_set.1b909a009d27",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_scope_set.volans_epic_llc.target_us",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.fad711aebd0b",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.target_us",
+      "target_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_scope_set.52c058814f35",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_scope_set.volans_epic_llc.walmart_us",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.9cabecf2d753",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.walmart_us",
+      "target_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_scope_set.897eab205044",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_scope_set.volans_epic_llc.shopify_d2c",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.afdfa7b46d89",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.shopify_d2c",
+      "target_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_scope_set.8b0dc6246e89",
+      "edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "HAS_BUSINESS_SCOPE_SET",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "source_type": "group",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.c86bca538daa",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.e9593291a3bd",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.e9b0817937e1",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.9d29928a5955",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "target_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.ae770313fda4",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "target_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.includes_platform_account.7d5e26d8043e",
+      "edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "canonical_edge_type": "INCLUDES_PLATFORM_ACCOUNT",
+      "source_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "target_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "source_type": "business_scope_set",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "INCLUDES_PLATFORM_ACCOUNT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_flow_binding.d68a7cb6f576",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_business_scope_set.cdb58963fd14",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "target_card_id": "business_scope_set.volans_epic_llc.amazon_americas",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.dd7af61c86c3",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.9b4a41ec29a9",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.05e7f1434a4a",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.amazon_marketplace_reconciliation",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_flow_binding.a1478c883b49",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_flow_binding.volans_epic_llc.target_plus_sales_settlement_returns",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_business_scope_set.36d45dbeef4f",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.volans_epic_llc.target_plus_sales_settlement_returns",
+      "target_card_id": "business_scope_set.volans_epic_llc.target_us",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.7d9cf4f9fca8",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.target_plus_sales_settlement_returns",
+      "target_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_flow_binding.f87436e97753",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_flow_binding.volans_epic_llc.shopify_d2c_oms",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_business_scope_set.7196db3d1b70",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.volans_epic_llc.shopify_d2c_oms",
+      "target_card_id": "business_scope_set.volans_epic_llc.shopify_d2c",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.46157e40a06c",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.shopify_d2c_oms",
+      "target_card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_flow_binding.107a1acbe2f0",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_flow_binding.volans_epic_llc.walmart_marketplace_reconciliation",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_business_scope_set.68645c5184ad",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.volans_epic_llc.walmart_marketplace_reconciliation",
+      "target_card_id": "business_scope_set.volans_epic_llc.walmart_us",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.15a01f5965c7",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.walmart_marketplace_reconciliation",
+      "target_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_business_flow_binding.9d6e65878d9f",
+      "edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "canonical_edge_type": "HAS_BUSINESS_FLOW_BINDING",
+      "source_card_id": "group.volans_epic_llc.mensa_brands",
+      "target_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "source_type": "group",
+      "target_type": "business_flow_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_BUSINESS_FLOW_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.uses_business_scope_set.2071a1fe1e53",
+      "edge_type": "USES_BUSINESS_SCOPE_SET",
+      "canonical_edge_type": "USES_BUSINESS_SCOPE_SET",
+      "source_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "target_card_id": "business_scope_set.volans_epic_llc.americas_fx_rollup",
+      "source_type": "business_flow_binding",
+      "target_type": "business_scope_set",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "USES_BUSINESS_SCOPE_SET"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.4f568602830b",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.b66aa09159fe",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_ca.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.a31f2559e314",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "target_card_id": "platform_account.volans_epic_llc.amazon_br.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.88dc2e4ee622",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "target_card_id": "platform_account.volans_epic_llc.target_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_flow_participant.f8c6ea092567",
+      "edge_type": "HAS_FLOW_PARTICIPANT",
+      "canonical_edge_type": "HAS_FLOW_PARTICIPANT",
+      "source_card_id": "business_flow_binding.volans_epic_llc.marketplace_settlement_to_bank_pending_bank",
+      "target_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "source_type": "business_flow_binding",
+      "target_type": "platform_account",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_FLOW_PARTICIPANT"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.b49ff021f282",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.6f746e9b52f1",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+      "target_card_id": "table.zs_observe.walmart_oms",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.has_account_data_binding.2bc02edeec97",
+      "edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "canonical_edge_type": "HAS_ACCOUNT_DATA_BINDING",
+      "source_card_id": "platform_account.volans_epic_llc.walmart_us.primary",
+      "target_card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+      "source_type": "platform_account",
+      "target_type": "account_data_binding",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "HAS_ACCOUNT_DATA_BINDING"
+      }
+    },
+    {
+      "edge_id": "edge.volans_epic_llc.binds_to_table.ea4d47b72b7f",
+      "edge_type": "BINDS_TO_TABLE",
+      "canonical_edge_type": "BINDS_TO_TABLE",
+      "source_card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+      "target_card_id": "table.zs_observe.walmart_settlement",
+      "source_type": "account_data_binding",
+      "target_type": "table",
+      "edge_class": "client_runtime_binding",
+      "canonical_cognee_edge": true,
+      "materialize_inverse": false,
+      "edge_properties": {
+        "emitted_by": "client_runtime_refactor_batch4",
+        "source_json_edge_type": "BINDS_TO_TABLE"
+      }
+    }
+  ],
+  "blocked_edges": [],
+  "future_context_gaps": [],
+  "resolved_context_gaps": [],
+  "open_review_items": [
+    {
+      "severity": "high",
+      "item": "Add bank account and bank-statement Account Data Binding cards before activating marketplace_to_bank flows.",
+      "review_resolution_status": "open"
+    },
+    {
+      "severity": "medium",
+      "item": "Confirm whether Target channel should be modeled as target_plus for this client or as a separate target retail platform context.",
+      "review_resolution_status": "open"
+    },
+    {
+      "severity": "medium",
+      "item": "Confirm external seller/store/account identifiers for Amazon, Walmart, Target, and Shopify accounts.",
+      "review_resolution_status": "open"
+    },
+    {
+      "severity": "medium",
+      "item": "Confirm whether Amazon region/country should be represented by table columns or only by platform account logical scope.",
+      "review_resolution_status": "open"
+    }
+  ],
+  "resolved_review_items": [
+    {
+      "severity": "high",
+      "item": "Add Walmart canonical platform context/table cards before routing Walmart OMS or settlement queries.",
+      "review_resolution_status": "resolved_by_current_refactor",
+      "resolution_note": "Walmart platform/context/table cards are now present in uploaded marketplace markdowns."
+    }
+  ],
+  "non_blocking_declared_semantic_reference_gaps": [],
+  "validation_summary": {
+    "result": "pass",
+    "original_card_count": 32,
+    "refactored_card_count": 32,
+    "original_edge_count": 85,
+    "refactored_edge_count": 85,
+    "blocked_edge_count": 0,
+    "source_evidence_count": 12,
+    "source_row_evidence_count": 9,
+    "card_type_counts": {
+      "tenant": 1,
+      "group": 1,
+      "platform_account": 6,
+      "account_data_binding": 14,
+      "business_scope_set": 5,
+      "business_flow_binding": 5
+    },
+    "status_counts": {
+      "active": 31,
+      "draft": 1
+    },
+    "review_status_counts": {
+      "accepted": 31,
+      "review_required": 1
+    },
+    "active_bindings_to_missing_tables": [],
+    "edge_reference_error_count": 0,
+    "edge_reference_errors": [],
+    "status_active_conflicts": [],
+    "forbidden_candidate_cards": [],
+    "duplicate_card_id_count": 0,
+    "old_shopify_source_docs_in_candidate_cards": [],
+    "canonical_resolution_gap_count": 0,
+    "canonical_resolution_gap_type_counts": {},
+    "status_correction_count": 0,
+    "status_changes": [],
+    "id_or_source_replacement_count": 19,
+    "id_or_source_replacements": [
+      {
+        "card_id": "group.volans_epic_llc.mensa_brands",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_returns",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_us.primary.amazon_fee_preview",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_ca.primary.amazon_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.amazon_br.primary.amazon_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_lookup",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_sales",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_returns",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.target_us.primary.target_tcin_mapping",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "kind": "canonical_id",
+        "from": "platform_context.shopify.d2c_oms",
+        "to": "platform_context.shopify.in_and_global.d2c_oms_client_config"
+      },
+      {
+        "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "platform_account.volans_epic_llc.shopify_d2c.primary",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.shopify_d2c.primary.shopify_oms",
+        "kind": "source_document_text",
+        "from": "shopify_d2c_oms.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_oms",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      },
+      {
+        "card_id": "account_data_binding.volans_epic_llc.walmart_us.primary.walmart_settlement",
+        "kind": "source_document_text",
+        "from": "Client Tables - Shopify.md",
+        "to": "shopify_d2c_oms_v2.md"
+      }
+    ],
+    "resolved_prior_review_count": 1,
+    "open_review_count": 4,
+    "future_context_gap_count": 0,
+    "resolved_context_gap_count": 0,
+    "non_blocking_declared_semantic_reference_gap_count": 0,
+    "non_blocking_declared_semantic_reference_gap_type_counts": {},
+    "edge_status_counts": {
+      "emitted": 85
+    }
+  }
+}

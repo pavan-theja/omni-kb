@@ -1,0 +1,51 @@
+{
+  "canonical_id": "relationship.nykaa.oms_to_mapping.source_gst_name",
+  "canonical_name": "OMS source GST name to mapping remarks",
+  "card_type": "relationship",
+  "confidence": "inferred",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/nykaa_marketplace.md.",
+  "document_id": "nykaa_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.nykaa.relationships"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.nykaa.relationships",
+      "source_doc": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+      "source_line": 13242
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_transform": null,
+  "join_type": "fuzzy_reference_join",
+  "marketplace_only": true,
+  "matching_coverage_summary": "LOWER/TRIM source_gst_name to mbtpt_remarks; manual canonicalization may be required because OMS has variants.",
+  "name": "OMS source GST name to mapping remarks",
+  "review_status": "unreviewed",
+  "source_card_id": "relationship.nykaa.oms_to_mapping.source_gst_name",
+  "source_columns": [
+    "source_gst_name"
+  ],
+  "source_confidence": "medium",
+  "source_documents": [
+    "Nykaa Recon Doc.docx",
+    "/mnt/data/Nykaa Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 13242,
+  "source_path": "raw/cleaned_v2/marketplace/nykaa_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.nykaa_oms",
+  "status": "draft",
+  "summary": "LOWER/TRIM source_gst_name to mbtpt_remarks; manual canonicalization may be required because OMS has variants.",
+  "target_columns": [
+    "mbtpt_remarks"
+  ],
+  "target_table_id": "table.zs_observe.nykaa_mapping",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

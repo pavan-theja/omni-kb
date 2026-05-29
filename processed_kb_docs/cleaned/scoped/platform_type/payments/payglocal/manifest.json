@@ -1,0 +1,13 @@
+{
+  "card_types": {
+    "platform_account": 1
+  },
+  "counts": {
+    "cards": 1
+  },
+  "edge_types": {},
+  "scope": [
+    "payments",
+    "payglocal"
+  ]
+}

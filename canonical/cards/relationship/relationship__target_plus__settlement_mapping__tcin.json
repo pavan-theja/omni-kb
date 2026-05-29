@@ -1,0 +1,54 @@
+{
+  "canonical_id": "relationship.target_plus.settlement_mapping.tcin",
+  "card_type": "relationship",
+  "cardinality": "source-documented coverage; validate grain before metric joins",
+  "confidence": "curated",
+  "coverage": "source-supported mapping join by TCIN",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "relationship card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus Settlement → TCIN Mapping on tcin",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.3_1_join_map",
+    "ev.target_plus.mapping.1_table_overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.3_1_join_map",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8612
+    },
+    {
+      "evidence_id": "ev.target_plus.mapping.1_table_overview",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 8612
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "grain_warning": "Use LOWER(brand) when comparing brand labels across mapping and transaction tables.",
+  "join_condition": "target_settlement.tcin = target_tcin_mapping.tcin",
+  "join_keys": [
+    "tcin"
+  ],
+  "name": "Target Plus Settlement → TCIN Mapping on tcin",
+  "preaggregation_required": "aggregate many-side settlement/return rows before comparing order-level metrics",
+  "relationship_type": "marketplace_internal_join",
+  "review_status": "ready",
+  "source_card_id": "relationship.target_plus.settlement_mapping.tcin",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8612,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "source_table_id": "table.zs_observe.target_settlement",
+  "status": "draft",
+  "target_table_id": "table.zs_observe.target_tcin_mapping",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

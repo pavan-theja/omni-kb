@@ -1,0 +1,48 @@
+{
+  "amount_columns": [
+    "total_amount"
+  ],
+  "canonical_id": "reconciliation_side.myntra.oms_expected_sales",
+  "canonical_name": "OMS expected sales",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.reconciliation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.reconciliation",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 10890
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "key_columns": [
+    "order_code"
+  ],
+  "marketplace_only": true,
+  "name": "OMS expected sales",
+  "review_status": "unreviewed",
+  "side_role": "expected",
+  "source_card_id": "reconciliation_side.myntra.oms_expected_sales",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10890,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "source_table_id": "table.zs_observe.myntra_oms",
+  "status": "draft",
+  "summary": "OMS expected sales side for Myntra marketplace-internal reconciliation.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

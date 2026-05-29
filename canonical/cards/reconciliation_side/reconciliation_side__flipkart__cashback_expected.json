@@ -1,0 +1,51 @@
+{
+  "amount_columns": [
+    "charged_amount"
+  ],
+  "canonical_id": "reconciliation_side.flipkart.cashback_expected",
+  "card_type": "reconciliation_side",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "reconciliation_side card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 5627
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": [
+    "is_active = true where applicable"
+  ],
+  "grain": "order/item or settlement line",
+  "key_columns": [
+    "order_id",
+    "item_id"
+  ],
+  "name": "Flipkart cashback_expected",
+  "profile_id": "reconciliation_profile.flipkart.cashback_settlement_offer",
+  "review_status": "accepted",
+  "side_role": "expected",
+  "sign_handling": "preserve source sign; compare after documented aggregation",
+  "source_card_id": "reconciliation_side.flipkart.cashback_expected",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 5627,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "source_table": "table.flipkart.cashback",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

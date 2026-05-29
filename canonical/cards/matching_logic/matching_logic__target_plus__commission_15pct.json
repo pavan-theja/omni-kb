@@ -1,0 +1,44 @@
+{
+  "aggregation_order": "No join required; row-level settlement validation.",
+  "amount_comparison": "ABS(gross_commission - ROUND(charged_amount_excluding_tax * 0.15, 4)) > 0.01 flags variance.",
+  "canonical_id": "matching_logic.target_plus.commission_15pct",
+  "card_type": "matching_logic",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "matching_logic card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Commission 15 percent validation",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.6_3_commission_validation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.6_3_commission_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 10482
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "join_condition": "target_settlement rows filtered to transaction_type = forward",
+  "key_normalization": "Use exact key match unless brand case normalization or date casting is explicitly documented.",
+  "match_type": "formula_comparison",
+  "name": "Commission 15 percent validation",
+  "review_status": "ready",
+  "source_card_id": "matching_logic.target_plus.commission_15pct",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 10482,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "status": "draft",
+  "timing_rule": "Date-align periods because settlement ends before sales/returns source range.",
+  "tolerance_rule": "0.01 amount variance from source SQL.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

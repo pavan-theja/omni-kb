@@ -1,0 +1,45 @@
+{
+  "canonical_id": "business_process.jiomart.doorstep_return_flow",
+  "card_type": "business_process",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "JioMart doorstep return flow as explicitly described in the source DOCX using JioMart table/column/status semantics.",
+  "display_name": "JioMart doorstep return flow",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "entry_condition": "See workflow steps; all steps name source tables/columns/values.",
+  "evidence_ids": [
+    "ev.jiomart.marketplace.3_3_doorstep_return_flow"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.marketplace.3_3_doorstep_return_flow",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 11537
+    }
+  ],
+  "exit_condition": "See workflow steps and settlement/return conditions.",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "JioMart doorstep return flow",
+  "process_family": "returns",
+  "review_status": "ready",
+  "source_card_id": "business_process.jiomart.doorstep_return_flow",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11537,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_returns",
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "state_fields": "Status values are represented in workflow conditions and value profiles; no separate state_transition cards emitted.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

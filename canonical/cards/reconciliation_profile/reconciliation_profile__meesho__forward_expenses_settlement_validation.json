@@ -1,0 +1,45 @@
+{
+  "actual_side": "meesho_settlement freight_charge and mp_fees by order_id",
+  "canonical_id": "reconciliation_profile.meesho.forward_expenses_settlement_validation",
+  "card_type": "reconciliation_profile",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "Validate forward fee invoice against settlement deductions: f.sub_order_num = s.order_id; compare taxable_shipping to ABS(freight_charge) and mall fee to ABS(mp_fees).",
+  "display_name": "Meesho Forward Expenses ↔ Settlement Validation",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.8_2_forward_expenses_settlement_validation"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.8_2_forward_expenses_settlement_validation",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 15165
+    }
+  ],
+  "expected_side": "meesho_forward_expenses taxable_shipping and meesho_mall_platformfee by sub_order_num",
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "matching_logic_id": "matching_logic.meesho.forward_expenses_settlement_validation",
+  "name": "Meesho Forward Expenses ↔ Settlement Validation",
+  "process_id": "business_process.meesho.marketplace_internal_reconciliation",
+  "reconciliation_family": "marketplace_internal_reconciliation",
+  "review_status": "accepted",
+  "source_card_id": "reconciliation_profile.meesho.forward_expenses_settlement_validation",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 15165,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "timing_window": "same settlement period/order-level validation after forward expense invoice appears",
+  "tolerance": "review_required: source SQL computes variance but does not define pass/fail tolerance",
+  "unit_id": "reconciliation_unit.meesho.forward_expenses_settlement_validation",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

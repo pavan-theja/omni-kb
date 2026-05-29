@@ -1,0 +1,60 @@
+{
+  "business_definition": "metric card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "business_question": "Reverse Shipping Fee lines or settlement component",
+  "canonical_id": "metric.reverse_shipping_fee",
+  "canonical_name": "reverse_shipping_fee",
+  "card_type": "metric",
+  "colloquial_names": [
+    "reverse shipping fee",
+    "return shipping fee"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "default_grain": "order item or settlement line depending implementation",
+  "default_time_basis": "settlement_date for settlement metrics; created/order date for order metrics",
+  "description": "metric card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 3488
+    }
+  ],
+  "evidence_table_ids": [],
+  "excluded_components": [
+    "COGS",
+    "bank deposits",
+    "external logistics charges",
+    "ERP/accounting adjustments"
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "implementation_ids": [
+    "metric_implementation.flipkart.reverse_shipping_fee_detail"
+  ],
+  "included_components": [
+    "marketplace-owned Flipkart fields only"
+  ],
+  "metric_family": "fee",
+  "name": "Reverse Shipping Fee",
+  "positive_direction": "higher_is_better except fees/taxes/returns/cancellations",
+  "review_status": "accepted",
+  "source_card_id": "metric.reverse_shipping_fee",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 3488,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

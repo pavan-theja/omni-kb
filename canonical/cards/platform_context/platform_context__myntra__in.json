@@ -1,0 +1,43 @@
+{
+  "canonical_id": "platform_context.myntra.in",
+  "canonical_name": "Myntra India Marketplace Context",
+  "card_type": "platform_context",
+  "confidence": "curated",
+  "country": "IN",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency": "INR",
+  "description": "platform_context card from raw/cleaned_v2/marketplace/myntra_marketplace.md.",
+  "document_id": "myntra_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "evidence.myntra.overview"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.myntra.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+      "source_line": 307
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "marketplace_only": true,
+  "name": "Myntra India Marketplace Context",
+  "platform_id": "platform.myntra",
+  "review_status": "unreviewed",
+  "source_card_id": "platform_context.myntra.in",
+  "source_confidence": "high",
+  "source_documents": [
+    "Myntra Recon Doc.docx",
+    "/mnt/data/Myntra Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 307,
+  "source_path": "raw/cleaned_v2/marketplace/myntra_marketplace.md",
+  "source_status": "candidate",
+  "status": "draft",
+  "summary": "India-specific Myntra marketplace context for seller order, settlement, reverse, and non-order settlement semantics.",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

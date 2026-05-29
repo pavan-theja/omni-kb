@@ -1,0 +1,135 @@
+{
+  "title": "ZenStatementCanonicalGraph",
+  "description": "Canonical ZenStatement KB graph extracted from generated canonical bundle documents. Preserve explicit canonical IDs and relationships only.",
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "title": "Nodes",
+      "description": "Canonical KB nodes. Each node must correspond to an explicit canonical_id in the source document.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CanonicalNode"
+      }
+    },
+    "relationships": {
+      "title": "Relationships",
+      "description": "Explicit canonical graph relationships from relationship lines in the source document.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CanonicalRelationship"
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "relationships"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "CanonicalNode": {
+      "title": "CanonicalNode",
+      "type": "object",
+      "properties": {
+        "canonical_id": {
+          "title": "Canonical Id",
+          "type": "string",
+          "description": "The exact canonical_id from the document. Do not rewrite or infer."
+        },
+        "card_type": {
+          "title": "Card Type",
+          "type": "string",
+          "description": "The exact card_type from the document."
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "description": "Human-readable card name when explicitly present."
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "description": "Short description when explicitly present."
+        },
+        "tenant_id": {
+          "title": "Tenant Id",
+          "type": "string",
+          "description": "Tenant scope if explicitly present."
+        },
+        "group_id": {
+          "title": "Group Id",
+          "type": "string",
+          "description": "Group scope if explicitly present."
+        },
+        "platform_id": {
+          "title": "Platform Id",
+          "type": "string",
+          "description": "Platform scope if explicitly present."
+        },
+        "platform_account_id": {
+          "title": "Platform Account Id",
+          "type": "string",
+          "description": "Platform account scope if explicitly present."
+        },
+        "platform_type": {
+          "title": "Platform Type",
+          "type": "string",
+          "description": "Platform type such as marketplace, logistics, bank, payment, oms, or wms."
+        },
+        "table_id": {
+          "title": "Table Id",
+          "type": "string",
+          "description": "Referenced table canonical_id if explicitly present."
+        },
+        "metric_id": {
+          "title": "Metric Id",
+          "type": "string",
+          "description": "Referenced metric canonical_id if explicitly present."
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "canonical_id",
+        "card_type"
+      ],
+      "additionalProperties": true
+    },
+    "CanonicalRelationship": {
+      "title": "CanonicalRelationship",
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string",
+          "description": "Exact source canonical_id."
+        },
+        "edge_type": {
+          "title": "Edge Type",
+          "type": "string",
+          "description": "Exact uppercase canonical edge label, such as HAS_COLUMN, HAS_IMPLEMENTATION, or USES_TABLE."
+        },
+        "target_id": {
+          "title": "Target Id",
+          "type": "string",
+          "description": "Exact target canonical_id."
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "edge_type",
+        "target_id"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "applies_to_cards": [
+    "column.zs_observe.target_settlement.description",
+    "column.zs_observe.target_settlement.transaction_type"
+  ],
+  "canonical_id": "rule.target_plus.settlement_description_ignore",
+  "card_type": "rule",
+  "condition": "Settlement classification",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/target_plus.md.",
+  "display_name": "Target Plus settlement description caveat",
+  "document_id": "target_plus_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.target_plus.marketplace.7_data_quality_observations_and_known_issues",
+    "ev.target_plus.settlement.3_schema_details_37_columns_2"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.target_plus.marketplace.7_data_quality_observations_and_known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11664
+    },
+    {
+      "evidence_id": "ev.target_plus.settlement.3_schema_details_37_columns_2",
+      "source_doc": "raw/cleaned_v2/marketplace/target_plus.md",
+      "source_line": 11664
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "Target Plus settlement description caveat",
+  "review_status": "ready",
+  "rule_type": "data_quality_rule",
+  "severity": "medium",
+  "source_card_id": "rule.target_plus.settlement_description_ignore",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Target Plus Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 11664,
+  "source_path": "raw/cleaned_v2/marketplace/target_plus.md",
+  "source_status": "ready",
+  "statement": "target_settlement.description is an integer and typically NULL; use transaction_type/internal_txn_type for classification.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

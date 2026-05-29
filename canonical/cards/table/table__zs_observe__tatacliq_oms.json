@@ -1,0 +1,148 @@
+{
+  "business_purpose": "GST invoice / OMS table storing invoices and credit notes",
+  "canonical_id": "table.zs_observe.tatacliq_oms",
+  "card_type": "table",
+  "column_ids": [
+    "column.zs_observe.tatacliq_oms.ancestry",
+    "column.zs_observe.tatacliq_oms.brand",
+    "column.zs_observe.tatacliq_oms.brand_ref_1",
+    "column.zs_observe.tatacliq_oms.brand_ref_2",
+    "column.zs_observe.tatacliq_oms.cess",
+    "column.zs_observe.tatacliq_oms.cgst_amount",
+    "column.zs_observe.tatacliq_oms.cgst_rate",
+    "column.zs_observe.tatacliq_oms.charged_amount",
+    "column.zs_observe.tatacliq_oms.charged_amount_excluding_tax",
+    "column.zs_observe.tatacliq_oms.created_date",
+    "column.zs_observe.tatacliq_oms.currency_type",
+    "column.zs_observe.tatacliq_oms.description",
+    "column.zs_observe.tatacliq_oms.destination_state",
+    "column.zs_observe.tatacliq_oms.destination_state_code",
+    "column.zs_observe.tatacliq_oms.document_date",
+    "column.zs_observe.tatacliq_oms.document_date_temp_old",
+    "column.zs_observe.tatacliq_oms.document_month",
+    "column.zs_observe.tatacliq_oms.document_number",
+    "column.zs_observe.tatacliq_oms.document_type",
+    "column.zs_observe.tatacliq_oms.document_value",
+    "column.zs_observe.tatacliq_oms.file_uuid",
+    "column.zs_observe.tatacliq_oms.group_id",
+    "column.zs_observe.tatacliq_oms.group_level_id",
+    "column.zs_observe.tatacliq_oms.gstin_of_e_com",
+    "column.zs_observe.tatacliq_oms.hsn",
+    "column.zs_observe.tatacliq_oms.hsn_code",
+    "column.zs_observe.tatacliq_oms.hsn_description",
+    "column.zs_observe.tatacliq_oms.hsn_generated",
+    "column.zs_observe.tatacliq_oms.igst_amount",
+    "column.zs_observe.tatacliq_oms.igst_rate",
+    "column.zs_observe.tatacliq_oms.is_active",
+    "column.zs_observe.tatacliq_oms.order_id",
+    "column.zs_observe.tatacliq_oms.order_status",
+    "column.zs_observe.tatacliq_oms.order_tag",
+    "column.zs_observe.tatacliq_oms.other_id",
+    "column.zs_observe.tatacliq_oms.parent_id",
+    "column.zs_observe.tatacliq_oms.place_of_supply",
+    "column.zs_observe.tatacliq_oms.quantity",
+    "column.zs_observe.tatacliq_oms.seller_code",
+    "column.zs_observe.tatacliq_oms.seller_gstin",
+    "column.zs_observe.tatacliq_oms.seller_name",
+    "column.zs_observe.tatacliq_oms.sgst_utgst_amount",
+    "column.zs_observe.tatacliq_oms.sgst_utgst_rate",
+    "column.zs_observe.tatacliq_oms.sheetname",
+    "column.zs_observe.tatacliq_oms.sku_id",
+    "column.zs_observe.tatacliq_oms.slave_id",
+    "column.zs_observe.tatacliq_oms.slave_state",
+    "column.zs_observe.tatacliq_oms.source_gst_id",
+    "column.zs_observe.tatacliq_oms.source_gst_name",
+    "column.zs_observe.tatacliq_oms.source_state",
+    "column.zs_observe.tatacliq_oms.source_state_code",
+    "column.zs_observe.tatacliq_oms.tax_cgst_amount",
+    "column.zs_observe.tatacliq_oms.tax_cgst_rate",
+    "column.zs_observe.tatacliq_oms.tax_igst_amount",
+    "column.zs_observe.tatacliq_oms.tax_igst_rate",
+    "column.zs_observe.tatacliq_oms.tax_sgst_amount",
+    "column.zs_observe.tatacliq_oms.tax_sgst_rate",
+    "column.zs_observe.tatacliq_oms.taxable_value",
+    "column.zs_observe.tatacliq_oms.temp_old",
+    "column.zs_observe.tatacliq_oms.tenant_id",
+    "column.zs_observe.tatacliq_oms.transaction_id",
+    "column.zs_observe.tatacliq_oms.transaction_type",
+    "column.zs_observe.tatacliq_oms.txn_uuid",
+    "column.zs_observe.tatacliq_oms.unique_id",
+    "column.zs_observe.tatacliq_oms.unique_value",
+    "column.zs_observe.tatacliq_oms.unnamed_24",
+    "column.zs_observe.tatacliq_oms.zen_sheet_name"
+  ],
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "date_range_evidence": "2025-01-01 to 2025-12-31",
+  "description": "table card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "zs_observe.tatacliq_oms",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.table.oms.overview",
+    "ev.tatacliq.table.oms.stats",
+    "ev.tatacliq.tables.summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.table.oms.overview",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2903
+    },
+    {
+      "evidence_id": "ev.tatacliq.table.oms.stats",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2903
+    },
+    {
+      "evidence_id": "ev.tatacliq.tables.summary",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 2903
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "fully_qualified_name": "zs_observe.tatacliq_oms",
+  "grain": "gst_document_line_item_or_order_item_line",
+  "join_key_candidates": [
+    "order_id"
+  ],
+  "metric_implementation_ids": [
+    "metric_impl.tatacliq.aov_oms_clean",
+    "metric_impl.tatacliq.brand_gmv_oms",
+    "metric_impl.tatacliq.oms_brand_level_performance",
+    "metric_impl.tatacliq.oms_hsn_distribution",
+    "metric_impl.tatacliq.oms_intra_inter_state_gst",
+    "metric_impl.tatacliq.oms_monthly_gmv_trend"
+  ],
+  "name": "zs_observe.tatacliq_oms",
+  "primary_key_candidates": [
+    "order_id",
+    "document_number"
+  ],
+  "required_filters": [
+    "is_active = true"
+  ],
+  "review_status": "ready",
+  "row_count_evidence": 18215,
+  "schema": "zs_observe",
+  "scope_filter_columns": [
+    "group_level_id = 22 (source-documented filter/value; not a group/account card)"
+  ],
+  "semantic_module": "orders",
+  "source_card_id": "table.zs_observe.tatacliq_oms",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 2903,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_section": "Table: TataCliq OMS — Table Knowledge Base",
+  "source_status": "ready",
+  "status": "draft",
+  "table_name": "tatacliq_oms",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

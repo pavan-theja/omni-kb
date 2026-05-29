@@ -1,0 +1,48 @@
+{
+  "applies_to_cards": [],
+  "canonical_id": "rule.tatacliq.period_alignment_for_oms_settlement",
+  "card_type": "rule",
+  "condition": "OMS-settlement reconciliation.",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "rule card from raw/cleaned_v2/marketplace/tatacliq_marketplace.md.",
+  "display_name": "TataCliq rule — comparison period rule",
+  "document_id": "tatacliq_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.tatacliq.quality.known_issues",
+    "ev.tatacliq.join.coverage"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.tatacliq.quality.known_issues",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8508
+    },
+    {
+      "evidence_id": "ev.tatacliq.join.coverage",
+      "source_doc": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+      "source_line": 8508
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "name": "TataCliq rule — comparison period rule",
+  "review_status": "ready",
+  "rule_type": "comparison_period_rule",
+  "severity": "high",
+  "source_card_id": "rule.tatacliq.period_alignment_for_oms_settlement",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/TataCliq Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 8508,
+  "source_path": "raw/cleaned_v2/marketplace/tatacliq_marketplace.md",
+  "source_status": "ready",
+  "statement": "When comparing OMS to settlement periods, add settlement_date < 2025-10-01 or equivalent period alignment because settlement ends Sep 2025 while OMS runs to Dec 2025.",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

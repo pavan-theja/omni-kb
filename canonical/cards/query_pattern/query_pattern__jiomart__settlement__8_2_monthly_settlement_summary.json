@@ -1,0 +1,49 @@
+{
+  "canonical_id": "query_pattern.jiomart.settlement.8_2_monthly_settlement_summary",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/jiomart_marketplace.md.",
+  "display_name": "JioMart query — 8.2 Monthly Settlement Summary",
+  "document_id": "jiomart_marketplace_clean_md_v9_manifest_refactored",
+  "evidence_ids": [
+    "ev.jiomart.settlement.8_2_monthly_settlement_summary"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "ev.jiomart.settlement.8_2_monthly_settlement_summary",
+      "source_doc": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+      "source_line": 12988
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "metric_or_summary_query",
+  "name": "JioMart query — 8.2 Monthly Settlement Summary",
+  "natural_language_patterns": [
+    "8.2 Monthly Settlement Summary"
+  ],
+  "output_contract_id": "output_contract.jiomart.time_series",
+  "primary_metric_id": "metric.jiomart.monthly_settlement_summary",
+  "required_filters": "Use filters exactly as written in SQL plus applicable mandatory query filters.",
+  "review_status": "ready",
+  "source_card_id": "query_pattern.jiomart.settlement.8_2_monthly_settlement_summary",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/JioMart Recon KB.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12988,
+  "source_path": "raw/cleaned_v2/marketplace/jiomart_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "table.zs_observe.jiomart_settlement"
+  ],
+  "sql_ref": "sql.jiomart.settlement.8_2_monthly_settlement_summary",
+  "sql_template": "SELECT\n  DATE_TRUNC('month', settlement_date) AS month,\n  transaction_type,\n  accountable_type,\n  COUNT(*) AS rows,\n  SUM(settled_amount) AS total_settled\nFROM zs_observe.jiomart_settlement\nWHERE is_active = true AND event IS NOT NULL\nGROUP BY 1, 2, 3\nORDER BY 1, 2, 3;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

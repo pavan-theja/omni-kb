@@ -1,0 +1,52 @@
+{
+  "aggregation_order": "Pre-aggregate many-side fee/settlement/reverse tables before joining where the source query or reconciliation section implies many-to-one.",
+  "base_tables": [],
+  "canonical_id": "metric_impl.meesho.return_volume_by_type_and_courier",
+  "card_type": "metric_implementation",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "metric_implementation card from raw/cleaned_v2/marketplace/meesho_marketplace.md.",
+  "display_name": "Meesho implementation — Return Volume by Type and Courier",
+  "document_id": "meesho_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.meesho.7_1_return_volume_by_type_and_courier"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.meesho.7_1_return_volume_by_type_and_courier",
+      "source_doc": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+      "source_line": 12752
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "filters": "Use active-row and source-specified marketplace filters; scope fields remain columns/caveats only.",
+  "formula_text": "SELECT\n  return_type,\n  return_sub_type,\n  courier_partner,\n  COUNT(*) AS returns,\n  SUM(qty) AS units_returned\nFROM zs_observe.meesho_returns\nWHERE is_active = true\nGROUP BY 1, 2, 3\nORDER BY returns DESC;",
+  "grain": "as specified in metric SQL or source section",
+  "implementation_scope": "meesho",
+  "metric_id": "metric.return_volume_by_type_and_courier",
+  "metric_pattern": "meesho_specific_implementation_of_return_volume_by_type_and_courier",
+  "name": "Meesho implementation — Return Volume by Type and Courier",
+  "platform_code": "meesho",
+  "platform_context_id": "platform_context.meesho.in",
+  "review_status": "ready",
+  "sign_convention": "Preserve source sign convention; normalize only when rule explicitly says so.",
+  "source_card_id": "metric_impl.meesho.return_volume_by_type_and_courier",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Meesho Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 12752,
+  "source_path": "raw/cleaned_v2/marketplace/meesho_marketplace.md",
+  "source_status": "ready",
+  "source_tables": [
+    "zs_observe.meesho_returns"
+  ],
+  "sql_pattern": "SELECT\n  return_type,\n  return_sub_type,\n  courier_partner,\n  COUNT(*) AS returns,\n  SUM(qty) AS units_returned\nFROM zs_observe.meesho_returns\nWHERE is_active = true\nGROUP BY 1, 2, 3\nORDER BY returns DESC;",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

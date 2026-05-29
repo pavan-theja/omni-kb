@@ -1,0 +1,55 @@
+{
+  "canonical_id": "mismatch_category.flipkart.tax_deduction_variance",
+  "card_type": "mismatch_category",
+  "category_name": "tax_deduction_variance",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "definition": "TCS/TDS/GST component inconsistent with expected calculation",
+  "description": "mismatch_category card from raw/cleaned_v2/marketplace/flipkart_marketplace.md.",
+  "detection_rule": "tax comparison fails after source rule is known",
+  "document_id": "flipkart_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.flipkart.query_patterns"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.flipkart.query_patterns",
+      "source_doc": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+      "source_line": 6239
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "likely_causes": [
+    "source timing",
+    "sign convention",
+    "missing row",
+    "join key mismatch",
+    "aggregation error"
+  ],
+  "name": "Tax Deduction Variance",
+  "recommended_output_fields": [
+    "order_id",
+    "item_id",
+    "expected_amount",
+    "actual_amount",
+    "variance_amount",
+    "variance_reason"
+  ],
+  "review_status": "accepted",
+  "severity": "medium",
+  "source_card_id": "mismatch_category.flipkart.tax_deduction_variance",
+  "source_confidence": "high",
+  "source_documents": [
+    "/mnt/data/Flipkart Recon Doc.docx"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6239,
+  "source_path": "raw/cleaned_v2/marketplace/flipkart_marketplace.md",
+  "source_status": "accepted",
+  "status": "active",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

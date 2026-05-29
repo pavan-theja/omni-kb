@@ -1,0 +1,85 @@
+{
+  "canonical_id": "query_pattern.ajio.credit_note_reverse_matching.09",
+  "card_type": "query_pattern",
+  "confidence": "curated",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "description": "query_pattern card from raw/cleaned_v2/marketplace/ajio_marketplace.md.",
+  "document_id": "ajio_marketplace_clean_md_v9_refactored",
+  "evidence_ids": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "evidence_refs": [
+    {
+      "evidence_id": "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.036_10_reconciliation_use_cases",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    },
+    {
+      "evidence_id": "evidence.ajio.043_13_mandatory_query_rules",
+      "source_doc": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+      "source_line": 6428
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "intent": "Credit Note → Reverse Matching",
+  "name": "Credit Note → Reverse Matching",
+  "natural_language_patterns": [
+    "Credit Note → Reverse Matching",
+    "credit note → reverse matching"
+  ],
+  "parser_note": "Preserve SQL exactly; parser may normalize schema aliases separately.",
+  "reconciliation_profile_id": "reconciliation_profile.ajio.credit_note_reverse_matching",
+  "required_columns": [
+    "invoice_number",
+    "purchase_po_no",
+    "order_id",
+    "transaction_type",
+    "charged_amount",
+    "ajio_credit_note",
+    "ajio_reverse",
+    "is_active",
+    "credit_note",
+    "return_id",
+    "zs_observe"
+  ],
+  "required_rules": [
+    "rule.ajio.always_filter_is_active_true_without_this_queries_include_invalid_deleted.05",
+    "rule.ajio.use_zs_observe_schema_exclusively_for_analytics_queries.06"
+  ],
+  "required_tables": [
+    "zs_observe.ajio_credit_note",
+    "zs_observe.ajio_reverse"
+  ],
+  "review_status": "ready",
+  "source_card_id": "query_pattern.ajio.credit_note_reverse_matching.09",
+  "source_confidence": "high",
+  "source_context": "OMS → Settlement Matching (Unsettled Orders)",
+  "source_documents": [
+    "/mnt/data/Ajio Recon Doc.docx",
+    "/mnt/data/ajio_marketplace_clean_md_v8_unified_edges.md"
+  ],
+  "source_evidence": [
+    "evidence.ajio.027_9_key_business_metrics_and_sql_formulas",
+    "evidence.ajio.036_10_reconciliation_use_cases",
+    "evidence.ajio.043_13_mandatory_query_rules"
+  ],
+  "source_format": "markdown_yaml_blocks",
+  "source_line": 6428,
+  "source_path": "raw/cleaned_v2/marketplace/ajio_marketplace.md",
+  "source_status": "candidate",
+  "sql_pattern": "SELECT c.invoice_number AS credit_note, c.purchase_po_no,\n  r.order_id AS return_id, r.transaction_type, r.charged_amount\nFROM zs_observe.ajio_credit_note c\nLEFT JOIN zs_observe.ajio_reverse r\n  ON c.purchase_po_no = r.purchase_po_no AND r.is_active = true\nWHERE c.is_active = true",
+  "sql_ref": "sql.ajio.credit_note_reverse_matching",
+  "status": "draft",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}

@@ -1,0 +1,62 @@
+{
+  "account_name": "Folkhomes Shopify US D2C Store",
+  "account_role": "d2c_order_source",
+  "account_type": "d2c_store_account",
+  "active": true,
+  "canonical_id": "platform_account.folkhomes.shopify_us.primary",
+  "card_type": "platform_account",
+  "confidence": "unknown",
+  "configured_data_types": [
+    "Shopify OMS"
+  ],
+  "country_or_region": "US",
+  "created_at": "2026-05-24",
+  "created_by": "kb_pipeline.cleaned_v2",
+  "currency_scope": [
+    "USD"
+  ],
+  "description": "platform_account card from raw/cleaned_v2/clients/folkhomes_global.json.",
+  "evidence_ids": [],
+  "evidence_refs": [
+    {
+      "source_doc": "raw/cleaned_v2/clients/folkhomes_global.json",
+      "source_line": 1
+    }
+  ],
+  "extraction": {
+    "promoted_from": "build/intermediate"
+  },
+  "group_id": "group.folkhomes_global.mensa_brands",
+  "name": "Folkhomes Shopify US D2C Store",
+  "notes": [
+    "Client document confirms this account/channel context. Exact seller, merchant, store, gateway, courier, or bank account identifier was not supplied; runtime filtering is carried by Account Data Binding scope_keys."
+  ],
+  "package_id": "folkhomes_global_runtime_card_pack_v1_0",
+  "platform_context_id": "platform_context.shopify.us_d2c",
+  "platform_id": "platform.shopify",
+  "review_status": "unreviewed",
+  "source_account_identifier": null,
+  "source_confidence": null,
+  "source_config_text": "Shopify US | Settlement Source: Shopify OMS",
+  "source_documents": [
+    "Folkhomes Global.docx",
+    "Cognee KB Design v4.md",
+    "shopify_d2c_oms.md",
+    "Client Tables - Shopify.md",
+    "amazon_marketplace.md",
+    "target_plus.md"
+  ],
+  "source_format": "client_runtime_json",
+  "source_line": 1,
+  "source_path": "raw/cleaned_v2/clients/folkhomes_global.json",
+  "source_scope_identifiers": {
+    "group_id": 8,
+    "group_level_id": 123,
+    "group_name": "Mensa Brands"
+  },
+  "source_status": "active",
+  "status": "active",
+  "tenant_id": "tenant.folkhomes_global",
+  "updated_at": "2026-05-24",
+  "updated_by": "kb_pipeline.cleaned_v2"
+}
