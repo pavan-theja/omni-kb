@@ -167,6 +167,7 @@ AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
 Start Cognee:
 
 ```bash
+docker compose -f services/qdrant-neo4j/compose.yaml up -d
 cognee/scripts/cognee_up.sh
 ```
 

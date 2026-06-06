@@ -24,6 +24,7 @@ Typical vanilla flow:
 ```bash
 source .venv/bin/activate
 zenkb export-cognee
+docker compose -f services/qdrant-neo4j/compose.yaml up -d
 cognee/scripts/cognee_up.sh
 cognee/scripts/cognee_ingest.py --mode full
 ```
@@ -45,9 +46,11 @@ cognee/scripts/cognee_ingest_v2.py \
 The provider flags on `cognee_ingest.py` and `cognee_ingest_v2.py` validate
 the running runtime configuration. The provider is actually applied when
 `cognee/scripts/cognee_up.sh` prepares the generated runtime env and starts or
-recreates the Docker service. Runtime DBs are isolated under
-`cognee/runtime/instances/<runtime_key>/` so different provider/model
-combinations do not share vectors or graph state.
+recreates the Docker service. Local per-runtime system/data files are isolated
+under `cognee/runtime/instances/<runtime_key>/`. The external Postgres, Neo4j,
+and Qdrant services persist under `cognee/runtime/external/`; use separate
+service data directories, ports, databases, or a reset when you need fully
+isolated backend state between provider/model combinations.
 
 For faster local population without letting one giant markdown file blur card
 boundaries, use the simple shaped add path. It writes generated packs under

@@ -82,9 +82,20 @@ def main(argv: Sequence[str] | None = None) -> int:
     runtime.setdefault("TELEMETRY_DISABLED", "true")
     runtime.setdefault("COGNEE_SKIP_CONNECTION_TEST", "false")
     runtime.setdefault("LOG_LEVEL", "INFO")
-    runtime.setdefault("DB_PROVIDER", "sqlite")
-    runtime.setdefault("GRAPH_DATABASE_PROVIDER", "kuzu")
-    runtime.setdefault("VECTOR_DB_PROVIDER", "lancedb")
+    runtime.setdefault("DB_PROVIDER", "postgres")
+    runtime.setdefault("DB_NAME", "cognee_db")
+    runtime.setdefault("DB_HOST", "host.docker.internal")
+    runtime.setdefault("DB_PORT", "5432")
+    runtime.setdefault("DB_USERNAME", "cognee")
+    runtime.setdefault("DB_PASSWORD", "cognee")
+    runtime.setdefault("GRAPH_DATABASE_PROVIDER", "neo4j")
+    runtime.setdefault("GRAPH_DATABASE_URL", "bolt://host.docker.internal:7687")
+    runtime.setdefault("GRAPH_DATABASE_NAME", "neo4j")
+    runtime.setdefault("GRAPH_DATABASE_USERNAME", "neo4j")
+    runtime.setdefault("GRAPH_DATABASE_PASSWORD", "pleaseletmein")
+    runtime.setdefault("VECTOR_DB_PROVIDER", "qdrant")
+    runtime.setdefault("VECTOR_DB_URL", "http://host.docker.internal:6333")
+    runtime.setdefault("VECTOR_DB_KEY", "")
     runtime.setdefault("SYSTEM_ROOT_DIRECTORY", "/app/.cognee_system")
     runtime.setdefault("DATA_ROOT_DIRECTORY", "/app/.data_storage")
     runtime.update(_llm_runtime(values, llm_provider))
@@ -96,7 +107,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         runtime.update(_vertex_runtime(values))
     runtime_graph_model = args.graph_model if profile != "plain" else None
     runtime_custom_prompt = args.custom_prompt if profile != "plain" else None
-    runtime_key = args.runtime_key or build_runtime_key(
+    runtime_key = args.runtime_key or values.get("COGNEE_RUNTIME_KEY") or build_runtime_key(
         runtime,
         profile=profile,
         graph_model=runtime_graph_model,
@@ -365,8 +376,19 @@ def _write_env(values: dict[str, str], path: Path) -> None:
         "EMBEDDING_API_VERSION",
         "EMBEDDING_DIMENSIONS",
         "DB_PROVIDER",
+        "DB_NAME",
+        "DB_HOST",
+        "DB_PORT",
+        "DB_USERNAME",
+        "DB_PASSWORD",
         "GRAPH_DATABASE_PROVIDER",
+        "GRAPH_DATABASE_URL",
+        "GRAPH_DATABASE_NAME",
+        "GRAPH_DATABASE_USERNAME",
+        "GRAPH_DATABASE_PASSWORD",
         "VECTOR_DB_PROVIDER",
+        "VECTOR_DB_URL",
+        "VECTOR_DB_KEY",
         "SYSTEM_ROOT_DIRECTORY",
         "DATA_ROOT_DIRECTORY",
         "REQUIRE_AUTHENTICATION",

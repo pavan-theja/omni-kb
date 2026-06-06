@@ -32,6 +32,10 @@ htmlcov/
 # Local Cognee runtime state
 cognee/runtime/*
 !cognee/runtime/README.md
+cognee/runtime/cognee.env
+cognee/runtime/current_runtime.env
+cognee/runtime/instances/
+cognee/runtime/external/
 .chromadb_data/
 
 # Generated Cognee exports
@@ -58,6 +62,16 @@ build/intermediate/*
 raw/saved_stage/*
 !raw/saved_stage/README.md
 
-# Build outputs are intentionally not ignored yet.
-# Decide whether build/gemini* benchmark/report outputs are source artifacts
-# before adding an ignore rule here.
+# Generated constrained-search packs and runtime artifacts
+build/constrained_search/build/
+build/constrained_search/build_*/
+build/constrained_search/**/cards.jsonl
+build/constrained_search/**/edges.jsonl
+build/constrained_search/**/pack_manifest.json
+build/constrained_search/**/slice_manifest.json
+build/constrained_search/**/parse_errors.json
+build/constrained_search/**/cognee_ingestion/
+build/constrained_search/**/cognee_runtime/
+build/constrained_search/**/readiness/
+build/constrained_search/**/resolver_catalog/
+build/constrained_search/**/traces/

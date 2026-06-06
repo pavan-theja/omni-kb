@@ -15,6 +15,9 @@ RUN set -eux; \
         mistralai \
         "neo4j>=5.28,<6" \
         openai \
+        "asyncpg>=0.29" \
+        "pgvector>=0.3" \
+        "psycopg2-binary>=2.9" \
         "qdrant-client>=1.16"; \
     pip install --no-cache-dir --upgrade --no-deps --target /app/provider-site-packages \
         "cognee-community-vector-adapter-qdrant==0.2.4"; \

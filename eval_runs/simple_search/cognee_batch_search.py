@@ -19,28 +19,8 @@ SEARCH_SCRIPT = REPO_ROOT / "cognee" / "scripts" / "cognee_search.py"
 # Optional inline questions for quick local runs. If --questions is provided,
 # the file wins; otherwise this list is used.
 QUESTIONS: list[str] = [
-    "Which channel has the highest order volume share?",
-    "Generate a report of all channels using Manual CSV integration.",
-    "List all marketplaces handled through Unicommerce.",
-    "Generate a courier-wise channel mapping report.",
-    "Which courier handles the own website shipments?",
-    "Generate a report showing COD remittance type by courier.",
-    "Which channels use marketplace-managed returns?",
-    "Generate a summary report of OMS systems and their connected marketplaces.",
-    "Calculate the combined marketplace contribution vs own website contribution.",
-    "Identify channels with higher operational dependency on manual processes.",
-    "Create a marketplace risk report showing which channels depend on the same OMS.",
-    "Generate a logistics dependency matrix showing courier concentration across marketplaces.",
-    "Build a report identifying channels that may face reconciliation delays due to marketplace-based settlements.",
-    "Compare return handling models between own website and marketplace channels.",
-    "Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.",
-    "Create a sales concentration analysis report to determine dependency on top 2 marketplaces.",
-    "Generate a unified dashboard combining sales, OMS dependency, courier dependency, and return ownership.",
-    "Design a profitability analysis report estimating operational complexity cost per marketplace.",
-    "Build a SKU profitability report.",
-    "Build an Average order value report per channel.",
-    "Gross sales trend across all marketplaces.",
-    "Return trend across all the marketplaces."
+    "List the top 5 selling SKUs for Amazon and Flipkart",
+    "What is the difference between Amazon and Flipkart sales metrics and settlement amounts?",
 ]
 
 

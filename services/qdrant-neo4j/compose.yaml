@@ -1,4 +1,25 @@
 services:
+  postgres:
+    image: "postgres:${POSTGRES_IMAGE_TAG:-16}"
+    container_name: cognee-postgres
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB:-cognee_db}"
+      POSTGRES_USER: "${POSTGRES_USER:-cognee}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-cognee}"
+    volumes:
+      - ../../cognee/runtime/external/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "${POSTGRES_USER:-cognee}" -d "${POSTGRES_DB:-cognee_db}"
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
   qdrant:
     image: qdrant/qdrant:latest
     container_name: cognee-qdrant

@@ -190,6 +190,81 @@ class CogneeRuntimeTest(unittest.TestCase):
         self.assertIn("COGNEE_RUNTIME_SYSTEM_DIR=", current)
         self.assertIn("COGNEE_RUNTIME_DATA_DIR=", current)
 
+    def test_prepare_env_defaults_to_external_cognee_backends(self):
+        module = _load_prepare_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            env_file = root / ".env.azure"
+            env_file.write_text(
+                "\n".join(
+                    [
+                        "COGNEE_LLM_PROVIDER=azure",
+                        "COGNEE_EMBEDDING_PROVIDER=azure",
+                        "AZURE_API_BASE=https://example.openai.azure.com",
+                        "AZURE_API_KEY=test-key",
+                        "AZURE_API_VERSION=2024-02-01",
+                        "AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini",
+                        "AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            module.RUNTIME_ENV = root / "runtime" / "cognee.env"
+            module.CURRENT_RUNTIME_ENV = root / "runtime" / "current_runtime.env"
+            module.RUNTIME_INSTANCES_DIR = root / "runtime" / "instances"
+
+            result = module.main(["--env-file", str(env_file), "--profile", "canonical"])
+
+            active = module.RUNTIME_ENV.read_text(encoding="utf-8")
+
+        self.assertEqual(0, result)
+        self.assertIn("DB_PROVIDER=postgres", active)
+        self.assertIn("DB_NAME=cognee_db", active)
+        self.assertIn("DB_HOST=host.docker.internal", active)
+        self.assertIn("DB_PORT=5432", active)
+        self.assertIn("DB_USERNAME=cognee", active)
+        self.assertIn("DB_PASSWORD=cognee", active)
+        self.assertIn("GRAPH_DATABASE_PROVIDER=neo4j", active)
+        self.assertIn("GRAPH_DATABASE_URL=bolt://host.docker.internal:7687", active)
+        self.assertIn("VECTOR_DB_PROVIDER=qdrant", active)
+        self.assertIn("VECTOR_DB_URL=http://host.docker.internal:6333", active)
+
+    def test_prepare_env_uses_runtime_key_from_env_file(self):
+        module = _load_prepare_module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            env_file = root / ".env.vertex"
+            env_file.write_text(
+                "\n".join(
+                    [
+                        "COGNEE_RUNTIME_KEY=constrained-gemini35",
+                        "COGNEE_LLM_PROVIDER=vertex",
+                        "COGNEE_EMBEDDING_PROVIDER=vertex",
+                        "VERTEX_AI_PROJECT_ID=test-project",
+                        "VERTEX_AI_LOCATION=global",
+                        "VERTEX_AI_LLM_MODEL=gemini-3.5-flash",
+                        "VERTEX_AI_EMBEDDING_MODEL=gemini-embedding-2",
+                        "VERTEX_AI_EMBEDDING_DIMENSIONALITY=3072",
+                        "GOOGLE_APPLICATION_CREDENTIALS=/app/.google-credentials/service-account.json",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            module.RUNTIME_ENV = root / "runtime" / "cognee.env"
+            module.CURRENT_RUNTIME_ENV = root / "runtime" / "current_runtime.env"
+            module.RUNTIME_INSTANCES_DIR = root / "runtime" / "instances"
+
+            result = module.main(["--env-file", str(env_file)])
+
+            active = module.RUNTIME_ENV.read_text(encoding="utf-8")
+            current = module.CURRENT_RUNTIME_ENV.read_text(encoding="utf-8")
+
+        self.assertEqual(0, result)
+        self.assertIn("COGNEE_RUNTIME_KEY=constrained-gemini35", active)
+        self.assertIn("instances/constrained-gemini35/cognee.env", current)
+
     def test_status_summary_prefers_cognify_chunk_progress(self):
         response = {
             "pipelines": [
