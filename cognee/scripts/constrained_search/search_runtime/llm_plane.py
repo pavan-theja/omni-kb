@@ -133,6 +133,7 @@ class LLMPlane:
         prompt_id = "01_runtime_binding_selector"
         payload = {"query_text": query_text, "anchors": anchor_decision, "runtime_candidates": runtime_candidates}
         raw = await self.provider.complete_json(prompt_id=prompt_id, system_prompt=self._prompt(prompt_id), user_payload=payload)
+        raw = normalize_runtime_binding_selector_output(raw, runtime_candidates)
         _require_keys(raw, ["selected_platform_account_ids", "selected_binding_ids", "rejected_candidate_ids", "next_search_contracts"], prompt_id)
         return LLMDecision("llm_runtime_binding_001", prompt_id, payload, raw)
 
@@ -147,6 +148,7 @@ class LLMPlane:
         prompt_id = "03_bounded_candidate_ranker"
         payload = {"query_text": query_text, "contract": contract.to_dict(), "returned_cards": returned_cards}
         raw = await self.provider.complete_json(prompt_id=prompt_id, system_prompt=self._prompt(prompt_id), user_payload=payload)
+        raw = normalize_bounded_ranker_output(raw)
         _require_keys(raw, ["selected_card_ids", "rejected_card_ids", "next_search_contracts", "exact_dereference_requests"], prompt_id)
         return LLMDecision("llm_rank_001", prompt_id, payload, raw)
 
@@ -162,6 +164,76 @@ def _require_keys(raw: dict[str, Any], keys: list[str], prompt_id: str) -> None:
     missing = [key for key in keys if key not in raw]
     if missing:
         raise ValueError(f"LLM output for {prompt_id} missing keys: {missing}")
+
+
+def normalize_runtime_binding_selector_output(raw: dict[str, Any], runtime_candidates: list[dict[str, Any]]) -> dict[str, Any]:
+    normalized = dict(raw)
+    selected_alias_ids = first_list(
+        normalized.get("selected_card_ids"),
+        normalized.get("selected_candidate_ids"),
+        normalized.get("selected_ids"),
+    )
+    platform_ids, binding_ids = runtime_selector_candidate_ids(runtime_candidates)
+
+    if "selected_platform_account_ids" not in normalized:
+        normalized["selected_platform_account_ids"] = [item for item in selected_alias_ids if item in platform_ids]
+    if "selected_binding_ids" not in normalized:
+        normalized["selected_binding_ids"] = [item for item in selected_alias_ids if item in binding_ids]
+    normalized.setdefault("selected_table_ids", [])
+    if "rejected_candidate_ids" not in normalized:
+        normalized["rejected_candidate_ids"] = first_list(
+            normalized.get("rejected_card_ids"),
+            normalized.get("rejected_ids"),
+        )
+    normalized.setdefault("selection_reasons", {})
+    normalized.setdefault("next_search_contracts", [])
+    normalized.setdefault("blocked_reasons", [])
+    return normalized
+
+
+def normalize_bounded_ranker_output(raw: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(raw)
+    if "selected_card_ids" not in normalized:
+        normalized["selected_card_ids"] = first_list(
+            normalized.get("selected_binding_ids"),
+            normalized.get("selected_domain_ids"),
+            normalized.get("selected_table_ids"),
+            normalized.get("selected_candidate_ids"),
+            normalized.get("selected_ids"),
+        )
+    if "rejected_card_ids" not in normalized:
+        normalized["rejected_card_ids"] = first_list(
+            normalized.get("rejected_candidate_ids"),
+            normalized.get("rejected_ids"),
+        )
+    normalized.setdefault("selection_reasons", {})
+    normalized.setdefault("next_search_contracts", [])
+    normalized.setdefault("exact_dereference_requests", [])
+    normalized.setdefault("blocked_reasons", [])
+    return normalized
+
+
+def runtime_selector_candidate_ids(runtime_candidates: list[dict[str, Any]]) -> tuple[set[str], set[str]]:
+    platform_ids: set[str] = set()
+    binding_ids: set[str] = set()
+    for candidate in runtime_candidates:
+        canonical_id = str(candidate.get("canonical_id") or candidate.get("candidate_id") or "")
+        card_type = str(candidate.get("card_type") or "")
+        candidate_type = str(candidate.get("candidate_type") or "")
+        if card_type == "platform_account" and canonical_id:
+            platform_ids.add(canonical_id)
+        if card_type == "account_data_binding" or candidate_type == "runtime_binding_table_candidate":
+            binding_id = str(candidate.get("account_data_binding_id") or canonical_id)
+            if binding_id:
+                binding_ids.add(binding_id)
+    return platform_ids, binding_ids
+
+
+def first_list(*values: Any) -> list[str]:
+    for value in values:
+        if isinstance(value, list):
+            return [str(item) for item in value]
+    return []
 
 
 def supports_json_retry(exc: Exception) -> bool:

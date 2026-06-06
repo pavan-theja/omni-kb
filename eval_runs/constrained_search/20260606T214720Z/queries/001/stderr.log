@@ -1,0 +1,118 @@
+
+[2m2026-06-06T21:47:20.822059[0m [[32m[1minfo     [0m] [1mDeleted old log file: /Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/logs/2026-06-06_23-59-42.log[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:20.822189[0m [[32m[1minfo     [0m] [1mLog file created at: /Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/logs/2026-06-07_03-17-20.log[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mlog_file[0m=[35m/Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/logs/2026-06-07_03-17-20.log[0m
+
+[2m2026-06-06T21:47:20.822246[0m [[33m[1mwarning  [0m] [1mCognee 1.0 changes: New API — remember/recall/forget/improve (V1 add/cognify/search still work). Session memory enabled by default (CACHING=false to disable). Multi-user access control on by default (ENABLE_BACKEND_ACCESS_CONTROL=false to disable). Agents (@cognee.agent) auto-verified on registration. See https://docs.cognee.ai/[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:20.822289[0m [[32m[1minfo     [0m] [1mLogging initialized           [0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mcognee_version[0m=[35m1.1.0[0m [36mdatabase_path[0m=[35m/Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/system/databases[0m [36mos_info[0m=[35m'Darwin 25.4.0 (Darwin Kernel Version 25.4.0: Thu Mar 19 19:31:09 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T8132)'[0m [36mpython_version[0m=[35m3.13.13[0m [36mstructlog_version[0m=[35m25.5.0[0m
+
+[2m2026-06-06T21:47:20.822332[0m [[32m[1minfo     [0m] [1mDatabase storage: /Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/system/databases[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:21.029097[0m [[32m[1minfo     [0m] [1mauth posture: authentication=disabled, multi_tenant=disabled (explicit REQUIRE_AUTHENTICATION)[0m [[0m[1m[34mget_authenticated_user[0m][0m
+
+[2m2026-06-06T21:47:28.313000[0m [[32m[1minfo     [0m] [1mLog file created at: /Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/logs/2026-06-07_03-17-20.log[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mlog_file[0m=[35m/Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/logs/2026-06-07_03-17-20.log[0m
+
+[2m2026-06-06T21:47:28.313078[0m [[33m[1mwarning  [0m] [1mCognee 1.0 changes: New API — remember/recall/forget/improve (V1 add/cognify/search still work). Session memory enabled by default (CACHING=false to disable). Multi-user access control on by default (ENABLE_BACKEND_ACCESS_CONTROL=false to disable). Agents (@cognee.agent) auto-verified on registration. See https://docs.cognee.ai/[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:28.313122[0m [[32m[1minfo     [0m] [1mLogging initialized           [0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mcognee_version[0m=[35m1.1.0[0m [36mdatabase_path[0m=[35m/Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/system/databases[0m [36mos_info[0m=[35m'Darwin 25.4.0 (Darwin Kernel Version 25.4.0: Thu Mar 19 19:31:09 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T8132)'[0m [36mpython_version[0m=[35m3.13.13[0m [36mstructlog_version[0m=[35m25.5.0[0m
+
+[2m2026-06-06T21:47:28.313164[0m [[32m[1minfo     [0m] [1mDatabase storage: /Users/kvsnnpavan/Documents/zenstatement/recon_repo/build/constrained_search/build/cognee_runtime/system/databases[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:28.313341[0m [[33m[1mwarning  [0m] [1mCould not get tokenizer from HuggingFace due to: No module named 'transformers'[0m [[0m[1m[34mLiteLLMEmbeddingEngine[0m][0m
+
+[2m2026-06-06T21:47:28.313375[0m [[32m[1minfo     [0m] [1mSwitching to TikToken default tokenizer.[0m [[0m[1m[34mLiteLLMEmbeddingEngine[0m][0m
+/Users/kvsnnpavan/Documents/zenstatement/recon_repo/.venv/lib/python3.13/site-packages/cognee_community_vector_adapter_qdrant/qdrant_adapter.py:72: UserWarning: Api key is used with an insecure connection.
+  return AsyncQdrantClient(url=self.url, api_key=self.api_key, port=6333)
+
+[2m2026-06-06T21:47:40.947452[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 3 collections in 12.64s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:40.947605[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:47:41.023053[0m [[32m[1minfo     [0m] [1mRetrieved 22 nodes and 146 edges for NodeSet in 0.08 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:47:41.024451[0m [[32m[1minfo     [0m] [1mGraph projection completed: 22 nodes, 146 edges in 0.00s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:47:41.025114[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 11, 'connection_count': 10}[0m
+
+[2m2026-06-06T21:47:41.025302[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:47:46.742901[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 3 collections in 1.38s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:46.743050[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:47:46.804559[0m [[32m[1minfo     [0m] [1mRetrieved 28 nodes and 207 edges for NodeSet in 0.06 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:47:46.806036[0m [[32m[1minfo     [0m] [1mGraph projection completed: 28 nodes, 207 edges in 0.00s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:47:46.806913[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 24, 'connection_count': 30}[0m
+
+[2m2026-06-06T21:47:46.807064[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:47:53.857305[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 0 collections in 1.17s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:53.858328[0m [[33m[1mwarning  [0m] [1mEmpty context was provided to the completion[0m [[0m[1m[34mGraphCompletionRetriever[0m][0m
+
+[2m2026-06-06T21:47:53.858404[0m [[33m[1mwarning  [0m] [1mEmpty context was provided to the completion[0m [[0m[1m[34mGraphCompletionRetriever[0m][0m
+
+[2m2026-06-06T21:47:53.858562[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:47:55.139979[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 3 collections in 1.26s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:47:55.140132[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:47:55.208389[0m [[32m[1minfo     [0m] [1mRetrieved 48 nodes and 383 edges for NodeSet in 0.07 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:47:55.212932[0m [[32m[1minfo     [0m] [1mGraph projection completed: 48 nodes, 383 edges in 0.00s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:47:55.213778[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 21, 'connection_count': 20}[0m
+
+[2m2026-06-06T21:47:55.213921[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:48:04.254439[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 2 collections in 2.67s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:48:04.254585[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:48:04.314355[0m [[32m[1minfo     [0m] [1mRetrieved 25 nodes and 168 edges for NodeSet in 0.06 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:48:04.315454[0m [[32m[1minfo     [0m] [1mGraph projection completed: 25 nodes, 168 edges in 0.00s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:48:04.316116[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 17, 'connection_count': 20}[0m
+
+[2m2026-06-06T21:48:04.316278[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:48:05.666097[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 2 collections in 1.27s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:48:05.666242[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:48:05.709757[0m [[32m[1minfo     [0m] [1mRetrieved 24 nodes and 147 edges for NodeSet in 0.04 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:48:05.710680[0m [[32m[1minfo     [0m] [1mGraph projection completed: 24 nodes, 147 edges in 0.00s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:48:05.711202[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 4, 'connection_count': 3}[0m
+
+[2m2026-06-06T21:48:05.711345[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:48:26.487797[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 3 collections in 1.28s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:48:26.488711[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:48:26.533837[0m [[32m[1minfo     [0m] [1mRetrieved 37 nodes and 200 edges for NodeSet in 0.04 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:48:26.535082[0m [[32m[1minfo     [0m] [1mGraph projection completed: 37 nodes, 200 edges in 0.00s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:48:26.536179[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 11, 'connection_count': 10}[0m
+
+[2m2026-06-06T21:48:26.536340[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m
+
+[2m2026-06-06T21:49:04.976956[0m [[32m[1minfo     [0m] [1mVector collection retrieval completed: Retrieved distances from 3 collections in 2.52s[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m
+
+[2m2026-06-06T21:49:04.977848[0m [[32m[1minfo     [0m] [1mRetrieving graph filtered by node type and node name (NodeSet).[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:49:05.082857[0m [[32m[1minfo     [0m] [1mRetrieved 144 nodes and 819 edges for NodeSet in 0.10 seconds[0m [[0m[1m[34mNeo4jAdapter[0m][0m
+
+[2m2026-06-06T21:49:05.096581[0m [[32m[1minfo     [0m] [1mGraph projection completed: 144 nodes, 819 edges in 0.01s[0m [[0m[1m[34mCogneeGraph[0m][0m
+
+[2m2026-06-06T21:49:05.099686[0m [[32m[1minfo     [0m] [1mCompleted resolving edges to text[0m [[0m[1m[34mcognee.shared.logging_utils[0m][0m [36mextra[0m=[35m{'node_count': 36, 'connection_count': 20}[0m
+
+[2m2026-06-06T21:49:05.099849[0m [[32m[1minfo     [0m] [1mrecall: 1 results across sources=['graph'] (session=-)[0m [[0m[1m[34mrecall[0m][0m

@@ -24,6 +24,7 @@ Rules:
 9. Do not emit `runtime_account_data_binding_search`; the legal stage is `runtime_account_binding_search`.
 10. Do not emit `table_schema_search`, `metric_search`, `canonical_pack_search`, or `runtime_table_column_search`; use the legal table-frame and table-local stages below.
 11. Every emitted contract with `allowed_card_types` must include the matching `card_type:<type>` NodeSet.
+12. For metrics, the legal stage is `table_local_metric_implementation_search`; the legal card type is `metric_implementation`. Never emit `card_type:metric` or `allowed_card_types: ["metric"]`.
 
 Table frame contract example:
 ```json

@@ -50,14 +50,14 @@ def validate_contract(contract: SearchContract, catalogs: CatalogBundle | None =
 
         template = catalogs.template_for_stage(contract.stage)
         if template:
-            for key in template.get("required_node_set_keys") or []:
+            for key in effective_required_node_set_keys(contract, template):
                 if key not in keys:
                     errors.append(f"contract_missing_template_required_nodeset_key:{key}")
             template_card_type = template.get("card_type")
             if template_card_type and first_node_set(contract.node_sets, "card_type") != template_card_type:
                 errors.append(f"contract_card_type_does_not_match_template:{template_card_type}")
         else:
-            warnings.append("stage_has_no_catalog_template")
+            errors.append(f"unknown_stage_in_contract:{contract.stage}")
 
         table_id = first_node_set(contract.node_sets, "table_id")
         if table_id and not catalogs.known_table_id(table_id):
@@ -76,6 +76,13 @@ def validate_contract(contract: SearchContract, catalogs: CatalogBundle | None =
                 errors.append(f"unknown_canonical_id_in_contract:{cid}")
 
     return {"ok": not errors, "errors": errors, "warnings": warnings, "node_set_keys": sorted(k for k in keys if k != "__malformed__")}
+
+
+def effective_required_node_set_keys(contract: SearchContract, template: dict[str, Any]) -> list[str]:
+    required = list(template.get("required_node_set_keys") or [])
+    if contract.stage == "runtime_platform_account_search" and "platform_id" not in node_set_map(contract.node_sets):
+        return [key for key in required if key != "platform_id"]
+    return required
 
 
 def canonicalize_contract(contract: SearchContract, catalogs: CatalogBundle | None = None) -> SearchContract:

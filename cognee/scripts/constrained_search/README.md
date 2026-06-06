@@ -177,3 +177,48 @@ Live search uses the same built-in Vertex/LiteLLM JSON provider unless
 Search defaults to targeted `cognee.recall(..., only_context=True)` with
 NodeSet filters and add-batch dataset routing. Use `--all-datasets` only when
 you deliberately want to disable routing.
+
+## Live E2E Eval Runner
+
+`eval_runner.py` runs the constrained-search runtime over the full hardening
+eval query set and writes artifacts under `eval_runs/constrained_search`:
+
+```bash
+.venv/bin/python cognee/scripts/constrained_search/eval_runner.py \
+  --pack-dir build/constrained_search/build \
+  --env-file cognee/.env.vertex.gemini352 \
+  --provider vertex \
+  --tenant-id tenant.mensa_brand_technologies_private_limited \
+  --group-id group.mensa_brand_technologies_private_limited.g8.gl22 \
+  --completion-policy best_effort
+```
+
+For a smaller live smoke run:
+
+```bash
+.venv/bin/python cognee/scripts/constrained_search/eval_runner.py \
+  --pack-dir build/constrained_search/build \
+  --env-file cognee/.env.vertex.gemini352 \
+  --provider vertex \
+  --tenant-id tenant.mensa_brand_technologies_private_limited \
+  --group-id group.mensa_brand_technologies_private_limited.g8.gl22 \
+  --completion-policy best_effort \
+  --limit 3
+```
+
+Each run writes:
+
+```text
+eval_runs/constrained_search/<run_id>/
+  manifest.json
+  aggregate_metrics.json
+  summary.md
+  queries/<index>/
+    query.txt
+    result.json
+    trace.json
+    stdout.log
+    stderr.log
+    metrics.json
+    summary.md
+```

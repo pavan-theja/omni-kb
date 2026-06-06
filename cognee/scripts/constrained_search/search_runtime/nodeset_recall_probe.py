@@ -141,7 +141,7 @@ DEFAULT_PROBE_SPECS = [
     ManualProbeSpec(
         contract_id="manual.column.amazon_settlement_group_level",
         expected_card_id="column.zs_observe.amazon_settlement.group_level_id",
-        stage="semantic_column_search",
+        stage="table_local_column_search",
         query_text="Amazon settlement group level scope column",
         allowed_card_type="column",
         node_set_keys=("card_type", "table_id", "column_id", "canonical_id"),
@@ -149,7 +149,7 @@ DEFAULT_PROBE_SPECS = [
     ManualProbeSpec(
         contract_id="manual.column.flipkart_oms_order_id",
         expected_card_id="column.zs_recon_processor.flipkart_oms.order_id",
-        stage="semantic_column_search",
+        stage="table_local_column_search",
         query_text="Flipkart OMS order id column",
         allowed_card_type="column",
         node_set_keys=("card_type", "table_id", "column_id", "canonical_id"),
@@ -157,7 +157,7 @@ DEFAULT_PROBE_SPECS = [
     ManualProbeSpec(
         contract_id="manual.column.shopify_returns_refunded_payments",
         expected_card_id="column.zs_observe.shopify_returns.refunded_payments",
-        stage="semantic_column_search",
+        stage="table_local_column_search",
         query_text="Shopify returns refunded payments column",
         allowed_card_type="column",
         node_set_keys=("card_type", "table_id", "column_id", "canonical_id"),
@@ -165,7 +165,7 @@ DEFAULT_PROBE_SPECS = [
     ManualProbeSpec(
         contract_id="manual.metric.flipkart_order_count",
         expected_card_id="metric.flipkart.order_count",
-        stage="semantic_metric_search",
+        stage="exact_card_dereference_search",
         query_text="Flipkart order count metric",
         allowed_card_type="metric",
         node_set_keys=("card_type", "metric_id", "canonical_id"),
@@ -173,7 +173,7 @@ DEFAULT_PROBE_SPECS = [
     ManualProbeSpec(
         contract_id="manual.reconciliation_profile.meesho_sales_settlement",
         expected_card_id="reconciliation_profile.meesho.sales_settlement",
-        stage="semantic_reconciliation_profile_search",
+        stage="exact_card_dereference_search",
         query_text="Meesho sales settlement reconciliation profile",
         allowed_card_type="reconciliation_profile",
         node_set_keys=("card_type", "reconciliation_profile_id", "canonical_id"),
@@ -181,7 +181,7 @@ DEFAULT_PROBE_SPECS = [
     ManualProbeSpec(
         contract_id="manual.tenant.mensa",
         expected_card_id="tenant.mensa_brand_technologies_private_limited",
-        stage="manual_tenant_exact_search",
+        stage="exact_card_dereference_search",
         query_text="Mensa tenant runtime card",
         allowed_card_type="tenant",
         node_set_keys=("card_type", "domain_family", "tenant_id", "canonical_id"),

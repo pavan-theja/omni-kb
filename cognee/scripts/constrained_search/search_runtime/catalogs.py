@@ -7,6 +7,18 @@ from typing import Any
 from .utils import read_json, read_jsonl
 
 
+BUILT_IN_STAGE_TEMPLATES = {
+    "semantic_domain_search": {
+        "card_type": "domain",
+        "required_node_set_keys": ["card_type"],
+    },
+    "semantic_domain_table_search": {
+        "card_type": "table",
+        "required_node_set_keys": ["card_type", "domain_id"],
+    },
+}
+
+
 @dataclass(slots=True)
 class CatalogBundle:
     """Read-only resolver catalogs generated during constrained-search packaging."""
@@ -44,9 +56,14 @@ class CatalogBundle:
         )
 
     def template_for_stage(self, stage: str) -> dict[str, Any] | None:
+        if stage in BUILT_IN_STAGE_TEMPLATES:
+            return BUILT_IN_STAGE_TEMPLATES[stage]
         if stage in self.search_contract_templates:
             return self.search_contract_templates[stage]
         for key, template in self.search_contract_templates.items():
+            if stage.startswith(key):
+                return template
+        for key, template in BUILT_IN_STAGE_TEMPLATES.items():
             if stage.startswith(key):
                 return template
         return None

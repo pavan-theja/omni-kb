@@ -1,0 +1,35 @@
+{
+  "all_datasets": false,
+  "branch_max_steps": 8,
+  "completed_at": "2026-06-06T22:05:02+00:00",
+  "completed_query_count": 1,
+  "completion_policy": "best_effort",
+  "datasets": [],
+  "duration_seconds": 286.01,
+  "env_file": "cognee/.env.vertex.gemini352",
+  "group_id": "group.mensa_brand_technologies_private_limited.g8.gl22",
+  "max_pending": 32,
+  "max_steps": 16,
+  "pack_dir": "build/constrained_search/build",
+  "provider": "vertex",
+  "queries": [
+    {
+      "acceptance_failures": [],
+      "duration_seconds": 285.741,
+      "metrics": "queries/001/metrics.json",
+      "query": "Compare Amazon sales and returns",
+      "query_index": 1,
+      "result": "queries/001/result.json",
+      "status": "best_effort",
+      "stderr": "queries/001/stderr.log",
+      "stdout": "queries/001/stdout.log",
+      "summary": "queries/001/summary.md",
+      "trace": "queries/001/trace.json"
+    }
+  ],
+  "query_count": 1,
+  "questions_source": "--query",
+  "run_id": "20260606T220016Z",
+  "started_at": "2026-06-06T22:00:16+00:00",
+  "tenant_id": "tenant.mensa_brand_technologies_private_limited"
+}

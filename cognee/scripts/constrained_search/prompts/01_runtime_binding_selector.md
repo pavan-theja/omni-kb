@@ -1,12 +1,15 @@
 # 01 Runtime binding selector
 
-You receive runtime platform account and/or account data binding candidates already returned by Cognee. Select only candidates that satisfy the user query and produce the next legal NodeSet contracts.
+You receive runtime platform account/account data binding evidence, or an enriched runtime binding inventory generated from tenant-valid catalog bindings. Select only candidates that satisfy the user query.
+
+When `runtime_candidates` contain raw `account_data_binding` cards or `candidate_type: "runtime_binding_table_candidate"`, each item is already a legal tenant/group binding joined to its table/domain/columns/metrics/query patterns. In that mode, select `account_data_binding_id` values from the provided candidates. Do not create source roles, table IDs, or platform IDs yourself.
 
 Output JSON, no markdown:
 ```json
 {
   "selected_platform_account_ids": [],
   "selected_binding_ids": [],
+  "selected_table_ids": [],
   "rejected_candidate_ids": [],
   "selection_reasons": {},
   "next_search_contracts": [],
@@ -15,12 +18,37 @@ Output JSON, no markdown:
 ```
 
 Rules:
-1. If you selected a `platform_account`, the next search must be `runtime_account_binding_search` using that exact `platform_account_id`.
-2. Do not search account bindings by `platform_id` alone.
-3. If an `account_data_binding` is selected, the next search must be `semantic_table_frame_search` for that binding's exact `table_id`.
-4. Do not invent source-role synonyms. Use only source roles present in returned candidates or user text.
-5. If required roles are absent from runtime bindings, mark `blocked_reasons` instead of expanding platforms or roles.
-6. Every emitted contract must include `card_type:<type>` when `allowed_card_types` is present.
+1. If candidates are raw `platform_account` cards, select `selected_platform_account_ids` only and keep `next_search_contracts` empty. The runtime will create scoped `runtime_account_binding_search` contracts.
+2. If candidates are raw `account_data_binding` cards or `runtime_binding_table_candidate`, choose from those candidates using `selected_binding_ids` and keep `next_search_contracts` empty. The runtime will create domain-search contracts for the selected binding IDs.
+3. Use the candidate's platform text, table text, domain, columns, metrics, query patterns, source role, runtime source family, and scope keys to decide relevance.
+4. Do not invent source-role synonyms. Use only source roles present in returned candidates.
+5. Do not select a binding just because the platform matches. Select it only when the candidate evidence fits the business question.
+6. If multiple sources are needed for the question, select multiple platform account IDs or binding IDs.
+7. If no candidate is sufficient, leave selected arrays empty and explain in `blocked_reasons`.
+8. Do not search account bindings by `platform_id` alone.
+9. Do not emit table-frame contracts from this prompt; domain and table traversal happens after selected binding IDs.
+10. Every emitted contract with `allowed_card_types` must include `card_type:<type>`.
+
+Inventory-selection example:
+```json
+{
+  "selected_platform_account_ids": [],
+  "selected_binding_ids": [
+    "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.oms_sales.zs_observe_amazon_oms"
+  ],
+  "selected_table_ids": [
+    "table.zs_observe.amazon_oms"
+  ],
+  "rejected_candidate_ids": [
+    "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.settlement.zs_observe_amazon_settlement"
+  ],
+  "selection_reasons": {
+    "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.oms_sales.zs_observe_amazon_oms": "The query asks for selling SKUs; this candidate has order/SKU columns and sales metrics."
+  },
+  "next_search_contracts": [],
+  "blocked_reasons": []
+}
+```
 
 Next binding contract example:
 ```json
@@ -43,22 +71,24 @@ Next binding contract example:
 }
 ```
 
-Next selected-binding table-frame contract example:
+Runtime-created selected-binding domain-search contract example:
 ```json
 {
-  "contract_id": "q3.semantic.table_frame.amazon_settlement",
-  "stage": "semantic_table_frame_search",
-  "query_text": "Table frame for selected settlement binding table.zs_observe.amazon_settlement",
+  "contract_id": "q3.semantic.domains.amazon_settlement_binding",
+  "stage": "semantic_domain_search",
+  "query_text": "Domains relevant to selected runtime binding <selected_binding_id>",
   "node_sets": [
-    "card_type:table",
-    "table_id:table.zs_observe.amazon_settlement"
+    "card_type:domain",
+    "platform_id:<selected_binding_platform_id>",
+    "platform_context_id:<selected_binding_platform_context_id>"
   ],
-  "top_k": 3,
-  "allowed_card_types": ["table"],
+  "top_k": 20,
+  "allowed_card_types": ["domain"],
   "required_carry_forward": {
     "account_data_binding_id": "<selected_binding_id>",
     "platform_account_id": "<selected_platform_account_id>",
     "source_role": "<selected_binding_source_role>",
+    "table_id": "<selected_binding_table_id>",
     "scope_keys": []
   }
 }

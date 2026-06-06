@@ -13,7 +13,7 @@ from .catalogs import CatalogBundle
 from .cognee_client import CogneeClient, CogneeIntegrationError, datasets_from_pack
 from .contract_validator import validate_contract
 from .llm_plane import CallableLLMProvider, LLMPlane, LiteLLMJSONProvider
-from .search_state_machine import CogneeSearchStateMachine
+from .search_state_machine import COMPLETION_POLICIES, CogneeSearchStateMachine
 from .utils import write_json
 
 
@@ -43,6 +43,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--all-datasets", action="store_true", help="Disable add-batch dataset routing.")
     parser.add_argument("--llm-callable", help="Dotted path for a JSON LLM callable.")
     parser.add_argument("--max-steps", type=int, default=30)
+    parser.add_argument("--branch-max-steps", type=int, default=8)
+    parser.add_argument("--max-pending", type=int, default=32)
+    parser.add_argument("--completion-policy", choices=sorted(COMPLETION_POLICIES), default="best_effort")
     parser.add_argument("--dry-run", action="store_true", help="Validate pack, prompts, and runtime wiring without calling Cognee or an LLM.")
     parser.add_argument(
         "--llm-dry-run",
@@ -60,12 +63,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     print(result["status"])
     print(result["trace_path"])
-    return 0 if result["status"] in {"complete", "blocked", "dry_run", "llm_dry_run"} else 1
+    return 0 if result["status"] in {"complete", "best_effort", "partial", "blocked", "dry_run", "llm_dry_run"} else 1
 
 
 async def run(args: argparse.Namespace) -> dict[str, Any]:
     if args.max_steps < 1:
         raise ValueError("--max-steps must be >= 1")
+    if args.branch_max_steps < 1:
+        raise ValueError("--branch-max-steps must be >= 1")
+    if args.max_pending < 1:
+        raise ValueError("--max-pending must be >= 1")
     if args.dry_run and args.llm_dry_run:
         raise ValueError("Use only one of --dry-run or --llm-dry-run")
     validate_runtime_scope_args(args)
@@ -101,6 +108,9 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         trace_dir,
         catalogs=catalogs,
         max_steps=args.max_steps,
+        branch_max_steps=args.branch_max_steps,
+        max_pending=args.max_pending,
+        completion_policy=args.completion_policy,
     )
     return await machine.run_query(
         args.query,
@@ -155,6 +165,9 @@ async def llm_dry_run_result(
         pack_dir / "traces",
         catalogs=catalogs,
         max_steps=args.max_steps,
+        branch_max_steps=args.branch_max_steps,
+        max_pending=args.max_pending,
+        completion_policy=args.completion_policy,
     )
     contracts = machine._coerce_contracts(raw_contracts, "anchor_extractor", args.query)
     trace.extend(machine.trace)
