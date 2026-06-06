@@ -75,3 +75,9 @@ build/constrained_search/**/cognee_runtime/
 build/constrained_search/**/readiness/
 build/constrained_search/**/resolver_catalog/
 build/constrained_search/**/traces/
+
+# Local migration scaffolding and raw source drops
+constrained_repo/
+instructions.md
+raw/Source/docx/
+raw/Source/refactored_v2/
