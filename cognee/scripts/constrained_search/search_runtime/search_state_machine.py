@@ -8,6 +8,10 @@ from .catalogs import CatalogBundle
 from .cognee_client import CogneeClient
 from .contract_repair import ContractRepairResult, repair_contract
 from .contract_validator import validate_contract, validate_returned_cards
+from .evidence_profiles import (
+    build_evidence_manifest,
+    profile_contracts_from_decision,
+)
 from .llm_plane import LLMPlane
 from .nodeset_contracts import SearchContract, SearchResult
 from .utils import unique_in_order, write_json
@@ -43,6 +47,8 @@ class CogneeSearchStateMachine:
         self.completion_policy = completion_policy
         self.trace: list[dict[str, Any]] = []
         self.branch_ledger = BranchLedger()
+        self.evidence_profile_decisions: list[dict[str, Any]] = []
+        self.evidence_manifests: list[dict[str, Any]] = []
 
     async def execute_contract(self, contract: SearchContract) -> SearchResult:
         repair = repair_contract(contract, self.catalogs)
@@ -515,6 +521,8 @@ class CogneeSearchStateMachine:
             terminal,
             branch_snapshot=branch_snapshot,
             usable_branch_ids=decision["usable_branch_ids"],
+            evidence_profile_decisions=self.evidence_profile_decisions,
+            evidence_manifests=self.evidence_manifests,
         )
         if decision["write_handoff"]:
             try:
@@ -600,6 +608,16 @@ class CogneeSearchStateMachine:
             )
             return route_selection or self._empty_route_selection(result, "domain_table_finalization")
 
+        if result.stage == "semantic_table_frame_search":
+            table_cards = cards_of_type(result.returned_cards, "table")
+            return await self._select_profile_evidence_for_table_frame(
+                query_text,
+                runtime_context,
+                result,
+                predecessor_contract,
+                table_cards,
+            )
+
         return None
 
     def _empty_route_selection(self, result: SearchResult, source_event: str) -> tuple[list[SearchResult], list[SearchContract]]:
@@ -614,6 +632,101 @@ class CogneeSearchStateMachine:
             }
         )
         return [], []
+
+    async def _select_profile_evidence_for_table_frame(
+        self,
+        query_text: str,
+        runtime_context: dict[str, Any],
+        result: SearchResult,
+        predecessor_contract: SearchContract,
+        table_cards: list[dict[str, Any]],
+    ) -> tuple[list[SearchResult], list[SearchContract]] | None:
+        if self.catalogs is None or not table_cards:
+            return None
+
+        evidence_manifest = build_evidence_manifest(self.catalogs, table_cards, predecessor_contract)
+        if not evidence_manifest.get("tables"):
+            self.trace.append(
+                {
+                    "event": "table_evidence_manifest_empty",
+                    "result_id": result.result_id,
+                    "contract_id": predecessor_contract.contract_id,
+                }
+            )
+            return None
+
+        self.evidence_manifests.append(evidence_manifest)
+        self.trace.append(
+            {
+                "event": "table_evidence_manifest_built",
+                "result_id": result.result_id,
+                "contract_id": predecessor_contract.contract_id,
+                "manifest": evidence_manifest,
+            }
+        )
+
+        try:
+            selector_decision = await self.llm_plane.select_evidence_profiles(
+                query_text,
+                runtime_context,
+                evidence_manifest,
+            )
+        except Exception as exc:  # noqa: BLE001
+            self.trace.append(
+                {
+                    "event": "llm_evidence_profile_selection_failed",
+                    "result": result.to_dict(),
+                    "error": repr(exc),
+                    "fallback": "next_nodeset_planner",
+                }
+            )
+            return None
+
+        decision = selector_decision.to_dict()
+        self.evidence_profile_decisions.append(decision)
+        self.trace.append({"event": "llm_evidence_profile_decision", "decision": decision})
+
+        profile_contracts, rejected_requests = profile_contracts_from_decision(
+            selector_decision.validated_output,
+            evidence_manifest,
+            predecessor_contract,
+            query_text,
+        )
+        self.trace.append(
+            {
+                "event": "evidence_profile_contracts_prepared",
+                "contract_ids": [contract.contract_id for contract in profile_contracts],
+                "rejected_requests": rejected_requests,
+            }
+        )
+
+        valid_contracts: list[SearchContract] = []
+        for contract in profile_contracts:
+            validation = validate_contract(contract, self.catalogs)
+            self.trace.append(
+                {
+                    "event": "profile_contract_validated",
+                    "contract": contract.to_dict(),
+                    "validation": validation,
+                }
+            )
+            if validation["ok"]:
+                branch_id = self.branch_ledger.record_contract_discovered(contract)
+                self.trace.append(
+                    {
+                        "event": "branch_ledger_contract_discovered",
+                        "source_event": "evidence_profile_selector",
+                        "contract_id": contract.contract_id,
+                        "branch_id": branch_id,
+                    }
+                )
+                valid_contracts.append(contract)
+            else:
+                self.branch_ledger.record_contract_validation_rejected(contract, validation)
+
+        if not valid_contracts:
+            return None
+        return [], valid_contracts
 
     async def _select_platform_accounts_for_bindings(
         self,
@@ -1304,7 +1417,7 @@ def runtime_binding_candidate_for_table(
 def inherit_required_carry_forward(contract: SearchContract, predecessor_contract: SearchContract) -> SearchContract:
     if not predecessor_contract.required_carry_forward:
         return contract
-    inheritable_stages = ("semantic_table", "table_local_", "metric_", "relationship", "reconciliation")
+    inheritable_stages = ("semantic_table", "table_local_", "domain_local_", "metric_", "relationship", "reconciliation")
     if not contract.stage.startswith(inheritable_stages):
         return contract
     inherited = dict(predecessor_contract.required_carry_forward)
@@ -1606,7 +1719,11 @@ def prune_and_rank_pending(
         if should_drop_contract(contract, preferred_tables, has_runtime_binding):
             continue
         branch_id = scheduler_branch_id(contract, branch_ledger)
-        if branch_ledger is not None and branch_step_count(branch_ledger, branch_id) >= branch_max_steps:
+        if (
+            branch_ledger is not None
+            and branch_step_count(branch_ledger, branch_id) >= branch_max_steps
+            and not is_required_profile_contract(contract)
+        ):
             continue
         seen.add(signature)
         deduped.append(contract)
@@ -1838,6 +1955,8 @@ def usable_evidence_card_ids(branch_snapshot: dict[str, Any], usable_branch_ids:
     )
     for branch_id in usable_branch_ids:
         branch = branches.get(branch_id, {})
+        for ids in (branch.get("evidence_cards_by_type") or {}).values():
+            evidence_ids.update(str(card_id) for card_id in ids if card_id)
         for field_name in evidence_fields:
             evidence_ids.update(str(card_id) for card_id in branch.get(field_name, []) if card_id)
     return evidence_ids
@@ -1853,6 +1972,8 @@ def evidence_less_ancestor_branch(branch: dict[str, Any], evidence_scopes: list[
 
 
 def branch_has_evidence(branch: dict[str, Any]) -> bool:
+    if any((branch.get("evidence_cards_by_type") or {}).values()):
+        return True
     evidence_fields = (
         "platform_account_cards",
         "account_data_binding_cards",
@@ -1869,7 +1990,7 @@ def scope_is_subset(candidate: dict[str, str], expanded: dict[str, str]) -> bool
 
 
 def should_drop_contract(contract: SearchContract, preferred_tables: set[str], has_runtime_binding: bool) -> bool:
-    if not has_runtime_binding and contract.stage.startswith(("semantic_", "table_local_")):
+    if not has_runtime_binding and contract.stage.startswith(("semantic_", "table_local_", "domain_local_")):
         return True
     if not preferred_tables:
         return False
@@ -1878,7 +1999,7 @@ def should_drop_contract(contract: SearchContract, preferred_tables: set[str], h
         return False
     if table_id in preferred_tables:
         return False
-    return contract.stage.startswith(("semantic_", "table_local_", "metric_", "runtime_table_"))
+    return contract.stage.startswith(("semantic_", "table_local_", "domain_local_", "metric_", "runtime_table_"))
 
 
 def contract_priority(contract: SearchContract, query_text: str, preferred_tables: set[str]) -> tuple[int, str]:
@@ -1891,6 +2012,14 @@ def contract_priority(contract: SearchContract, query_text: str, preferred_table
         "table_local_column_search": 55,
     }
     score = stage_priority.get(contract.stage, 70)
+    if contract.stage.startswith("domain_local_"):
+        score = min(score, 45)
+    elif contract.stage.startswith("table_local_"):
+        score = min(score, 50)
+    if is_required_profile_contract(contract):
+        score -= 25
+    elif is_optional_profile_contract(contract):
+        score += 10
     table_id = first_contract_node_value(contract, "table_id")
     if table_id and table_id in preferred_tables:
         score -= 15
@@ -1901,6 +2030,14 @@ def contract_priority(contract: SearchContract, query_text: str, preferred_table
     if "settlement_cash_position" in text or "cash_position" in text:
         score -= 10
     return (score, contract.contract_id)
+
+
+def is_required_profile_contract(contract: SearchContract) -> bool:
+    return bool(contract.required_carry_forward.get("required_evidence_card_types"))
+
+
+def is_optional_profile_contract(contract: SearchContract) -> bool:
+    return bool(contract.required_carry_forward.get("optional_evidence_card_types"))
 
 
 def terminal_evidence_status(
@@ -1946,6 +2083,8 @@ def build_evidence_pack(
     terminal: dict[str, Any],
     branch_snapshot: dict[str, Any] | None = None,
     usable_branch_ids: list[str] | None = None,
+    evidence_profile_decisions: list[dict[str, Any]] | None = None,
+    evidence_manifests: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     use_usable_branch_filter = branch_snapshot is not None and bool(usable_branch_ids)
     evidence_ids = usable_evidence_card_ids(branch_snapshot, usable_branch_ids or []) if branch_snapshot else set()
@@ -1981,6 +2120,8 @@ def build_evidence_pack(
         "runtime_context": runtime_context,
         "terminal_evidence": terminal,
         "usable_branch_ids": usable_branch_ids or [],
+        "evidence_profile_decisions": evidence_profile_decisions or [],
+        "evidence_manifests": evidence_manifests or [],
         "results": packed_results,
     }
 

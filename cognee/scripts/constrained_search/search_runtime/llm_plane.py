@@ -144,6 +144,23 @@ class LLMPlane:
         _require_keys(raw, ["next_search_contracts", "closed_gates", "blocked_reasons"], prompt_id)
         return LLMDecision("llm_next_nodeset_001", prompt_id, payload, raw)
 
+    async def select_evidence_profiles(
+        self,
+        query_text: str,
+        runtime_context: dict[str, Any],
+        evidence_manifest: dict[str, Any],
+    ) -> LLMDecision:
+        prompt_id = "05_evidence_profile_selector"
+        payload = {
+            "query_text": query_text,
+            "runtime_context": runtime_context,
+            "evidence_manifest": evidence_manifest,
+        }
+        raw = await self.provider.complete_json(prompt_id=prompt_id, system_prompt=self._prompt(prompt_id), user_payload=payload)
+        raw = normalize_evidence_profile_selector_output(raw)
+        _require_keys(raw, ["selected_profiles", "evidence_requests", "blocked_reasons"], prompt_id)
+        return LLMDecision("llm_evidence_profile_001", prompt_id, payload, raw)
+
     async def rank_bounded_candidates(self, query_text: str, contract: SearchContract, returned_cards: list[dict[str, Any]]) -> LLMDecision:
         prompt_id = "03_bounded_candidate_ranker"
         payload = {"query_text": query_text, "contract": contract.to_dict(), "returned_cards": returned_cards}
@@ -211,6 +228,31 @@ def normalize_bounded_ranker_output(raw: dict[str, Any]) -> dict[str, Any]:
     normalized.setdefault("exact_dereference_requests", [])
     normalized.setdefault("blocked_reasons", [])
     return normalized
+
+
+def normalize_evidence_profile_selector_output(raw: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(raw)
+    if "selected_profiles" not in normalized:
+        normalized["selected_profiles"] = first_json_list(
+            normalized.get("profiles"),
+            normalized.get("selected_profile_ids"),
+            normalized.get("profile_ids"),
+        )
+    if "evidence_requests" not in normalized:
+        normalized["evidence_requests"] = first_json_list(
+            normalized.get("requests"),
+            normalized.get("next_evidence_requests"),
+        )
+    normalized.setdefault("blocked_reasons", [])
+    normalized.setdefault("selection_reasons", {})
+    return normalized
+
+
+def first_json_list(*values: Any) -> list[Any]:
+    for value in values:
+        if isinstance(value, list):
+            return list(value)
+    return []
 
 
 def runtime_selector_candidate_ids(runtime_candidates: list[dict[str, Any]]) -> tuple[set[str], set[str]]:

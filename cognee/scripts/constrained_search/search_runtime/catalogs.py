@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from .evidence_profiles import generic_stage_template
 from .utils import read_json, read_jsonl
 
 
@@ -60,6 +61,9 @@ class CatalogBundle:
             return BUILT_IN_STAGE_TEMPLATES[stage]
         if stage in self.search_contract_templates:
             return self.search_contract_templates[stage]
+        generic_template = generic_stage_template(stage)
+        if generic_template:
+            return generic_template
         for key, template in self.search_contract_templates.items():
             if stage.startswith(key):
                 return template

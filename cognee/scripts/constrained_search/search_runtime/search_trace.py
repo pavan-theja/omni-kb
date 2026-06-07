@@ -216,6 +216,7 @@ def dry_run_result(pack_dir: Path, datasets: list[str]) -> dict[str, Any]:
         "02_next_nodeset_planner.md",
         "03_bounded_candidate_ranker.md",
         "04_sql_handoff_writer.md",
+        "05_evidence_profile_selector.md",
     }
     missing = sorted(required_prompts - set(prompt_files))
     status = "failed" if missing else "dry_run"

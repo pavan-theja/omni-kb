@@ -1,0 +1,142 @@
+{
+  "acceptance_failures": [],
+  "blocked_reasons": [],
+  "cognee_recall_count": 16,
+  "completion_policy": "best_effort",
+  "contract_rejection_count": 0,
+  "contract_repair_count": 0,
+  "global_step_count": 15,
+  "handoff_status": "present",
+  "incomplete_branch_count": 5,
+  "invalid_contract_executed_count": 0,
+  "llm_call_count": 20,
+  "query": "Top 5 selling SKUs on Amazon.",
+  "selected_metric_implementations": [
+    "metric_implementation.amazon.amazon_oms.average_order_value",
+    "metric_implementation.amazon.amazon_oms.cancellation_rate",
+    "metric_implementation.amazon.amazon_oms.net_revenue",
+    "metric_implementation.amazon.amazon_oms.net_revenue_per_forward_order",
+    "metric_implementation.amazon.amazon_oms.return_rate",
+    "metric_implementation.amazon.amazon_oms.revenue_per_unit",
+    "metric_implementation.amazon.amazon_oms.taxable_revenue"
+  ],
+  "selected_query_patterns": [
+    "query_pattern.amazon.gst_breakdown",
+    "query_pattern.amazon.return_margin_impact",
+    "query_pattern.amazon.worst_return_rate_skus"
+  ],
+  "selected_runtime_bindings": [
+    "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.oms_sales.zs_observe_amazon_oms"
+  ],
+  "selected_tables": [
+    "table.zs_observe.amazon_oms"
+  ],
+  "status": "best_effort",
+  "total_latency_seconds": 357.322,
+  "usable_branch_count": 1,
+  "warnings": [
+    {
+      "blocked_reasons": [],
+      "branch_id": "branch.1d553221027e",
+      "branch_warnings": [],
+      "missing_evidence": [
+        "runtime_binding",
+        "table_frame",
+        "query_pattern_metric_or_columns"
+      ],
+      "scope": {
+        "group_id": "group.mensa_brand_technologies_private_limited.g8.gl22",
+        "platform_account_id": "platform_account.mensa_brand_technologies_private_limited.amazon_india.marketplace",
+        "platform_context_id": "platform_context.amazon.in",
+        "platform_id": "platform.amazon",
+        "tenant_id": "tenant.mensa_brand_technologies_private_limited"
+      },
+      "status": "partial",
+      "warning": "branch_incomplete"
+    },
+    {
+      "blocked_reasons": [],
+      "branch_id": "branch.a8f02f4f4fda",
+      "branch_warnings": [
+        "contract_returned_no_cards"
+      ],
+      "missing_evidence": [
+        "runtime_binding",
+        "table_frame",
+        "query_pattern_metric_or_columns"
+      ],
+      "scope": {
+        "group_id": "group.mensa_brand_technologies_private_limited.g8.gl22",
+        "platform_account_id": "platform_account.mensa_brand_technologies_private_limited.amazon_us_ca_uk_mx.marketplace",
+        "platform_context_id": "platform_context.amazon.international",
+        "platform_id": "platform.amazon",
+        "tenant_id": "tenant.mensa_brand_technologies_private_limited"
+      },
+      "status": "partial",
+      "warning": "branch_incomplete"
+    },
+    {
+      "blocked_reasons": [],
+      "branch_id": "branch.47e71e0d891b",
+      "branch_warnings": [],
+      "missing_evidence": [
+        "table_frame",
+        "query_pattern_metric_or_columns"
+      ],
+      "scope": {
+        "account_data_binding_id": "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.disbursement.zs_observe_amazon_disbursment",
+        "group_id": "group.mensa_brand_technologies_private_limited.g8.gl22",
+        "platform_account_id": "platform_account.mensa_brand_technologies_private_limited.amazon_india.marketplace",
+        "platform_context_id": "platform_context.amazon.in",
+        "platform_id": "platform.amazon",
+        "source_role": "disbursement",
+        "table_id": "table.zs_observe.amazon_disbursment",
+        "tenant_id": "tenant.mensa_brand_technologies_private_limited"
+      },
+      "status": "partial",
+      "warning": "branch_incomplete"
+    },
+    {
+      "blocked_reasons": [],
+      "branch_id": "branch.dff5a0379e2a",
+      "branch_warnings": [],
+      "missing_evidence": [
+        "table_frame",
+        "query_pattern_metric_or_columns"
+      ],
+      "scope": {
+        "account_data_binding_id": "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.returns.zs_observe_amazon_returns",
+        "group_id": "group.mensa_brand_technologies_private_limited.g8.gl22",
+        "platform_account_id": "platform_account.mensa_brand_technologies_private_limited.amazon_india.marketplace",
+        "platform_context_id": "platform_context.amazon.in",
+        "platform_id": "platform.amazon",
+        "source_role": "returns",
+        "table_id": "table.zs_observe.amazon_returns",
+        "tenant_id": "tenant.mensa_brand_technologies_private_limited"
+      },
+      "status": "partial",
+      "warning": "branch_incomplete"
+    },
+    {
+      "blocked_reasons": [],
+      "branch_id": "branch.7cf4fd2afe1b",
+      "branch_warnings": [],
+      "missing_evidence": [
+        "table_frame",
+        "query_pattern_metric_or_columns"
+      ],
+      "scope": {
+        "account_data_binding_id": "account_data_binding.mensa_brand_technologies_private_limited.amazon_india.settlement.zs_observe_amazon_settlement",
+        "group_id": "group.mensa_brand_technologies_private_limited.g8.gl22",
+        "platform_account_id": "platform_account.mensa_brand_technologies_private_limited.amazon_india.marketplace",
+        "platform_context_id": "platform_context.amazon.in",
+        "platform_id": "platform.amazon",
+        "source_role": "settlement",
+        "table_id": "table.zs_observe.amazon_settlement",
+        "tenant_id": "tenant.mensa_brand_technologies_private_limited"
+      },
+      "status": "partial",
+      "warning": "branch_incomplete"
+    }
+  ]
+}

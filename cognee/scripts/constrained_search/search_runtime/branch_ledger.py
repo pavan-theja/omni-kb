@@ -45,6 +45,10 @@ class BranchState:
     column_cards: list[str] = field(default_factory=list)
     query_pattern_cards: list[str] = field(default_factory=list)
     metric_implementation_cards: list[str] = field(default_factory=list)
+    evidence_cards_by_type: dict[str, list[str]] = field(default_factory=dict)
+    selected_evidence_profiles: list[str] = field(default_factory=list)
+    required_evidence_card_types: list[str] = field(default_factory=list)
+    optional_evidence_card_types: list[str] = field(default_factory=list)
     contract_repairs: list[dict[str, Any]] = field(default_factory=list)
     contract_rejections: list[dict[str, Any]] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
@@ -67,6 +71,10 @@ class BranchState:
             "column_cards": self.column_cards,
             "query_pattern_cards": self.query_pattern_cards,
             "metric_implementation_cards": self.metric_implementation_cards,
+            "evidence_cards_by_type": self.evidence_cards_by_type,
+            "selected_evidence_profiles": self.selected_evidence_profiles,
+            "required_evidence_card_types": self.required_evidence_card_types,
+            "optional_evidence_card_types": self.optional_evidence_card_types,
             "contract_repairs": self.contract_repairs,
             "contract_rejections": self.contract_rejections,
             "warnings": self.warnings,
@@ -86,6 +94,7 @@ class BranchLedger:
 
     def record_contract_discovered(self, contract: SearchContract) -> str:
         branch = self._branch_for_scope(scope_from_contract(contract))
+        self._record_contract_profile_requirements(branch, contract)
         branch.discovered_contract_count += 1
         add_unique(branch.contract_ids, contract.contract_id)
         add_unique(branch.stages, contract.stage)
@@ -95,6 +104,7 @@ class BranchLedger:
 
     def record_contract_started(self, contract: SearchContract) -> str:
         branch = self._branch_for_scope(scope_from_contract(contract))
+        self._record_contract_profile_requirements(branch, contract)
         branch.executed_step_count += 1
         add_unique(branch.contract_ids, contract.contract_id)
         add_unique(branch.stages, contract.stage)
@@ -120,6 +130,7 @@ class BranchLedger:
             branch = self._branch_for_scope(card_scope)
             if branch.branch_id != started_branch_id:
                 branch.executed_step_count += 1
+            self._record_contract_profile_requirements(branch, contract)
             add_unique(branch.contract_ids, contract.contract_id)
             add_unique(branch.result_ids, result.result_id)
             add_unique(branch.stages, result.stage)
@@ -204,10 +215,24 @@ class BranchLedger:
         if not card_id:
             return
         card_type = str(card.get("card_type") or "")
+        add_unique(branch.evidence_cards_by_type.setdefault(card_type, []), card_id)
         field_name = EVIDENCE_FIELDS_BY_CARD_TYPE.get(card_type)
         if not field_name:
             return
         add_unique(getattr(branch, field_name), card_id)
+
+    def _record_contract_profile_requirements(self, branch: BranchState, contract: SearchContract) -> None:
+        carry = contract.required_carry_forward
+        profile_ids = normalize_string_list(carry.get("evidence_profile_ids"))
+        profile_id = carry.get("evidence_profile_id")
+        if profile_id:
+            profile_ids.append(str(profile_id))
+        for item in unique_in_order(profile_ids):
+            add_unique(branch.selected_evidence_profiles, item)
+        for item in normalize_string_list(carry.get("required_evidence_card_types")):
+            add_unique(branch.required_evidence_card_types, item)
+        for item in normalize_string_list(carry.get("optional_evidence_card_types")):
+            add_unique(branch.optional_evidence_card_types, item)
 
     def _refresh_status(self, branch: BranchState) -> None:
         branch.missing_evidence = missing_evidence(branch)
@@ -271,6 +296,8 @@ def merged_scope(base: dict[str, str], extra: dict[str, str]) -> dict[str, str]:
 
 
 def has_any_evidence(branch: BranchState) -> bool:
+    if any(branch.evidence_cards_by_type.values()):
+        return True
     return any(
         [
             branch.platform_account_cards,
@@ -284,6 +311,12 @@ def has_any_evidence(branch: BranchState) -> bool:
 
 
 def has_usable_evidence(branch: BranchState) -> bool:
+    if branch.required_evidence_card_types:
+        return bool(
+            branch.account_data_binding_cards
+            and branch.table_cards
+            and all(branch.evidence_cards_by_type.get(card_type) for card_type in branch.required_evidence_card_types)
+        )
     return bool(
         branch.account_data_binding_cards
         and branch.table_cards
@@ -297,9 +330,22 @@ def missing_evidence(branch: BranchState) -> list[str]:
         missing.append("runtime_binding")
     if not branch.table_cards:
         missing.append("table_frame")
+    if branch.required_evidence_card_types:
+        for card_type in branch.required_evidence_card_types:
+            if not branch.evidence_cards_by_type.get(card_type):
+                missing.append(f"evidence_card_type:{card_type}")
+        return missing
     if not branch.query_pattern_cards and not branch.metric_implementation_cards and not branch.column_cards:
         missing.append("query_pattern_metric_or_columns")
     return missing
+
+
+def normalize_string_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [str(item) for item in value if item not in (None, "", [])]
+    if value not in (None, "", []):
+        return [str(value)]
+    return []
 
 
 def add_unique(values: list[str], value: str) -> None:

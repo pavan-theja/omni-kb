@@ -13,6 +13,12 @@ from search_runtime.branch_ledger import BranchLedger
 from search_runtime.catalogs import CatalogBundle
 from search_runtime.contract_repair import repair_contract
 from search_runtime.contract_validator import validate_contract
+from search_runtime.evidence_profiles import (
+    build_evidence_manifest,
+    invalid_profile_card_types,
+    missing_card_type_purposes,
+    profile_contracts_from_decision,
+)
 from search_runtime.nodeset_contracts import SearchContract, SearchResult
 from search_runtime.search_state_machine import CogneeSearchStateMachine, contract_signature, prune_and_rank_pending
 
@@ -99,6 +105,139 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
             ["stage_alias", "card_type_alias_nodeset", "allowed_card_type_alias"],
             [row["repair"] for row in result.repairs],
         )
+
+    def test_actual_catalog_card_types_are_covered_when_pack_exists(self):
+        pack_dir = REPO_ROOT / "build" / "constrained_search" / "build"
+        if not (pack_dir / "resolver_catalog" / "card_catalog.json").exists():
+            self.skipTest("constrained-search build catalog is not present")
+
+        self.assertEqual([], missing_card_type_purposes(CatalogBundle.load(pack_dir)))
+
+    def test_evidence_profile_registry_references_known_card_types(self):
+        self.assertEqual({}, invalid_profile_card_types())
+
+    def test_generic_profile_stage_validates_for_table_and_domain_local_cards(self):
+        table_contract = SearchContract(
+            contract_id="q5.profile.value_profile",
+            stage="table_local_value_profile_search",
+            query_text="value profile evidence",
+            node_sets=["card_type:value_profile", "table_id:table.zs_observe.amazon_oms"],
+            allowed_card_types=["value_profile"],
+        )
+        domain_contract = SearchContract(
+            contract_id="q5.profile.metric",
+            stage="domain_local_metric_search",
+            query_text="metric evidence",
+            node_sets=["card_type:metric", "domain_id:domain.amazon.orders"],
+            allowed_card_types=["metric"],
+        )
+
+        catalog = _catalog_with_profile_cards()
+
+        self.assertTrue(validate_contract(table_contract, catalog)["ok"])
+        self.assertTrue(validate_contract(domain_contract, catalog)["ok"])
+
+    def test_evidence_manifest_exposes_table_and_domain_local_cards(self):
+        manifest = build_evidence_manifest(
+            _catalog_with_profile_cards(),
+            [_table_card()],
+            _table_contract("q.table"),
+        )
+        table = manifest["tables"][0]
+
+        self.assertIn("query_pattern", table["table_local"])
+        self.assertIn("value_profile", table["table_local"])
+        self.assertIn("metric", table["domain_local"])
+        self.assertEqual("table.zs_observe.amazon_oms", table["table_id"])
+        self.assertEqual("domain.amazon.orders", table["domain_id"])
+
+    def test_profile_decision_builds_generic_profile_contracts(self):
+        manifest = build_evidence_manifest(
+            _catalog_with_profile_cards(),
+            [_table_card()],
+            _table_contract("q.table"),
+        )
+
+        contracts, rejected = profile_contracts_from_decision(
+            {
+                "selected_profiles": [
+                    {
+                        "profile_id": "field_semantics_resolution",
+                        "answer_obligation": "Resolve value semantics.",
+                    }
+                ],
+                "evidence_requests": [
+                    {
+                        "profile_id": "field_semantics_resolution",
+                        "scope_type": "table",
+                        "scope_id": "table.zs_observe.amazon_oms",
+                        "card_type": "value_profile",
+                        "required": True,
+                    }
+                ],
+                "blocked_reasons": [],
+            },
+            manifest,
+            _table_contract("q.table"),
+            "Resolve field values",
+        )
+
+        self.assertEqual([], rejected)
+        self.assertEqual(1, len(contracts))
+        self.assertEqual("table_local_value_profile_search", contracts[0].stage)
+        self.assertEqual(["card_type:value_profile", "table_id:table.zs_observe.amazon_oms"], contracts[0].node_sets)
+        self.assertEqual(["value_profile"], contracts[0].required_carry_forward["required_evidence_card_types"])
+
+    def test_branch_ledger_uses_profile_required_card_types(self):
+        ledger = BranchLedger()
+        for contract, card in (
+            (_runtime_binding_contract(), _binding_card()),
+            (_table_contract("q.table"), _table_card()),
+        ):
+            ledger.record_contract_discovered(contract)
+            ledger.record_contract_started(contract)
+            ledger.record_result(
+                contract,
+                SearchResult(
+                    result_id=f"result.{contract.contract_id}",
+                    contract_id=contract.contract_id,
+                    stage=contract.stage,
+                    returned_cards=[card],
+                    validation={"ok": True},
+                ),
+            )
+
+        profile_contract = SearchContract(
+            contract_id="q5.profile.field.values",
+            stage="table_local_value_profile_search",
+            query_text="value profile evidence",
+            node_sets=["card_type:value_profile", "table_id:table.zs_observe.amazon_oms"],
+            allowed_card_types=["value_profile"],
+            required_carry_forward={
+                **_branch_carry_forward(),
+                "evidence_profile_id": "field_semantics_resolution",
+                "required_evidence_card_types": ["value_profile"],
+            },
+        )
+        ledger.record_contract_discovered(profile_contract)
+        ledger.record_contract_started(profile_contract)
+        ledger.record_result(
+            profile_contract,
+            SearchResult(
+                result_id="result.q5.profile.field.values",
+                contract_id=profile_contract.contract_id,
+                stage=profile_contract.stage,
+                returned_cards=[_value_profile_card()],
+                validation={"ok": True},
+            ),
+        )
+
+        snapshot = ledger.snapshot()
+        usable = [branch for branch in snapshot["branches"].values() if branch["status"] == "usable"]
+        self.assertEqual(1, len(usable))
+        self.assertEqual(["field_semantics_resolution"], usable[0]["selected_evidence_profiles"])
+        self.assertEqual(["value_profile"], usable[0]["required_evidence_card_types"])
+        self.assertEqual(["value_profile.amazon_oms.order_status"], usable[0]["evidence_cards_by_type"]["value_profile"])
 
     def test_unambiguous_carry_forward_fills_missing_required_nodeset(self):
         contract = SearchContract(
@@ -379,6 +518,62 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
 
         self.assertEqual(["q.flipkart.platform", "q.amazon.deep"], [contract.contract_id for contract in ordered])
 
+    def test_scheduler_keeps_required_profile_contract_at_branch_step_limit(self):
+        ledger = BranchLedger()
+        starter_contract = _table_contract("q.table.starter")
+        binding_contract = _runtime_binding_contract()
+        ledger.record_contract_discovered(starter_contract)
+        for _ in range(8):
+            ledger.record_contract_started(starter_contract)
+
+        required = SearchContract(
+            contract_id="q.required.columns",
+            stage="table_local_column_search",
+            query_text="Required column evidence",
+            node_sets=["card_type:column", "table_id:table.zs_observe.amazon_oms"],
+            allowed_card_types=["column"],
+            required_carry_forward={
+                **_branch_carry_forward(),
+                "evidence_profile_id": "table_contract_resolution",
+                "required_evidence_card_types": ["column"],
+            },
+        )
+        optional = SearchContract(
+            contract_id="q.optional.metric",
+            stage="domain_local_metric_search",
+            query_text="Optional metric evidence",
+            node_sets=["card_type:metric", "domain_id:domain.amazon.orders"],
+            allowed_card_types=["metric"],
+            required_carry_forward={
+                **_branch_carry_forward(),
+                "domain_id": "domain.amazon.orders",
+                "evidence_profile_id": "measure_calculation_resolution",
+                "optional_evidence_card_types": ["metric"],
+            },
+        )
+        ledger.record_contract_discovered(required)
+        ledger.record_contract_discovered(optional)
+
+        ordered = prune_and_rank_pending(
+            [optional, required],
+            "Top selling SKUs on Amazon",
+            [
+                SearchResult(
+                    result_id="result.binding",
+                    contract_id=binding_contract.contract_id,
+                    stage=binding_contract.stage,
+                    returned_cards=[_binding_card()],
+                    validation={"ok": True},
+                )
+            ],
+            set(),
+            max_pending=4,
+            branch_ledger=ledger,
+            branch_max_steps=8,
+        )
+
+        self.assertEqual(["q.required.columns"], [contract.contract_id for contract in ordered])
+
     def test_serialized_run_does_not_finalize_while_platform_branch_is_pending(self):
         with tempfile.TemporaryDirectory() as tmp:
             machine = _SerializedNoEarlyCompleteMachine(
@@ -539,6 +734,32 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
         self.assertIn("table.zs_observe.amazon_oms", _finalized_table_ids(machine.trace))
         self.assertIn("q2.runtime.bindings.platform_account_one_amazon_marketplace", machine.executed_contract_ids)
         self.assertTrue(any(row["event"] == "domains_selected_for_table_search" for row in machine.trace))
+
+    def test_profile_selector_drives_post_table_evidence_contracts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            machine = _ConstrainedRouteMachine(
+                _UnusedClient(),
+                _ProfileSelectionLLM(),
+                Path(tmp),
+                catalogs=_catalog(),
+                max_steps=12,
+            )
+
+            output = asyncio.run(
+                machine.run_query(
+                    "Top selling SKUs on Amazon",
+                    {"tenant_id": "tenant.one", "group_id": "group.one"},
+                )
+            )
+
+        self.assertEqual("best_effort", output["status"])
+        self.assertTrue(any(contract_id.startswith("q5.profile.query_shape_resolution") for contract_id in machine.executed_contract_ids))
+        self.assertTrue(any(row["event"] == "table_evidence_manifest_built" for row in machine.trace))
+        self.assertTrue(any(row["event"] == "llm_evidence_profile_decision" for row in machine.trace))
+        self.assertEqual(
+            "query_shape_resolution",
+            output["evidence_pack"]["evidence_profile_decisions"][0]["validated_output"]["selected_profiles"][0]["profile_id"],
+        )
 
     def test_constrained_route_reaches_multiple_domain_tables(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -997,6 +1218,38 @@ class _ConstrainedRouteLLM:
         return _HandoffResult({"handoff_status": "blocked", "source_blocks": [], "blocked_reasons": []})
 
 
+class _ProfileSelectionLLM(_ConstrainedRouteLLM):
+    async def select_evidence_profiles(self, query_text, runtime_context, evidence_manifest):
+        table_id = evidence_manifest["tables"][0]["table_id"]
+        return _Decision(
+            {
+                "selected_profiles": [
+                    {
+                        "profile_id": "query_shape_resolution",
+                        "answer_obligation": "Resolve query/report shape evidence for the selected legal table.",
+                        "required_card_types": ["query_pattern"],
+                        "optional_card_types": [],
+                        "column_strategy": "none",
+                    }
+                ],
+                "evidence_requests": [
+                    {
+                        "request_id": "req.query_pattern",
+                        "profile_id": "query_shape_resolution",
+                        "scope_type": "table",
+                        "scope_id": table_id,
+                        "card_type": "query_pattern",
+                        "required": True,
+                        "top_k": 8,
+                        "answer_obligation": "Resolve the query pattern for the selected table.",
+                    }
+                ],
+                "selection_reasons": {},
+                "blocked_reasons": [],
+            }
+        )
+
+
 class _ConstrainedRouteMachine(CogneeSearchStateMachine):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1038,6 +1291,10 @@ class _ConstrainedRouteMachine(CogneeSearchStateMachine):
             if "table_id:table.zs_observe.amazon_returns" in node_sets:
                 return [_returns_table_card()]
             return [_table_card()]
+        if contract.stage == "table_local_query_pattern_search":
+            return [_query_pattern_card()]
+        if contract.stage == "table_local_value_profile_search":
+            return [_value_profile_card()]
         return []
 
 
@@ -1181,6 +1438,15 @@ def _catalog() -> CatalogBundle:
         node_set_values=node_sets,
         platform_alias_map={"amazon": "platform.amazon", "flipkart": "platform.flipkart"},
     )
+
+
+def _catalog_with_profile_cards() -> CatalogBundle:
+    catalog = _catalog()
+    for card in (_value_profile_card(), _metric_card()):
+        catalog.card_catalog[card["canonical_id"]] = card
+        catalog.node_set_values.update(card["node_sets"])
+        catalog.node_set_values.add(f"canonical_id:{card['canonical_id']}")
+    return catalog
 
 
 def _platform_account(platform: str) -> dict:
@@ -1380,6 +1646,44 @@ def _query_pattern_card() -> dict:
             "card_type:query_pattern",
             "table_id:table.zs_observe.amazon_oms",
         ],
+    }
+
+
+def _value_profile_card() -> dict:
+    return {
+        "canonical_id": "value_profile.amazon_oms.order_status",
+        "canonical_name": "Amazon OMS Order Status",
+        "card_type": "value_profile",
+        "node_sets": [
+            "card_type:value_profile",
+            "platform_id:platform.amazon",
+            "platform_context_id:platform_context.amazon.in",
+            "domain_id:domain.amazon.orders",
+            "table_id:table.zs_observe.amazon_oms",
+            "column_id:column.zs_observe.amazon_oms.order_status",
+        ],
+        "fields": {
+            "known_values": ["shipped", "cancelled"],
+            "value_type": "status",
+        },
+    }
+
+
+def _metric_card() -> dict:
+    return {
+        "canonical_id": "metric.gross_sales",
+        "canonical_name": "Gross Sales",
+        "card_type": "metric",
+        "node_sets": [
+            "card_type:metric",
+            "platform_id:platform.amazon",
+            "platform_context_id:platform_context.amazon.in",
+            "domain_id:domain.amazon.orders",
+            "metric_id:metric.gross_sales",
+        ],
+        "fields": {
+            "business_definition": "Gross sales amount before deductions.",
+        },
     }
 
 
