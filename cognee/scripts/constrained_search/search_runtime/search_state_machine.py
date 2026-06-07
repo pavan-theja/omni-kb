@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import copy
+import json
+import time
 from pathlib import Path
 from typing import Any
 
@@ -9,6 +12,7 @@ from .cognee_client import CogneeClient
 from .contract_repair import ContractRepairResult, repair_contract
 from .contract_validator import validate_contract, validate_returned_cards
 from .evidence_profiles import (
+    COLUMN_SEARCH_TOP_K,
     build_evidence_manifest,
     profile_contracts_from_decision,
 )
@@ -46,80 +50,172 @@ class CogneeSearchStateMachine:
         self.max_pending = max_pending
         self.completion_policy = completion_policy
         self.trace: list[dict[str, Any]] = []
+        self.phase_timings: list[dict[str, Any]] = []
+        self._run_started: float | None = None
+        self._table_local_evidence_cache: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
         self.branch_ledger = BranchLedger()
         self.evidence_profile_decisions: list[dict[str, Any]] = []
         self.evidence_manifests: list[dict[str, Any]] = []
 
     async def execute_contract(self, contract: SearchContract) -> SearchResult:
-        repair = repair_contract(contract, self.catalogs)
-        self._trace_repair_result("contract_execution", contract, repair)
-        if not repair.ok or repair.contract is None:
-            raise ValueError(f"Contract repair rejected execution contract: {repair.rejections}")
-
-        contract = repair.contract
-        routed_contract = self.cognee_client.with_routed_datasets(contract)
-        self.branch_ledger.record_contract_started(routed_contract)
-        contract_validation = validate_contract(routed_contract, self.catalogs)
-        self.trace.append(
-            {
-                "event": "contract_validated",
-                "contract": routed_contract.to_dict(),
-                "dataset_routing": {
-                    "requested_dataset_count": len(contract.datasets),
-                    "effective_dataset_count": len(routed_contract.datasets),
-                    "datasets": routed_contract.datasets,
-                },
-                "validation": contract_validation,
-            }
-        )
-        if not contract_validation["ok"]:
-            self.branch_ledger.record_contract_validation_rejected(routed_contract, contract_validation)
-            raise ValueError(f"Invalid contract: {contract_validation['errors']}")
-
+        started = time.perf_counter()
+        routed_contract: SearchContract | None = None
         try:
-            cards = await self.cognee_client.search(routed_contract)
-        except Exception as exc:  # noqa: BLE001
-            self.branch_ledger.record_contract_failed(routed_contract, "cognee_search_failed", repr(exc))
-            raise
-        if not cards:
-            fallback_cards = local_exact_catalog_cards_for_contract(routed_contract, self.catalogs)
-            if fallback_cards:
+            repair_started = time.perf_counter()
+            repair = repair_contract(contract, self.catalogs)
+            self._record_phase_timing(
+                "contract_repair",
+                repair_started,
+                contract_id=contract.contract_id,
+                stage=contract.stage,
+                ok=repair.ok,
+                repair_count=len(repair.repairs),
+                rejection_count=len(repair.rejections),
+            )
+            self._trace_repair_result("contract_execution", contract, repair)
+            if not repair.ok or repair.contract is None:
+                raise ValueError(f"Contract repair rejected execution contract: {repair.rejections}")
+
+            contract = normalize_contract_top_k(repair.contract)
+            routed_contract = self.cognee_client.with_routed_datasets(contract)
+            self.branch_ledger.record_contract_started(routed_contract)
+            validation_started = time.perf_counter()
+            contract_validation = validate_contract(routed_contract, self.catalogs)
+            self._record_phase_timing(
+                "contract_validation",
+                validation_started,
+                contract_id=routed_contract.contract_id,
+                stage=routed_contract.stage,
+                ok=contract_validation["ok"],
+            )
+            self.trace.append(
+                {
+                    "event": "contract_validated",
+                    "contract": routed_contract.to_dict(),
+                    "dataset_routing": {
+                        "requested_dataset_count": len(contract.datasets),
+                        "effective_dataset_count": len(routed_contract.datasets),
+                        "datasets": routed_contract.datasets,
+                    },
+                    "validation": contract_validation,
+                }
+            )
+            if not contract_validation["ok"]:
+                self.branch_ledger.record_contract_validation_rejected(routed_contract, contract_validation)
+                raise ValueError(f"Invalid contract: {contract_validation['errors']}")
+
+            cache_key = table_local_evidence_cache_key(routed_contract)
+            cache_hit = cache_key is not None and cache_key in self._table_local_evidence_cache
+            if cache_hit:
+                cards = copy.deepcopy(self._table_local_evidence_cache[cache_key])
                 self.trace.append(
                     {
-                        "event": "local_exact_catalog_fallback",
+                        "event": "table_local_evidence_cache_hit",
                         "contract_id": routed_contract.contract_id,
                         "stage": routed_contract.stage,
-                        "card_ids": card_ids(fallback_cards),
+                        "card_ids": card_ids(cards),
                     }
                 )
-                cards = fallback_cards
+            else:
+                try:
+                    search_started = time.perf_counter()
+                    cards = await self.cognee_client.search(routed_contract)
+                    self._record_phase_timing(
+                        "cognee_recall",
+                        search_started,
+                        contract_id=routed_contract.contract_id,
+                        stage=routed_contract.stage,
+                        top_k=routed_contract.top_k,
+                        dataset_count=len(routed_contract.datasets),
+                        returned_count=len(cards),
+                    )
+                except Exception as exc:  # noqa: BLE001
+                    if routed_contract is not None:
+                        self.branch_ledger.record_contract_failed(routed_contract, "cognee_search_failed", repr(exc))
+                    self._record_phase_timing(
+                        "cognee_recall",
+                        search_started,
+                        status="failed",
+                        contract_id=routed_contract.contract_id,
+                        stage=routed_contract.stage,
+                        error=repr(exc),
+                    )
+                    raise
+                if not cards:
+                    fallback_started = time.perf_counter()
+                    fallback_cards = local_exact_catalog_cards_for_contract(routed_contract, self.catalogs)
+                    self._record_phase_timing(
+                        "local_exact_catalog_fallback",
+                        fallback_started,
+                        contract_id=routed_contract.contract_id,
+                        stage=routed_contract.stage,
+                        returned_count=len(fallback_cards),
+                    )
+                    if fallback_cards:
+                        self.trace.append(
+                            {
+                                "event": "local_exact_catalog_fallback",
+                                "contract_id": routed_contract.contract_id,
+                                "stage": routed_contract.stage,
+                                "card_ids": card_ids(fallback_cards),
+                            }
+                        )
+                        cards = fallback_cards
+                if cache_key is not None:
+                    self._table_local_evidence_cache[cache_key] = copy.deepcopy(cards)
+                    self.trace.append(
+                        {
+                            "event": "table_local_evidence_cache_stored",
+                            "contract_id": routed_contract.contract_id,
+                            "stage": routed_contract.stage,
+                            "card_ids": card_ids(cards),
+                        }
+                    )
 
-        result_validation = validate_returned_cards(routed_contract, cards, self.catalogs)
-        result = SearchResult(
-            result_id=f"result.{routed_contract.contract_id}",
-            contract_id=routed_contract.contract_id,
-            stage=routed_contract.stage,
-            returned_cards=cards,
-            validation=result_validation,
-        )
-        touched_branch_ids = self.branch_ledger.record_result(routed_contract, result)
-        self.trace.append({"event": "cognee_result_validated", "result": result.to_dict()})
-        self.trace.append(
-            {
-                "event": "branch_ledger_result_recorded",
-                "contract_id": routed_contract.contract_id,
-                "result_id": result.result_id,
-                "branch_ids": touched_branch_ids,
-            }
-        )
-        if not result_validation["ok"]:
-            self.branch_ledger.record_contract_failed(
-                routed_contract,
-                "returned_card_validation_failed",
-                repr(result_validation["errors"]),
+            result_validation = validate_returned_cards(routed_contract, cards, self.catalogs)
+            result = SearchResult(
+                result_id=f"result.{routed_contract.contract_id}",
+                contract_id=routed_contract.contract_id,
+                stage=routed_contract.stage,
+                returned_cards=cards,
+                validation=result_validation,
             )
-            raise ValueError(f"Cognee returned cards outside contract boundary: {result_validation['errors']}")
-        return result
+            touched_branch_ids = self.branch_ledger.record_result(routed_contract, result)
+            self.trace.append({"event": "cognee_result_validated", "result": result.to_dict()})
+            self.trace.append(
+                {
+                    "event": "branch_ledger_result_recorded",
+                    "contract_id": routed_contract.contract_id,
+                    "result_id": result.result_id,
+                    "branch_ids": touched_branch_ids,
+                }
+            )
+            if not result_validation["ok"]:
+                self.branch_ledger.record_contract_failed(
+                    routed_contract,
+                    "returned_card_validation_failed",
+                    repr(result_validation["errors"]),
+                )
+                raise ValueError(f"Cognee returned cards outside contract boundary: {result_validation['errors']}")
+            self._record_phase_timing(
+                "contract_execution",
+                started,
+                contract_id=routed_contract.contract_id,
+                stage=routed_contract.stage,
+                returned_count=len(cards),
+                cache_hit=cache_hit,
+            )
+            return result
+        except Exception as exc:  # noqa: BLE001
+            self._record_phase_timing(
+                "contract_execution",
+                started,
+                status="failed",
+                contract_id=(routed_contract.contract_id if routed_contract else contract.contract_id),
+                stage=(routed_contract.stage if routed_contract else contract.stage),
+                error=repr(exc),
+            )
+            raise
 
     def _coerce_contracts(
         self,
@@ -152,8 +248,9 @@ class CogneeSearchStateMachine:
             self._trace_repair_result(source_event, contract, repair, index=idx)
             if not repair.ok or repair.contract is None:
                 continue
-            contract = repair.contract
+            contract = normalize_contract_top_k(repair.contract)
             for expanded_contract in self._expand_runtime_platform_account_contract(contract, source_event, query_text):
+                expanded_contract = normalize_contract_top_k(expanded_contract)
                 validation = validate_contract(expanded_contract, self.catalogs)
                 self.trace.append(
                     {
@@ -225,6 +322,45 @@ class CogneeSearchStateMachine:
                 }
             )
 
+    def _start_run_timing(self) -> None:
+        self._run_started = time.perf_counter()
+        self.phase_timings = []
+
+    def _record_phase_timing(
+        self,
+        phase: str,
+        started: float,
+        *,
+        status: str = "ok",
+        **details: Any,
+    ) -> None:
+        row = {
+            "event": "phase_timing",
+            "phase": phase,
+            "status": status,
+            "latency_seconds": elapsed_seconds(started),
+            **details,
+        }
+        self.phase_timings.append(row)
+        self.trace.append(row)
+
+    def _finalize_output(self, output: dict[str, Any]) -> dict[str, Any]:
+        output["phase_timings"] = self.phase_timings
+        output["total_latency_seconds"] = elapsed_seconds(self._run_started) if self._run_started is not None else None
+        output["trace"] = self.trace
+        write_started = time.perf_counter()
+        write_json(output["trace_path"], output)
+        self._record_phase_timing(
+            "trace_write",
+            write_started,
+            output_path=output["trace_path"],
+            output_size_bytes=serialized_size(output),
+        )
+        output["phase_timings"] = self.phase_timings
+        output["trace"] = self.trace
+        write_json(output["trace_path"], output)
+        return output
+
     def _expand_runtime_platform_account_contract(
         self,
         contract: SearchContract,
@@ -273,18 +409,30 @@ class CogneeSearchStateMachine:
         return expanded
 
     async def run_query(self, query_text: str, runtime_context: dict[str, Any]) -> dict[str, Any]:
+        self._start_run_timing()
         try:
+            started = time.perf_counter()
             anchor = await self.llm_plane.extract_anchors(query_text, runtime_context)
         except Exception as exc:  # noqa: BLE001
+            self._record_phase_timing("anchor_extractor", started, status="failed", error=repr(exc))
             return self._blocked("anchor_extractor_failed", {"error": repr(exc)})
+        self._record_phase_timing("anchor_extractor", started)
 
         anchor_decision = anchor.to_dict()
         self.trace.append({"event": "llm_anchor_decision", "decision": anchor_decision})
 
+        coerce_started = time.perf_counter()
         pending = self._coerce_contracts(
             anchor.validated_output.get("next_search_contracts", []),
             "anchor_extractor",
             query_text,
+        )
+        self._record_phase_timing(
+            "contract_coercion",
+            coerce_started,
+            source_event="anchor_extractor",
+            emitted_count=len(anchor.validated_output.get("next_search_contracts", [])),
+            valid_count=len(pending),
         )
         if not pending:
             return self._blocked("anchor_extractor_did_not_emit_valid_runtime_nodeset_contracts")
@@ -306,12 +454,20 @@ class CogneeSearchStateMachine:
                 return self._blocked("contract_execution_failed", {"contract": contract.to_dict(), "error": repr(exc)})
             results.append(result)
 
+            route_started = time.perf_counter()
             route_selection = await self._select_route_next_contracts(
                 query_text,
                 runtime_context,
                 anchor_decision,
                 result,
                 contract,
+            )
+            self._record_phase_timing(
+                "route_selection",
+                route_started,
+                contract_id=contract.contract_id,
+                stage=result.stage,
+                routed=route_selection is not None,
             )
             if route_selection is not None:
                 route_results, route_contracts = route_selection
@@ -323,12 +479,14 @@ class CogneeSearchStateMachine:
             runtime_candidates = runtime_candidate_cards(result.returned_cards)
             if runtime_candidates:
                 try:
+                    started = time.perf_counter()
                     selector_decision = await self.llm_plane.select_runtime_bindings(
                         query_text,
                         anchor_decision,
                         runtime_candidates,
                     )
                 except Exception as exc:  # noqa: BLE001
+                    self._record_phase_timing("runtime_binding_selector", started, status="failed", error=repr(exc))
                     self.trace.append(
                         {
                             "event": "llm_runtime_binding_decision_failed",
@@ -338,6 +496,11 @@ class CogneeSearchStateMachine:
                         }
                     )
                 else:
+                    self._record_phase_timing(
+                        "runtime_binding_selector",
+                        started,
+                        candidate_count=len(runtime_candidates),
+                    )
                     self.trace.append({"event": "llm_runtime_binding_decision", "decision": selector_decision.to_dict()})
                     pending.extend(
                         self._coerce_contracts(
@@ -351,6 +514,7 @@ class CogneeSearchStateMachine:
                     pending = self._prepare_pending(pending, query_text, results, executed_signatures)
 
             try:
+                started = time.perf_counter()
                 planner_decision = await self.llm_plane.plan_next_nodesets(
                     query_text,
                     {
@@ -359,6 +523,7 @@ class CogneeSearchStateMachine:
                     },
                 )
             except Exception as exc:  # noqa: BLE001
+                self._record_phase_timing("next_nodeset_planner", started, status="failed", error=repr(exc))
                 self.trace.append(
                     {
                         "event": "llm_next_nodeset_decision_failed",
@@ -368,6 +533,7 @@ class CogneeSearchStateMachine:
                     }
                 )
             else:
+                self._record_phase_timing("next_nodeset_planner", started, contract_id=contract.contract_id, stage=result.stage)
                 self.trace.append({"event": "llm_next_nodeset_decision", "decision": planner_decision.to_dict()})
                 pending.extend(
                     self._coerce_contracts(
@@ -381,8 +547,10 @@ class CogneeSearchStateMachine:
                 pending = self._prepare_pending(pending, query_text, results, executed_signatures)
 
             try:
+                started = time.perf_counter()
                 rank_decision = await self.llm_plane.rank_bounded_candidates(query_text, contract, result.returned_cards)
             except Exception as exc:  # noqa: BLE001
+                self._record_phase_timing("bounded_candidate_ranker", started, status="failed", error=repr(exc))
                 self.trace.append(
                     {
                         "event": "llm_bounded_rank_decision_failed",
@@ -392,6 +560,13 @@ class CogneeSearchStateMachine:
                     }
                 )
             else:
+                self._record_phase_timing(
+                    "bounded_candidate_ranker",
+                    started,
+                    contract_id=contract.contract_id,
+                    stage=result.stage,
+                    returned_count=len(result.returned_cards),
+                )
                 self.trace.append({"event": "llm_bounded_rank_decision", "decision": rank_decision.to_dict()})
                 pending.extend(
                     self._coerce_contracts(
@@ -449,6 +624,9 @@ class CogneeSearchStateMachine:
         results: list[SearchResult],
         executed_signatures: set[tuple[Any, ...]],
     ) -> list[SearchContract]:
+        input_count = len(pending)
+        dedupe_stats = pending_deduplication_stats(pending, executed_signatures)
+        started = time.perf_counter()
         prepared = prune_and_rank_pending(
             pending,
             query_text,
@@ -458,14 +636,24 @@ class CogneeSearchStateMachine:
             branch_ledger=self.branch_ledger,
             branch_max_steps=self.branch_max_steps,
         )
+        self._record_phase_timing(
+            "pending_queue_prepare",
+            started,
+            input_count=input_count,
+            output_count=len(prepared),
+            duplicate_pending_count=dedupe_stats["duplicate_pending_count"],
+            already_executed_duplicate_count=dedupe_stats["already_executed_duplicate_count"],
+        )
         pending_branch_ids = [scheduler_branch_id(contract, self.branch_ledger) for contract in prepared[:20]]
         branch_snapshot = self.branch_ledger.snapshot()
         self.trace.append(
             {
                 "event": "pending_queue_prepared",
+                "input_pending_count": input_count,
                 "pending_count": len(prepared),
                 "max_pending": self.max_pending,
                 "branch_max_steps": self.branch_max_steps,
+                "deduplication": dedupe_stats,
                 "pending_contract_ids": [contract.contract_id for contract in prepared[:20]],
                 "pending_branch_ids": pending_branch_ids,
                 "pending_branch_status": {
@@ -514,6 +702,7 @@ class CogneeSearchStateMachine:
     ) -> dict[str, Any]:
         branch_snapshot = self.branch_ledger.snapshot()
         decision = completion_decision(self.completion_policy, branch_snapshot)
+        started = time.perf_counter()
         evidence_pack = build_evidence_pack(
             query_text,
             runtime_context,
@@ -524,11 +713,28 @@ class CogneeSearchStateMachine:
             evidence_profile_decisions=self.evidence_profile_decisions,
             evidence_manifests=self.evidence_manifests,
         )
+        self._record_phase_timing(
+            "evidence_pack_build",
+            started,
+            result_count=len(results),
+            packed_result_count=len(evidence_pack.get("results") or []),
+        )
+        handoff_evidence_pack = compact_handoff_evidence_pack(evidence_pack)
+        handoff_input_stats = evidence_pack_stats(handoff_evidence_pack)
+        self.trace.append(
+            {
+                "event": "handoff_evidence_pack_compacted",
+                "stats": handoff_input_stats,
+            }
+        )
         if decision["write_handoff"]:
             try:
-                handoff = await self.llm_plane.write_sql_handoff(query_text, evidence_pack)
+                started = time.perf_counter()
+                handoff = await self._write_sql_handoff(query_text, handoff_evidence_pack)
+                self._record_phase_timing("sql_handoff_writer", started, **handoff_input_stats)
                 handoff_payload = handoff.to_dict()
             except Exception as exc:  # noqa: BLE001
+                self._record_phase_timing("sql_handoff_writer", started, status="failed", error=repr(exc), **handoff_input_stats)
                 handoff_payload = {"error": repr(exc)}
         else:
             handoff_payload = {"status": "skipped", "reason": decision["handoff_skip_reason"]}
@@ -543,6 +749,7 @@ class CogneeSearchStateMachine:
             "terminal_evidence": terminal,
             "handoff": handoff_payload,
             "evidence_pack": evidence_pack,
+            "handoff_input_stats": handoff_input_stats,
             "usable_branch_ids": decision["usable_branch_ids"],
             "incomplete_branch_ids": decision["incomplete_branch_ids"],
             "best_effort_warnings": decision["warnings"],
@@ -554,8 +761,10 @@ class CogneeSearchStateMachine:
         output.update(branch_snapshot)
         output["usable_branch_count"] = len(decision["usable_branch_ids"])
         output["incomplete_branch_count"] = len(decision["incomplete_branch_ids"])
-        write_json(output["trace_path"], output)
-        return output
+        return self._finalize_output(output)
+
+    async def _write_sql_handoff(self, query_text: str, evidence_pack: dict[str, Any]) -> Any:
+        return await self.llm_plane.write_sql_handoff(query_text, evidence_pack)
 
     async def _select_route_next_contracts(
         self,
@@ -571,6 +780,7 @@ class CogneeSearchStateMachine:
                 query_text,
                 anchor_decision,
                 result,
+                predecessor_contract,
                 platform_account_cards,
             )
             return route_selection or self._empty_route_selection(result, "platform_account_selection")
@@ -666,11 +876,7 @@ class CogneeSearchStateMachine:
         )
 
         try:
-            selector_decision = await self.llm_plane.select_evidence_profiles(
-                query_text,
-                runtime_context,
-                evidence_manifest,
-            )
+            selector_decision = await self._select_evidence_profiles(query_text, runtime_context, evidence_manifest)
         except Exception as exc:  # noqa: BLE001
             self.trace.append(
                 {
@@ -728,13 +934,54 @@ class CogneeSearchStateMachine:
             return None
         return [], valid_contracts
 
+    async def _select_evidence_profiles(
+        self,
+        query_text: str,
+        runtime_context: dict[str, Any],
+        evidence_manifest: dict[str, Any],
+    ) -> Any:
+        started = time.perf_counter()
+        try:
+            decision = await self.llm_plane.select_evidence_profiles(query_text, runtime_context, evidence_manifest)
+        except Exception as exc:  # noqa: BLE001
+            self._record_phase_timing("evidence_profile_selector", started, status="failed", error=repr(exc))
+            raise
+        self._record_phase_timing(
+            "evidence_profile_selector",
+            started,
+            table_count=len(evidence_manifest.get("tables") or []),
+        )
+        return decision
+
     async def _select_platform_accounts_for_bindings(
         self,
         query_text: str,
         anchor_decision: dict[str, Any],
         result: SearchResult,
+        predecessor_contract: SearchContract,
         platform_account_cards: list[dict[str, Any]],
     ) -> tuple[list[SearchResult], list[SearchContract]] | None:
+        source_family = requested_runtime_source_family(predecessor_contract, query_text)
+        scoped_platform_account_cards, rejected_platform_account_cards = platform_account_cards_for_source_family(
+            platform_account_cards,
+            source_family,
+        )
+        if source_family:
+            self.trace.append(
+                {
+                    "event": "platform_account_candidates_source_family_filtered",
+                    "source_family": source_family,
+                    "input_count": len(platform_account_cards),
+                    "kept_count": len(scoped_platform_account_cards),
+                    "rejected_count": len(rejected_platform_account_cards),
+                    "kept_ids": card_ids(scoped_platform_account_cards),
+                    "rejected_ids": card_ids(rejected_platform_account_cards),
+                }
+            )
+        platform_account_cards = scoped_platform_account_cards
+        if not platform_account_cards:
+            return None
+
         try:
             selector_decision = await self.llm_plane.select_runtime_bindings(
                 query_text,
@@ -827,7 +1074,7 @@ class CogneeSearchStateMachine:
             candidates,
         )
         selected_binding_results = self._record_runtime_binding_inventory_selection(selected_candidates)
-        domain_contracts = domain_search_contracts_from_binding_candidates(selected_candidates, query_text)
+        domain_contracts = domain_search_contracts_from_binding_candidates(selected_candidates, query_text, self.catalogs)
         self.trace.append(
             {
                 "event": "runtime_bindings_selected_for_domain_search",
@@ -1131,8 +1378,7 @@ class CogneeSearchStateMachine:
         output.update(branch_snapshot)
         output["usable_branch_count"] = len(decision["usable_branch_ids"])
         output["incomplete_branch_count"] = len(decision["incomplete_branch_ids"])
-        write_json(output["trace_path"], output)
-        return output
+        return self._finalize_output(output)
 
 
 def runtime_candidate_cards(cards: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1245,7 +1491,11 @@ def selected_binding_candidates_from_ids(
     return selected
 
 
-def domain_search_contracts_from_binding_candidates(candidates: list[dict[str, Any]], query_text: str) -> list[SearchContract]:
+def domain_search_contracts_from_binding_candidates(
+    candidates: list[dict[str, Any]],
+    query_text: str,
+    catalogs: CatalogBundle | None = None,
+) -> list[SearchContract]:
     contracts: list[SearchContract] = []
     seen: set[tuple[str, str, str, str]] = set()
     for candidate in candidates:
@@ -1259,11 +1509,7 @@ def domain_search_contracts_from_binding_candidates(candidates: list[dict[str, A
         if signature in seen:
             continue
         seen.add(signature)
-        node_sets = ["card_type:domain", f"platform_id:{platform_id}"]
-        if platform_context_id:
-            node_sets.append(f"platform_context_id:{platform_context_id}")
-        if domain_id:
-            node_sets.append(f"domain_id:{domain_id}")
+        node_sets = domain_search_node_sets(catalogs, platform_id, platform_context_id, domain_id)
         contracts.append(
             SearchContract(
                 contract_id=f"q3.semantic.domains.{safe_contract_suffix(binding_id)}",
@@ -1276,6 +1522,34 @@ def domain_search_contracts_from_binding_candidates(candidates: list[dict[str, A
             )
         )
     return contracts
+
+
+def domain_search_node_sets(
+    catalogs: CatalogBundle | None,
+    platform_id: str,
+    platform_context_id: str,
+    domain_id: str,
+) -> list[str]:
+    node_sets = ["card_type:domain"]
+    domain_card = catalogs.card_for_id(domain_id) if catalogs is not None and domain_id else None
+    domain_node_sets = card_node_sets(domain_card) if domain_card else []
+    if should_include_platform_id_for_domain_search(domain_node_sets, platform_id, domain_id):
+        node_sets.append(f"platform_id:{platform_id}")
+    if platform_context_id:
+        node_sets.append(f"platform_context_id:{platform_context_id}")
+    if domain_id:
+        node_sets.append(f"domain_id:{domain_id}")
+    return node_sets
+
+
+def should_include_platform_id_for_domain_search(domain_node_sets: list[str], platform_id: str, domain_id: str) -> bool:
+    if not platform_id:
+        return False
+    if not domain_id:
+        return True
+    if not domain_node_sets:
+        return True
+    return f"platform_id:{platform_id}" in set(domain_node_sets)
 
 
 def domain_table_search_contracts_from_domain_cards(
@@ -1425,6 +1699,12 @@ def inherit_required_carry_forward(contract: SearchContract, predecessor_contrac
     if inherited == contract.required_carry_forward:
         return contract
     return SearchContract(**{**contract.to_dict(), "required_carry_forward": inherited})
+
+
+def normalize_contract_top_k(contract: SearchContract) -> SearchContract:
+    if contract.stage != "table_local_column_search" or contract.top_k >= COLUMN_SEARCH_TOP_K:
+        return contract
+    return SearchContract(**{**contract.to_dict(), "top_k": COLUMN_SEARCH_TOP_K})
 
 
 def runtime_binding_inventory_candidates(
@@ -1731,6 +2011,30 @@ def prune_and_rank_pending(
     if branch_ledger is None:
         return deduped[:max_pending]
     return interleave_branch_contracts(deduped, query_text, preferred_tables, branch_ledger, max_pending)
+
+
+def pending_deduplication_stats(
+    pending: list[SearchContract],
+    executed_signatures: set[tuple[Any, ...]],
+) -> dict[str, int]:
+    seen: set[tuple[Any, ...]] = set()
+    duplicate_pending_count = 0
+    already_executed_duplicate_count = 0
+    for contract in pending:
+        signature = contract_signature(contract)
+        if signature in executed_signatures:
+            already_executed_duplicate_count += 1
+            continue
+        if signature in seen:
+            duplicate_pending_count += 1
+            continue
+        seen.add(signature)
+    return {
+        "input_count": len(pending),
+        "unique_unexecuted_count": len(seen),
+        "duplicate_pending_count": duplicate_pending_count,
+        "already_executed_duplicate_count": already_executed_duplicate_count,
+    }
 
 
 def interleave_branch_contracts(
@@ -2138,9 +2442,398 @@ def summarize_card(card: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def compact_handoff_evidence_pack(evidence_pack: dict[str, Any]) -> dict[str, Any]:
+    runtime_context = dict(evidence_pack.get("runtime_context") or {})
+    datasets = runtime_context.get("datasets")
+    if isinstance(datasets, list):
+        runtime_context["dataset_count"] = len(datasets)
+        runtime_context["datasets"] = datasets[:12]
+    digest = build_handoff_digest(evidence_pack)
+    return {
+        "query_text": evidence_pack.get("query_text"),
+        "runtime_context": runtime_context,
+        "terminal_evidence": evidence_pack.get("terminal_evidence") or {},
+        "usable_branch_ids": evidence_pack.get("usable_branch_ids") or [],
+        "evidence_profile_decisions": compact_profile_decisions(evidence_pack.get("evidence_profile_decisions") or []),
+        "handoff_digest": digest,
+    }
+
+
+HANDOFF_DIGEST_LIMITS = {
+    "max_tables": 8,
+    "max_columns_per_table": 25,
+    "max_scope_columns": 6,
+    "max_identifier_columns": 8,
+    "max_date_columns": 6,
+    "max_measure_columns": 10,
+    "max_status_filter_columns": 10,
+    "max_dimension_columns": 6,
+    "max_metric_implementations_per_table": 8,
+    "max_query_patterns_per_table": 5,
+    "max_value_profiles_per_table": 6,
+    "max_relationships_per_table": 6,
+    "max_other_evidence_per_table": 8,
+}
+
+
+def build_handoff_digest(evidence_pack: dict[str, Any]) -> dict[str, Any]:
+    cards = unique_cards_from_evidence_pack(evidence_pack)
+    tables: dict[str, dict[str, Any]] = {}
+    global_evidence: list[dict[str, Any]] = []
+    omitted_by_type: dict[str, int] = {}
+
+    for card in cards:
+        card_type = str(card.get("card_type") or "")
+        table_id = table_id_for_digest_card(card)
+        if table_id:
+            table = tables.setdefault(table_id, new_handoff_table_digest(table_id))
+            add_card_to_handoff_table_digest(table, card)
+        else:
+            if len(global_evidence) < HANDOFF_DIGEST_LIMITS["max_other_evidence_per_table"]:
+                global_evidence.append(digest_reference_card(card))
+            else:
+                omitted_by_type[card_type] = omitted_by_type.get(card_type, 0) + 1
+
+    ordered_tables = list(tables.values())
+    ordered_tables.sort(key=handoff_table_sort_key)
+    omitted_table_count = max(0, len(ordered_tables) - HANDOFF_DIGEST_LIMITS["max_tables"])
+    kept_tables = ordered_tables[: HANDOFF_DIGEST_LIMITS["max_tables"]]
+    if omitted_table_count:
+        omitted_by_type["table_digest"] = omitted_by_type.get("table_digest", 0) + omitted_table_count
+
+    for table in kept_tables:
+        finalize_handoff_table_digest(table, omitted_by_type)
+
+    return {
+        "type": "handoff_digest",
+        "limits": HANDOFF_DIGEST_LIMITS,
+        "table_count": len(kept_tables),
+        "raw_card_count": len(cards),
+        "tables": kept_tables,
+        "global_evidence": global_evidence,
+        "omitted_counts_by_type": omitted_by_type,
+    }
+
+
+def unique_cards_from_evidence_pack(evidence_pack: dict[str, Any]) -> list[dict[str, Any]]:
+    cards: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for result in evidence_pack.get("results") or []:
+        for card in result.get("cards") or []:
+            cid = card_id(card)
+            if cid and cid in seen:
+                continue
+            cards.append(card)
+            if cid:
+                seen.add(cid)
+    return cards
+
+
+def new_handoff_table_digest(table_id: str) -> dict[str, Any]:
+    return {
+        "table_id": table_id,
+        "platform_id": None,
+        "platform_context_id": None,
+        "source_roles": [],
+        "account_data_binding_ids": [],
+        "domain_ids": [],
+        "table_card_ids": [],
+        "columns": {
+            "scope": [],
+            "identifier": [],
+            "date": [],
+            "measure": [],
+            "status_filter": [],
+            "dimension": [],
+        },
+        "metric_implementations": [],
+        "query_patterns": [],
+        "value_profiles": [],
+        "relationships": [],
+        "other_evidence": [],
+        "omitted_counts_by_type": {},
+    }
+
+
+def add_card_to_handoff_table_digest(table: dict[str, Any], card: dict[str, Any]) -> None:
+    node_sets = card.get("node_sets") or []
+    merge_table_scope(table, node_sets)
+    card_type = str(card.get("card_type") or "")
+    cid = card_id(card)
+    if card_type == "account_data_binding":
+        append_unique(table["account_data_binding_ids"], cid)
+        return
+    if card_type == "table":
+        append_unique(table["table_card_ids"], cid)
+        return
+    if card_type == "column":
+        column = digest_column_card(card)
+        for bucket in column["buckets"]:
+            table["columns"].setdefault(bucket, []).append(column)
+        return
+    if card_type == "metric_implementation":
+        table["metric_implementations"].append(digest_semantic_card(card))
+        return
+    if card_type == "query_pattern":
+        table["query_patterns"].append(digest_semantic_card(card))
+        return
+    if card_type == "value_profile":
+        table["value_profiles"].append(digest_semantic_card(card))
+        return
+    if card_type == "relationship":
+        table["relationships"].append(digest_semantic_card(card))
+        return
+    table["other_evidence"].append(digest_reference_card(card))
+
+
+def merge_table_scope(table: dict[str, Any], node_sets: list[str]) -> None:
+    for key in ("platform_id", "platform_context_id"):
+        value = first_node_value(node_sets, key)
+        if value and not table.get(key):
+            table[key] = value
+    for key, field_name in (("source_role", "source_roles"), ("domain_id", "domain_ids")):
+        value = first_node_value(node_sets, key)
+        if value:
+            append_unique(table[field_name], value)
+
+
+def finalize_handoff_table_digest(table: dict[str, Any], global_omitted_by_type: dict[str, int]) -> None:
+    table["columns"] = cap_column_buckets(table["columns"], table["omitted_counts_by_type"])
+    for key, limit, card_type in (
+        ("metric_implementations", HANDOFF_DIGEST_LIMITS["max_metric_implementations_per_table"], "metric_implementation"),
+        ("query_patterns", HANDOFF_DIGEST_LIMITS["max_query_patterns_per_table"], "query_pattern"),
+        ("value_profiles", HANDOFF_DIGEST_LIMITS["max_value_profiles_per_table"], "value_profile"),
+        ("relationships", HANDOFF_DIGEST_LIMITS["max_relationships_per_table"], "relationship"),
+        ("other_evidence", HANDOFF_DIGEST_LIMITS["max_other_evidence_per_table"], "other_evidence"),
+    ):
+        original = dedupe_digest_cards(table.get(key) or [])
+        table[key] = original[:limit]
+        omitted = max(0, len(original) - limit)
+        if omitted:
+            table["omitted_counts_by_type"][card_type] = table["omitted_counts_by_type"].get(card_type, 0) + omitted
+            global_omitted_by_type[card_type] = global_omitted_by_type.get(card_type, 0) + omitted
+
+
+def cap_column_buckets(columns: dict[str, list[dict[str, Any]]], omitted_by_type: dict[str, int]) -> dict[str, list[dict[str, Any]]]:
+    bucket_limits = {
+        "scope": HANDOFF_DIGEST_LIMITS["max_scope_columns"],
+        "identifier": HANDOFF_DIGEST_LIMITS["max_identifier_columns"],
+        "date": HANDOFF_DIGEST_LIMITS["max_date_columns"],
+        "measure": HANDOFF_DIGEST_LIMITS["max_measure_columns"],
+        "status_filter": HANDOFF_DIGEST_LIMITS["max_status_filter_columns"],
+        "dimension": HANDOFF_DIGEST_LIMITS["max_dimension_columns"],
+    }
+    total_limit = HANDOFF_DIGEST_LIMITS["max_columns_per_table"]
+    out: dict[str, list[dict[str, Any]]] = {bucket: [] for bucket in bucket_limits}
+    seen: set[str] = set()
+    used = 0
+    for bucket, bucket_limit in bucket_limits.items():
+        for column in dedupe_digest_cards(columns.get(bucket) or []):
+            cid = str(column.get("canonical_id") or column.get("column_name") or "")
+            if cid in seen:
+                continue
+            if len(out[bucket]) >= bucket_limit or used >= total_limit:
+                omitted_by_type["column"] = omitted_by_type.get("column", 0) + 1
+                continue
+            out[bucket].append(column)
+            seen.add(cid)
+            used += 1
+    return out
+
+
+def digest_column_card(card: dict[str, Any]) -> dict[str, Any]:
+    node_sets = card.get("node_sets") or []
+    fields = card.get("fields") if isinstance(card.get("fields"), dict) else {}
+    column_id = first_node_value(node_sets, "column_id") or card_id(card)
+    column_name = column_name_from_digest_card(card, column_id)
+    buckets = column_buckets(card, column_name)
+    return {
+        "canonical_id": card_id(card),
+        "column_id": column_id,
+        "column_name": column_name,
+        "buckets": buckets,
+        "data_type": first_present_value(fields, "data_type", "type", "warehouse_type"),
+        "meaning": first_present_value(fields, "meaning", "description", "business_definition", "semantic_meaning"),
+        "scope_node_sets": compact_scope_node_sets(node_sets),
+    }
+
+
+def column_buckets(card: dict[str, Any], column_name: str) -> list[str]:
+    node_sets = card.get("node_sets") or []
+    fields = card.get("fields") if isinstance(card.get("fields"), dict) else {}
+    text = " ".join(
+        [
+            column_name,
+            card_id(card),
+            " ".join(node_sets),
+            str(fields),
+            str(card.get("semantic") or ""),
+        ]
+    ).lower()
+    buckets: list[str] = []
+    if column_name in {"tenant_id", "group_id", "group_level_id"} or "scope" in text:
+        buckets.append("scope")
+    if any(token in text for token in ("date", "time", "timestamp", "posted", "created_at", "updated_at")):
+        buckets.append("date")
+    if any(token in text for token in ("identifier", "order_id", "sku", "item_id", "code", "key", "invoice_id", "tracking_id")) or column_name.endswith("_id"):
+        buckets.append("identifier")
+    if any(token in text for token in ("amount", "price", "sales", "revenue", "tax", "fee", "charge", "qty", "quantity", "count", "rate", "total", "settled")):
+        buckets.append("measure")
+    if any(token in text for token in ("status", "state", "type", "flag", "is_active", "channel", "courier", "payment", "return", "filter")):
+        buckets.append("status_filter")
+    if not buckets:
+        buckets.append("dimension")
+    return buckets
+
+
+def digest_semantic_card(card: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "canonical_id": card_id(card),
+        "canonical_name": card.get("canonical_name"),
+        "card_type": card.get("card_type"),
+        "scope_node_sets": compact_scope_node_sets(card.get("node_sets") or []),
+        "fields": compact_value(card.get("fields"), limit=260),
+        "semantic": compact_value(card.get("semantic"), limit=260),
+    }
+
+
+def digest_reference_card(card: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "canonical_id": card_id(card),
+        "canonical_name": card.get("canonical_name"),
+        "card_type": card.get("card_type"),
+        "scope_node_sets": compact_scope_node_sets(card.get("node_sets") or []),
+    }
+
+
+def compact_profile_decisions(decisions: list[Any]) -> list[Any]:
+    compacted: list[Any] = []
+    for decision in decisions[:8]:
+        if not isinstance(decision, dict):
+            continue
+        validated = decision.get("validated_output") if isinstance(decision.get("validated_output"), dict) else decision
+        compacted.append(
+            {
+                "selected_profiles": compact_value(validated.get("selected_profiles") or [], limit=300),
+                "evidence_requests": compact_value(validated.get("evidence_requests") or [], limit=300),
+                "blocked_reasons": validated.get("blocked_reasons") or [],
+            }
+        )
+    return compacted
+
+
+def table_id_for_digest_card(card: dict[str, Any]) -> str:
+    node_sets = card.get("node_sets") or []
+    table_id = first_node_value(node_sets, "table_id")
+    if table_id:
+        return table_id
+    if str(card.get("card_type") or "") == "table":
+        return card_id(card)
+    return ""
+
+
+def column_name_from_digest_card(card: dict[str, Any], column_id: str) -> str:
+    fields = card.get("fields") if isinstance(card.get("fields"), dict) else {}
+    for key in ("column_name", "name", "source_column", "warehouse_column"):
+        value = fields.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    canonical_name = str(card.get("canonical_name") or "")
+    if canonical_name and "." in canonical_name:
+        return canonical_name.rsplit(".", 1)[-1]
+    if column_id and "." in column_id:
+        return column_id.rsplit(".", 1)[-1]
+    return column_id or card_id(card)
+
+
+def first_present_value(values: dict[str, Any], *keys: str) -> Any:
+    for key in keys:
+        value = values.get(key)
+        if value not in (None, "", []):
+            return compact_value(value, limit=220)
+    return None
+
+
+def dedupe_digest_cards(cards: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for card in cards:
+        cid = str(card.get("canonical_id") or card.get("column_id") or card.get("column_name") or "")
+        if cid and cid in seen:
+            continue
+        out.append(card)
+        if cid:
+            seen.add(cid)
+    return out
+
+
+def handoff_table_sort_key(table: dict[str, Any]) -> tuple[int, str]:
+    evidence_count = (
+        len(table.get("table_card_ids") or [])
+        + len(table.get("account_data_binding_ids") or [])
+        + sum(len(value) for value in (table.get("columns") or {}).values())
+        + len(table.get("metric_implementations") or [])
+        + len(table.get("query_patterns") or [])
+    )
+    return (-evidence_count, str(table.get("table_id") or ""))
+
+
+def append_unique(values: list[str], value: str) -> None:
+    if value and value not in values:
+        values.append(value)
+
+
+def compact_scope_node_sets(node_sets: list[str]) -> list[str]:
+    keep_prefixes = (
+        "card_type:",
+        "tenant_id:",
+        "group_id:",
+        "platform_id:",
+        "platform_context_id:",
+        "platform_account_id:",
+        "account_data_binding_id:",
+        "domain_id:",
+        "table_id:",
+        "column_id:",
+        "metric_id:",
+        "source_role:",
+        "metric_role:",
+        "semantic_role:",
+        "query_role:",
+        "scope_key:",
+    )
+    return [str(node_set) for node_set in node_sets if str(node_set).startswith(keep_prefixes)]
+
+
+def evidence_pack_stats(evidence_pack: dict[str, Any]) -> dict[str, Any]:
+    digest = evidence_pack.get("handoff_digest") if isinstance(evidence_pack.get("handoff_digest"), dict) else {}
+    tables = digest.get("tables") or []
+    column_count = sum(
+        len(bucket_cards)
+        for table in tables
+        for bucket_cards in (table.get("columns") or {}).values()
+        if isinstance(bucket_cards, list)
+    )
+    metric_count = sum(len(table.get("metric_implementations") or []) for table in tables)
+    query_pattern_count = sum(len(table.get("query_patterns") or []) for table in tables)
+    value_profile_count = sum(len(table.get("value_profiles") or []) for table in tables)
+    relationship_count = sum(len(table.get("relationships") or []) for table in tables)
+    return {
+        "handoff_digest_table_count": len(tables),
+        "handoff_digest_column_count": column_count,
+        "handoff_digest_metric_implementation_count": metric_count,
+        "handoff_digest_query_pattern_count": query_pattern_count,
+        "handoff_digest_value_profile_count": value_profile_count,
+        "handoff_digest_relationship_count": relationship_count,
+        "handoff_raw_card_count": digest.get("raw_card_count", 0),
+        "handoff_omitted_counts_by_type": digest.get("omitted_counts_by_type", {}),
+        "handoff_payload_bytes": serialized_size(evidence_pack),
+    }
+
+
 def compact_value(value: Any, *, limit: int = 1200) -> Any:
     if isinstance(value, dict):
-        return {str(k): compact_value(v, limit=limit) for k, v in value.items()}
+        return {str(k): compact_value(v, limit=limit) for k, v in list(value.items())[:40]}
     if isinstance(value, list):
         return [compact_value(item, limit=limit) for item in value[:20]]
     if isinstance(value, str) and len(value) > limit:
@@ -2359,6 +3052,60 @@ def runtime_source_family_matches(node_sets: list[str], canonical_id: str, sourc
         account_id = first_node_value(node_sets, "platform_account_id") or canonical_id
         return account_id.endswith(".marketplace")
     return False
+
+
+def platform_account_cards_for_source_family(
+    cards: list[dict[str, Any]],
+    source_family: str | None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if source_family is None:
+        return cards, []
+    kept: list[dict[str, Any]] = []
+    rejected: list[dict[str, Any]] = []
+    for card in cards:
+        if runtime_source_family_matches(card_node_sets(card), card_id(card), source_family):
+            kept.append(card)
+        else:
+            rejected.append(card)
+    return kept, rejected
+
+
+def table_local_evidence_cache_key(contract: SearchContract) -> tuple[Any, ...] | None:
+    if contract.stage not in CACHEABLE_TABLE_LOCAL_STAGES:
+        return None
+    table_id = first_contract_node_value(contract, "table_id")
+    card_type = first_contract_node_value(contract, "card_type")
+    if not table_id or not card_type:
+        return None
+    return (
+        contract.stage,
+        table_id,
+        card_type,
+        contract.top_k,
+        tuple(sorted(str(node_set) for node_set in contract.node_sets)),
+        tuple(sorted(str(dataset) for dataset in contract.datasets)),
+    )
+
+
+CACHEABLE_TABLE_LOCAL_STAGES = {
+    "table_local_column_search",
+    "table_local_value_profile_search",
+    "table_local_query_pattern_search",
+    "table_local_metric_implementation_search",
+}
+
+
+def elapsed_seconds(started: float | None) -> float | None:
+    if started is None:
+        return None
+    return round(time.perf_counter() - started, 3)
+
+
+def serialized_size(value: Any) -> int:
+    try:
+        return len(json.dumps(value, ensure_ascii=False, sort_keys=True).encode("utf-8"))
+    except (TypeError, ValueError):
+        return len(repr(value).encode("utf-8"))
 
 
 def contract_signature(contract: SearchContract) -> tuple[Any, ...]:

@@ -35,16 +35,13 @@ LLM_CALL_EVENTS = {
     "llm_next_nodeset_decision_failed",
     "llm_bounded_rank_decision",
     "llm_bounded_rank_decision_failed",
+    "llm_evidence_profile_decision",
+    "llm_evidence_profile_selection_failed",
 }
 
 EVAL_QUERIES = [
-    "Top 5 selling SKUs across all marketplaces.",
-    "Amazon settlement cash position for this group.",
-    "Payment gateway settlement status for this group.",
-    "Bank statement cash movement for this group.",
-    "WMS shipment/order fulfilment status for this group.",
-    "Logistics settlement or COD reconciliation for this group.",
-    "OMS sales and returns summary for this group.",
+    "List the top 5 selling SKUs for Amazon and Flipkart",
+    "What is the difference between Amazon and Flipkart sales metrics and settlement amounts?",
     "Which channel has the highest order volume share?",
     "Generate a report of all channels using Manual CSV integration.",
     "List all marketplaces handled through Unicommerce.",
@@ -95,11 +92,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--group-id", default=DEFAULT_GROUP_ID)
     parser.add_argument("--dataset", action="append", help="Dataset to search. Defaults to datasets from the pack.")
     parser.add_argument("--all-datasets", action="store_true", help="Disable add-batch dataset routing.")
+    parser.add_argument(
+        "--prompted-recall",
+        action="store_true",
+        help="Experimental: run search_trace with prompted constrained Cognee recall.",
+    )
     parser.add_argument("--llm-callable", help="Dotted path for a JSON LLM callable.")
     parser.add_argument("--max-steps", type=int, default=30)
     parser.add_argument("--branch-max-steps", type=int, default=8)
     parser.add_argument("--max-pending", type=int, default=32)
     parser.add_argument("--completion-policy", choices=sorted(COMPLETION_POLICIES), default="best_effort")
+    parser.add_argument("--orchestrator", choices=("serial", "adk"), default="serial")
+    parser.add_argument("--evidence-concurrency", type=int, default=4)
     parser.add_argument("--questions", type=Path, help="txt/json/jsonl file with eval questions.")
     parser.add_argument("--query", action="append", help="Run one query. Repeat for several. Overrides the default query set.")
     parser.add_argument("--limit", type=int, help="Run only the first N selected questions.")
@@ -213,13 +217,88 @@ def write_query_artifacts(
     stdout: str,
     stderr: str,
 ) -> None:
+    handoff_payload = sql_handoff_payload(result)
+    rendered_sql = render_sql_from_handoff(handoff_payload)
+    slim_record = slim_result_record(record, metrics)
+
     (query_dir / "query.txt").write_text(query + "\n", encoding="utf-8")
     (query_dir / "stdout.log").write_text(stdout, encoding="utf-8")
     (query_dir / "stderr.log").write_text(stderr, encoding="utf-8")
-    write_json(query_dir / "result.json", record)
+    write_json(query_dir / "result.json", slim_record)
+    write_json(query_dir / "raw_result.json", record)
     write_json(query_dir / "trace.json", {"trace": result.get("trace", [])} if isinstance(result, dict) else {"trace": [], "error": record.get("error")})
     write_json(query_dir / "metrics.json", metrics)
+    write_json(query_dir / "sql_handoff.json", handoff_payload)
+    (query_dir / "sql_handoff.yaml").write_text(to_yaml(handoff_payload), encoding="utf-8")
+    (query_dir / "rendered.sql").write_text(rendered_sql, encoding="utf-8")
+    (query_dir / "final_output.md").write_text(render_final_output(record, metrics, handoff_payload, rendered_sql), encoding="utf-8")
     (query_dir / "summary.md").write_text(render_query_summary(record, metrics), encoding="utf-8")
+
+
+def slim_result_record(record: Mapping[str, Any], metrics: Mapping[str, Any]) -> dict[str, Any]:
+    return {
+        "query_index": record.get("query_index"),
+        "query": record.get("query"),
+        "started_at": record.get("started_at"),
+        "completed_at": record.get("completed_at"),
+        "duration_seconds": record.get("duration_seconds"),
+        "status": record.get("status"),
+        "error": record.get("error"),
+        "metrics": dict(metrics),
+        "artifacts": {
+            "final_output": "final_output.md",
+            "sql_handoff_json": "sql_handoff.json",
+            "sql_handoff_yaml": "sql_handoff.yaml",
+            "rendered_sql": "rendered.sql",
+            "metrics": "metrics.json",
+            "summary": "summary.md",
+            "trace": "trace.json",
+            "raw_result": "raw_result.json",
+            "stdout": "stdout.log",
+            "stderr": "stderr.log",
+        },
+    }
+
+
+def sql_handoff_payload(result: Mapping[str, Any] | None) -> dict[str, Any]:
+    if not isinstance(result, Mapping):
+        return {
+            "type": "sql_handoff",
+            "handoff_status": "missing",
+            "source_blocks": [],
+            "sql_blueprints": [],
+            "blocked_reasons": ["search_result_missing"],
+            "open_questions": [],
+        }
+
+    handoff = result.get("handoff")
+    if not isinstance(handoff, Mapping):
+        return {
+            "type": "sql_handoff",
+            "handoff_status": "missing",
+            "source_blocks": [],
+            "sql_blueprints": [],
+            "blocked_reasons": ["sql_handoff_missing"],
+            "open_questions": [],
+        }
+
+    validated = handoff.get("validated_output")
+    payload = dict(validated) if isinstance(validated, Mapping) else dict(handoff)
+    payload.pop("input_payload", None)
+    payload.setdefault("type", "sql_handoff")
+    payload.setdefault("handoff_status", handoff_status(handoff))
+    payload.setdefault("readiness", payload.get("handoff_status"))
+    payload.setdefault("semantic_intent", {})
+    payload.setdefault("bindings", {})
+    payload.setdefault("resolved_columns", [])
+    payload.setdefault("sql_ast", {})
+    payload.setdefault("rendered_sql", "")
+    payload.setdefault("source_blocks", [])
+    payload.setdefault("required_runtime_filters", [])
+    payload.setdefault("sql_blueprints", [])
+    payload.setdefault("blocked_reasons", [])
+    payload.setdefault("open_questions", [])
+    return payload
 
 
 def metrics_from_record(record: Mapping[str, Any]) -> dict[str, Any]:
@@ -233,10 +312,19 @@ def metrics_from_record(record: Mapping[str, Any]) -> dict[str, Any]:
         "query": record.get("query"),
         "status": record.get("status"),
         "completion_policy": result.get("completion_policy") if isinstance(result, Mapping) else None,
+        "orchestrator": result.get("orchestrator", "serial") if isinstance(result, Mapping) else "serial",
+        "evidence_concurrency": result.get("evidence_concurrency") if isinstance(result, Mapping) else None,
         "handoff_status": handoff_status(handoff),
         "total_latency_seconds": record.get("duration_seconds"),
+        "search_total_latency_seconds": result.get("total_latency_seconds") if isinstance(result, Mapping) else None,
+        "slowest_phases": slowest_phases(result.get("phase_timings", []) if isinstance(result, Mapping) else []),
         "llm_call_count": llm_call_count(trace, handoff),
         "cognee_recall_count": cognee_recall_count(result, trace),
+        "adk_sequential_tool_count": event_count(trace, "adk_sequential_tool_completed"),
+        "adk_parallel_evidence_run_count": event_count(trace, "adk_parallel_evidence_completed"),
+        "adk_parallel_tool_count": event_count(trace, "adk_parallel_tool_completed"),
+        "adk_parallel_evidence_contract_count": adk_parallel_evidence_contract_count(trace),
+        "adk_parallel_evidence_failure_count": adk_parallel_evidence_failure_count(trace),
         "contract_repair_count": contract_repair_count(trace),
         "contract_rejection_count": contract_rejection_count(result, trace),
         "invalid_contract_executed_count": invalid_contract_executed_count(trace),
@@ -250,6 +338,21 @@ def metrics_from_record(record: Mapping[str, Any]) -> dict[str, Any]:
         "warnings": result.get("best_effort_warnings", []) if isinstance(result, Mapping) else [],
         "blocked_reasons": blocked_reasons(result, branches),
     }
+
+
+def slowest_phases(phase_timings: Sequence[Any], limit: int = 8) -> list[dict[str, Any]]:
+    rows = [dict(row) for row in phase_timings if isinstance(row, Mapping)]
+    rows.sort(key=lambda row: float(row.get("latency_seconds") or 0), reverse=True)
+    return [
+        {
+            "phase": row.get("phase"),
+            "status": row.get("status"),
+            "latency_seconds": row.get("latency_seconds"),
+            "contract_id": row.get("contract_id"),
+            "stage": row.get("stage"),
+        }
+        for row in rows[:limit]
+    ]
 
 
 def aggregate_metrics(records: Sequence[Mapping[str, Any]], started_at: datetime, completed_at: datetime, duration: float) -> dict[str, Any]:
@@ -310,11 +413,14 @@ def search_args_for_query(args: argparse.Namespace, query: str) -> argparse.Name
         group_id=args.group_id,
         dataset=args.dataset,
         all_datasets=args.all_datasets,
+        prompted_recall=args.prompted_recall,
         llm_callable=args.llm_callable,
         max_steps=args.max_steps,
         branch_max_steps=args.branch_max_steps,
         max_pending=args.max_pending,
         completion_policy=args.completion_policy,
+        orchestrator=args.orchestrator,
+        evidence_concurrency=args.evidence_concurrency,
         dry_run=False,
         llm_dry_run=False,
     )
@@ -387,10 +493,13 @@ def build_manifest(args: argparse.Namespace, run_id: str, started_at: datetime, 
         "group_id": args.group_id,
         "datasets": args.dataset or [],
         "all_datasets": args.all_datasets,
+        "prompted_recall": args.prompted_recall,
         "max_steps": args.max_steps,
         "branch_max_steps": args.branch_max_steps,
         "max_pending": args.max_pending,
         "completion_policy": args.completion_policy,
+        "orchestrator": args.orchestrator,
+        "evidence_concurrency": args.evidence_concurrency,
         "query_count": len(queries),
         "completed_query_count": 0,
         "questions_source": str(args.questions) if args.questions else ("--query" if args.query else "default EVAL_QUERIES"),
@@ -407,7 +516,11 @@ def query_index_record(record: Mapping[str, Any], query_dir: Path, run_dir: Path
         "duration_seconds": metrics.get("total_latency_seconds"),
         "acceptance_failures": metrics.get("acceptance_failures", []),
         "result": relative_path(query_dir / "result.json", run_dir),
+        "final_output": relative_path(query_dir / "final_output.md", run_dir),
+        "sql_handoff": relative_path(query_dir / "sql_handoff.yaml", run_dir),
+        "rendered_sql": relative_path(query_dir / "rendered.sql", run_dir),
         "trace": relative_path(query_dir / "trace.json", run_dir),
+        "raw_result": relative_path(query_dir / "raw_result.json", run_dir),
         "metrics": relative_path(query_dir / "metrics.json", run_dir),
         "summary": relative_path(query_dir / "summary.md", run_dir),
         "stdout": relative_path(query_dir / "stdout.log", run_dir),
@@ -425,6 +538,7 @@ def render_query_summary(record: Mapping[str, Any], metrics: Mapping[str, Any]) 
         "",
         f"- status: `{metrics.get('status')}`",
         f"- completion_policy: `{metrics.get('completion_policy')}`",
+        f"- orchestrator: `{metrics.get('orchestrator')}`",
         f"- handoff_status: `{metrics.get('handoff_status')}`",
         f"- total_latency_seconds: `{metrics.get('total_latency_seconds')}`",
         f"- global_step_count: `{metrics.get('global_step_count')}`",
@@ -442,10 +556,24 @@ def render_query_summary(record: Mapping[str, Any], metrics: Mapping[str, Any]) 
         "",
         f"- llm_call_count: `{metrics.get('llm_call_count')}`",
         f"- cognee_recall_count: `{metrics.get('cognee_recall_count')}`",
+        f"- adk_sequential_tool_count: `{metrics.get('adk_sequential_tool_count')}`",
+        f"- adk_parallel_evidence_run_count: `{metrics.get('adk_parallel_evidence_run_count')}`",
+        f"- adk_parallel_tool_count: `{metrics.get('adk_parallel_tool_count')}`",
+        f"- adk_parallel_evidence_contract_count: `{metrics.get('adk_parallel_evidence_contract_count')}`",
+        f"- adk_parallel_evidence_failure_count: `{metrics.get('adk_parallel_evidence_failure_count')}`",
         f"- contract_repair_count: `{metrics.get('contract_repair_count')}`",
         f"- contract_rejection_count: `{metrics.get('contract_rejection_count')}`",
         f"- invalid_contract_executed_count: `{metrics.get('invalid_contract_executed_count')}`",
         f"- acceptance_failures: `{', '.join(metrics.get('acceptance_failures') or []) or 'none'}`",
+        "",
+        "## Artifacts",
+        "",
+        "- final_output: `final_output.md`",
+        "- sql_handoff: `sql_handoff.yaml`",
+        "- rendered_sql: `rendered.sql`",
+        "- slim_result: `result.json`",
+        "- debug_trace: `trace.json`",
+        "- raw_result: `raw_result.json`",
         "",
     ]
     blocked = metrics.get("blocked_reasons") or []
@@ -455,6 +583,223 @@ def render_query_summary(record: Mapping[str, Any], metrics: Mapping[str, Any]) 
     if warnings:
         lines.extend(["## Warnings", "", "```json", json.dumps(warnings, indent=2, ensure_ascii=False), "```", ""])
     return "\n".join(lines)
+
+
+def render_final_output(
+    record: Mapping[str, Any],
+    metrics: Mapping[str, Any],
+    handoff: Mapping[str, Any],
+    rendered_sql: str,
+) -> str:
+    lines = [
+        f"# Query {int(record['query_index']):03d} Final Output",
+        "",
+        f"Query: {record.get('query')}",
+        "",
+        "## Outcome",
+        "",
+        f"- status: `{metrics.get('status')}`",
+        f"- handoff_status: `{handoff.get('handoff_status')}`",
+        f"- readiness: `{handoff.get('readiness') or handoff.get('handoff_status')}`",
+        f"- latency_seconds: `{metrics.get('total_latency_seconds')}`",
+        "",
+    ]
+    semantic_intent = handoff.get("semantic_intent")
+    if semantic_intent:
+        lines.extend(["## Semantic Intent", "", "```json", json.dumps(semantic_intent, indent=2, ensure_ascii=False), "```", ""])
+    bindings = handoff.get("bindings")
+    if bindings:
+        lines.extend(["## Bindings", "", "```json", json.dumps(bindings, indent=2, ensure_ascii=False), "```", ""])
+    resolved_columns = handoff.get("resolved_columns") or []
+    if resolved_columns:
+        lines.extend(["## Resolved Columns", "", "```json", json.dumps(resolved_columns, indent=2, ensure_ascii=False), "```", ""])
+    source_blocks = handoff.get("source_blocks") or []
+    lines.extend(["## Resolved Sources", ""])
+    if source_blocks:
+        for index, source in enumerate(source_blocks, start=1):
+            lines.append(f"### Source {index}")
+            lines.append("")
+            lines.extend(render_source_block_lines(source))
+            lines.append("")
+    else:
+        lines.extend(["- none", ""])
+    filters = handoff.get("required_runtime_filters") or []
+    if filters:
+        lines.extend(["## Runtime Filters", "", "```json", json.dumps(filters, indent=2, ensure_ascii=False), "```", ""])
+    blocked = handoff.get("blocked_reasons") or []
+    if blocked:
+        lines.extend(["## Blocked Reasons", "", *[f"- {reason}" for reason in blocked], ""])
+    questions = handoff.get("open_questions") or []
+    if questions:
+        lines.extend(["## Open Questions", "", *[f"- {question}" for question in questions], ""])
+    blueprints = handoff.get("sql_blueprints") or []
+    lines.extend(["## SQL Blueprints", ""])
+    if blueprints:
+        for index, blueprint in enumerate(blueprints, start=1):
+            lines.append(f"### Blueprint {index}")
+            lines.append("")
+            lines.extend(render_sql_blueprint_lines(blueprint))
+            lines.append("")
+    else:
+        lines.extend(["- none", ""])
+    sql_ast = handoff.get("sql_ast") or {}
+    if sql_ast:
+        lines.extend(["## SQL AST", "", "```json", json.dumps(sql_ast, indent=2, ensure_ascii=False), "```", ""])
+    lines.extend(["## Rendered SQL", "", "```sql", rendered_sql.strip(), "```", ""])
+    return "\n".join(lines)
+
+
+def render_source_block_lines(source: Any) -> list[str]:
+    if isinstance(source, str):
+        return [f"- source: `{source}`"]
+    if not isinstance(source, Mapping):
+        return ["```json", json.dumps(source, indent=2, ensure_ascii=False), "```"]
+    preferred = [
+        "platform_id",
+        "platform_account_id",
+        "account_data_binding_id",
+        "table_id",
+        "source_role",
+        "role",
+        "purpose",
+        "evidence_summary",
+    ]
+    lines = []
+    rendered_keys: set[str] = set()
+    for key in preferred:
+        if key in source:
+            lines.append(f"- {key}: `{source[key]}`")
+            rendered_keys.add(key)
+    remainder = {key: value for key, value in source.items() if key not in rendered_keys}
+    if remainder:
+        lines.extend(["", "```json", json.dumps(remainder, indent=2, ensure_ascii=False), "```"])
+    return lines
+
+
+def render_sql_blueprint_lines(blueprint: Any) -> list[str]:
+    if isinstance(blueprint, str):
+        return ["```sql", blueprint, "```"]
+    if not isinstance(blueprint, Mapping):
+        return ["```json", json.dumps(blueprint, indent=2, ensure_ascii=False), "```"]
+    lines: list[str] = []
+    for key in ("intent", "description", "purpose", "table_id", "readiness"):
+        if blueprint.get(key):
+            lines.append(f"- {key}: `{blueprint[key]}`")
+    sql = sql_text_from_blueprint(blueprint)
+    if sql:
+        lines.extend(["", "```sql", sql, "```"])
+    extra = {
+        key: value
+        for key, value in blueprint.items()
+        if key not in {"draft_sql", "rendered_sql", "sql", "conceptual_logic", "intent", "description", "purpose", "table_id", "readiness"}
+    }
+    if extra:
+        lines.extend(["", "```json", json.dumps(extra, indent=2, ensure_ascii=False), "```"])
+    return lines or ["- empty"]
+
+
+def render_sql_from_handoff(handoff: Mapping[str, Any]) -> str:
+    lines: list[str] = [
+        f"-- handoff_status: {handoff.get('handoff_status', 'unknown')}",
+    ]
+    blocked = handoff.get("blocked_reasons") or []
+    for reason in blocked:
+        lines.append(f"-- blocked_reason: {reason}")
+    questions = handoff.get("open_questions") or []
+    for question in questions:
+        lines.append(f"-- open_question: {question}")
+
+    rendered_sql = handoff.get("rendered_sql")
+    if isinstance(rendered_sql, str) and rendered_sql.strip():
+        lines.extend(["", rendered_sql.strip().rstrip(";") + ";"])
+        return "\n".join(lines) + "\n"
+
+    blueprints = handoff.get("sql_blueprints") or []
+    sql_count = 0
+    for index, blueprint in enumerate(blueprints, start=1):
+        sql = sql_text_from_blueprint(blueprint)
+        if not sql:
+            continue
+        sql_count += 1
+        lines.extend(["", f"-- blueprint {index}", sql.rstrip().rstrip(";") + ";"])
+
+    if sql_count == 0:
+        lines.extend(["", "-- No rendered SQL was produced by this handoff."])
+    return "\n".join(lines) + "\n"
+
+
+def sql_text_from_blueprint(blueprint: Any) -> str:
+    if isinstance(blueprint, str):
+        return blueprint.strip()
+    if not isinstance(blueprint, Mapping):
+        return ""
+    for key in ("rendered_sql", "draft_sql", "sql"):
+        value = blueprint.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    value = blueprint.get("conceptual_logic")
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    return ""
+
+
+def to_yaml(value: Any, *, indent: int = 0) -> str:
+    rendered = yaml_lines(value, indent)
+    return "\n".join(rendered) + "\n"
+
+
+def yaml_lines(value: Any, indent: int = 0) -> list[str]:
+    prefix = " " * indent
+    if isinstance(value, Mapping):
+        if not value:
+            return [prefix + "{}"]
+        lines: list[str] = []
+        for key, item in value.items():
+            key_text = str(key)
+            if isinstance(item, (Mapping, list)):
+                lines.append(f"{prefix}{key_text}:")
+                lines.extend(yaml_lines(item, indent + 2))
+            elif isinstance(item, str) and "\n" in item:
+                lines.append(f"{prefix}{key_text}: |")
+                lines.extend(f"{' ' * (indent + 2)}{line}" for line in item.splitlines())
+            else:
+                lines.append(f"{prefix}{key_text}: {yaml_scalar(item)}")
+        return lines
+    if isinstance(value, list):
+        if not value:
+            return [prefix + "[]"]
+        lines = []
+        for item in value:
+            if isinstance(item, Mapping):
+                lines.append(prefix + "-")
+                lines.extend(yaml_lines(item, indent + 2))
+            elif isinstance(item, list):
+                lines.append(prefix + "-")
+                lines.extend(yaml_lines(item, indent + 2))
+            elif isinstance(item, str) and "\n" in item:
+                lines.append(prefix + "- |")
+                lines.extend(f"{' ' * (indent + 2)}{line}" for line in item.splitlines())
+            else:
+                lines.append(f"{prefix}- {yaml_scalar(item)}")
+        return lines
+    return [prefix + yaml_scalar(value)]
+
+
+def yaml_scalar(value: Any) -> str:
+    if value is None:
+        return "null"
+    if value is True:
+        return "true"
+    if value is False:
+        return "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    text = str(value)
+    if text == "":
+        return '""'
+    if re.search(r"[\s:#,\[\]{}]|^(true|false|null|yes|no|on|off)$", text, re.IGNORECASE):
+        return json.dumps(text, ensure_ascii=False)
+    return text
 
 
 def render_run_summary(manifest: Mapping[str, Any], aggregate: Mapping[str, Any]) -> str:
@@ -467,6 +812,8 @@ def render_run_summary(manifest: Mapping[str, Any], aggregate: Mapping[str, Any]
         f"- duration_seconds: `{aggregate.get('duration_seconds')}`",
         f"- query_count: `{aggregate.get('query_count')}`",
         f"- completion_policy: `{manifest.get('completion_policy')}`",
+        f"- orchestrator: `{manifest.get('orchestrator', 'serial')}`",
+        f"- evidence_concurrency: `{manifest.get('evidence_concurrency', 4)}`",
         "",
         "## Status Counts",
         "",
@@ -494,6 +841,11 @@ def render_run_summary(manifest: Mapping[str, Any], aggregate: Mapping[str, Any]
 
 def handoff_status(handoff: Any) -> str:
     if isinstance(handoff, Mapping):
+        validated = handoff.get("validated_output")
+        if isinstance(validated, Mapping) and validated.get("handoff_status"):
+            return str(validated["handoff_status"])
+        if handoff.get("handoff_status"):
+            return str(handoff["handoff_status"])
         if handoff.get("status"):
             return str(handoff["status"])
         if handoff.get("error"):
@@ -548,6 +900,32 @@ def invalid_contract_executed_count(trace: Sequence[Mapping[str, Any]]) -> int:
     return invalid
 
 
+def event_count(trace: Sequence[Mapping[str, Any]], event_name: str) -> int:
+    return sum(1 for event in trace if event.get("event") == event_name)
+
+
+def adk_parallel_evidence_contract_count(trace: Sequence[Mapping[str, Any]]) -> int:
+    total = 0
+    for event in trace:
+        if event.get("event") != "adk_parallel_evidence_completed":
+            continue
+        contract_ids = event.get("contract_ids")
+        if isinstance(contract_ids, list):
+            total += len(contract_ids)
+    return total
+
+
+def adk_parallel_evidence_failure_count(trace: Sequence[Mapping[str, Any]]) -> int:
+    total = 0
+    for event in trace:
+        if event.get("event") != "adk_parallel_evidence_completed":
+            continue
+        failures = event.get("failures")
+        if isinstance(failures, list):
+            total += len(failures)
+    return total
+
+
 def selected_branch_cards(branches: Mapping[str, Any], field_name: str, branch_ids: Sequence[str] | None = None) -> list[str]:
     selected: list[str] = []
     branch_values = [branches[branch_id] for branch_id in branch_ids if branch_id in branches] if branch_ids else branches.values()
@@ -579,6 +957,8 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--branch-max-steps must be >= 1")
     if args.max_pending < 1:
         raise ValueError("--max-pending must be >= 1")
+    if args.evidence_concurrency < 1:
+        raise ValueError("--evidence-concurrency must be >= 1")
     if args.limit is not None and args.limit < 1:
         raise ValueError("--limit must be >= 1")
     if args.offset < 0:

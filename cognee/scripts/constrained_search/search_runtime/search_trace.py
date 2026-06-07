@@ -12,6 +12,7 @@ from runtime_env import PROVIDER_CHOICES, REPO_ROOT, configure_cognee_environmen
 from .catalogs import CatalogBundle
 from .cognee_client import CogneeClient, CogneeIntegrationError, datasets_from_pack
 from .contract_validator import validate_contract
+from .adk_agentic import ADKAgenticCogneeSearchStateMachine
 from .llm_plane import CallableLLMProvider, LLMPlane, LiteLLMJSONProvider
 from .search_state_machine import COMPLETION_POLICIES, CogneeSearchStateMachine
 from .utils import write_json
@@ -22,10 +23,18 @@ DEFAULT_PACK_DIR = REPO_ROOT / "build" / "constrained_search" / "build"
 DEFAULT_ENV_FILE = REPO_ROOT / "cognee" / ".env"
 DEFAULT_TENANT_ID = "tenant.mensa_brand_technologies_private_limited"
 DEFAULT_GROUP_ID = "group.mensa_brand_technologies_private_limited.g8.gl22"
+ORCHESTRATORS = {"serial", "adk"}
 
 
 class NoProvider:
-    async def complete_json(self, *, prompt_id: str, system_prompt: str, user_payload: dict[str, Any]) -> dict[str, Any]:
+    async def complete_json(
+        self,
+        *,
+        prompt_id: str,
+        system_prompt: str,
+        user_payload: dict[str, Any],
+        max_tokens: int | None = None,
+    ) -> dict[str, Any]:
         raise RuntimeError(
             "No LLM provider configured. Use --provider vertex with a Vertex env file or pass --llm-callable dotted.path."
         )
@@ -41,11 +50,18 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--group-id", default=DEFAULT_GROUP_ID)
     parser.add_argument("--dataset", action="append", help="Dataset to search. Defaults to datasets from the pack.")
     parser.add_argument("--all-datasets", action="store_true", help="Disable add-batch dataset routing.")
+    parser.add_argument(
+        "--prompted-recall",
+        action="store_true",
+        help="Experimental: pass the task prompt directly into NodeSet-constrained Cognee recall instead of only_context retrieval.",
+    )
     parser.add_argument("--llm-callable", help="Dotted path for a JSON LLM callable.")
     parser.add_argument("--max-steps", type=int, default=30)
     parser.add_argument("--branch-max-steps", type=int, default=8)
     parser.add_argument("--max-pending", type=int, default=32)
     parser.add_argument("--completion-policy", choices=sorted(COMPLETION_POLICIES), default="best_effort")
+    parser.add_argument("--orchestrator", choices=sorted(ORCHESTRATORS), default="serial")
+    parser.add_argument("--evidence-concurrency", type=int, default=4)
     parser.add_argument("--dry-run", action="store_true", help="Validate pack, prompts, and runtime wiring without calling Cognee or an LLM.")
     parser.add_argument(
         "--llm-dry-run",
@@ -73,6 +89,8 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("--branch-max-steps must be >= 1")
     if args.max_pending < 1:
         raise ValueError("--max-pending must be >= 1")
+    if args.evidence_concurrency < 1:
+        raise ValueError("--evidence-concurrency must be >= 1")
     if args.dry_run and args.llm_dry_run:
         raise ValueError("Use only one of --dry-run or --llm-dry-run")
     validate_runtime_scope_args(args)
@@ -86,7 +104,7 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
 
     trace_dir = pack_dir / "traces"
     if args.dry_run:
-        result = dry_run_result(pack_dir, datasets)
+        result = dry_run_result(args, pack_dir, datasets)
         write_json(result["trace_path"], result)
         return result
     if args.llm_dry_run:
@@ -101,21 +119,38 @@ async def run(args: argparse.Namespace) -> dict[str, Any]:
         catalogs=catalogs,
         datasets=datasets,
         all_datasets=args.all_datasets,
+        prompted_recall=args.prompted_recall,
     )
-    machine = CogneeSearchStateMachine(
-        client,
-        llm,
-        trace_dir,
-        catalogs=catalogs,
-        max_steps=args.max_steps,
-        branch_max_steps=args.branch_max_steps,
-        max_pending=args.max_pending,
-        completion_policy=args.completion_policy,
-    )
+    machine = search_machine_from_args(args, client, llm, trace_dir, catalogs)
     return await machine.run_query(
         args.query,
         runtime_context=runtime_context_from_args(args, datasets),
     )
+
+
+def search_machine_from_args(
+    args: argparse.Namespace,
+    client: CogneeClient,
+    llm: LLMPlane,
+    trace_dir: Path,
+    catalogs: CatalogBundle,
+) -> CogneeSearchStateMachine:
+    kwargs = {
+        "catalogs": catalogs,
+        "max_steps": args.max_steps,
+        "branch_max_steps": args.branch_max_steps,
+        "max_pending": args.max_pending,
+        "completion_policy": args.completion_policy,
+    }
+    if args.orchestrator == "adk":
+        return ADKAgenticCogneeSearchStateMachine(
+            client,
+            llm,
+            trace_dir,
+            evidence_concurrency=args.evidence_concurrency,
+            **kwargs,
+        )
+    return CogneeSearchStateMachine(client, llm, trace_dir, **kwargs)
 
 
 async def llm_dry_run_result(
@@ -130,6 +165,7 @@ async def llm_dry_run_result(
         catalogs=catalogs,
         datasets=datasets,
         all_datasets=args.all_datasets,
+        prompted_recall=args.prompted_recall,
     )
     trace_path = str(pack_dir / "traces" / "last_search_trace.json")
     runtime_context = runtime_context_from_args(args, datasets)
@@ -141,6 +177,8 @@ async def llm_dry_run_result(
         return {
             "status": "blocked",
             "mode": "llm_dry_run",
+            "orchestrator": args.orchestrator,
+            "evidence_concurrency": args.evidence_concurrency,
             "blocked_reason": "anchor_extractor_failed",
             "error": repr(exc),
             "trace_path": trace_path,
@@ -154,21 +192,14 @@ async def llm_dry_run_result(
         return {
             "status": "blocked",
             "mode": "llm_dry_run",
+            "orchestrator": args.orchestrator,
+            "evidence_concurrency": args.evidence_concurrency,
             "blocked_reason": "anchor_extractor_did_not_emit_contracts",
             "trace_path": trace_path,
             "trace": trace,
         }
 
-    machine = CogneeSearchStateMachine(
-        client,
-        llm,
-        pack_dir / "traces",
-        catalogs=catalogs,
-        max_steps=args.max_steps,
-        branch_max_steps=args.branch_max_steps,
-        max_pending=args.max_pending,
-        completion_policy=args.completion_policy,
-    )
+    machine = search_machine_from_args(args, client, llm, pack_dir / "traces", catalogs)
     contracts = machine._coerce_contracts(raw_contracts, "anchor_extractor", args.query)
     trace.extend(machine.trace)
 
@@ -198,6 +229,8 @@ async def llm_dry_run_result(
     return {
         "status": "blocked" if failed or valid_contract_count == 0 else "llm_dry_run",
         "mode": "llm_dry_run",
+        "orchestrator": args.orchestrator,
+        "evidence_concurrency": args.evidence_concurrency,
         "blocked_reason": "llm_emitted_invalid_contracts" if failed else None,
         "contract_count": len(raw_contracts),
         "expanded_contract_count": len(contracts),
@@ -207,7 +240,7 @@ async def llm_dry_run_result(
     }
 
 
-def dry_run_result(pack_dir: Path, datasets: list[str]) -> dict[str, Any]:
+def dry_run_result(args: argparse.Namespace, pack_dir: Path, datasets: list[str]) -> dict[str, Any]:
     prompt_dir = CONSTRAINED_SEARCH_DIR / "prompts"
     prompt_files = sorted(path.name for path in prompt_dir.glob("*.md"))
     required_prompts = {
@@ -223,9 +256,12 @@ def dry_run_result(pack_dir: Path, datasets: list[str]) -> dict[str, Any]:
     return {
         "status": status,
         "mode": "dry_run",
+        "orchestrator": args.orchestrator,
+        "evidence_concurrency": args.evidence_concurrency,
         "trace_path": str(pack_dir / "traces" / "last_search_trace.json"),
         "dataset_count": len(datasets),
         "datasets": datasets,
+        "prompted_recall": args.prompted_recall,
         "prompt_files": prompt_files,
         "missing_prompts": missing,
     }

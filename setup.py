@@ -8,6 +8,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src"),
     install_requires=[],
+    extras_require={"adk": ["google-adk"]},
     python_requires=">=3.9",
     entry_points={"console_scripts": ["zenkb=zenkb.cli:main"]},
 )

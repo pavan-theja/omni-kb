@@ -25,6 +25,8 @@ populated Cognee dataset are the real acceptance gate.
 - Support runtime-source fanout beyond marketplaces, including OMS, WMS,
   logistics, bank/bank_statement, payment gateway, and manual/CSV operational
   sources when represented in the pack.
+- Keep payment-gateway questions out of the default live eval set until that
+  routing path is fully wired.
 - Use best-effort completion by default:
   - Return usable evidence and handoff when at least one branch is complete.
   - Report incomplete branches as warnings.
@@ -134,6 +136,26 @@ Each branch should track:
 - warnings
 - blocked reasons
 - executed step count
+
+Current interim column coverage rule:
+
+- Table-local column evidence contracts use a minimum `top_k` of 50.
+- This applies both to profile-generated contracts and LLM-emitted/repaired
+  `table_local_column_search` contracts.
+- Targeted follow-up searches for missing scope, date, identifier, measure, and
+  status/filter column buckets remain future hardening work.
+
+Experimental prompted-search optimization:
+
+- `--prompted-recall` evaluates prompted constrained Cognee recall as an
+  alternative to the current
+  `only_context=True` retrieval plus separate LLM reasoning flow.
+- The prompted path should combine NodeSet-constrained retrieval with the
+  profile/task prompt in one Cognee call.
+- It must return structured selected card IDs, rejected card IDs, reasons,
+  missing evidence, and readiness signals so the trace remains auditable.
+- Acceptance should compare latency, selected evidence quality, and handoff
+  correctness against the current two-step retrieval/reasoning path.
 
 ### Branch-Aware Serial Scheduling
 
@@ -316,7 +338,12 @@ eval_runs/constrained_search/
     queries/
       001/
         query.txt
+        final_output.md
+        sql_handoff.json
+        sql_handoff.yaml
+        rendered.sql
         result.json
+        raw_result.json
         trace.json
         stdout.log
         stderr.log
@@ -325,6 +352,20 @@ eval_runs/constrained_search/
       002/
         ...
 ```
+
+`final_output.md` is the first human-review artifact. `result.json` should stay
+small and point to the other artifacts. Full internal state belongs in
+`raw_result.json`; chronological debug events belong in `trace.json`.
+`sql_handoff.json` and `sql_handoff.yaml` should use the strict handoff shape:
+semantic intent, bindings, resolved columns, clause-level SQL AST, rendered SQL,
+readiness, and blocked/open-question reasons.
+
+The SQL handoff writer should receive a deterministic `handoff_digest`, not raw
+card bodies. The digest should group evidence by table, cap tables and evidence
+items, bucket columns into scope/date/identifier/measure/status-filter/
+dimension groups, and report omitted counts by card type. Full selected evidence
+can remain in `raw_result.json` for debugging, but it should not be sent to the
+handoff LLM.
 
 ### Per-Query Metrics
 
@@ -335,6 +376,7 @@ Capture at least:
 - completion policy
 - handoff status
 - total latency
+- slowest runtime phases from `phase_timings`
 - LLM call count
 - Cognee recall count
 - contract repair count
@@ -353,35 +395,30 @@ Capture at least:
 
 Run these as live E2E evals:
 
-1. `Top 5 selling SKUs across all marketplaces.`
-2. `Amazon settlement cash position for this group.`
-3. `Payment gateway settlement status for this group.`
-4. `Bank statement cash movement for this group.`
-5. `WMS shipment/order fulfilment status for this group.`
-6. `Logistics settlement or COD reconciliation for this group.`
-7. `OMS sales and returns summary for this group.`
-8. `Which channel has the highest order volume share?`
-9. `Generate a report of all channels using Manual CSV integration.`
-10. `List all marketplaces handled through Unicommerce.`
-11. `Generate a courier-wise channel mapping report.`
-12. `Which courier handles the own website shipments?`
-13. `Generate a report showing COD remittance type by courier.`
-14. `Which channels use marketplace-managed returns?`
-15. `Generate a summary report of OMS systems and their connected marketplaces.`
-16. `Calculate the combined marketplace contribution vs own website contribution.`
-17. `Identify channels with higher operational dependency on manual processes.`
-18. `Create a marketplace risk report showing which channels depend on the same OMS.`
-19. `Generate a logistics dependency matrix showing courier concentration across marketplaces.`
-20. `Build a report identifying channels that may face reconciliation delays due to marketplace-based settlements.`
-21. `Compare return handling models between own website and marketplace channels.`
-22. `Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.`
-23. `Create a sales concentration analysis report to determine dependency on top 2 marketplaces.`
-24. `Generate a unified dashboard combining sales, OMS dependency, courier dependency, and return ownership.`
-25. `Design a profitability analysis report estimating operational complexity cost per marketplace.`
-26. `Build a SKU profitability report.`
-27. `Build an Average order value report per channel.`
-28. `Gross sales trend across all marketplaces.`
-29. `Return trend across all the marketplaces.`
+1. `List the top 5 selling SKUs for Amazon and Flipkart`
+2. `What is the difference between Amazon and Flipkart sales metrics and settlement amounts?`
+3. `Which channel has the highest order volume share?`
+4. `Generate a report of all channels using Manual CSV integration.`
+5. `List all marketplaces handled through Unicommerce.`
+6. `Generate a courier-wise channel mapping report.`
+7. `Which courier handles the own website shipments?`
+8. `Generate a report showing COD remittance type by courier.`
+9. `Which channels use marketplace-managed returns?`
+10. `Generate a summary report of OMS systems and their connected marketplaces.`
+11. `Calculate the combined marketplace contribution vs own website contribution.`
+12. `Identify channels with higher operational dependency on manual processes.`
+13. `Create a marketplace risk report showing which channels depend on the same OMS.`
+14. `Generate a logistics dependency matrix showing courier concentration across marketplaces.`
+15. `Build a report identifying channels that may face reconciliation delays due to marketplace-based settlements.`
+16. `Compare return handling models between own website and marketplace channels.`
+17. `Generate a report showing potential operational bottlenecks if Unicommerce becomes unavailable.`
+18. `Create a sales concentration analysis report to determine dependency on top 2 marketplaces.`
+19. `Generate a unified dashboard combining sales, OMS dependency, courier dependency, and return ownership.`
+20. `Design a profitability analysis report estimating operational complexity cost per marketplace.`
+21. `Build a SKU profitability report.`
+22. `Build an Average order value report per channel.`
+23. `Gross sales trend across all marketplaces.`
+24. `Return trend across all the marketplaces.`
 
 Not every query is expected to produce a `complete` result. Some queries may
 correctly return `best_effort`, `partial`, or `blocked` if the pack does not

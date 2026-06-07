@@ -11,16 +11,28 @@ if str(CONSTRAINED_SEARCH_DIR) not in sys.path:
 
 from search_runtime.branch_ledger import BranchLedger
 from search_runtime.catalogs import CatalogBundle
+from search_runtime.cognee_client import CogneeClient
 from search_runtime.contract_repair import repair_contract
 from search_runtime.contract_validator import validate_contract
 from search_runtime.evidence_profiles import (
+    COLUMN_SEARCH_TOP_K,
     build_evidence_manifest,
     invalid_profile_card_types,
     missing_card_type_purposes,
     profile_contracts_from_decision,
 )
+from search_runtime.adk_agentic import ADKAgenticCogneeSearchStateMachine, skill_manifest
+from search_runtime.llm_plane import normalize_sql_handoff_output
 from search_runtime.nodeset_contracts import SearchContract, SearchResult
-from search_runtime.search_state_machine import CogneeSearchStateMachine, contract_signature, prune_and_rank_pending
+from search_runtime.search_state_machine import (
+    CogneeSearchStateMachine,
+    compact_handoff_evidence_pack,
+    contract_signature,
+    domain_search_contracts_from_binding_candidates,
+    evidence_pack_stats,
+    platform_account_cards_for_source_family,
+    prune_and_rank_pending,
+)
 
 
 class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
@@ -188,6 +200,38 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
         self.assertEqual(["card_type:value_profile", "table_id:table.zs_observe.amazon_oms"], contracts[0].node_sets)
         self.assertEqual(["value_profile"], contracts[0].required_carry_forward["required_evidence_card_types"])
 
+    def test_profile_column_contracts_use_minimum_column_top_k(self):
+        manifest = build_evidence_manifest(
+            _catalog_with_profile_cards(),
+            [_table_card()],
+            _table_contract("q.table"),
+        )
+
+        contracts, rejected = profile_contracts_from_decision(
+            {
+                "selected_profiles": [{"profile_id": "field_semantics_resolution"}],
+                "evidence_requests": [
+                    {
+                        "profile_id": "field_semantics_resolution",
+                        "scope_type": "table",
+                        "scope_id": "table.zs_observe.amazon_oms",
+                        "card_type": "column",
+                        "required": True,
+                        "top_k": 8,
+                    }
+                ],
+                "blocked_reasons": [],
+            },
+            manifest,
+            _table_contract("q.table"),
+            "Resolve field columns",
+        )
+
+        self.assertEqual([], rejected)
+        self.assertEqual(1, len(contracts))
+        self.assertEqual("table_local_column_search", contracts[0].stage)
+        self.assertEqual(COLUMN_SEARCH_TOP_K, contracts[0].top_k)
+
     def test_branch_ledger_uses_profile_required_card_types(self):
         ledger = BranchLedger()
         for contract, card in (
@@ -323,6 +367,83 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
         self.assertIn("contract_repaired", events)
         self.assertIn("llm_contract_candidate_rejected", events)
         self.assertIn("branch_ledger_contract_discovered", events)
+
+    def test_state_machine_lifts_llm_column_contracts_to_minimum_top_k(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            machine = CogneeSearchStateMachine(
+                _UnusedClient(),
+                _UnusedLLM(),
+                Path(tmp),
+                catalogs=_catalog(),
+            )
+            contracts = machine._coerce_contracts(
+                [
+                    {
+                        "contract_id": "q.columns",
+                        "stage": "table_local_column_search",
+                        "query_text": "columns",
+                        "node_sets": ["card_type:column", "table_id:table.zs_observe.amazon_oms"],
+                        "top_k": 20,
+                        "allowed_card_types": ["column"],
+                    }
+                ],
+                "unit_test",
+                "Amazon columns",
+            )
+
+        self.assertEqual(1, len(contracts))
+        self.assertEqual(COLUMN_SEARCH_TOP_K, contracts[0].top_k)
+
+    def test_execute_contract_caches_table_local_evidence_with_phase_timings(self):
+        client = _CountingClient()
+        with tempfile.TemporaryDirectory() as tmp:
+            machine = CogneeSearchStateMachine(
+                client,
+                _UnusedLLM(),
+                Path(tmp),
+                catalogs=_catalog(),
+            )
+            contract = SearchContract(
+                contract_id="q.columns",
+                stage="table_local_column_search",
+                query_text="Amazon columns",
+                node_sets=["card_type:column", "table_id:table.zs_observe.amazon_oms"],
+                top_k=COLUMN_SEARCH_TOP_K,
+                allowed_card_types=["column"],
+            )
+            first = asyncio.run(machine.execute_contract(contract))
+            second = asyncio.run(machine.execute_contract(contract))
+
+        self.assertEqual(1, client.search_count)
+        self.assertEqual(["column.zs_observe.amazon_oms.sku_id"], [card["canonical_id"] for card in first.returned_cards])
+        self.assertEqual(["column.zs_observe.amazon_oms.sku_id"], [card["canonical_id"] for card in second.returned_cards])
+        self.assertTrue(any(row.get("event") == "table_local_evidence_cache_hit" for row in machine.trace))
+        self.assertTrue(any(row.get("phase") == "cognee_recall" for row in machine.phase_timings))
+
+    def test_prompted_recall_passes_prompt_and_disables_only_context(self):
+        cognee = _FakeCogneeModule()
+        client = CogneeClient(
+            pack_dir=Path("unused"),
+            catalogs=_catalog(),
+            datasets=[],
+            prompted_recall=True,
+            cognee_module=cognee,
+        )
+        contract = SearchContract(
+            contract_id="q.columns",
+            stage="table_local_column_search",
+            query_text="Find SKU columns",
+            node_sets=["card_type:column", "table_id:table.zs_observe.amazon_oms"],
+            top_k=50,
+            allowed_card_types=["column"],
+        )
+
+        asyncio.run(client.recall_context(contract))
+
+        self.assertFalse(cognee.last_kwargs["only_context"])
+        self.assertEqual(["card_type:column", "table_id:table.zs_observe.amazon_oms"], cognee.last_kwargs["node_name"])
+        self.assertIn("selected_card_ids", cognee.last_kwargs["query_text"])
+        self.assertIn("Find SKU columns", cognee.last_kwargs["query_text"])
 
     def test_branch_ledger_tracks_branch_evidence_and_status(self):
         ledger = BranchLedger()
@@ -761,6 +882,181 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
             output["evidence_pack"]["evidence_profile_decisions"][0]["validated_output"]["selected_profiles"][0]["profile_id"],
         )
 
+    def test_agentic_orchestrator_parallelizes_profile_evidence_without_followup_planning(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            llm = _MultiProfileSelectionLLM()
+            machine = _AgenticConstrainedRouteMachine(
+                _UnusedClient(),
+                llm,
+                Path(tmp),
+                catalogs=_catalog_with_profile_cards(),
+                max_steps=12,
+                evidence_concurrency=2,
+            )
+
+            output = asyncio.run(
+                machine.run_query(
+                    "Top selling SKUs on Amazon",
+                    {"tenant_id": "tenant.one", "group_id": "group.one"},
+                )
+            )
+
+        self.assertIn(output["status"], {"complete", "best_effort"})
+        self.assertEqual("adk", output["orchestrator"])
+        self.assertEqual(2, output["evidence_concurrency"])
+        self.assertEqual(0, llm.profile_followup_plan_calls)
+        self.assertEqual(0, llm.profile_followup_rank_calls)
+        self.assertTrue(any(contract_id.startswith("q5.profile.query_shape_resolution") for contract_id in machine.executed_contract_ids))
+        self.assertTrue(any(contract_id.startswith("q5.profile.field_semantics_resolution") for contract_id in machine.executed_contract_ids))
+        started = [row for row in machine.trace if row["event"] == "adk_parallel_evidence_started"]
+        completed = [row for row in machine.trace if row["event"] == "adk_parallel_evidence_completed"]
+        self.assertEqual(1, len(started))
+        self.assertEqual(1, len(completed))
+        self.assertEqual(2, completed[0]["result_count"])
+        self.assertEqual([], completed[0]["failures"])
+        skill_ids = {
+            skill["skill_id"]
+            for row in machine.trace
+            if row["event"] == "adk_agentic_runtime_started"
+            for skill in row["skills"]
+        }
+        self.assertIn("query_anchor_skill", skill_ids)
+        self.assertIn("evidence_profile_skill", skill_ids)
+        self.assertIn("profile_evidence_fanout_skill", skill_ids)
+        completed_tool_events = [row for row in machine.trace if row["event"] == "adk_parallel_tool_completed"]
+        self.assertEqual(2, len(completed_tool_events))
+        self.assertEqual(
+            {"profile_evidence_fanout_skill"},
+            {row["skill_id"] for row in completed_tool_events},
+        )
+
+    def test_agentic_skill_manifest_names_required_tools(self):
+        manifest = {skill["skill_id"]: skill for skill in skill_manifest()}
+
+        self.assertEqual("sequential", manifest["query_anchor_skill"]["runner"])
+        self.assertIn("extract_anchors", manifest["query_anchor_skill"]["tools"])
+        self.assertEqual("parallel", manifest["profile_evidence_fanout_skill"]["runner"])
+        self.assertIn("execute_profile_evidence_contract", manifest["profile_evidence_fanout_skill"]["tools"])
+        self.assertIn("write_sql_handoff", manifest["handoff_skill"]["tools"])
+
+    def test_source_family_filter_keeps_only_explicit_marketplace_accounts(self):
+        marketplace = _platform_account("amazon")
+        logistics = {
+            "canonical_id": "platform_account.one.delhivery.logistics",
+            "card_type": "platform_account",
+            "node_sets": [
+                "domain_family:client_runtime",
+                "card_type:platform_account",
+                "tenant_id:tenant.one",
+                "group_id:group.one",
+                "runtime_source_family:logistics",
+                "platform_account_id:platform_account.one.delhivery.logistics",
+            ],
+        }
+
+        kept, rejected = platform_account_cards_for_source_family([marketplace, logistics], "marketplace")
+
+        self.assertEqual(["platform_account.one.amazon.marketplace"], [card["canonical_id"] for card in kept])
+        self.assertEqual(["platform_account.one.delhivery.logistics"], [card["canonical_id"] for card in rejected])
+
+    def test_payment_gateway_domain_contract_omits_platform_id_when_domain_card_is_generic(self):
+        catalog = _catalog_with_payment_gateway_domain()
+        contracts = domain_search_contracts_from_binding_candidates(
+            [
+                {
+                    "account_data_binding_id": "account_data_binding.one.cashfree.settlement",
+                    "platform_id": "platform.cashfree",
+                    "platform_context_id": "platform_context.cashfree.in",
+                    "runtime_source_family": "payment_gateway",
+                    "domain_id": "domain.payment_gateway.settlement",
+                    "source_role": "settlement",
+                    "table_id": "table.zs_observe.cashfree_payin",
+                }
+            ],
+            "Payment gateway settlement status",
+            catalog,
+        )
+
+        self.assertEqual(1, len(contracts))
+        self.assertNotIn("platform_id:platform.cashfree", contracts[0].node_sets)
+        self.assertIn("platform_context_id:platform_context.cashfree.in", contracts[0].node_sets)
+        self.assertIn("domain_id:domain.payment_gateway.settlement", contracts[0].node_sets)
+
+    def test_sql_handoff_normalizer_returns_blocked_shape_for_unusable_output(self):
+        normalized = normalize_sql_handoff_output({"answer": "not a handoff"})
+
+        self.assertEqual("sql_handoff", normalized["type"])
+        self.assertEqual("blocked", normalized["handoff_status"])
+        self.assertEqual("blocked", normalized["readiness"])
+        self.assertEqual([], normalized["source_blocks"])
+        self.assertEqual({}, normalized["sql_ast"])
+        self.assertEqual("", normalized["rendered_sql"])
+        self.assertEqual(["sql_handoff_writer_returned_unusable_shape"], normalized["blocked_reasons"])
+
+    def test_sql_handoff_normalizer_preserves_strict_handoff_shape(self):
+        normalized = normalize_sql_handoff_output(
+            {
+                "status": "ok",
+                "semantic_intent": {"intent": "top_skus", "platforms": ["amazon"]},
+                "bindings": {"allowed_tables": ["table.zs_observe.amazon_oms"]},
+                "resolved_columns": [{"table_id": "table.zs_observe.amazon_oms", "column": "sku_id"}],
+                "sql_ast": {"type": "select_query"},
+                "rendered_sql": "SELECT sku_id FROM amazon_oms",
+                "source_blocks": [{"table_id": "table.zs_observe.amazon_oms"}],
+                "blocked_reasons": [],
+            }
+        )
+
+        self.assertEqual("ready", normalized["handoff_status"])
+        self.assertEqual("ready", normalized["readiness"])
+        self.assertEqual("top_skus", normalized["semantic_intent"]["intent"])
+        self.assertEqual(["table.zs_observe.amazon_oms"], normalized["bindings"]["allowed_tables"])
+        self.assertEqual("select_query", normalized["sql_ast"]["type"])
+        self.assertEqual("SELECT sku_id FROM amazon_oms", normalized["rendered_sql"])
+
+    def test_compact_handoff_pack_builds_table_digest_and_buckets_columns(self):
+        evidence_pack = {
+            "query_text": "Top SKUs",
+            "runtime_context": {"tenant_id": "tenant.one", "group_id": "group.one", "datasets": ["dataset.one"]},
+            "terminal_evidence": {},
+            "usable_branch_ids": ["branch.one"],
+            "evidence_profile_decisions": [],
+            "results": [
+                {
+                    "result_id": "result.binding",
+                    "contract_id": "q.binding",
+                    "stage": "runtime_account_binding_search",
+                    "cards": [
+                        _binding_card(),
+                        _table_card(),
+                        _query_pattern_card(),
+                        _digest_column("group_level_id"),
+                        _digest_column("order_id"),
+                        _digest_column("charged_amount"),
+                        _digest_column("purchase_date"),
+                        _digest_column("order_status"),
+                    ],
+                }
+            ],
+        }
+
+        compact = compact_handoff_evidence_pack(evidence_pack)
+        stats = evidence_pack_stats(compact)
+
+        self.assertNotIn("results", compact)
+        self.assertEqual("handoff_digest", compact["handoff_digest"]["type"])
+        self.assertLess(stats["handoff_payload_bytes"], 12000)
+        self.assertEqual(1, stats["handoff_digest_table_count"])
+        self.assertEqual(5, stats["handoff_digest_column_count"])
+        table = compact["handoff_digest"]["tables"][0]
+        self.assertEqual("table.zs_observe.amazon_oms", table["table_id"])
+        self.assertEqual(["account_data_binding.one.amazon.oms"], table["account_data_binding_ids"])
+        self.assertIn("group_level_id", [column["column_name"] for column in table["columns"]["scope"]])
+        self.assertIn("order_id", [column["column_name"] for column in table["columns"]["identifier"]])
+        self.assertIn("charged_amount", [column["column_name"] for column in table["columns"]["measure"]])
+        self.assertIn("purchase_date", [column["column_name"] for column in table["columns"]["date"]])
+        self.assertIn("order_status", [column["column_name"] for column in table["columns"]["status_filter"]])
+
     def test_constrained_route_reaches_multiple_domain_tables(self):
         with tempfile.TemporaryDirectory() as tmp:
             machine = _ConstrainedRouteMachine(
@@ -819,7 +1115,7 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
                 )
             )
 
-        packed_ids = _packed_card_ids(llm.evidence_pack)
+        packed_ids = _digest_evidence_card_ids(llm.evidence_pack)
         self.assertEqual("best_effort", output["status"])
         self.assertEqual(1, output["usable_branch_count"])
         self.assertEqual(1, output["incomplete_branch_count"])
@@ -828,8 +1124,16 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
         self.assertIn("table.zs_observe.amazon_oms", packed_ids)
         self.assertIn("query_pattern.amazon_oms.top_skus", packed_ids)
         self.assertNotIn("account_data_binding.one.flipkart.oms", packed_ids)
+        self.assertIn("handoff_digest", llm.evidence_pack)
+        self.assertNotIn("results", llm.evidence_pack)
         self.assertEqual(output["usable_branch_ids"], llm.evidence_pack["usable_branch_ids"])
         self.assertEqual("branch_incomplete", output["best_effort_warnings"][0]["warning"])
+        self.assertIn("handoff_input_stats", output)
+        self.assertGreater(output["handoff_input_stats"]["handoff_raw_card_count"], 0)
+        self.assertGreater(output["handoff_input_stats"]["handoff_digest_table_count"], 0)
+        self.assertTrue(any(row.get("phase") == "evidence_pack_build" for row in output["phase_timings"]))
+        self.assertTrue(any(row.get("phase") == "sql_handoff_writer" for row in output["phase_timings"]))
+        self.assertTrue(any(row.get("phase") == "trace_write" for row in output["phase_timings"]))
 
     def test_branch_with_table_columns_is_usable_without_query_pattern(self):
         ledger = BranchLedger()
@@ -977,6 +1281,30 @@ class ConstrainedSearchRuntimeHardeningTest(unittest.TestCase):
 
 class _UnusedClient:
     pass
+
+
+class _CountingClient:
+    def __init__(self):
+        self.search_count = 0
+
+    def with_routed_datasets(self, contract):
+        return contract
+
+    async def search(self, contract):
+        self.search_count += 1
+        return [_column_card()]
+
+
+class _FakeCogneeModule:
+    class SearchType:
+        GRAPH_COMPLETION = "graph_completion"
+
+    def __init__(self):
+        self.last_kwargs = {}
+
+    async def recall(self, **kwargs):
+        self.last_kwargs = kwargs
+        return []
 
 
 class _UnusedLLM:
@@ -1250,6 +1578,69 @@ class _ProfileSelectionLLM(_ConstrainedRouteLLM):
         )
 
 
+class _MultiProfileSelectionLLM(_ConstrainedRouteLLM):
+    def __init__(self):
+        self.profile_followup_plan_calls = 0
+        self.profile_followup_rank_calls = 0
+
+    async def select_evidence_profiles(self, query_text, runtime_context, evidence_manifest):
+        table_id = evidence_manifest["tables"][0]["table_id"]
+        return _Decision(
+            {
+                "selected_profiles": [
+                    {
+                        "profile_id": "query_shape_resolution",
+                        "answer_obligation": "Resolve query shape for the selected legal table.",
+                        "required_card_types": ["query_pattern"],
+                        "optional_card_types": [],
+                        "column_strategy": "none",
+                    },
+                    {
+                        "profile_id": "field_semantics_resolution",
+                        "answer_obligation": "Resolve field/value semantics for the selected legal table.",
+                        "required_card_types": ["value_profile"],
+                        "optional_card_types": [],
+                        "column_strategy": "none",
+                    },
+                ],
+                "evidence_requests": [
+                    {
+                        "request_id": "req.query_pattern",
+                        "profile_id": "query_shape_resolution",
+                        "scope_type": "table",
+                        "scope_id": table_id,
+                        "card_type": "query_pattern",
+                        "required": True,
+                        "top_k": 8,
+                        "answer_obligation": "Resolve query pattern evidence.",
+                    },
+                    {
+                        "request_id": "req.value_profile",
+                        "profile_id": "field_semantics_resolution",
+                        "scope_type": "table",
+                        "scope_id": table_id,
+                        "card_type": "value_profile",
+                        "required": True,
+                        "top_k": 8,
+                        "answer_obligation": "Resolve value semantics evidence.",
+                    },
+                ],
+                "selection_reasons": {},
+                "blocked_reasons": [],
+            }
+        )
+
+    async def plan_next_nodesets(self, query_text, predecessor_result):
+        if str(predecessor_result.get("stage") or "").startswith("table_local_"):
+            self.profile_followup_plan_calls += 1
+        return await super().plan_next_nodesets(query_text, predecessor_result)
+
+    async def rank_bounded_candidates(self, query_text, contract, returned_cards):
+        if contract.stage.startswith("table_local_"):
+            self.profile_followup_rank_calls += 1
+        return await super().rank_bounded_candidates(query_text, contract, returned_cards)
+
+
 class _ConstrainedRouteMachine(CogneeSearchStateMachine):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1296,6 +1687,18 @@ class _ConstrainedRouteMachine(CogneeSearchStateMachine):
         if contract.stage == "table_local_value_profile_search":
             return [_value_profile_card()]
         return []
+
+
+class _AgenticConstrainedRouteMachine(ADKAgenticCogneeSearchStateMachine):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.executed_contract_ids = []
+
+    async def execute_contract(self, contract):
+        return await _ConstrainedRouteMachine.execute_contract(self, contract)
+
+    def _cards_for_contract(self, contract):
+        return _ConstrainedRouteMachine._cards_for_contract(self, contract)
 
 
 class _HandoffResult:
@@ -1446,6 +1849,26 @@ def _catalog_with_profile_cards() -> CatalogBundle:
         catalog.card_catalog[card["canonical_id"]] = card
         catalog.node_set_values.update(card["node_sets"])
         catalog.node_set_values.add(f"canonical_id:{card['canonical_id']}")
+    return catalog
+
+
+def _catalog_with_payment_gateway_domain() -> CatalogBundle:
+    catalog = _catalog()
+    domain = {
+        "canonical_id": "domain.payment_gateway.settlement",
+        "canonical_name": "Payment Gateway Settlement",
+        "card_type": "domain",
+        "node_sets": [
+            "card_type:domain",
+            "domain_family:payment_gateway",
+            "platform_context_id:platform_context.cashfree.in",
+            "domain_id:domain.payment_gateway.settlement",
+            "applicable_source_role:settlement",
+            "canonical_id:domain.payment_gateway.settlement",
+        ],
+    }
+    catalog.card_catalog[domain["canonical_id"]] = domain
+    catalog.node_set_values.update(domain["node_sets"])
     return catalog
 
 
@@ -1698,6 +2121,23 @@ def _column_card() -> dict:
     }
 
 
+def _digest_column(column_name: str) -> dict:
+    return {
+        "canonical_id": f"column.zs_observe.amazon_oms.{column_name}",
+        "canonical_name": f"amazon_oms.{column_name}",
+        "card_type": "column",
+        "node_sets": [
+            "card_type:column",
+            "table_id:table.zs_observe.amazon_oms",
+            f"column_id:column.zs_observe.amazon_oms.{column_name}",
+        ],
+        "fields": {
+            "column_name": column_name,
+            "description": f"{column_name} test column",
+        },
+    }
+
+
 def _record_usable_amazon_branch(ledger: BranchLedger) -> list[SearchResult]:
     results: list[SearchResult] = []
     binding_contract = _runtime_binding_contract()
@@ -1761,6 +2201,24 @@ def _packed_card_ids(evidence_pack: dict) -> set[str]:
     for result in evidence_pack.get("results", []):
         for card in result.get("cards", []):
             ids.add(card["canonical_id"])
+    return ids
+
+
+def _digest_evidence_card_ids(evidence_pack: dict) -> set[str]:
+    ids: set[str] = set()
+    for table in (evidence_pack.get("handoff_digest") or {}).get("tables", []):
+        if table.get("table_id"):
+            ids.add(table["table_id"])
+        ids.update(table.get("account_data_binding_ids") or [])
+        ids.update(table.get("table_card_ids") or [])
+        for collection_name in ("metric_implementations", "query_patterns", "value_profiles", "relationships", "other_evidence"):
+            for card in table.get(collection_name) or []:
+                if card.get("canonical_id"):
+                    ids.add(card["canonical_id"])
+        for bucket_cards in (table.get("columns") or {}).values():
+            for column in bucket_cards:
+                if column.get("canonical_id"):
+                    ids.add(column["canonical_id"])
     return ids
 
 

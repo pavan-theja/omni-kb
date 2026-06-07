@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import ast
+import inspect
 import importlib
 import json
 import os
@@ -13,7 +14,14 @@ from .nodeset_contracts import SearchContract
 
 
 class LLMProvider(Protocol):
-    async def complete_json(self, *, prompt_id: str, system_prompt: str, user_payload: dict[str, Any]) -> dict[str, Any]: ...
+    async def complete_json(
+        self,
+        *,
+        prompt_id: str,
+        system_prompt: str,
+        user_payload: dict[str, Any],
+        max_tokens: int | None = None,
+    ) -> dict[str, Any]: ...
 
 
 class CallableLLMProvider:
@@ -31,8 +39,18 @@ class CallableLLMProvider:
             raise TypeError(f"Configured LLM callable is not callable: {dotted_path}")
         return cls(fn)
 
-    async def complete_json(self, *, prompt_id: str, system_prompt: str, user_payload: dict[str, Any]) -> dict[str, Any]:
-        result = self.fn(prompt_id=prompt_id, system_prompt=system_prompt, user_payload=user_payload)
+    async def complete_json(
+        self,
+        *,
+        prompt_id: str,
+        system_prompt: str,
+        user_payload: dict[str, Any],
+        max_tokens: int | None = None,
+    ) -> dict[str, Any]:
+        kwargs = {"prompt_id": prompt_id, "system_prompt": system_prompt, "user_payload": user_payload}
+        if max_tokens is not None and callable_accepts_kwarg(self.fn, "max_tokens"):
+            kwargs["max_tokens"] = max_tokens
+        result = self.fn(**kwargs)
         if asyncio.iscoroutine(result):
             result = await result
         if not isinstance(result, dict):
@@ -53,12 +71,19 @@ class LiteLLMJSONProvider:
     ):
         self.model = (model or os.environ.get("LLM_MODEL") or "").strip()
         self.temperature = temperature
-        self.max_tokens = max_tokens
+        self.max_tokens = env_int("LLM_MAX_TOKENS", max_tokens)
         self.timeout = timeout
         if not self.model:
             raise RuntimeError("LLM_MODEL is not set. Pass --env-file/--provider or --llm-callable.")
 
-    async def complete_json(self, *, prompt_id: str, system_prompt: str, user_payload: dict[str, Any]) -> dict[str, Any]:
+    async def complete_json(
+        self,
+        *,
+        prompt_id: str,
+        system_prompt: str,
+        user_payload: dict[str, Any],
+        max_tokens: int | None = None,
+    ) -> dict[str, Any]:
         try:
             import litellm
         except ImportError as exc:
@@ -78,7 +103,7 @@ class LiteLLMJSONProvider:
             "model": self.model,
             "messages": messages,
             "temperature": self.temperature,
-            "max_tokens": self.max_tokens,
+            "max_tokens": max_tokens or prompt_max_tokens(prompt_id, self.max_tokens),
             "timeout": self.timeout,
             "response_format": {"type": "json_object"},
         }
@@ -172,8 +197,29 @@ class LLMPlane:
     async def write_sql_handoff(self, query_text: str, evidence_pack: dict[str, Any]) -> LLMDecision:
         prompt_id = "04_sql_handoff_writer"
         payload = {"query_text": query_text, "evidence_pack": evidence_pack}
-        raw = await self.provider.complete_json(prompt_id=prompt_id, system_prompt=self._prompt(prompt_id), user_payload=payload)
-        _require_keys(raw, ["handoff_status", "source_blocks", "blocked_reasons"], prompt_id)
+        raw = await self.provider.complete_json(
+            prompt_id=prompt_id,
+            system_prompt=self._prompt(prompt_id),
+            user_payload=payload,
+            max_tokens=sql_handoff_max_tokens(),
+        )
+        raw = normalize_sql_handoff_output(raw)
+        _require_keys(
+            raw,
+            [
+                "type",
+                "handoff_status",
+                "readiness",
+                "semantic_intent",
+                "bindings",
+                "resolved_columns",
+                "sql_ast",
+                "rendered_sql",
+                "source_blocks",
+                "blocked_reasons",
+            ],
+            prompt_id,
+        )
         return LLMDecision("llm_sql_handoff_001", prompt_id, payload, raw)
 
 
@@ -248,6 +294,155 @@ def normalize_evidence_profile_selector_output(raw: dict[str, Any]) -> dict[str,
     return normalized
 
 
+def normalize_sql_handoff_output(raw: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(raw)
+    nested = normalized.get("handoff") or normalized.get("sql_handoff") or normalized.get("result")
+    if isinstance(nested, dict):
+        nested_normalized = dict(nested)
+        nested_normalized.update({key: value for key, value in normalized.items() if key not in nested_normalized})
+        normalized = nested_normalized
+    status = normalized.get("handoff_status") or normalized.get("readiness") or normalized.get("status") or normalized.get("state")
+    normalized["handoff_status"] = normalize_handoff_status(status, normalized)
+    normalized["readiness"] = normalize_handoff_readiness(normalized.get("readiness") or normalized["handoff_status"])
+    normalized["type"] = str(normalized.get("type") or "sql_handoff")
+    if "semantic_intent" not in normalized or not isinstance(normalized.get("semantic_intent"), dict):
+        normalized["semantic_intent"] = normalize_semantic_intent(normalized)
+    if "bindings" not in normalized or not isinstance(normalized.get("bindings"), dict):
+        normalized["bindings"] = normalize_handoff_bindings(normalized)
+    if "resolved_columns" not in normalized:
+        normalized["resolved_columns"] = first_json_list(
+            normalized.get("columns"),
+            normalized.get("selected_columns"),
+            normalized.get("column_bindings"),
+        )
+    elif not isinstance(normalized["resolved_columns"], list):
+        normalized["resolved_columns"] = []
+    if "sql_ast" not in normalized or not isinstance(normalized.get("sql_ast"), dict):
+        normalized["sql_ast"] = {}
+    if "rendered_sql" not in normalized:
+        normalized["rendered_sql"] = first_string(
+            normalized.get("sql"),
+            normalized.get("draft_sql"),
+            normalized.get("query"),
+        )
+    if "source_blocks" not in normalized:
+        normalized["source_blocks"] = first_json_list(
+            normalized.get("sources"),
+            normalized.get("tables"),
+            normalized.get("source_tables"),
+        )
+    if "required_runtime_filters" not in normalized:
+        normalized["required_runtime_filters"] = first_json_list(
+            normalized.get("runtime_filters"),
+            normalized.get("filters"),
+        )
+    if "sql_blueprints" not in normalized:
+        normalized["sql_blueprints"] = first_json_list(
+            normalized.get("blueprints"),
+            normalized.get("sql"),
+            normalized.get("queries"),
+        )
+    if "blocked_reasons" not in normalized:
+        normalized["blocked_reasons"] = first_json_list(
+            normalized.get("reasons"),
+            normalized.get("blocking_reasons"),
+        )
+    if "open_questions" not in normalized:
+        normalized["open_questions"] = first_json_list(
+            normalized.get("questions"),
+            normalized.get("clarifications"),
+        )
+    if not normalized["rendered_sql"]:
+        normalized["rendered_sql"] = rendered_sql_from_blueprints(normalized["sql_blueprints"])
+    if normalized["handoff_status"] == "blocked" and not normalized["blocked_reasons"]:
+        normalized["blocked_reasons"] = ["sql_handoff_writer_returned_unusable_shape"]
+    if normalized["readiness"] == "blocked" and not normalized["blocked_reasons"]:
+        normalized["blocked_reasons"] = ["sql_handoff_writer_returned_unusable_shape"]
+    return normalized
+
+
+def normalize_handoff_status(status: Any, payload: dict[str, Any]) -> str:
+    text = str(status or "").strip().lower()
+    if text in {"ready", "complete", "ok", "success", "valid"}:
+        return "ready"
+    if text in {"partial", "best_effort", "incomplete"}:
+        return "partial"
+    if text in {"blocked", "failed", "error", "missing"}:
+        return "blocked"
+    if payload.get("rendered_sql") or payload.get("sql_ast"):
+        return "ready"
+    if payload.get("sql_blueprints") or payload.get("source_blocks"):
+        return "partial"
+    return "blocked"
+
+
+def normalize_handoff_readiness(value: Any) -> str:
+    text = str(value or "").strip().lower()
+    if text in {"ready", "complete", "ok", "success", "valid"}:
+        return "ready"
+    if text in {"partial", "best_effort", "incomplete"}:
+        return "partial"
+    return "blocked"
+
+
+def normalize_semantic_intent(payload: dict[str, Any]) -> dict[str, Any]:
+    intent = payload.get("intent") or payload.get("semantic_intent_name") or payload.get("operation_shape")
+    measures = first_json_list(payload.get("measures"), payload.get("metrics"))
+    platforms = first_json_list(payload.get("platforms"), payload.get("channels"))
+    return {
+        "intent": str(intent or ""),
+        "platforms": platforms,
+        "measures": measures,
+    }
+
+
+def normalize_handoff_bindings(payload: dict[str, Any]) -> dict[str, Any]:
+    source_blocks = first_json_list(payload.get("source_blocks"), payload.get("sources"), payload.get("tables"))
+    allowed_tables: list[str] = []
+    blocked_tables = first_json_list(payload.get("blocked_tables"))
+    for source in source_blocks:
+        if isinstance(source, dict):
+            table_id = source.get("table_id") or source.get("table")
+            if table_id:
+                allowed_tables.append(str(table_id))
+        elif isinstance(source, str):
+            allowed_tables.append(source)
+    return {
+        "allowed_tables": unique_strings(first_json_list(payload.get("allowed_tables")) + allowed_tables),
+        "blocked_tables": unique_strings(blocked_tables),
+        "runtime_filters": first_json_list(payload.get("required_runtime_filters"), payload.get("runtime_filters"), payload.get("filters")),
+        "evidence_card_ids": first_json_list(payload.get("evidence_card_ids"), payload.get("selected_card_ids")),
+    }
+
+
+def rendered_sql_from_blueprints(blueprints: list[Any]) -> str:
+    parts: list[str] = []
+    for blueprint in blueprints:
+        if isinstance(blueprint, str) and blueprint.strip():
+            parts.append(blueprint.strip())
+        elif isinstance(blueprint, dict):
+            value = first_string(blueprint.get("rendered_sql"), blueprint.get("draft_sql"), blueprint.get("sql"), blueprint.get("conceptual_logic"))
+            if value:
+                parts.append(value)
+    return "\n\n".join(unique_strings(parts))
+
+
+def first_string(*values: Any) -> str:
+    for value in values:
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return ""
+
+
+def unique_strings(values: list[Any]) -> list[str]:
+    out: list[str] = []
+    for value in values:
+        text = str(value).strip()
+        if text and text not in out:
+            out.append(text)
+    return out
+
+
 def first_json_list(*values: Any) -> list[Any]:
     for value in values:
         if isinstance(value, list):
@@ -276,6 +471,40 @@ def first_list(*values: Any) -> list[str]:
         if isinstance(value, list):
             return [str(item) for item in value]
     return []
+
+
+def callable_accepts_kwarg(fn: Callable[..., Any], name: str) -> bool:
+    try:
+        signature = inspect.signature(fn)
+    except (TypeError, ValueError):
+        return False
+    for parameter in signature.parameters.values():
+        if parameter.kind == inspect.Parameter.VAR_KEYWORD:
+            return True
+        if parameter.name == name:
+            return True
+    return False
+
+
+def env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw in (None, ""):
+        return default
+    try:
+        value = int(str(raw))
+    except ValueError:
+        return default
+    return value if value > 0 else default
+
+
+def prompt_max_tokens(prompt_id: str, default: int) -> int:
+    env_name = f"{prompt_id.upper()}_MAX_TOKENS"
+    env_name = "".join(ch if ch.isalnum() else "_" for ch in env_name)
+    return env_int(env_name, default)
+
+
+def sql_handoff_max_tokens() -> int:
+    return env_int("SQL_HANDOFF_MAX_TOKENS", env_int("LLM_SQL_HANDOFF_MAX_TOKENS", 8192))
 
 
 def supports_json_retry(exc: Exception) -> bool:

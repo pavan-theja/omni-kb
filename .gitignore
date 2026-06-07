@@ -52,6 +52,10 @@ cognee/bundled_export/*
 cognee/query_outputs/*
 !cognee/query_outputs/README.md
 
+# Generated eval outputs
+eval_runs/constrained_search/*
+eval_runs/simple_search/*
+
 # Generated pipeline intermediates
 build/chunks/*
 !build/chunks/README.md
@@ -80,4 +84,3 @@ build/constrained_search/**/traces/
 constrained_repo/
 instructions.md
 raw/Source/docx/
-raw/Source/refactored_v2/

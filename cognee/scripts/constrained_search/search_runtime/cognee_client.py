@@ -29,12 +29,14 @@ class CogneeClient:
         catalogs: CatalogBundle,
         datasets: list[str] | None = None,
         all_datasets: bool = False,
+        prompted_recall: bool = False,
         cognee_module: Any | None = None,
     ):
         self.pack_dir = Path(pack_dir)
         self.catalogs = catalogs
         self.configured_datasets = datasets or datasets_from_pack(self.pack_dir)
         self.all_datasets = all_datasets
+        self.prompted_recall = prompted_recall
         self.add_batches = read_jsonl(self.pack_dir / "cognee_ingestion" / "add_batches.jsonl")
         self._cognee = cognee_module
 
@@ -102,18 +104,28 @@ class CogneeClient:
             raise CogneeIntegrationError("Imported Cognee SDK does not expose SearchType.GRAPH_COMPLETION.")
 
         kwargs: dict[str, Any] = {
-            "query_text": contract.query_text,
+            "query_text": prompted_recall_query_text(contract) if self.prompted_recall else contract.query_text,
             "query_type": search_type.GRAPH_COMPLETION,
             "top_k": contract.top_k,
             "scope": "graph",
             "auto_route": False,
             "node_name": contract.node_sets,
             "node_name_filter_operator": "AND",
-            "only_context": True,
+            "only_context": not self.prompted_recall,
         }
         if contract.datasets:
             kwargs["datasets"] = contract.datasets
         return await invoke_maybe_async(recall_fn, kwargs)
+
+
+def prompted_recall_query_text(contract: SearchContract) -> str:
+    return (
+        "Use only the cards that match the supplied NodeSet filters. "
+        "Return one compact JSON object with selected_card_ids, rejected_card_ids, "
+        "selection_reasons, missing_evidence, readiness, and a concise evidence_summary. "
+        "Every selected_card_id must be an exact canonical_id from the retrieved cards.\n\n"
+        f"Task: {contract.query_text}"
+    )
 
 
 def normalize_cognee_recall_result(result: Any, contract: SearchContract, catalogs: CatalogBundle) -> list[dict[str, Any]]:

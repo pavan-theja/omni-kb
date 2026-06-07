@@ -16,8 +16,8 @@ from search_runtime.utils import read_json  # noqa: E402
 
 class ConstrainedSearchEvalRunnerTest(unittest.TestCase):
     def test_default_eval_query_set_matches_plan_size(self):
-        self.assertEqual(29, len(EVAL_QUERIES))
-        self.assertEqual("Top 5 selling SKUs across all marketplaces.", EVAL_QUERIES[0])
+        self.assertEqual(24, len(EVAL_QUERIES))
+        self.assertEqual("List the top 5 selling SKUs for Amazon and Flipkart", EVAL_QUERIES[0])
         self.assertEqual("Return trend across all the marketplaces.", EVAL_QUERIES[-1])
 
     def test_metrics_extract_trace_and_branch_fields(self):
@@ -59,19 +59,47 @@ class ConstrainedSearchEvalRunnerTest(unittest.TestCase):
             self.assertTrue((run_dir / "aggregate_metrics.json").exists())
             self.assertTrue((run_dir / "summary.md").exists())
             query_dir = run_dir / "queries" / "001"
-            for name in ("query.txt", "result.json", "trace.json", "stdout.log", "stderr.log", "metrics.json", "summary.md"):
+            for name in (
+                "query.txt",
+                "result.json",
+                "raw_result.json",
+                "trace.json",
+                "stdout.log",
+                "stderr.log",
+                "metrics.json",
+                "summary.md",
+                "final_output.md",
+                "sql_handoff.json",
+                "sql_handoff.yaml",
+                "rendered.sql",
+            ):
                 self.assertTrue((query_dir / name).exists(), name)
 
             manifest = read_json(run_dir / "manifest.json")
             aggregate = read_json(run_dir / "aggregate_metrics.json")
             metrics = read_json(query_dir / "metrics.json")
+            result_json = read_json(query_dir / "result.json")
+            raw_result = read_json(query_dir / "raw_result.json")
+            sql_handoff = read_json(query_dir / "sql_handoff.json")
             trace = read_json(query_dir / "trace.json")
+            final_output = (query_dir / "final_output.md").read_text(encoding="utf-8")
+            rendered_sql = (query_dir / "rendered.sql").read_text(encoding="utf-8")
 
         self.assertEqual(1, manifest["completed_query_count"])
         self.assertEqual({"best_effort": 1}, aggregate["status_counts"])
         self.assertEqual([], aggregate["acceptance_failures"])
         self.assertEqual("best_effort", metrics["status"])
+        self.assertIn("final_output", manifest["queries"][0])
+        self.assertIn("sql_handoff", manifest["queries"][0])
+        self.assertIn("rendered_sql", manifest["queries"][0])
+        self.assertIn("raw_result", manifest["queries"][0])
+        self.assertNotIn("result", result_json)
+        self.assertEqual("raw_result.json", result_json["artifacts"]["raw_result"])
+        self.assertIn("result", raw_result)
+        self.assertEqual("ok", sql_handoff["handoff_status"])
         self.assertEqual(3, len(trace["trace"]))
+        self.assertIn("SELECT 1", final_output)
+        self.assertIn("SELECT 1", rendered_sql)
 
     def assertAsyncResult(self, awaitable):
         import asyncio
@@ -88,13 +116,16 @@ def _args(output_dir: Path) -> argparse.Namespace:
         group_id="group.one",
         dataset=None,
         all_datasets=False,
+        prompted_recall=False,
         llm_callable=None,
         max_steps=30,
         branch_max_steps=8,
         max_pending=32,
         completion_policy="best_effort",
+        orchestrator="serial",
+        evidence_concurrency=4,
         questions=None,
-        query=["Top 5 selling SKUs across all marketplaces."],
+        query=["List the top 5 selling SKUs for Amazon and Flipkart"],
         limit=None,
         offset=0,
         output_dir=output_dir,
@@ -110,7 +141,15 @@ def _fake_result(query: str = "Top SKUs") -> dict:
         "blocked_reason": None,
         "completion_policy": "best_effort",
         "global_step_count": 3,
-        "handoff": {"status": "ok"},
+        "handoff": {
+            "validated_output": {
+                "handoff_status": "ok",
+                "source_blocks": [{"table_id": "table.zs_observe.amazon_oms"}],
+                "blocked_reasons": [],
+                "open_questions": [],
+                "sql_blueprints": [{"draft_sql": "SELECT 1"}],
+            }
+        },
         "results": [{"result_id": "result.one"}],
         "trace": [
             {

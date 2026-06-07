@@ -6,6 +6,8 @@ from .nodeset_contracts import SearchContract
 from .utils import first_node_set, unique_in_order
 
 
+COLUMN_SEARCH_TOP_K = 50
+
 CARD_TYPE_PURPOSE_REGISTRY: dict[str, dict[str, str]] = {
     "tenant": {"family": "runtime_scope", "purpose": "Tenant/client root."},
     "group": {"family": "runtime_scope", "purpose": "Tenant group or group-level runtime scope."},
@@ -387,7 +389,7 @@ def profile_contracts_from_decision(
                 stage=stage,
                 query_text=f"{query_text} | {profile_id} evidence: {card_type} within {scope_type} {scope_id}",
                 node_sets=[f"card_type:{card_type}", f"{node_key}:{scope_id}"],
-                top_k=int(request.get("top_k") or default_top_k(card_type)),
+                top_k=evidence_request_top_k(card_type, request.get("top_k")),
                 allowed_card_types=[card_type],
                 required_carry_forward=carry,
                 candidate_seed_ids=manifest_candidate_ids(scope_payload),
@@ -480,10 +482,20 @@ def manifest_candidate_ids(scope_payload: dict[str, Any]) -> list[str]:
 
 def default_top_k(card_type: str) -> int:
     if card_type == "column":
-        return 24
+        return COLUMN_SEARCH_TOP_K
     if card_type in {"query_pattern", "metric_implementation", "relationship", "value_profile"}:
         return 12
     return 8
+
+
+def evidence_request_top_k(card_type: str, requested_top_k: Any) -> int:
+    try:
+        top_k = int(requested_top_k) if requested_top_k is not None else default_top_k(card_type)
+    except (TypeError, ValueError):
+        top_k = default_top_k(card_type)
+    if card_type == "column":
+        return max(top_k, COLUMN_SEARCH_TOP_K)
+    return top_k
 
 
 def compact_manifest_card(card: dict[str, Any]) -> dict[str, Any]:

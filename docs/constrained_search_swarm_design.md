@@ -65,6 +65,7 @@ The design will explicitly state that Cognee is the retrieval substrate, not the
 - Cognee remains the recall engine; resolver catalogs drive deterministic runtime scope resolution.
 - The first implementation target is marketplace fanout, especially “top N selling SKUs across all marketplaces,” but the design should generalize to other fanout scopes later.
 
+
 ## Current Serial Flow
 
 ```mermaid

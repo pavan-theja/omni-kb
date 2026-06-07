@@ -178,10 +178,59 @@ Search defaults to targeted `cognee.recall(..., only_context=True)` with
 NodeSet filters and add-batch dataset routing. Use `--all-datasets` only when
 you deliberately want to disable routing.
 
+The ADK-agentic orchestrator keeps the same constrained routing surface, but
+runs post-table evidence profile contracts through a bounded parallel runner.
+Use it when table selection is stable and the bottleneck is column/metric/query
+pattern/value evidence retrieval:
+
+```bash
+.venv/bin/python cognee/scripts/constrained_search/search_trace.py \
+  --pack-dir build/constrained_search/build \
+  --env-file cognee/.env.vertex.gemini352 \
+  --provider vertex \
+  --orchestrator adk \
+  --evidence-concurrency 4 \
+  --query "List the top 5 selling SKUs for Amazon and Flipkart" \
+  --tenant-id tenant.mensa_brand_technologies_private_limited \
+  --group-id group.mensa_brand_technologies_private_limited.g8.gl22
+```
+
+The current local `.venv` does not need `google.adk` to run this path; the trace
+records whether the real ADK package is importable. The runtime is intentionally
+ADK-shaped: sequential control plane first, bounded parallel evidence fanout
+after legal table finalization. ADK traces include named skills and tools such
+as `query_anchor_skill.extract_anchors`,
+`evidence_profile_skill.select_evidence_profiles`, and
+`profile_evidence_fanout_skill.execute_profile_evidence_contract`.
+
+Table-local column evidence searches currently use a minimum `top_k` of 50, even
+when the profile selector or LLM planner asks for a smaller value. Coverage
+bucket follow-up searches for scope/date/identifier/measure/status columns are
+planned separately.
+
+Use `--prompted-recall` to test the experimental prompted constrained Cognee
+recall path. This passes the task prompt directly into the NodeSet-constrained
+Cognee search so retrieval and first-pass reasoning happen in one call. That
+path must still return structured selected card IDs, rejected card IDs, reasons,
+and readiness signals; otherwise it becomes faster but less auditable than the
+default `only_context=True` retrieval plus separate LLM reasoning flow.
+
+The SQL handoff writer receives a deterministic `handoff_digest`, not the full
+selected card pack. The digest groups evidence by table and exposes capped
+column buckets for scope, identifier, date, measure, status/filter, and
+dimension fields. The default handoff output budget is `8192`; override it with
+`SQL_HANDOFF_MAX_TOKENS` or `LLM_SQL_HANDOFF_MAX_TOKENS` when Gemini truncates
+handoff JSON. Eval `metrics.json` includes `slowest_phases` from the runtime
+phase ledger so latency can be diagnosed without opening the full trace.
+
 ## Live E2E Eval Runner
 
 `eval_runner.py` runs the constrained-search runtime over the full hardening
 eval query set and writes artifacts under `eval_runs/constrained_search`:
+
+The default eval set is the current 24-question operational/reporting set. It
+does not include payment-gateway-specific questions until that path is fully
+wired.
 
 ```bash
 .venv/bin/python cognee/scripts/constrained_search/eval_runner.py \
@@ -206,6 +255,25 @@ For a smaller live smoke run:
   --limit 3
 ```
 
+To compare the agentic path:
+
+```bash
+.venv/bin/python cognee/scripts/constrained_search/eval_runner.py \
+  --pack-dir build/constrained_search/build \
+  --env-file cognee/.env.vertex.gemini352 \
+  --provider vertex \
+  --orchestrator adk \
+  --evidence-concurrency 4 \
+  --tenant-id tenant.mensa_brand_technologies_private_limited \
+  --group-id group.mensa_brand_technologies_private_limited.g8.gl22 \
+  --completion-policy best_effort \
+  --limit 1
+```
+
+Serial and ADK-agentic evals both write to the same default eval root,
+`eval_runs/constrained_search/<run_id>/`, unless `--output-dir` is explicitly
+overridden.
+
 Each run writes:
 
 ```text
@@ -215,10 +283,20 @@ eval_runs/constrained_search/<run_id>/
   summary.md
   queries/<index>/
     query.txt
+    final_output.md
+    sql_handoff.json
+    sql_handoff.yaml
+    rendered.sql
     result.json
+    raw_result.json
     trace.json
     stdout.log
     stderr.log
     metrics.json
     summary.md
 ```
+
+Open `final_output.md` first for the human-readable answer. `result.json` is a
+small artifact index and metric summary. `raw_result.json` and `trace.json` keep
+the full debug payloads, including raw Cognee recall state and chronological
+trace events.
